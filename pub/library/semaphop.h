@@ -4,7 +4,7 @@
    \author P. MOREL (Dassault Data Services)
    \ COPYRIGHT (C) 2002 MITSUBISHI ELECTRIC CORPORATION 
    \version 1.0
-   $Revision: 6.0 $
+   $Revision: 6.1 $
    \date 09/2002
    */
 /*
@@ -171,7 +171,7 @@
             security.bInheritHandle = true ;
             *pMutex = CreateMutex(&security, false, 0);
             if ( !*pMutex ) {
-                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", *pMutex, __FILE__, __LINE__);
+                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int) *pMutex, __FILE__, __LINE__);
             }
         }
         
@@ -180,7 +180,7 @@
             DWORD   ret = WaitForSingleObject(*pMutex, INFINITE);
             
             if ( ret != WAIT_OBJECT_0 ) {
-                fprintf(stderr, "Error in EnterCriticalSection : %d, in %s, line %d\n", ret, __FILE__, __LINE__);
+                fprintf(stderr, "Error in EnterCriticalSection : %d, in %s, line %d\n", (int) ret, __FILE__, __LINE__);
             }
         }
         
@@ -212,7 +212,7 @@
             security.bInheritHandle = true ;
             *pEvent = CreateEvent(&security, true, false, 0);
             if ( !*pEvent ) {
-                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", *pEvent, __FILE__, __LINE__);
+                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int) *pEvent, __FILE__, __LINE__);
             }
             return 0 ;
         }

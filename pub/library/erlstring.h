@@ -5,7 +5,11 @@
 #       define STRING_BASIC STRING_QUANT-1
 #   endif
 #   include <stdlib.h>
-#   include <string.h>
+#   ifdef ON_W
+#       include <string>
+#   else 
+#       include <string.h>
+#   endif
 #   include <ctype.h>
 #   define IN_ERLSTRING 1
 #   include "smtoken.h"
@@ -156,7 +160,7 @@
                     
                     Malloc((pvLength = pValue.length()) + 1);
                     memcpy(pvString, pValue.c_str(), pvLength);
-		    *(pvString + pvLength) =  0 ;
+                    *(pvString + pvLength) =  0 ;
                 }
                 
                 ~EStringRoot ()

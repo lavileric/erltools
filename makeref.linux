@@ -21,8 +21,8 @@ C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wu
 # OPTIM_FLAGS ?=-g -O2 $(LIBC2FLAGS) 
 # OPTIM_FLAGS ?= -O2 $(LIBC2FLAGS) 
 # OPTIM_FLAGS ?=-O2 -g $(LIBC2FLAGS) 
-OPTIM_FLAGS ?=-O3 $(LIBC2FLAGS) -fomit-frame-pointer 
-# OPTIM_FLAGS ?=-g $(LIBC2FLAGS)
+# OPTIM_FLAGS ?=-O3 $(LIBC2FLAGS) -fomit-frame-pointer 
+OPTIM_FLAGS ?=-g $(LIBC2FLAGS)
 # OPTIM_FLAGS ?=$(LIBC2FLAGS)
 # OPTIM_FLAGS ?=-Os $(LIBC2FLAGS)
 
