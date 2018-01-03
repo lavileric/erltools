@@ -1,0 +1,95 @@
+THE_LIB= ./meta.a
+
+OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
+
+all : m_done $(THE_LIB)(auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o \
+				 tabsort.o clpretty.o pretty.o pretty0.o symb.o ethread.o)
+
+include ../../makefile.inc
+
+LIB_OBJECTS=auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o tabsort.o clpretty.o pretty.o pretty0.o symb.o ethread.o
+
+
+shared : $(LIB_OBJECTS)
+	$(C_PLUS) -shared -o libmeta.so $(LIB_OBJECTS)
+
+clean : clean_inc
+	- rm -f testsem test.cc error
+
+token.h : smtoken.h
+	touch token.h
+
+$(THE_LIB)(pretty.o) : pretty.cc token.h pretty.o
+	ar rvU $(THE_LIB) pretty.o
+
+$(THE_LIB)(pretty0.o) : pretty0.cc token.h pretty0.o
+	ar rvU $(THE_LIB) pretty0.o
+
+m_done : pretty.met
+	-@ mkdir compile.dir
+	-@ rm -f compile.dir/pretty.met
+	-@ cp pretty.met compile.dir/pretty.met
+	@echo "metagen -c++ pretty.met"
+	@( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) pretty.met ;\
+		  unify pretty.h ../pretty.h;\
+	  unify pretty.cpp ../pretty.cc;\
+	  unify pretty0.cpp ../pretty0.cc;)
+	@echo "ok" > m_done
+
+auxpars.o : auxpars.cc  token.h 
+
+compleme.o : compleme.cc token.h
+
+outil.o : outil.cc token.h
+
+salloc.o : salloc.cc token.h
+
+tablist.o : tablist.cc tablist.h token.h tabsort.h 
+
+tabsort.o : tabsort.cc tablist.h token.h tabsort.h
+
+symb.o : symb.cc tablist.h token.h symb.h
+
+semaph.o : semaph.cc token.h 
+
+clpretty.o : clpretty.cc clpretty.h token.h 
+	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) $(OPT_FLAGS_SYS) clpretty.cc
+
+itptree.o : itptree.cc itptree.h token.h
+
+semaph.cc : semaph.ch
+
+outil.cc : outil.ch
+
+ptree.cc : ptree.ch
+
+clpretty.cc : clpretty.ch
+
+itptree.cc : itptree.ch
+
+salloc.cc : salloc.ch salloc.h
+
+testlist.cc : testlist.ch
+	metachop -c++ testlist.ch > testlist.cc
+
+symb.cc : symb.ch
+	metachop -c++ symb.ch > symb.cc
+
+testlist : testlist.cc
+	g++ $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) -o testlist testlist.cc $(THE_LIB)
+
+testsem.cc : testsem.ch
+
+testsem : testsem.cc meta.a
+	$(C_PLUS) $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) -o testsem testsem.cc $(THE_LIB) -lpthread
+
+looksem.cc : looksem.ch
+
+looksem : looksem.cc meta.a
+	$(C_PLUS) $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) -o looksem looksem.cc $(THE_LIB) -lpthread
+
+looksemn.cc : looksemn.ch
+
+looksemn : looksemn.cc meta.a
+	$(C_PLUS) $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) -o looksemn looksemn.cc $(THE_LIB) -lpthread

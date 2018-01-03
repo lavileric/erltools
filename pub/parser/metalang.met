@@ -1,0 +1,885 @@
+/*************************************************************************/
+/*                                                                       */
+/*        Metalang.met - Built by Eric Lavillonniere on Tandon 386 - 89  */
+/*                                                                       */
+/*************************************************************************/
+/* This file is part of metagen                                             
+  
+  Metagen is a syntaxic analyser generator with backtrack.
+  
+  It runs on dos and unix. It generates c code. */
+/* Copyright(C) 1989 Eric Lavillonniere */
+/*    This program is free software; you can redistribute it and/or modify*/
+/*    it under the terms of the GNU General Public License as published by*/
+/*    the Free Software Foundation; either version 1, or (at your option)*/
+/*    any later version.*/
+/**/
+/*    This program is distributed in the hope that it will be useful,*/
+/*    but WITHOUT ANY WARRANTY; without even the implied warranty of*/
+/*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the*/
+/*    GNU General Public License for more details.*/
+/**/
+/*    You should have received a copy of the GNU General Public License*/
+/*    along with this program; see the file COPYING. If not, write to*/
+/*  the Free Software*/
+/*    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.*/
+language metalang;
+
+global begin
+    {{
+        extern int hasGotErrorMeta;
+                  extern char * theFileName;
+                     PPTREE ReadInclude(PPTREE,int,bool);
+                   #ifdef IN
+                   #undef IN
+                   #endif
+    }}
+end;
+
+use "pretty.met";
+
+{{ int hasGotErrorMeta = 0 ; }};
+
+lexdefine LexEndLine;
+    forgetl;
+    while not seel in ['\n'] and not c = EOF do
+        takel ;
+    takel ;
+    return !END_LINE;
+end;
+
+lexdefine LexAsitContent;
+    skip '\r','\n';
+    if not seel "}}" then
+        begin
+        while seel and not seel "}}" do
+            begin
+            if not seel in ['\r','\n'] then
+                storel takel 
+            else
+                takel ;
+            if col = 1 then
+                return !ASIT_CONTENT;
+            end;
+        return !ASIT_CONTENT;
+        end;
+end;
+
+lexdefine LexComment;
+    if in context keepSpace then
+        skip '\r','\n'
+    else
+        skip ' ','\t','\r','\n';
+    case
+        takel "/*" :
+            
+            /* definition of comment */
+            begin
+            {{ {int level = 0; }};
+            begin_comment();
+            while seel do
+                case
+                    takel "/*" :
+                        begin
+                        {{ level ++; }};
+                        storel "/*";
+                        end
+                    takel "*/" :
+                        begin
+                        if {{!level }} then
+                            begin
+                            store_comment_line();
+                            return take LexComment;
+                            end
+                        else
+                            begin
+                            {{ level --;}};
+                            storel "*/";
+                            end;
+                        end
+                    takel in ['\n'] : store_comment_line()
+                    takel in ['\r'] : 
+                    default :
+                        begin
+                        storel takel ;
+                        end
+                end;
+            {{} }};
+            end
+    end;
+end;
+
+lexdefine LexMeta;
+    if in context keepSpace then
+        skip '\r','\n'
+    else
+        skip ' ','\t','\r','\n';
+    case
+        takel in ['$'] :
+            
+            /* definition of metavariables */
+            begin
+            if not seel in ['('] then
+                while seel in ['a'..'z','A'..'Z','0'..'9','_'] do
+                    storel takel 
+            else
+                begin
+                {{ int nbPar = 0;}};
+                storel takel ;
+                while seel do
+                    case
+                        seel in ['('] :
+                            begin
+                            {{ nbPar++;}};
+                            storel takel ;
+                            end
+                        seel in ['\n'] :
+  
+  /* do not take line feed */
+  return !META          
+                        seel in [')'] :
+                            if {{!nbPar }} then
+                                begin
+                                storel takel ;
+                                return !META;
+                                end
+                            else
+                                begin
+                                storel takel ;
+                                {{ nbPar--;}};
+                                end
+                        seel : storel takel 
+                    end;
+                end;
+            return !META;
+            end
+    end;
+end;
+
+lexdefine Lex;
+    skip ' ','\t','\r','\n';
+    recognize_string;
+    case
+        seel in ['a'..'z','A'..'Z'] :
+            /*definition of ident */
+            begin
+            while seel in ['a'..'z','A'..'Z','_','0'..'9'] do
+                begin
+                storel takel ;
+                if takel "::" then
+                    storel "::";
+                end;
+            return SortKeyWord(IDENT);
+            end
+        takel in ['"'] :
+            
+            /* definition of string */
+            while seel do
+                case
+                    takel in ['"'] :
+                        if seel in ['"'] then
+                            begin
+                            storel "\\";
+                            storel takel ;
+                            end
+                        else
+                            begin
+                            return !STRING;
+                            end
+                    seel : storel takel 
+                end
+        takel "'" :
+            
+            /* definition of character */
+            while seel do
+                case
+                    takel "'" :
+                        begin
+                        return !CHARACTER;
+                        end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        storel takel ;
+                        end
+                    seel : storel takel 
+                end
+        seel in ['0'..'9'] :
+            
+            /* definition of number */
+            begin
+            while seel in ['0'..'9'] do
+                storel takel ;
+            return !NUMB;
+            end
+    end;
+end;
+
+define debut_proc;
+    case
+        see #"define" : 
+        see #"lexdefine" : 
+        see "{{" : 
+    end;
+end;
+
+define main_entry;
+    return take langage;
+end;
+
+define langage;
+    declare list,langTree,listglobal,nothing;
+    take #"language";
+    langTree = maketree(LANGUAGE,maketree(IDENT,take !IDENT),());
+    take ";";
+    while /* see #"lex" or */ see #"global" do
+        begin
+        if take #"global" then
+            begin
+            take #"begin";
+            {{ debut:}};
+            repeat
+                case
+                    see "{{" : addlist(listglobal,take asit)
+                    default :
+                        begin
+                        
+                        /* pour generer une error */
+                        if nothing = take debut_proc then
+                            ;
+                        
+                        /* on saute une ligne et on recommence */
+                        dumperror();
+                        take !END_LINE;
+                        {{ hasGotErrorMeta = 1 ;}};
+                        if not c = EOF then
+                            {{ goto debut ;}};
+                        end
+                end;
+                if take ";" then
+                    ;
+            until take #"end";
+            take ";";
+            addlist(list,maketree(GLOBAL,listglobal));
+            end;
+        end;
+    repeat
+        {{ debut1 :}};
+        case
+            see #"define" : addlist(list,take declaration)
+            see #"lexdefine" : addlist(list,take definition)
+            see #"use" : addlist(list,take grammar_use)
+            see "{{" : addlist(list,take asit)
+            default :
+                begin
+                
+                /* pour generer une error */
+                if nothing = take debut_proc then
+                    ;
+                
+                /* on saute une ligne et on recommence */
+                dumperror();
+                take !END_LINE;
+                {{ hasGotErrorMeta = 1 ;}};
+                if not c = EOF then
+                    {{ goto debut1 ;}};
+                end
+        end;
+    until not take ";";
+    replacetree(langTree,2,list);
+    if not see "." and not c = EOF then
+        begin
+        
+        /* on saute une ligne et on recommence */
+        dumperror();
+        take !END_LINE;
+        {{ hasGotErrorMeta = 1 ;}};
+        if not c = EOF then
+            {{ goto debut1 ;}};
+        end;
+    if hasGotErrorMeta = 1 then
+        {{ exit(-1);}};
+    return langTree;
+end;
+
+define definition;
+    declare list,listcons,listskip,defTree,pattern;
+    take #"lexdefine";
+    with context cDef do
+        begin
+        defTree = maketree(LEXDEFINE,maketree(IDENT,take !IDENT),(),(),());
+        take ";";
+        {{ ReplaceTree(defTree,3,MakeString(theFileName));}};
+        if take #"constant" then
+            begin
+            repeat
+                addlist(listcons,maketree(IDENT,take !IDENT));
+            until not take ",";
+            addlist(list,maketree(CONSTANT,listcons));
+            take ";";
+            end;
+        if take #"skip" then
+            begin
+            repeat
+                if see "[" then
+                    addlist(listskip,take set)
+                else
+                    addlist(listskip,maketree(CHARACTER,take !CHARACTER));
+            until not take ",";
+            addlist(list,maketree(SKIP,listskip));
+            take ";";
+            end;
+        {{ debut :}};
+        repeat
+            if pattern = take pattern_rec then
+                addlist(list,pattern)
+            else
+                begin
+                
+                /* on saute une ligne et on recommence */
+                dumperror();
+                take !END_LINE;
+                {{ hasGotErrorMeta = 1 ;}};
+                if not c = EOF then
+                    {{ goto debut ;}};
+                end;
+        until not take ";";
+        replacetree(defTree,2,list);
+        
+        /* on utilise end_key pour pouvoir lever une erreur qui sera affichee
+          dans le dumperror */
+        if not pattern = take end_key then
+            begin
+            dumperror();
+            take !END_LINE;
+            {{ hasGotErrorMeta = 1 ;}};
+            if not c = EOF then
+                {{ goto debut ;}};
+            end;
+        end;
+    return defTree;
+end;
+
+define end_key;
+    take #"end";
+end;
+
+define takel_stat;
+    take #"takel";
+    case
+        take #"in" : return maketree(TAKEL,maketree(IN,take set))
+        see !STRING : return maketree(TAKEL,maketree(STRING,take !STRING))
+        default : return maketree(TAKEL,())
+    end;
+end;
+
+define seel_stat;
+    take #"seel";
+    case
+        take #"in" : return maketree(SEEL,maketree(IN,take set))
+        see !STRING : return maketree(SEEL,maketree(STRING,take !STRING))
+        default : return maketree(SEEL,())
+    end;
+end;
+
+define storel_stat;
+    take #"storel";
+    case
+        take #"takel" : return maketree(STOREL,maketree(TAKEL,()))
+        see !STRING : return maketree(STOREL,maketree(STRING,take !STRING))
+    end;
+end;
+
+define set;
+    declare list,charac;
+    take "[";
+    repeat
+        charac = maketree(CHARACTER,take !CHARACTER);
+        if take "." then
+            begin
+            take ".";
+            addlist(list
+                ,maketree(INTER,charac,maketree(CHARACTER,take !CHARACTER)));
+            end
+        else
+            addlist(list,charac);
+    until not take ",";
+    take "]";
+    return maketree(SET,list);
+end;
+
+define declaration;
+    declare list,listdec,decTree,pattern,ident;
+    take #"define";
+    decTree = maketree(DEFINE,maketree(IDENT,take !IDENT),(),(),());
+    take ";";
+    {{ ReplaceTree(decTree,3,MakeString(theFileName));}};
+    while see "{{" do
+        begin
+        addlist(list,take asit);
+        take ";";
+        end;
+    if take #"declare" then
+        begin
+        repeat
+            ident = maketree(IDENT,take !IDENT);
+            if take "[" then
+                begin
+                addlist(listdec
+                    ,maketree(TREE_ARITY,ident,maketree(NUMB,take !NUMB)));
+                take "]";
+                end
+            else
+                addlist(listdec,ident);
+        until not take ",";
+        addlist(list,maketree(DECLARE,listdec));
+        take ";";
+        end;
+    {{ debut :}};
+    repeat
+        if pattern = take pattern_rec then
+            addlist(list,pattern)
+        else
+            begin
+            
+            /* on saute une ligne et on recommence */
+            dumperror();
+            take !END_LINE;
+            {{ hasGotErrorMeta = 1 ;}};
+            if not c = EOF then
+                {{ goto debut ;}};
+            end;
+    until not take ";";
+    replacetree(decTree,2,list);
+    
+    /* prend end_key pour qu'on genere un message d'erreur ce qui 
+      n'est pas le cas sur un take direct */
+    if not take end_key then
+        begin
+        dumperror();
+        take !END_LINE;
+        {{ hasGotErrorMeta = 1;}};
+        if not c = EOF then
+            {{ goto debut ;}};
+        end;
+    return decTree;
+end;
+
+define pattern_rec;
+    declare patTree,ident,list,switchTree,listskip;
+    case
+        take #"take" : patTree = take take_follow
+        take #"return" : patTree = maketree(RETURN,take gen_param)
+        take #"store_comment_line" :
+            begin
+            take "(";
+            take ")";
+            return maketree(STORE_COMMENT_LINE);
+            end
+        take #"skip" :
+            begin
+            repeat
+                if see "[" then
+                    addlist(listskip,take set)
+                else
+                    addlist(listskip,maketree(CHARACTER,take !CHARACTER));
+            until not take ",";
+            return maketree(SKIP,listskip);
+            end
+        take #"replacetree" :
+            begin
+            take "(";
+            addlist(list,maketree(IDENT,take !IDENT));
+            take ",";
+            addlist(list,maketree(NUMB,take !NUMB));
+            take ",";
+            addlist(list,take gen_param);
+            take ")";
+            patTree = maketree(REPLACETREE,list);
+            end
+        take #"addlist" :
+            begin
+            take "(";
+            addlist(list,maketree(IDENT,take !IDENT));
+            take ",";
+            addlist(list,take gen_param);
+            take ")";
+            patTree = maketree(ADDLIST,list);
+            end
+        see !IDENT :
+            begin
+            {{ { int is_meta;}};
+            if see !META then
+                {{ is_meta=1;}}
+            else
+                {{ is_meta=0;}};
+            ident = take !IDENT;
+            case
+                take "=" :
+                    begin
+                    patTree = maketree(EQUAL,maketree(IDENT,ident),());
+                    case
+                        take #"take" : replacetree(patTree,2
+                            ,take take_follow)
+                        see !IDENT :
+                            begin
+                            ident = take !IDENT;
+                            if not see "(" then
+                                replacetree(patTree,2,maketree(IDENT,ident))
+                            else
+                                begin
+                                take "(";
+                                replacetree(patTree,2
+                                    ,maketree(FUNC,maketree(IDENT,ident)
+                                        ,take func_follow));
+                                end;
+                            end
+                        take #"maketree" :
+                            begin
+                            take "(";
+                            replacetree(patTree,2
+                                ,maketree(MAKETREE,take maketree_follow));
+                            end
+                        take #"addlist" :
+                            begin
+                            take "(";
+                            addlist(list,maketree(IDENT,take !IDENT));
+                            take ",";
+                            addlist(list,take gen_param);
+                            take "(";
+                            replacetree(patTree,2,maketree(ADDLIST,list));
+                            end
+                        take "(" :
+                            begin
+                            take ")";
+                            replacetree(patTree,2,maketree(NIL));
+                            end
+                    end;
+                    end
+                take "(" : patTree
+                    = maketree(FUNC,maketree(IDENT,ident),take func_follow)
+                default :
+                    if {{ is_meta }} then
+                        patTree = maketree(META,ident)
+                    else
+                        break
+            end;
+            {{ } }};
+            end
+        take #"with" :
+            begin
+            take #"context";
+            patTree = maketree(WITH_CONTEXT,maketree(IDENT,take !IDENT),());
+            take #"do";
+            replacetree(patTree,2,take pattern_rec);
+            end
+        take #"without" :
+            begin
+            take #"context";
+            patTree
+                = maketree(WITHOUT_CONTEXT,maketree(IDENT,take !IDENT),());
+            take #"do";
+            replacetree(patTree,2,take pattern_rec);
+            end
+        take #"repeat" :
+            begin
+            repeat
+                addlist(list,take pattern_rec);
+            until not take ";";
+            take #"until";
+            patTree = maketree(REPEAT,list,take condition);
+            end
+        take #"if" :
+            begin
+            patTree = maketree(IF,take condition,(),());
+            take #"then";
+            replacetree(patTree,2,take pattern_rec);
+            if take #"else" then
+                replacetree(patTree,3,take pattern_rec);
+            end
+        take #"while" :
+            begin
+            patTree = maketree(WHILE,take condition,());
+            take #"do";
+            replacetree(patTree,2,take pattern_rec);
+            end
+        take #"begin" :
+            begin
+            repeat
+                addlist(list,take pattern_rec);
+            until not take ";";
+            patTree = maketree(BEGIN,list);
+            take #"end";
+            end
+        take #"case" :
+            begin
+            while switchTree = take condition do
+                begin
+                switchTree = maketree(SWITCH,switchTree,());
+                take ":";
+                replacetree(switchTree,2,take pattern_rec);
+                addlist(list,switchTree);
+                if take ";" then
+                    ;
+                end;
+            patTree = maketree(CASE,list);
+            take #"end";
+            end
+        see #"takel" : return take takel_stat
+        see #"storel" : return take storel_stat
+        take #"at_beginning" : return maketree(BEGINNING,take pattern_rec)
+        see "{{" : return take asit
+        take #"resetl" : return maketree(RESETLEX)
+        take #"forgetl" : return maketree(FORGET)
+        take #"recoverl" : return maketree(RECOVER)
+        take #"forget" : return maketree(FORGET_SYNTAXIQUE)
+        take #"recognize_string" : return maketree(RECOGNIZE_STRING)
+        take #"break" : return maketree(BREAK)
+        default : 
+    end;
+    return patTree;
+end;
+
+define condition;
+    declare cond;
+    cond = take one_condition;
+    while see #"or" or see #"and" do
+        if take #"or" then
+            cond = maketree(OR,cond,take one_condition)
+        else
+            begin
+            take #"and";
+            cond = maketree(AND,cond,take one_condition);
+            end;
+    return cond;
+end;
+
+define asit;
+    declare listAsit;
+    take "{{";
+    with context keepSpace do
+        while see !ASIT_CONTENT do
+            addlist(listAsit,take !ASIT_CONTENT);
+    take "}}";
+    return maketree(ASIT,listAsit);
+end;
+
+define one_condition;
+    declare ident,condTree;
+    case
+        take #"see" : return take see_follow
+        take #"take" : return take take_follow
+        take #"not" : return maketree(NOT,take one_condition)
+        see #"seel" : return take seel_stat
+        see #"takel" : return take takel_stat
+        take #"in" :
+            begin
+            take #"context";
+            return maketree(IN_CONTEXT,maketree(IDENT,take !IDENT));
+            end
+        see !IDENT :
+            begin
+            ident = maketree(IDENT,take !IDENT);
+            case
+                take "(" : return maketree(FUNC,ident,take func_follow)
+                take "=" :
+                    case
+                        take #"take" : return maketree(EQUAL,ident
+                            ,take take_follow)
+                        take "(" :
+                            begin
+                            take ")";
+                            return maketree(EQUAL,ident,maketree(NIL));
+                            end
+                        default : return maketree(EQUAL,ident,take expr)
+                    end
+                default : return ident
+            end;
+            end
+        see "{{" : return take asit
+        take "(" :
+            begin
+            condTree = maketree(COND,take condition);
+            take ")";
+            return condTree;
+            end
+        take #"default" :
+            begin
+            if not in context cDef then
+                return maketree(SEE
+                    ,maketree(EXCLA,maketree(IDENT,"NOTHING")))
+            else
+                return maketree(SEEL,());
+            end
+    end;
+end;
+
+define expr;
+    case
+        see !IDENT : return maketree(IDENT,take !IDENT)
+        see !NUMB : return maketree(NUMB,take !NUMB)
+    end;
+end;
+
+define take_follow;
+    declare patTree;
+    begin
+    patTree = maketree(TAKE,());
+    case
+        take "#" : replacetree(patTree,1
+            ,maketree(TOKEN,maketree(STRING,take !STRING)))
+        take "!" : replacetree(patTree,1
+            ,maketree(EXCLA,maketree(IDENT,take !IDENT)))
+        see !STRING : replacetree(patTree,1,maketree(STRING,take !STRING))
+        see !IDENT : replacetree(patTree,1,maketree(IDENT,take !IDENT))
+    end;
+    end;
+    return patTree;
+end;
+
+define see_follow;
+    declare patTree;
+    begin
+    patTree = maketree(SEE,());
+    case
+        take "#" : replacetree(patTree,1
+            ,maketree(TOKEN,maketree(STRING,take !STRING)))
+        take "!" : replacetree(patTree,1
+            ,maketree(EXCLA,maketree(IDENT,take !IDENT)))
+        see !STRING : replacetree(patTree,1,maketree(STRING,take !STRING))
+        see !IDENT : replacetree(patTree,1,maketree(IDENT,take !IDENT))
+    end;
+    end;
+    return patTree;
+end;
+
+define func_call;
+    declare retTree;
+    retTree = maketree(FUNC,maketree(IDENT,take !IDENT),());
+    take "(";
+    replacetree(retTree,2,take func_follow);
+    return retTree;
+end;
+
+define func_follow;
+    declare list,switchTree;
+    while not take ")" do
+        begin
+        case
+            take "#" : switchTree
+                = maketree(TOKEN,maketree(STRING,take !STRING))
+            take "!" : switchTree
+                = maketree(EXCLA,maketree(IDENT,take !IDENT))
+            see !STRING : switchTree = maketree(STRING,take !STRING)
+            default : switchTree = take expr
+        end;
+        addlist(list,switchTree);
+        if see "," then
+            take ",";
+        end;
+    return list;
+end;
+
+define maketree_follow;
+    declare list;
+    repeat
+        addlist(list,take gen_param);
+    until not take ",";
+    take ")";
+    return list;
+end;
+
+define gen_param;
+    declare switchTree,ident,list;
+    case
+        take "(" :
+            begin
+            take ")";
+            switchTree = maketree(NIL);
+            end
+        take #"take" : switchTree = take take_follow
+        take #"stringlex" : switchTree = maketree(STRINGLEX)
+        see !IDENT :
+            begin
+            ident = take !IDENT;
+            if not see "(" then
+                switchTree = maketree(IDENT,ident)
+            else
+                begin
+                take "(";
+                switchTree
+                    = maketree(FUNC,maketree(IDENT,ident),take func_follow);
+                end;
+            end
+        take #"maketree" :
+            begin
+            take "(";
+            switchTree = maketree(MAKETREE,take maketree_follow);
+            end
+        take #"replacetree" :
+            begin
+            take "(";
+            addlist(list,maketree(IDENT,take !IDENT));
+            take ",";
+            addlist(list,maketree(NUMB,take !NUMB));
+            take ",";
+            addlist(list,take gen_param);
+            take ")";
+            switchTree = maketree(REPLACETREE,list);
+            end
+        take #"addlist" :
+            begin
+            take "(";
+            addlist(list,maketree(IDENT,take !IDENT));
+            take ",";
+            addlist(list,take gen_param);
+            take ")";
+            switchTree = maketree(ADDLIST,list);
+            end
+        
+        /* definitions used in lex */
+        take "#" : switchTree
+            = maketree(TOKEN,maketree(STRING,take !STRING))
+        take "!" : switchTree = maketree(EXCLA,maketree(IDENT,take !IDENT))
+        see !STRING : switchTree = maketree(STRING,take !STRING)
+    end;
+    return switchTree;
+end;
+
+define grammar_use;
+    declare retTree,string;
+    take #"use";
+    string = maketree(STRING,take !STRING);
+    {{ {char * incString = (char *) (Value(string));}};
+    retTree = maketree(GRAMMAR_USE,ReadInclude(incString 1));
+    {{ } }};
+    return retTree;
+end;
+
+define parse_entry;
+    declare retValue,list;
+    if retValue = take declaration or retValue = take definition then
+        return retValue
+    else
+        if retValue = take langage then
+            return retValue
+        else
+            if take #"declare" then
+                begin
+                repeat
+                    addlist(list,maketree(IDENT,take !IDENT));
+                until not take ",";
+                retValue = maketree(DECLARE,list);
+                return retValue;
+                end
+            else
+                if retValue = take condition then
+                    return retValue
+                else
+                    if retValue = take pattern_rec then
+                        return retValue
+                    else
+                        break;
+    take #"use";
+end.
+

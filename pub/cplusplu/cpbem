@@ -1,0 +1,107 @@
+#!/bin/sh
+
+#find suffix of name
+emacs=""
+name=$1
+if [ $name = "-emacs" ] ; then
+    emacs="-emacs";
+    shift;
+fi
+
+#find suffix of name
+flat=""
+name=$1
+if [ $name = "-flat" ] ; then
+    flat="-flat";
+    shift;
+fi
+
+#look if there is a set indication
+name=$1
+SET_ORDER=""
+if [ $name = "-set" ] ; then
+    shift
+    SET_ORDER="-set $1"
+    shift;
+else
+    if [ -f ${HOME}/c.set ] ; then
+        SET_ORDER="-set ${HOME}/c.set"
+    fi
+fi
+
+#look if there is a width indication
+name=$1
+WIDTH_INDICATION=""
+if [ $name = "-rightMargin" ] ; then
+    shift
+    WIDTH_INDICATION="-rightMargin $1"
+    shift;
+fi
+
+
+name=`basename $1`
+suffix=`echo $name | sed 's/.*\.//'`
+
+#suppress tabulations in file
+# deltab $1
+
+cp $1 keep.erl
+
+#if ch use chopb else cplus
+if [ $suffix = "ch" ]
+then
+    chopb $SET_ORDER $1 > $2
+elif [ $suffix = "CH" ]
+then
+    chopb $SET_ORDER $1 > $2
+elif [ $suffix = "met" ]
+then
+    metab $1 > $2
+elif [ $suffix = "MET" ]
+then
+    metab $1 > $2
+elif [ $suffix = "isl" ]
+then
+    isl $1 > $2
+elif [ $suffix = "ISL" ]
+then
+    isl $1 > $2
+elif [ $suffix = "cedit" ]
+then
+    omt $1 > $2
+elif [ $suffix = "ASN" ]
+then
+    asnext -b $1 > $2
+elif [ $suffix = "asn" ]
+then
+    asnext -b $1 > $2
+elif [ $suffix = "MKP" ]
+then
+    asnext2 -b  $1 > $2
+elif [ $suffix = "mkp" ]
+then
+    asnext2 -b $1 > $2
+elif [ $suffix = "MKO" ]
+then
+    asnext2 -b  $1 > $2
+elif [ $suffix = "mko" ]
+then
+    asnext2 -b $1 > $2
+elif [ $suffix = "java" ]
+then
+    pjava $flat $1 > $2
+elif [ $suffix = "JAVA" ]
+then
+    pjava $flat $1 > $2
+else
+    cplus $emacs $SET_ORDER $WIDTH_INDICATION $1 > $2
+fi
+result=$?
+if [ $result != 0 ] ; then
+    exit $result
+fi
+if [ $suffix = "asn" -o  $suffix = "ASN" -o  $suffix = "mkp" -o  $suffix = "MKP" -o  $suffix = "mko" -o  $suffix = "MKO" ]
+then
+    echo "asn pretty printing. No Error Found."
+fi
+

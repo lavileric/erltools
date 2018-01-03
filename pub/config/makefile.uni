@@ -1,0 +1,27 @@
+all : configfo
+
+OPT_FLAGS= -Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc
+	-rm -f configfo config.cpp config0.cpp
+
+config.cc : config.met
+	metagen -c++ config.met
+	cp config.cpp config.cc
+	cp config0.cpp config0.cc
+
+config.o : config.cc config.h
+
+config0.o : config0.cc config.h 
+
+chopper.cc : chopper.ch
+	metachop -c++ chopper.ch > chopper.cc
+
+chopper.o : chopper.cc ../library/token.h
+
+configfo : $(LIBRARY) config.o chopper.o config0.o
+	$(C_PLUS) -o configfo chopper.o config.o config0.o $(LIBRARY)
+
+

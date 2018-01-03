@@ -1,0 +1,7 @@
+#define tutu 2 /* comment */
+#define tutut a + \
+                    5 + 6
+#define toto 1 /* comment
+                  fin comment */
+
+int i = toto ;

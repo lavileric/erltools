@@ -1,0 +1,12 @@
+void _fastcall Comp ( tree )
+{
+switch ( NumberTree(tree) ) {
+    case SWITCH_metalang : 
+if ( i ) {
+if ( NumberTree(ptTree) == EXCLA_metalang
+        && (strcmp(Value(ptTree), "META") || (firstMeta = 0)) ) {
+    firstMeta = 0 ;
+}   
+}       
+}
+}

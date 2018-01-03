@@ -1,0 +1,43 @@
+META_DIR=../..
+
+all : chop
+
+include $(META_DIR)/makefile.inc
+
+chop.o : chop.cc $(META_DIR)/pub/library/token.h
+
+CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.o \
+	$(META_DIR)/pub/cplusplu/cplus0.o $(META_DIR)/pub/cplusplu/cplus1.o \
+	$(META_DIR)/pub/cplusplu/cplus2.o $(META_DIR)/pub/cplusplu/cplus3.o \
+	$(META_DIR)/pub/cplusplu/cplus4.o $(META_DIR)/pub/cplusplu/cplus5.o \
+	$(META_DIR)/pub/cplusplu/cplus6.o $(META_DIR)/pub/cplusplu/cplus7.o \
+	$(META_DIR)/pub/cplusplu/dchop.o $(META_DIR)/pub/cplusplu/dchop1.o \
+	$(META_DIR)/pub/cplusplu/dchop0.o
+
+CHOPB=$(META_DIR)/pub/chopb/chopb.o $(META_DIR)/pub/chopb/chopb0.o \
+	$(META_DIR)/pub/chopb/chopb1.o $(META_DIR)/pub/chopb/decomp.o 
+
+METACHOP=$(META_DIR)/pub/metachop/metachop.o \
+	 $(META_DIR)/pub/metachop/metacho0.o \
+	 $(META_DIR)/pub/metachop/decomp0.o $(META_DIR)/pub/metachop/decomp1.o\
+	 $(META_DIR)/pub/metachop/decomp2.o $(META_DIR)/pub/metachop/decomp3.o\
+	 $(META_DIR)/pub/metachop/auxunpar.o  
+
+CHOPCORE=$(META_DIR)/pub/parser/verif.o
+
+chop : chop.o calc.o calc0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	g++ -o chop calc.o calc0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	strip chop
+
+
+
+
+
+
+
+
+
+
+
+
+

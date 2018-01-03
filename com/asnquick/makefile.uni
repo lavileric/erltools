@@ -1,0 +1,82 @@
+all : chop quickcode  qconnect.a(level2.o quickasn.o quickinetutil.o \
+		quickconnect.o)
+ 
+libqconnect.so : level2.o quickasn.o quickinetutil.o quickconnect.o
+	$(C_PLUS) -shared -o libqconnect.so level2.o quickasn.o quickinetutil.o quickconnect.o
+
+shared : libqconnect.so all
+
+META_DIR=../..
+
+ASN_LIB = ../asn/./asn.$(LIB_SUF)
+
+INCLUDE_DIR_LOC= -I../asn -I../connect
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm -f quickcode.cc ihm.h level2.h quickcode ihm.cc ihm.java level2.cc level2.java snmp.cc snmp.java ssnmp.cc ssnmp.java chop quickasn.cc quickconnect.cc quickinetutil.cc quickspy.cc 
+	-rm -rf compile.dir
+
+quickcode.o : quickcode.cc quickcode.h
+
+SO_LIB=-L ../asn -lasn -L $(META_DIR)/pub/library -lmeta
+
+quickcode : quickcode.o $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o quickcode quickcode.o $(SO_LIB);\
+	else\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o quickcode quickcode.o $(ASN_LIB) $(LIBRARY);\
+	fi
+
+THE_LIB=qconnect.$(LIB_SUF)
+ASN_LIB=../asn/asn.$(LIB_SUF)
+CONNECT_LIB=../connect/connect.$(LIB_SUF)
+
+##### library ####
+
+OBJECTS_QUICK= level2.o quickinetutil.o quickconnect.o quickasn.o
+
+
+qconnect.$(LIB_SUF) : $(OBJECTS_QUICK)
+	-$(RM) $(THE_LIB)
+	$(LINKER) $(LNK_FLAGS) /out:$(THE_LIB) $(OBJECTS_QUICK)
+
+##### ihm #####
+
+ihm.cc : ihm.asn quickcode
+	quickcode ihm.asn  
+	cpb ihm.cc
+	cpb ihm.h
+
+ihm.o : ihm.cc ihm.h  quickasn.h
+
+##### level2 #####
+
+level2.cc : level2.asn   quickcode
+	quickcode level2.asn  
+	cpb level2.cc
+	cpb level2.h
+
+level2.o : level2.cc level2.h  quickasn.h
+
+#### quickspy #####
+
+quickspy.cc : quickspy.ch ihm.cc
+
+quickspy : quickspy.o  $(OBJECTS_QUICK) $(ASN_OBJECTS) $(LIBRARY) ihm.o 
+	link  $(LNK_FLAGS) /out:quickspy quickspy.o $(OBJECTS_QUICK) wsock32.lib \
+					ihm.o $(ASN_LIB) $(CONNECT_LIB) $(LIBRARY)
+
+#### others #####
+
+quickasn.cc : quickasn.ch
+
+quickinetutil.cc : quickinetutil.ch
+
+quickconnect.cc : quickconnect.ch
+
+chop :
+	- cp  $(ERLTOOLS_DIR)/com/asnext/chop .
+
+

@@ -1,0 +1,88 @@
+all : m_done metagen.exe metachopdo chop.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+!include ..\..\makefile.inc
+ 
+clean : clean_inc
+	- $(RM) metagen.exe
+	- $(RM) chop.exe
+    	- deltree /y compile.dir
+
+..\metachop\chop_com.obj :
+	(cd ..\metachop ; $(MAKE) -f makefile.uni chop_com.obj)
+ 
+m_done : metalang.met
+	-@ mkdir compile.dir
+	-@ $(RM) compile.dir\metalang.met
+	-@ cp metalang.met compile.dir\metalang.met
+	@cd compile.dir 
+	metagen -c++ -path ..\\..\\library $(METAOPT) metalang.met 
+	-unify metalang.h ..\metalang.h
+	-unify metalang.cpp ..\metalang.cc
+	-unify metalan0.cpp ..\metalan0.cc
+	-unify metalan1.cpp ..\metalan1.cc
+	-unify metalan2.cpp ..\metalan2.cc
+	cd ..
+	@echo "ok" > m_done
+
+
+trait.cc : trait.ch 
+	chop -c++ trait.ch > trait.cc
+
+speed.cc : speed.ch 
+	chop -c++ speed.ch > speed.cc
+
+toksearc.cc : toksearc.ch 
+	chop -c++ toksearc.ch > toksearc.cc
+
+trait.obj : metalang.h trait.cc
+
+metalang.obj : metalang.cc ..\library\token.h metalang.h
+
+metalan0.obj : metalan0.cc ..\library\token.h metalang.h
+
+metalan1.obj : metalan1.cc ..\library\token.h metalang.h
+
+metalan2.obj : metalan2.cc ..\library\token.h metalang.h
+
+comp.obj : comp.cc ..\library\token.h metalang.h
+
+verif.obj : verif.cc ..\library\token.h
+
+gesttok.obj : gesttok.cc ..\library\token.h
+
+metagen.obj : metagen.cc  ..\library\token.h
+
+toksearc.obj : toksearc.cc ..\library\token.h metalang.h
+
+speed.obj : speed.cc ..\library\token.h metalang.h
+
+METAGENCORE = metalang.obj metalan0.obj metalan1.obj metalan2.obj \
+			  verif.obj 
+
+OBJECTS = metagen.obj $(METAGENCORE) comp.obj gesttok.obj  \
+		  trait.obj speed.obj toksearc.obj
+
+chopper.obj : chopper.cc ..\library\token.h
+
+CPLUS=..\cplusplu\cplus.lib
+CHOPB=..\chopb\chopb.obj ..\chopb\chopb0.obj ..\chopb\chopb1.obj ..\chopb\decomp.obj
+METACHOP=..\metachop\metachop.obj ..\metachop\metacho0.obj ..\metachop\decomp0.obj ..\metachop\decomp1.obj ..\metachop\decomp2.obj ..\metachop\decomp3.obj ..\metachop\auxunpar.obj
+
+metachopdo :
+	cd ..\cplusplu
+	$(MAKE) -f makefile.bor m_done 
+	$(MAKE) -f makefile.vis cplus.lib
+	cd ..\parser
+	cd ..\chopb
+	$(MAKE) -f makefile.bor m_done $(CHOPB)
+	cd ..\parser
+	cd ..\metachop
+	$(MAKE) -f makefile.bor m_done $(METACHOP)
+	cd ..\parser
+
+
+
+
+

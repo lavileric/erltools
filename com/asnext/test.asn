@@ -1,0 +1,15 @@
+Goto 
+DEFINITIONS ::=
+BEGIN
+
+    toto INTEGER ::= 5; -- comment
+    
+    toto TR ::= 
+    {
+        toto 5, -- comment
+        titi 6,
+    };
+    
+END
+
+

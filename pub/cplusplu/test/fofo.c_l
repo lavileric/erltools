@@ -1,0 +1,38 @@
+int skjsldkf ; // lsdfjlsdkf 
+void toffffffffffffffffffto ( int skdfjklsdf, int sdkfjlksdfj, 
+int sdkflskdfj, int sdkfjslkdf , int lskdjfskdf , 
+char skdfjlksdfj) ;  // commentaire
+int a = b ; // autre commentaire
+int sdjflskdfj , skdfjlsdf ; // dernier commentaire
+void toffffffffffffffffffto ( int skdfjklsdf, int sdkfjlksdfj, int sdkflskdfj, 
+int sdkfjslkdf , int lskdjfskdf , char skdfjlksdfj) 
+: dkfjkdf(dfkjdf),skldfksldf(slkdflsldf),lsdkjfsldkf(lskdfksldf), 
+sldkfsldkf(skdfsldkf) ,skdfslkdf(lskdflskdf) { a = b; }
+
+class toto {
+    int a ;
+} ;
+struct toto {
+    int a;
+} fifi ;
+enum {sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf , slkdfslkdf , sldkfslkdf ,
+ssdjflksjf, lskdflksf , skdflsdkf , skjflksdf, slkdflskdf,lskjdflskdf} ;
+enum toto {sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf , slkdfslkdf , sldkfslkdf ,
+ssdjflksjf, lskdflksf , skdflsdkf , skjflksdf, slkdflskdf,lskjdflskdf} ;
+class CFile : public CObject {
+
+    DECLARE_DYNAMIC(CFile)
+    
+public :
+
+    // Flag values 
+    enum OpenFlags {    modeRead = 0x0000, modeWrite = 0x0001, modeReadWrite = 0x0002, shareCompat = 0x0000, shareExclusive = 0x0010, shareDenyWrite = 0x0020, shareDenyRead = 0x0030, shareDenyNone = 0x0040, modeNoInherit = 0x0080, modeCreate = 0x1000,
+                        typeBinary = (int)0x8000// derived classes only 
+    };
+    enum Attribute {    normal = 0x00, readOnly = 0x01, hidden = 0x02
+                                    , system = 0x04, volume = 0x08
+                                    , directory = 0x10, archive = 0x20 };
+    enum SeekPosition { begin = 0x0, current = 0x1, end = 0x2 };
+    enum {  hFileNull =  - 1 };
+} ;
+

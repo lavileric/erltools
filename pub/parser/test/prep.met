@@ -1,0 +1,41 @@
+language prep;
+
+define analyze;
+    declare tree,parameters;
+    if col = 0 then
+        case
+            take "#define" :
+                begin
+                while not seel in [' '] do
+                    storel takel ;
+                FirstParameterAnalyze();
+                takel in [' '];
+                while not seel in ['\n'] do
+                    storel takel ;
+                SecondParameterAnalyze();
+                end
+            take toto :
+                if see toto then
+                    return maketree(TOTO,())
+            see toto : return maketree(TOTO,())
+            take "#if" :
+                begin
+                tree = take !IDENT;
+                end
+            see !NOTHING : 
+        end;
+    case
+        see !IDENT :
+            begin
+            tree = take !IDENT;
+            if Recognize() then
+                begin
+                parameters = take parameter_list;
+                DealWith(tree parameters);
+                end;
+            end
+        take !STRING : EcrireString()
+        take !CHARACTER : TraiterCharacter()
+    end;
+end.
+

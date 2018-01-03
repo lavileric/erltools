@@ -1,0 +1,181 @@
+THE_LIB= ./connect.a
+
+INCLUDE_DIR_LOC= -I ../asn -I ../asnext -I ../asnquick -I ../connect
+
+all : $(THE_LIB)(connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o ) qconnectlib chop \
+           dispatcher spy killapp tdispatcher
+
+libconnect.so : connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
+	$(C_PLUS) -shared -o libconnect.so connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
+
+shared : libconnect.so all
+
+test : tdispatcher app1 app2 testdos
+
+qconnectlib :
+	cd ../asnquick ;$(MAKE) -f makefile.uni 
+
+clean : clean_inc_appli
+	- $(RM) $(THE_LIB) connect.cc inetutil.cc metaconnect.cc metainetutil.cc chop dispatcher ddispatcher tdispatcher qtdispatcher tdispatcher.cc
+	- $(RM) app1 app2 app1.cc app2.cc testdos testdos.cc supervisor.cc spy.cc killapp.cc dispatcher.cc ndispatcher.cc ddispatcher.cc spy
+	- $(RM) killapp tdispat.cc transfer.cc transfer.h transfer.java transfer.so erlecho ipeater putecho dsupervisor.cc error *.log
+
+ASN_OBJECTS =../asn/asn.$(LIB_SUF)
+
+OPT_FLAGS=-DDUMP_COORD -DWITHOUT_EXCEPT -fpermissive -Wno-empty-body
+# MISC_C_FLAGS=-fhandle-exceptions 
+
+include ../../makefile.der
+
+supervisor.cc : supervisor.ch chop
+
+dispatcher.cc : dispatcher.ch chop
+
+ddispatcher.cc : ddispatcher.ch chop
+
+tdispatcher.cc : tdispatcher.ch chop
+
+inetutil.cc : inetutil.ch chop
+
+metainetutil.cc : metainetutil.ch chop
+
+connect.cc : connect.ch chop
+
+metaconnect.cc : metaconnect.ch chop
+
+app1.cc : app1.ch chop
+
+app2.cc : app2.ch chop
+
+testdos.cc : testdos.ch chop
+
+spy.cc : spy.ch chop
+
+killapp.cc : killapp.ch chop
+
+$(THE_LIB)(erlsock.o) : erlsock.cc erlsock.h
+
+dispatcher.o : dispatcher.cc supervisor.h inetutil.h erlsock.h
+
+ddispatcher.o : ddispatcher.cc supervisor.h inetutil.h erlsock.h
+
+tdispatcher.o : tdispatcher.cc supervisor.h inetutil.h erlsock.h
+
+qtdispatcher.o : qtdispatcher.cc tdispatcher.cc supervisor.h inetutil.h erlsock.h
+
+app1.o : app1.cc supervisor.h inetutil.h erlsock.h
+
+app2.o : app2.cc supervisor.h inetutil.h erlsock.h
+
+testdos.o : testdos.cc supervisor.h inetutil.h erlsock.h
+
+spy.o : spy.cc supervisor.h inetutil.h erlsock.h
+
+killapp.o : killapp.cc connect.h inetutil.h erlsock.h
+
+$(THE_LIB)(supervisor.o) : supervisor.cc supervisor.h inetutil.h erlsock.h
+
+$(THE_LIB)(inetutil.o) : inetutil.cc inetutil.h erlsock.h
+
+$(THE_LIB)(metainetutil.o) : metainetutil.cc metainetutil.h erlsock.h
+
+$(THE_LIB)(connect.o) : connect.cc connect.h erlsock.h
+
+$(THE_LIB)(metaconnect.o) : metaconnect.cc metaconnect.h erlsock.h
+
+chop :
+	make -f makefile.cho
+
+QLIB=../asnquick/qconnect.a
+
+SO_LIB=-L../asnquick -lqconnect -L. -lconnect -L ../asn -lasn -L $(META_DIR)/pub/library -lmeta
+
+dispatcher : dispatcher.o supervisor.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY) $(QLIB)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libconnect.so  ;\
+		(cd ../asnquick ; make libqconnect.so;);\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o dispatcher dispatcher.o supervisor.o \
+			$(SO_LIB) -ldl -lpthread;\
+	else\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o dispatcher dispatcher.o supervisor.o \
+			$(THE_LIB) $(ASN_OBJECTS) $(QLIB) $(LIBRARY) -ldl;\
+	fi
+
+ddispatcher : ddispatcher.o supervisor.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY) $(QLIB) dsupervisor.o
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o ddispatcher ddispatcher.o dsupervisor.o \
+			$(THE_LIB) $(ASN_OBJECTS) $(QLIB) $(LIBRARY) -ldl
+
+tdispatcher : tdispatcher.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o tdispatcher tdispatcher.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+qtdispatcher : transfer.so qtdispatcher.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o qtdispatcher qtdispatcher.o\
+			  $(QLIB) $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY) -rdynamic -ldl
+
+app1 : app1.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o app1 app1.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+app2 : app2.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o app2 app2.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+testdos : testdos.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o testdos testdos.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+spy : spy.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libconnect.so  ;\
+		(cd ../asnquick ; make libqconnect.so;);\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o spy spy.o\
+			 $(SO_LIB) -ldl -lpthread;\
+	else\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o spy spy.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY);\
+	fi
+
+killapp : killapp.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libconnect.so  ;\
+		(cd ../asnquick ; make libqconnect.so;);\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o killapp killapp.o\
+			 $(SO_LIB) -ldl -lpthread;\
+	else\
+		$(C_PLUS_LNK) $(OPTIM_FLAGS) -o killapp killapp.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY);\
+	fi
+
+
+
+
+##### transfer  #####
+
+transfer.cc : transfer.asn
+	$(ERLTOOLS_DIR)/com/asnquick/quickcode transfer.asn  
+	cpb transfer.cc
+	cpb transfer.h
+
+transfer.o : transfer.cc transfer.h 
+	$(C_PLUS) -c $(MACHFLAGS) $(OPTIM_FLAGS) $(MISC_C_FLAGS) $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) -fPIC transfer.cc
+
+transfer.so : transfer.o
+	$(C_PLUS) -shared -o libtransfer.so transfer.o 
+
+
+
+######## echo #############
+
+erlecho : erlecho.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o erlecho erlecho.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+putecho : putecho.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o putecho putecho.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+ipeater : ipeater.o $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) -o ipeater ipeater.o\
+			 $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+

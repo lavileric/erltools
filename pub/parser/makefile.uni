@@ -1,0 +1,105 @@
+all : m_done metagen metachopdo chop
+
+OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
+
+include ../../makefile.inc
+ 
+clean : clean_inc
+	-  rm -f metagen chop
+
+../metachop/chop_com.o :
+	(cd ../metachop ; $(MAKE) -f makefile.uni chop_com.o)
+ 
+m_done : metalang.met
+	-@ mkdir compile.dir
+	-@ rm -f compile.dir/metalang.met
+	-@ cp metalang.met compile.dir/metalang.met
+	@echo "metagen -c++ metalang.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../library $(METAOPT) metalang.met ;\
+		  unify metalang.h ../metalang.h;\
+	  unify metalang.cpp ../metalang.cc;\
+	  unify metalan0.cpp ../metalan0.cc;\
+	  unify metalan1.cpp ../metalan1.cc;\
+	  unify metalan2.cpp ../metalan2.cc)
+	@echo "ok" > m_done
+
+
+trait.cc : trait.ch 
+	chop -c++ trait.ch > trait.cc
+
+speed.cc : speed.ch 
+	chop -c++ speed.ch > speed.cc
+
+toksearc.cc : toksearc.ch 
+	chop -c++ toksearc.ch > toksearc.cc
+
+trait.o : metalang.h trait.cc ../library/token.h
+
+metalang.o : metalang.cc ../library/token.h metalang.h
+
+metalan0.o : metalan0.cc ../library/token.h metalang.h
+
+metalan1.o : metalan1.cc ../library/token.h metalang.h
+
+metalan2.o : metalan2.cc ../library/token.h metalang.h
+
+comp.o : comp.cc ../library/token.h metalang.h
+
+verif.o : verif.cc ../library/token.h
+
+gesttok.o : gesttok.cc ../library/token.h
+
+metagen.o : metagen.cc  ../library/token.h
+
+toksearc.o : toksearc.cc ../library/token.h metalang.h
+
+speed.o : speed.cc ../library/token.h metalang.h
+
+METAGENCORE = metalang.o metalan0.o metalan1.o metalan2.o \
+			  verif.o 
+
+OBJECTS = $(METAGENCORE) comp.o gesttok.o trait.o speed.o toksearc.o
+
+metagen : metagen.o $(OBJECTS) $(METACHOPGEN)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) -shared -o libmetagencore.so $(METAGENCORE) ; \
+		$(C_PLUS) -shared -o libmetagen.so $(OBJECTS) ; \
+		$(C_PLUS) -o metagen metagen.o -L . -lmetagen  -L ../library -lmeta ;\
+	else\
+		$(C_PLUS) -o metagen metagen.o $(OBJECTS) $(LIBRARY) ;\
+	fi
+
+
+ 
+chopper.o : chopper.cc ../library/token.h
+
+CPLUS=../cplusplu/cplus.a
+CHOPB=../chopb/chopb.a
+METACHOP=../metachop/metachop.a
+
+metachopdo : 
+	@( cd ../cplusplu ; $(MAKE) -f makefile.uni DOLIB)
+	@( cd ../chopb ; $(MAKE) -f makefile.uni DOLIB)
+	@( cd ../metachop ;$(MAKE) -f makefile.uni DOLIB)
+
+SO_LIB = -L ../cplusplu -lcplus -L ../chopb -lchopb -L ../metachop  -lmetachop -L ../library -lmeta 
+
+chop : chopper.o $(METAGENCORE)  $(CPLUS) $(CHOPB) $(METACHOP)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		(cd ../cplusplu ; $(MAKE) -f makefile.uni libcplus.so;);\
+		(cd ../chopb ; $(MAKE) -f makefile.uni libchopb.so;);\
+		(cd ../metachop ;$(MAKE) -f makefile.uni libmetachop.so;);\
+		$(C_PLUS) -o chop ./chopper.o -L. -lmetagencore $(SO_LIB) ;\
+	else\
+		$(C_PLUS) -o chop chopper.o $(METAGENCORE) $(METACHOP) $(CHOPB) $(CPLUS)  $(LIBRARY) ;\
+	fi
+
+
+
+
+
+
+
+
+

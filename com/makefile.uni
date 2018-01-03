@@ -1,0 +1,60 @@
+tobe_done : all
+
+include ../makefile.inc
+
+all :
+	( cd asn; $(MAKE) -f makefile.uni all)
+	if [ -f asn/libasn.so ] ; then \
+		(cp asn/libasn.so $(INSTALL_DIR));\
+	fi
+	( cd asnext; $(MAKE) -f makefile.uni all)
+	( cd connect; $(MAKE) -f makefile.uni all)
+	if [ -f connect/libconnect.so ] ; then \
+		(cp connect/libconnect.so $(INSTALL_DIR));\
+	fi
+	( cd asnquick; $(MAKE) -f makefile.uni all)
+	if [ -f asnquick/libqconnect.so ] ; then \
+		(cp asnquick/libqconnect.so $(INSTALL_DIR));\
+	fi
+
+shared :
+	( cd asn; $(MAKE) -f makefile.uni shared)
+	if [ -f asn/libasn.so ] ; then \
+		(cp asn/libasn.so $(INSTALL_DIR));\
+	fi
+	( cd asnext; $(MAKE) -f makefile.uni shared)
+	( cd connect; $(MAKE) -f makefile.uni shared)
+	if [ -f connect/libconnect.so ] ; then \
+		(cp connect/libconnect.so $(INSTALL_DIR));\
+	fi
+	( cd asnquick; $(MAKE) -f makefile.uni shared)
+	if [ -f asnquick/libqconect.so ] ; then \
+		(cp asnquick/libqconnect.so $(INSTALL_DIR));\
+	fi
+
+clean :
+	( cd asn ; $(MAKE) -f makefile.uni clean)
+	( cd asnext ; $(MAKE) -f makefile.uni clean)
+	( cd connect ; $(MAKE) -f makefile.uni clean)
+	( cd asnquick ; $(MAKE) -f makefile.uni clean)
+
+install :
+	- mv connect/dispatcher $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/dispatcher
+	- mv connect/killapp $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/killapp
+	- mv connect/spy $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/spy
+	if [ -f asn/libasn.so ] ; then \
+		(cp asn/libasn.so $(INSTALL_DIR));\
+	fi
+	if [ -f connect/libconnect.so ] ; then \
+		(cp connect/libconnect.so $(INSTALL_DIR));\
+	fi
+	if [ -f asnquick/libqconnect.so ] ; then \
+		(cp asnquick/libqconnect.so $(INSTALL_DIR));\
+	fi
+	- cp asnext/asnext $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/asnext
+
+

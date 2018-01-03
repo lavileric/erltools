@@ -1,0 +1,56 @@
+
+all : m_done erlmsch
+
+include ../../makefile.inc
+
+OPT_FLAGS = -DCHOPB
+
+clean : clean_inc_appli
+	- del msch.h 
+	- del erlmsch
+	- del *.cc
+	- deltree /y compile.dir
+
+m_done : msch.met $(META_DIR)/pub/cplusplu/cplus.met
+	-@mkdir compile.dir
+	-@copy msch.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path $(META_DIR)\\pub\\chopb\;$(META_DIR)\\pub\\cplusplu\;$(META_DIR)\\pub\\library $(METAOPT) msch.met 
+	-@unify msch.h ..\\msch.h
+	-@unify msch.cpp ..\\msch.cc
+	-@unify msch0.cpp ..\\msch0.cc
+	cd ..
+	@echo "ok" > m_done
+
+msch.o : msch.cc msch.h
+
+msch0.o : msch0.cc msch.h
+
+chopper.cc : chopper.ch
+
+compute.cc : compute.ch
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h compute.h
+
+compute.o : compute.cc $(META_DIR)/pub/library/token.h compute.h msch.h
+
+CPLUS_DIR=$(META_DIR)/pub/cplusplu
+
+CPLUS=$(CPLUS_DIR)/chopper.o $(CPLUS_DIR)/cplus.o \
+      $(CPLUS_DIR)/cplus0.o $(CPLUS_DIR)/cplus1.o \
+      $(CPLUS_DIR)/cplus2.o $(CPLUS_DIR)/cplus3.o \
+      $(CPLUS_DIR)/cplus4.o $(CPLUS_DIR)/cplus5.o \
+      $(CPLUS_DIR)/cplus6.o $(CPLUS_DIR)/cplus7.o \
+      $(CPLUS_DIR)/dchop.o $(CPLUS_DIR)/dchop1.o  \
+      $(CPLUS_DIR)/dchop0.o
+
+CHOPB=$(META_DIR)/pub/chopb/chopb.o $(META_DIR)/pub/chopb/chopb0.o \
+	$(META_DIR)/pub/chopb/chopb1.o $(META_DIR)/pub/chopb/decomp.o
+
+OBJECTS = msch.o msch0.o chopper.o compute.o
+
+erlmsch : $(OBJECTS) 
+	$(C_PLUS) -o erlmsch $(OBJECTS) $(CPLUS) $(CHOPB) $(LIBRARY)
+	stubify erlmsch
+	del erlmsch
+

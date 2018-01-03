@@ -1,0 +1,47 @@
+
+all : m_done erlmsch.exe
+
+!include ..\..\makefile.inc
+
+OPT_FLAGS = -DCHOPB
+
+clean : clean_inc_appli
+	- del msch.h 
+	- del erlmsch
+	- del *.cc
+	- deltree /y compile.dir
+
+m_done : msch.met $(META_DIR)\pub\cplusplu\cplus.met
+	-@mkdir compile.dir
+	-@copy msch.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path $(META_DIR)\pub\chopb\;$(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) msch.met
+	-@unify msch.h ..\msch.h
+	-@unify msch.cpp ..\msch.cc
+	-@unify msch0.cpp ..\msch0.cc
+	cd ..
+	@echo "ok" > m_done
+
+msch.obj : msch.cc msch.h
+
+msch0.obj : msch0.cc msch.h
+
+chopper.cc : chopper.ch
+
+compute.cc : compute.ch
+
+chopper.obj : chopper.cc $(META_DIR)\pub\library\token.h compute.h
+
+compute.obj : compute.cc $(META_DIR)\pub\library\token.h compute.h msch.h
+
+CPLUS_DIR=$(META_DIR)\pub\cplusplu
+
+CPLUS=$(CPLUS_DIR)\cplus.lib \
+      $(CPLUS_DIR)\dchop.obj $(CPLUS_DIR)\dchop1.obj  \
+      $(CPLUS_DIR)\dchop0.obj
+
+CHOPB=$(META_DIR)\pub\chopb\chopb.obj $(META_DIR)\pub\chopb\chopb0.obj \
+	$(META_DIR)\pub\chopb\chopb1.obj $(META_DIR)\pub\chopb\decomp.obj
+
+OBJECTS = msch.obj msch0.obj chopper.obj compute.obj
+

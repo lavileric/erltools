@@ -1,0 +1,127 @@
+To use genetic algoritm :
+
+
+Define the individual to be optimized ( class Individual in individual.h) its parameters are the TypeFeature the type of all its parameters
+    and FeatureLimits the type describing the limits of its parameters
+             we call Evaluate to evaluate an individual
+             we call RandomFill to fill an individual with a random pattern
+             we call  Content to display the content of an individual
+             we can set or get Features of this individual at a given index
+             we can call Limits at an index the returned object of type FeatureLimits 
+                     - can generate a random feature for this index of type TypeFeature ( Random method)
+                     - be called with Vibrato to find values around current one
+                     - Content display it
+             redefine the method Affect if there are local attributes to be set when copying individuals
+    we can look if individual are se same ( == !=) copy them affect them
+
+Create a Nursery (inherit Nursery in individual.h), its parameter is the type of in individual created inside it 
+             we call Create to create Individuals type.
+
+
+calling genetic algorithms could looks like this for parameters to be optimized between two limits of type unsigned int
+       
+        
+class Individuals : public Individual<unsigned int, SimpleLimit<unsigned int> > {
+    
+    public :
+    
+        // constructor
+        Board ()
+            : pCostFunction(0),  Individual(),pCostFunction(0)
+        {
+        }
+        
+        // Evaluate individual 
+        virtual float Evaluate ()
+        {
+            Evaluated(true);
+            
+            unsigned int    param [Size() + 1];
+            unsigned int    index ;
+            
+            for ( index = 0 ; index < Size() ; index++ ) 
+                param [index] = Feature(index);
+            param [index] = 0 ;
+            return pvCost = (*pCostFunction)(param);
+        }
+        
+  	Individuals ( const Individual<double, SimpleLimit<double> > &src )
+            : Individual<double, SimpleLimit<double> > ()
+        {
+            Affect(src);
+        }
+        
+        Individuals &operator= ( const Individual<double, SimpleLimit<double> > &src )
+        {
+            return Affect(individual);
+        }
+        
+        
+        Individuals &Self ()
+        {
+            return (Individuals &)*this ;
+        }
+
+        void SetCostFunction ( double(*parampCostFunction)(unsigned int []) )
+        {
+            pCostFunction = parampCostFunction ;
+        }
+        
+        virtual void Affect ( const Individual<double, SimpleLimit<double> > &src )
+        {
+            pCostFunction = ((Individuals &)src).pCostFunction ;
+            Individual<double, SimpleLimit<double> > ::Affect(src);
+        }
+        
+        CostFunction    *pCostFunction ;
+};
+
+class NurseryCost : public Nursery<Individuals> {
+    
+    public :
+    
+        NurseryCost ( double(*parampCostFunction)(unsigned int []), unsigned int nbParam, unsigned int min, unsigned int max )
+            : pvNbParam(nbParam),  pvpCostFunction(pCostFunction),  pvMin(min),  pvMax(max)
+        {
+        }
+        
+        virtual ~NurseryCost ()
+        {
+        }
+        
+        virtual Individuals Create ()
+        {
+            Individuals     individual ;
+            unsigned int    size = pvNbParam ;
+            
+            individual.SetCostFunction(pvpCostFunction);
+            if ( size < 1 ) 
+                size = 1 ;
+            individual.Limits(size - 1, SimpleLimit<double> (pvMin, pvMax));
+            return individual ;
+        }
+    
+    private :
+    
+        unsigned int    pvNbParam ;
+        CostFunction    *pvpCostFunction ;
+        unsigned int    pvMin ;
+        unsigned int    pvMax ;
+};
+
+
+        NurseryCost localNursery (optimfuncpointer,numberofparameters,0,10000) ;
+        OptimGenetic<LocalNursery::TypeIndividual, LocalNursery::TypeIndividual::TypeParam>     optimGenetic(localNursery /* the nursery */ 
+            , 50 /* populationSize */ , 30 /* nbMutations */ , 3000000 /* maxgenerations */ , 300 /* max stable generation*/ 
+            , 100000000 /* max simulated vectors */ , 1000000 /* max steady vectors */ , 10 /* pcent of top */ );
+        
+        // create an optimisation object
+        // suppress clone searching
+        optimGenetic.SuppressClone(false).Run();
+        
+        LocalNursery::TypeIndividual & bestIndividual = optimGenetic.BestIndividual();
+
+SimpleLimits describe a FeatureLimits of a value set between a max and a min
+
+
+for include use "individual.h" and "optimgenetic.h"

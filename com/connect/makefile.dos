@@ -1,0 +1,80 @@
+THE_LIB= .\meta.a
+
+all : m_done auxpars.o itptree.o outil.o compleme.o tablist.o \
+	tabsort.o clpretty.o pretty.o pretty0.o symb.o 
+	del meta.a
+	ar rv meta.a *.o
+
+OPT_FLAGS=-DDUMP_COORD
+
+include ../../makefile.inc
+ 
+clean : clean_inc
+
+$(THE_LIB)(pretty.o) : pretty.cc token.h
+
+$(THE_LIB)(pretty0.o) : pretty0.cc token.h
+
+m_done : pretty.met
+	-@ mkdir compile.dir
+	-@ del compile.dir\pretty.met
+	-@ copy pretty.met compile.dir\pretty.met
+	@echo "metagen -c++ pretty.met"
+	cd compile.dir 
+	metagen -c++ pretty.met 
+	unify pretty.h ..\\pretty.h
+	unify pretty.cpp ..\\pretty.cc
+	unify pretty0.cpp ..\\pretty0.cc
+	cd ..
+	@echo "ok" > m_done
+
+$(THE_LIB)(auxpars.o) : auxpars.cc  token.h
+
+$(THE_LIB)(compleme.o) : compleme.cc token.h
+
+$(THE_LIB)(outil.o) : outil.cc token.h
+
+$(THE_LIB)(salloc.o) : salloc.cc token.h
+
+$(THE_LIB)(tablist.o) : tablist.cc tablist.h token.h tabsort.h
+
+$(THE_LIB)(tabsort.o) : tabsort.cc tablist.h token.h tabsort.h
+
+$(THE_LIB)(symb.o) : symb.cc tablist.h token.h symb.h
+
+$(THE_LIB)(clpretty.o) : clpretty.cc clpretty.h token.h
+	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) clpretty.cc
+	ar rv $(THE_LIB) clpretty.o
+	rm clpretty.o
+
+clpretty.o : clpretty.cc clpretty.h token.h
+	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) clpretty.cc
+
+$(THE_LIB)(itptree.o) : itptree.cc itptree.h token.h
+
+outil.cc : outil.ch
+
+clpretty.cc : clpretty.ch
+
+itptree.cc : itptree.ch
+
+salloc.cc : salloc.ch salloc.h
+
+testlist.cc : testlist.ch
+	metachop -c++ testlist.ch > testlist.cc
+
+symb.cc : symb.ch
+	metachop -c++ symb.ch > symb.cc
+
+testlist : testlist.cc
+	g++ $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) -o testlist testlist.cc $(THE_LIB)
+
+
+
+
+
+
+
+
+
+

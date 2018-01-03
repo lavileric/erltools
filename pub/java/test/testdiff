@@ -1,0 +1,8 @@
+#!/bin/sh
+for i in *.java ; do
+    echo $i;
+    echo
+    ../pjava $i > $i.res;
+    diff $i.res $i.res.ref
+    echo
+done

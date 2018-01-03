@@ -1,0 +1,6 @@
+#!/bin/sh
+cmp $1 $2 > .res 2>&1
+if [ -s .res ] ; then
+    cp $1 $2
+fi
+rm .res

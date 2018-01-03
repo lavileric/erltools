@@ -1,0 +1,47 @@
+#!/bin/sh
+
+#give help if no arguments are given
+if [ "$1" = "" ]
+then
+    echo "usage: $0 filename(s)"
+    exit
+fi
+
+touch //c/erlmarker
+
+#find suffix of name
+for i in $*
+do
+    echo "Processing file $i:"
+    name=`basename $i`
+    suffix=`echo $name | sed 's/.*\.//'`
+
+    #suppress tabulations in file
+    # deltab $i
+
+    #pretty file
+    cpbem $i res.cpb > error 2>&1
+    echo "done"
+	grep "at line" error | sed -e "1p;q"
+
+    result=`grep "For details see" error`
+
+	if [ $? != 0 ]
+	then
+	    rm -f res.cpb
+		rm //c/erlmarker
+	    exit 3;
+	fi
+
+    #replace original file
+    if [ $? != 0 ] ; then
+        rm -f res.cpb
+		rm //c/erlmarker
+        exit $?
+    else
+        mv res.cpb $i
+    fi
+done
+
+rm //c/erlmarker
+

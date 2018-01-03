@@ -1,0 +1,42 @@
+
+all : m_done erlms.exe
+
+!include ..\..\makefile.inc
+
+clean : clean_inc_appli
+	- del msc.h 
+	- del erlms
+	- del *.cc
+	- deltree /y compile.dir
+
+m_done : msc.met $(META_DIR)\pub\cplusplu\cplus.met
+	-@mkdir compile.dir
+	-@copy msc.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) msc.met
+	-@unify msc.h ..\msc.h
+	-@unify msc.cpp ..\msc.cc
+	-@unify msc0.cpp ..\msc0.cc
+	cd ..
+	@echo "ok" > m_done
+
+msc.obj : msc.cc msc.h
+
+msc0.obj : msc0.cc msc.h
+
+chopper.cc : chopper.ch
+
+compute.cc : compute.ch
+
+chopper.obj : chopper.cc $(META_DIR)\pub\library\token.h compute.h
+
+compute.obj : compute.cc $(META_DIR)\pub\library\token.h compute.h msc.h
+
+CPLUS_DIR=$(META_DIR)\pub\cplusplu
+
+CPLUS=$(CPLUS_DIR)\cplus.lib \
+      $(CPLUS_DIR)\dchop.obj $(CPLUS_DIR)\dchop1.obj  \
+      $(CPLUS_DIR)\dchop0.obj
+
+OBJECTS = msc.obj msc0.obj chopper.obj compute.obj
+

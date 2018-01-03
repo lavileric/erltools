@@ -1,0 +1,100 @@
+class toto { int i = 5 ; /* comment ssls */ ;
+         int aaaa = 10 ;/* autre comment */ ; i = 7 ; // aaa
+         j ;/* comment */ };
+
+class fifi ;
+
+#include "token.h"
+#include "metalang.h"
+
+#ifdef SUN
+#define CREATION_ACCESS        S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
+#else
+#define CREATION_ACCESS        S_IREAD | S_IWRITE
+#endif
+
+int input, output, coutput, houtput, loutput ;
+extern char *theLanguageName ;
+
+/* void _fastcall Comp PARAM((PTREE)); */ 
+void    _fastcall Comp () ;
+extern int  writeLine ;
+/**************************************************************
+          main
+  ***************************************************************/ 
+extern STRINGELEM   *listConst ;
+static PTREE    theRetTree ;
+
+PTREE bri_parse_entry_metalang ( i )
+int i ;
+{}
+
+PTREE GetTree ()
+{
+    
+    /* tabArity =  _arityNode_metalang;
+      *FuncArity =  Arity_metalang;*/ 
+    InitConst_metalang();
+    SwitchLang("metalang");
+    return langage_metalang(1);
+}
+
+static char name [80], *ptName ;
+
+ChopTree ( retTree )
+PTREE   retTree ;
+{
+    strcpy(name, Value(retTree));
+    ptName = name + strlen(name);
+    if ( ptName > name + 8 ) 
+        ptName = name + 8 ;
+    strcpy(ptName, ".c");
+    output = coutput
+         = open(name, O_RDWR | O_TRUNC | O_CREAT, CREATION_ACCESS);
+    strcpy(ptName, ".h");
+    houtput = open(name, O_RDWR | O_TRUNC | O_CREAT, CREATION_ACCESS);
+#ifdef SUN
+    strcpy(ptName, "_ca.ll");
+    loutput = open(name, O_RDWR | O_TRUNC | O_CREAT, CREATION_ACCESS);
+#endif
+    *ptName = '\0';
+    theLanguageName = AllocString(name);
+    InitOutput();
+    InitComp();
+    traitement(retTree);/* optimization of addlist */ 
+    listConst = (STRINGELEM *)0 ;
+    Comp(theRetTree = retTree);
+    NewLine();
+    Flush();
+    DumpConst(listConst);
+    WriteString("/*Well done my boy */ ");
+    NewLine();
+    close(coutput);
+    close(houtput);
+#ifdef SUN
+    close(loutput);
+#endif
+}
+
+int nbFile = 0 ;
+
+VerifyFileLine ( doit )
+int doit ;  /* coupure obligatoire : pour le lex */ 
+{
+    char    numbString [10];
+    
+    if ( doit || writeLine > 3300 ) {
+        strcpy(name, Value(theRetTree));
+        ptName = name + strlen(name);
+        if ( ptName > name + 7 ) 
+            ptName = name + 7 ;
+        *ptName++ = '0' + nbFile++ ;
+        strcpy(ptName, ".c");
+        close(output);
+        output = coutput
+             = open(name, O_RDWR | O_TRUNC | O_CREAT, CREATION_ACCESS);
+        writeLine = 0 ;
+        return 0 ;
+    }
+    return 1 ;
+}

@@ -1,0 +1,16 @@
+typedef char     *PTREE ;
+extern int  isVirtMod ;              /* est ce que la decompilation
+                                        se fait en mode virtuel? */
+extern int  currLine ;               /* la ligne courante */ 
+extern int  rightMargin ;            /* la marge droite */ 
+extern int  isRefT ;                 /* comptabilise le nombre
+                                        de marques trouvees */
+extern PTREE    fatherRef ;
+extern int  xFather,    yFather ;    /* coordonnees du pere lors
+                                        d'une decompilation*/
+main ()
+{
+} 
+
+
+

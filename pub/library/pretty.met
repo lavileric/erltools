@@ -1,0 +1,32 @@
+language pretty;
+
+global begin
+    {{
+         extern int hasGotError;
+        #ifdef STR
+        #undef STR
+        #endif
+    }}
+end;
+
+define parse_entry;
+    take #"+____------____";
+    break;
+end;
+
+/* pour declarer les noeuds utilise pour la decompilation */
+define bidon;
+    declare retTree;
+    take #"+____------____";
+    retTree = maketree(ATTRIBUTS,(),(),());
+    retTree = maketree(NEWLINE,());
+    retTree = maketree(TAB,());
+    retTree = maketree(TAB_VIRT,());
+    retTree = maketree(MARK);
+    retTree = maketree(UNMARK);
+    retTree = maketree(STR,());
+    retTree = maketree(GOTO,());
+    retTree = maketree(GOTO_REL,());
+    return retTree;
+end.
+

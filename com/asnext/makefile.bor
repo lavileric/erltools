@@ -1,0 +1,16 @@
+!include ./makefile.win
+
+asnext.exe : $(OBJECTS) chopper.obj $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) $(OBJECTS) chopper.obj $(ASN_OBJECTS) $(LIBRARY)
+
+dasnext.exe : $(OBJECTS) dchopper.obj $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) dchopper.obj $(OBJECTS) $(ASN_OBJECTS) $(LIBRARY)
+    @- $(RM) dasnext.exe
+    ren dchopper.exe dasnext.exe
+
+chop.exe :	chop.cc m_done
+	$(MAKE) -f makefile.chb
+
+
+
+

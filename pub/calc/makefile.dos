@@ -1,0 +1,42 @@
+
+all : m_done calc.exe chop.exe
+
+include ../../makefile.der
+
+clean : clean_inc_appli
+	-del calc.h 
+	-del calc*.cc 
+	-del chopper.cc
+	-del calc.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+m_done : calc.met
+	-@ mkdir compile.dir
+	-@copy calc.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ $(METAOPT) calc.met 
+	@-@unify calc.h ..\\calc.h
+	@-@unify calc.cpp ..\\calc.cc
+	@-@unify calc0.cpp ..\\calc0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+calc.o : calc.cc calc.h
+
+calc0.o : calc0.cc calc.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.o : chopper.cc ../library/token.h 
+
+OBJECTS = calc.o calc0.o chopper.o 
+
+calc.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) -o calc $(OBJECTS) $(LIBRARY)
+	stubify calc
+	del calc
+
+chop.exe : 
+	make -f makefile.dch
+

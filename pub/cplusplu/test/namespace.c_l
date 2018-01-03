@@ -1,0 +1,55 @@
+extern "C" {
+int f() ;
+}
+
+namespace myNamespace {
+int j ;
+int k ;
+int i ;
+
+int f () { int i = 1 ;}
+ 
+
+}
+
+// an empty content one
+namespace toto {}
+
+// another one 
+namespace myNamespace {
+int j ;
+int k ;
+int i ;
+
+int f () { int i = 1 ;}
+ 
+// an unnamed namespace inside one
+namespace {
+
+int f () {}
+}
+
+namespace anotherOne {
+
+int f () {}
+} 
+
+}
+
+// using some namespace
+using namespace std ; // comment
+
+class oneClass : firstClass,anotherClass {
+
+// using f from anotherclass instead of first class
+      using anotherClass::f; // for of another class
+using anotherClass::g; // g of another class
+	  int g () { return f(1) ;}
+
+};
+
+
+namespace toto {
+
+    // one comment
+}

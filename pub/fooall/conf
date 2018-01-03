@@ -1,0 +1,11 @@
+#!/bin/sh
+
+(configfoo foo.mk $1) > makefile
+(configfoo foo.met $1) > $1.met
+(configfoo chopper.ch $1) > toto
+rm foo.*
+(delline toto) >  chopper.ch
+rm configfoo conf config.bat delline toto
+
+
+

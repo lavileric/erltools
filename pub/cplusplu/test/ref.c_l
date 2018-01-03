@@ -1,0 +1,680 @@
+#include "token.h"
+
+/******************************************************************
+          Comp : Display a tree on screen
+  *******************************************************************/ 
+
+void _fastcall Comp(tree)
+PTREE   tree ;
+{
+    switch ( NumberTree(tree)) {
+        case LIST : 
+            while ( tree ) {
+                Comp(SonTree(tree, 1));
+                tree = SonTree(tree, 2);
+            }
+            break ;
+        case DEFINE_metalang : 
+            if ( !VerifyFileLine()) {
+                WriteString("\n/*************************************************************************/");
+                NewLine();
+                WriteString("\n/*                                                                       */");
+                NewLine();
+                WriteString("\n/*        Produced by MetaGen version 1.1  -    1989                     */");
+                NewLine();
+                WriteString("\n/*       Syntaxic Analyzer Meta Generator developped by                  */");
+                NewLine();
+                WriteString("\n/*                  Eric Lavillonniere                                   */");
+                NewLine();
+                WriteString("\n/*                                                                       */");
+                NewLine();
+                WriteString("\n/*************************************************************************/");
+                NewLine();
+                NewLine();
+                WriteString("#include \"token.h\"");
+                NewLine();
+                WriteString("#include \"");
+                WriteString(llanguageName);
+                WriteString("\"");
+                NewLine();
+                NewLine();
+                NewLine();
+                WriteString("#define _Lex ");
+                WriteString(NameLang(lexName));
+                NewLine();
+                WriteString("#define SortKeyWord ");
+                WriteString(NameLang("SortKeyWord"));
+                NewLine();
+                WriteString("#define UpSortKeyWord ");
+                WriteString(NameLang("UpSortKeyWord"));
+                NewLine();
+                NewLine();
+            }
+            WriteString("PTREE ");
+            WriteString(NameLang(Value(tree)));
+            strcpy(nameDefine, Value(tree));
+            FuncName(nameDefine);
+            WriteString("(error_free)");
+            NewLine();
+            WriteString("int error_free;");
+            NewLine();
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+            NewLine();
+            WriteString("int _value,_nbPre = 0 ;");
+            NewLine();
+            WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+            WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+            NewLine();
+            WriteString("PTREE lastTree = _lastTree,_retValue ;");
+            NewLine();
+            Comp(SonTree(tree, 2));
+            UnMark();
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+            NewLine();
+            WriteString("return((PTREE) 0);");
+            NewLine();
+            NewLine();
+            WriteString(Label(nameDefine));
+            WriteString(" :");
+            NewLine();
+            NewLine();
+            Tab();
+            Mark();
+            FuncLibre();/* free pointers before exiting */ 
+            WriteString("_funcLevel--;");
+            NewLine();
+            WriteString("return((PTREE) -1) ;");
+            UnMark();
+            NewLine();
+            NewLine();
+            WriteString(RetLab(nameDefine));
+            WriteString(" :");
+            NewLine();
+            Tab();
+            Mark();
+            NewLine();
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+            NewLine();
+            WriteString("return _retValue ;");
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+            NewLine();
+            FuncFree();
+            break ;
+        case CASE_metalang : 
+            oldFirstMeta = firstMeta ;
+            firstMeta = 1 ;
+            i = ClassifyCase(SonTree(tree, 1));
+            if ( i == 1 ) {
+                WriteString("if (!tokenAhead) _Lex() ;");
+                NewLine();
+                WriteString("switch( lexEl.Value) {");
+                NewLine();
+                Tab();
+                Mark();
+                length = ListLength(SonTree(tree, 1));
+                if ( length ) 
+                    NegateCond();
+                Comp(SonTree(tree, 1));
+                while ( length-- ) 
+                    FreeCond();
+                if ( Nodefault(SonTree(tree, 1))) {
+                    WriteString("default :");
+                    NewLine();
+                    Tab();
+                    Mark();
+                    WriteString("CASE_EXIT(");
+                    WriteString(Label(nameDefine));
+                    WriteString(",\"");
+                    tree = SonTree(tree, 1);
+                    if ( !SonTree(tree, 2)) 
+                        CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    else {
+                        WriteString("either ");
+                        CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                        while ( SonTree(tree, 2)) {
+                            tree = SonTree(tree, 2);
+                            WriteString(" or ");
+                            CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                        }
+                    }
+                    WriteString("\")");
+                    NewLine();
+                    WriteString("break;");
+                    NewLine();
+                    UnMark();
+                }
+                UnMark();
+                GotoMark();
+                WriteString("}");
+                NewLine();
+            } else if ( i == 2 && inLex ) {
+                simpleCase = 1 ;
+                WriteString("switch (c) {");
+                NewLine();
+                Tab();
+                Mark();
+                Comp(SonTree(tree, 1));
+                UnMark();
+                GotoMark();
+                WriteString("}");
+                NewLine();
+            } else if ( i == 3 && inLex ) {
+                Comp(SonTree(tree, 1));
+                WriteString(" ;");
+                NewLine();
+            } else {
+                ifCase = 1 ;/* case as if out lex */ 
+                Comp(SonTree(tree, 1));
+                WriteString(" ;");
+                NewLine();
+            }
+            firstMeta = oldFirstMeta ;
+            break ;
+        case SWITCH_metalang : 
+            i = NumberTree(SonTree(tree, 1));
+            if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang)) {
+                ptTree = SonTree(SonTree(tree, 1), 1);
+                NegateCond();
+                if ( NumberTree(ptTree) == EXCLA_metalang && FindConst("META") !=  - 1 && firstMeta && strcmp(Value(ptTree), "NOTHING") && (strcmp(Value(ptTree), "META") || (firstMeta = 0))) {
+                    firstMeta = 0 ;
+                    WriteString("case ");
+                    WriteString(NameLang("META"));
+                    WriteString(":");
+                    NewLine();
+                }
+                if ( NumberTree(ptTree) != EXCLA_metalang || strcmp(Value(SonTree(SonTree(ptTree, 1), 1)), "NOTHING")) {
+                    AllocCond(SonTree(tree, 1));
+                    WriteString("case ");
+                    Comp(ptTree);
+                } else 
+                    WriteString("default");
+                WriteString(" : ");
+                NewLine();
+                Tab();
+                Mark();
+                if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+                    WriteString("tokenAhead = 0 ;");
+                    NewLine();
+                    WriteString("CommTerm();");
+                    NewLine();
+                }
+                statement = 1 ;
+                Comp(SonTree(tree, 2));
+                WriteString("break;");
+                NewLine();
+                UnMark();
+                GotoMark();
+            } else {
+                if ( !ifCase && simpleCase ) {
+                    Comp(SonTree(tree, 1));
+                    NewLine();
+                    Tab();
+                    Mark();
+                    if ( !SonTree(SonTree(tree, 1), 1)) {
+                        length = 1 ;
+                        WriteString(" if (c!= EOF) {");
+                        NewLine();
+                        Tab();
+                        Mark();
+                    }
+                    if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+                        WriteString("NextChar();");
+                        NewLine();
+                    }
+                    simpleCase = 0 ;
+                    Comp(SonTree(tree, 2));
+                    if ( length ) {
+                        UnMark();
+                        GotoMark();
+                        WriteString("}");
+                        NewLine();
+                    }
+                    WriteString("break ;");
+                    UnMark();
+                    NewLine();
+                } else {
+                    i = 0 ;
+                    ptTree = SonTree(SonTree(tree, 1), 1);
+                    if ((NumberTree(SonTree(tree, 1)) == TAKE_metalang || NumberTree(SonTree(tree, 1)) == SEE_metalang) && NumberTree(ptTree) == IDENT_metalang ) {
+                        i = 1 ;
+                    }
+                    statement = 0 ;
+                    if ( !ptTree || NumberTree(ptTree) != EXCLA_metalang || strcmp(BrainyValue(ptTree), "NOTHING")) {
+                        WriteString("if(");
+                        Comp(SonTree(tree, 1));
+                        WriteString(")");
+                    } else 
+                        WriteString("if (1) ");
+                    statement = 1 ;
+                    WriteString("{");
+                    NewLine();
+                    Tab();
+                    Mark();
+                    Comp(SonTree(tree, 2));
+                    UnMark();
+                    GotoMark();
+                    WriteString("} else ");
+                }
+            }
+            break ;
+        case STOREL_metalang : 
+            if ( !inLex ) {
+                WriteString("if (tokenAhead) ExtUnputBuf() ;");
+                NewLine();
+            }
+            if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+                NewLine();
+                WriteString("NextChar();");
+                UnMark();
+                NewLine();
+                WriteString("}");
+                NewLine();
+            } else {
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("if (_nbCharact + strlen(");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                WriteString(") < MAXLENGTH) ");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("strcpy(_ptString,");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                WriteString(");");
+                UnMark();
+                NewLine();
+                WriteString("_nbCharact += strlen(");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                WriteString(");");
+                WriteString("_ptString = lexEl.string + _nbCharact;");
+                NewLine();
+                UnMark();
+                NewLine();
+                WriteString("}");
+                NewLine();
+            }
+            break ;
+        case TAKEL_metalang : length = 1 ;
+        case SEEL_metalang : 
+            if ( simpleCase ) {
+                if ( !SonTree(tree, 1)) 
+                    WriteString("default : ");
+                else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+                    CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+                else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                    tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                    while ( tree ) {
+                        if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+                            CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+                        else {
+                            cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+                            carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+                            CaseCharac(cardeb);
+                            while ( IncrChar(cardeb, carend)) {
+                                NewLine();
+                                CaseCharac(cardeb);
+                            }
+                            NewLine();
+                            CaseCharac(carend);
+                        }
+                        if ( tree = SonTree(tree, 2)) 
+                            NewLine();
+                    }
+                }
+            } else {
+                if ( statement ) 
+                    WriteString("if (!");
+                if ( !inLex ) 
+                    WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+                WriteString("(");
+                if ( !SonTree(tree, 1)) 
+                    WriteString("c != EOF");
+                else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                    WriteString("c == ");
+                    Comp(SonTree(tree, 1));
+                } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                    tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                    i = 0 ;
+                    WriteString("(");
+                    while ( tree ) {
+                        if ( i ) 
+                            WriteString("||");
+                        else 
+                            i = 1 ;
+                        WriteString("(");
+                        if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                            WriteString("c == ");
+                            Comp(SonTree(tree, 1));
+                        } else {
+                            Comp(SonTree(SonTree(tree, 1), 1));
+                            WriteString(" <= c && c <= ");
+                            Comp(SonTree(SonTree(tree, 1), 2));
+                        }
+                        WriteString(")");
+                        tree = SonTree(tree, 2);
+                    }
+                    WriteString(")");
+                } else {
+                    WriteString("GetString(");
+                    WriteString("\"");
+                    WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                    WriteString("\"");
+                    if ( length ) 
+                        WriteString(",1)");
+                    else 
+                        WriteString(",0)");
+                }
+                if ( length ) 
+                    WriteString("&& NextChar())");
+                else 
+                    WriteString(")");
+                if ( !inLex ) 
+                    WriteString(")");
+                if ( statement ) {
+                    if ( !inLex ) {
+                        WriteString(") {");
+                        NewLine();
+                        Tab();
+                        Mark();
+                        WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+                        NewLine();
+                        WriteString("PrintError(errStr,error_free);");
+                        NewLine();
+                        WriteString("goto ");
+                        WriteString(Label(nameDefine));
+                        WriteString(";");
+                        UnMark();
+                        NewLine();
+                        WriteString("}");
+                        NewLine();
+                    } else {
+                        WriteString(") ;");
+                        NewLine();
+                    }
+                }
+            }
+            break ;
+        case TAKE_metalang : 
+            if ( !statement ) 
+                if ( NumberTree(tree) == IDENT_metalang ) {
+                    WriteString("(PUSH_CALL_AFF(");
+                    if ( equality ) {
+                        WriteString(ptEquality);
+                        WriteString(" = ");
+                    } else 
+                        WriteString("NOTHING");
+                    WriteString(",");
+                    WriteString(NameLang(Value(tree)));
+                    WriteString("))");
+                } else {
+                    WriteString("((tokenAhead || _Lex()) && ");
+                    i = 0 ;/* is a meta welcomed here */ 
+                    if ( FindConst("META") !=  - 1 && NumberTree(tree) == EXCLA_metalang ) {
+                        i = 1 ;
+                        WriteString("TERM_OR_META(");
+                        Comp(tree);
+                        WriteString(")");
+                    } else {
+                        WriteString("lexEl.Value == ");
+                        Comp(tree);
+                    }
+                    if ( equality ) {
+                        WriteString(" && !(tokenAhead = 0) && (");
+                        if ( !i ) {
+                            WriteString(ptEquality);
+                            WriteString(" = CommString(lexEl.string)))");
+                        } else {
+                            WriteString(" BUILD_TERM_META(");
+                            WriteString(ptEquality);
+                            WriteString("))) ");
+                        }
+                    } else 
+                        WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+                }
+            else if ( NumberTree(tree) == IDENT_metalang ) {
+                WriteString("if ( (");
+                if ( equality ) {
+                    WriteString(ptEquality);
+                    WriteString("=");
+                }
+                WriteString(NameLang(Value(tree)));
+                WriteString("(error_free)) == (PTREE) -1 ) ");
+                NewLine();
+                Tab();
+                WriteString("PROG_EXIT(");
+                WriteString(Label(nameDefine));
+                WriteString(",\"");
+                WriteString(nameDefine);
+                WriteString("\")");
+                NewLine();
+            } else {
+                WriteString("if (!tokenAhead) _Lex() ;");
+                NewLine();
+                i = 0 ;/* is a meta welcomed here */ 
+                if ( FindConst("META") !=  - 1 && NumberTree(tree) == EXCLA_metalang ) {
+                    i = 1 ;
+                    WriteString("if ( ! TERM_OR_META(");
+                    Comp(tree);
+                    WriteString(")");
+                } else {
+                    WriteString("if (  lexEl.Value != ");
+                    Comp(tree);
+                }
+                if ( equality ) {
+                    WriteString(" || !(");
+                    if ( !i ) {
+                        WriteString(ptEquality);
+                        WriteString(" = CommString(lexEl.string))");
+                    } else {
+                        WriteString("BUILD_TERM_META(");
+                        WriteString(ptEquality);
+                        WriteString("))");
+                    }
+                } else 
+                    WriteString(" || !(CommTerm(),1)");
+                WriteString(") ");
+                NewLine();
+                Tab();
+                WriteString("TOKEN_EXIT(");
+                WriteString(Label(nameDefine));
+                WriteString(",\"");
+                CompString(tree);
+                WriteString("\")");
+                NewLine();
+            }
+            break ;
+        case LANGUAGE_metalang : 
+            WriteString("\n/*************************************************************************/");
+            NewLine();
+            WriteString("\n/*                                                                       */");
+            NewLine();
+            WriteString("\n/*        Produced by MetaGen version 1.1  -    1989                     */");
+            NewLine();
+            WriteString("\n/*       Syntaxic Analyzer Meta Generator developped by                  */");
+            NewLine();
+            WriteString("\n/*                  Eric Lavillonniere                                   */");
+            NewLine();
+            WriteString("\n/*                                                                       */");
+            NewLine();
+            WriteString("\n/*************************************************************************/");
+            WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+            WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+            WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+            while ( ptTree = SonTree(ptTree, 2)) 
+                if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+                    WriteString("PTREE ");
+                    WriteString(NameLang(Value(ptTree)));
+#ifndef SUN
+                    WriteString(" ( int );");
+#else 
+                    WriteString("();");
+#endif
+                    NewLine();
+                } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+                    lexName = AllocString(Value(ptTree));
+                    foundLexName = 1 ;
+                } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+                    ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+                else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+                    nbLexDefine++ ;
+                    if ( !foundLexName ) 
+                        lexName = AllocString(Value(ptTree));
+                }
+            while ( ptTree = SonTree(ptTree, 2)) 
+                if ( ptTree && NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+                    CompLexDefine(SonTree(ptTree, 1));
+                    NewLine();
+                }
+            DumpNode();
+#ifdef SUN
+            writeLine = 0 ;
+            output = loutput ;
+            LispMake();
+            output = coutput ;
+#endif
+            break ;
+        case EQUAL_metalang : 
+            switch ( NumberTree(SonTree(tree, 2))) {
+                case NIL_metalang : 
+                case FUNC_metalang : 
+                case IDENT_metalang : 
+                case NUMB_metalang : 
+                    if ( !statement ) 
+                        WriteString("(");
+                    Comp(SonTree(tree, 1));
+                    if ( statement ) 
+                        WriteString("= ");
+                    else 
+                        WriteString("== ");
+                    Comp(SonTree(tree, 2));
+                    if ( !statement ) 
+                        WriteString(")");
+                    if ( statement ) 
+                        if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+                            WriteString(";");
+                            NewLine();
+                            interString = AllocString(Value(SonTree(SonTree(tree, 1)
+                                                                        , 1)));
+                            MakeEquiv(interString
+                                        , Value(SonTree(SonTree(tree, 2), 1)));
+                            free(interString);
+                        } else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+                            WriteString(";");
+                            NewLine();
+                        }
+                    break ;
+                case TAKE_metalang : 
+                    equality = 1 ;
+                    ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                    Comp(SonTree(tree, 2));
+                    equality = 0 ;
+                    SetUse(ptEquality);
+                    free(ptEquality);
+                    break ;
+                case MAKETREE_metalang : 
+                    interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                    MakeTreeGen(interString, SonTree(tree, 2), 0);
+                    free(interString);
+                    break ;
+                case ADDLIST_metalang : 
+                    AddListGen(interString, SonTree(tree, 2), 0);
+                    break ;
+                case REPLACETREE_metalang : 
+                    interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                    ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+            } 
+            break ;
+        case FUNC_metalang : 
+            if ( !statement ) 
+                WriteString("(");
+            Comp(SonTree(tree, 1));
+            WriteString("(");
+            tree = SonTree(tree, 2);
+            while ( tree ) {
+                Comp(SonTree(tree, 1));
+                tree = SonTree(tree, 2);
+                if ( tree ) 
+                    WriteString(",");
+            }
+            WriteString(")");
+            if ( statement ) {
+                WriteString(";");
+                NewLine();
+            } else 
+                WriteString(")");
+            break ;
+        case STRING_metalang : 
+            tree = SonTree(tree, 1);
+            treeToken = AddToken(Value(tree), SymboName(Value(tree), 0), treeToken);
+            WriteString(SymboName(Value(tree), 0));
+            break ;
+        case DECLARE_metalang : 
+            WriteString("PTREE ");
+            ptTree = tree = SonTree(tree, 1);
+            while ( tree ) {
+                Comp(SonTree(tree, 1));
+                WriteString("= (PTREE) 0");
+                InsertDecElem(AllocString(Value(tree)));
+                tree = SonTree(tree, 2);
+                if ( tree ) 
+                    WriteString(",");
+            }
+            WriteString(";");
+            NewLine();
+            break ;
+        case SKIP_metalang : 
+            ptTree = tree = SonTree(tree, 1);
+            i = 0 ;
+            if ( inLex ) 
+                WriteString("ptStockBuf = -1;");
+            else 
+                WriteString("ExtUnputBuf();");
+            NewLine();
+            WriteString("while (");
+            while ( tree ) {
+                if ( i ) 
+                    WriteString("||");
+                else 
+                    i = 1 ;
+                WriteString("(");
+                if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                    WriteString("c == ");
+                    Comp(SonTree(tree, 1));
+                } else {
+                    Comp(SonTree(SonTree(tree, 1), 1));
+                    WriteString(" <= c && c <= ");
+                    Comp(SonTree(SonTree(tree, 1), 2));
+                }
+                WriteString(")");
+                tree = SonTree(tree, 2);
+            }
+            break ;
+    } 
+}
+
+
+

@@ -1,0 +1,36 @@
+language cont;
+
+lex is Lex;
+
+global
+	begin
+	{{ extern int toto; }};
+	{{ extern int fifi; }}
+	end;
+
+{{ int toto;}};
+
+lexdefine Lex;
+	skip ' ';
+end;
+
+lexdefine Lex1;
+	take Lex;
+	case
+		seel in [ 'a'..'z'] : return !IDENT;
+		default : return !STRING
+	end;
+end;
+
+define fufu ;
+	declare toto,titi;
+	toto = maketree(IDENT,"aha");
+	titi = maketree(IDENT,());
+	replacetree(titi,1,"ihi");
+	take #"fifi";
+	take #"fufu" ;
+	case
+		take #"fifi" : titi = maketree(BIDON,());
+		default : titi = maketree(BIDON1,())
+	end;
+end.

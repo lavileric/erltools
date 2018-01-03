@@ -1,0 +1,10 @@
+language toto ;
+define fifi ;
+    declare retTree ;
+    retTree = take ruru 
+    take fifi; 
+    take aa
+end ;
+
+define tutu ;
+end.

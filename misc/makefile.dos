@@ -1,0 +1,34 @@
+tobe_done : all
+
+include ../makefile.inc
+
+all :
+	cd erlms
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd erlmsch
+	$(MAKE) -f makefile.dos all
+	cd ..
+
+clean :
+	cd erlms
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd erlmsch
+	$(MAKE) -f makefile.dos clean
+	cd ..
+
+
+install :
+        - copy .\erlms\erlms.exe $(INSTALL_DIR_SKIMMED)
+        - strip $(INSTALL_DIR)\\erlms.exe
+        - copy .\erlms\erlmsch.exe $(INSTALL_DIR_SKIMMED)
+        - strip $(INSTALL_DIR)\\erlmsch.exe
+
+
+
+
+	   
+
+
+

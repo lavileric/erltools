@@ -1,0 +1,11 @@
+!include ./makefile.win
+
+chunkch.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(CHOPB) $(LIBRARY)
+    -$(RM) chunkch.exe
+    -ren chunk.exe chunkch.exe
+
+
+
+
+

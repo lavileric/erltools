@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# look if emacs error
+emacs=""
+if [ "$1" = "-emacs" ]
+then
+    emacs="-emacs"
+    shift
+fi
+
+#look if there is a set indication
+name=$1
+SET_ORDER=""
+if [ $name = "-set" ] ; then
+    shift
+    SET_ORDER="-set $1"
+    shift;
+fi
+
+#look if there is a width indication
+name=$1
+WIDTH_INDICATION=""
+if [ $name = "-rightMargin" ] ; then
+    shift
+    WIDTH_INDICATION="-rightMargin $1"
+    shift;
+fi
+
+#give help if no arguments are given
+if [ "$1" = "" ]
+then
+    echo "usage: $0 [-set set] [-rightMargin righMargin] filename(s)"
+    exit
+fi
+
+#find suffix of name
+for i in $*
+do
+    echo "Processing file $i:"
+    name=`basename $i`
+    suffix=`echo $name | sed 's/.*\.//'`
+
+    #suppress tabulations in file
+    # deltab $i
+
+    #pretty file
+    cpbem $emacs $SET_ORDER $WIDTH_INDICATION $i $$_res.cpb > $$_error 2>&1
+    echo "done"
+    cat $$_error
+
+    result=`grep "For details see" $$_error`
+
+    if [ $? != 0 ]
+    then
+	result=`grep "No Error Found" $$_error`
+
+	if [ $? != 0 ]
+	then
+	    rm -f res.cpb
+            rm $$_error
+	    exit 3;
+	fi
+    fi
+
+    rm $$_error
+
+    #replace original file
+    if [ $? != 0 ] ; then
+        rm -f $$_res.cpb
+        exit $?
+    else
+        mv $$_res.cpb $i
+    fi
+done
+

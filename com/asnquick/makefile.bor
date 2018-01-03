@@ -1,0 +1,65 @@
+!include ./makefile.win
+
+all : chop.exe quickcode.exe level2.obj quickasn.obj quickinetutil.obj \
+		quickconnect.obj qconnect.lib
+
+quickcode.exe : quickcode.obj $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) quickcode.obj $(ASN_LIB) $(LIBRARY)
+
+THE_LIB=.\connect.$(LIB_SUF)
+ASN_LIB=..\asn\asn.$(LIB_SUF)
+CONNECT_LIB=..\connect\connect.$(LIB_SUF)
+
+##### library ####
+
+OBJECTS_QUICK= level2.obj quickinetutil.obj quickconnect.obj quickasn.obj
+
+THE_LIB=qconnect.lib
+
+qconnect.lib : $(OBJECTS_QUICK)
+	-$(RM) $(THE_LIB)
+    -tlib /P32 $(THE_LIB) +level2 +quickinetutil +quickconnect +quickasn,qconnect.lst
+
+#	$(LINKER) $(LNK_FLAGS) /out:$(THE_LIB) $(OBJECTS_QUICK)
+
+asntiny.lib :m_done asn.obj asn0.obj asn1.obj asn2.obj asn3.obj
+ 	-$(RM) $(ASN_LIB_TINY)
+    -tlib /P32 $(ASN_LIB_TINY) +asn +asn0 +asn1 +asn2 +asn3 +asnsymbol ,asn.lst
+
+##### ihm #####
+
+ihm.cc : ihm.asn quickcode.exe
+	quickcode ihm.asn
+	cpb ihm.cc
+	cpb ihm.h
+
+ihm.obj : ihm.cc ihm.h  quickasn.h
+
+##### level2 #####
+
+level2.cc : level2.asn   quickcode.exe
+	quickcode level2.asn  
+	cpb level2.cc
+	cpb level2.h
+
+level2.obj : level2.cc level2.h  quickasn.h
+
+#### quickspy #####
+
+quickspy.cc : quickspy.ch ihm.cc
+
+quickspy.exe : quickspy.obj  $(OBJECTS_QUICK) $(ASN_OBJECTS) $(LIBRARY) ihm.obj 
+	link  $(LNK_FLAGS) /out:quickspy.exe quickspy.obj $(OBJECTS_QUICK) wsock32.lib \
+					ihm.obj $(ASN_LIB) $(CONNECT_LIB) $(LIBRARY)
+
+#### others #####
+
+quickasn.cc : quickasn.ch
+
+quickinetutil.cc : quickinetutil.ch
+
+quickconnect.cc : quickconnect.ch
+
+chop.exe :
+	- copy $(ERLTOOLS_DIR)\com\asnext\chop.exe .
+

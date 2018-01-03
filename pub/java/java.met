@@ -1,0 +1,1023 @@
+language java;
+
+use "cplus.met";
+
+lexdefine LexSuperior;
+    forgetl;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage and not in context keepAll then
+        begin
+        skip '\t',' ','\r','\n','';
+        end
+    else
+        if not in context keepAll then
+            begin
+            skip '\t',' ','';
+            end
+        else
+            forgetl;
+    takel ">";
+    return !SUPERIOR_CHAR;
+end;
+
+lexdefine LexMeta;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage and not in context keepAll then
+        begin
+        skip '\t',' ','\r','\n','';
+        end
+    else
+        if not in context keepAll then
+            begin
+            skip '\t',' ','';
+            end
+        else
+            forgetl;
+    case
+        takel in ['#'] :
+            
+            /* definition of metavariables */
+            begin
+            if not seel in ['('] then
+                case
+                    takel "include" : return !INCLUDE_DIR
+                    takel "ifdef" : return !IFDEF_DIR
+                    takel "ifndef" : return !IFNDEF_DIR
+                    takel "if" : return !IF_DIR
+                    takel "else" : return !ELSE_DIR
+                    takel "elif" : return !ELIF_DIR
+                    takel "endif" : return !ENDIF_DIR
+                    takel "line" : return !LINE_DIR
+                    takel "pragma" : return !PRAGMA_DIR
+                    takel "error" : return !ERROR_DIR
+                    takel "define" : return !DEFINE_DIR
+                    takel "undef" : return !UNDEF_DIR
+                    default :
+                        while seel in ['a'..'z','A'..'Z','0'..'9','_'] do
+                            storel takel 
+                end
+            else
+                begin
+                {{ int nbPar = 0;}};
+                storel takel ;
+                while seel do
+                    case
+                        seel in ['('] :
+                            begin
+                            {{ nbPar++;}};
+                            storel takel ;
+                            end
+                        seel in [')'] :
+                            if {{!nbPar }} then
+                                begin
+                                storel takel ;
+                                return !META;
+                                end
+                            else
+                                begin
+                                storel takel ;
+                                {{ nbPar--;}};
+                                end
+                        default : storel takel 
+                    end;
+                end;
+            return !META;
+            end
+    end;
+end;
+
+lexdefine Lex;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage then
+        begin
+        skip '\t',' ','\r','\n','';
+        end
+    else
+        begin
+        skip '\t',' ','';
+        end;
+    recognize_string;
+    case
+        seel in ['a'..'z','A'..'Z','_','$','@'] :
+            /*definition of ident */
+            begin
+            if seel in ['a'..'z','A'..'Z','_','0'..'9','$','@'] then
+                storel takel ;
+            while seel in ['a'..'z','A'..'Z','_','0'..'9','$'] do
+                storel takel ;
+            return SortKeyWord(!IDENT);
+            end
+        takel in ['"'] :
+            
+            /* definition of string */
+            while seel do
+                case
+                    takel in ['"'] :
+                        begin
+                        return !STRING;
+                        end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        if not seel in ['\r'] then
+                            
+                            /* pour eviter un
+                              double \r a l'ecriture formatee */
+                            storel takel 
+                        else
+                            takel ;
+                        end
+                    seel : storel takel 
+                end
+        takel in ['\''] :
+            
+            /* definition of character */
+            while seel do
+                case
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        storel takel ;
+                        end
+                    takel in ['\''] :
+                        begin
+                        return !CHARACT;
+                        end
+                    seel : storel takel 
+                end
+        seel in ['1'..'9'] :
+            
+            /* definition of numbers */
+            begin
+            while seel in ['0'..'9'] do
+                storel takel ;
+            case
+                takel in ['l','L'] :
+                    case
+                        takel in ['u','U'] : return !ULINTEGER
+                        default : return !LINTEGER
+                    end
+                takel in ['u','U'] :
+                    case
+                        takel in ['l','L'] : return !ULINTEGER
+                        default : return !UINTEGER
+                    end
+                takel in ['e','E'] :
+                    begin
+                    storel "e";
+                    if seel in ['+','-'] then
+                        storel takel ;
+                    while seel in ['0'..'9'] do
+                        storel takel ;
+                    case
+                        seel in ['d'] : storel takel 
+                        seel in ['D'] : storel takel 
+                        seel in ['f'] : storel takel 
+                        seel in ['F'] : storel takel 
+                        seel in ['l'] : storel takel 
+                        seel in ['L'] : storel takel 
+                    end;
+                    return !FLOATVAL;
+                    end
+                seel in ['.'] :
+                    begin
+                    storel takel ;
+                    while seel in ['0'..'9'] do
+                        storel takel ;
+                    if takel in ['e','E'] then
+                        begin
+                        storel "e";
+                        if seel in ['+','-'] then
+                            storel takel ;
+                        while seel in ['0'..'9'] do
+                            storel takel ;
+                        end;
+                    case
+                        seel in ['d'] : storel takel 
+                        seel in ['D'] : storel takel 
+                        seel in ['f'] : storel takel 
+                        seel in ['F'] : storel takel 
+                        seel in ['l'] : storel takel 
+                        seel in ['L'] : storel takel 
+                    end;
+                    return !FLOATVAL;
+                    end
+                seel : return !INTEGER
+            end;
+            end
+        takel in ['0'] :
+            begin
+            case
+                takel in ['x','X'] :
+                    begin
+                    while seel in ['0'..'9','a'..'f','A'..'F'] do
+                        storel takel ;
+                    case
+                        takel in ['l','L'] :
+                            case
+                                takel in ['u','U'] : return !ULHEXA
+                                default : return !LHEXA
+                            end
+                        takel in ['u','U'] :
+                            case
+                                takel in ['l','L'] : return !ULHEXA
+                                default : return !UHEXA
+                            end
+                        default : return !HEXA
+                    end;
+                    end
+                seel in ['0'..'7'] :
+                    begin
+                    while seel in ['0'..'7'] do
+                        storel takel ;
+                    case
+                        takel in ['l','L'] :
+                            case
+                                takel in ['u','U'] : return !ULOCTAL
+                                default : return !LOCTAL
+                            end
+                        takel in ['u','U'] :
+                            case
+                                takel in ['l','L'] : return !ULOCTAL
+                                default : return !UOCTAL
+                            end
+                        default : return !OCTAL
+                    end;
+                    end
+                seel in ['.'] :
+                    begin
+                    storel "0";
+                    storel takel ;
+                    while seel in ['0'..'9'] do
+                        storel takel ;
+                    if takel in ['e','E'] then
+                        begin
+                        storel "e";
+                        if seel in ['+','-'] then
+                            storel takel ;
+                        while seel in ['0'..'9'] do
+                            storel takel ;
+                        end;
+                    case
+                        seel in ['d'] : storel takel 
+                        seel in ['D'] : storel takel 
+                        seel in ['f'] : storel takel 
+                        seel in ['F'] : storel takel 
+                        seel in ['l'] : storel takel 
+                        seel in ['L'] : storel takel 
+                    end;
+                    return !FLOATVAL;
+                    end
+                seel :
+                    begin
+                    storel "0";
+                    case
+                        takel in ['l','L'] :
+                            case
+                                takel in ['u','U'] : return !ULINTEGER
+                                default : return !LINTEGER
+                            end
+                        takel in ['u','U'] :
+                            case
+                                takel in ['l','L'] : return !ULINTEGER
+                                default : return !UINTEGER
+                            end
+                        default : return !INTEGER
+                    end;
+                    end
+            end;
+            end
+        takel in ['#'] :
+            begin
+            while seel in [' ','\t'] do
+                takel ;
+            case
+                takel "include" : return !INCLUDE_DIR
+                takel "ifdef" : return !IFDEF_DIR
+                takel "ifndef" : return !IFNDEF_DIR
+                takel "if" : return !IF_DIR
+                takel "else" : return !ELSE_DIR
+                takel "elif" : return !ELIF_DIR
+                takel "endif" : return !ENDIF_DIR
+                takel "line" : return !LINE_DIR
+                takel "pragma" : return !PRAGMA_DIR
+                takel "error" : return !ERROR_DIR
+                takel "define" : return !DEFINE_DIR
+                takel "undef" : return !UNDEF_DIR
+            end;
+            end
+        takel in ['\r','\n'] : return !CARRIAGE_RETURN
+        takel in ['/'] :
+            begin
+            if seel in ['='] then
+                begin
+                takel ;
+                return !SLASEGAL;
+                end
+            else
+                return !SLAS;
+            end
+        seel in ['.'] :
+            begin
+            storel takel ;
+            if seel in ['0'..'9'] then
+                begin
+                while seel in ['0'..'9'] do
+                    storel takel ;
+                if takel in ['e','E'] then
+                    begin
+                    storel "e";
+                    if seel in ['+','-'] then
+                        storel takel ;
+                    while seel in ['0'..'9'] do
+                        storel takel ;
+                    end;
+                case
+                    seel in ['d'] : storel takel 
+                    seel in ['D'] : storel takel 
+                    seel in ['f'] : storel takel 
+                    seel in ['F'] : storel takel 
+                    seel in ['l'] : storel takel 
+                    seel in ['L'] : storel takel 
+                end;
+                return !FLOATVAL;
+                end
+            else
+                begin
+                return !POINT;
+                end;
+            end
+    end;
+end;
+
+define protect_declare;
+    declare retTree,inter,list;
+    
+    /*  case
+          take #"public" : retTree = maketree(PROTECT_MEMB,"public",())
+          take #"protected" : retTree = maketree(PROTECT_MEMB,"protected",())
+          take #"private" : retTree = maketree(PROTECT_MEMB,"private",())
+      end;
+      take ":";*/
+    while inter = take inside_declaration do
+        addlist(list,inter);
+    return replacetree(retTree,2,list);
+end;
+
+define sc_specifier;
+    case
+        see #"Annotation" : return take #"Annotation"
+        see #"public" : return take #"public"
+        see #"protected" : return take #"protected"
+        see #"private" : return take #"private"
+        see #"abstract" : return take #"abstract"
+        see #"final" : return take #"final"
+        see #"strictfp" : return take #"strictfp"
+        default : return take cplus::sc_specifier
+    end;
+end;
+
+define sc_specifier_list;
+    declare retList,elem;
+    while elem = take sc_specifier and {{ elem != (PPTREE) 0 }} do
+        addlist(retList,elem);
+    return retList;
+end;
+
+define range_modifier;
+    case
+        see !IDENT : return maketree(RANGE_MODIFIER,take range_in_liste,())
+        see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile"
+            ,())
+        see #"register" : return maketree(RANGE_MODIFIER,take #"register"
+            ,())
+        see #"abstract" : return maketree(RANGE_MODIFIER,take #"abstract"
+            ,())
+        see #"native" : return maketree(RANGE_MODIFIER,take #"native",())
+        see #"synchronized" : return maketree(RANGE_MODIFIER
+            ,take #"synchronized",())
+        see #"public" : return maketree(RANGE_MODIFIER,take #"public",())
+        see #"private" : return maketree(RANGE_MODIFIER,take #"private",())
+        see #"protected" : return maketree(RANGE_MODIFIER,take #"protected"
+            ,())
+        see #"@Override" : return maketree(RANGE_MODIFIER,take #"@Override"
+            ,())
+        see #"final" : return maketree(RANGE_MODIFIER,take #"final",())
+        see #"transient" : return maketree(RANGE_MODIFIER,take #"transient"
+            ,())
+        see #"static" : return maketree(RANGE_MODIFIER,take #"static",())
+        see #"strictfp" : return maketree(RANGE_MODIFIER,take #"strictfp"
+            ,())
+        default : return take range_modifier_function
+    end;
+end;
+
+define declarator;
+    declare retTree,expList;
+    if take "[" then
+        begin
+        if expList = take expression then
+            retTree = maketree(TYP_ARRAY_JAVA,(),expList)
+        else
+            retTree = maketree(TYP_ARRAY_JAVA,(),());
+        take "]";
+        return replacetree(retTree,1,take declarator);
+        end;
+    return take cplus::declarator;
+end;
+
+define ext_data_decl_sc_ty;
+    declare retTree,type;
+    retTree = maketree(DECLARATION,(),(),());
+    replacetree(retTree,1,take sc_specifier_list);
+    type = take type_specifier;
+    replacetree(retTree,2,type);
+    if {{ (NumberTree(type) != CLASS) }} then
+        take ";";
+    return retTree;
+end;
+
+define data_decl_sc_ty_decl;
+    declare retTree,type,inter;
+    
+    /* puis les declarations standard */
+    retTree = maketree(DECLARATION,(),(),());
+    replacetree(retTree,1,take sc_specifier);
+    type = take type_specifier;
+    replacetree(retTree,2,type);
+    {{
+           inter  = type ;
+        while (NumberTree(inter)
+                  == RANGE_MODIFIER)
+        	inter = SonTree(inter,2);
+    }};
+    if {{ (NumberTree(inter) != CLASS && NumberTree(inter) != ENUM) }} then
+        begin
+        replacetree(retTree,3,take declarator_list_init);
+        take ";";
+        end;
+    inter = maketree(IDENT,"padder");
+    return retTree;
+end;
+
+define base_specifier_elem;
+    declare listImplements;
+    case
+        take #"extends" : return maketree(EXTENDS,take reference_type)
+        take #"implements" :
+            begin
+            repeat
+                addlist(listImplements,take reference_type);
+            until not take ",";
+            return maketree(IMPLEMENTS,listImplements);
+            end
+    end;
+end;
+
+define base_specifier;
+    declare list;
+    while see #"extends" or see #"implements" do
+        addlist(list,take base_specifier_elem);
+    return maketree(BASE_LIST,list);
+end;
+
+define postfix_expression;
+    declare result;
+    result = take cplus::postfix_expression;
+    if take #"instanceof" then
+        result = maketree(INSTANCEOF,result,take qualified_name);
+    return result;
+end;
+
+define primary_expression;
+    case
+        see !IDENT :
+            begin
+            return take qualified_name;
+            end
+        take #"super" : return maketree(IDENT,"super")
+        take #"class" : return maketree(IDENT,"class")
+        take #"void" : return maketree(IDENT,"void")
+        take #"delete" : return maketree(IDENT,"delete")
+        default : return take cplus::primary_expression
+    end;
+end;
+
+define type_specifier_without_param;
+    declare valTreeR[2];
+    if valTreeR = take range_modifier then
+        return replacetree(valTreeR,2,take type_specifier);
+    case
+        see #"interface" : return take class_declaration
+        default : return take cplus::type_specifier_without_param
+    end;
+end;
+
+define static_part;
+    take #"static";
+    return maketree(STATIC_PART,take compound_statement);
+end;
+
+define type_specifier;
+    return take reference_type;
+end;
+
+define reference_type;
+    declare retTree,inter,val;
+    retTree = take reference_type_elem;
+    if see !POINT then
+        begin
+        retTree = maketree(QUALIFIED,retTree,());
+        inter = retTree;
+        while take !POINT and val = take reference_type_elem do
+            begin
+            if see !POINT then
+                val = maketree(QUALIFIED,val,());
+            replacetree(inter,2,val);
+            inter = val;
+            end;
+        end;
+    return retTree;
+end;
+
+define array_parameters_elem;
+    declare val;
+    take "[";
+    if not val = take expression then
+        val = ();
+    take "]";
+    return val;
+end;
+
+define array_parameters_list;
+    declare retTree,list,val;
+    addlist(list,take array_parameters_elem);
+    while val = take array_parameters_elem do
+        addlist(list,val);
+    return list;
+end;
+
+define reference_type_elem;
+    declare retTree,val,list;
+    if not retTree = take class_or_interface_type then
+        retTree = take type_specifier_without_param;
+    if val = take array_parameters_list then
+        retTree = maketree(JAVA_ARRAY_TYPE,retTree,val);
+    return retTree;
+end;
+
+define class_or_interface_type;
+    declare retTree,qualifier;
+    retTree = take qualified_name;
+    if qualifier = take type_arguments then
+        retTree = maketree(PARAM_TYPE,retTree,qualifier);
+    return retTree;
+end;
+
+define type_argument;
+    declare retTree;
+    case
+        take "?" :
+            begin
+            case
+                take #"extends" :
+                    begin
+                    return maketree(EXTENDS_TYPE,maketree(WILDCARD_TYPE)
+                        ,take reference_type);
+                    end
+                take #"super" :
+                    begin
+                    return maketree(SUPER_TYPE,maketree(WILDCARD_TYPE)
+                        ,take reference_type);
+                    end
+                default : return maketree(WILDCARD_TYPE)
+            end;
+            end
+        default :
+            begin
+            retTree = take reference_type;
+            if take #"extends" then
+                retTree
+                    = maketree(EXTENDS_TYPE,retTree,take reference_type);
+            return retTree;
+            end
+    end;
+end;
+
+define type_arguments;
+    declare elem,list;
+    take "<";
+    elem = take type_argument;
+    addlist(list,elem);
+    while take "," do
+        addlist(list,take type_argument);
+    take !SUPERIOR_CHAR;
+    
+    /* problem with >> */
+    return list;
+end;
+
+define range_modifier_ident;
+    declare retTree,elem;
+    retTree = take cplus::range_modifier_ident;
+    if elem = take type_arguments then
+        return maketree(PARAM_TYPE,retTree,elem)
+    else
+        return retTree;
+end;
+
+define enum_declarator;
+    declare retTree;
+    take #"enum";
+    if see !IDENT then
+        retTree = maketree(ENUM,maketree(IDENT,take !IDENT),())
+    else
+        retTree = maketree(ENUM,(),());
+    with context enumContext do
+        replacetree(retTree,2,take class_declaration_inner);
+    return retTree;
+end;
+
+define one_enum_declaration;
+    declare retTree;
+    retTree = maketree(IDENT,take !IDENT);
+    if take "(" then
+        begin
+        retTree
+            = maketree(ENUM_DECLARATION_JAVA_ASS,retTree,take expression);
+        take ")";
+        end;
+    return retTree;
+end;
+
+/* initialisation of enum val*/
+define inside_declaration_extension;
+    declare valTree,list;
+    if valTree = take one_enum_declaration then
+        begin
+        addlist(list,valTree);
+        while take "," do
+            addlist(list,take one_enum_declaration);
+        end
+    else
+        break;
+    if not take ";" then
+        if not see "}" then
+            break;
+    return maketree(DECLARATION,(),maketree(ENUM_DECLARATION_JAVA,list),());
+end;
+
+define class_declaration_inner;
+    declare inner,list,staticPart;
+    if take "{" then
+        begin
+        if not see "}" then
+            begin
+            repeat
+                if staticPart = take static_part then
+                    addlist(list,staticPart)
+                else
+                    addlist(list,take inside_declaration);
+            until see "}";
+            inner = maketree(CLASS_DECL,list);
+            end
+        else
+            inner = maketree(CLASS_DECL,());
+        take "}";
+        end
+    else
+        inner = ();
+    return inner;
+end;
+
+define class_declaration;
+    declare retTree;
+    case
+        take #"class" : retTree = maketree(CLASS,"class",(),(),())
+        take #"interface" : retTree = maketree(CLASS,"interface",(),(),())
+    end;
+    replacetree(retTree,2,take range_modifier_ident);
+    if see #"extends" or see #"implements" then
+        replacetree(retTree,3,take base_specifier);
+    return replacetree(retTree,4,take class_declaration_inner);
+end;
+
+define qualified_follow;
+    declare retTree,follow;
+    take !POINT;
+    case
+        see !IDENT : retTree = maketree(IDENT,take !IDENT)
+        take #"super" : retTree = maketree(IDENT,"super")
+        take #"class" : retTree = maketree(IDENT,"class")
+        default : break
+    end;
+    if follow = take qualified_follow then
+        return maketree(QUALIFIED,retTree,follow)
+    else
+        return retTree;
+end;
+
+define qualified_name;
+    declare retTree,follow;
+    case
+        see !IDENT : retTree = maketree(IDENT,take !IDENT)
+        take #"super" : retTree = maketree(IDENT,"super")
+        default : break
+    end;
+    if follow = take qualified_follow then
+        return maketree(QUALIFIED,retTree,follow)
+    else
+        return retTree;
+end;
+
+define complete_class_name;
+    return take qualified_name;
+end;
+
+define assignment_end;
+    case
+        take ">>>=" : return maketree(N_RSH_AFF,()
+            ,take assignment_expression)
+        default : return take cplus::assignment_end
+    end;
+end;
+
+define shift_expression;
+    declare expTree;
+    expTree = take additive_expression;
+    while see "<<" or see ">>" or see ">>>" do
+        case
+            take "<<" : expTree
+                = maketree(LSHI,expTree,take additive_expression)
+            take ">>" : expTree
+                = maketree(RSHI,expTree,take additive_expression)
+            take ">>>" : expTree
+                = maketree(N_RSHI,expTree,take additive_expression)
+        end;
+    return expTree;
+end;
+
+define ext_decl_dir;
+    declare retTree;
+    if retTree = take directive
+        or retTree = take import_directive
+        or retTree = take package_directive then
+        return retTree;
+    case
+        take !IF_DIR : return take ext_decl_if_dir
+        see !IFDEF_DIR : return take ext_decl_ifdef_dir
+        see !IFNDEF_DIR : return take ext_decl_ifdef_dir
+    end;
+end;
+
+define catch_unit_ansi;
+    declare retTree,valTree;
+    if take #"catch" then
+        begin
+        take "(";
+        if take "..." then
+            valTree = maketree(EXCEPT_ANSI_ALL)
+        else
+            begin
+            retTree = take type_specifier;
+            if valTree = take declarator then
+                valTree = maketree(DECLARATOR,retTree,valTree)
+            else
+                if valTree = take abstract_declarator then
+                    valTree = maketree(ABST_DECLARATOR,retTree,valTree)
+                else
+                    valTree = retTree;
+            end;
+        take ")";
+        end
+    else
+        begin
+        take #"finally";
+        valTree = maketree(EXCEPT_JAVA_FINALLY);
+        end;
+    return maketree(CATCH_ANSI,valTree,take compound_statement);
+end;
+
+define exception_list;
+    declare exceptionList;
+    take #"throws";
+    repeat
+        addlist(exceptionList,take qualified_name);
+    until not take ",";
+    return maketree(EXCEPTION_LIST,exceptionList);
+end;
+
+define declarator_value;
+    declare valTree;
+    valTree = take declarator;
+    case
+        take "=" : valTree = maketree(TYP_AFF,valTree,take initializer)
+        take "(" :
+            begin
+            valTree = maketree(TYP_AFF_CALL,valTree,take expression);
+            take ")";
+            end
+        see #"throws" :
+            begin
+            valTree = maketree(THROWS_DECL,valTree,take exception_list);
+            end
+        default : 
+    end;
+    return valTree;
+end;
+
+define func_declarator;
+    declare valTree[2],expList,retTree;
+    if valTree = take range_modifier then
+        return replacetree(valTree,2,take func_declarator);
+    case
+        take "[" :
+            begin
+            if expList = take expression then
+                retTree = maketree(TYP_ARRAY_JAVA,(),expList)
+            else
+                retTree = maketree(TYP_ARRAY_JAVA,(),());
+            take "]";
+            return replacetree(retTree,1,take cplus::func_declarator);
+            end
+        default : return take cplus::func_declarator
+    end;
+end;
+
+define package_directive;
+    declare retTree;
+    take #"package";
+    retTree = maketree(PACKAGE,take import_entry);
+    take ";";
+    return retTree;
+end;
+
+define import_directive;
+    declare retTree;
+    take #"import";
+    retTree = maketree(IMPORT_DIR,take import_entry);
+    take ";";
+    return retTree;
+end;
+
+define new_3;
+    return maketree(NEW,()
+        ,maketree(NEW_DECLARATOR,(),take postfix_expression),(),());
+end;
+
+define type_specificier_instantiation_elem;
+    declare type,exp;
+    type = take type_specifier;
+    if take "(" then
+        begin
+        type = maketree(TYP_INSTANT,type,());
+        if exp = take expression then
+            replacetree(type,2,exp);
+        take ")";
+        end;
+    return type;
+end;
+
+define type_specifier_instantiation;
+    declare retTree;
+    retTree = take type_specificier_instantiation_elem;
+    if take !POINT then
+        return maketree(QUALIFIED,retTree,take type_specifier_instantiation)
+    else
+        return retTree;
+end;
+
+define allocation_expression_hidden_class;
+    declare retTree,expTree,paramters;
+    take #"new";
+    
+    /* retTree = maketree(NEW,(),take new_type_name,(),());*/
+    retTree = maketree(NEW,(),take type_specifier_instantiation,(),());
+    if expTree = take initializer or expTree = take class_declaration_inner then
+        replacetree(retTree,4,expTree);
+    return retTree;
+end;
+
+define allocation_expression_classical;
+    declare retTree[4],list;
+    take #"new";
+    if not retTree = take new_3
+        and not retTree = take new_1
+        and not retTree = take new_2 then
+        break;
+    if take "(" then
+        begin
+        if not see ")" then
+            repeat
+                addlist(list,take initializer);
+            until not take ",";
+        take ")";
+        replacetree(retTree,3,maketree(INIT_NEW,list));
+        end;
+    if see "{" then
+        replacetree(retTree,4,take initializer);
+    return retTree;
+end;
+
+define allocation_expression;
+    declare retTree;
+    if not retTree = take allocation_expression_hidden_class then
+        retTree = take allocation_expression_classical;
+    return retTree;
+end;
+
+define for_extended_statement;
+    declare statTree;
+    take "(";
+    statTree = maketree(FOR_EXTENDED,(),(),(),());
+    replacetree(statTree,1,take simple_type);
+    replacetree(statTree,2,maketree(IDENT,take !IDENT));
+    take ":";
+    replacetree(statTree,3,take assignment_expression);
+    take ")";
+    without context switchContext do
+        replacetree(statTree,4,take statement);
+    return statTree;
+end;
+
+define for_statement;
+    declare statTree;
+    if statTree = take for_extended_statement then
+        return statTree
+    else
+        return take cplus::for_statement;
+end;
+
+define statement;
+    declare statTree,identTree;
+    case
+        take #"break" :
+            begin
+            statTree = maketree(BREAK,());
+            if identTree = take !IDENT then
+                replacetree(statTree,1,maketree(IDENT,identTree));
+            take ";";
+            end
+        take #"continue" :
+            begin
+            statTree = maketree(CONTINUE,());
+            if identTree = take !IDENT then
+                replacetree(statTree,1,maketree(IDENT,identTree));
+            take ";";
+            end
+        take #"synchronized" :
+            begin
+            take "(";
+            statTree = maketree(SYNCHRONIZED_STAT,take qualified_name,());
+            take ")";
+            replacetree(statTree,2,take statement);
+            end
+        default : statTree = take cplus::statement
+    end;
+    return statTree;
+end;
+
+/*
+  define statement_expression;
+      declare statTree;
+      {{        bool takeSemiColumn = true ;}};
+      statTree = take expression;
+    {{
+         {
+           PPTREE varTree = statTree;
+           if (NumberTree(varTree) == AFF && NumberTree(SonTree(varTree,2)) == NEW
+                      && NumberTree(SonTree(SonTree(varTree,2),4)) == CLASS_DECL)
+      takeSemiColumn = false ;
+         }
+    }};
+      if {{ takeSemiColumn }} then
+          take ";";
+      return statTree;
+  end;
+  */
+define import_entry;
+    declare retTree;
+    if retTree = take !IDENT then
+        begin
+        if take !POINT then
+            begin
+            return maketree(IMPORT_ELEM,maketree(IDENT,retTree)
+                ,take import_entry);
+            end
+        else
+            if take ".*" then
+                return maketree(IMPORT_ELEM,maketree(IDENT,retTree)
+                    ,maketree(STAR))
+            else
+                return maketree(IDENT,retTree);
+        end
+    else
+        begin
+        take "*";
+        return maketree(STAR);
+        end;
+end.
+

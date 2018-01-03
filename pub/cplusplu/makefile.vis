@@ -1,0 +1,11 @@
+!include ./makefile.win
+
+cplus.exe : cplus.lib $(OBJECTS) 
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:cplus.exe kern.obj cplus.lib $(LIBRARY)
+
+cplus.lib : $(LIB_OBJECTS)
+	-$(RM) cplus.lib
+	$(LINKER) $(LNK_FLAGS) /out:cplus.lib $(LIB_OBJECTS)
+
+
+

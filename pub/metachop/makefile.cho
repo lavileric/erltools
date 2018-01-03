@@ -1,0 +1,38 @@
+
+# pour SUN
+#MACHFLAGS=-DSUN
+# pour Interactive
+#MACHFLAGS=-DSUN -DI386
+# pour LINUX
+MACHFLAGS=-DSUN -DLINUX
+
+.C.o :
+	g++ -c $(MACHFLAGS) -I../parser -I../metachop -g  $*.C
+.c.o :
+	gcc -c $(MACHFLAGS) -g $*.c
+
+# mettre -DI386 pour interactive
+ 
+all : chop
+
+clean :
+		-  rm *.o
+		-  rm metagen chop
+		-  rm *.a
+
+chop.o : chop.C ../parser/token.h
+
+chop : ../metachop/dchop.o ../metachop/dchop0.o chop.o ../parser/auxpars.o ../metachop/metachop.o netachop.o netacho0.o netacho1.o netacho2.o netacho3.o\
+../metachop/metacho0.o ../metachop/metacho1.o ../parser/verif.o \
+../metachop/auxunpar.o ../metachop/outil.o ../parser/qmemges.o \
+../metachop/chop_com.o
+	g++ -o chop ../metachop/dchop.o ../metachop/dchop0.o ../metachop/dchop1.o ../metachop/dchop2.o ../metachop/dchop3.o chop.o ../parser/auxpars.o ../metachop/metachop.o netachop.o netacho0.o netacho1.o netacho2.o netacho3.o ../metachop/metacho0.o ../metachop/metacho1.o ../metachop/metacho2.o ../parser/verif.o ../metachop/auxunpar.o ../metachop/outil.o ../parser/qmemges.o ../metachop/chop_com.o
+
+
+
+
+
+
+
+
+

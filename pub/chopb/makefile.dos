@@ -1,0 +1,49 @@
+
+all : m_done chopb.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+include ../../makefile.inc
+
+clean : clean_inc
+	- rm chopb chopb.exe
+
+chopb.o : chopb.cc chopb.h
+
+chopb0.o : chopb0.cc chopb.h
+
+chopb1.o : chopb1.cc chopb.h
+
+m_done : chopb.met ../cplusplu/cplus.met
+	-@ mkdir compile.dir
+	@copy chopb.met compile.dir
+	@cd compile.dir 
+	metagen -c++ -path ..\\..\\library\;..\\..\\cplusplu $(METAOPT) chopb.met
+	@-copy chopb.h ..\chopb.h
+	@-copy chopb.cpp ..\chopb.cc
+	@-copy chopb0.cpp ..\chopb0.cc
+	@-copy chopb1.cpp ..\chopb1.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+decomp.cc: decomp.ch
+
+chopper.o : chopper.cc ../library/token.h chopb.h
+
+decomp.o : decomp.cc ../library/token.h chopb.h
+
+CPLUS=../cplusplu/chopper.o ../cplusplu/cplus.o ../cplusplu/cplus0.o ../cplusplu/cplus1.o ../cplusplu/cplus2.o ../cplusplu/cplus3.o ../cplusplu/cplus4.o ../cplusplu/cplus5.o ../cplusplu/cplus6.o ../cplusplu/cplus7.o ../cplusplu/dchop.o ../cplusplu/dchop1.o ../cplusplu/dchop0.o
+OBJECTS = chopb.o chopb0.o chopb1.o decomp.o chopper.o
+
+chopb.exe : $(OBJECTS) 
+	$(C_PLUS) -o chopb $(OBJECTS) $(CPLUS) $(LIBRARY)
+	stubify chopb
+	del chopb
+
+
+
+
+
+

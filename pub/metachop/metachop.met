@@ -1,0 +1,137 @@
+language metachop;
+
+global begin
+    {{
+        extern char * parseLanguage;
+        #include "decmetac.h"
+    }}
+end;
+
+use "chopb.met";
+
+define main_entry;
+    return take prog;
+end;
+
+define prog;
+    declare langTree;
+    take #"language";
+    langTree = maketree(CHOP_DEF,maketree(IDENT,take !IDENT),());
+    {{ parseLanguage = AllocString(Value(langTree));}};
+    take ";";
+    replacetree(langTree,2,take program);
+    return langTree;
+end;
+
+define primary_expression;
+    declare result,expTree,list,statTree,ret;
+    case
+        take "<>" : return maketree(DEF_IDENT)
+        see "<" : return take take_follow
+        take "..." : return take take_follow_list
+        take #"value" :
+            begin
+            take "(";
+            case
+                see !IDENT : statTree
+                    = maketree(VALUE,maketree(IDENT,take !IDENT))
+                take "<>" : statTree = maketree(VALUE,maketree(DEF_IDENT))
+            end;
+            take ")";
+            return statTree;
+            end
+        take #"nextl" :
+            begin
+            take "(";
+            if see !IDENT then
+                statTree = maketree(NEXT,maketree(IDENT,take !IDENT))
+            else
+                begin
+                take "<>";
+                statTree = maketree(NEXT,maketree(DEF_IDENT));
+                end;
+            take ")";
+            return statTree;
+            end
+        take #"parse" :
+            begin
+            {{ { char * theLanguage = currentLanguage;}};
+            statTree = maketree(IN_LANGUAGE,(),());
+            {{ ReplaceTree(statTree,1,MakeString(parseLanguage));}};
+            take "(";
+            {{ SwitchLang(parseLanguage);}};
+            if {{ (ret = the_parse_entry (error_free)) != (PPTREE) -1 }} then
+                replacetree(statTree,2,ret)
+            else
+                begin
+                {{ _lastTree = (PPTREE) 0;}};
+                {{ SwitchLang(theLanguage);}};
+                break;
+                end;
+            {{ _lastTree = (PPTREE) 0;}};
+            {{ SwitchLang(theLanguage);}};
+            {{ ExtUnputBuf();}};
+            
+            /* backtrack the last token */
+            take ")";
+            {{ } }};
+            return maketree(PARSE,statTree);
+            end
+        take #"in" :
+            begin
+            {{ { char * oldParseLanguage = parseLanguage;}};
+            statTree = maketree(IN_LANG,take expression,());
+            {{ parseLanguage = AllocString(Value(statTree));}};
+            replacetree(statTree,2,take statement);
+            {{ free (parseLanguage);}};
+            {{ parseLanguage = oldParseLanguage;}};
+            {{ } }};
+            return statTree;
+            end
+        take "(" : without context inMakeTree do
+            begin
+            if expTree = take expression then
+                begin
+                take ")";
+                expTree = maketree(EXP,expTree);
+                end
+            else
+                begin
+                take ")";
+                expTree = maketree(NIL);
+                end;
+            return expTree;
+            end
+        see #"operator" : return take operator_function_name
+        see "~" : return take qualified_name
+        see !META :
+            begin
+            return maketree(META,take !META);
+            end
+        see !IDENT :
+            if result = take !PUSH_FUNCTION then
+                begin
+                take "(";
+                addlist(list,maketree(IDENT,take !PUSH_ARGUMENT));
+                take ",";
+                addlist(list,take expression);
+                expTree = maketree(EXP_SEQ,list);
+                take ")";
+                return maketree(EXP_LIST,maketree(IDENT,result),expTree);
+                end
+            else
+                return take qualified_name
+        see !STRING : return take string_list
+        take #"va_arg" :
+            begin
+            take "(";
+            expTree = maketree(VA_ARG,take assignment_expression,());
+            take ",";
+            replacetree(expTree,2,take type_name);
+            take ")";
+            return expTree;
+            end
+        default : return take constan
+    end;
+end.
+

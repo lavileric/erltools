@@ -1,0 +1,5 @@
+!include ./makefile.win
+
+erlms.exe : $(OBJECTS)
+	link  $(LNK_FLAGS) /out:erlms.exe $(OBJECTS) $(CPLUS) $(LIBRARY)
+	 

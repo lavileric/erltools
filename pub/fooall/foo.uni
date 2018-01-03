@@ -1,0 +1,48 @@
+
+all : m_done foo chop
+
+META_DIR=../..
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm foo.h foo.cc foo0.cc chopper.cc
+	-rm foo chop 
+	-rm -r compile.dir
+
+test : all_test
+
+#if your grammar becomes too big you will have to foo1 ...
+m_done : foo.met
+	-@ mkdir compile.dir
+	@cp foo.met compile.dir
+	@echo "metagen -c++ foo.met"
+	@( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) foo.met ;\
+	  unify foo.h ../foo.h;\
+	  unify foo.cpp ../foo.cc;\
+	  unify foo0.cpp ../foo0.cc;)
+	@echo "ok" > m_done
+
+foo.o : foo.cc foo.h
+
+foo0.o : foo0.cc foo.h
+
+chopper.cc : chopper.ch chop
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
+
+OBJECTS = foo.o foo0.o chopper.o 
+
+foo : $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o foo $(OBJECTS) $(LIBRARY)
+
+chop : 
+	make -f makefile.cho
+
+
+
+
+
+
+

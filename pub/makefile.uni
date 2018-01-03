@@ -1,0 +1,167 @@
+tobe_done : all
+
+include ../makefile.inc
+
+all :
+	( cd library; $(MAKE) -f makefile.uni all)
+	( cd parser; $(MAKE) -f makefile.uni all)
+	( cd cplusplu ; $(MAKE) -f makefile.uni all)
+	( cd chopb ; $(MAKE) -f makefile.uni all)
+	( cd metachop ; $(MAKE) -f makefile.uni all)
+	($(MAKE) -f makefile.uni metageninstall)
+	($(MAKE) -f makefile.uni metachopinstall)
+	-@ chmod u+rwx $(INSTALL_DIR)/unify
+	cp ./parser/unify $(INSTALL_DIR)
+	chmod u+rwx $(INSTALL_DIR)/unify
+	- cp ./cplusplu/c.set $(INSTALL_DIR)
+	( cd java ; $(MAKE) -f makefile.uni all)
+	( cd config ; $(MAKE) -f makefile.uni all)
+	( cd metab; $(MAKE) -f makefile.uni all)
+##	( cd chunkc; $(MAKE) -f makefile.uni all)
+##	( cd chunkch; $(MAKE) -f makefile.uni all)
+
+syndex_make : 
+	(cd syndex ; $(MAKE) -f makefile.uni all)
+
+test : 
+	(cd cplusplu;$(MAKE) -f makefile.uni testall)
+
+shared :
+	( cd library; $(MAKE) -f makefile.uni shared)
+
+metageninstall :
+	cp ./parser/metagen $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/metagen
+	if [ -f library/libmeta.so ] ; then\
+		(cp library/libmeta.so $(INSTALL_DIR));\
+	fi
+	if [ -f parser/libmetagencore.so ] ; then\
+		(cp ./parser/libmetagencore.so $(INSTALL_DIR));\
+	fi
+	if [ -f parser/libmetagen.so ] ; then\
+		(cp ./parser/libmetagen.so $(INSTALL_DIR));\
+	fi
+
+metachopinstall :
+	cp ./metachop/metachop $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/metachop
+	if [ -f library/libmeta.so ] ; then\
+		(cp library/libmeta.so $(INSTALL_DIR));\
+	fi
+	if [ -f cplusplu/libcplus.so ] ; then\
+		(cp ./cplusplu/libcplus.so $(INSTALL_DIR));\
+	fi
+	if [ -f chopb/libchopb.so ] ; then\
+		(cp ./chopb/libchopb.so $(INSTALL_DIR);)\
+	fi
+	if [ -f metachop/libmetachop.so ] ; then\
+		(cp ./metachop/libmetachop.so $(INSTALL_DIR));\
+	fi
+
+basic :
+	( cd library; $(MAKE) -f makefile.uni all)
+
+prettyprinter : basic
+	( cd cplusplu ; $(MAKE) -f makefile.uni all)
+	- mv ./cplusplu/cplus $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/cplus
+	if [ -f library/libmeta.so ] ; then\
+		(cp library/libmeta.so $(INSTALL_DIR));\
+	fi
+	if [ -f cplusplu/libcplus.so ] ; then\
+		(cp ./cplusplu/libcplus.so $(INSTALL_DIR));\
+	fi
+	- cp ./cplusplu/c.set $(INSTALL_DIR)
+	- cp ./cplusplu/cpb $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpb
+	- cp ./cplusplu/cpbem $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbem
+	- cp ./cplusplu/cpbqem $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbqem
+	- cp ./cplusplu/pcpb $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/pcpb
+	- cp ./cplusplu/cpb.py $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpb.py
+
+pjava : prettyprinter 
+	( cd java ; $(MAKE) -f makefile.uni all) 
+	- mv ./java/pjava $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/pjava
+	if [ -f ./cplusplu/libcplus.so ] ; then\
+		(cp ./cplusplu/libcplus.so $(INSTALL_DIR));\
+	fi
+	if [ -f ./library/libmeta.so ] ; then\
+		(cp library/libmeta.so $(INSTALL_DIR));\
+	fi
+
+clean :
+	( cd library ; $(MAKE) -f makefile.uni clean)
+	( cd parser ; $(MAKE) -f makefile.uni clean)
+	( cd cplusplu ; $(MAKE) -f makefile.uni clean)
+	( cd chopb ; $(MAKE) -f makefile.uni clean)
+	( cd metachop ; $(MAKE) -f makefile.uni clean )
+	( cd config ; $(MAKE) -f makefile.uni clean )
+	( cd chunkc; $(MAKE) -f makefile.uni clean)
+	( cd chunkch; $(MAKE) -f makefile.uni clean)
+	( cd metab; $(MAKE) -f makefile.uni clean)
+	( cd java; $(MAKE) -f makefile.uni clean)
+	( cd vhdl; $(MAKE) -f makefile.uni clean)
+	( cd pythonpars; $(MAKE) -f makefile.uni clean)
+	if [ -d ./syndex ] ; then \
+               (cd syndex ; $(MAKE) -f makefile.uni clean) ; fi
+
+install : 
+	- mv ./parser/metagen $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/metagen
+	- mv ./parser/chop $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/chop
+	- mv ./metachop/metachop $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/metachop
+	- mv ./chopb/chopb $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/chopb
+	- mv ./cplusplu/cplus $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/cplus
+	- mv ./config/configfo $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/configfo
+	- mv ./metab/metab $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/metab
+	- mv ./java/pjava $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/pjava
+	- cp ./cplusplu/c.set $(INSTALL_DIR)
+	- cp ./cplusplu/cpb $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpb
+	- cp ./cplusplu/cpbem $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbem
+	- cp ./cplusplu/cpbqem $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbqem
+	- cp ./cplusplu/pcpb $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/pcpb
+	- cp ./cplusplu/cpb.py $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpb.py
+	- cp ./cplusplu/cpbpretty $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbpretty
+	- cp ./cplusplu/cpbq $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbq
+	- cp ./parser/unify $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/unify
+	if [ -f library/libmeta.so ] ; then\
+		(cp library/libmeta.so $(INSTALL_DIR));\
+	fi
+	if [ -f cplusplu/libcplus.so ] ; then\
+		(cp ./cplusplu/libcplus.so $(INSTALL_DIR));\
+	fi
+	if [ -f chopb/libchopb.so ] ; then\
+		(cp ./chopb/libchopb.so $(INSTALL_DIR));\
+	fi
+	if [ -f metachop/libmetachop.so ] ; then\
+		(cp ./metachop/libmetachop.so $(INSTALL_DIR));\
+	fi
+	if [ -f parser/libmetagencore.so ] ; then\
+		(cp ./parser/libmetagencore.so $(INSTALL_DIR));\
+	fi
+	if [ -f parser/libmetagen.so ] ; then\
+		(cp ./parser/libmetagen.so $(INSTALL_DIR));\
+	fi
+
+
+

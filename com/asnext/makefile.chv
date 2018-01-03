@@ -1,0 +1,45 @@
+INCLUDE_DIR_LOC= -I..\asn -I..\asnext
+
+META_DIR=..\..
+
+all : chop.exe
+
+!include $(META_DIR)\makefile.inc
+
+chop.obj : chop.cc $(META_DIR)\pub\library\token.h
+
+CPLUS=$(META_DIR)\pub\cplusplu\cplus.lib \
+	$(META_DIR)\pub\cplusplu\dchop.obj $(META_DIR)\pub\cplusplu\dchop1.obj \
+	$(META_DIR)\pub\cplusplu\dchop0.obj  
+
+CHOPB=$(META_DIR)\pub\chopb\chopb.obj $(META_DIR)\pub\chopb\chopb0.obj \
+	$(META_DIR)\pub\chopb\chopb1.obj $(META_DIR)\pub\chopb\decomp.obj 
+
+METACHOP=$(META_DIR)\pub\metachop\metachop.obj \
+	 $(META_DIR)\pub\metachop\metacho0.obj \
+	 $(META_DIR)\pub\metachop\decomp0.obj $(META_DIR)\pub\metachop\decomp1.obj\
+	 $(META_DIR)\pub\metachop\decomp2.obj $(META_DIR)\pub\metachop\decomp3.obj\
+	 $(META_DIR)\pub\metachop\auxunpar.obj
+
+CHOPCORE=$(META_DIR)\pub\parser\verif.obj
+
+ASN_OBJECTS = ..\asn\asntiny.$(LIB_SUF)
+
+OBJECTS = asnext.obj asnext0.obj asnext1.obj ..\asn\asnsymbol.obj
+
+chop.exe : chop.obj asnext.obj asnext0.obj $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:chop.exe chop.obj $(OBJECTS) $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(ASN_OBJECTS) $(LIBRARY)
+#	strip chop
+
+
+
+
+
+
+
+
+
+
+
+
+

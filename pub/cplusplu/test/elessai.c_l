@@ -1,0 +1,299 @@
+/***********************************/
+/* fonctions sans valeur de retour */ 
+/***********************************/
+
+func () {}
+
+/* comment */ 
+
+func () {}
+
+/* comment */ 
+
+func ()
+{
+	i = 5 ;/* comment */ 
+}
+
+/* comment */ 
+
+func ()
+{
+	int i = 5 ;
+}
+
+extern func () ;
+func () ;
+
+static  func () {}
+
+const func (); 
+
+const func () {} 
+
+/***********/
+/* un goto */
+/***********/ 
+
+func_goto ()
+{
+	if ( test ) {
+		label : i ;
+	}
+	goto label ;
+	goto label ;
+}
+
+/******************************/
+/* pas de defaut dans un case */
+/******************************/ 
+
+void main ()
+{
+	switch ( b ) {
+		case c : return (6);
+		default : ;
+	} 
+	switch ( b ) {
+		case c : return (7);
+		case e : 
+		default : return (8);
+	} 
+	switch ( b ) {
+		case c : return (6);
+		case e : 
+			switch ( e ) {
+				case 4 : return (6);
+				default : return (8);
+			} 
+	} 
+}
+
+/****************************************************************/
+/* Identificateur trop grands ou trop petits  sur des fonctions */ 
+/* commentaire */
+/****************************************************************/ 
+
+int i ()
+{
+	return (0);
+}
+
+int anticonstitutionnellement ()
+{
+	return (0);
+}
+
+f1 () {}
+
+/* erreur ici */ 
+extern f2 () ;
+
+static  f3 () {}
+
+const f6 (); 
+
+const int f6 () {}
+ 
+/******/ 
+/*c01 */ 
+/******/ 
+/* identificateurs trop petits sur des variables externes */ 
+int v7 ;
+extern int  v8 ;
+static int  v9 ;
+unsigned int    *v1 ;
+int *v2 [5];
+int *(*v3)() ;
+int *v4, v5 = 0 ;
+/*identificateurs trop courts pour les types */ 
+class c {};
+struct c variable ;
+struct i s ;
+
+typedef int t ;
+
+enum en ;
+
+int attrib1::attrib2::f () {}  
+/******/ 
+/*c03 */ 
+/******/ 
+/* utilisation de litteraux a des endroits non autorises */ 
+const int   nbFourchettes = 5 ;
+
+#define nbCuilleres 5 ;
+
+int couteaux = nbFourchettes ;
+int couteaux = 5 ;
+int tiroir [5];
+
+void litteraux_interd ()
+{
+	int elem ;
+	
+	elem = 6 ;
+	elem = nbFourchettes ;
+	elem = nbFourchettes + 6 ;
+	for ( elem = 0 ; elem++ ; elem < 5 ) 
+		elem = elem + j ;
+	elem = 0 ;
+}
+
+/**********************************/
+/* utilisation de l'instruction ? */
+/**********************************/ 
+
+void inst_inter ()
+{
+	elem ? elem : 0 ;
+}
+
+/**********************************/
+/* affectation dans une condition */ 
+/**********************************/
+
+void affect_cond ()
+{
+	if ( a = b ) 
+		a ;
+	while ( a && a <<= b ) 
+		a ;
+	do {
+		a ;
+	} while ( a += b );
+	switch ( a = b ) {
+		case 5 : ;
+		default : ;
+	} 
+	for ( a ; a -= 2 ; ) 
+		b ;
+}
+
+/*****************************************/
+/* affectation dans un appel de fonction */
+/*****************************************/ 
+
+void affectation_appel ()
+{
+	int j, a ;
+	int k = func(j = 1, 2);
+	
+	a = 3 * func(9, k + (j = 3));
+}
+
+/*************************/
+/* affectation multiples */
+/*************************/ 
+
+void affect_multiple ()
+{
+	int a, b, e, c ;
+	int *ptr ;
+	int **pt ;
+	
+	a = b = (a = 5) + 6 ;
+	a = a = 5 ;
+	a = (a = 5) + 7 ;
+	a = a * 3 + 5 ;
+	a = b = a + 5 ;
+	a = a + 5 ;
+	a = (e = b = (a = 6) + 5) + e ;
+	e = (a = b = (a = 6) + 5) + e ;
+	*ptr = *(ptr + a + 5) = (a = 6) + 6 + (*ptr = 8);
+	a = *(ptr + a) = a = 6 ;
+	a = *(ptr + a);
+	e = *(ptr + (a = 7)) = (a = 5) + 6 ;
+	*a = *a++ + 1 ;
+	*(ptr + (a = 6)) = a + 8 ;
+	
+	/* aucune ideee pour detecter ca */ 
+	a = *(*pt++)++ ;
+}
+
+
+
+/************************************************/
+/* declaration de constantes types et variables */
+/************************************************/ 
+
+
+void const_type_variable ()
+{
+#define constant 4
+	const val = 5 ;
+	const int val1 = 9 ;
+	enum constants { const1,const2} ;
+
+	typedef int mon_type ;
+	struct struct_decl { int content ;};
+	struct { int content ; };
+	
+	union union_name union_1,union2 ;
+	int entier ;
+	struct { int content ; } struct1,struct2 ;
+}
+
+
+
+/************************************************/
+/* traitement des #ifdef ... */
+/************************************************/ 
+#if 0
+func_dans_un_if_cpp_avec_un_nom_trop_long () {};
+#endif
+
+
+
+/*********************************************************/
+/* comptage des fonctions variables internes et externes */
+/*********************************************************/ 
+
+char * ( * global_func ) ();
+char * global_name [5] [CONSTANT];
+
+void comptage_variable_1 (param)
+char * param ;
+{
+	#define k 5
+	enum val { orange=5,citron};
+	int i ;
+	i = 5 ;
+	j = 5 ;
+	j = k ;
+	j = orange ;
+	param = orange ;
+
+	i . inconnu = orange ;
+	inconnu . inconnu = orange ;
+
+	debut :
+	goto debut ;
+}
+
+void comptage_variable_2 ( int param)
+{
+	{
+		int j = 6 ;
+		j++;
+	}
+
+	param = 6 ;
+	j = 5 ;
+	pointeur = "Hello";
+}
+
+char * pointeur ;
+
+extern int fonction_externe (); 
+
+void comptage_fonction_1(int param1, int (*param2)(int param1,int param3),void)
+{
+	param3 = 5 ;
+	comptage_variable_1(param3);
+	fonction_inconnue();
+	fonction_externe();
+	comptage_fonction_2();
+}
+
+void comptage_fonction_2() {}

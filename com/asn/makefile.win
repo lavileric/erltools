@@ -1,0 +1,99 @@
+META_DIR=..\..
+
+ASN_LIB = .\asn.$(LIB_SUF)
+
+ASN_LIB_TINY= .\asntiny.$(LIB_SUF)
+
+OBJECTS=asn.obj asn0.obj asn1.obj asn2.obj asn3.obj\
+	compile.obj pretty.obj dchop.obj \
+	verify.obj memorize.obj coding.obj decomp.obj asnsymbol.obj
+
+all : m_done asn.lib asn.exe dasn.exe asntiny.lib
+
+
+!include $(META_DIR)\makefile.inc
+
+clean : clean_inc_appli
+	- $(RM) asn.h
+    - $(RM) asn
+    - $(RM) dasn
+    - $(RM) asn$(LIB_SUF)
+    - $(RM) asntiny$(LIB_SUF)
+    - $(RM) dchop.cc
+    - deltree /y compile.dir
+
+test :
+	asn ref.asn > ref.res 2>\dev\null
+	diff ref.res ref.ref
+	rm ref.res
+	dasn ref.asn ref.bin > ref.res 2>\dev\null
+	diff ref.res dref.ref
+	dasn ref.asn refbad.bin > ref.res 2>\dev\null
+	diff ref.res drefbad.ref
+
+asn.obj : asn.cc asn.h
+
+asn0.obj : asn0.cc asn.h
+
+asn1.obj : asn1.cc asn.h
+
+asn2.obj : asn2.cc asn.h
+
+asn3.obj : asn3.cc asn.h
+
+m_done : asn.met
+	-@ mkdir compile.dir
+    -@ $(RM) compile.dir\asn.met
+	-@ copy asn.met compile.dir\asn.met
+	@echo "metagen -c++ asn.met"
+	cd compile.dir
+    metagen -c++ $(METAOPT) -path $(META_DIR)\pub\library asn.met
+    unify asn.h ..\asn.h
+    unify asn.cpp ..\asn.cc
+    unify asn0.cpp ..\asn0.cc
+    unify asn1.cpp ..\asn1.cc
+    unify asn3.cpp ..\asn3.cc
+    unify asn2.cpp ..\asn2.cc
+    cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+pretty.cc : pretty.ch
+
+compile.cc : compile.ch
+
+dchop.cc : dchop.ch asn.h
+
+verify.cc : verify.ch
+
+coding.cc : coding.ch
+
+memorize.cc : memorize.ch
+
+decomp.cc : decomp.ch
+
+dchopper.cc : dchopper.ch
+
+asnsymbol.cc : asnsymbol.ch 
+
+chopper.obj : chopper.cc $(META_DIR)\pub\library\token.h decasn.h
+
+dchop.obj : dchop.cc asn.h coding.h decasn.h
+
+pretty.obj : pretty.cc asn.h coding.h decasn.h
+
+compile.obj : compile.cc asn.h coding.h decasn.h
+
+verify.obj : verify.cc asn.h coding.h decasn.h
+
+memorize.obj : memorize.cc asn.h coding.h decasn.h
+
+coding.obj : coding.cc coding.h asn.h decasn.h
+
+decomp.obj : decomp.cc coding.h asn.h decasn.h
+
+dchopper.obj : chopper.cc $(META_DIR)\pub\library\token.h decasn.h
+
+asnsymbol.obj : asnsymbol.cc
+

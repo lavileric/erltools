@@ -1,0 +1,35 @@
+#system flags
+RM_UNIX=@echo on
+LIB_SYS= 
+RM=del
+OUT_O=/Fo
+
+#for optimizing change this line
+#OPTIM_FLAGS=-Od -Pcc -w- -v -y -R
+OPTIM_FLAGS=-Pcc -w- -O2
+
+#for BORLAND3 set this line
+BORLAND3_FLAG=-DBORLAND3 -5
+
+#compiler choice
+C_PLUS=bcc32
+C_PLUS_LNK=bcc32 -w-
+MACHFLAGS=-DSUN -DLINUX -DBORLAND $(BORLAND3_FLAG)
+#MACHFLAGS=-DSUN -DLINUX -DBORLAND $(BORLAND3_FLAG) -DWIN_SCRIPT
+
+C_WARNING=
+
+
+#CFLAG1 =$(OPTIM_FLAG)  -Hc   -k -r-   -vi- -a4 -c -b- -Vx -Ve -x
+
+#various flags
+CFLAG1 =  $(OPTIM_FLAG)  -Hc   -k- -r -vi -c -a4 -b- -w-par -w-inl -Vx -Ve -x
+
+C_FLAGS=$(OPTIM_FLAG) $(C_WARNING)
+
+SEP=\\
+LIB_SUF=lib
+OBJ_EXT=obj
+
+#REMOVE FOR BORLAND 3
+# STL_INC=-I$(META_DIR)$(SEP)stl

@@ -1,0 +1,31 @@
+enum machin { verdddddddddddddddt ,/* comment */ 
+	      rouge = 23, /* comment */
+              yelfffffflow /* aa */};
+
+enum machin { verdddddddddddddddt /* comment */ ,
+	      rouge = 23 /* comment */,
+              yelfffffflow /* aa */};
+
+void toto (){}
+
+void toto ( int i, int k, int l ) {}
+
+void maFunction ( int i /* commentaire sur i */ , int middle /* commmentaire sur j j */ , int unevariablePlusgrande /* commmentaire sur j */ 
+    , int small, int other /* comment */ )
+  {}
+
+void maFunction ( int i /* commentaire sur i */ , int middle /* commmentaire sur j j */ , int unevariablePlusgrande /* commmentaire sur j */ 
+		  , int small, int other /* comment */ ,
+
+		  char * stillanother ,// one comment		  
+char * s // one comment
+		  )
+  {}
+void maFunction ( int i =6/* commentaire sur i */ , const int middle /* commmentaire sur j j */ , int unevariablePlusgrande /* commmentaire sur j */ 
+		  , int small, int other /* comment */ ,
+
+		  char * stillanother ,// one comment		  
+tab  stillanothersdfsdfsdfsdf [23] // one comment
+		  )
+  {int i = 1;int j ;j = functionCall(i);
+}

@@ -1,0 +1,80 @@
+all : m_done cplus.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+!include ..\..\makefile.inc
+
+clean : clean_inc
+	- $(RM) cplus.exe
+	- (cd test ; $(MAKE) -f makefile.uni clean);
+
+cplus.obj : cplus.cc cplus.h ..\library\token.h
+
+cplus0.obj : cplus0.cc cplus.h ..\library\token.h 
+
+cplus1.obj : cplus1.cc cplus.h ..\library\token.h
+
+cplus2.obj : cplus2.cc cplus.h ..\library\token.h
+
+cplus3.obj : cplus3.cc cplus.h ..\library\token.h
+
+cplus4.obj : cplus4.cc cplus.h ..\library\token.h
+
+cplus5.obj : cplus5.cc cplus.h ..\library\token.h
+
+cplus6.obj : cplus6.cc cplus.h ..\library\token.h
+
+cplus7.obj : cplus7.cc cplus.h ..\library\token.h
+
+cplus8.obj : cplus8.cc cplus.h ..\library\token.h
+
+cplus9.obj : cplus9.cc cplus.h ..\library\token.h
+
+m_done : cplus.met
+	-@ mkdir compile.dir
+	@copy cplus.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path ..\\..\\library $(METAOPT) cplus.met 
+	@-unify cplus.h ..\cplus.h
+	@-unify cplus.cpp ..\cplus.cc
+	@-unify cplus0.cpp ..\cplus0.cc
+	@-unify cplus1.cpp ..\cplus1.cc
+	@-unify cplus2.cpp ..\cplus2.cc
+	@-unify cplus3.cpp ..\cplus3.cc
+	@-unify cplus4.cpp ..\cplus4.cc
+	@-unify cplus5.cpp ..\cplus5.cc
+	@-unify cplus6.cpp ..\cplus6.cc
+	@-unify cplus7.cpp ..\cplus7.cc
+	@-unify cplus8.cpp ..\cplus8.cc
+	@-unify cplus9.cpp ..\cplus9.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+dchop.cc: dchop.ch
+
+dchop0.cc : dchop0.ch
+	metachop -c++ dchop0.ch > dchop0.cc
+
+dchop1.cc : dchop1.ch
+
+kern.cc : kern.ch
+
+chopper.obj : chopper.cc ..\library\token.h cplus.h deccplus.h
+
+dchop.obj : dchop.cc ..\library\token.h cplus.h deccplus.h
+
+dchop0.obj : dchop0.cc ..\library\token.h cplus.h deccplus.h
+
+dchop1.obj : dchop1.cc ..\library\token.h cplus.h deccplus.h
+
+kern.obj : kern.cc ..\library\token.h cplus.h deccplus.h
+
+LIB_OBJECTS=chopper.obj cplus.obj cplus0.obj cplus1.obj cplus2.obj cplus3.obj cplus4.obj cplus5.obj cplus6.obj cplus7.obj dchop.obj dchop1.obj dchop0.obj cplus8.obj cplus9.obj
+
+OBJECTS =  $(LIB_OBJECTS) kern.obj  
+
+test :
+	(cd test ; $(MAKE) test)
+

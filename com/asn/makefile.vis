@@ -1,0 +1,27 @@
+!include ./makefile.win
+
+asn.lib : m_done $(OBJECTS)
+	-$(RM) $(ASN_LIB)
+	$(LINKER) $(LINK_FLAGS) /out:$(ASN_LIB) asn.obj asn0.obj asn1.obj asn2.obj asn3.obj \
+                             compile.obj pretty.obj  dchop.obj verify.obj  memorize.obj \
+							 coding.obj decomp.obj asnsymbol.obj
+
+asntiny.lib :m_done asn.obj asn0.obj asn1.obj asn2.obj asn3.obj
+ 	-$(RM) $(ASN_LIB_TINY)
+	$(LINKER) $(LINK_FLAGS) /out:$(ASN_LIB_TINY) asn.obj asn0.obj asn1.obj asn2.obj asn3.obj 
+
+
+asn.exe : chopper.obj $(OBJECTS) $(LIBRARY)
+	link $(LNK_FLAGS) /out:asn.exe chopper.obj $(ASN_LIB) $(LIBRARY)
+	 
+dasn.exe : dchopper.obj $(OBJECTS) $(LIBRARY)
+	link $(LNK_FLAGS) /out:dasn.exe dchopper.obj $(ASN_LIB) $(LIBRARY)
+	 
+
+
+
+
+
+
+
+

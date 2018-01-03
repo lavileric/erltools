@@ -1,0 +1,16 @@
+
+all : chop.exe
+
+!include ..\..\makefile.der
+
+chop.obj : chop.cc $(ERLTOOLS_DIR)\pub\library\token.h
+    	
+CPLUS=$(ERLTOOLS_DIR)\pub\cplusplu\chopper.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus0.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus1.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus2.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus3.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus4.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus5.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus6.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus7.obj $(ERLTOOLS_DIR)\pub\cplusplu\dchop.obj $(ERLTOOLS_DIR)\pub\cplusplu\dchop1.obj $(ERLTOOLS_DIR)\pub\cplusplu\dchop0.obj $(ERLTOOLS_DIR)\pub\cplusplu\cplus8.obj
+CHOPB=$(ERLTOOLS_DIR)\pub\chopb\chopb.obj $(ERLTOOLS_DIR)\pub\chopb\chopb0.obj $(ERLTOOLS_DIR)\pub\chopb\chopb1.obj $(ERLTOOLS_DIR)\pub\chopb\decomp.obj 
+METACHOP=$(ERLTOOLS_DIR)\pub\metachop\metachop.obj $(ERLTOOLS_DIR)\pub\metachop\metacho0.obj $(ERLTOOLS_DIR)\pub\metachop\decomp0.obj $(ERLTOOLS_DIR)\pub\metachop\decomp1.obj $(ERLTOOLS_DIR)\pub\metachop\decomp2.obj $(ERLTOOLS_DIR)\pub\metachop\decomp3.obj $(ERLTOOLS_DIR)\pub\metachop\auxunpar.obj  
+CHOPCORE=$(ERLTOOLS_DIR)\pub\parser\verif.obj
+chop.exe : chop.obj vhdl.obj vhdl0.obj $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS_LNK) chop.obj vhdl.obj vhdl0.obj $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+
+
+

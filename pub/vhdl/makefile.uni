@@ -1,0 +1,50 @@
+
+all : m_done vhdl chop
+
+META_DIR=../..
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm -f vhdl.h vhdl.cc vhdl0.cc chopper.cc
+	-rm -f vhdl chop 
+	-rm -rf compile.dir
+
+
+test : all_test
+
+#if your grammar becomes too big you will have to vhdl1 ...
+m_done : vhdl.met
+	-@ mkdir compile.dir
+	@cp vhdl.met compile.dir
+	@echo "metagen -c++ vhdl.met"
+	@( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) vhdl.met ;\
+	  unify vhdl.h ../vhdl.h;\
+	  unify vhdl.cpp ../vhdl.cc;\
+	  unify vhdl0.cpp ../vhdl0.cc;)
+	@echo "ok" > m_done
+
+vhdl.o : vhdl.cc vhdl.h
+
+vhdl0.o : vhdl0.cc vhdl.h
+
+chopper.cc : chopper.ch chop
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
+
+OBJECTS = vhdl.o vhdl0.o chopper.o 
+
+vhdl : $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o vhdl $(OBJECTS) $(LIBRARY)
+
+chop : 
+	make -f makefile.cho
+
+
+
+
+
+
+
+

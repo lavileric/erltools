@@ -1,0 +1,22 @@
+language cont;
+
+lexdefine lex;
+    skip ' ';
+end;
+
+define fufu;
+    declare list,elem1;
+    while see ";" do
+        begin
+        take ";";
+        while see ";" do
+            begin
+            take ";";
+            addlist(list,elem1);
+            addlist(list,elem1);
+            end;
+        end;
+    take #"fifi";
+    take #"fufu";
+end.
+

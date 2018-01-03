@@ -1,0 +1,24 @@
+typedef void PTREE ;
+typedef void * PPP ;
+
+#ifdef AA
+#define AA BB
+#endif
+
+extern fct(int,char *,PTREE );
+toto ( int i , int j , char * fifi)
+{
+#ifdef AA
+	i = j ;
+#else
+	j = j ;
+#endif
+# if defined(AA)
+	i = j ;
+#  else
+	j = j ;
+# endif
+	i = j + *fifi ;
+	a = a + 5 ;
+	if ( i) i;
+}

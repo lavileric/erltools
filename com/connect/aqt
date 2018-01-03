@@ -1,0 +1,2 @@
+qtdispatcher -sender -name $1 -bus $2 -loop $3 &
+qtdispatcher -receiver -name $1 -bus $2 -loop $3

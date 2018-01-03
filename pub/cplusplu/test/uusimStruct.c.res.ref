@@ -1,0 +1,165 @@
+/******************************************************************************/
+/*  Protection                                                                */
+/******************************************************************************/
+#ifndef UUSIM_STRUCT
+#   define UUSIM_STRUCT 
+#   include "commonType.h"
+#   include "commonProt.h"
+#   ifndef __H2SDL__
+#       include "UUSIM_sdef.h"
+#   endif
+    /******************************************************************************/
+    /*  Uusim encoding/decoding sub-type definitions                               */
+    /******************************************************************************/
+#   define UUSIM_MAX_NODEB_RESOURCE 6
+    
+    typedef struct {
+        CchRcsRbsLinkType   nodeB ;
+        int                 resourceOccupancy ;
+    }   FullNodebResourceType ;
+    
+    typedef struct {
+        int                 uplinkScramblingCode ;
+        int                 nodebResourceNb ;
+        CchRcsRbsLinkType   nodebResource [UUSIM_MAX_NODEB_RESOURCE];
+    }   DedicatedPhysicalLinkType ;
+    
+    typedef enum { eOvsf_1, eOvsf_2, eOvsf_4, eOvsf_8, eOvsf_16, eOvsf_32
+        , eOvsf_64, eOvsf_128, eOvsf_256, eOvsf_512 }   ESpreadingFactorType ;
+    
+    typedef struct {
+        DedicatedPhysicalLinkType   physicalUplink ;
+        int                         connectionFrameNumber ;
+        TransportChannelIDType      transportChannelId ;
+    }   UusimDchHeaderType,     *UusimDchHeaderPtrType ;
+    
+    /******************************************************************************/
+    /*  Uusim encoding/decoding type definitions                                  */
+    /******************************************************************************/
+    //  Physical Rach Transfer
+    typedef struct S_UusimPhysicalRachTransfer {
+        CchRcsRbsLinkType   nodebResource ;
+        EncodedPduType      fpData ;
+    }   UusimPhysicalRachTransferType,  *UusimPhysicalRachTransferPtrType ;
+    
+    //  Physical Fach Transfer
+    typedef struct S_UusimPhysicalFachTransfer {
+        CchRcsRbsLinkType   nodebResource ;
+        EncodedPduType      fpData ;
+    }   UusimPhysicalFachTransferType,  *UusimPhysicalFachTransferPtrType ;
+    
+    //  Physical Dch Transfer
+    typedef struct S_UusimPhysicalDchTransfer {
+        UusimDchHeaderType  header ;
+        EncodedPduType      fpData ;
+    }   UusimPhysicalDchTransferType,   *UusimPhysicalDchTransferPtrType ;
+    
+    //  Pccpch Start
+    typedef struct S_UusimPccpchStart {
+        CchRcsRbsLinkType   nodebResource ;
+        int                 resourceOccupancy ;
+        int                 primaryScramblingCode ;
+        int                 pscPower ;    // -350..150
+        int                 sscPower ;    // -350..150
+        int                 cpichPower ;  // -100..500
+        int                 pccpchPower ; // -350..150
+    }   UusimPccpchStartType,   *UusimPccpchStartPtrType ;
+    
+    //  Sccpch Start
+    typedef struct S_UusimSccpchStart {
+        CchRcsRbsLinkType       nodebResource ;
+        int                     resourceOccupancy ;
+        ESpreadingFactorType    spreadingFactor ;
+        int                     ovsfCodeNumber ;
+        int                     maxFachPower ; // -350..150
+        int                     pchPower ;     // -350..150
+        int                     pichPower ;    // -350..150
+    }   UusimSccpchStartType,   *UusimSccpchStartPtrType ;
+    
+    //  Prach Start
+    typedef struct S_UusimPrachStart {
+        CchRcsRbsLinkType       nodebResource ;
+        int                     resourceOccupancy ;
+        ESpreadingFactorType    spreadingFactor ;
+        int                     ovsfCodeNumber ;
+        int                     aichPower ; // -350..150
+    }   UusimPrachStartType,    *UusimPrachStartPtrType ;
+    
+    //  Dpch Start
+    typedef struct S_UusimDpchStart {
+        CchRcsRbsLinkType       nodebResource ;
+        int                     resourceOccupancy ;
+        int                     ulScramblingCode ;
+        int                     minUlChannelCodeLength ;
+        int                     punctureLimit ;
+        int                     dpcchSlotFormat ;
+        int                     ulSirTarget ;
+        ESpreadingFactorType    spreadingFactor ;
+        int                     ovsfCodeNumber ;
+        int                     initialDlTransmissionPower ;
+        int                     maximumDlPower ;
+        int                     minimumDlPower ;
+    }   UusimDpchStartType,     *UusimDpchStartPtrType ;
+    
+    //  Dpch Stop
+    typedef struct S_UusimDpchStop {
+        CchRcsRbsLinkType   nodebResource ;
+        int                 resourceOccupancy ;
+    }   UusimDpchStopType,  *UusimDpchStopPtrType ;
+    
+    //  Uplink Radio Link Quality
+    typedef struct S_UusimUplinkRadioLinkQuality {
+        CchRcsRbsLinkType   nodebResource ;
+        int                 resourceOccupancy ;
+        int                 rscpMeasurement ;
+        int                 iscpMeasurement ;
+        int                 sirMeasurement ; // (also named Ec/Io)
+    }   UusimUplinkRadioLinkQualityType,    *UusimUplinkRadioLinkQualityPtrType ;
+    
+    //  Cell Measurement
+    typedef struct S_UusimCellMeasurement {
+        CchRcsRbsLinkType   nodebResource ;
+        int                 transmittedCarrierPower ;
+        int                 receivedTotalWideBandPower ;
+    }   UusimCellMeasurementType,   *UusimCellMeasurementPtrType ;
+    
+    /* -------------------------------------------------------------------------- */
+    /* General structures                                                         */
+    /* -------------------------------------------------------------------------- */
+    typedef enum { UusimReport_Success, UusimReport_UnknownMessage }    UusimReportType ;
+    typedef enum E_UusimMessageIdType { id_UusimUnknownMessage
+        , id_UusimPhysicalRachTransfer, id_UusimPhysicalFachTransfer
+        , id_UusimPhysicalDchTransfer, id_UusimPccpchStart
+        , id_UusimSccpchStart, id_UusimPrachStart, id_UusimDpchStart
+        , id_UusimDpchStop, id_UusimUplinkRadioLinkQuality
+        , id_UusimCellMeasurement } UusimMessageIdType ;
+    
+    /* Uusim message */
+    typedef struct S_UusimMessageType {
+        UusimMessageIdType  messageId ;
+        
+        union {
+            UusimPhysicalRachTransferPtrType    pPhysicalRachTransfer ;
+            UusimPhysicalFachTransferPtrType    pPhysicalFachTransfer ;
+            UusimPhysicalDchTransferPtrType pPhysicalDchTransfer ;
+            UusimPccpchStartPtrType pPccpchStart ;
+            UusimSccpchStartPtrType pSccpchStart ;
+            UusimPrachStartPtrType  pPrachStart ;
+            UusimDpchStartPtrType   pDpchStart ;
+            UusimDpchStopPtrType    pDpchStop ;
+            UusimUplinkRadioLinkQualityPtrType  pUplinkRadioLinkQuality ;
+            UusimCellMeasurementPtrType pCellMeasurement ;
+        }                    u ;
+        UusimReportType     report ;
+    }   DecodedUusimPduType,    *DecodedUusimPduPtrType ;
+    
+  /******************************************************************************/
+  /*  Protection                                                                */
+  /******************************************************************************/
+#endif
+
+/* UUSIM_STRUCT */
+/******************************************************************************/
+/*                               END OF FILE                                  */
+/******************************************************************************/
+

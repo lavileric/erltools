@@ -1,0 +1,26 @@
+tobe_done : all
+
+!include ../makefile.inc
+
+all :
+	cd erlms
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd erlmsch
+	$(MAKE) -f makefile.vis all
+	cd ..
+
+clean :
+	cd erlms
+	$(MAKE) -f makefile.vis clean
+	cd ..
+	cd erlmsch
+	$(MAKE) -f makefile.vis clean
+	cd ..
+
+
+install :
+        - copy .\erlms\erlms.exe $(INSTALL_DIR_SKIMMED)
+        - copy .\erlmsch\erlmsch.exe $(INSTALL_DIR_SKIMMED)
+
+erlscale : all install

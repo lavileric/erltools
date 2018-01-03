@@ -1,0 +1,81 @@
+all : m_done asn
+
+include ../makefile.inc
+
+clean : clean_inc_appli
+	- rm asn.h asn
+
+testasn : 
+	go32 asn ref.asn > ref.res
+	fc ref.res ref.ref
+	rm ref.res
+
+asn.o : asn.cc asn.h
+
+asn0.o : asn0.cc asn.h
+
+asn1.o : asn1.cc asn.h
+
+asn2.o : asn2.cc asn.h
+
+asn3.o : asn3.cc asn.h
+
+m_done : asn.met
+	-@ mkdir compile.dir
+	-@cp asn.met compile.dir
+	-@echo "metagen -c++ asn.met"
+	@cd compile.dir 
+	go32 $(UTIL_DIR)metagen -c++ $(METAOPT) asn.met 
+	-@unify asn.h ..\\asn.h
+	-@unify asn.cpp ..\\asn.cc
+	-@unify asn0.cpp ..\\asn0.cc
+	-@unify asn1.cpp ..\\asn1.cc
+	-@unify asn2.cpp ..\\asn2.cc
+	-@unify asn3.cpp ..\\asn3.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+pretty.cc : pretty.ch
+
+compile.cc : compile.ch
+
+dchop.cc : dchop.ch asn.h
+
+verify.cc : verify.ch 
+
+coding.cc : coding.ch
+
+memorize.cc : memorize.ch
+
+chopper.o : chopper.cc ../parser/token.h
+
+dchop.o : dchop.cc asn.h coding.h
+
+pretty.o : pretty.cc asn.h coding.h
+
+compile.o : compile.cc asn.h coding.h
+
+verify.o : verify.cc asn.h coding.h
+
+memorize.o : memorize.cc asn.h coding.h
+
+coding.o : coding.cc coding.h asn.h
+
+OBJECTS=asn.o asn0.o asn1.o asn2.o asn3.o  \
+	chopper.o compile.o pretty.o dchop.o \
+	verify.o memorize.o coding.o
+
+asn : $(OBJECTS)
+	gcc -o asn $(OBJECTS) $(LIBRARY)
+
+
+
+
+
+
+
+
+
+

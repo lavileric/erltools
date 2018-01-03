@@ -1,0 +1,27 @@
+
+all : chop.exe
+
+include ../../makefile.inc
+
+chop.o : chop.cc $(ERLTOOLS_DIR)/pub/library/token.h
+
+CPLUS=$(ERLTOOLS_DIR)/pub/cplusplu/chopper.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus0.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus1.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus2.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus3.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus4.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus5.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus6.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus7.o $(ERLTOOLS_DIR)/pub/cplusplu/dchop.o $(ERLTOOLS_DIR)/pub/cplusplu/dchop1.o $(ERLTOOLS_DIR)/pub/cplusplu/dchop0.o
+CHOPB=$(ERLTOOLS_DIR)/pub/chopb/chopb.o $(ERLTOOLS_DIR)/pub/chopb/chopb0.o $(ERLTOOLS_DIR)/pub/chopb/chopb1.o $(ERLTOOLS_DIR)/pub/chopb/decomp.o $(ERLTOOLS_DIR)/pub/cplusplu/cplus8.o
+METACHOP=$(ERLTOOLS_DIR)/pub/metachop/metachop.o $(ERLTOOLS_DIR)/pub/metachop/metacho0.o $(ERLTOOLS_DIR)/pub/metachop/decomp0.o $(ERLTOOLS_DIR)/pub/metachop/decomp1.o $(ERLTOOLS_DIR)/pub/metachop/decomp2.o $(ERLTOOLS_DIR)/pub/metachop/decomp3.o $(ERLTOOLS_DIR)/pub/metachop/auxunpar.o  
+CHOPCORE=$(ERLTOOLS_DIR)/pub/parser/verif.o 
+chop.exe : chop.o vhdl.o vhdl0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS) -o chop vhdl.o vhdl0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	stubify chop
+	del chop
+
+
+
+
+
+
+
+
+
+
+
+

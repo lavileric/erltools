@@ -1,0 +1,20 @@
+void main ()
+{
+    int i ;
+    
+    while ( true ) {
+        // ecrire le code
+    }
+    while ( true ) {
+
+    }
+    while ( true ) {
+      // un premier code
+        i+= 1;
+        // ecrire le code
+    }
+    while ( true ) {
+      // un premier code
+        i+= 1;// ecrire le code
+    }
+}

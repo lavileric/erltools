@@ -1,0 +1,66 @@
+#!/bin/sh
+
+PATH=/usr/local/bin:$PATH
+export PATH
+
+#look if there is a set indication
+name=$1
+SET_ORDER=""
+if [ $name = "-set" ] ; then
+    shift
+    SET_ORDER="-set $1"
+    shift;
+fi
+
+DIRECTORY=$1
+shift
+
+HOME=/usr/local/bin
+export HOME
+
+#give help if no arguments are given
+if [ "$1" = "" ]
+then
+    echo "usage: $0 filename(s)"
+    exit
+fi
+
+#find suffix of name
+for i in $*
+do
+    echo "Processing file $i:"
+    name=`basename $i`
+    suffix=`echo $name | sed 's/.*\.//'`
+
+    #suppress tabulations in file
+    # deltab $i
+
+    #pretty file
+    if [ $suffix = "ch" -o $suffix = "h" -o $suffix = "met" -o $suffix = "cc" -o $suffix = "c" -o $suffix = "cpp" ] ; then
+    	cpbem $SET_ORDER $i ${USER}_res.cpb > error 2>&1;
+
+	echo "done"
+	cat error
+
+	result=`grep "For details see" error`
+
+	if [ $? != 0 ]
+	then
+	    result=`grep "No Error Found" error`
+
+	    if [ $? != 0 ]
+	    then
+		rm -f ${USER}_res.cpb
+	    fi
+	fi
+
+	#replace original file
+	if [ $? != 0 ] ; then
+	    rm -f ${USER}res.cpb
+	    exit $?
+	else
+	    mv ${USER}_res.cpb $i
+	fi
+    fi
+done
+exit 0

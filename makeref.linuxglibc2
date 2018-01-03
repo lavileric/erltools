@@ -1,0 +1,21 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+OUT_O=-o 
+
+#compiler choice
+MACHFLAGS=-mpentium -pipe
+LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
+C_PLUS=g++
+C_PLUS_LNK= g++
+C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wcast-align
+# OPTIM_FLAGS=-O3 -g $(LIBC2FLAGS) 
+OPTIM_FLAGS=-O3 $(LIBC2FLAGS) -fomit-frame-pointer
+#OPTIM_FLAGS=-g $(LIBC2FLAGS)
+C_FLAGS=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS)
+LIB_PRIVATE_SYS=-lpthread
+
+SEP=/
+OBJ_EXT=o 
+LIB_SUF=a
+

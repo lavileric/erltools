@@ -1,0 +1,7 @@
+void main ()
+{
+    if ( 1 ) 
+        throw MyException(8);
+    else 
+        something();
+}

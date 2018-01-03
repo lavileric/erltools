@@ -1,0 +1,8 @@
+i = 5
+j = 8
+
+PRINT "valeur de i+j : ",i + j
+PRINT "valeur de i : ",i
+PRINT "valeur de j : ",j
+PRINT "valeur de j + 2 * ( i+3) : ",j+2*(i+3)
+.

@@ -1,0 +1,155 @@
+all : checkpath
+	@- mkdir $(INSTALL_DIR) 2>/dev/null
+	if [ ! -f makefile ] ; then \
+		chmod 770 outils/updatelinks ;\
+		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
+	if [ -d ./optim ] ; then \
+               (cd optim ; $(MAKE) -f makefile.uni all) ; fi
+	( cd pub ; $(MAKE) -f makefile.uni all)
+	if [ -d ./misc ] ; then \
+               (cd misc ; $(MAKE) -f makefile.uni all) ; fi
+	if [ -d ./com ] ; then \
+               ($(MAKE) -f makefile.uni install ; cd com ; $(MAKE) -f makefile.uni all) ; fi
+	if [ -d ./private ] ; then \
+               (cd private ; $(MAKE) -f makefile.uni all) ; fi
+
+shared :
+	@- mkdir $(INSTALL_DIR) 2>/dev/null
+	if [ ! -f makefile ] ; then \
+		chmod 770 outils/updatelinks ;\
+		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
+	if [ -d ./optim ] ; then \
+               (cd optim ; $(MAKE) -f makefile.uni all) ; fi
+	( cd pub ; $(MAKE) -f makefile.uni shared all)
+	if [ -d ./com ] ; then \
+               ($(MAKE) -f makefile.uni install ; cd com ;\
+				$(MAKE) -f makefile.uni shared) ; fi
+	-cp com/asn/libasn.so $(INSTALL_DIR)
+	-cp com/asnquick/libqconnect.so $(INSTALL_DIR)
+	-cp com/connect/libconnect.so $(INSTALL_DIR)
+
+cleanlib :
+	( cd pub/library ; $(MAKE) -f makefile.uni clean)
+	if [ -d ./com ] ; then $(MAKE) -f makefile.uni clean ; fi
+
+clean : updatelinks
+	( cd pub ; $(MAKE) -f makefile.uni clean)
+	if [ -d ./misc ] ; then \
+               (cd misc ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./com ] ; then \
+               (cd com ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./private ] ; then \
+               (cd private ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./regex ] ; then \
+               (cd regex ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./optim ] ; then \
+               (cd optim ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./regex ] ; then rm -rf regex ; fi
+	if [ -d ./stl ] ; then rm -rf stl ; fi
+	if [ -d ./stl2 ] ; then rm -rf stl2 ; fi
+
+updatelinks :
+	chmod 770 outils/updatelinks
+	find . -name makefile.uni -exec outils/updatelinks {} \; -print
+	find . -name "*.cc" -exec touch {} \;
+	find . -name "m_done" -exec touch {} \;
+
+
+install : checkpath
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	( cd pub ; $(MAKE) -f makefile.uni install)
+	if [ -d ./misc ] ; then \
+               (cd misc ; $(MAKE) -f makefile.uni install) ; fi
+	if [ -d ./com ] ; then \
+               (cd com ; $(MAKE) -f makefile.uni install) ; fi
+	if [ -d ./private ] ; then \
+               (cd private ; $(MAKE) -f makefile.uni install) ; fi
+
+
+prettyprinter :
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	( cd pub ; $(MAKE) -f makefile.uni prettyprinter)
+
+basic :
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	( cd pub ; $(MAKE) -f makefile.uni basic)
+
+optimonly : basic
+	if [ -d ./optim ] ; then \
+               (cd optim ; $(MAKE) -f makefile.uni all) ; fi
+
+pjava :
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	( cd pub ; $(MAKE) -f makefile.uni pjava)
+
+erlscale : prettyprinter
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	if [ -d ./pub/chopb ] ; then \
+		( cd ./pub/chopb ; $(MAKE) -f makefile.uni all); fi
+	if [ -d ./misc ] ; then \
+               (cd misc ; $(MAKE) -f makefile.uni erlscale) ; fi
+
+mv-files : 
+	clean
+	-rm -r ../erltools.net
+	mkdir ../erltools.net
+	mkdir ../erltools.net/erltools
+	tar cf - . | ( cd ../erltools.net/erltools ; tar xf -)
+	(cd ../erltools.net/erltools; 	$(MAKE) -f makefile.uni clean )
+	@- rm -r ../erltools.net/erltools/sema
+	@- rm -r ../erltools.net/erltools/private
+	@- rm -r ../erltools.net/erltools/private.old
+	@- rm -r ../erltools.net/erltools/stl
+	@- rm -r ../erltools.net/erltools/stl2
+	@- rm -r ../erltools.net/erltools/regex
+	@- (cd ../erltools.net;clean;find . -name "CVS" -exec rm -r {} \;)
+	@- (cd ../erltools.net;clean;find . -name "*error" -exec rm {} \;)
+	@- (cd ../erltools.net;rm */*.gz alire readme res1 res2 version doc/readme; tar cvzf erltools.tgz ./erltools)
+
+deliver : net-com
+
+
+net : mv-files
+	- rm -r ../erltools.net/erltools/com
+	mv ../erltools.net/erltools/makefile.bor.net ../erltools.net/erltools/makefile.bor
+	mv ../erltools.net/erltools/makefile.vis.net ../erltools.net/erltools/makefile.vis
+	(cd ../erltools.net ; tar cvzf erltools.tgz erltools)
+	(cd ../erltools.net ; zip -r erltools erltools)
+
+net-com : mv-files
+	- mv ../erltools.net/erltools/makefile.bor.com.net ../erltools.net/erltools/makefile.bor
+	- mv ../erltools.net/erltools/makefile.vis.com.net ../erltools.net/erltools/makefile.vis
+	(cd ../erltools.net ; tar cvzf erltools.tgz erltools)
+	(cd ../erltools.net ; zip -r erltools erltools)
+
+checkpath : 
+	echo "-> create local checker file"
+	@ echo "checker" > ./res1
+	@ echo "non-checker" > ./res2
+	@ echo "-> create erltools dir checker file"
+	@ echo "checker" > $(ERLTOOLS_DIR)/res2
+	@ echo "-> compare both file"
+	@ if [ "`cmp res1 res2`" != "" ] ; then echo "makefile.inc and makekefile.der must be updated, in particular ERLTOOLS_DIR variable" ; exit 1; fi
+	@ echo "-> create locale executable file"
+	@ echo "echo \"#! /bin/sh \""  > check-erltools
+	@ echo "echo \"" `date` "\""  >> check-erltools
+	@ chmod a+rx check-erltools
+	@ echo "-> create res file with it"
+	@ ./check-erltools > res1
+	@ echo "end" >> res1
+	@ echo "-> mv executable file to INSTALL_DIR and execute it"
+	@ mv check-erltools $(INSTALL_DIR)
+	@ (cd pub ; check-erltools > ../res2)
+	@ echo "end" >> res2
+	@ echo "-> compare res of local and distant executable"
+	@ if [ "`cmp res1 res2`" != "" ] ; then echo "INSTALL_DIR must be put in your shell PATH variable" ; exit 1; fi
+
+
+test : 
+	(cd pub;$(MAKE) -f makefile.uni test)
+
+
+
+
+include makefile.inc
+

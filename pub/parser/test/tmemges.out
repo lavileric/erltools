@@ -1,0 +1,39 @@
+Microsoft PLIST Version 1.20
+
+Profile: Function timing, sorted by time.
+Date:    Tue Jan 12 23:52:10 1993
+
+
+Program Statistics
+------------------
+    Total time: 88769.187 milliseconds
+    Time outside of functions: 19.408 milliseconds
+    Call depth: 5
+    Total functions: 13
+    Total hits: 53293
+    Function coverage:  76.9%
+
+Module Statistics for c:\meta\parser\test\tmemges.exe
+-----------------------------------------------------
+    Time in module: 88749.780 milliseconds
+    Percent of time in module: 100.0%
+    Functions in module: 13
+    Hits in module: 53293
+    Module function coverage:  76.9%
+
+         Func          Func+Child        Hit 
+         Time   %         Time      %   count Function
+------------------------------------------------------
+    73936.928  83.3     88749.780 100.0     1 main (tmemges.c:13)
+     5370.384   6.1      5370.384   6.1 16388 LCacheWrite (bmemges.c:318)
+     4118.028   4.6      4118.028   4.6 12287 LCacheRead (bmemges.c:254)
+     2683.863   3.0      2694.571   3.0  8195 CacheWrite (bmemges.c:177)
+     1292.875   1.5      1292.875   1.5  4097 CacheRead (bmemges.c:65)
+      973.318   1.1      3667.889   4.1  8205 CacheMalloc (bmemges.c:440)
+      351.828   0.4      1645.096   1.9  4097 CacheFree (bmemges.c:496)
+       11.416   0.0        13.889   0.0     1 CacheInit (bmemges.c:411)
+       10.708   0.0        10.708   0.0    11 AllocBuffer (bmemges.c:42)
+        0.432   0.0         0.432   0.0    11 FreeElemAlloc (bmemges.c:395)
+        0.000   0.0         0.000   0.0     0 CacheAddrRead (bmemges.c:135)
+        0.000   0.0         0.000   0.0     0 CacheAddrReadM (bmemges.c:155)
+        0.000   0.0         0.000   0.0     0 CacheEnd (bmemges.c:430)

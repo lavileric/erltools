@@ -1,0 +1,4 @@
+// Memory allocator failure simulation and control (_DEBUG only) 
+// A failure hook returns whether to permit allocation 
+typedef BOOL    (PASCAL *AFX_ALLOC_HOOK)(size_t nSize, BOOL bObject
+                , LONG lRequestNumber) ;

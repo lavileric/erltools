@@ -1,0 +1,33 @@
+META_DIR=../..
+
+INCLUDE_DIR_LOC= -I ../asn -I ../asnext
+
+all : chop
+
+include $(META_DIR)/makefile.inc
+
+chop.o : chop.cc $(META_DIR)/pub/library/token.h
+
+CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
+
+CHOPB=$(META_DIR)/pub/chopb/chopb.a
+
+METACHOP=$(META_DIR)/pub/metachop/metachop.a
+
+CHOPCORE=$(META_DIR)/pub/parser/verif.o
+
+ASN_OBJECTS = ../asn/asntiny.a
+
+OBJECTS = ../asnext/asnext.o ../asnext/asnext0.o ../asnext/asnext1.o
+
+SO_LIB = -L $(META_DIR)/pub/cplusplu -lcplus -L $(META_DIR)/pub/chopb -lchopb \
+		-L $(META_DIR)/pub/metachop  -lmetachop -L $(META_DIR)/pub/library -lmeta 
+
+chop : chop.o $(OBJECTS)  $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS_LNK) -o chop $(OBJECTS)  chop.o $(CHOPCORE) $(ASN_OBJECTS) $(SO_LIB) ;\
+	else\
+		$(C_PLUS_LNK) -o chop $(OBJECTS)  chop.o $(CHOPCORE) $(METACHOP) $(CHOPB) $(CPLUS) $(ASN_OBJECTS) $(LIBRARY);\
+	fi
+	strip chop
+

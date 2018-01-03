@@ -1,0 +1,118 @@
+META_DIR=../..
+
+ASN_DIR = ./asn.a
+
+ASN_DIR_TINY= ./asntiny.a
+
+OBJECTS=asn.o asn0.o asn1.o asn2.o asn3.o\
+	compile.o pretty.o dchop.o \
+	verify.o memorize.o coding.o decomp.o asnsymbol.o
+
+OPT_FLAGS= -Wno-empty-body
+
+do_lib :  $(OBJECTS) $(ASN_DIR)($(OBJECTS))
+
+all : m_done do_lib asn dasn $(ASN_DIR_TINY)(asn.o asn0.o asn1.o \
+		asn2.o asn3.o asnsymbol.o)
+
+libasn.so : m_done $(OBJECTS)
+	$(C_PLUS) -shared -o libasn.so $(OBJECTS)
+
+shared : libasn.so all
+
+include $(META_DIR)/makefile.inc
+
+clean : clean_inc_appli
+	- rm -f asn.h asn dasn asn.a asntiny.a
+	- rm -f asn.cc asn0.cc asn1.cc asn2.cc asn3.cc
+	- rm -f chopper.cc compile.cc dchopper.cc memorize.cc verify.cc
+	- rm -f coding.cc dchop.cc decomp.cc pretty.cc asnsymbol.cc
+
+test : 
+	asn ref.asn > ref.res 2>/dev/null
+	diff ref.res ref.ref
+	rm ref.res
+	dasn ref.asn ref.bin > ref.res 2>/dev/null
+	diff ref.res dref.ref
+	dasn ref.asn refbad.bin > ref.res 2>/dev/null
+	diff ref.res drefbad.ref
+
+asnsymbol.o : asnsymbol.cc asn.h
+
+asn.o : asn.cc asn.h
+
+asn0.o : asn0.cc asn.h
+
+asn1.o : asn1.cc asn.h
+
+asn2.o : asn2.cc asn.h
+
+asn3.o : asn3.cc asn.h
+
+m_done : asn.met
+	-@ mkdir compile.dir
+	@cp asn.met compile.dir
+	@echo "metagen -c++ asn.met"
+	( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) -path $(META_DIR)/pub/library asn.met ;\
+          unify asn.h ../asn.h;\
+          unify asn.cpp ../asn.cc;\
+          unify asn0.cpp ../asn0.cc;\
+          unify asn1.cpp ../asn1.cc;\
+          unify asn3.cpp ../asn3.cc;\
+	  unify asn2.cpp ../asn2.cc;)
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+pretty.cc : pretty.ch
+
+compile.cc : compile.ch
+
+dchop.cc : dchop.ch asn.h
+
+verify.cc : verify.ch 
+
+coding.cc : coding.ch
+
+memorize.cc : memorize.ch
+
+decomp.cc : decomp.ch
+
+dchopper.cc : dchopper.ch 
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h decasn.h
+
+$(ASN_DIR)(dchop.o) : dchop.cc asn.h coding.h decasn.h
+
+$(ASN_DIR)(pretty.o) : pretty.cc asn.h coding.h decasn.h
+
+$(ASN_DIR)(compile.o) : compile.cc asn.h coding.h decasn.h
+
+$(ASN_DIR)(verify.o) : verify.cc asn.h coding.h decasn.h
+
+$(ASN_DIR)(memorize.o) : memorize.cc asn.h coding.h decasn.h
+
+$(ASN_DIR)(coding.o) : coding.cc coding.h asn.h decasn.h
+
+$(ASN_DIR)(decomp.o) : decomp.cc coding.h asn.h decasn.h
+
+dchopper.o : chopper.cc $(META_DIR)/pub/library/token.h decasn.h
+
+asn : chopper.o $(ASN_DIR) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		if [ ! -f ./libasn.so ] ; then $(MAKE) libasn.so ; fi ;\
+		$(C_PLUS) -o asn chopper.o -L . -lasn -L $(META_DIR)/pub/library -lmeta;\
+	else\
+		$(C_PLUS) -o asn chopper.o $(ASN_DIR) $(LIBRARY) ;\
+	fi
+
+dasn : dchopper.o $(ASN_DIR) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libasn.so  ;\
+		$(C_PLUS) -o dasn dchopper.o -L . -lasn -L $(META_DIR)/pub/library -lmeta;\
+	else\
+		$(C_PLUS) -o dasn dchopper.o $(ASN_DIR) $(LIBRARY) ;\
+	fi
+
+

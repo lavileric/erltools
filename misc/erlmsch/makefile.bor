@@ -1,0 +1,8 @@
+
+!include ./makefile.win
+
+erlmsch.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(CHOPB) $(LIBRARY)
+	- $(RM) erlmsch.exe
+    - ren msch.exe erlmsch.exe
+

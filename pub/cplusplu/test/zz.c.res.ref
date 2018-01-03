@@ -1,0 +1,29 @@
+main ()
+{
+    if ( a ) {
+        if ( a ) {
+            if ( a ) {
+                if ( a ) {
+  sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+    = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+                }
+                if ( a ) {
+  sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+    = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+                    if ( a ) {
+  sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+    = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+                    }
+                }
+                if ( a ) {
+  sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+    = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+                    if ( a ) {
+  sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+    = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+!include ./makefile.win
+
+metachop.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(CHOPB) $(METAGEN) $(LIBRARY)
+

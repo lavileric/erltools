@@ -1,0 +1,10 @@
+TO INSERT PARSER IN PYTHON
+---------------------------
+
+1) Do a make -f makefile.uni clean all
+2) Log as root
+3) Do a make -f makefile.uni install
+
+
+Tree module is available in python, do a help(Tree) to see available methods.
+

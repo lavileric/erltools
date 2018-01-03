@@ -1,0 +1,4517 @@
+typedef struct toto {
+    int i, j ;              // premiere ligne   
+    char    dslfklsdfjk ;   // deuxieme ligne  
+}   BIDON ;
+
+A ( char *theString )
+    : B(1), C(1), B(*new string("sldkf")), B(1), C(1)
+        , B(*new string("sldkf")), B(1), C(1), B(*new string("sldkf"))
+{
+    string = theString ;
+}
+
+class A : private virtual Bsdskldjf, protected sdlkfjsdlfk
+            , private sdkfslkdf, protected virtual sldkfjlskdfj
+            , public sldfkjlsdkfj, public slkdflskdfjsdkfj, slkdfslkdfj {
+    char    &string ;
+    
+public :
+
+    A ( char *theString = 5 )
+        : B(1), C(1), B(*new string("sldkf")), B(1), C(1)
+            , B(*new string("sldkf")), B(1), C(1), B(*new string("sldkf"))
+    {
+        string = theString ;
+    }
+    
+    ~A () {}
+    
+    const char  *name () const ;
+    const char  *name () ;
+    
+    BEGIN_MESSAGE_MAP(sdklf, slkdfj)
+        ON_WM_PAINT()
+        ON_COMMAND(IDM_ABOUT, OnAbout)
+    END_MESSAGE_MAP()
+    
+    // declare the class as dynamic  
+    DECLARE_DYNAMIC(fofo)
+    DECLARE_SERIAL(fifi)
+    
+private :
+
+    char    *string ;
+};
+
+const char *name () const
+{
+    return string ;
+}
+
+const char *A::name ()
+{
+    return string ;
+}
+
+IMPLEMENT_DYNAMIC(toto, titi)
+IMPLEMENT_SERIAL(toto, titi, 0)
+
+main ()
+{
+    ASSERT(a >= b);
+    ASSERT_VALID(a);
+    TRACE(b);
+    VERIFY(b >= c);
+    
+    TRY 
+    {
+        a >= b ;
+    }
+    CATCH(sdklf, sldkfj)
+    {
+        ss ;
+    }
+    AND_CATCH(dflkj, ksdfj)
+    {
+        a >= b ;
+    }
+    AND_CATCH(sdkf, sdkfj)
+    {}
+    END_CATCH
+    
+    A   toto ;
+    int a, b ;  /* sdflk lskdfj */ 
+    int e ;     /* sdfdsf */ 
+    int a ;
+    
+    if ( a > b ) 
+        a = b++ ;
+    if ( a < b ) 
+        a = c - d ;
+    f(a, b, c);
+    a = new (1, 2) STRING(sdlfk, slkdfj, slkdfj, lskdfj, skldfj, skdjf
+                            , skdfj, ksldf, lksdjf, lskdfj, ksldjf, lksdjf
+                            , slkdjf, skdjf);
+    a = toto(slkdfj, sdlkf, sdlkf, sdflksjdf, sdflksjdf, sldkfjsdlk
+                , sldkfjlsdkfj, slkdfjslkdf, slkdfsldkfj, sdlkfsdlkfj
+                , slkdfsldkf, lskdfksldf, slkdfjslkdf);
+}
+
+toto ()
+{
+    int a ;
+    int b ;
+    
+    a = b ;
+    
+    int c ;
+    int e ;
+    
+    a = b ;
+}
+SortKeyWord ( defaultValue )
+int defaultValue ;
+{
+    register int    Value ;
+    
+    Value = strcmp(lexEl.string, "enum");
+    if ( Value > 0 ) {
+        Value = strcmp(lexEl.string, "pascal");
+        if ( Value > 0 ) {
+            Value = strcmp(lexEl.string, "struct");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "union");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "while");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "unsigned")) {
+                            return (UNSIGNED_c);
+                        }
+                    } else 
+                        return (WHILE_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "typedef");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "switch")) {
+                            return (SWITCH_c);
+                        }
+                    } else 
+                        return (TYPEDEF_c);
+                } else 
+                    return (UNION_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "short");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "static");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "signed")) {
+                            return (SIGNED_c);
+                        }
+                    } else 
+                        return (STATIC_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "return");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "register")) {
+                            return (REGISTER_c);
+                        }
+                    } else 
+                        return (RETURN_c);
+                } else 
+                    return (SHORT_c);
+            } else 
+                return (STRUCT_c);
+        } else if ( Value < 0 ) {
+            Value = strcmp(lexEl.string, "huge");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "int");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "near");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "long")) {
+                            return (LONG_c);
+                        }
+                    } else 
+                        return (NEAR_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "include");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "if")) {
+                            return (IF_c);
+                        }
+                    } else 
+                        return (INCLUDE_c);
+                } else 
+                    return (INT_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "for");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "goto");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "fortran")) {
+                            return (FORTRAN_c);
+                        }
+                    } else 
+                        return (GOTO_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "far");
+                    if ( Value > 0 ) {
+                        if ( !strcmp(lexEl.string, "float")) {
+                            return (FLOAT_c);
+                        }
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "extern")) {
+                            return (EXTERN_c);
+                        }
+                    } else 
+                        return (FAR_c);
+                } else 
+                    return (FOR_c);
+            } else 
+                return (HUGE_c);
+        } else 
+            return (PASCAL_c);
+    } else if ( Value < 0 ) {
+        Value = strcmp(lexEl.string, "_FAR_");
+        if ( Value > 0 ) {
+            Value = strcmp(lexEl.string, "continue");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "do");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "else");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "double")) {
+                            return (DOUBLE_c);
+                        }
+                    } else 
+                        return (ELSE_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "define");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "default")) {
+                            return (DEFAULT_c);
+                        }
+                    } else 
+                        return (DEFINE_c);
+                } else 
+                    return (DO_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "case");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "char");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "cdecl")) {
+                            return (CDECL_c);
+                        }
+                    } else 
+                        return (CHAR_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "break");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "auto")) {
+                            return (AUTO_c);
+                        }
+                    } else 
+                        return (BREAK_c);
+                } else 
+                    return (CASE_c);
+            } else 
+                return (CONTINUE_c);
+        } else if ( Value < 0 ) {
+            Value = strcmp(lexEl.string, "HUGE");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "PROG_EXIT");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "TOKEN_EXIT");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "PUSH_CALL_AFF")) {
+                            return (PUSH_CALL_AFF_c);
+                        }
+                    } else 
+                        return (TOKEN_EXIT_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "PASCAL");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "NEAR")) {
+                            return (NEAR1_c);
+                        }
+                    } else 
+                        return (PASCAL1_c);
+                } else 
+                    return (PROG_EXIT_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "CDECL");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "FORTRAN");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "FAR")) {
+                            return (FAR1_c);
+                        }
+                    } else 
+                        return (FORTRAN1_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, ")");
+                    if ( Value > 0 ) {
+                        if ( !strcmp(lexEl.string, "CASE_EXIT")) {
+                            return (CASE_EXIT_c);
+                        }
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "(")) {
+                            return (POUV_c);
+                        }
+                    } else 
+                        return (PFER_c);
+                } else 
+                    return (CDECL1_c);
+            } else 
+                return (HUGE1_c);
+        } else 
+            return (_FAR__c);
+    } else 
+        return (ENUM_c);
+    return (defaultValue);
+}
+
+UpSortKeyWord ( value )
+int value ;
+{
+    register char   *ptSource = lexEl.string ;
+    
+    for (; *ptSource ; ptSource++ ) 
+        *ptSource = toupper(*ptSource);
+    return SortKeyWord(value);
+}
+
+Lex_c ()
+{
+    char    *_ptString ;
+    int _nbCharact ;
+    int bidon = oldLine = line ;
+    
+    ptStockBuf =  - 1 ;
+    while ( c == ' ' || c == '\t' || c == '\r' || c == '\n') 
+        NextChar();
+    ptStockBuf =  - 1 ;
+    *lexEl.string = '\0';
+    _nbCharact = 0 ;
+    tokenAhead = 0 ;
+    _ptString = lexEl.string ;
+    switch ( c ) {
+        case '#' : 
+            NextChar();
+            switch ( c ) {
+                case 'i' : 
+                    NextChar();
+                    switch ( c ) {
+                        case 'n' : 
+                            NextChar();
+                            if ( GetStringS("clude", 1)) {
+                                lexEl.Value = DIESINCLUDE_c ;
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                return (1);
+                            } else {
+                                UnputChar(1);
+                                goto _exitDumpToken3 ;
+                            }
+                            break ;
+                        case 'f' : 
+                            NextChar();
+                            switch ( c ) {
+                                case 'd' : 
+                                    NextChar();
+                                    if ( GetStringS("ef", 1)) {
+                                        lexEl.Value = DIESIFDEF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken5 ;
+                                    }
+                                    break ;
+                                case 'n' : 
+                                    NextChar();
+                                    if ( GetStringS("def", 1)) {
+                                        lexEl.Value = DIESIFNDEF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken5 ;
+                                    }
+                                    break ;
+                                    _exitDumpToken5 : ;
+                                default : 
+                                    lexEl.Value = DIESIF_c ;
+                                    *_ptString = '\0';
+                                    firstOnLine = 0 ;
+                                    tokenAhead = 1 ;
+                                    return (1);
+                            } 
+                            break ;
+                            _exitDumpToken3 : ;
+                        default : 
+                            UnputChar(1);
+                            goto _exitDumpToken2 ;
+                    } 
+                    break ;
+                case 'd' : 
+                    NextChar();
+                    if ( GetStringS("efine", 1)) {
+                        lexEl.Value = DIESDEFINE_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'e' : 
+                    NextChar();
+                    switch ( c ) {
+                        case 'l' : 
+                            NextChar();
+                            switch ( c ) {
+                                case 's' : 
+                                    NextChar();
+                                    if ( GetStringS("e", 1)) {
+                                        lexEl.Value = DIESELSE_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken10 ;
+                                    }
+                                    break ;
+                                case 'i' : 
+                                    NextChar();
+                                    if ( GetStringS("f", 1)) {
+                                        lexEl.Value = DIESELIF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken10 ;
+                                    }
+                                    break ;
+                                    _exitDumpToken10 : ;
+                                default : 
+                                    UnputChar(1);
+                                    goto _exitDumpToken9 ;
+                            } 
+                            break ;
+                        case 'n' : 
+                            NextChar();
+                            if ( GetStringS("dif", 1)) {
+                                lexEl.Value = DIESENDIF_c ;
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                return (1);
+                            } else {
+                                UnputChar(1);
+                                goto _exitDumpToken9 ;
+                            }
+                            break ;
+                            _exitDumpToken9 : ;
+                        default : 
+                            UnputChar(1);
+                            goto _exitDumpToken2 ;
+                    } 
+                    break ;
+                case 'l' : 
+                    NextChar();
+                    if ( GetStringS("ine", 1)) {
+                        lexEl.Value = DIESLINE_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'u' : 
+                    NextChar();
+                    if ( GetStringS("ndef", 1)) {
+                        lexEl.Value = DIESUNDEF_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'p' : 
+                    NextChar();
+                    if ( GetStringS("ragma", 1)) {
+                        lexEl.Value = DIESPRAGMA_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                    _exitDumpToken2 : ;
+                default : 
+                    lexEl.Value = DIES_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case ';' : 
+            NextChar();
+            lexEl.Value = PVIR_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '=' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = EGALEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken18 : ;
+                default : 
+                    lexEl.Value = EGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case ',' : 
+            NextChar();
+            lexEl.Value = VIRG_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '{' : 
+            NextChar();
+            lexEl.Value = AOUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '}' : 
+            NextChar();
+            lexEl.Value = AFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '*' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = ETOIEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '*' : 
+                    NextChar();
+                    if ( GetStringS("=", 1)) {
+                        lexEl.Value = ETOIETOIEGAL_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken23 ;
+                    }
+                    break ;
+                    _exitDumpToken23 : ;
+                default : 
+                    lexEl.Value = ETOI_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '(' : 
+            NextChar();
+            lexEl.Value = POUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ')' : 
+            NextChar();
+            lexEl.Value = PFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '[' : 
+            NextChar();
+            lexEl.Value = COUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ']' : 
+            NextChar();
+            lexEl.Value = CFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ':' : 
+            NextChar();
+            lexEl.Value = DPOI_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '%' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = POURCEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken31 : ;
+                default : 
+                    lexEl.Value = POURC_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '+' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = PLUSEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '+' : 
+                    NextChar();
+                    lexEl.Value = PLUSPLUS_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken33 : ;
+                default : 
+                    lexEl.Value = PLUS_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '-' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = TIREEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '-' : 
+                    NextChar();
+                    lexEl.Value = TIRETIRE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '>' : 
+                    NextChar();
+                    lexEl.Value = TIRESUPE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken36 : ;
+                default : 
+                    lexEl.Value = TIRE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '<' : 
+            NextChar();
+            switch ( c ) {
+                case '<' : 
+                    NextChar();
+                    switch ( c ) {
+                        case '=' : 
+                            NextChar();
+                            lexEl.Value = INFEINFEEGAL_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                            break ;
+                            _exitDumpToken41 : ;
+                        default : 
+                            lexEl.Value = INFEINFE_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                    } 
+                    break ;
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = INFEEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken40 : ;
+                default : 
+                    lexEl.Value = INFE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '>' : 
+            NextChar();
+            switch ( c ) {
+                case '>' : 
+                    NextChar();
+                    switch ( c ) {
+                        case '=' : 
+                            NextChar();
+                            lexEl.Value = SUPESUPEEGAL_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                            break ;
+                            _exitDumpToken45 : ;
+                        default : 
+                            lexEl.Value = SUPESUPE_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                    } 
+                    break ;
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = SUPEEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken44 : ;
+                default : 
+                    lexEl.Value = SUPE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '&' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = ETCOEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '&' : 
+                    NextChar();
+                    lexEl.Value = ETCOETCO_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken48 : ;
+                default : 
+                    lexEl.Value = ETCO_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '|' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = VBAREGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '|' : 
+                    NextChar();
+                    lexEl.Value = VBARVBAR_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken51 : ;
+                default : 
+                    lexEl.Value = VBAR_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '^' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = CHAPEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken54 : ;
+                default : 
+                    lexEl.Value = CHAP_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '?' : 
+            NextChar();
+            lexEl.Value = INTE_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '!' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = EXCLEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                    _exitDumpToken57 : ;
+                default : 
+                    lexEl.Value = EXCL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+        case '~' : 
+            NextChar();
+            lexEl.Value = TILD_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '.' : 
+            NextChar();
+            switch ( c ) {
+                case '.' : 
+                    NextChar();
+                    if ( GetStringS(".", 1)) {
+                        lexEl.Value = POINPOINPOIN_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken60 ;
+                    }
+                    break ;
+                    _exitDumpToken60 : ;
+                default : 
+                    lexEl.Value = POIN_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            } 
+            break ;
+            _exitDumpToken0 : ;
+        default : break ;
+    } 
+    if ( ptStockBuf >  - 1 ) 
+        UnputBuf();
+    *lexEl.string = '\0';
+    _nbCharact = 0 ;
+    tokenAhead = 0 ;
+    _ptString = lexEl.string ;
+    switch ( c ) {
+        case 'a' : 
+        case 'b' : 
+        case 'c' : 
+        case 'd' : 
+        case 'e' : 
+        case 'f' : 
+        case 'g' : 
+        case 'h' : 
+        case 'i' : 
+        case 'j' : 
+        case 'k' : 
+        case 'l' : 
+        case 'm' : 
+        case 'n' : 
+        case 'o' : 
+        case 'p' : 
+        case 'q' : 
+        case 'r' : 
+        case 's' : 
+        case 't' : 
+        case 'u' : 
+        case 'v' : 
+        case 'w' : 
+        case 'x' : 
+        case 'y' : 
+        case 'z' : 
+        case 'A' : 
+        case 'B' : 
+        case 'C' : 
+        case 'D' : 
+        case 'E' : 
+        case 'F' : 
+        case 'G' : 
+        case 'H' : 
+        case 'I' : 
+        case 'J' : 
+        case 'K' : 
+        case 'L' : 
+        case 'M' : 
+        case 'N' : 
+        case 'O' : 
+        case 'P' : 
+        case 'Q' : 
+        case 'R' : 
+        case 'S' : 
+        case 'T' : 
+        case 'U' : 
+        case 'V' : 
+        case 'W' : 
+        case 'X' : 
+        case 'Y' : 
+        case 'Z' : 
+        case '_' : 
+            while ('a' <= c && c <= 'z'
+                     || 'A' <= c && c <= 'Z'
+                     || c == '_'
+                     || '0' <= c && c <= '9') {
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+            }
+            {
+                *_ptString = '\0';
+                firstOnLine = 0 ;
+                tokenAhead = 1 ;
+                lexEl.Value = SortKeyWord(IDENT_c);
+                return (1);
+            }
+            break ;
+        case '"' : 
+            NextChar();
+            while ( c != EOF ) {
+                switch ( c ) {
+                    case '"' : 
+                        NextChar();
+                        if ( c == '"') {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        } else {
+                            {
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                lexEl.Value = STRING_c ;
+                                return (1);
+                            }
+                        }
+                        break ;
+                    case '\\' : 
+                        NextChar();
+                        {
+                            if ( _nbCharact + strlen("\\") < MAXLENGTH ) 
+                                strcpy(_ptString, "\\");
+                            _nbCharact += strlen("\\");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        if ( !(c == '\r')) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        } else {
+                            if ( !(c != EOF && NextChar())) 
+                                ;
+                        }
+                        break ;
+                    default : 
+                        if ( c != EOF ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                        break ;
+                } 
+            }
+            break ;
+        case '\'' : 
+            NextChar();
+            while ( c != EOF ) {
+                if ( GetString("'", 1) && NextChar()) {
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = CHARACT_c ;
+                        return (1);
+                    }
+                } else if ( c != EOF ) {
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                } else 
+                    ;
+            }
+            break ;
+        case '1' : 
+        case '2' : 
+        case '3' : 
+        case '4' : 
+        case '5' : 
+        case '6' : 
+        case '7' : 
+        case '8' : 
+        case '9' : 
+            while ('0' <= c && c <= '9') {
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+            }
+            switch ( c ) {
+                case 'l' : 
+                case 'L' : 
+                    NextChar();
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = LINTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                case 'e' : 
+                case 'E' : 
+                    NextChar();
+                    {
+                        if ( _nbCharact + strlen("e") < MAXLENGTH ) 
+                            strcpy(_ptString, "e");
+                        _nbCharact += strlen("e");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    if ( c == '+' || c == '-') {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    while ('0' <= c && c <= '9') {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = FLOAT_c ;
+                        return (1);
+                    }
+                    break ;
+                case '.' : 
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                    while ('0' <= c && c <= '9') {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    if ((c == 'e' || c == 'E') && NextChar()) {
+                        {
+                            if ( _nbCharact + strlen("e") < MAXLENGTH ) 
+                                strcpy(_ptString, "e");
+                            _nbCharact += strlen("e");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        if ( c == '+' || c == '-') {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                        while ('0' <= c && c <= '9') {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = FLOAT_c ;
+                        return (1);
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = INTEGER_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            } 
+            break ;
+        case '0' : 
+            NextChar();
+            switch ( c ) {
+                case 'x' : 
+                case 'X' : 
+                    NextChar();
+                    {
+                        if ( _nbCharact + strlen("0x") < MAXLENGTH ) 
+                            strcpy(_ptString, "0x");
+                        _nbCharact += strlen("0x");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    while ('0' <= c && c <= '9'
+                             || 'a' <= c && c <= 'f'
+                             || 'A' <= c && c <= 'F') {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = INTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                case '0' : 
+                case '1' : 
+                case '2' : 
+                case '3' : 
+                case '4' : 
+                case '5' : 
+                case '6' : 
+                case '7' : 
+                    {
+                        if ( _nbCharact + strlen("0") < MAXLENGTH ) 
+                            strcpy(_ptString, "0");
+                        _nbCharact += strlen("0");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    while ('0' <= c && c <= '7') {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = INTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            if ( _nbCharact + strlen("0") < MAXLENGTH ) 
+                                strcpy(_ptString, "0");
+                            _nbCharact += strlen("0");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = INTEGER_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            } 
+            break ;
+        case '$' : 
+            NextChar();
+            if ( !(c == '(')) {
+                while ('a' <= c && c <= 'z'
+                         || 'A' <= c && c <= 'Z'
+                         || '0' <= c && c <= '9'
+                         || c == '_') {
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                }
+            } else {
+                int nbPar = 0 ;
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+                while ( c != EOF ) {
+                    switch ( c ) {
+                        case '(' : 
+                            nbPar++ ;
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                            break ;
+                        case '\n' : 
+                            {
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                lexEl.Value = META_c ;
+                                return (1);
+                            }
+                            break ;
+                        case ')' : 
+                            if ( !nbPar ) {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                                {
+                                    *_ptString = '\0';
+                                    firstOnLine = 0 ;
+                                    tokenAhead = 1 ;
+                                    lexEl.Value = META_c ;
+                                    return (1);
+                                }
+                            } else {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                                nbPar-- ;
+                            }
+                            break ;
+                        default : 
+                            if ( c != EOF ) {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                            }
+                            break ;
+                    } 
+                }
+            }
+            {
+                *_ptString = '\0';
+                firstOnLine = 0 ;
+                tokenAhead = 1 ;
+                lexEl.Value = META_c ;
+                return (1);
+            }
+            break ;
+        case '/' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = SLASEGAL_c ;
+                        return (1);
+                    }
+                    break ;
+                case '*' : 
+                    NextChar();
+                    {
+                        int level = 0 ;
+                        begin_comment();
+                        while ( c != EOF ) {
+                            if ( GetString("/*", 1) && NextChar()) {
+                                level++ ;
+                                {
+                                    if ( _nbCharact + strlen("/*")
+                                         < MAXLENGTH ) 
+                                        strcpy(_ptString, "/*");
+                                    _nbCharact += strlen("/*");
+                                    _ptString = lexEl.string + _nbCharact ;
+                                }
+                            } else if ( GetString("*/", 1) && NextChar()) {
+                                if ( !level ) {
+                                    {
+                                        store_comment_line(_nbCharact);
+                                        _nbCharact = 0 ;
+                                        _ptString = lexEl.string ;
+                                        ptStockBuf =  - 1 ;
+                                    }
+                                    {
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return Lex_c();
+                                    }
+                                } else {
+                                    level-- ;
+                                    {
+                                        if ( _nbCharact + strlen("*/")
+                                             < MAXLENGTH ) 
+                                            strcpy(_ptString, "*/");
+                                        _nbCharact += strlen("*/");
+                                        _ptString = lexEl.string
+                                             + _nbCharact ;
+                                    }
+                                }
+                            } else if ( c == '\n' && NextChar()) {
+                                {
+                                    store_comment_line(_nbCharact);
+                                    _nbCharact = 0 ;
+                                    _ptString = lexEl.string ;
+                                    ptStockBuf =  - 1 ;
+                                }
+                            } else if ( c == '\r' && NextChar()) {} else 
+if ( c != EOF ) {
+    {
+        if ( _nbCharact++ < MAXLENGTH ) 
+            *_ptString++ = c ;
+        NextChar();
+    }
+} else 
+    ;
+                        }
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = SLAS_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            } 
+            break ;
+    } 
+    line = oldLine ;
+    sprintf(errStr, "Error unexpected \"%s\" at line %d \n", GetLexString()
+                , line);
+    PrintError(errStr, 0);
+    lexEl.Value =  - 1 ;
+}
+typedef char    *PTREE ;
+
+extern int  isVirtMod ;         /* est ce que la decompilation
+                                  se fait en mode virtuel? */ 
+extern int  currLine ;          /* la ligne courante */ 
+extern int  rightMargin ;       /* la marge droite */ 
+extern int  isRefT ;            /* comptabilise le nombre
+                                  de marques trouvees */ 
+extern PTREE    fatherRef ;
+extern int  xFather, yFather ;  /* coordonnees du pere lors
+                                  d'une decompilation*/ 
+
+main () {}
+main ()
+{
+    asdklsd
+         + lsdjf * lskjf * lskjf * lksjdf * lksjdf * lksjf * lksf * lksjf
+             * lksjdf * slkdfj * slkdjf * lskdjf * sklfj
+         + lksdfj + lksjdf + lkjsdf + lksdfj + lksjdf + lksdjf + slkdfj
+         + lsdkfj + lskdfj + lksjdf + lksdfj + lkjsdf + lksdjf + lsdkjf
+         + slkdfj ;
+    a = (lskdf, lsdflksdjf, sldkfjlskdf, lksdjflskdf, sldkfjsldkfj, lskdf
+            , lsdflksdjf, sldkfjlskdf, lksdjflskdf, sldkfjsldkfj
+            , lskdflksdf, sldkfjlskdfj, lskdfjlksdfj, slkdfjlskdfj
+            , lksjdflksdjf, slkdfjsldkf, sldkfslkdfj, slkdfjlskdfj, lskdf
+            , lsdflksdjf, sldkfjlskdf, lksdjflskdf, sldkfjsldkfj
+            , lskdflksdf, sldkfjlskdfj, lskdfjlksdfj, slkdfjlskdfj, lskdf
+            , lsdflksdjf, sldkfjlskdf, lksdjflskdf, sldkfjsldkfj
+            , lskdflksdf, sldkfjlskdfj, lskdfjlksdfj, slkdfjlskdfj
+            , lksjdflksdjf, slkdfjsldkf, sldkfslkdfj, slkdfjlskdfj
+            , lksjdflksdjf, slkdfjsldkf, sldkfslkdfj, slkdfjlskdfj, lskdf
+            , lsdflksdjf, sldkfjlskdf, lksdjflskdf, sldkfjsldkfj
+            , lskdflksdf, sldkfjlskdfj, lskdfjlksdfj, slkdfjlskdfj
+            , lksjdflksdjf, slkdfjsldkf, sldkfslkdfj, slkdfjlskdfj
+            , lskdflksdf, sldkfjlskdfj, lskdfjlksdfj, slkdfjlskdfj
+            , lksjdflksdjf, slkdfjsldkf, sldkfslkdfj, slkdfjlskdfj);
+}
+main ()
+{
+    (sdfkldsfj * lskdfjlskdf * lskdfjd * lskdjfsldkfj * sldkfjlskdfj
+                     * (lskdjflksdfj + sldkflsdkf + lskdfffffjflskdfj
+                         + lskdffffffffflksdfj + lksdfjldkf)
+                     * (lskdjflksdfj + sldkflsdkf + lskdjflskdfj
+                         + lskdflksdfj + lksdfjldkf)
+                 + lskdflskdjf + lsdjskdlfj + lsdkjflskdfj + lskdflsdkfj)
+             * sldkfjsd * lskdjf * lskdjflsdkf * lskdfjskdfj * lksdfskdfj
+         + lsdkjf + lskdjflskdjf + lskdjflsdkfj + lskdjflskdjf
+         + lksjdfkjsdf ;
+}
+main ()
+{
+    if ( a = b ) {
+        if ( a = b ) {
+            if ( a = b ) {
+                if ( a = b ) {
+                    if ( a = b ) {
+                        if ( a = b ) {
+                            if ( a = b ) {
+                                if ( a = b ) {
+                                    if ( a = b ) {
+                                        if ( a = b ) {
+if ( a < b ) {
+    alskdfjklsd = aslkdf
+         + akdflk
+             * ffifi(asfdk, aklsdf, alkdf, aklsjf
+                        , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj
+                             + lksdjflskdf + lskdflsdkf + lskflksdf
+                             + lksdfjlksdf + lksdflksdjf
+                        , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+                        , aklsdj, alsdk);
+}                                           
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+main ()
+{
+    alskdfjklsd = aslkdf
+         + akdflk
+             * ffifi(asfdk, aklsdf, alkdf, aklsjf
+                        , lskdfj * lskdjf * lskdjf * lskdjf * lskdjf
+                             * lskjdf * lskdjf * lskdfj * sdlkjf * lskdjf
+                             * lskdjf
+                        , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj
+                             + lksdjflskdf + lskdflsdkf + lskflksdf
+                             + lksdfjlksdf + lksdflksdjf
+                        , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+                        , aklsdj, alsdk);
+}
+main ()
+{
+    if ( slkdjf
+             && lskdfjlskdf + sdlfkj + slkdf + skldfj + lsdfj + lsdjf
+                     + sldfkdsf * tuorutoi * lskdjfl * lksdjfl * lskdjfl
+                     + fonct(slkdfj, sdklf, lksdf, skldfj, skldfj, slkdf
+                                , slkdfj, skfj, skldfj)
+                         * sdfjlsd * lskdf * lksdjf * lsdkfj * lsjdf
+                         * lsdkjf * lksjdf * lkjsf * lskdjf
+                 == 0
+             && sldkfskdlfj
+             && skdflksdfj
+             && lskdfsldkfj
+             && lskdjflksdfj
+             && lskdfslkdfj
+             && (lskjflskdfj
+                     || slkdf
+                     || lksdflksjdflksdfj
+                     || lskdjflskdjf
+                     || kdsflksdf
+                     || skdflksdfj
+                     || slkdfjlskdjf
+                     || ksdfjlksd && sdlkjfsdklf)
+             && lskjflskdfj
+         || slkdf
+         || lksdflksjdflksdfj
+         || lskdjflskdjf
+         || kdsflksdf
+         || skdflksdfj
+         || slkdfjlskdjf
+         || ksdfjlksd && sdlkjfsdklf && slkjdflskdjf ) 
+        a = b ;
+    if ( lsafjksdflk
+             && slkdjflskdjf
+             && sldkjflskdfj
+             && lskdjflskdf
+             && slfjlksfj
+             && sdlfkjsld
+             && klsdfkl ) 
+        b = c ;
+    a = fifi(askdfj, aksdf, lakjdf, aksdjf, akldsjf, aklsdjf, adlkfj
+                , slkdfj, lkad, aksld, aksdj, akdklk);
+}
+main ()
+{
+    int i ;
+    
+    igkjflkgjflgkjflkjlfkglfkgflkgjfkgflgkflkgfgk = i = tototoo = tutuuuu
+         = sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+         = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh
+                         * iiii * kkkkk * llllll * kkkkkkkkkk * ffafasd
+                         * sldfk
+                     + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf
+                     + laflaf + sdflksdfj)
+                 * tututuut * titititi * fififif * tititi * fofofo
+                 * rararar * dififii * sdflkjsdlkf * lsdflksdjf
+                 * lksdjflksdjf * a
+             + 5
+             + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c
+                 * b * c * c * b * c
+                 * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n
+                     / o / p / q / r / s / t / u / v / w / x / y / z)
+                 * c * a * b
+             + u ;
+    if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+             + lakfaksdfj + adfklakdf + lskflskdf
+         < slkdf + lsdflskdf + sldkfldsk ) 
+        a = b ;
+}
+main ()
+{
+    int i ;
+    
+    printf("ok");
+    i = i + 5 + k + l + m + n + p + q + r + s + t + u + v
+         + w * a * b * c * d * e * f * g * h * i * j * k * l * e * f * g
+             * h * i * j * k * l
+         + w * a * b * c * d * e * f * g * h * i * j * k * l
+         + w * a * b * c * d * e * f * g * h * i * j * k * l
+         + w * a * b * c * d * e * f * g * h * i * j * k * l + x + y + z
+         + k + l + m + n + p + q + r + s + t + u + v + w + x + y + z + k
+         + l + m + n + p + q + r + s + t + u + v + w + x + y + z + k + l
+         + m + n + p + q + r + s + t + u + v + w + x + y + z ;
+    i = i * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i
+         * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i
+         * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i * i
+         * i * i * i * i * i * i * i * i * i * i ;
+}
+/*************************************************************************************************
+                                                                                                  
+                                  Comment Describing the whole program                            
+                                                                                                  
+  *************************************************************************************************/ 
+typedef int type_def ;
+
+/*************************************************************************************************
+                                   Comment explaining the function                                
+  *************************************************************************************************/ 
+
+function ()
+
+/* comment on the function name */ 
+/*
+  comment on parameters which are not here
+  another comment 
+  comment on the body of function  
+    */ 
+{
+    int c, ident ;
+    
+    c = ident ;
+    
+    /* value of c becomes ident */ 
+    c = ident/*  ident is a parameter of function  */ ;
+    proc_call(c/*  comment on the parameter  */ );
+    
+    /* comment before printf
+      which has got more than one line
+             
+      which has got more than one line 
+      another comment before */ 
+    printf(/*printf
+                      
+             comm1*/ "ident\n"/* comm2 */ );
+    ident = /* here */ c/*
+                          comment for ident c 
+                          prepost 
+                                               */ ;
+}
+
+function2 ( a, b )/*  now we have got parameters, it's better  */ 
+int a, b ;
+{}/*
+     this function doesn't do a lot of work 
+    ************************************************************************************************
+                                                                                                    
+                                      Comment explaining that program is finished                   
+                                                                                                    
+    ************************************************************************************************
+        */ 
+main ()
+{
+    a = a * c + c * d ;
+    a = a * c / (c * d) + e + f ;
+    a = !a.c && a.c -> f && ~~e ;
+    for (;;) 
+        ;
+    for (; i ; i++ ) {
+        i += 0 ;
+    }
+    while ( i ) 
+        i++ ;
+    while ( i ) {
+        i++ ;
+        j++ ;
+    }
+    do ;
+    while ( i-- );
+    tata();
+    tata(a);
+    switch ((a + b) / c ) {
+    } 
+}
+/* main function of program */ 
+
+main ()
+{
+    int i   /* quel joli nom */ , 
+        j, 
+        k   /* integer variables */ ;
+    int toto [62]   /* un tableau */ ;
+    
+    for ( i = 0 ; i < 64 ; i++ ) {
+        
+        /* on fait quelque chose et on l'explique */ 
+        printf("On fait quelque chose ");
+    }
+}
+
+/* main function of program */ 
+
+main ()
+{
+    int i   /* quel joli nom */ , 
+        j, 
+        k   /* integer variables */ ;
+    int toto [62]   /* un tableau */ ;
+    int toto [62][64];
+    
+    for ( i = 0 ; i < 64 ; i++ ) {
+        
+        /* on fait quelque chose et on l'explique */ 
+        printf("On fait quelque chose ");
+    }
+}
+/****************************************************************************/ 
+/*                                                                          */ 
+/*                                Comment Describing the whole program      */ 
+/*                                                                          */ 
+/****************************************************************************/ 
+int type_def ;
+
+/****************************************************************************/ 
+/*                                 Comment explaining the function          */ 
+/****************************************************************************/ 
+
+function/* comment on the function name */ ()
+
+/* comment on parameters which are not here*/ 
+/* another comment */ 
+/* comment on the body of function  */ 
+{
+    int c, ident ;
+    
+    c = ident ;/* value of c becomes ident */ 
+    c = ident/* ident is a parameter of function */ ;
+    proc_call(c/* comment on the parameter */ );
+    
+    /* comment before printf
+      which has got more than one line
+            
+      which has got more than one line */ 
+    /* another comment before */ 
+    printf/*printf*/ (/**/ /*comm1*/ "ident\n"/*comm2*/ );/* comment after */ /* another comment after */ 
+    ident/* comment for ident */  = /* here */ c/* comment for ident c */ 
+                                                /* prepost */ ;
+}
+
+function2 ( a, b )/* now we have got parameters, it's better */ 
+int a, b ;
+{}/* this function doesn't do a lot of work */ 
+
+function3 ( a, c )
+int a, b ;
+{
+    int ident1, ident2 ;
+    
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+    ident1/* ident1 */  = ident/* ident2 */ ;/* assignement */ 
+}/****************************************************************************/ /*                                                                          */ /*               Comment explaining that program is finished                */ /*                                                                          */ /****************************************************************************/ 
+main ()
+{
+    if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+             + lakfaksdfj + adfklakdf + lskflskdf
+         < slkdf + lsdflskdf + sldkfldsk ) 
+        a = b ;
+    sdfkjlskdf = b = sdflkj = lskdf = lskdjf
+         = (sdflsdfksdlfk ? 
+                   i * j * k * l * m * n * o * p * q * r * s * t * u * v
+                     * w * x * y * z * a * b * c * d * e * f * g * h * i
+                     * j * k * l
+                 : i * j * k * l * m * n * o * p * q * r * s * t * u * i
+                         * j * k * l * m * n * o * p * q * r * s * t * u
+                         * lskdflskdf * lskdfdksjd * lskflksfjd
+                         * lksdjflsdkfj
+                     + lsdkf)
+             + lsdkfjsldkf
+             + lksdflsdkf * lskjfdlksdj * sldkfjsldkfj * sdfksdf ;
+    a = b ? (c + d) * e : d ;
+}
+main ()
+{
+    alskdfjklsd = aslkdf
+         + akdflk
+             * ffifi(asfdk, aklsdf, alkdf, aklsjf
+                        , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj
+                             + lksdjflskdf + lskdflsdkf + lskflksdf
+                             + lksdfjlksdf + lksdflksdjf
+                        , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+                        , aklsdj, alsdk);
+}
+main ()
+{
+    int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl, 
+        skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf, 
+        slkdfj = lksdflk ;
+    int titi ;              /* la variable titi */ 
+    int lskflskdfsldkf ;    /* la variable suivante */ 
+    int i, j, k ;
+    int fifi ;              /* comment sur fifi */ 
+}
+main ()
+{
+    int variable
+             = {{ 1, 5, lksdf, sdlkf, slkdf }
+                    , { sdjf, slkdflskdfj, slkdflskdfj, sldfksldf
+                        , lskdflskdfj }
+                    , { ksldflskdf, sldkflskdfj }};
+    int variable = 10   /* commentaire */ , 
+        v1 = 12         /* comm */ ;
+    
+    for ( i = 1 ; i++ ; i < 50 ) 
+        printf("Corps du programme ");/* comment */ 
+}
+main ()
+{
+    int fifi = lskdf + lsdf, fifo = sdlkf + lskdf, fifi
+             = lsdfj + skdfjl, 
+        sdklf = slkdfj + lskdjflsdf ;
+    int i, j, k = 8 + c, lsldkf ;
+    int toto [5 + a - b], fifi = 6 + a ;
+    char    toto [5], *pt ;
+    int i, jkkkk, k, l, 
+        i = 5       /* entier indiquant rien du tout
+                      le commentaire et l'entier
+                      sont inutiles */ , 
+        tto = 8     /* commentaire sur un entier */ , 
+        fifi = 9    /* commentaire fin*/ 
+                    /*autre comment */ 
+                    /* autre comment */ , 
+        j, 
+        k           /* commentaire */ , 
+        l ;
+    int variable
+             = {{ 1, 5, lksdf, sdlkf, slkdf }
+                    , { sdjf, slkdflskdfj, slkdflskdfj, sldfksldf
+                        , lskdflskdfj }
+                    , { ksldflskdf, sldkfffflskdfj }}   /* commentaire */ ;
+    int variable = 10   /* commentaire */ , 
+        v1 = 12         /* commentaire */ ;
+    
+    struct titi {
+        int i ;             /* premier champ de la structure */ 
+        char    *toto ;     /* deuxieme champ de la structure */ 
+        struct titi *next ; /* dernier champ de la structure */ 
+    } fifi, 
+     fofo   /* la variable fofo*/ , 
+     *ruru, 
+     *fifi  /* le pointeur fifi */ ;
+    
+    printf("Corps du programme ");/* comment */ 
+    for ( i = 1 ; i++ ; i < 50 ) 
+        printf("Corps du programme ");/* comment */ 
+                                      /* autre commentaire*/ 
+                                      /* commentaire */ 
+}
+main ()
+{
+    
+    struct titi {
+        int toto ;  /* comment */ 
+        int titi ;  /* comment 2*/ 
+    } fofo ;
+}
+
+// Memory allocator failure simulation and control (_DEBUG only)   
+// A failure hook returns whether to permit allocation   
+typedef BOOL    (PASCAL *AFX_ALLOC_HOOK)(size_t nSize, BOOL bObject
+                    , LONG lRequestNumber) ;
+main ()
+{
+    int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl, 
+        skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf, 
+        slkdfj = lksdflk ;
+    int titi ;              /* la variable titi */ 
+    int lffffsffkfl [6][4]; /* la variable suivante */ 
+    int i, j, k ;
+    int fifi ;              /* comment sur fifi */ 
+}
+main ()
+{
+    int varffffffffffable = 10  /* commffffffffentaire */ , 
+        v1 = 12                 /* comm */ , 
+        v3 = djfkd              /* comment*/ ;
+}
+#include "range.h"
+
+typedef int (__cdecl *_onexit_t)() ;
+typedef int (__far __cdecl *_fonexit_t)() ;
+
+int FAR PASCAL _export bidon ( int i ) {}
+
+int toto ;          /* variables 1 */ 
+int toto, titi ;    /* variables 2 */ 
+int fifi, qiqi ;    /* variables 3 */ 
+int lskfjsldfkj ;   /* var */ 
+
+struct fifi {
+    int titi ;              /* une var */ 
+    int fofo ;              /* une autre var */ 
+    char    *toto, *titi ;  /* encore une autre */ 
+} toto ;
+int toto []
+         = {{ 1, 2, 3, 4 }, { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }
+                , { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }
+                , { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }
+                , { 1, 2, 3, 4, 5 }, { 1, 2, 3, 4, 5 }};
+
+TypDef ( tree )
+PTREE   tree ;
+{
+    register PTREE  _inter ;
+    PTREE   list = (PTREE)0 ;
+    int toto []
+             = {{ 1, 2, 3, 4 }/*                                 */ 
+                    , { 1, 2, 3, 4, 5 }/*                           */ 
+                    , { 1, 2, 3, 4, 5 }
+                    , { 1, 2, 3, 4, 5 }/*                           */ 
+                    , { 1, 2, 3, 4, 5 }
+                    , { 1, 2, 3, 4, 5 }/*                           */ 
+                    , { 1, 2, 3, 4, 5 }
+                    , { 1, 2, 3, 4, 5 }/*                           */ 
+                    , { 1, 2, 3, 4, 5 }
+                    , { 1, 2, 3, 4, 5 }/*                           */ 
+                    , { 1, 2, 3, 4, 5 }};
+    
+    (a = 1, 2) && (a = 4);
+    a && 5 ;
+}
+main ()
+{
+    sldfk -> lkdsflsdfk -> lskdfjlkdf = ksdfdkf -> sldfkjkdsf -> slkfjlsdkf
+             -> lsdkfldksf
+         + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+             * ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+                 -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf -> sldfkjkdsf
+                 -> slkfjlsdkf -> lsdkfldksf
+         + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf ;
+    slkdf = lsdflsdkf = lskdlksdf = lsdkfjldskf = lsdflkdfsj = slkdflsdkf
+         = lsdkflksdfj = lskdfjlkdsfj = lskdflskdf ;
+    (*pt)++ ;
+}
+
+int a, b, lkjlk ;                   /* sldfkj slkdfj */ 
+int a ;                             /* dljf */ 
+char    *toto ;                     /* lkjlkj ljlkj lkjlkj lkjlkj */ 
+char    toutooo, lkfsldkf, ksdfj ;  /* sldfksdklf */ 
+
+/* commentaire avant la structure */ 
+
+struct toto {
+    int toto ;          /* une variable */ 
+    char    *fifififi ; /* une seconde variable */ 
+    char    **skldf ;   /* une troisieme */ 
+} aa ;
+char    *fifi (char *toto, void *fifi, int skfjlkdsfj, char **ssssss
+                , char *toto, void *fifi, int skfjlkdsfj, char **ssssss
+                , char *toto, void *fifi, int skfjlkdsfj, char **ssssss) ;
+
+typedef int PTREE ;
+
+PTREE   (*ptFunction)() ;
+
+main ()
+{
+    
+    /* commentaire avant le statement */ 
+    *ptDest++ = *ptString++ ;
+    while ( *ptString != '\n' && *ptString ) 
+        if ( *ptString != '\b') 
+            *ptDest++ = *ptString++ ;
+        else {
+            if ( ptDest > outBuf ) 
+                ptDest-- ;
+            ptString++ ;
+        }
+}
+
+main ()
+{
+    *ptDest++ = *ptString++ ;
+    while ( *ptString != '\n' && *ptString ) 
+        if ( *ptString != '\b') 
+            *ptDest++ = *ptString++ ;
+        else {
+            if ( ptDest > outBuf ) 
+                ptDest-- ;
+            ptString++ ;
+        }
+}
+
+main ()
+{
+    *ptDest++ = *ptString++ ;
+    while ( *ptString != '\n' && *ptString ) 
+        if ( *ptString != '\b') 
+            *ptDest++ = *ptString++ ;
+        else {
+            if ( ptDest > outBuf ) 
+                ptDest-- ;
+            ptString++ ;
+        }
+}
+#include "token.h"
+
+/******************************************************************
+          Comp : Display a tree on screen
+  *******************************************************************/ 
+
+void _fastcall Comp ( tree )
+PTREE   tree ;
+{
+switch ( NumberTree(tree)) {
+    case LIST : 
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+        }
+        break ;
+    case DEFINE_metalang : 
+if ( !VerifyFileLine()) {
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+    NewLine();
+    WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+    NewLine();
+    WriteString("\
+/*                  Eric Lavillonniere                                   */");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    NewLine();
+    WriteString("#include \"token.h\"");
+    NewLine();
+    WriteString("#include \"");
+    WriteString(llanguageName);
+    WriteString("\"");
+    NewLine();
+    NewLine();
+    NewLine();
+    WriteString("#define _Lex ");
+    WriteString(NameLang(lexName));
+    NewLine();
+    WriteString("#define SortKeyWord ");
+    WriteString(NameLang("SortKeyWord"));
+    NewLine();
+    WriteString("#define UpSortKeyWord ");
+    WriteString(NameLang("UpSortKeyWord"));
+    NewLine();
+    NewLine();
+}       
+        WriteString("PTREE ");
+        WriteString(NameLang(Value(tree)));
+        strcpy(nameDefine, Value(tree));
+        FuncName(nameDefine);
+        WriteString("(error_free)");
+        NewLine();
+        WriteString("int error_free;");
+        NewLine();
+        WriteString("{");
+        NewLine();
+        Tab();
+        Mark();
+        WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+        NewLine();
+        WriteString("int _value,_nbPre = 0 ;");
+        NewLine();
+        WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+        WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+        NewLine();
+        WriteString("PTREE lastTree = _lastTree,_retValue ;");
+        NewLine();
+        Comp(SonTree(tree, 2));
+        UnMark();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+        NewLine();
+        WriteString("return((PTREE) 0);");
+        NewLine();
+        NewLine();
+        WriteString(Label(nameDefine));
+        WriteString(" :");
+        NewLine();
+        NewLine();
+        Tab();
+        Mark();
+        FuncLibre();/* free pointers before exiting */ 
+        WriteString("_funcLevel--;");
+        NewLine();
+        WriteString("return((PTREE) -1) ;");
+        UnMark();
+        NewLine();
+        NewLine();
+        WriteString(RetLab(nameDefine));
+        WriteString(" :");
+        NewLine();
+        Tab();
+        Mark();
+        NewLine();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+        NewLine();
+        WriteString("return _retValue ;");
+        UnMark();
+        NewLine();
+        WriteString("}");
+        NewLine();
+        NewLine();
+        FuncFree();
+        break ;
+    case CASE_metalang : 
+        oldFirstMeta = firstMeta ;
+        firstMeta = 1 ;
+        i = ClassifyCase(SonTree(tree, 1));
+        if ( i == 1 ) {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            WriteString("switch( lexEl.Value) {");
+            NewLine();
+            Tab();
+            Mark();
+            length = ListLength(SonTree(tree, 1));
+            if ( length ) 
+                NegateCond();
+            Comp(SonTree(tree, 1));
+            while ( length-- ) 
+                FreeCond();
+            if ( Nodefault(SonTree(tree, 1))) {
+                WriteString("default :");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("CASE_EXIT(");
+                WriteString(Label(nameDefine));
+                WriteString(",\"");
+                tree = SonTree(tree, 1);
+                if ( !SonTree(tree, 2)) 
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                else {
+                    WriteString("either ");
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    while ( SonTree(tree, 2)) {
+                        tree = SonTree(tree, 2);
+                        WriteString(" or ");
+                        CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    }
+                }
+                WriteString("\")");
+                NewLine();
+                WriteString("break;");
+                NewLine();
+                UnMark();
+            }
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 2 && inLex ) {
+            simpleCase = 1 ;
+            WriteString("switch (c) {");
+            NewLine();
+            Tab();
+            Mark();
+            Comp(SonTree(tree, 1));
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 3 && inLex ) {
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        } else {
+            ifCase = 1 ;/* case as if out lex */ 
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        }
+        firstMeta = oldFirstMeta ;
+        break ;
+    case SWITCH_metalang : 
+        i = NumberTree(SonTree(tree, 1));
+        if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang)) {
+            ptTree = SonTree(SonTree(tree, 1), 1);
+            NegateCond();
+            if ( NumberTree(ptTree) == EXCLA_metalang
+                     && FindConst("META") !=  - 1
+                     && firstMeta
+                     && strcmp(Value(ptTree), "NOTHING")
+                     && (strcmp(Value(ptTree), "META") || (firstMeta = 0))) {
+                firstMeta = 0 ;
+                WriteString("case ");
+                WriteString(NameLang("META"));
+                WriteString(":");
+                NewLine();
+            }
+            if ( NumberTree(ptTree) != EXCLA_metalang
+                     || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+                                , "NOTHING")) {
+                AllocCond(SonTree(tree, 1));
+                WriteString("case ");
+                Comp(ptTree);
+            } else 
+                WriteString("default");
+            WriteString(" : ");
+            NewLine();
+            Tab();
+            Mark();
+            if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+                WriteString("tokenAhead = 0 ;");
+                NewLine();
+                WriteString("CommTerm();");
+                NewLine();
+            }
+            statement = 1 ;
+            Comp(SonTree(tree, 2));
+            WriteString("break;");
+            NewLine();
+            UnMark();
+            GotoMark();
+        } else {
+            if ( !ifCase && simpleCase ) {
+                Comp(SonTree(tree, 1));
+                NewLine();
+                Tab();
+                Mark();
+                if ( !SonTree(SonTree(tree, 1), 1)) {
+                    length = 1 ;
+                    WriteString(" if (c!= EOF) {");
+                    NewLine();
+                    Tab();
+                    Mark();
+                }
+                if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+                    WriteString("NextChar();");
+                    NewLine();
+                }
+                simpleCase = 0 ;
+                Comp(SonTree(tree, 2));
+                if ( length ) {
+                    UnMark();
+                    GotoMark();
+                    WriteString("}");
+                    NewLine();
+                }
+                WriteString("break ;");
+                UnMark();
+                NewLine();
+            } else {
+                i = 0 ;
+                ptTree = SonTree(SonTree(tree, 1), 1);
+                if ((NumberTree(SonTree(tree, 1)) == TAKE_metalang
+                         || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+                         && NumberTree(ptTree) == IDENT_metalang ) {
+                    i = 1 ;
+                }
+                statement = 0 ;
+                if ( !ptTree
+                         || NumberTree(ptTree) != EXCLA_metalang
+                         || strcmp(BrainyValue(ptTree), "NOTHING")) {
+                    WriteString("if(");
+                    Comp(SonTree(tree, 1));
+                    WriteString(")");
+                } else 
+                    WriteString("if (1) ");
+                statement = 1 ;
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                Comp(SonTree(tree, 2));
+                UnMark();
+                GotoMark();
+                WriteString("} else ");
+            }
+        }
+        break ;
+    case STOREL_metalang : 
+        if ( !inLex ) {
+            WriteString("if (tokenAhead) ExtUnputBuf() ;");
+            NewLine();
+        }
+        if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+            NewLine();
+            WriteString("NextChar();");
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        } else {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact + strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(") < MAXLENGTH) ");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("strcpy(_ptString,");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            UnMark();
+            NewLine();
+            WriteString("_nbCharact += strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            WriteString("_ptString = lexEl.string + _nbCharact;");
+            NewLine();
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        }
+        break ;
+    case TAKEL_metalang : length = 1 ;
+    case SEEL_metalang : 
+        if ( simpleCase ) {
+            if ( !SonTree(tree, 1)) 
+                WriteString("default : ");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+                CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+            else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                while ( tree ) {
+if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+    CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+else {
+    cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+    carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+    CaseCharac(cardeb);
+    while ( IncrChar(cardeb, carend)) {
+        NewLine();
+        CaseCharac(cardeb);
+    }
+    NewLine();
+    CaseCharac(carend);
+}
+                    if ( tree = SonTree(tree, 2)) 
+                        NewLine();
+                }
+            }
+        } else {
+            if ( statement ) 
+                WriteString("if (!");
+            if ( !inLex ) 
+                WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+            WriteString("(");
+            if ( !SonTree(tree, 1)) 
+                WriteString("c != EOF");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                i = 0 ;
+                WriteString("(");
+                while ( tree ) {
+                    if ( i ) 
+                        WriteString("||");
+                    else 
+                        i = 1 ;
+                    WriteString("(");
+                    if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                        WriteString("c == ");
+                        Comp(SonTree(tree, 1));
+                    } else {
+                        Comp(SonTree(SonTree(tree, 1), 1));
+                        WriteString(" <= c && c <= ");
+                        Comp(SonTree(SonTree(tree, 1), 2));
+                    }
+                    WriteString(")");
+                    tree = SonTree(tree, 2);
+                }
+                WriteString(")");
+            } else {
+                WriteString("GetString(");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                if ( length ) 
+                    WriteString(",1)");
+                else 
+                    WriteString(",0)");
+            }
+            if ( length ) 
+                WriteString("&& NextChar())");
+            else 
+                WriteString(")");
+            if ( !inLex ) 
+                WriteString(")");
+            if ( statement ) {
+if ( !inLex ) {
+    WriteString(") {");
+    NewLine();
+    Tab();
+    Mark();
+    WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+    NewLine();
+    WriteString("PrintError(errStr,error_free);");
+    NewLine();
+    WriteString("goto ");
+    WriteString(Label(nameDefine));
+    WriteString(";");
+    UnMark();
+    NewLine();
+    WriteString("}");
+    NewLine();
+} else {
+    WriteString(") ;");
+    NewLine();
+}
+            }
+        }
+        break ;
+    case TAKE_metalang : 
+        if ( !statement ) 
+            if ( NumberTree(tree) == IDENT_metalang ) {
+                WriteString("(PUSH_CALL_AFF(");
+                if ( equality ) {
+                    WriteString(ptEquality);
+                    WriteString(" = ");
+                } else 
+                    WriteString("NOTHING");
+                WriteString(",");
+                WriteString(NameLang(Value(tree)));
+                WriteString("))");
+            } else {
+                WriteString("((tokenAhead || _Lex()) && ");
+                i = 0 ;/* is a meta welcomed here */ 
+                if ( FindConst("META") !=  - 1
+                         && NumberTree(tree) == EXCLA_metalang ) {
+                    i = 1 ;
+                    WriteString("TERM_OR_META(");
+                    Comp(tree);
+                    WriteString(")");
+                } else {
+                    WriteString("lexEl.Value == ");
+                    Comp(tree);
+                }
+                if ( equality ) {
+                    WriteString(" && !(tokenAhead = 0) && (");
+                    if ( !i ) {
+                        WriteString(ptEquality);
+                        WriteString(" = CommString(lexEl.string)))");
+                    } else {
+                        WriteString(" BUILD_TERM_META(");
+                        WriteString(ptEquality);
+                        WriteString("))) ");
+                    }
+                } else 
+                    WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+            }
+        else if ( NumberTree(tree) == IDENT_metalang ) {
+            WriteString("if ( (");
+            if ( equality ) {
+                WriteString(ptEquality);
+                WriteString("=");
+            }
+            WriteString(NameLang(Value(tree)));
+            WriteString("(error_free)) == (PTREE) -1 ) ");
+            NewLine();
+            Tab();
+            WriteString("PROG_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            WriteString(nameDefine);
+            WriteString("\")");
+            NewLine();
+        } else {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            i = 0 ;/* is a meta welcomed here */ 
+            if ( FindConst("META") !=  - 1
+                     && NumberTree(tree) == EXCLA_metalang ) {
+                i = 1 ;
+                WriteString("if ( ! TERM_OR_META(");
+                Comp(tree);
+                WriteString(")");
+            } else {
+                WriteString("if (  lexEl.Value != ");
+                Comp(tree);
+            }
+            if ( equality ) {
+                WriteString(" || !(");
+                if ( !i ) {
+                    WriteString(ptEquality);
+                    WriteString(" = CommString(lexEl.string))");
+                } else {
+                    WriteString("BUILD_TERM_META(");
+                    WriteString(ptEquality);
+                    WriteString("))");
+                }
+            } else 
+                WriteString(" || !(CommTerm(),1)");
+            WriteString(") ");
+            NewLine();
+            Tab();
+            WriteString("TOKEN_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            CompString(tree);
+            WriteString("\")");
+            NewLine();
+        }
+        break ;
+    case LANGUAGE_metalang : 
+        WriteString("\
+/*************************************************************************/");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+        NewLine();
+        WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+        NewLine();
+        WriteString("\
+/*                  Eric Lavillonniere                                   */");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*************************************************************************/");
+        WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+        WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+        WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+                WriteString("PTREE ");
+                WriteString(NameLang(Value(ptTree)));
+#ifndef SUN
+                WriteString(" ( int );");
+#else 
+                WriteString("();");
+#endif
+                NewLine();
+            } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+                lexName = AllocString(Value(ptTree));
+                foundLexName = 1 ;
+            } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+                ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+            else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+                nbLexDefine++ ;
+                if ( !foundLexName ) 
+                    lexName = AllocString(Value(ptTree));
+            }
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( ptTree
+                     && NumberTree(SonTree(ptTree, 1))
+                         == LEXDEFINE_metalang ) {
+                CompLexDefine(SonTree(ptTree, 1));
+                NewLine();
+            }
+        DumpNode();
+#ifdef SUN
+        writeLine = 0 ;
+        output = loutput ;
+        LispMake();
+        output = coutput ;
+#endif
+        break ;
+    case EQUAL_metalang : 
+        switch ( NumberTree(SonTree(tree, 2))) {
+            case NIL_metalang : 
+            case FUNC_metalang : 
+            case IDENT_metalang : 
+            case NUMB_metalang : 
+                if ( !statement ) 
+                    WriteString("(");
+                Comp(SonTree(tree, 1));
+                if ( statement ) 
+                    WriteString("= ");
+                else 
+                    WriteString("== ");
+                Comp(SonTree(tree, 2));
+                if ( !statement ) 
+                    WriteString(")");
+                if ( statement ) 
+if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+    WriteString(";");
+    NewLine();
+    interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+    MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+    free(interString);
+} else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+    WriteString(";");
+    NewLine();
+}               
+                break ;
+            case TAKE_metalang : 
+                equality = 1 ;
+                ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                Comp(SonTree(tree, 2));
+                equality = 0 ;
+                SetUse(ptEquality);
+                free(ptEquality);
+                break ;
+            case MAKETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                MakeTreeGen(interString, SonTree(tree, 2), 0);
+                free(interString);
+                break ;
+            case ADDLIST_metalang : 
+                AddListGen(interString, SonTree(tree, 2), 0);
+                break ;
+            case REPLACETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+        } 
+        break ;
+    case FUNC_metalang : 
+        if ( !statement ) 
+            WriteString("(");
+        Comp(SonTree(tree, 1));
+        WriteString("(");
+        tree = SonTree(tree, 2);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(")");
+        if ( statement ) {
+            WriteString(";");
+            NewLine();
+        } else 
+            WriteString(")");
+        break ;
+    case STRING_metalang : 
+        tree = SonTree(tree, 1);
+        treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+                                , treeToken);
+        WriteString(SymboName(Value(tree), 0));
+        break ;
+    case DECLARE_metalang : 
+        WriteString("PTREE ");
+        ptTree = tree = SonTree(tree, 1);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            WriteString("= (PTREE) 0");
+            InsertDecElem(AllocString(Value(tree)));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(";");
+        NewLine();
+        break ;
+    case SKIP_metalang : 
+        ptTree = tree = SonTree(tree, 1);
+        i = 0 ;
+        if ( inLex ) 
+            WriteString("ptStockBuf = -1;");
+        else 
+            WriteString("ExtUnputBuf();");
+        NewLine();
+        WriteString("while (");
+        while ( tree ) {
+            if ( i ) 
+                WriteString("||");
+            else 
+                i = 1 ;
+            WriteString("(");
+            if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else {
+                Comp(SonTree(SonTree(tree, 1), 1));
+                WriteString(" <= c && c <= ");
+                Comp(SonTree(SonTree(tree, 1), 2));
+            }
+            WriteString(")");
+            tree = SonTree(tree, 2);
+        }
+        break ;
+} 
+}
+#include "token.h"
+
+/******************************************************************
+          Comp : Display a tree on screen
+  *******************************************************************/ 
+
+void _fastcall Comp ( tree )
+PTREE   tree ;
+{
+switch ( NumberTree(tree)) {
+    case LIST : 
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+        }
+        break ;
+    case DEFINE_metalang : 
+if ( !VerifyFileLine()) {
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+    NewLine();
+    WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+    NewLine();
+    WriteString("\
+/*                  Eric Lavillonniere                                   */");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    NewLine();
+    WriteString("#include \"token.h\"");
+    NewLine();
+    WriteString("#include \"");
+    WriteString(llanguageName);
+    WriteString("\"");
+    NewLine();
+    NewLine();
+    NewLine();
+    WriteString("#define _Lex ");
+    WriteString(NameLang(lexName));
+    NewLine();
+    WriteString("#define SortKeyWord ");
+    WriteString(NameLang("SortKeyWord"));
+    NewLine();
+    WriteString("#define UpSortKeyWord ");
+    WriteString(NameLang("UpSortKeyWord"));
+    NewLine();
+    NewLine();
+}       
+        WriteString("PTREE ");
+        WriteString(NameLang(Value(tree)));
+        strcpy(nameDefine, Value(tree));
+        FuncName(nameDefine);
+        WriteString("(error_free)");
+        NewLine();
+        WriteString("int error_free;");
+        NewLine();
+        WriteString("{");
+        NewLine();
+        Tab();
+        Mark();
+        WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+        NewLine();
+        WriteString("int _value,_nbPre = 0 ;");
+        NewLine();
+        WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+        WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+        NewLine();
+        WriteString("PTREE lastTree = _lastTree,_retValue ;");
+        NewLine();
+        Comp(SonTree(tree, 2));
+        UnMark();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+        NewLine();
+        WriteString("return((PTREE) 0);");
+        NewLine();
+        NewLine();
+        WriteString(Label(nameDefine));
+        WriteString(" :");
+        NewLine();
+        NewLine();
+        Tab();
+        Mark();
+        FuncLibre();/* free pointers before exiting */ 
+        WriteString("_funcLevel--;");
+        NewLine();
+        WriteString("return((PTREE) -1) ;");
+        UnMark();
+        NewLine();
+        NewLine();
+        WriteString(RetLab(nameDefine));
+        WriteString(" :");
+        NewLine();
+        Tab();
+        Mark();
+        NewLine();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+        NewLine();
+        WriteString("return _retValue ;");
+        UnMark();
+        NewLine();
+        WriteString("}");
+        NewLine();
+        NewLine();
+        FuncFree();
+        break ;
+    case CASE_metalang : 
+        oldFirstMeta = firstMeta ;
+        firstMeta = 1 ;
+        i = ClassifyCase(SonTree(tree, 1));
+        if ( i == 1 ) {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            WriteString("switch( lexEl.Value) {");
+            NewLine();
+            Tab();
+            Mark();
+            length = ListLength(SonTree(tree, 1));
+            if ( length ) 
+                NegateCond();
+            Comp(SonTree(tree, 1));
+            while ( length-- ) 
+                FreeCond();
+            if ( Nodefault(SonTree(tree, 1))) {
+                WriteString("default :");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("CASE_EXIT(");
+                WriteString(Label(nameDefine));
+                WriteString(",\"");
+                tree = SonTree(tree, 1);
+                if ( !SonTree(tree, 2)) 
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                else {
+                    WriteString("either ");
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    while ( SonTree(tree, 2)) {
+                        tree = SonTree(tree, 2);
+                        WriteString(" or ");
+                        CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    }
+                }
+                WriteString("\")");
+                NewLine();
+                WriteString("break;");
+                NewLine();
+                UnMark();
+            }
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 2 && inLex ) {
+            simpleCase = 1 ;
+            WriteString("switch (c) {");
+            NewLine();
+            Tab();
+            Mark();
+            Comp(SonTree(tree, 1));
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 3 && inLex ) {
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        } else {
+            ifCase = 1 ;/* case as if out lex */ 
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        }
+        firstMeta = oldFirstMeta ;
+        break ;
+    case SWITCH_metalang : 
+        i = NumberTree(SonTree(tree, 1));
+        if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang)) {
+            ptTree = SonTree(SonTree(tree, 1), 1);
+            NegateCond();
+            if ( NumberTree(ptTree) == EXCLA_metalang
+                     && FindConst("META") !=  - 1
+                     && firstMeta
+                     && strcmp(Value(ptTree), "NOTHING")
+                     && (strcmp(Value(ptTree), "META") || (firstMeta = 0))) {
+                firstMeta = 0 ;
+                WriteString("case ");
+                WriteString(NameLang("META"));
+                WriteString(":");
+                NewLine();
+            }
+            if ( NumberTree(ptTree) != EXCLA_metalang
+                     || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+                                , "NOTHING")) {
+                AllocCond(SonTree(tree, 1));
+                WriteString("case ");
+                Comp(ptTree);
+            } else 
+                WriteString("default");
+            WriteString(" : ");
+            NewLine();
+            Tab();
+            Mark();
+            if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+                WriteString("tokenAhead = 0 ;");
+                NewLine();
+                WriteString("CommTerm();");
+                NewLine();
+            }
+            statement = 1 ;
+            Comp(SonTree(tree, 2));
+            WriteString("break;");
+            NewLine();
+            UnMark();
+            GotoMark();
+        } else {
+            if ( !ifCase && simpleCase ) {
+                Comp(SonTree(tree, 1));
+                NewLine();
+                Tab();
+                Mark();
+                if ( !SonTree(SonTree(tree, 1), 1)) {
+                    length = 1 ;
+                    WriteString(" if (c!= EOF) {");
+                    NewLine();
+                    Tab();
+                    Mark();
+                }
+                if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+                    WriteString("NextChar();");
+                    NewLine();
+                }
+                simpleCase = 0 ;
+                Comp(SonTree(tree, 2));
+                if ( length ) {
+                    UnMark();
+                    GotoMark();
+                    WriteString("}");
+                    NewLine();
+                }
+                WriteString("break ;");
+                UnMark();
+                NewLine();
+            } else {
+                i = 0 ;
+                ptTree = SonTree(SonTree(tree, 1), 1);
+                if ((NumberTree(SonTree(tree, 1)) == TAKE_metalang
+                         || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+                         && NumberTree(ptTree) == IDENT_metalang ) {
+                    i = 1 ;
+                }
+                statement = 0 ;
+                if ( !ptTree
+                         || NumberTree(ptTree) != EXCLA_metalang
+                         || strcmp(BrainyValue(ptTree), "NOTHING")) {
+                    WriteString("if(");
+                    Comp(SonTree(tree, 1));
+                    WriteString(")");
+                } else 
+                    WriteString("if (1) ");
+                statement = 1 ;
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                Comp(SonTree(tree, 2));
+                UnMark();
+                GotoMark();
+                WriteString("} else ");
+            }
+        }
+        break ;
+    case STOREL_metalang : 
+        if ( !inLex ) {
+            WriteString("if (tokenAhead) ExtUnputBuf() ;");
+            NewLine();
+        }
+        if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+            NewLine();
+            WriteString("NextChar();");
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        } else {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact + strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(") < MAXLENGTH) ");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("strcpy(_ptString,");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            UnMark();
+            NewLine();
+            WriteString("_nbCharact += strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            WriteString("_ptString = lexEl.string + _nbCharact;");
+            NewLine();
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        }
+        break ;
+    case TAKEL_metalang : length = 1 ;
+    case SEEL_metalang : 
+        if ( simpleCase ) {
+            if ( !SonTree(tree, 1)) 
+                WriteString("default : ");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+                CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+            else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                while ( tree ) {
+if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+    CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+else {
+    cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+    carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+    CaseCharac(cardeb);
+    while ( IncrChar(cardeb, carend)) {
+        NewLine();
+        CaseCharac(cardeb);
+    }
+    NewLine();
+    CaseCharac(carend);
+}
+                    if ( tree = SonTree(tree, 2)) 
+                        NewLine();
+                }
+            }
+        } else {
+            if ( statement ) 
+                WriteString("if (!");
+            if ( !inLex ) 
+                WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+            WriteString("(");
+            if ( !SonTree(tree, 1)) 
+                WriteString("c != EOF");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                i = 0 ;
+                WriteString("(");
+                while ( tree ) {
+                    if ( i ) 
+                        WriteString("||");
+                    else 
+                        i = 1 ;
+                    WriteString("(");
+                    if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                        WriteString("c == ");
+                        Comp(SonTree(tree, 1));
+                    } else {
+                        Comp(SonTree(SonTree(tree, 1), 1));
+                        WriteString(" <= c && c <= ");
+                        Comp(SonTree(SonTree(tree, 1), 2));
+                    }
+                    WriteString(")");
+                    tree = SonTree(tree, 2);
+                }
+                WriteString(")");
+            } else {
+                WriteString("GetString(");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                if ( length ) 
+                    WriteString(",1)");
+                else 
+                    WriteString(",0)");
+            }
+            if ( length ) 
+                WriteString("&& NextChar())");
+            else 
+                WriteString(")");
+            if ( !inLex ) 
+                WriteString(")");
+            if ( statement ) {
+if ( !inLex ) {
+    WriteString(") {");
+    NewLine();
+    Tab();
+    Mark();
+    WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+    NewLine();
+    WriteString("PrintError(errStr,error_free);");
+    NewLine();
+    WriteString("goto ");
+    WriteString(Label(nameDefine));
+    WriteString(";");
+    UnMark();
+    NewLine();
+    WriteString("}");
+    NewLine();
+} else {
+    WriteString(") ;");
+    NewLine();
+}
+            }
+        }
+        break ;
+    case TAKE_metalang : 
+        tree = SonTree(tree, 1);
+        if ( inLex ) {
+            WriteString(NameLang(Value(tree)));
+            WriteString("();");
+            NewLine();
+            break ;
+        }
+        if ( !statement ) 
+            if ( NumberTree(tree) == IDENT_metalang ) {
+                WriteString("(PUSH_CALL_AFF(");
+                if ( equality ) {
+                    WriteString(ptEquality);
+                    WriteString(" = ");
+                } else 
+                    WriteString("NOTHING");
+                WriteString(",");
+                WriteString(NameLang(Value(tree)));
+                WriteString("))");
+            } else {
+                WriteString("((tokenAhead || _Lex()) && ");
+                i = 0 ;/* is a meta welcomed here */ 
+                if ( FindConst("META") !=  - 1
+                         && NumberTree(tree) == EXCLA_metalang ) {
+                    i = 1 ;
+                    WriteString("TERM_OR_META(");
+                    Comp(tree);
+                    WriteString(")");
+                } else {
+                    WriteString("lexEl.Value == ");
+                    Comp(tree);
+                }
+                if ( equality ) {
+                    WriteString(" && !(tokenAhead = 0) && (");
+                    if ( !i ) {
+                        WriteString(ptEquality);
+                        WriteString(" = CommString(lexEl.string)))");
+                    } else {
+                        WriteString(" BUILD_TERM_META(");
+                        WriteString(ptEquality);
+                        WriteString("))) ");
+                    }
+                } else 
+                    WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+            }
+        else if ( NumberTree(tree) == IDENT_metalang ) {
+            WriteString("if ( (");
+            if ( equality ) {
+                WriteString(ptEquality);
+                WriteString("=");
+            }
+            WriteString(NameLang(Value(tree)));
+            WriteString("(error_free)) == (PTREE) -1 ) ");
+            NewLine();
+            Tab();
+            WriteString("PROG_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            WriteString(nameDefine);
+            WriteString("\")");
+            NewLine();
+        } else {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            i = 0 ;/* is a meta welcomed here */ 
+            if ( FindConst("META") !=  - 1
+                     && NumberTree(tree) == EXCLA_metalang ) {
+                i = 1 ;
+                WriteString("if ( ! TERM_OR_META(");
+                Comp(tree);
+                WriteString(")");
+            } else {
+                WriteString("if (  lexEl.Value != ");
+                Comp(tree);
+            }
+            if ( equality ) {
+                WriteString(" || !(");
+                if ( !i ) {
+                    WriteString(ptEquality);
+                    WriteString(" = CommString(lexEl.string))");
+                } else {
+                    WriteString("BUILD_TERM_META(");
+                    WriteString(ptEquality);
+                    WriteString("))");
+                }
+            } else 
+                WriteString(" || !(CommTerm(),1)");
+            WriteString(") ");
+            NewLine();
+            Tab();
+            WriteString("TOKEN_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            CompString(tree);
+            WriteString("\")");
+            NewLine();
+        }
+        break ;
+    case LANGUAGE_metalang : 
+        WriteString("\
+/*************************************************************************/");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+        NewLine();
+        WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+        NewLine();
+        WriteString("\
+/*                  Eric Lavillonniere                                   */");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*************************************************************************/");
+        NewLine();
+        NewLine();
+        WriteString("#include \"token.h\"");
+        NewLine();
+        WriteString("#include \"");
+        strcpy(tabLabel, Value(SonTree(SonTree(tree, 1), 1)));
+        ptTab = strlen(tabLabel) + tabLabel ;
+        if ( ptTab > tabLabel + 8 ) 
+            ptTab = tabLabel + 8 ;
+        strcpy(ptTab, ".h");
+        WriteString(tabLabel);
+        WriteString("\"");
+        strcpy(llanguageName, tabLabel);
+        NewLine();
+        NewLine();
+        AddConst("PRE");
+        AddConst("POST");
+        AddConst("PREPOST");
+        AddConst("META");
+        AddConst("IN_LANGUAGE");
+        DeclareNode("PRE", 1);
+        DeclareNode("POST", 1);
+        DeclareNode("PREPOST", 1);
+        DeclareNode("META", 1);
+        DeclareNode("IN_LANGUAGE", 2);
+        AddConst(SymboName("META", 0));
+        output = houtput ;
+        WriteString("extern int oldLine;");
+        NewLine();
+        WriteString("extern char errStr [512];");
+        NewLine();
+        WriteString("extern char * _ptString;");
+        NewLine();
+        WriteString("extern int _nbCharact;");
+        NewLine();
+        WriteString("extern char * stringlex ;");
+        NewLine();
+        WriteString("extern LEX_STRUCT lexEl;");
+        NewLine();
+        WriteString("extern int line;");
+        NewLine();
+        WriteString("extern char c;");
+        NewLine();
+        WriteString("extern int tokenAhead ;");
+        NewLine();
+        WriteString("extern int ptStockBuf;");
+        NewLine();
+        WriteString("extern int input ;");
+        NewLine();
+        WriteString("extern int col ;");
+        NewLine();
+        WriteString("extern int firstOnLine;");
+        NewLine();
+        WriteString("extern PTREE _lastTree;");
+        NewLine();
+        WriteString("extern int _funcLevel;");
+        NewLine();
+        WriteString("extern PCOMM_ELEM listComm;");
+        NewLine();
+        NewLine();
+        WriteString("#undef TERM_OR_META");
+        NewLine();
+        WriteString("#undef BUILD_TERM_META");
+        NewLine();
+        WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+        WriteString(NameLang("META"));
+        WriteString(")");
+        NewLine();
+        WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+        WriteString(NameLang("META"));
+        WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+        NewLine();
+        NewLine();
+        ptTree = tree ;
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+                WriteString("PTREE ");
+                WriteString(NameLang(Value(ptTree)));
+#ifndef SUN
+                WriteString(" ( int );");
+#else 
+                WriteString("();");
+#endif
+                NewLine();
+            } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+                lexName = AllocString(Value(ptTree));
+                foundLexName = 1 ;
+            } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+                ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+            else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+                nbLexDefine++ ;
+                if ( !foundLexName ) 
+                    lexName = AllocString(Value(ptTree));
+            }
+        NewLine();
+        NewLine();
+        WriteString("extern int ");
+        WriteString(NameLang("_arityNode"));
+        WriteString("[];");
+        NewLine();
+        WriteString("extern int ");
+        WriteString(NameLang("Arity"));
+        WriteString("();");
+        NewLine();
+        NewLine();
+        output = coutput ;
+        if ( !foundLexName && nbLexDefine > 1 ) {
+            write(2, "Lex is not defined\n", 19);
+            exit( - 1);
+        }
+        WriteString("#define _Lex ");
+        WriteString(NameLang(lexName));
+        NewLine();
+        WriteString("#define SortKeyWord ");
+        WriteString(NameLang("SortKeyWord"));
+        NewLine();
+        WriteString("#define UpSortKeyWord ");
+        WriteString(NameLang("UpSortKeyWord"));
+        NewLine();
+        NewLine();
+        output = houtput ;
+        Comp(ptGlobal);
+        NewLine();
+        output = coutput ;
+        Comp(SonTree(tree, 2));
+        DumpKeyWord();/* dump the keywords */ 
+        ptTree = tree ;
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( ptTree
+                     && NumberTree(SonTree(ptTree, 1))
+                         == LEXDEFINE_metalang ) {
+                CompLexDefine(SonTree(ptTree, 1));
+                NewLine();
+            }
+        DumpNode();
+#ifdef SUN
+        writeLine = 0 ;
+        output = loutput ;
+        LispMake();
+        output = coutput ;
+#endif
+        break ;
+    case EQUAL_metalang : 
+        switch ( NumberTree(SonTree(tree, 2))) {
+            case NIL_metalang : 
+            case FUNC_metalang : 
+            case IDENT_metalang : 
+            case NUMB_metalang : 
+                if ( !statement ) 
+                    WriteString("(");
+                Comp(SonTree(tree, 1));
+                if ( statement ) 
+                    WriteString("= ");
+                else 
+                    WriteString("== ");
+                Comp(SonTree(tree, 2));
+                if ( !statement ) 
+                    WriteString(")");
+                if ( statement ) 
+if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+    WriteString(";");
+    NewLine();
+    interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+    MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+    free(interString);
+} else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+    WriteString(";");
+    NewLine();
+}               
+                break ;
+            case TAKE_metalang : 
+                equality = 1 ;
+                ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                Comp(SonTree(tree, 2));
+                equality = 0 ;
+                SetUse(ptEquality);
+                free(ptEquality);
+                break ;
+            case MAKETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                MakeTreeGen(interString, SonTree(tree, 2), 0);
+                free(interString);
+                break ;
+            case ADDLIST_metalang : 
+                AddListGen(interString, SonTree(tree, 2), 0);
+                break ;
+            case REPLACETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+        } 
+        break ;
+    case FUNC_metalang : 
+        if ( !statement ) 
+            WriteString("(");
+        Comp(SonTree(tree, 1));
+        WriteString("(");
+        tree = SonTree(tree, 2);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(")");
+        if ( statement ) {
+            WriteString(";");
+            NewLine();
+        } else 
+            WriteString(")");
+        break ;
+    case STRING_metalang : 
+        tree = SonTree(tree, 1);
+        treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+                                , treeToken);
+        WriteString(SymboName(Value(tree), 0));
+        break ;
+    case DECLARE_metalang : 
+        WriteString("PTREE ");
+        ptTree = tree = SonTree(tree, 1);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            WriteString("= (PTREE) 0");
+            InsertDecElem(AllocString(Value(tree)));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(";");
+        NewLine();
+        break ;
+    case SKIP_metalang : 
+        ptTree = tree = SonTree(tree, 1);
+        i = 0 ;
+        if ( inLex ) 
+            WriteString("ptStockBuf = -1;");
+        else 
+            WriteString("ExtUnputBuf();");
+        NewLine();
+        WriteString("while (");
+        while ( tree ) {
+            if ( i ) 
+                WriteString("||");
+            else 
+                i = 1 ;
+            WriteString("(");
+            if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else {
+                Comp(SonTree(SonTree(tree, 1), 1));
+                WriteString(" <= c && c <= ");
+                Comp(SonTree(SonTree(tree, 1), 2));
+            }
+            WriteString(")");
+            tree = SonTree(tree, 2);
+        }
+        break ;
+} 
+}
+#include "token.h"
+
+/******************************************************************
+          Comp : Display a tree on screen
+  *******************************************************************/ 
+
+void _fastcall Comp ( tree )
+PTREE   tree ;
+{
+switch ( NumberTree(tree)) {
+    case LIST : 
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+        }
+        break ;
+    case DEFINE_metalang : 
+if ( !VerifyFileLine()) {
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+    NewLine();
+    WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+    NewLine();
+    WriteString("\
+/*                  Eric Lavillonniere                                   */");
+    NewLine();
+    WriteString("\
+/*                                                                       */");
+    NewLine();
+    WriteString("\
+/*************************************************************************/");
+    NewLine();
+    NewLine();
+    WriteString("#include \"token.h\"");
+    NewLine();
+    WriteString("#include \"");
+    WriteString(llanguageName);
+    WriteString("\"");
+    NewLine();
+    NewLine();
+    NewLine();
+    WriteString("#define _Lex ");
+    WriteString(NameLang(lexName));
+    NewLine();
+    WriteString("#define SortKeyWord ");
+    WriteString(NameLang("SortKeyWord"));
+    NewLine();
+    WriteString("#define UpSortKeyWord ");
+    WriteString(NameLang("UpSortKeyWord"));
+    NewLine();
+    NewLine();
+}       
+        WriteString("PTREE ");
+        WriteString(NameLang(Value(tree)));
+        strcpy(nameDefine, Value(tree));
+        FuncName(nameDefine);
+        WriteString("(error_free)");
+        NewLine();
+        WriteString("int error_free;");
+        NewLine();
+        WriteString("{");
+        NewLine();
+        Tab();
+        Mark();
+        WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+        NewLine();
+        WriteString("int _value,_nbPre = 0 ;");
+        NewLine();
+        WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+        WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+        NewLine();
+        WriteString("PTREE lastTree = _lastTree,_retValue ;");
+        NewLine();
+        Comp(SonTree(tree, 2));
+        UnMark();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+        NewLine();
+        WriteString("return((PTREE) 0);");
+        NewLine();
+        NewLine();
+        WriteString(Label(nameDefine));
+        WriteString(" :");
+        NewLine();
+        NewLine();
+        Tab();
+        Mark();
+        FuncLibre();/* free pointers before exiting */ 
+        WriteString("_funcLevel--;");
+        NewLine();
+        WriteString("return((PTREE) -1) ;");
+        UnMark();
+        NewLine();
+        NewLine();
+        WriteString(RetLab(nameDefine));
+        WriteString(" :");
+        NewLine();
+        Tab();
+        Mark();
+        NewLine();
+        WriteString("if (!tokenAhead) _Lex() ;");
+        NewLine();
+        WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+        NewLine();
+        WriteString("return _retValue ;");
+        UnMark();
+        NewLine();
+        WriteString("}");
+        NewLine();
+        NewLine();
+        FuncFree();
+        break ;
+    case CASE_metalang : 
+        oldFirstMeta = firstMeta ;
+        firstMeta = 1 ;
+        i = ClassifyCase(SonTree(tree, 1));
+        if ( i == 1 ) {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            WriteString("switch( lexEl.Value) {");
+            NewLine();
+            Tab();
+            Mark();
+            length = ListLength(SonTree(tree, 1));
+            if ( length ) 
+                NegateCond();
+            Comp(SonTree(tree, 1));
+            while ( length-- ) 
+                FreeCond();
+            if ( Nodefault(SonTree(tree, 1))) {
+                WriteString("default :");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("CASE_EXIT(");
+                WriteString(Label(nameDefine));
+                WriteString(",\"");
+                tree = SonTree(tree, 1);
+                if ( !SonTree(tree, 2)) 
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                else {
+                    WriteString("either ");
+                    CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    while ( SonTree(tree, 2)) {
+                        tree = SonTree(tree, 2);
+                        WriteString(" or ");
+                        CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+                    }
+                }
+                WriteString("\")");
+                NewLine();
+                WriteString("break;");
+                NewLine();
+                UnMark();
+            }
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 2 && inLex ) {
+            simpleCase = 1 ;
+            WriteString("switch (c) {");
+            NewLine();
+            Tab();
+            Mark();
+            Comp(SonTree(tree, 1));
+            UnMark();
+            GotoMark();
+            WriteString("}");
+            NewLine();
+        } else if ( i == 3 && inLex ) {
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        } else {
+            ifCase = 1 ;/* case as if out lex */ 
+            Comp(SonTree(tree, 1));
+            WriteString(" ;");
+            NewLine();
+        }
+        firstMeta = oldFirstMeta ;
+        break ;
+    case SWITCH_metalang : 
+        i = NumberTree(SonTree(tree, 1));
+        if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang)) {
+            ptTree = SonTree(SonTree(tree, 1), 1);
+            NegateCond();
+            if ( NumberTree(ptTree) == EXCLA_metalang
+                     && FindConst("META") !=  - 1
+                     && firstMeta
+                     && strcmp(Value(ptTree), "NOTHING")
+                     && (strcmp(Value(ptTree), "META") || (firstMeta = 0))) {
+                firstMeta = 0 ;
+                WriteString("case ");
+                WriteString(NameLang("META"));
+                WriteString(":");
+                NewLine();
+            }
+            if ( NumberTree(ptTree) != EXCLA_metalang
+                     || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+                                , "NOTHING")) {
+                AllocCond(SonTree(tree, 1));
+                WriteString("case ");
+                Comp(ptTree);
+            } else 
+                WriteString("default");
+            WriteString(" : ");
+            NewLine();
+            Tab();
+            Mark();
+            if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+                WriteString("tokenAhead = 0 ;");
+                NewLine();
+                WriteString("CommTerm();");
+                NewLine();
+            }
+            statement = 1 ;
+            Comp(SonTree(tree, 2));
+            WriteString("break;");
+            NewLine();
+            UnMark();
+            GotoMark();
+        } else {
+            if ( !ifCase && simpleCase ) {
+                Comp(SonTree(tree, 1));
+                NewLine();
+                Tab();
+                Mark();
+                if ( !SonTree(SonTree(tree, 1), 1)) {
+                    length = 1 ;
+                    WriteString(" if (c!= EOF) {");
+                    NewLine();
+                    Tab();
+                    Mark();
+                }
+                if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+                    WriteString("NextChar();");
+                    NewLine();
+                }
+                simpleCase = 0 ;
+                Comp(SonTree(tree, 2));
+                if ( length ) {
+                    UnMark();
+                    GotoMark();
+                    WriteString("}");
+                    NewLine();
+                }
+                WriteString("break ;");
+                UnMark();
+                NewLine();
+            } else {
+                i = 0 ;
+                ptTree = SonTree(SonTree(tree, 1), 1);
+                if ((NumberTree(SonTree(tree, 1)) == TAKE_metalang
+                         || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+                         && NumberTree(ptTree) == IDENT_metalang ) {
+                    i = 1 ;
+                }
+                statement = 0 ;
+                if ( !ptTree
+                         || NumberTree(ptTree) != EXCLA_metalang
+                         || strcmp(BrainyValue(ptTree), "NOTHING")) {
+                    WriteString("if(");
+                    Comp(SonTree(tree, 1));
+                    WriteString(")");
+                } else 
+                    WriteString("if (1) ");
+                statement = 1 ;
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                Comp(SonTree(tree, 2));
+                UnMark();
+                GotoMark();
+                WriteString("} else ");
+            }
+        }
+        break ;
+    case STOREL_metalang : 
+        if ( !inLex ) {
+            WriteString("if (tokenAhead) ExtUnputBuf() ;");
+            NewLine();
+        }
+        if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+            NewLine();
+            WriteString("NextChar();");
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        } else {
+            WriteString("{");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("if (_nbCharact + strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(") < MAXLENGTH) ");
+            NewLine();
+            Tab();
+            Mark();
+            WriteString("strcpy(_ptString,");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            UnMark();
+            NewLine();
+            WriteString("_nbCharact += strlen(");
+            WriteString("\"");
+            WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+            WriteString("\"");
+            WriteString(");");
+            WriteString("_ptString = lexEl.string + _nbCharact;");
+            NewLine();
+            UnMark();
+            NewLine();
+            WriteString("}");
+            NewLine();
+        }
+        break ;
+    case TAKEL_metalang : length = 1 ;
+    case SEEL_metalang : 
+        if ( simpleCase ) {
+            if ( !SonTree(tree, 1)) 
+                WriteString("default : ");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+                CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+            else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                while ( tree ) {
+if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+    CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+else {
+    cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+    carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+    CaseCharac(cardeb);
+    while ( IncrChar(cardeb, carend)) {
+        NewLine();
+        CaseCharac(cardeb);
+    }
+    NewLine();
+    CaseCharac(carend);
+}
+                    if ( tree = SonTree(tree, 2)) 
+                        NewLine();
+                }
+            }
+        } else {
+            if ( statement ) 
+                WriteString("if (!");
+            if ( !inLex ) 
+                WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+            WriteString("(");
+            if ( !SonTree(tree, 1)) 
+                WriteString("c != EOF");
+            else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+                tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+                i = 0 ;
+                WriteString("(");
+                while ( tree ) {
+                    if ( i ) 
+                        WriteString("||");
+                    else 
+                        i = 1 ;
+                    WriteString("(");
+                    if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                        WriteString("c == ");
+                        Comp(SonTree(tree, 1));
+                    } else {
+                        Comp(SonTree(SonTree(tree, 1), 1));
+                        WriteString(" <= c && c <= ");
+                        Comp(SonTree(SonTree(tree, 1), 2));
+                    }
+                    WriteString(")");
+                    tree = SonTree(tree, 2);
+                }
+                WriteString(")");
+            } else {
+                WriteString("GetString(");
+                WriteString("\"");
+                WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+                WriteString("\"");
+                if ( length ) 
+                    WriteString(",1)");
+                else 
+                    WriteString(",0)");
+            }
+            if ( length ) 
+                WriteString("&& NextChar())");
+            else 
+                WriteString(")");
+            if ( !inLex ) 
+                WriteString(")");
+            if ( statement ) {
+if ( !inLex ) {
+    WriteString(") {");
+    NewLine();
+    Tab();
+    Mark();
+    WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+    NewLine();
+    WriteString("PrintError(errStr,error_free);");
+    NewLine();
+    WriteString("goto ");
+    WriteString(Label(nameDefine));
+    WriteString(";");
+    UnMark();
+    NewLine();
+    WriteString("}");
+    NewLine();
+} else {
+    WriteString(") ;");
+    NewLine();
+}
+            }
+        }
+        break ;
+    case TAKE_metalang : 
+        if ( !statement ) 
+            if ( NumberTree(tree) == IDENT_metalang ) {
+                WriteString("(PUSH_CALL_AFF(");
+                if ( equality ) {
+                    WriteString(ptEquality);
+                    WriteString(" = ");
+                } else 
+                    WriteString("NOTHING");
+                WriteString(",");
+                WriteString(NameLang(Value(tree)));
+                WriteString("))");
+            } else {
+                WriteString("((tokenAhead || _Lex()) && ");
+                i = 0 ;/* is a meta welcomed here */ 
+                if ( FindConst("META") !=  - 1
+                         && NumberTree(tree) == EXCLA_metalang ) {
+                    i = 1 ;
+                    WriteString("TERM_OR_META(");
+                    Comp(tree);
+                    WriteString(")");
+                } else {
+                    WriteString("lexEl.Value == ");
+                    Comp(tree);
+                }
+                if ( equality ) {
+                    WriteString(" && !(tokenAhead = 0) && (");
+                    if ( !i ) {
+                        WriteString(ptEquality);
+                        WriteString(" = CommString(lexEl.string)))");
+                    } else {
+                        WriteString(" BUILD_TERM_META(");
+                        WriteString(ptEquality);
+                        WriteString("))) ");
+                    }
+                } else 
+                    WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+            }
+        else if ( NumberTree(tree) == IDENT_metalang ) {
+            WriteString("if ( (");
+            if ( equality ) {
+                WriteString(ptEquality);
+                WriteString("=");
+            }
+            WriteString(NameLang(Value(tree)));
+            WriteString("(error_free)) == (PTREE) -1 ) ");
+            NewLine();
+            Tab();
+            WriteString("PROG_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            WriteString(nameDefine);
+            WriteString("\")");
+            NewLine();
+        } else {
+            WriteString("if (!tokenAhead) _Lex() ;");
+            NewLine();
+            i = 0 ;/* is a meta welcomed here */ 
+            if ( FindConst("META") !=  - 1
+                     && NumberTree(tree) == EXCLA_metalang ) {
+                i = 1 ;
+                WriteString("if ( ! TERM_OR_META(");
+                Comp(tree);
+                WriteString(")");
+            } else {
+                WriteString("if (  lexEl.Value != ");
+                Comp(tree);
+            }
+            if ( equality ) {
+                WriteString(" || !(");
+                if ( !i ) {
+                    WriteString(ptEquality);
+                    WriteString(" = CommString(lexEl.string))");
+                } else {
+                    WriteString("BUILD_TERM_META(");
+                    WriteString(ptEquality);
+                    WriteString("))");
+                }
+            } else 
+                WriteString(" || !(CommTerm(),1)");
+            WriteString(") ");
+            NewLine();
+            Tab();
+            WriteString("TOKEN_EXIT(");
+            WriteString(Label(nameDefine));
+            WriteString(",\"");
+            CompString(tree);
+            WriteString("\")");
+            NewLine();
+        }
+        break ;
+    case LANGUAGE_metalang : 
+        WriteString("\
+/*************************************************************************/");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*        Produced by MetaGen version 1.1  -    1989                     */");
+        NewLine();
+        WriteString("\
+/*       Syntaxic Analyzer Meta Generator developped by                  */");
+        NewLine();
+        WriteString("\
+/*                  Eric Lavillonniere                                   */");
+        NewLine();
+        WriteString("\
+/*                                                                       */");
+        NewLine();
+        WriteString("\
+/*************************************************************************/");
+        WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+        WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+        WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+                WriteString("PTREE ");
+                WriteString(NameLang(Value(ptTree)));
+#ifndef SUN
+                WriteString(" ( int );");
+#else 
+                WriteString("();");
+#endif
+                NewLine();
+            } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+                lexName = AllocString(Value(ptTree));
+                foundLexName = 1 ;
+            } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+                ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+            else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+                nbLexDefine++ ;
+                if ( !foundLexName ) 
+                    lexName = AllocString(Value(ptTree));
+            }
+        while ( ptTree = SonTree(ptTree, 2)) 
+            if ( ptTree
+                     && NumberTree(SonTree(ptTree, 1))
+                         == LEXDEFINE_metalang ) {
+                CompLexDefine(SonTree(ptTree, 1));
+                NewLine();
+            }
+        DumpNode();
+#ifdef SUN
+        writeLine = 0 ;
+        output = loutput ;
+        LispMake();
+        output = coutput ;
+#endif
+        break ;
+    case EQUAL_metalang : 
+        switch ( NumberTree(SonTree(tree, 2))) {
+            case NIL_metalang : 
+            case FUNC_metalang : 
+            case IDENT_metalang : 
+            case NUMB_metalang : 
+                if ( !statement ) 
+                    WriteString("(");
+                Comp(SonTree(tree, 1));
+                if ( statement ) 
+                    WriteString("= ");
+                else 
+                    WriteString("== ");
+                Comp(SonTree(tree, 2));
+                if ( !statement ) 
+                    WriteString(")");
+                if ( statement ) 
+if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+    WriteString(";");
+    NewLine();
+    interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+    MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+    free(interString);
+} else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+    WriteString(";");
+    NewLine();
+}               
+                break ;
+            case TAKE_metalang : 
+                equality = 1 ;
+                ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                Comp(SonTree(tree, 2));
+                equality = 0 ;
+                SetUse(ptEquality);
+                free(ptEquality);
+                break ;
+            case MAKETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                MakeTreeGen(interString, SonTree(tree, 2), 0);
+                free(interString);
+                break ;
+            case ADDLIST_metalang : 
+                AddListGen(interString, SonTree(tree, 2), 0);
+                break ;
+            case REPLACETREE_metalang : 
+                interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+                ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+        } 
+        break ;
+    case FUNC_metalang : 
+        if ( !statement ) 
+            WriteString("(");
+        Comp(SonTree(tree, 1));
+        WriteString("(");
+        tree = SonTree(tree, 2);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(")");
+        if ( statement ) {
+            WriteString(";");
+            NewLine();
+        } else 
+            WriteString(")");
+        break ;
+    case STRING_metalang : 
+        tree = SonTree(tree, 1);
+        treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+                                , treeToken);
+        WriteString(SymboName(Value(tree), 0));
+        break ;
+    case DECLARE_metalang : 
+        WriteString("PTREE ");
+        ptTree = tree = SonTree(tree, 1);
+        while ( tree ) {
+            Comp(SonTree(tree, 1));
+            WriteString("= (PTREE) 0");
+            InsertDecElem(AllocString(Value(tree)));
+            tree = SonTree(tree, 2);
+            if ( tree ) 
+                WriteString(",");
+        }
+        WriteString(";");
+        NewLine();
+        break ;
+    case SKIP_metalang : 
+        ptTree = tree = SonTree(tree, 1);
+        i = 0 ;
+        if ( inLex ) 
+            WriteString("ptStockBuf = -1;");
+        else 
+            WriteString("ExtUnputBuf();");
+        NewLine();
+        WriteString("while (");
+        while ( tree ) {
+            if ( i ) 
+                WriteString("||");
+            else 
+                i = 1 ;
+            WriteString("(");
+            if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+                WriteString("c == ");
+                Comp(SonTree(tree, 1));
+            } else {
+                Comp(SonTree(SonTree(tree, 1), 1));
+                WriteString(" <= c && c <= ");
+                Comp(SonTree(SonTree(tree, 1), 2));
+            }
+            WriteString(")");
+            tree = SonTree(tree, 2);
+        }
+        break ;
+} 
+}
+main ()
+{
+    if ( a ) {
+        if ( a ) {
+            if ( a ) {
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}               
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}   
+}               
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}   
+}               
+            }
+        }
+    }
+}
+typedef void    (CALLBACK *FARPROC)(void) ;
+
+FARPROC toto ;
+#include "typedef.h"
+
+FARPROC bidon ;
+
+typedef void    UnCandidat ;
+
+void Interprete ()
+{
+    int feuille ;
+    int action ;
+    UnCandidat  monCandidat ;
+    
+    DecodeInit();
+    DecodeInt(&feuille);
+    DecodeInt(&action);
+    PRINTF(">>>> %d %d ", feuille, action);
+}
+
+main ()
+{
+    char    filePath [512];
+}
+main ()
+{
+    switch ( feuille ) {
+        case CANDIDAT_FEUILLE : 
+            {
+
+/* on a change la valeur d'un champ du candidat */ 
+if ( action >= 1 && action <= 10 ) {
+    char    *string ;
+    DecodeString(&string);
+    if ( strlen(string)
+             && strncmp(leCandidat.candidat [action - 1], string, 80)) 
+        modification = 1 ;
+    strncpy(leCandidat.candidat [action - 1], string, 80);
+    PRINTF(" Feuille Candidat changement du champ %d en %s\n", action
+            , string);
+} else if ( action == INITIALISATION ) {
+    
+    /* initialisation de l'application on initialise les
+      champs du candidat */ 
+    PRINTF(" Initialisation de l'application\n");
+    Initialisation(1);
+}               
+                break ;
+            }
+        case QUESTION_FEUILLE : 
+            {
+                
+                /* on passe les feuilles de questions */ 
+                switch ( action ) {
+                    case INITIALISATION : 
+{
+    int nbFeuille ;
+    PRINTF("Initialisation de la feuille de question\n");
+    DecodeInt(&nbFeuille);
+    InitQuestion(nbFeuille);
+    break ;
+}                       
+                } 
+            }
+    } 
+}
+enum bidon { lksdjflskdjflskdfjlsdjflksdfjl
+                     = sdslkdflskdflsdflskdflsdjfsldkfsdfjsldslflsd };
+int skjsldkf ;                          // lsdfjlsdkf   
+void    toffffffffffffffffffto (int skdfjklsdf, int sdkfjlksdfj
+                , int sdkflskdfj, int sdkfjslkdf, int lskdjfskdf
+                , char skdfjlksdfj) ;   // commentaire  
+int a = b ;                             // autre commentaire  
+int sdjflskdfj, skdfjlsdf ;             // dernier commentaire  
+
+void toffffffffffffffffffto ( int skdfjklsdf, int sdkfjlksdfj
+        , int sdkflskdfj, int sdkfjslkdf, int lskdjfskdf, char skdfjlksdfj )
+    : dkfjkdf(dfkjdf), skldfksldf(slkdflsldf), lsdkjfsldkf(lskdfksldf)
+        , sldkfsldkf(skdfsldkf), skdfslkdf(lskdflskdf)
+{
+    a = b ;
+}
+
+class toto {
+    int a ;
+};
+
+struct toto {
+    int a ;
+} fifi ;
+enum { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf, sldkfslkdf
+        , ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf, slkdflskdf
+        , lskjdflskdf };
+enum toto { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf
+            , sldkfslkdf, ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf
+            , slkdflskdf, lskjdflskdf };
+
+class CFile : public CObject {
+    DECLARE_DYNAMIC(CFile)
+    
+public :
+
+    // Flag values   
+    enum OpenFlags { modeRead = 0x0000, modeWrite = 0x0001, modeReadWrite = 0x0002, shareCompat = 0x0000, shareExclusive = 0x0010, shareDenyWrite = 0x0020, shareDenyRead = 0x0030, shareDenyNone = 0x0040, modeNoInherit = 0x0080, modeCreate = 0x1000, typeBinary = (int)0x8000// derived classes only   
+                                    };
+    enum Attribute { normal = 0x00, readOnly = 0x01, hidden = 0x02
+                        , system = 0x04, volume = 0x08, directory = 0x10
+                        , archive = 0x20 };
+    enum SeekPosition { begin = 0x0, current = 0x1, end = 0x2 };
+    enum { hFileNull =  - 1 };
+};
+main ()
+{
+    int i ;
+    
+    igkjflkgjflgkjflkjlfkglfkgflkgjfkgflgkflkgfgk = i = tototoo = tutuuuu
+         = sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+         = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh
+                         * iiii * kkkkk * llllll * kkkkkkkkkk * ffafasd
+                         * sldfk
+                     + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf
+                     + laflaf + sdflksdfj)
+                 * tututuut * titititi * fififif * tititi * fofofo
+                 * rararar * dififii * sdflkjsdlkf * lsdflksdjf
+                 * lksdjflksdjf * a
+             + 5
+             + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c
+                 * b * c * c * b * c
+                 * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n
+                     / o / p / q / r / s / t / u / v / w / x / y / z)
+                 * c * a * b
+             + u ;
+    if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+             + lakfaksdfj + adfklakdf + lskflskdf
+         < slkdf + lsdflskdf + sldkfldsk ) 
+        a = b ;
+}
+void CapaRentFor ( UnCandidat *leCandidat )
+{
+    int score = (leCandidat -> score [HSCALE]
+                     + leCandidat -> score [GSCALE])
+                 / 2 ;
+}
+main ()
+{
+    if ( sldkf * sldkfjl * lskdfjlsd * lsdjkflsdf * lskdfjlsdkfj
+                 * lsdkjflskdfj * lskjdfsldkf * lsjdflskdfj * lskdjflskdfj
+                 * lkjsdflskjdf * lskdjfslkdf
+             + lskjdf + sldjflsdf + lskjdflskdfj + lskdfjlsdf + lskdjflsdfj
+             + lsdflskdfj + lsdfjlsdf + lskdjflskdfj + lsdfjlsdkfj
+             + sjdflskf
+         > 0 ) 
+        a = b - 1 ;
+}
+main ()
+{
+    if ( lskdfjls + sldkfjlsdf * lsdkfjlsd * lsdkflsd * sldfjlsdf
+         + sldkflsdf + sldfjlsdf * lsdkjflsdfk * lskdjflsd * lskdflsdf
+         + sldfkjsldkfj
+         + sldkfjlsdf * lskdfjlsdkf * lsdkfjlsdkf * lsdjkflsdkfj ) 
+        a = b ;
+}
+
+
+
+main ()
+{
+    if ( a ) {
+        if ( a ) {
+            if ( a ) {
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}               
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}   
+}               
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+if ( a ) {
+    sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+}   
+}               
+            }
+        }
+    }
+}

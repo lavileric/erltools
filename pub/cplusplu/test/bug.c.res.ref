@@ -1,0 +1,35 @@
+#include "User.h"
+#include "Collection.h"
+#include <iostream.h>
+#include <strstream.h>
+#include <fstream.h>
+#include <string.h>
+
+const int   BUFFERSIZ = 256 ;
+
+class UserCollection : public Collection {
+    
+    private :
+    
+        User    *new_user ;
+    
+    public :
+    
+        UserCollection () ;
+};
+
+UserCollection::UserCollection ()
+{
+    char    buffer [BUFFERSIZ], *user ;
+    
+    try {
+        ifstream    passwd("/etc/passwd");
+        while ( passwd.getline(buffer, sizeof(buffer) - 1) != NULL ) {
+            user = strtok(buffer, ":");
+            new_user = new User(user);
+            push(new_user);
+        }
+    } catch ( ... ) {
+        cout << "UserCollection: invalid /etc/passwd\n";
+    }
+}

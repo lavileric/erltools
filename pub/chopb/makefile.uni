@@ -1,0 +1,63 @@
+THE_LIB= ./chopb.a
+
+all : DOLIB chopb
+
+LIB_OBJECTS=chopb.o chopb0.o chopb1.o decomp.o 
+
+libchopb.so : $(LIB_OBJECTS)
+	$(C_PLUS) -shared -o libchopb.so $(LIB_OBJECTS) 
+
+DOLIB : m_done $(THE_LIB)(chopb.o chopb0.o chopb1.o decomp.o) 
+
+OPT_FLAGS=-DDUMP_COORD  -Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc
+	- rm -f chopb
+
+chopb.o : chopb.cc chopb.h
+
+chopb0.o : chopb0.cc chopb.h
+
+chopb1.o : chopb1.cc chopb.h
+
+m_done : chopb.met ../cplusplu/cplus.met
+	-@ mkdir compile.dir
+	@cp chopb.met compile.dir
+	@echo "metagen -c++ chopb.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../library:../../cplusplu $(METAOPT) chopb.met ;\
+		  unify chopb.h ../chopb.h;\
+	  unify chopb.cpp ../chopb.cc;\
+	  unify chopb0.cpp ../chopb0.cc;\
+	  unify chopb1.cpp ../chopb1.cc)
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+decomp.cc: decomp.ch
+
+chopper.o : chopper.cc ../library/token.h chopb.h
+
+decomp.o : decomp.cc ../library/token.h chopb.h
+
+CPLUS=../cplusplu/cplus.a
+OBJECTS = chopper.o
+
+SO_LIB = -L ../cplusplu -lcplus -L . -lchopb -L ../library -lmeta 
+
+chopb : $(OBJECTS) $(THE_LIB) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libchopb.so ; \
+		$(C_PLUS) $(OPTIM_FLAGS) -o chopb $(OBJECTS) $(SO_LIB) ; \
+	else\
+		$(C_PLUS) $(OPTIM_FLAG) -o chopb $(OBJECTS) $(THE_LIB) $(CPLUS) $(LIBRARY) ;\
+	fi
+
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+language msch;
+
+global begin
+    {{ void AnalyzeMetric(PPTREE);}}
+end;
+
+use "chopb.met";
+
+lexdefine LexPragmaNew;
+    skip ' ','\t';
+    case
+        takel "metric" :
+            begin
+            skip ' ','\t';
+            case
+                takel "module_length" : return !PRAGMA_MODULE_LENGTH
+                takel "function_length" : return !PRAGMA_FUNCTION_LENGTH
+                takel "comment_ratio" : return !PRAGMA_COMMENT_RATIO
+                takel "cyclomatic" : return !PRAGMA_CYCLO
+                takel "nesting" : return !PRAGMA_NESTING
+                takel "comment_param" : return !COMMENT_PARAM
+                takel "comment_decl" : return !COMMENT_DECL
+                takel "litteral_value" : return !LITTERAL_VALUE
+                takel "ident_min" : return !IDENT_MIN
+                takel "ident_max" : return !IDENT_MAX
+                takel "forbid_goto" : return !FORBID_GOTO
+                takel "assign_cond" : return !ASSIGN_COND
+                takel "assign_call" : return !ASSIGN_CALL
+                takel "exclude" : return !EXCLUDE
+            end;
+            end
+    end;
+end;
+
+define other_config;
+    declare retTree;
+    case
+        take !PRAGMA_MODULE_LENGTH :
+            begin
+            retTree = maketree(MODULE_LENGTH,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !PRAGMA_FUNCTION_LENGTH :
+            begin
+            retTree = maketree(FUNCTION_LENGTH,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !PRAGMA_COMMENT_RATIO :
+            begin
+            retTree = maketree(COMMENT_RATIO,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !PRAGMA_CYCLO :
+            begin
+            retTree = maketree(CYCLO,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !PRAGMA_NESTING :
+            begin
+            retTree = maketree(NESTING,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !COMMENT_PARAM :
+            begin
+            retTree = maketree(COMMENT_PARAM,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !COMMENT_DECL :
+            begin
+            retTree = maketree(COMMENT_DECL,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !LITTERAL_VALUE :
+            begin
+            retTree = maketree(LITTERAL_VALUE,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !IDENT_MIN :
+            begin
+            retTree = maketree(IDENT_MIN,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !IDENT_MAX :
+            begin
+            retTree = maketree(IDENT_MAX,take !INTEGER);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !FORBID_GOTO :
+            begin
+            retTree = maketree(FORBID_GOTO,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !ASSIGN_COND :
+            begin
+            retTree = maketree(ASSIGN_COND,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !ASSIGN_CALL :
+            begin
+            retTree = maketree(ASSIGN_CALL,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        take !EXCLUDE :
+            begin
+            retTree = maketree(EXCLUDE,take !IDENT);
+            AnalyzeMetric(retTree);
+            return retTree;
+            end
+        default : return maketree(PRAGMA,take !PRAGMA_CONTENT)
+    end;
+end;
+
+define nothing;
+    declare node;
+    node = maketree(NUMBER_FUNC,(),(),(),(),());
+    return node;
+end.
+

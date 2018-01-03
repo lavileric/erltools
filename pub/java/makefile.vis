@@ -1,0 +1,5 @@
+!include ./makefile.win
+
+pjava.exe : $(OBJECTS)
+	link  $(LNK_FLAGS) /out:pjava.exe $(OBJECTS) $(CPLUS) $(LIBRARY)
+	 

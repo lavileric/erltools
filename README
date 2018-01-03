@@ -1,0 +1,95 @@
+This directory contains a Syntaxic/Lexical parser generator and a C/C++ 
+prettyprinter. Those programs are freeware in the GNU acceptance 
+( see the copying file in the pub/cplusplu directory).
+
+INSTALLATION
+------------
+
+The makefiles are set for Linux. Changing the active flags in makefile.inc and
+makefile.der (comment out the correct lines), it has also been tested on SUN or 
+Unix Interactive (with g++ 2.7.2).
+
+1) Take the makefile.inc and makefile.der file and do the following :
+
+   In variable ERLTOOLS_DIR : Put the directory where you installed erltools
+                              like "/home/my_home/erltools".
+
+   In variable INSTALL_DIR : Put the directory where the executable are
+                             to be installed. The directory must exist and
+                             must be in your PATH variable.
+
+   Put also . in your PATH variable
+
+2) Do a make -f makefile.uni all install
+   (for a basic C++ prettyprinter installation you can use the command
+     make -f makefile.uni prettyprinter
+    for code norm checker you can use the command
+     make -f makefile.uni erlscale
+    for java prettyprinter you can use the command
+     make -f makefile.uni pjava
+    for optimisation template you can use the command
+     make -f makefile.uni optimonly )
+
+   Warning : if your virtual memory is exhausted suppress -pipe in makeref.*
+
+3) In the installation directory modify the file c.set, so that it 
+   reflects your prettyprinting preference (the flags in the middle
+   of the file)
+
+4) Verify that the installation directory is in your PATH
+
+
+USAGE
+-----------
+
+1) Under shell
+
+   Enter cpb 'name' where name is the name of the program to be
+   prettyprinted
+   Enter erlscale 'name' to verify file.
+
+2) Under emacs
+
+   You have the possibility to prettyprint a function or a whole
+   file taking the macros given in the .emacs found in the
+   cplusplu directory
+
+3) Under windows
+
+   Open a dos windows. Enter cpb 'name' for prettyprinting c/c++ file.
+   Enter cpbch 'name' for prettyprinting a metachop file.
+   cpb and cpbch can be used as extern tools for Microsoft and Borland editors.
+   Enter pjava 'name' for prettyprinting a java file.
+   Enter erlms 'name' or erlmsch 'name' to verify a program.
+
+BORLAND
+-------
+
+Files can be compiled with borland compiler. Put borland configuration in
+makefile.inc and makefile.der. Compile using make -f makefile.bor. Then do
+the same as in INSTALLATION.
+
+MICROSOFT
+---------
+
+Files can be compiled with visual compiler. Put visual configuration in
+makefile.inc and makefile.der. Compile using nmake -f makefile.vis. Then do
+the same as in INSTALLATION.
+
+LEXICAL/SYNTAXIC PARSER GENERATOR
+---------------------------------
+
+All documentation is to be found in doc directory as postscript files. A README
+describe the documentations available there.
+
+COMPILE WITH ELF
+----------------
+
+Add the value of INSTALL_DIR in your LD_LIBRARY_PATH variable. In erltools directory enter 
+'make clean solib soall install'.
+
+
+EMAIL ADDRESS
+-------------
+
+lavileric@aol.com

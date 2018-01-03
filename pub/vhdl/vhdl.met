@@ -1,0 +1,654 @@
+language vhdl;
+
+lexdefine LexComment;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    case
+        takel in ['/'] :
+            
+            /* definition of comment */
+            case
+                seel in ['/'] :
+                    begin
+                    begin_comment();
+                    storel takel ;
+                    while seel do
+                        case
+                            seel in ['\r','\n'] :
+                                begin
+                                store_comment_line();
+                                return take LexComment;
+                                end
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    store_comment_line();
+                    end
+                takel in ['*'] :
+                    begin
+                    {{ {int level = 0; }};
+                    begin_comment();
+                    while seel do
+                        case
+                            takel "/*" :
+                                begin
+                                {{ level ++; }};
+                                storel "/*";
+                                end
+                            takel "*/" :
+                                begin
+                                if {{!level }} then
+                                    begin
+                                    store_comment_line();
+                                    return take LexComment;
+                                    end
+                                else
+                                    begin
+                                    {{ level --;}};
+                                    storel "*/";
+                                    end;
+                                end
+                            takel in ['\n'] : store_comment_line()
+                            takel in ['\r'] : 
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    store_comment_line();
+                    {{} }};
+                    end
+                default :
+                    begin
+                    recoverl;
+                    end
+            end
+    end;
+end;
+
+lexdefine LexMeta;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    case
+        takel in ['$'] :
+            
+            /* definition of metavariables */
+            begin
+            if not seel in ['('] then
+                while seel in ['a'..'z','A'..'Z','0'..'9','_'] do
+                    storel takel 
+            else
+                begin
+                {{ int nbPar = 0;}};
+                storel takel ;
+                while seel do
+                    case
+                        seel in ['('] :
+                            begin
+                            {{ nbPar++;}};
+                            storel takel ;
+                            end
+                        seel in ['\n'] :
+                            begin
+                            
+                            /* do not take line feed */
+                            return !META;
+                            end
+                        seel in [')'] :
+                            if {{!nbPar }} then
+                                begin
+                                storel takel ;
+                                return !META;
+                                end
+                            else
+                                begin
+                                storel takel ;
+                                {{ nbPar--;}};
+                                end
+                        default : storel takel 
+                    end;
+                end;
+            return !META;
+            end
+    end;
+end;
+
+lexdefine Lex;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    recognize_string;
+    case
+        seel in ['a'..'z','A'..'Z'] :
+            /*definition of ident */
+            begin
+            while seel in ['a'..'z','A'..'Z','_','0'..'9'] do
+                storel takel ;
+            return SortKeyWord(!IDENT);
+            end
+        takel in ['"'] :
+            
+            /* definition of string */
+            while seel do
+                case
+                    takel in ['\r','\n'] :
+                        begin
+                        return !STRING;
+                        end
+                    takel in ['"'] :
+                        if seel in ['"'] then
+                            storel takel 
+                        else
+                            begin
+                            return !STRING;
+                            end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        if not seel in ['\r'] then
+                            
+                            /* pour eviter un
+                              double \r a l'ecriture formatee */
+                            storel takel 
+                        else
+                            takel ;
+                        end
+                    seel : storel takel 
+                end
+        takel "'" :
+            
+            /* definition of character */
+            while seel do
+                case
+                    takel "'" :
+                        begin
+                        return !CHARACTER;
+                        end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        storel takel ;
+                        end
+                    seel : storel takel 
+                end
+        seel in ['0'..'9'] :
+            
+            /* definition of number */
+            begin
+            while seel in ['0'..'9'] do
+                storel takel ;
+            return !NUMB;
+            end
+    end;
+end;
+
+define main_entry;
+end;
+
+define identifier;
+    return maketree(IDENTIFIER,take !IDENTIFIER);
+end;
+
+define abstractLiteral;
+    declare retTree;
+    if retTree = take decimalLiteral or retTree = take basedLiteral then
+        return retTree
+    else
+        break;
+end;
+
+define accesTypeDEfinition;
+    take #"ACCESS";
+    return maketree(ACCESS,take subtypeIndication);
+end;
+
+define actualDesignator;
+    case
+        take #"OPEN" : return maketree(OPEN)
+        default : return take expression
+    end;
+end;
+
+define actualPart;
+    declare retTree;
+    if retTree = take actualDesignator then
+        begin
+        if take "(" then
+            begin
+            retTree = maketree(FUNC_ACTUAL,retTree,take actualDesignator);
+            take ")";
+            return retTree;
+            end
+        else
+            return retTree;
+        end
+    else
+        begin
+        retTree = take name;
+        take "(";
+        retTree = maketree(TYPE_MARK_ACTUAL,retTree,take actualDesignator);
+        take ")";
+        return retTree;
+        end;
+end;
+
+define aggregate;
+    declare list;
+    take "(";
+    repeat
+        addlist(list,take elementAssociation);
+    until not take ",";
+    take ")";
+    return list;
+end;
+
+define aliasDeclaration;
+    declare retTree;
+    take #"alias";
+    retTree = maketree(ALIAS_DECLARATION,take identifier,(),(),());
+    if take ":" then
+        replacetree(retTree,2,take subtypeIndication);
+    take #"is";
+    replacetree(retTree,3,take name);
+    if not take ";" then
+        replacetree(retTree,4,take signature);
+    take ";";
+    return retTree;
+end;
+
+define aliasDesignator;
+    declare retTree;
+    if retTree = take identifier
+        or retTree = take characterLiteral
+        or retTree = take operatorSymbol then
+        return retTree
+    else
+        break;
+end;
+
+define allocator;
+    take #"new";
+    return maketree(NEW,take subtype_indication_or_qualified_expression);
+end;
+
+define subtype_indication_or_qualified_expression;
+    declare retTree;
+    retTree = take name;
+    if take "'" then
+        begin
+        end
+    else
+        begin
+        end;
+end;
+
+define associationElement;
+    declare retTree;
+    retTree = maketree(ASSOCIATION_ELEMENT,take formalPart,());
+    take "=>";
+    return replacetree(retTree,2,take actualPart);
+end;
+
+define type;
+    declare retTree,typeDefinition;
+    
+    /* identifier */
+    take #"type";
+    retTree = maketree(TYPE,take identifier,());
+    
+    /* type definition */
+    take #"is";
+    if typeDefinition = take enumerationTypeDefinition
+        or typeDefinition = take integerTypeDefinition
+        or typeDefinition = take floatingTypeDefition
+        or typeDefinition = take physicalTypeDefition
+        or typeDefinition = take scalarTypeDefition
+        or typeDefinition = take arrayTypeDefinition
+        or typeDefinition = take recordTypeDefinition
+        or typeDefinition = take accessTypeDefinition
+        or typeDefinition = take fileTypeDefition then
+        replacetree(retTree,2,typeDefinition)
+    else
+        break;
+    take ";";
+    return retTree;
+end;
+
+define prefix;
+    declare retTree;
+    if retTree = take name or retTree = take functionCall then
+        return retTree
+    else
+        break;
+end;
+
+define signature;
+end;
+
+define range;
+    retTree = take simpleExpression;
+    case
+        take #"to" : return maketree(RANGE,retTree,take simpleExpression
+            ,maketree(TO))
+        take #"downto" : return maketree(INTEGER_TYPE,retTree
+            ,take simpleExpression,maketree(DOWNTO))
+    end;
+end;
+
+define rangeConstraint;
+    declare retTree;
+    case
+        take #"range" :
+            begin
+            return maketree(RANGE_CONSTRAINT,take range);
+            end
+        default :
+            begin
+            end
+    end;
+end;
+
+define indexConstraint;
+    declare list;
+    take "(";
+    repeat
+        addlist(list,take range);
+    until not take ",";
+    take ")";
+    return maketree(INDEX_CONSTRAINT,list);
+end;
+
+define integerTypeDefinition;
+    return maketree(INTEGER_TYPE,take rangeConstraint);
+end;
+
+define physicalLiteral;
+    declare retTree,abstractLit;
+    retTree = maketree(PHYSICAL_LITERAL,(),());
+    if abstractLit = take abstractLiteral then
+        replacetree(retTree,1,abstractLit);
+    return replacetree(retTree,2,take name);
+end;
+
+define physicalTypeDefinition;
+    declare retTree,list,secondary;
+    retTree = maketree(PHYSICAL_TYPE,take rangeConstraint,(),());
+    take #"units";
+    replacetree(retTree,2,take identifier);
+    take ";";
+    while not take #"end" do
+        begin
+        secondary = take identifier;
+        take "=";
+        addlist(list
+            ,maketree(PHYSICAL_SECONDARY,secondary,take physicalLiteral));
+        take ";";
+        end;
+    take #"units";
+end;
+
+define enumerationTypeDefinition;
+    declare list,elem;
+    take "(";
+    repeat
+        if elem = take identifier or elem = take characterLiteral then
+            addlist(list,elem)
+        else
+            break;
+    until not take ",";
+    take ")";
+    return maketree(ENUMERATION_TYPE,list);
+end;
+
+define arrayTypeDefinition;
+    declare retTree,list;
+    retTree = maketree(ARRAY_TYPE,(),());
+    take "(";
+    repeat
+    until not take ",";
+    take ")";
+    take #"of";
+    return replacetree(retTree,2,take elementSubtypeIndication);
+end;
+
+define recordTypeDefinition;
+    declare retTree,list,identifierList;
+    take #"record";
+    repeat
+        repeat
+            addlist(identifierList,take identifier);
+        until not take ",";
+        take ":";
+        addlist(list
+            ,maketree(RECORD_TYPE_ENTRY,idenfifierList
+                ,take subtypeIndication));
+    until see #"end";
+    take #"end";
+    return maketree(RECORD_TYPE,list);
+    take #"record";
+end;
+
+define subTypeIndication;
+    declare nameIdent,nameIdent1,retTree;
+    nameIdent = take name;
+    if nameIdent1 = take name then
+        begin
+        retTree = maketree(SUBTYPE_INDICATION,nameIdent,nameIdent1,());
+        end
+    else
+        begin
+        retTree = maketree(SUBTYPE_INDICATION,(),namekIdent,());
+        end;
+    if constraint = take rangeConstraint
+        or constraint = take indexConstraint then
+        replacetree(retTree,3,constraint);
+    return retTree;
+end;
+
+define subtypeDeclaration;
+    declare retTree,nameIdent,nameIdent1,constraint;
+    take #"subtype";
+    retTree = maketree(SUBTYPE,take identifier,());
+    take #"is";
+    return replacetree(retTree,2,take subtypeIndication);
+end;
+
+define constantDeclaration;
+    declare retTree,list;
+    take #"constant";
+    repeat
+        addlist(list,take identifier);
+    until not take ",";
+    retTree = maketree(CONSANT_DECLARATION,list,(),());
+    take ":";
+    replacetree(retTree,2,take subtypeIndication);
+    if take ":=" then
+        replacetree(retTree,3,take expression);
+end;
+
+define variableDeclaration;
+    declare retTree,list;
+    take #"variable";
+    repeat
+        addlist(list,take identifier);
+    until not take ",";
+    retTree = maketree(CONSANT_DECLARATION,list,(),());
+    take ":";
+    replacetree(retTree,2,take subtypeIndication);
+    if take ":=" then
+        replacetree(retTree,3,take expression);
+end;
+
+define expression;
+    return take logicalExpression;
+end;
+
+define logicalExpression;
+    declare expTree;
+    expTree = take compExpression;
+    while take #"and"
+            or take #"or"
+            or take #"nand"
+            or take #"nor"
+            or take #"xor" do
+        case
+            take #"and" : return maketree(AND,expTree,take compExpression)
+            take #"or" : return maketree(OR,expTree,take compExpression)
+            take #"nand" : return maketree(NAND,expTree,take compExpression)
+            take #"nor" : return maketree(NOR,expTree,take compExpression)
+            take #"xor" : return maketree(XOR,expTree,take compExpression)
+            default : 
+        end;
+    return expTree;
+end;
+
+define compExpression;
+    declare expTree;
+    expTree = take addExpression;
+    while take "="
+            or take "/="
+            or take "<"
+            or take ">"
+            or take "<="
+            or take ">=" do
+        case
+            take "=" : return maketree(EQU,expTree,take addExpression)
+            take "/=" : return maketree(NEQU,expTree,take addExpression)
+            take "<=" : return maketree(LEQU,expTree,take addExpression)
+            take "<" : return maketree(LT,expTree,take addExpression)
+            take ">=" : return maketree(GEQU,expTree,take addExpression)
+            take ">" : return maketree(GT,expTree,take addExpression)
+            default : 
+        end;
+    return expTree;
+end;
+
+define addExpression;
+    declare expTree;
+    expTree = take signExpression;
+    case
+        take "+" : return maketree(ADD,expTree,take signExpression)
+        take "-" : return maketree(SUB,expTree,take signExpression)
+        take "&" : return maketree(CONCAT,expTree,take signExpression)
+        default : 
+    end;
+    return expTree;
+end;
+
+define signExpression;
+    declare expTree;
+    case
+        take "+" : return maketree(PLUS,take multExpression)
+        take "-" : return maketree(MINUS,take multExpression)
+        default : return take multExpression
+    end;
+end;
+
+define multExpression;
+    declare expTree;
+    expTree = take expoExpression;
+    case
+        take "*" : return maketree(MULT,expTree,take expoExpression)
+        take "/" : return maketree(DIV,expTree,take expoExpression)
+        take #"mod" : return maketree(MOD,expTree,take expoExpression)
+        take #"rem" : return maketree(REM,expTree,take expoExpression)
+    end;
+    return expTree;
+end;
+
+define expoExpression;
+    declare expTree;
+    expTree = take basicExpression;
+    if take "**" then
+        return maketree(EXPO,expTree,take basicExpression);
+    return expTree;
+end;
+
+define basicExpression;
+    declare retTree;
+    case
+        take #"abs" : return maketree(ABS,take basicExpression)
+        take "not" : return maketree(NOT,take basicExpression)
+        take "(" :
+            begin
+            retTree = take expression;
+            take ")";
+            return maketree(PAREN,retTree);
+            end
+    end;
+end;
+
+define variableAssignment;
+    declare retTree;
+    if retTree = take name or retTree = take aggregate then
+        return maketree(VARIABLE_ASSIGNMENT,retTree,take expression)
+    else
+        break;
+    take ";";
+end;
+
+define conditionEntry;
+    declare retTree;
+    retTree = maketree(CONDITION_STATEMENT,take condition,());
+    take #"then";
+    return replacetree(retTree,2,take sequenceOfStatements);
+end;
+
+define ifStatement;
+    declare retTree,list;
+    take #"if";
+    repeat
+        addlist(list,take conditionEntry);
+    until not take #"elsif" and not take #"else";
+    take #"end";
+    take "if";
+    take ";";
+    return maketree(IF,list);
+end;
+
+define choice;
+    declare retTree;
+    case
+        take #"others" : return maketree(OTHERS)
+        default :
+            if retTree = take range then
+                return retTree
+            else
+                return take expression
+    end;
+end;
+
+define caseStatement;
+    declare retTree,list,listChoice;
+    take #"case";
+    retTree = maketree(CASE,take expression,());
+    take "#is";
+    repeat
+        take #"when";
+        repeat
+            addlist(listChoice,take choice);
+        until not take "|";
+        take "=>";
+        addlist(list
+            ,maketree(CHOICE_ENTRY,listChoice,take sequenceOfStatements));
+    until not see #"when";
+    take "#end";
+    take "case";
+end;
+
+define bidon_bidon;
+    take !IDENT;
+    take !STRING;
+    take !NUMB;
+    take !CHARACTER;
+end;
+
+define parse_entry;
+    {{ goto parse_entry_exit;}};
+    take !IDENT;
+end.
+

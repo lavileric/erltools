@@ -1,0 +1,97 @@
+tobe_done : all
+
+include ../makefile.inc
+
+all :
+	cd library 
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd parser 
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd cplusplu  
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd chopb 
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd metachop 
+	$(MAKE) -f makefile.dos all
+	cd ..
+	$(MAKE) -f makefile.dos $(INSTALL_DIR)/metagen.exe
+	$(MAKE) -f makefile.dos $(INSTALL_DIR)/metachop.exe
+	copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)
+	cd config
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd chunkc
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd chunkch
+	$(MAKE) -f makefile.dos all
+	cd ..
+	cd metab
+	$(MAKE) -f makefile.dos all
+	cd ..
+
+$(INSTALL_DIR_SKIMMED)/metagen.exe : ./parser/metagen.exe
+	copy .\parser\metagen.exe $(INSTALL_DIR_SKIMMED)
+
+$(INSTALL_DIR_SKIMMED)/metachop.exe : ./metachop/metachop.exe
+	copy .\metachop\metachop.exe $(INSTALL_DIR_SKIMMED)
+
+
+clean :
+	cd library
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd parser 
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd cplusplu 
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd chopb 
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd metachop 
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd config
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd chunkc
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd chunkch
+	$(MAKE) -f makefile.dos clean
+	cd ..
+	cd metab
+	$(MAKE) -f makefile.dos clean
+	cd ..
+
+install :
+	- copy .\parser\metagen.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\metagen.exe
+	- copy .\parser\chop.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\chop.exe
+	- copy .\chopb\chopb.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\chopb.exe
+	- copy .\cplusplu\cplus.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\cplus.exe
+	- copy .\config\configfo.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\configfo.exe
+	- copy .\chunkc\chunkc.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\chunkc.exe
+	- copy .\chunkch\chunkch.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\chunkch.exe
+	- copy .\metab\metab.exe $(INSTALL_DIR_SKIMMED)
+	- strip $(INSTALL_DIR)\\metab.exe
+	- copy .\cplusplu\c.set $(INSTALL_DIR_SKIMMED)
+	- copy .\cplusplu\cpb.bat $(INSTALL_DIR_SKIMMED)
+	- copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)
+
+	   
+
+
+

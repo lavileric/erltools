@@ -1,0 +1,8 @@
+main ()
+{
+    
+    struct titi {
+        int toto ; /* comment */ 
+        int titi ; /* comment 2*/ 
+    } fofo ;
+}

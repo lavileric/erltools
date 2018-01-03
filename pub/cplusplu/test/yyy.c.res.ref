@@ -1,0 +1,5 @@
+void CapaRentFor ( UnCandidat *leCandidat )
+{
+    int score
+        = (leCandidat->score [HSCALE] + leCandidat->score [GSCALE]) / 2 ;
+}

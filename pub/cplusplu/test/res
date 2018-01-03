@@ -1,0 +1,8 @@
+main ()
+{
+    if ( lskdfjls + sldkfjlsdf * lsdkfjlsd * lsdkflsd * sldfjlsdf
+            + sldkflsdf + sldfjlsdf * lsdkjflsdfk * lskdjflsd * lskdflsdf
+            + sldfkjsldkfj
+            + sldkfjlsdf * lskdfjlsdkf * lsdkfjlsdkf * lsdjkflsdkfj ) 
+        a = b ;
+}

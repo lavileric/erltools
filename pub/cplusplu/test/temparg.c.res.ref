@@ -1,0 +1,36 @@
+template <const toto> 
+    fifi ( const fifi, int toto, int titi = 5 )
+    {
+        i = 1 ;
+    }
+    
+template <typename Type = void,typename AnotherType> 
+    fifi ( const fifi, int toto, int titi = 5 )
+    {
+        typename Type::Toto *p ;
+        
+        i = 1 ;
+    }
+    
+// comment 
+template <typename Type1> 
+    
+    class Toto {
+    };
+
+// comment
+template <typename Type1> 
+    
+    class Titi {
+    };
+
+// comment
+template <typename Type1 = int> 
+    
+    class Fifi {
+    };
+
+main ()
+{
+    Fifi<>  fifi ;
+}

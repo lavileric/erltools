@@ -1,0 +1,11 @@
+main ()
+{
+    if ( sldkf * sldkfjl * lskdfjlsd * lsdjkflsdf * lskdfjlsdkfj
+                    * lsdkjflskdfj * lskjdfsldkf * lsjdflskdfj
+                    * lskdjflskdfj * lkjsdflskjdf * lskdjfslkdf
+                + lskjdf + sldjflsdf + lskjdflskdfj + lskdfjlsdf
+                + lskdjflsdfj + lsdflskdfj + lsdfjlsdf + lskdjflskdfj
+                + lsdfjlsdkfj + sjdflskf
+            > 0 ) 
+        a = b - 1 ;
+}

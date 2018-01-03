@@ -1,0 +1,21 @@
+TransferGrammar 
+DEFINITIONS ::=
+BEGIN
+
+    -- root of grammar : all types of messages
+    Root ::= CHOICE
+    {   
+        hello [0] Hello,
+        test  [1] IA5String
+    };
+    
+    -- first type of message : the hello message
+    Hello ::= SEQUENCE
+    {   
+        content   [0] IA5String,
+        reference [1] INTEGER
+    };
+    
+END
+
+

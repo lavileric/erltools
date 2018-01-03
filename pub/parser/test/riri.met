@@ -1,0 +1,11 @@
+language bidon;
+
+lexdefine Lex;
+    return !BIDON;
+end;
+
+define toto;
+    with context aha do
+        take !bidon;
+end.
+

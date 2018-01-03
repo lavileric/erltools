@@ -1,0 +1,22 @@
+typedef enum e_ETransportChannelType {
+    
+    /* common transport channels*/
+    eTransportChannelBch, 
+    eTransportChannelPch, 
+    eTransportChannelRach, 
+    eTransportChannelFach, 
+    eTransportChannelDsch,  /* dedicated transport channels*/ 
+    eTransportChannelDch
+}   ETransportChannelType ;
+
+#if 0
+    int toto ;
+#   if 0
+        int titi ;
+#   else 
+        int turlu ;
+#   endif
+    
+    // comment 
+    int bidule ;
+#endif

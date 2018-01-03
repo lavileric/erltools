@@ -1,0 +1,5 @@
+!include ./makefile.win
+
+cplus.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) $(OPTIM_FLAG) $(OBJECTS) $(LIBRARY)
+

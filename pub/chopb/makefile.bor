@@ -1,0 +1,12 @@
+
+!include ./makefile.win
+
+chopb.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(LIBRARY)
+
+
+
+
+
+
+

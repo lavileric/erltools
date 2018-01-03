@@ -1,0 +1,6 @@
+bool    toto ; // a variable
+
+typedef struct S_LogDateType {
+    unsigned int    year : 6 ;  // comment
+    unsigned int    month : 4 ; // comment1
+}   LogDateType ;

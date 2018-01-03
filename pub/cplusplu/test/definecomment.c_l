@@ -1,0 +1,10 @@
+#ifndef COD_UTIL
+
+
+#define  GenEncode ();
+
+
+/* SGenEncode : Generic encoding function */
+Tartempion             SGenEncode ();
+
+#endif

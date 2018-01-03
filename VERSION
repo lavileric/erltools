@@ -1,0 +1,24 @@
+*******************  ERLTOOLS  VERSIONS *****************
+31/06/96 1.0 distribution on sunsite
+17/07/96 1.01 bug correction 
+18/09/96 1.02 update djgpp 2.0 compilation 
+24/09/96 1.03 modify doc/*.ps bad layout
+24/09/96 1.04 bug correction in pretty printer, float constants
+24/09/96 1.05 bug correction in pretty printer, initialization in 
+                  constructor of herited class without parameter
+01/01/97 1.06 compilation under djgpp 7.2.1/W95, calc example for parser generator
+03/01/97 1.07 bug correction for template arguments
+05/01/97 1.08 add pretty print of ansi exceptions
+22/01/97 1.09 documentation on prettyprint flags
+01/03/97 1.10 bug correction in pretty printer, functions with template
+02/03/97 1.11 bug correction in pretty printer change new precedence
+29/05/98 2.00 port under Microsoft and Borland and miscellaneous optimizations
+              add erlscale, norm checking for c/c++
+21/02/00 2.01 add namespaces
+14/07/00 2.02 add java prettyprinter
+10/10/00 3.00 options for elf compile
+01/03/06 4.00 general update
+14/05/06 4.01 port for visual 2005
+20/06/13 5.00 64 bits + corrections
+24/12/17 6.00 compiled under gcc 2014, pretty suppport some options of C++ 2014
+

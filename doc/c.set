@@ -1,0 +1,93 @@
+#pragma range _const
+#pragma range __const
+#pragma range cdecl
+#pragma range _cdecl
+#pragma range __cdecl
+#pragma range fortran
+#pragma range _fortran
+#pragma range pascal
+#pragma range _pascal
+#pragma range far
+#pragma range _far
+#pragma range __far
+#pragma range _FAR_
+#pragma range near
+#pragma range _near
+#pragma range huge
+#pragma range _huge
+#pragma range CDECL
+#pragma range FORTRAN
+#pragma range FAR
+#pragma range PASCAL
+#pragma range NEAR
+#pragma range HUGE
+#pragma range WINAPI
+#pragma range CALLBACK
+#pragma range _fastcall
+#pragma range FP
+#pragma range _export
+#pragma range __export
+#pragma range afx_msg
+#pragma range BASED_CODE
+#pragma range AFXAPI
+#pragma range AFXAPI_DATA
+#pragma range AFX_STACK_DATA
+
+#pragma range GLOBALDEF
+#pragma range GLOBALREF
+
+/* set the tab value */
+#pragma config tab 4
+/* set the mode ansi or ritchie */
+#pragma config mode ritchie
+/* in ansi mode code is aligned on brace or not : normal or code */
+#pragma config brace_align normal
+/* single instruction in switch is indented or not : on or off*/
+#pragma config single_switch_indent on
+/* assignment are aligned : on or off */
+#pragma config assign_align off
+/* set the right margin */
+#pragma config margin 75
+/* set begining of comment */
+#pragma config comment start "/*"
+/* set middle of comment */
+#pragma config comment middle " "
+/* set end of comment */
+#pragma config comment end "*/"
+/* set comment for cplusplus */
+#pragma config comment plus "/"
+/* set indent after function type on or off */
+#pragma config indent_function_type off
+/* simplify expression on or off */
+#pragma config simplify on
+
+/* */
+/* metric configuration */
+/* */
+
+/* Maximum length for module */
+#pragma config metric module_length 2000
+/* Maximum length for a function */
+#pragma config metric function_length 100
+/* Comment ration in code */
+#pragma config metric comment_ratio 5
+/* Cyclomatic complexity max */
+#pragma config metric cyclomatic 20
+/* Nesting level max */
+#pragma config metric nesting 8
+/* Indicates if we must verify commentaries on declaration on or off */
+#pragma config metric comment_decl on
+/* Indicates if we must verify commentaires on function parameters on or off */
+#pragma config metric comment_param on
+/* indicates if we avoid constant or character value inside program */
+#pragma config metric litteral_value off
+/* identificateur min length */
+#pragma config metric ident_min 3
+/* identificateur max length */
+#pragma config metric ident_max 20
+/* forbid goto use on or off*/
+#pragma config metric forbid_goto off
+/* forbid use of assignment inside condition for if ... on or off */
+#pragma config metric assign_cond off
+/* forbid use of assignment inside function call on or off */
+#pragma config metric assign_call on

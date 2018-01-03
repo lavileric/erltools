@@ -1,0 +1,49 @@
+# for unix ( in particular linux)
+ERLTOOLS_DIR=/home/lavil/erltools
+INSTALL_DIR=/home/lavil/outils
+#for borland or for visual
+#ERLTOOLS_DIR=d:\lavil\erltools
+#INSTALL_DIR=d:\lavil\util
+
+#include system parameters
+# for linux emt64
+#include $(ERLTOOLS_DIR)/makeref.linuxemt64
+# for linux gcc 3
+#include $(ERLTOOLS_DIR)/makeref.linuxglibc2gcc3
+# for linux gcc 3 core 2
+include $(ERLTOOLS_DIR)/makeref.linuxglibc2gcc3core2
+# for m32r
+# include $(ERLTOOLS_DIR)/makeref.m32r
+# for linux icc
+# include $(ERLTOOLS_DIR)/makeref.linuxglibc2icc
+# for linux
+# include $(ERLTOOLS_DIR)/makeref.linuxglibc2
+# for linux old
+#include $(ERLTOOLS_DIR)/makeref.lin
+# for sun/solaris
+#include $(ERLTOOLS_DIR)/makeref.sol
+# for sun/solaris native cc
+#include $(ERLTOOLS_DIR)/makeref.scc
+# for aix
+# include $(ERLTOOLS_DIR)/makeref.aix
+# for interactive
+# include $(ERLTOOLS_DIR)/makeref.int
+# for dos / borland
+#!include $(ERLTOOLS_DIR)\makeref.bor
+# for dos / visual
+#!include $(ERLTOOLS_DIR)\makeref.vis
+# for visual 2005
+#!include $(ERLTOOLS_DIR)\makeref.vis.2005
+
+#for systems except borland and visual
+include $(ERLTOOLS_DIR)$(SEP)makeref.com
+# for borland or for visual
+#!include $(ERLTOOLS_DIR)$(SEP)makeref.com
+
+
+.ch.cc:
+	$(GO32) chop -c++ $*.ch > $*.cc
+
+
+
+

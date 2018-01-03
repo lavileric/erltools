@@ -1,0 +1,43 @@
+
+all : m_done pjava.exe
+
+!include ..\..\makefile.inc
+
+clean : clean_inc_appli
+	- del java.h 
+	- del java.exe
+	- del *.cc
+	- deltree /y compile.dir
+
+m_done : java.met $(META_DIR)\pub\cplusplu\cplus.met
+	-@mkdir compile.dir
+	-@copy java.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) java.met
+	-@unify java.h ..\java.h
+	-@unify java.cpp ..\java.cc
+	-@unify java0.cpp ..\java0.cc
+	-@unify java1.cpp ..\java1.cc
+	cd ..
+	@echo "ok" > m_done
+
+java.obj : java.cc java.h
+
+java0.obj : java0.cc java.h
+
+java1.obj : java1.cc java.h
+
+chopper.cc : chopper.ch decjava.h
+
+chopper.obj : chopper.cc $(META_DIR)\pub\library\token.h  
+
+decomp.obj : decomp.cc decjava.h $(META_DIR)\pub\library\token.h   java.h
+
+CPLUS_DIR=$(META_DIR)\pub\cplusplu
+
+CPLUS=$(CPLUS_DIR)\cplus.lib \
+      $(CPLUS_DIR)\dchop.obj $(CPLUS_DIR)\dchop1.obj  \
+      $(CPLUS_DIR)\dchop0.obj
+
+OBJECTS = java.obj java0.obj java1.obj chopper.obj decomp.obj 
+

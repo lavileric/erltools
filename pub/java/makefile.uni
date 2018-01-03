@@ -1,0 +1,57 @@
+
+all : m_done pjava
+
+include ../../makefile.inc
+
+OPT_FLAGS=-DDUMP_COORD  -Wno-empty-body
+
+clean : clean_inc_appli
+	- rm -f java.h java *.cc 
+	- rm -rf compile.dir pjava
+
+m_done : java.met $(META_DIR)/pub/cplusplu/cplus.met
+	-@mkdir compile.dir
+	-@cp java.met compile.dir
+	@(cd compile.dir;\
+	metagen -c++ -path $(ERLTOOLS_DIR)/pub/cplusplu/:$(ERLTOOLS_DIR)/pub/library $(METAOPT) java.met;\
+	unify java.h ../java.h;\
+	unify java.cpp ../java.cc;\
+	unify java1.cpp ../java1.cc;\
+	unify java2.cpp ../java2.cc;\
+	unify java0.cpp ../java0.cc;)
+	@echo "ok" > m_done
+
+java.o : java.cc java.h
+
+java0.o : java0.cc java.h
+
+java1.o : java1.cc java.h
+
+java2.o : java2.cc java.h
+
+chopper.cc : chopper.ch decjava.h
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h  
+
+decomp.o : decomp.cc decjava.h $(META_DIR)/pub/library/token.h   java.h
+
+CPLUS_DIR=$(META_DIR)/pub/cplusplu
+
+CPLUS=$(CPLUS_DIR)/chopper.o $(CPLUS_DIR)/cplus.a
+
+OBJECTS = java.o java0.o java1.o java2.o chopper.o decomp.o 
+
+SO_LIB = -L ../cplusplu -lcplus -L ../library -lmeta 
+
+pjava : $(OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS_DIR)/chopper.o $(SO_LIB);\
+	else\
+		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS) $(LIBRARY);\
+	fi
+
+
+
+
+
+

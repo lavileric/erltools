@@ -1,0 +1,20 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+# LIB_SYS=-lnsl -lsocket
+OUT_O=-o 
+
+#compiler choice
+SOL_OPT=-instances=static 
+MACHFLAGS=-DSOLARIS_CC $(SOL_OPT)
+C_PLUS=CC
+C_PLUS_LNK=CC -lnsl -lsocket $(SOL_OPT) 
+C_WARNING =  
+# OPTIM_FLAGS=-fast
+OPTIM_FLAGS=-g
+
+
+C_FLAGS=$(OPTIM_FLAGS) $(C_WARNING)
+
+SEP=/
+LIB_SUF=a

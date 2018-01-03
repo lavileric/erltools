@@ -1,0 +1,25 @@
+auto    f ( int i )
+{
+    if ( i < 0 ) 
+        return -1 ;
+    else 
+        return 2.0 ;
+}
+
+void aFunct ()
+{
+    int my_array [5] = { 1, 2, 3, 4, 5 };
+    
+    // double the value of each element in my_array:
+    for ( int &x ;;) {
+        x *= 2 ;
+    }
+    for ( int &x : my_array ) {
+        x *= 2 ;
+    }
+    
+    // similar but also using type inference for array elements
+    for ( auto &x : my_array ) {
+        x *= 2 ;
+    }
+}

@@ -1,0 +1,37 @@
+language cont;
+
+lexdefine Lex;
+    skip ' ','\n','\t','\r';
+end;
+
+define ta;
+    take "value";
+    takel " a";
+end;
+
+define tb;
+    take "value";
+    takel " b";
+end;
+
+define t1;
+    take ta;
+    take tb;
+    take ta;
+end;
+
+define t2;
+    take ta;
+    take ta;
+    take tb;
+end;
+
+define langage;
+    declare toto;
+    while not see "." do
+        if not toto = take t1 then
+            take t2;
+    if not see "." then
+        take ".";
+end.
+

@@ -1,0 +1,7 @@
+main ()
+{
+int variable = { {1,5,lksdf,sdlkf,slkdf},{sdjf , slkdflskdfj , slkdflskdfj,
+sldfksldf , lskdflskdfj } , {ksldflskdf, sldkflskdfj}};
+int variable = 10   /* commentaire */, v1 = 12 /* comm */;
+for ( i=1;i++; i < 50) printf("Corps du programme "); /* comment */
+}

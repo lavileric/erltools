@@ -1,0 +1,61 @@
+
+all : m_done metachop.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+!include ..\..\makefile.inc
+
+clean : clean_inc
+	- $(RM) metachop.exe
+
+metachop.obj : metachop.cc metachop.h
+
+metacho0.obj : metacho0.cc metachop.h
+
+m_done : metachop.met ..\cplusplu\cplus.met ..\chopb\chopb.met
+	-@ mkdir compile.dir
+	@copy metachop.met compile.dir
+	@echo "metagen -c++ metachop.met"
+	@cd compile.dir 
+	@metagen -c++ -path ..\..\library\;..\..\cplusplu\;..\..\chopb $(METAOPT) metachop.met
+	@-unify metachop.h ..\metachop.h
+	@-unify metachop.cpp ..\metachop.cc
+	@-unify metacho0.cpp ..\metacho0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch 
+
+decomp0.cc: decomp0.ch 
+
+decomp1.cc: decomp1.ch
+
+decomp2.cc: decomp2.ch 
+
+decomp3.cc: decomp3.ch
+
+auxunpar.cc: auxunpar.ch
+
+chopper.obj : chopper.cc ..\library\token.h metachop.h
+
+decomp0.obj : decomp0.cc ..\library\token.h metachop.h
+
+decomp1.obj : decomp1.cc ..\library\token.h metachop.h
+
+decomp2.obj : decomp2.cc ..\library\token.h metachop.h
+
+decomp3.obj : decomp3.cc ..\library\token.h metachop.h
+
+auxunpar.obj : auxunpar.cc ..\library\token.h metachop.h
+
+CPLUS=..\cplusplu\chopper.obj ..\cplusplu\cplus.obj ..\cplusplu\cplus0.obj ..\cplusplu\cplus1.obj ..\cplusplu\cplus2.obj ..\cplusplu\cplus3.obj ..\cplusplu\cplus4.obj ..\cplusplu\cplus5.obj ..\cplusplu\cplus6.obj ..\cplusplu\cplus7.obj ..\cplusplu\dchop.obj ..\cplusplu\dchop1.obj ..\cplusplu\dchop0.obj ..\cplusplu\cplus8.obj
+CHOPB=..\chopb\chopb.obj ..\chopb\chopb0.obj ..\chopb\chopb1.obj ..\chopb\decomp.obj 
+LIB_OBJECTS = metachop.obj metacho0.obj decomp0.obj decomp1.obj decomp2.obj decomp3.obj auxunpar.obj  
+OBJECTS = $(LIB_OBJECTS) chopper.obj
+METAGEN= ..\parser\verif.obj
+
+chop : m_done chop.cc
+	echo "" > chop
+#       make -f makefile.cho
+
+

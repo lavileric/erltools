@@ -1,0 +1,22 @@
+all : configfo.exe
+
+!include ..\..\makefile.inc
+
+clean : clean_inc
+	-$(RM) configfo
+	-$(RM) *.cpp
+
+config.cc : config.met
+	$(UTIL_DIR)metagen -c++ config.met
+	-copy config.cpp config.cc
+	-copy config0.cpp config0.cc
+    -$(RM) *.cpp
+
+config.obj : config.cc config.h
+
+config0.obj : config0.cc config.h 
+
+chopper.cc : chopper.ch
+
+chopper.obj : chopper.cc ..\library\token.h
+

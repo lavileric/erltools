@@ -1,0 +1,20 @@
+all : testu.exe
+
+!include ../makefile.inc
+
+clean : clean_inc_appli
+
+OBJECTS=individual.obj 
+
+individual.obj : individual.h 
+
+testu.cc : optimalgo.h optimgenetic.h individual.h
+
+lib :
+	cd ..\pub\library 
+	nmake -f makefile.vis
+	cd ..\..\optim
+	
+testu.exe : $(OBJECTS) testu.obj lib
+	$(C_PLUS_LNK) $(LNK_FLAGS) $(LIBRARY) /out:testu.exe testu.obj $(OBJECTS)
+

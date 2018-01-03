@@ -1,0 +1,11 @@
+include ../../../makefile.inc
+
+above :
+	(cd .. ;$(MAKE))
+
+test : above
+	testdiff > restestdiff 2>&1 
+	diff restestdiff restestdiff.ref
+
+clean : clean_inc
+	rm -f *.res *.c

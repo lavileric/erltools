@@ -1,0 +1,119 @@
+typedef struct toto {
+    int     i, j ;        // premiere ligne 
+    char    dslfklsdfjk ; // deuxieme ligne
+}   BIDON ;
+
+A ( char *theString )
+    : B(1),  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+        ,  B(*new string("sldkf")),  B(1),  C(1),  B(*new string("sldkf"))
+{
+    string = theString ;
+}
+
+class A : private virtual Bsdskldjf, protected sdlkfjsdlfk
+    , private sdkfslkdf, protected virtual sldkfjlskdfj
+    , public sldfkjlsdkfj, public slkdflskdfjsdkfj, slkdfslkdfj {
+    char    &string ;
+    
+    public :
+    
+        A ( char *theString = 5 )
+            : B(1),  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+                ,  B(*new string("sldkf")),  B(1),  C(1)
+                ,  B(*new string("sldkf"))
+        {
+            string = theString ;
+        }
+        
+        A ()
+            : B()
+        {}
+        
+        ~A () {}
+        
+        ~A () {}
+        
+        const char  *name () const ;
+        const char  *name () ;
+                    BEGIN_MESSAGE_MAP (sdklf, slkdfj) ON_WM_PAINT () ON_COMMAND (
+            IDM_ABOUT, OnAbout) END_MESSAGE_MAP () DECLARE_DYNAMIC // declare the class as dynamic
+        (fofo) ;
+        
+        DECLARE_SERIAL(fifi)
+    
+    private :
+    
+        char    *string ;
+};
+
+const char *name () const
+{
+    return string ;
+}
+
+const char *A::name ()
+{
+    return string ;
+}
+
+IMPLEMENT_DYNAMIC(toto, titi)
+IMPLEMENT_SERIAL(toto, titi, 0)
+
+main ()
+{
+    ASSERT(a >= b);
+    ASSERT_VALID(a);
+    TRACE(b);
+    VERIFY(b >= c);
+    
+    TRY 
+    {
+        a >= b ;
+    }
+    CATCH(sdklf, sldkfj)
+    {
+        ss ;
+    }
+    AND_CATCH(dflkj, ksdfj)
+    {
+        a >= b ;
+    }
+    AND_CATCH(sdkf, sdkfj)
+    {}
+    END_CATCH
+    
+    A   toto ;
+    int a, b ; /* sdflk lskdfj */ 
+    int e ;    /* sdfdsf */ 
+    int a ;
+    
+    if ( a > b ) 
+        a = b++ ;
+    if ( a < b ) 
+        a = c - d ;
+    f(a, b, c);
+    a = new (1, 2) STRING(sdlfk, slkdfj, slkdfj, lskdfj, skldfj, skdjf
+        , skdfj, ksldf, lksdjf, lskdfj, ksldjf, lksdjf, slkdjf, skdjf);
+    a = toto(slkdfj, sdlkf, sdlkf, sdflksjdf, sdflksjdf, sldkfjsdlk
+        , sldkfjlsdkfj, slkdfjslkdf, slkdfsldkfj, sdlkfsdlkfj, slkdfsldkf
+        , lskdfksldf, slkdfjslkdf);
+}
+
+toto ()
+{
+    int a ;
+    int b ;
+    
+    a = b ;
+    
+    int c ;
+    int e ;
+    
+    a = b ;
+}
+
+class A {
+    VIRTUAL void    X () ;
+};
+transient class A {
+}   ;

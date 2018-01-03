@@ -1,0 +1,26 @@
+tobe_done : all
+
+include ../makefile.inc
+
+all :
+	( cd erlms; $(MAKE) -f makefile.uni all)
+	( cd erlmsch; $(MAKE) -f makefile.uni all)
+
+clean :
+	( cd erlms ; $(MAKE) -f makefile.uni clean)
+	( cd erlmsch ; $(MAKE) -f makefile.uni clean)
+
+install :
+	- mv ./erlms/erlms $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/erlms
+	- mv ./erlmsch/erlmsch $(INSTALL_DIR)
+	- strip $(INSTALL_DIR)/erlmsch
+	- cp ./erlms/erlscale $(INSTALL_DIR)
+	- chmod 770 $(INSTALL_DIR)/erlscale
+
+erlscale : all install
+
+	   
+
+
+

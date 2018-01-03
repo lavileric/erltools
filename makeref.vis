@@ -1,0 +1,37 @@
+#system flags
+RM_UNIX=@echo on
+LIB_SYS= 
+LIB_SUF=lib
+OUT_O=/Fo
+
+RM=del/Q
+
+#compiler choice
+C_PLUS=cl
+C_PLUS_LNK=link /STACK:2000000
+LINKER=link -lib
+#  /MAP /FIXED:NO
+# /nodefaultlib:libc
+MACHFLAGS=-DSUN -DLINUX -DBORLAND -DVISUAL
+C_WARNING=
+
+#select optim flags or not
+#=-TP -Od -Zi -Yd -G5 -MDd -GX 
+#others -MDd
+
+#for debug
+#LNK_FLAGS= /machine:I386  /debug 
+#OPTIM_FLAGS=-TP -Od -Zi -Yd -G5 -MDd -GX -DFD_SETSIZE=1024
+#LIB_DEBUG=D
+
+#for optim
+OPTIM_FLAGS=-TP -O2 -G5 -GX -MD -DFD_SETSIZE=1024
+LNK_FLAGS= /machine:I386 /INCREMENTAL:NO
+LIB_DEBUG=
+
+C_FLAGS=$(OPTIM_FLAG) $(C_WARNING)
+
+SEP=\\
+OBJ_EXT=obj 
+# LF 08/01/98
+STL_INC=-I$(META_DIR)$(SEP)stl2

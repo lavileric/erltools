@@ -1,0 +1,11 @@
+!include makefile.win
+
+metachop.exe : metachop.lib $(OBJECTS)
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:metachop.exe $(METAGEN) chopper.obj ..\cplusplu\cplus.lib ..\chopb\chopb.lib metachop.lib $(LIBRARY)
+
+
+metachop.lib : $(LIB_OBJECTS)
+	-$(RM) metachop.lib
+	$(LINKER) $(LNK_FLAGS) /out:metachop.lib $(LIB_OBJECTS)
+
+

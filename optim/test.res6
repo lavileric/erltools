@@ -1,0 +1,76 @@
+
+---------------------
+
+Square Optimisation 2 parameters (best 1000) 
+
+---------------------
+
+Correct Values : 250 600 0 
+
+Genetic Algorithm 
+    Square of Distance to best individual : 0 
+    Best top : 1000.000000
+    Nb Simulated : 23817
+   0 = 250.000000(0,10000,1) 1 = 600.000000(0,10000,1) 
+
+---------------------
+
+Square Optimisation 4 parameters (best 1000)
+
+---------------------
+
+Correct Values : 250 600 200 8000 0 
+
+Genetic Algorithm 
+    Square of Distance to best individual : 0 
+    Best top : 1000.000000
+    Nb Simulated : 21879
+   0 = 250.000000(0,10000,1) 1 = 600.000000(0,10000,1) 2 = 200.000000(0,10000,1) 3 = 8000.000000(0,10000,1) 
+
+---------------------
+
+Inv Optimisation 4 parameters (best 400)
+
+---------------------
+
+Correct Values : 3300 1600 1200 8000 
+
+Genetic Algorithm 
+    Square of Distance to best individual : 45604 
+    Best top : 350.000000
+    Nb Simulated : 19380
+   0 = 3301.000000(0,10000,1) 1 = 1599.000000(0,10000,1) 2 = 1049.000000(0,10000,1) 3 = 8151.000000(0,10000,1) 
+
+---------------------
+
+Fuji Optimisation 4 parameters (best 1000) 
+
+---------------------
+
+Correct Values : 5000 5000 5000 5000 
+
+Genetic Algorithm 
+    Square of Distance to best individual : 4 
+    Best top : 1000.000000
+    Nb Simulated : 26061
+   0 = 4999.000000(0,10000,1) 1 = 5001.000000(0,10000,1) 2 = 4999.000000(0,10000,1) 3 = 4999.000000(0,10000,1) 
+
+---------------------
+
+Inv Optimisation with 24 parameters (best 2400)
+
+---------------------
+
+Correct Values : 3300 1600 1200 8000 3300 1600 1200 8000 3300 1600 1200 8000 3300 1600 1200 8000 3300 1600 1200 8000 3300 1600 1200 8000 
+
+Genetic Algorithm 
+    Square of Distance to best individual : 563907 
+    Best top : 1347.000000
+    Nb Simulated : 58446
+   0 = 3300.000000(0,10000,1) 1 = 1601.000000(0,10000,1) 2 = 1049.000000(0,10000,1) 3 = 7851.000000(0,10000,1) 4 = 3299.000000(0,10000,1) 5 = 1600.000000(0,10000,1) 6 = 1050.000000(0,10000,1) 7 = 7823.000000(0,10000,1) 8 = 2999.000000(0,10000,1) 9 = 1670.000000(0,10000,1) 10 = 1038.000000(0,10000,1) 11 = 7999.000000(0,10000,1) 12 = 3572.000000(0,10000,1) 13 = 1451.000000(0,10000,1) 14 = 988.000000(0,10000,1) 15 = 7849.000000(0,10000,1) 16 = 2999.000000(0,10000,1) 17 = 1580.000000(0,10000,1) 18 = 1201.000000(0,10000,1) 19 = 7788.000000(0,10000,1) 20 = 3301.000000(0,10000,1) 21 = 1559.000000(0,10000,1) 22 = 999.000000(0,10000,1) 23 = 8037.000000(0,10000,1) 
+Hello
+Starting Genetic Algorithm Optimization
+Starting Genetic Algorithm Optimization
+Starting Genetic Algorithm Optimization
+Starting Genetic Algorithm Optimization
+Starting Genetic Algorithm Optimization

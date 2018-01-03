@@ -1,0 +1,75 @@
+THE_LIB=.\meta.a
+
+all : meta.lib
+
+OPT_FLAGS=-DDUMP_COORD
+
+!include ../../makefile.inc
+
+clean : clean_inc
+
+pretty.obj : pretty.cc token.h
+
+pretty0.obj : pretty0.cc token.h
+
+m_done : pretty.met
+	-@ mkdir compile.dir
+	-@ del compile.dir\pretty.met
+	-@ copy pretty.met compile.dir\pretty.met
+	@echo "metagen -c++ pretty.met"
+	cd compile.dir
+	metagen -c++ pretty.met
+	unify pretty.h ..\pretty.h
+	unify pretty.cpp ..\pretty.cc
+	unify pretty0.cpp ..\pretty0.cc
+	cd ..
+	@echo "ok" > m_done
+
+auxpars.obj : auxpars.cc  token.h
+
+compleme.obj : compleme.cc token.h
+
+outil.obj : outil.cc token.h
+
+ptree.obj : ptree.cc token.h
+
+salloc.obj : salloc.cc token.h
+
+tablist.obj : tablist.cc tablist.h token.h tabsort.h
+
+tabsort.obj : tabsort.cc tablist.h token.h tabsort.h
+
+symb.obj : symb.cc tablist.h token.h symb.h
+
+itptree.obj : itptree.cc itptree.h token.h
+
+semaphop.obj : semaphop.cc
+
+outil.cc : outil.ch
+
+ptree.cc : ptree.ch
+
+clpretty.cc : clpretty.ch
+
+itptree.cc : itptree.ch
+
+salloc.cc : salloc.ch salloc.h
+
+testlist.cc : testlist.ch
+	metachop -c++ testlist.ch > testlist.cc
+
+symb.cc : symb.ch
+	metachop -c++ symb.ch > symb.cc
+
+testlist : testlist.cc
+	g++ $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) -o testlist testlist.cc $(THE_LIB)
+
+
+
+
+
+
+
+
+
+

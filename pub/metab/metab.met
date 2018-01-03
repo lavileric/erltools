@@ -1,0 +1,85 @@
+language metab;
+
+global begin
+    {{ }}
+end;
+
+use "metalang.met";
+
+lexdefine Lex;
+    skip ' ','\t','\r','\n';
+    recognize_string;
+    case
+        seel in ['a'..'z','A'..'Z'] :
+            /*definition of ident */
+            begin
+            while seel in ['a'..'z','A'..'Z','_','0'..'9'] do
+                begin
+                storel takel ;
+                if takel "::" then
+                    storel "::";
+                end;
+            return SortKeyWord(IDENT);
+            end
+        takel in ['"'] :
+            
+            /* definition of string */
+            while seel do
+                case
+                    takel in ['"'] :
+                        if seel in ['"'] then
+                            begin
+                            storel takel ;
+                            storel """";
+                            end
+                        else
+                            begin
+                            return !STRING;
+                            end
+                    seel : storel takel 
+                end
+        takel "'" :
+            
+            /* definition of character */
+            while seel do
+                case
+                    takel "'" :
+                        begin
+                        return !CHARACTER;
+                        end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        storel takel ;
+                        end
+                    seel : storel takel 
+                end
+        seel in ['0'..'9'] :
+            
+            /* definition of number */
+            begin
+            while seel in ['0'..'9'] do
+                storel takel ;
+            return !NUMB;
+            end
+    end;
+end;
+
+define grammar_use;
+    declare retTree,string;
+    take #"use";
+    string = maketree(STRING,take !STRING);
+    retTree = maketree(GRAMMAR_USE,string);
+    return retTree;
+end;
+
+define one_condition;
+    case
+        take #"default" :
+            begin
+            return maketree(DEFAULT);
+            end
+        default : return take metalang::one_condition
+    end;
+end.
+

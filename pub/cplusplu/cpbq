@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cpbqem $1 res.cpb $2
+mv res.cpb $1
+
+
+

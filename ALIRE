@@ -1,0 +1,102 @@
+Cette directory contient un générateur d'analyseur lexical/syntaxique et un 
+prettyprinter C/C++. C'est un freeware au sens de la licence GNU 
+(voir le fichier copying de la directory cplusplu).
+
+INSTALLATION
+------------
+
+La compilation est prévue pour Linux. Moyennant une modification dans 
+makefile.inc et makefile.der elle marche aussi sur SUN ou sur Unix/interactive 
+a condition d'utiliser gcc 2.7.2
+
+1) Prendre les fichier makefile.inc et makefile.der et effectuer les opérations
+   suivantes :
+
+   Pour la variable ERLTOOLS_DIR : Mettre le repertoire ou vous avez installé
+                                   erltools comme "/home/home_dir/erltools".
+
+   Pour la variable INSTALL_DIR :  Mettre le repertoire ou les executable doivent
+                                   etre installés. Ce repertoire doit exister et
+                                   se trouver dans votre variable PATH. 
+
+2) Faire un make -f makefile.uni all install (pour une installation minimale du
+   prettyprinter vous pouvez aussi faire un make -f makefile.uni prettyprinter
+   pour une installation du vérificateur de norme c/c++
+   vous pouvez faire un make -f makefile.uni erlscale
+   pour une installation du pretty printer java 
+   vous pouvez faire un make -f makefile.uni pjava).
+
+   Warning : En cas de problème de mémoire virtuelle, supprimer l'option -pipe
+             dans le fichier makeref.* du système.
+
+3) Dans la directory d'installation modifier le fichier c.set en fonction
+   des préférences (en particulier ansi ou kerningam, les options sont situees
+   au milieu du fichier).
+
+4) S'assurer que le repertoire d'installation est présente dans le PATH
+
+
+UTILISATION
+-----------
+
+1) Sous shell
+
+   Taper cpb 'name' ou name est le nom du programme à prettyprinter
+   Taper erlcale 'name' pour vérifier un fichier.
+
+2) Sous emacs
+
+   Possibilité de prettyprinter une fonction ou le fichier en entier
+   en reprenant les macros fourrnies dans le .emacs de la directory 
+   cplusplu
+
+3) Sous windows 
+
+   Ouvrir une fenêtre dos. Taper cpb 'name' pour prettyprinter un 
+   fichier c/c++ ou cpbch 'name' pour un fichier metachop. Il est
+   possible d'utiliser cpb et cpbch en tant qu'outils externes
+   pour Borland et Microsoft.
+   Taper pjava 'name' pour prettyprinter un fichier java.
+   Pour vérifier vis à vis de la norme utiliser erlms ou erlmsch.
+
+DOS
+---
+
+Sous dos les fichiers sont compilables avec djgpp v2. Faire make -f 
+makefile.dos. Utiliser cpb.bat pour prettyprinter un programme après 
+avoir modifie le path dans cpb.bat pour cplus.
+
+BORLAND
+-------
+
+Les fichiers peuvent être compilées avec le compilateur borland. Modifier
+les options de makefile.inc et makefile.der pour qu'elles soient positionnées
+sur Borland. Faire un make -f makefile.bor. Puis suivre les instructions
+indiquées dans INSTALLATION.
+
+VISUAL
+-------
+
+Les fichiers peuvent être compilées avec le compilateur microsoft. Modifier
+les options de makefile.inc et makefile.der pour qu'elles soient positionnées
+sur visual. Faire un nmake -f makefile.vis. Puis suivre les instructions
+indiquées dans INSTALLATION.
+
+
+GENERATEUR D'ANALYSEUR LEXICAL/SYNTAXIQUE
+-----------------------------------------
+
+La documentation sous forme postscript se trouve dans la directory doc. Le fichier
+ALIRE décrit le contenu de cette documentation.
+
+
+COMPILER AVEC ELF
+----------------
+
+Ajouter la valeur de INSTALL_DIR dans la variable LD_LIBRARY_PATH. Dans la directory
+Erltools entrer la commande 'make clean solib soall install'.
+
+ADDRESSE EMAIL
+--------------
+
+lavileric@aol.com

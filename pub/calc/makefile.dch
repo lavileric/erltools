@@ -1,0 +1,27 @@
+
+all : chop.exe
+
+include ../../makefile.inc
+
+chop.o : chop.cc ../library/token.h
+
+CPLUS=../cplusplu/chopper.o ../cplusplu/cplus.o ../cplusplu/cplus0.o ../cplusplu/cplus1.o ../cplusplu/cplus2.o ../cplusplu/cplus3.o ../cplusplu/cplus4.o ../cplusplu/cplus5.o ../cplusplu/cplus6.o ../cplusplu/cplus7.o ../cplusplu/dchop.o ../cplusplu/dchop1.o ../cplusplu/dchop0.o
+CHOPB=../chopb/chopb.o ../chopb/chopb0.o ../chopb/chopb1.o ../chopb/decomp.o 
+METACHOP=../metachop/metachop.o ../metachop/metacho0.o ../metachop/decomp0.o ../metachop/decomp1.o ../metachop/decomp2.o ../metachop/decomp3.o ../metachop/auxunpar.o  
+CHOPCORE=../parser/verif.o 
+chop.exe : chop.o calc.o calc0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS) -o chop calc.o calc0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	stubify chop
+	del chop
+
+
+
+
+
+
+
+
+
+
+
+

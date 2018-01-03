@@ -1,0 +1,1505 @@
+TransferGrammar 
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+    -- **************************
+    -- Tous les types de messages
+    -- **************************
+    Root ::= CHOICE
+    {   
+        
+        -- identification
+        identification               [0]  Identification,
+        
+        -- commande
+        commande                     [1]  Commande,
+        
+        -- applications
+        applicationsMenu             [2]  ApplicationsMenu,
+        gestionApplications          [3]  GestionApplications,
+        
+        -- journalisation
+        journalMasques               [4]  JournalMasques,
+        journalParametres            [5]  JournalParametres,
+        journalAffichage             [6]  JournalAffichage,
+        
+        -- deconnexion
+        deconnexion                  [7]  Deconnexion,
+        
+        -- profil utilisateur
+        profilUtilisateur            [8]  ProfilUtilisateur,
+        
+        -- gestion des operateurs
+        gestionOperateurs            [9]  GestionOperateurs,
+        
+        -- gestion des cibles
+        gestionCibles                [10] GestionCibles,
+        
+        -- options application Script
+        options                      [11] Options,
+        
+        -- selection d'un scenario
+        selectionScenario            [12] SelectionScenario,
+        
+        -- edition d'un scenario
+        masqueEdition                [13] MasqueEdition,
+        
+        -- execution d'un scenario
+        executionScenario            [15] ExecutionScenario,
+        gestionPointsdeSuivi         [16] GestionPointsdeSuivi,
+        evaluationVariable           [17] EvaluerVariable,
+        
+        -- gestion de la presentation des scenarios
+        gestionPresentationScenarios [18] GestionPresentationScenarios,
+        
+        -- gestion des points d'arret
+        gestionPointsArret           [19] GestionPointsArret,
+        editionScenario              [20] EditionScenario,
+        
+        -- exportation de scenarios
+        exportationScenarios         [21] ExportationScenarios,
+        exporterScenarios            [22] ExporterScenarios,
+        
+        -- messageBox
+        messageBox                   [23] MessageBox,
+        
+        -- importation de scenarios
+        importationScenarios         [24] ImportationScenarios,
+        
+        -- ouvrir un scenario et se mettre sur une ligne
+        editerScenarioLigne          [25] EditionScenarioLigne,
+        
+        -- importation de configuration
+        importerConfiguration        [26] ImportationConfiguration,
+
+        -- suppression de systemes
+        supprimerSysteme			[27] SuppressionSysteme,
+        
+
+        -- lancement OCS
+        lancerOCS                    [28] LancementOCS,
+        
+        -- aide html
+        aide                         [29] Aide,
+        editerAide                   [30] EditionAide,
+        
+        -- demande de terminaison de l'appli
+		fin                          [31] NULL,
+
+		-- init translation de reperetoires
+        translationRep				 [32] TranslationRep,
+
+		-- reponse pour affichage dans la fenetre debug
+        messageDebug				 [33] MessageDebug,
+
+			-- debug pour tous les scénarios
+		allDebug                     [34] BOOLEAN,
+
+		-- info on ogsng
+		info                         [35] NULL
+    };
+    
+    -- Identification
+    Identification ::= SEQUENCE
+    {   
+        ordre      [0] ENUMERATED {valider(0), changerMotDePasse(1)},
+        question   [1] IdentificationQuestion OPTIONAL,
+        reponse    [2] Statut OPTIONAL,
+        accesMenus [3] SEQUENCE OF IA5String OPTIONAL
+    };
+    
+    -- Demande d'identification / Changement de mot de passe
+    IdentificationQuestion ::= SEQUENCE
+    {   
+        operateur         [0] IA5String,
+        motDePasse        [1] IA5String,
+        nouveauMotDePasse [2] IA5String OPTIONAL,
+        confirmMotDePasse [3] IA5String OPTIONAL
+    };
+    
+    -- ****************
+    -- Fenetre Commande
+    -- ****************
+    Commande ::= SEQUENCE
+    {   
+        
+        -- sens du message
+        type     [1] ENUMERATED {question(0), reponse(1)},
+        
+        -- Handle de la fenetre commande concernee
+        commun   [2] Handle DEFAULT 0,
+        question [3] CommandeQuestion OPTIONAL,
+        reponse  [4] CommandeReponse OPTIONAL
+    };
+    
+    -- Types de questions possibles
+    CommandeQuestion ::= CHOICE
+    {   
+        
+        -- indice nouvelle fenetre
+        initialiser                       [0]  INTEGER,
+        
+        -- nouveau systeme
+        changerSysteme                    [1]  IA5String,
+        
+        -- nouvelle cible
+        changerCible                      [2]  IA5String,
+        
+        -- etat demande
+        changerEtatConnexionCibleAffichee [3]  BOOLEAN,
+        
+        -- nouvelle cible a afficher
+        changerCibleAffichee              [4]  IA5String,
+        
+        -- nouveau fichier de capture
+        changerFichierCapture             [5]  Fichier,
+        
+        -- fichier de capture courant
+        viderFichierCapture               [6]  Fichier,
+        
+        -- etat demande
+        changerEtatModeAutomatique	      [7]  BOOLEAN,
+
+        -- etat demande
+        changerEtatCaptureTraceCommandes  [8]  BOOLEAN,
+        
+        -- etat demande
+        changerEtatCaptureTracesAlarmes   [9]  BOOLEAN,
+        
+        -- selection
+        copierSelectionFichierCapture     [10] IA5String,
+        
+        -- niveau grille a afficher + selection dans grille de niveau inferieur
+        afficherGrillePresentation        [11] AffichageGrillePresentation,
+        
+        -- niveau grille selectionnee
+        afficherGrilleRappel              [12] INTEGER,
+        
+        -- nom de la commande  + arborescence d'acces
+        executerCommandeModeAssiste       [13] ExecutionCommandeModeAssiste,
+        
+        -- texte de la commande
+        executerCommandeModeNonAssiste    [14] IA5String,
+        
+        -- Masque
+        executerMasque                    [15] MasqueSaisie,
+        
+        -- fermeture fenetre
+        fermer                            [16] BOOLEAN,
+        
+        -- afficher une trace dans la fenetre concernee
+        afficherTrace                     [17] AffichageTrace
+    };
+    
+    AffichageTrace ::= SEQUENCE
+    {   
+        
+        -- texte de la trace
+        selection [0] IA5String OPTIONAL,
+        
+        -- nom du systeme
+        systeme   [1] IA5String OPTIONAL,
+        
+        -- nom de la cible
+        cible     [2] IA5String OPTIONAL,
+        
+        -- trace commande ou alarme
+        commande  [3] BOOLEAN OPTIONAL,
+        
+        -- fin du texte a afficher
+        finTexte  [4] BOOLEAN OPTIONAL
+    };
+    
+    AffichageGrillePresentation ::= SEQUENCE
+    {
+
+        -- niveau de la grille de presentation
+        niveau    [0] INTEGER,
+
+        -- selection dans la grille de niveau inferieur
+        selection [1] IA5String OPTIONAL,
+
+        -- identificateur de la grille de niveau inferieur
+        idtGrille [2] IA5String OPTIONAL
+    };
+
+    ExecutionCommandeModeAssiste ::= SEQUENCE
+    {   
+        niveau   [0] INTEGER OPTIONAL,
+        commande [1] IA5String
+    };
+    
+    -- Types de reponses attendues
+    CommandeReponse ::= SEQUENCE
+    {   
+        statut                     [0]  Statut,
+        
+        -- Systeme
+        listeSystemes              [1]  SEQUENCE OF IA5String OPTIONAL,
+        systemeSelectionne         [2]  IA5String OPTIONAL,
+        
+        -- Cible
+        listeCibles                [3]  SEQUENCE OF IA5String OPTIONAL,
+        cibleSelectionnee          [4]  IA5String OPTIONAL,
+        etatModeAutomatique        [5] BOOLEAN OPTIONAL,
+        
+        -- Affichage
+        listeCiblesAffichables     [6]  SEQUENCE OF IA5String OPTIONAL,
+        cibleAffichee              [7]  IA5String OPTIONAL,
+        etatConnexionCibleAffichee [8]  BOOLEAN OPTIONAL,
+        
+        -- Fichier de capture
+        fichierCapture             [9]  Fichier OPTIONAL,
+        etatCaptureCommandes       [10]  BOOLEAN OPTIONAL,
+        etatCaptureAlarmes         [11] BOOLEAN OPTIONAL,
+        
+        -- Grilles de presentation et grille de rappel
+        nbNiveauxPresentation      [12] INTEGER OPTIONAL,
+        grille                     [13] Grille OPTIONAL,
+        
+        -- Trace
+        traceCommandes             [14] IA5String OPTIONAL,
+        traceAlarmes               [15] IA5String OPTIONAL,
+        traceDiapo                 [16] IA5String OPTIONAL,
+        finTexteCommandes          [17] BOOLEAN DEFAULT TRUE,
+        finTexteAlarmes            [18] BOOLEAN DEFAULT TRUE,
+        
+        -- Execution d'une commande
+        exeModeAssiste             [19] ReponseExeModeAssiste OPTIONAL,
+
+	  -- Booleen indiquant que la commande a executer n'a pas de masque
+	  commandeSansMasque	     [20] BOOLEAN OPTIONAL
+    };
+    
+    Grille ::= SEQUENCE
+    {
+        type         [0] ENUMERATED {presentation(0), rappel(1)},
+        niveau       [1] INTEGER OPTIONAL,
+        arborescence [2] SEQUENCE OF IA5String OPTIONAL,
+        selection    [3] IA5String,
+        eltsGrille   [4] SEQUENCE OF EltGrille,
+        idtGrille    [5] IA5String OPTIONAL
+    };
+
+    EltGrille ::= SEQUENCE
+    {   
+        
+        -- type = groupe ou non-groupe (commande ou scenario)
+        type           [0] ENUMERATED {groupe(0), commande(1)},
+        libelle        [1] IA5String,
+        aide           [2] IA5String OPTIONAL,
+        
+        -- droit d'acces (uniquement pour les scenarios)
+        droit          [3] 
+            ENUMERATED {autorise(0), partiel(1), interdit(2)}
+            DEFAULT autorise,
+        identificateur [4] IA5String OPTIONAL
+    };
+    
+    ReponseExeModeAssiste ::= CHOICE
+    {   
+        
+        -- texte de la commande a afficher mode terminal
+        commandeEnvoyee [0] IA5String,
+        
+        -- masque de saisie
+        masqueSaisie    [1] MasqueSaisie
+    };
+    
+    -- *****************************
+    -- Contenu du menu Applications
+    -- *****************************
+    ApplicationsMenu ::= SEQUENCE
+    {   
+        type         [0] ENUMERATED {question(0), reponse(1)},
+        applications [1] SEQUENCE OF Application OPTIONAL
+    };
+    
+    Application ::= SEQUENCE
+    {   
+        type       [0] ENUMERATED {item(0), separateur(1)},
+        libelle    [1] IA5String OPTIONAL,
+        executable [2] IA5String OPTIONAL,
+        position   [3] INTEGER
+    };
+    
+    -- **************
+    -- Journalisation
+    -- **************
+    -- Journalisation - Masques de selection et d'affichage
+    JournalMasques ::= SEQUENCE
+    {   
+        type            [0] 
+            ENUMERATED {initialiser(0), valider(1), fermer(2)},
+        commun          [1] Handle DEFAULT 0,
+        statut          [2] Statut OPTIONAL,
+        masqueAffichage [3] JournalMasqueAffichage OPTIONAL,
+        masqueSelection [4] JournalMasqueSelection OPTIONAL
+    };
+    
+    JournalMasqueAffichage ::= SEQUENCE
+    {   
+        masque        [0] 
+            BIT STRING { nomOperateur(1), horodatage(2), nomSysteme(3)
+                , libelleCible(4), typeEvmt(5) },
+        minHorodatage [1] IA5String,
+        maxHorodatage [2] IA5String
+    };
+    
+    JournalMasqueSelection ::= SEQUENCE
+    {   
+        nomOperateur  [0] IA5String,
+        minHorodatage [1] IA5String,
+        maxHorodatage [2] IA5String,
+        nomSysteme    [3] IA5String,
+        libelleCible  [4] IA5String,
+        emission      [5] BOOLEAN DEFAULT TRUE,
+        reception     [6] BOOLEAN DEFAULT TRUE,
+        evmtsInternes [7] BOOLEAN DEFAULT TRUE
+    };
+    
+    -- Journalisation - Parametres
+    JournalParametres ::= SEQUENCE
+    {   
+        type          [0] 
+            ENUMERATED {initialiser(0), valider(1), fermer(2)},
+        commun        [1] Handle DEFAULT 0,
+        statut        [2] Statut OPTIONAL,
+        
+        -- nb de fichiers de journalisation
+        nbFichiers    [3] IA5String OPTIONAL,
+        
+        -- repertoire d'installation
+        repertoire    [4] IA5String OPTIONAL,
+        
+        -- taille d'un fichier
+        tailleFichier [5] IA5String OPTIONAL
+    };
+    
+    -- Journalisation - Affichage
+    JournalAffichage ::= SEQUENCE
+    {   
+        type             [0] 
+            ENUMERATED {initialiser(0), changerJournal(1)
+                , changerCapture(2)
+                    , viderCapture(3)
+                    , copierSelectionCapture(4)
+                    , fermer(5)},
+        commun           [1] Handle DEFAULT 0,
+        statut           [2] Statut OPTIONAL,
+        
+        -- champs communs entre l'ihm et le moteur
+        journalAffiche   [3] IA5String OPTIONAL,
+        fichierCapture   [4] Fichier OPTIONAL,
+        
+        -- champ envoye uniquement par l'ihm
+        selectionCapture [5] IA5String OPTIONAL,
+        
+        -- champs envoyes uniquement par le moteur
+        reponse          [6] JournalAffichageReponse OPTIONAL
+    };
+    
+    JournalAffichageReponse ::= SEQUENCE
+    {   
+        listeJournaux [0] SEQUENCE OF IA5String OPTIONAL,
+        
+        -- Ne sert plus (cause : temps de chargement trop long !)
+        -- journalContenu [1] SEQUENCE OF IA5String OPTIONAL
+        journal       [1] Fichier OPTIONAL
+    };
+    
+    -- ***********
+    -- Deconnexion
+    -- ***********
+    Deconnexion ::= SEQUENCE
+    {   
+        ordre       [0] ENUMERATED {init(0), deconnecter(1), fermer(2)},
+        commun      [1] Handle DEFAULT 0,
+        listeCibles [2] SEQUENCE OF Cible OPTIONAL
+    };
+    
+    Cible ::= SEQUENCE
+    {   
+        
+        -- nom de la cible connectee
+        cible   [0] IA5String,
+        
+        -- systeme associe
+        systeme [1] IA5String OPTIONAL
+    };
+    
+    -- ******************
+    -- Profil Utilisateur
+    -- ******************
+    ProfilUtilisateur ::= SEQUENCE
+    {   
+        ordre                 [0] 
+            ENUMERATED {initialiser(0), fermer(1), annuler(2)
+                , supprimer(3)
+                    , enregistrer(4), enregistrerSous(5)
+                    , changerProfil(6), majOngletMenu(7)
+                    , majOngletScenario(8), modifier(9)},
+        commun                [1] Handle DEFAULT 0,
+        statut                [2] Statut OPTIONAL,
+        
+        -- commun ihm - moteur
+        profilCourant         [3] IA5String OPTIONAL,
+        ongletMenu            [4] ProfUtilOngletMenu OPTIONAL,
+        ongletScenario        [5] ProfUtilOngletScenario OPTIONAL,
+        
+        -- champ envoe par le moteur a l'initialisation
+        listeProfils          [6] SEQUENCE OF IA5String OPTIONAL,
+        ongletMenuModifie     [7] BOOLEAN OPTIONAL,
+        ongletScenarioModifie [8] BOOLEAN OPTIONAL
+    };
+    
+    ProfUtilOngletMenu ::= SEQUENCE
+    {   
+        ordre                   [0] 
+            ENUMERATED {initialiser(0), afficherSousMenus(1)
+                , changerDroitMenu(2)
+                    , changerDroitSousMenu(3)},
+        
+        -- partie Menu
+        menuSelectionne         [0] DescriptionMenu OPTIONAL,
+        
+        -- liste des menus interdits
+        listeMenusInterdits     [1] SEQUENCE OF DescriptionMenu OPTIONAL,
+        
+        -- partie sous-menus associes au menu selectionne
+        sousMenuSelectionne     [2] DescriptionMenu OPTIONAL,
+        
+        -- liste des sous-menus interdits
+        listeSousMenusInterdits [3] SEQUENCE OF DescriptionMenu OPTIONAL
+    };
+    
+    DescriptionMenu ::= SEQUENCE
+    {   
+        libelle    [0] IA5String,
+        
+        -- tout menu est par defaut accessible
+        droitAcces [1] BOOLEAN DEFAULT TRUE
+    };
+    
+    ProfUtilOngletScenario ::= SEQUENCE
+    {   
+        type     [0] 
+            ENUMERATED {initialiser(0), mise-a-jour(1), changerDroit(2)},
+        question [1] QuestionProfUtilOngletScenario OPTIONAL,
+        reponse  [2] ReponseProfUtilOngletScenario OPTIONAL
+    };
+    
+    QuestionProfUtilOngletScenario ::= CHOICE
+    {   
+        afficherGrillePresentation [0] AffichageGrillePresentation,
+        afficherGrilleRappel       [1] INTEGER,
+        focusGrille                [2] INTEGER,
+        focusRappel                [3] IA5String,
+        selection                  [4] EltPresentationScenario
+    };
+    
+    ReponseProfUtilOngletScenario ::= SEQUENCE
+    {   
+        statut                [0] Statut OPTIONAL,
+        nbNiveauxPresentation [1] INTEGER OPTIONAL,
+        grille                [2] Grille OPTIONAL,
+        attributsScenario     [3] AttributsScenario1 OPTIONAL
+    };
+    
+    EltPresentationScenario ::= SEQUENCE
+    {   
+        
+        -- element selectionne
+        element         [0] EltGrille,
+        
+        -- niveau courant
+        niveau          [1] INTEGER,
+        
+        -- position insertion
+        position        [2] INTEGER OPTIONAL,
+        fichierScenario [3] Fichier OPTIONAL
+    };
+
+    -- **********************
+    -- Gestion des operateurs
+    -- **********************
+    GestionOperateurs ::= SEQUENCE
+    {   
+        ordre            [0] 
+            ENUMERATED {initialiser(0), fermer(1), annuler(2)
+                , supprimer(3)
+                    , enregistrer(4), enregistrerSous(5)
+                    , validerInter(6), changerOperateur(7)
+                    , changerSysteme(8)},
+        commun           [1] Handle DEFAULT 0,
+        statut           [2] Statut OPTIONAL,
+        
+        -- commun Ihm - Moteur
+        operateurCourant [3] DescriptionOperateur OPTIONAL,
+        
+        -- champs envoyes uniquement par le moteur
+        listeOperateurs  [4] SEQUENCE OF IA5String OPTIONAL,
+        listeProfils     [5] SEQUENCE OF IA5String OPTIONAL,
+        listeSystemes    [6] SEQUENCE OF IA5String OPTIONAL
+    };
+    
+    DescriptionOperateur ::= SEQUENCE
+    {   
+        nomOperateur      [0] IA5String OPTIONAL,
+        motDePasse        [1] IA5String OPTIONAL,
+        profilUtilisateur [2] IA5String OPTIONAL,
+        systeme           [3] IA5String OPTIONAL,
+        listeCibles       [4] SEQUENCE OF AccesCibleOperateur OPTIONAL
+    };
+    
+    AccesCibleOperateur ::= SEQUENCE
+    {   
+        nomCible            [0] IA5String,
+        nomOperateur        [1] IA5String OPTIONAL,
+        motDePasseOperateur [2] IA5String OPTIONAL
+    };
+    
+    -- ******************
+    -- Gestion des cibles
+    -- ******************
+    GestionCibles ::= SEQUENCE
+    {   
+        type              [0] 
+            ENUMERATED {initialiser(0), changerSysteme(1), fermer(2)
+                , supprimerCible(3), modifierCible(4)
+                , creerCible(5), copierCible(6)
+                    , masque(7)},
+        commun            [1] Handle DEFAULT 0,
+        statut            [2] Statut OPTIONAL,
+        
+        -- Systeme
+        listeSystemes     [3] SEQUENCE OF IA5String OPTIONAL,
+        systeme           [4] IA5String OPTIONAL,
+        
+        -- Cible
+        listeCibles       [5] SEQUENCE OF IA5String OPTIONAL,
+        cible             [6] IA5String OPTIONAL,
+        
+        -- masque de connexion
+        masqueConnexion   [7] MasqueSaisie OPTIONAL,
+        
+        -- pour la copie
+        cibleDestinataire [8] IA5String OPTIONAL
+    };
+    
+    -- ************************
+    -- Gestion des applications
+    -- ************************
+    GestionApplications ::= SEQUENCE
+    {   
+        type                   [0] 
+            ENUMERATED {initialiser(0), fermer(1), afficherSelection(2)
+                , ajouter(3)
+                    , supprimer(4), modifier(5)
+                    , deplacer(6)
+                    , enregistrer(7), annuler(8)},
+        commun                 [1] Handle DEFAULT 0,
+        statut                 [2] Statut OPTIONAL,
+        
+        -- liste des applications
+        listeApplications      [3] SEQUENCE OF DescriptionApplication
+            OPTIONAL,
+        
+        -- application courante
+        descriptionApplication [4] DescriptionApplication OPTIONAL
+    };
+    
+    DescriptionApplication ::= SEQUENCE
+    {   
+        type          [0] ENUMERATED {item(0), separateur(1)} OPTIONAL,
+        
+        -- si type = item
+        libelle       [1] IA5String OPTIONAL,
+        
+        -- Ne servent pas a l'initalisation
+        ligneCommande [2] IA5String OPTIONAL,
+        bas           [3] BOOLEAN DEFAULT TRUE,
+        position      [4] INTEGER OPTIONAL
+    };
+    
+    -- *******************
+    -- Options Script
+    -- *******************
+    Options ::= SEQUENCE
+    {   
+        type               [0] 
+            ENUMERATED {initialiser(0), valider(1), annuler(2), fermer(3)},
+        commun             [1]  Handle DEFAULT 0,
+        statut             [2]  Statut OPTIONAL,
+        
+        -- options commandes
+        nbMaxFenetresCmdes [3]  INTEGER DEFAULT 0,
+        rappelMemoCmdes    [4]  BOOLEAN DEFAULT FALSE,
+        nbMinSystemes	   [5]  INTEGER DEFAULT 0,	
+
+        -- scenarios
+        repImportSce       [6]  IA5String OPTIONAL,
+        repExportSce       [7]  IA5String OPTIONAL,
+        repRacineSce       [8]  IA5String OPTIONAL,
+        delaiImpression    [9]  INTEGER OPTIONAL,
+		arretErreur        [10]  BOOLEAN DEFAULT FALSE,
+		debugErreur        [11] BOOLEAN DEFAULT FALSE,
+		suspendreSansDebug	[12] BOOLEAN DEFAULT TRUE,
+		genererOut	        [13] BOOLEAN DEFAULT FALSE,
+        inhibitionArretErreur [14] BOOLEAN DEFAULT FALSE,
+
+		-- configuration
+		repImportConf      [15] IA5String OPTIONAL,
+
+		-- configuration
+		repServeur         [16] IA5String OPTIONAL,
+
+		-- ocs
+		fichierOcs         [17] Fichier OPTIONAL,
+
+		-- communication
+		communication      [18] Communication OPTIONAL,
+
+		-- translation de repertoires
+		repLocal		   [19] IA5String OPTIONAL,
+		repDistant		   [20] IA5String OPTIONAL
+    };
+
+    Communication ::= SEQUENCE
+    {
+		typeComm       [0] ENUMERATED {wincom(0), mscom(1), winsock(2)} DEFAULT wincom,
+
+		-- Si typeComm = wincom
+		wincom         [1] Wincom OPTIONAL,
+
+		-- si typeComm = mscom
+		mscom          [2] Mscom OPTIONAL,
+
+		-- si typeComm = winsock
+		-- rien
+		-- champs communs au deux modes
+		sessionVisible [4] BOOLEAN DEFAULT TRUE,
+		delaiBaniere   [5] INTEGER DEFAULT 6,
+		deconnecterEtFermer [6] BOOLEAN DEFAULT FALSE
+	};
+
+	Wincom ::= SEQUENCE
+	{
+		nbMaxSessions [0] INTEGER DEFAULT 4
+	};
+
+	Mscom ::= SEQUENCE
+	{
+		listePortComm [0]  SEQUENCE OF INTEGER OPTIONAL,
+		portComm      [1]  INTEGER,
+		listeVitesse  [2]  SEQUENCE OF INTEGER OPTIONAL,
+		vitesse       [3]  INTEGER,
+		listeBitsData [4]  SEQUENCE OF INTEGER OPTIONAL,
+		nbBitsData    [5]  INTEGER,
+		listeParite   [6]  SEQUENCE OF IA5String OPTIONAL,
+		parite        [7]  IA5String,
+		listeBitsStop [8]  SEQUENCE OF IA5String OPTIONAL,
+		nbBitsStop    [9]  IA5String,
+		listeCtrlFlux [10] SEQUENCE OF IA5String OPTIONAL,
+		paramCtrlFlux [11] IA5String
+	};
+
+	-- ***********************
+	-- Selection d'un scenario
+	-- ***********************
+	SelectionScenario ::= SEQUENCE
+	{
+        type     [0] 
+            ENUMERATED {reponse(0), mise-a-jour(1), validation-finale(2)
+                , initialisation(3), fermer(4)},
+        commun   [1] Handle DEFAULT 0,
+        question [2] SelectionScenarioQuestion OPTIONAL,
+        reponse  [3] SelectionScenarioReponse OPTIONAL,
+        executionModeRapide   [4] BOOLEAN OPTIONAL,
+        executionModeServeur  [5] BOOLEAN OPTIONAL
+    };
+
+    SelectionScenarioQuestion ::= CHOICE
+    {   
+        
+        -- scenario
+        selectionnerScenario       [0] SelectionnerScenario,
+        
+        -- niveau grille a afficher + selection dans grille de niveau inferieur
+        afficherGrillePresentation [1] AffichageGrillePresentation,
+        
+        -- niveau grille selectionnee
+        afficherGrilleRappel       [2] INTEGER,
+
+        -- changer de grille serveur
+        afficherGrilleServeur      [3] BOOLEAN 
+    };
+    
+    SelectionnerScenario ::= SEQUENCE
+    {   
+        niveau            [0] INTEGER OPTIONAL,
+        attributsScenario [1] AttributsScenario1 OPTIONAL,
+        libelleRappel     [2] IA5String OPTIONAL
+    };
+    
+    SelectionScenarioReponse ::= SEQUENCE
+    {   
+        statut                [0] Statut,
+        nbNiveauxPresentation [1] INTEGER OPTIONAL,
+        grille                [2] Grille OPTIONAL,
+        attributsScenario     [4] AttributsScenario1 OPTIONAL
+    };
+
+    -- ***********************
+    -- Execution d'un scenario
+    -- ***********************
+    ExecutionScenario ::= SEQUENCE
+    {   
+        type              [1] 
+            ENUMERATED {reponse(0), executer(1), changerSysteme(2)
+                , changerAffichage(3)
+                    , changerFichierSaisie(4)
+                    , changerFichierCapture(5)
+                    , viderFichierCapture(6)
+                    , changerEtatCaptureTraceCommandes(7)
+                    , changerEtatCaptureTraceAlarmes(8)
+                    , copierSelectionFichierCapture(9)
+                    , executerMasque(10), initialiser(11)
+                    , suspendre(12), continuer(13)
+                    , allerPasSuivant(14)
+                    , allerPasApprofondi(15), arreter(16)
+                    , sortirFonction(17)
+                    , ouvrirEditPourRecherche(18)
+                    , fermerEditPourRecherche(19)
+                    , afficherChaine(20)
+                    , fermer(21),displayStack(22),displayObject(23),messageDebug(24)
+			  , arreterFermer (25)},
+        commun            [2] Handle DEFAULT 0,
+        communDiapo       [3] Handle DEFAULT 0,
+        demandeurDiapo    [4] IA5String OPTIONAL,
+        fenetre           [5] ExecutionScenarioFenetre OPTIONAL,
+        reponse           [6] ExecutionScenarioReponse OPTIONAL,
+        paramSuppl        [7] ExecutionScenarioParamSuppl OPTIONAL,
+        afficherChaine    [8] AfficherChaine OPTIONAL,
+        editPourRecherche [9] EditPourRecherche OPTIONAL,
+		variable          [10] IA5String OPTIONAL -- for displayObject
+    };
+    
+    AfficherChaine ::= SEQUENCE
+    {   
+        
+        -- chaine a afficher
+        chaine [0] IA5String OPTIONAL,
+        action [1] ENUMERATED {ouvrir(0), fermer(1), modifier(2)}
+    };
+    
+    EditPourRecherche ::= SEQUENCE
+    {   
+        
+        -- fichier a editer
+        fichier         [0] IA5String OPTIONAL,
+        stopperScenario [1] BOOLEAN
+    };
+    
+    ExecutionScenarioFenetre ::= SEQUENCE
+    {   
+        
+        -- nouveau systeme
+        systeme              [1] IA5String,
+        
+        -- nouvelle cible affichee
+        affichage            [2] IA5String,
+
+        -- nouveau fichier de saisie
+        fichierSaisie        [3] Fichier,
+        ligne                [4] INTEGER DEFAULT 0,
+        
+        -- nouveau fichier de capture
+        fichierCapture       [5] Fichier,
+        
+        -- etat demande
+        etatCaptureCommandes [6] BOOLEAN,
+        
+        -- etat demande
+        etatCaptureAlarmes   [7] BOOLEAN
+    };
+    
+    ExecutionScenarioParamSuppl ::= SEQUENCE
+    {   
+        
+        -- selection
+        selectionFichierCapture [0] IA5String OPTIONAL,
+        
+        -- masque
+        masque                  [1] MasqueSaisie OPTIONAL,
+        
+        -- initialiser
+        scenario                [2] AttributsScenario OPTIONAL
+    };
+    
+    ExecutionScenarioReponse ::= SEQUENCE
+    {   
+        statut       [0]  Statut,
+        COMPONENTS OF ExecutionScenarioSupplReponse,
+        
+        -- autres reponses (hors champs)
+        masque       [20] MasqueSaisie OPTIONAL,
+        debug        [21] InfosDebug OPTIONAL,
+        finExecution [22] BOOLEAN DEFAULT FALSE,
+        relancer     [23] INTEGER OPTIONAL
+    };
+    
+    InfosDebug ::= SEQUENCE
+    {   
+        ligneDebug [0] INTEGER,
+        scenario   [1] AttributsScenario
+    };
+    
+    ExecutionScenarioSupplReponse ::= SEQUENCE
+    {   
+        
+        -- systeme
+        listeSystemes          [1]  SEQUENCE OF IA5String OPTIONAL,
+        systemeSelectionne     [2]  IA5String OPTIONAL,
+        
+        -- affichage
+        listeCiblesAffichables [3]  SEQUENCE OF IA5String OPTIONAL,
+        cibleAffichee          [4]  IA5String OPTIONAL,
+        
+        -- fichier de saisie
+        fichierSaisie          [5]  Fichier OPTIONAL,
+        etatSaisie			   [6]  BOOLEAN OPTIONAL,
+
+        -- fichier de batch
+        fichierBatch           [7]  Fichier OPTIONAL,
+        etatBatch			   [8]  BOOLEAN OPTIONAL,
+
+        -- fichier de capture
+        fichierCapture         [9]  Fichier OPTIONAL,
+        etatCaptureCommandes   [10]  BOOLEAN OPTIONAL,
+        etatCaptureAlarmes     [11]  BOOLEAN OPTIONAL,
+        
+        -- Traces
+        traceCommandes         [12]  IA5String OPTIONAL,
+        traceAlarmes           [13]  IA5String OPTIONAL,
+        traceDiapo             [14] IA5String OPTIONAL,
+        finTexteCommandes      [15] BOOLEAN DEFAULT TRUE,
+        finTexteAlarmes        [16] BOOLEAN DEFAULT TRUE
+    };
+    
+    -- ***************************
+    -- Gestion des points de suivi
+    -- ***************************
+    GestionPointsdeSuivi ::= SEQUENCE
+    {   
+        listePointsDeSuivi [0] SEQUENCE OF PointDeSuivi
+    };
+    
+    PointDeSuivi ::= SEQUENCE
+    {   
+        identificateur [0] IA5String,
+        valeur         [1] IA5String OPTIONAL
+    };
+    
+    -- *************************
+    -- gestion des points d'arret
+    -- *************************
+    GestionPointsArret ::= SEQUENCE
+    {   
+        scenario         [0] AttributsScenario,
+        
+        -- liste des points d'arrets
+        listePointsArret [1] SEQUENCE OF PointArret OPTIONAL,
+        
+        -- indique si on se contente d'ajouter
+        ajout            [2] BOOLEAN DEFAULT false
+    };
+    
+    PointArret ::= SEQUENCE
+    {   
+        ligne    [0] INTEGER,
+        validite [1] BOOLEAN OPTIONAL
+    };
+    
+    -- *************************
+    -- Evaluation d'une variable
+    -- *************************
+    EvaluerVariable ::= SEQUENCE
+    {   
+        commun   [0] Handle DEFAULT 0,
+        variable [1] IA5String OPTIONAL,
+        valeur   [2] SEQUENCE OF IA5String OPTIONAL,
+		context  [3] INTEGER DEFAULT 0
+    };
+    
+    -- ****************************************
+    -- Gestion de la presentation des scenarios
+    -- ****************************************
+    GestionPresentationScenarios ::= SEQUENCE
+    {   
+        type         [0] 
+            ENUMERATED {initialisation(0), mise-a-jour(1), couper(2)
+                , copier(3)
+                    , coller(4), supprimer(5)
+                    , nouveauGroupe(6)
+                    , renommer(7), fermer(8)
+                    , chercherScenario(9)
+                    , nouveauScenario(10)
+                    , initialisationImport(11)
+                    , rafraichirGrilles(12)},
+        commun       [1] Handle DEFAULT 0,
+        question     [2] QuestionGestionPresentationScenarios OPTIONAL,
+        reponse      [3] ReponseGestionPresentationScenarios OPTIONAL,
+        objetCourant [4] ObjetCourant OPTIONAL
+    };
+    
+    QuestionGestionPresentationScenarios ::= CHOICE
+    {   
+        
+        -- Grilles de presentation et de rappel
+        afficherGrillePresentation [0] AffichageGrillePresentation,
+        afficherGrilleRappel       [1] INTEGER,
+        
+        -- selection en cours pour coller, couper ...
+        selection                  [2] EltPresentationScenario,
+        focusGrille                [3] INTEGER,
+        focusRappel                [4] IA5String
+    };
+    
+    ReponseGestionPresentationScenarios ::= SEQUENCE
+    {   
+        statut                [0] Statut,
+        
+        -- Grilles de presentation et de rappel
+        nbNiveauxPresentation [1] INTEGER OPTIONAL,
+        grille                [2] Grille OPTIONAL,
+        
+        -- selection en cours pour coller, couper ...
+        selection             [3] EltPresentationScenario OPTIONAL
+    };
+    
+    
+    ObjetCourant ::= SEQUENCE
+    {   
+        scenario        [0] IA5String OPTIONAL,
+        listeScenarios  [1] SEQUENCE OF IA5String OPTIONAL,
+        fichierScenario [2] Fichier OPTIONAL,
+        
+        -- Uniquement si gestion suite a importation scenarios
+        listeFichiers   [3] SEQUENCE OF Fichier OPTIONAL
+    };
+    
+    -- ************************
+    -- Exportation de scenarios
+    -- ************************
+    ExportationScenarios ::= SEQUENCE
+    {   
+        type           [0] 
+            ENUMERATED {initialisation(0), mise-a-jour(1)
+                , exporterScenario(2)
+                    , fermer(3)},
+        commun         [1] Handle DEFAULT 0,
+        question       [2] QuestionExportationScenarios OPTIONAL,
+        reponse        [3] ReponseExportationScenarios OPTIONAL,
+        objetAExporter [4] ObjetAExporter OPTIONAL,
+        repExportation [5] IA5String OPTIONAL
+    };
+    
+    QuestionExportationScenarios ::= CHOICE
+    {   
+        
+        -- Grilles de presentation et de rappel
+        afficherGrillePresentation [0] AffichageGrillePresentation,
+        afficherGrilleRappel       [1] INTEGER,
+        focusGrille                [3] INTEGER,
+        focusRappel                [4] IA5String
+    };
+    
+    ReponseExportationScenarios ::= SEQUENCE
+    {   
+        statut                [0] Statut,
+        
+        -- Grilles de presentation et de rappel
+        nbNiveauxPresentation [1] INTEGER OPTIONAL,
+        grille                [2] Grille OPTIONAL
+    };
+    
+    ObjetAExporter ::= SEQUENCE
+    {   
+        groupe          [0] IA5String OPTIONAL,
+        scenario        [1] IA5String OPTIONAL,
+        fichierScenario [2] Fichier OPTIONAL
+    };
+    
+    ExporterScenarios ::= SEQUENCE
+    {   
+        type           [0] 
+            ENUMERATED {init(0), maj(1), exporter(2), annuler(3)},
+        commun         [1] Handle DEFAULT 0,
+        ficSelectionne [2] Fichier OPTIONAL,
+        listeFichiers  [3] SEQUENCE OF Fichier OPTIONAL,
+        listeScenarios [4] SEQUENCE OF IA5String OPTIONAL,
+        reponse        [5] Statut OPTIONAL
+    };
+    
+    -- ************************
+    -- Importation de scenarios
+    -- ************************
+    ImportationScenarios ::= SEQUENCE
+    {   
+        
+        -- type envoye au moteur et retourne en reponse
+        type             [0] 
+            ENUMERATED {initialisation(0), mise-a-jour(1), importer(2)
+                , fermer(3)
+                    , passerGestionPresentation(4)
+                    , annuler(5)},
+        commun           [1] Handle DEFAULT 0,
+        
+        -- reponse ok ou ko
+        statut           [2] Statut OPTIONAL,
+        
+        -- rep. d'importation
+        repImportation   [3] IA5String OPTIONAL,
+        
+        -- liste des fichiers selectionnes (envoyee par Ihm)
+        listeFichiers    [4] SEQUENCE OF FichiersImport OPTIONAL,
+        
+        -- liste des scenarios des fichiers selectionnes (envoyee par Moteur)
+        listeScenarios   [5] SEQUENCE OF IA5String OPTIONAL,
+        
+        -- fichier a importer
+        fichierAImporter [6] FichierAImporter OPTIONAL
+    };
+    
+    FichiersImport ::= SEQUENCE
+    {   
+        fichier [0] IA5String,
+        select  [1] BOOLEAN DEFAULT FALSE
+    };
+    
+    FichierAImporter ::= SEQUENCE
+    {   
+        fichier     [0] IA5String,
+        destination [1] IA5String
+    };
+    
+    -- *******************
+    -- Edition de scenario
+    -- *******************
+    EditionScenario ::= SEQUENCE
+    {   
+        ordre                [0] 
+            ENUMERATED {initialiser(0), enregistrer(1)
+                , masqueDeLancement(2)
+                    , masqueSupplementaire(3), commande(4)
+                    , fermer(5), reinitMasqueDeLancement (6)},
+        commun               [1] Handle DEFAULT 0,
+        reponse              [2] Statut OPTIONAL,
+        scenario             [3] ScenarioEdite OPTIONAL,
+        commande             [4] EditionCommande OPTIONAL,
+        masqueSupplementaire [5] EditionMasque OPTIONAL,
+        infoTexte            [6] InfoTexte OPTIONAL
+    };
+
+    InfoTexte ::= SEQUENCE
+    {   
+        ligneDebut [0] INTEGER,
+        ligneFin   [1] INTEGER OPTIONAL,
+        texte      [2] SEQUENCE OF IA5String OPTIONAL
+    };
+    
+    ScenarioEdite ::= SEQUENCE
+    {   
+        attributs [0] AttributsScenario1 OPTIONAL,
+        texte     [1] SEQUENCE OF IA5String OPTIONAL
+    };
+    
+    EditionCommande ::= SEQUENCE
+    {   
+        ligne         [0] INTEGER OPTIONAL,
+        
+        -- texte de la commande (a inserer)
+        texteCommande [1] IA5String OPTIONAL,
+        
+        -- masque eventuel
+        masque        [2] MasqueSaisie OPTIONAL,
+        
+        -- editeur de commande
+        ediCommande   [3] Commande OPTIONAL
+    };
+    
+    EditionMasque ::= SEQUENCE
+    {   
+        ligne         [0] INTEGER OPTIONAL,
+        
+        -- texte du masque (a inserer)
+        texteMasque   [1] IA5String OPTIONAL,
+        nouveauMasque [2] BOOLEAN OPTIONAL
+    };
+    
+    -- **************************************
+    -- Masque de lancement // Supplementaire
+    -- **************************************
+    MasqueEdition ::= SEQUENCE
+    {   
+        type       [0] 
+            ENUMERATED {initialiser(0), valider-inter(1), editerAide(2)
+                , valider-fin(3), annuler(4)
+                    , ajouterParam(5)
+                    , supprimerParam(6)
+                    , editerAideMasque(7)
+                    , valider-nomMasque(8)},
+        commun     [1] Handle DEFAULT 0,
+        typeMasque [2]
+            ENUMERATED {masqueDeLancement(0), masqueSupplementaire(1)},
+        statut     [3] Statut OPTIONAL,
+        masque     [4] DescriptionMasque OPTIONAL,
+        question   [5] QuestionMasque OPTIONAL
+    };
+
+    DescriptionMasque ::= SEQUENCE
+    {
+        nomMasque       [0] IA5String,
+        listeCommandes  [1] SEQUENCE OF DescriptionMasqueCommande OPTIONAL,
+        listeParamsSupp [2] SEQUENCE OF DescriptionMasqueParam OPTIONAL,
+  	listeContraintes [3] SEQUENCE OF IA5String OPTIONAL
+    };
+
+    DescriptionMasqueCommande ::= SEQUENCE
+    {
+        nomCommande     [0] IA5String,
+        iteration       [1] INTEGER OPTIONAL,
+        listeParametres [2] SEQUENCE OF DescriptionMasqueParam
+    };
+
+    DescriptionMasqueParam ::= SEQUENCE
+    {
+        identificateur [0] IA5String OPTIONAL,
+        libelleParam   [1] IA5String OPTIONAL,
+		typeCtrlSyntax [2] IA5String OPTIONAL,
+		obligatoire    [3] IA5String OPTIONAL,
+		libellePresent [4] IA5String OPTIONAL,
+		bulleAide      [5] IA5String OPTIONAL,
+		variable       [6] IA5String OPTIONAL,
+        griserChamps   [7] BOOLEAN DEFAULT FALSE
+    };
+
+    QuestionMasque ::= SEQUENCE
+    {
+        nomCommande        [0] IA5String OPTIONAL,
+        iteration          [1] INTEGER OPTIONAL,
+        parametre          [2] DescriptionMasqueParam,
+        iterationParametre [3] INTEGER
+    };
+
+    -- *****************************************************************
+    -- Demande d'ouverture d'un scenario et positionnement sur une ligne
+    -- (pas de reponse de l'ihm)
+    -- *****************************************************************
+    EditionScenarioLigne ::= SEQUENCE
+    {   
+        
+        -- fichier a editer
+        scenario [0] AttributsScenario,
+        
+        -- numero de ligne ou se positionner
+        ligne    [1] INTEGER
+    };
+    
+    -- ****************************
+    -- Importation de configuration
+    -- ****************************
+    ImportationConfiguration ::= SEQUENCE
+    {   
+        
+        -- type envoye au moteur et retourne en reponse
+        type           [0] 
+            ENUMERATED {initialisation(0), mise-a-jour(1), importer(2)
+                , fermer(3)},
+        commun         [1] Handle DEFAULT 0,
+        
+        -- reponse ok ou ko
+        statut         [2] Statut OPTIONAL,
+        
+        -- rep. d'importation
+        repImportation [3] IA5String OPTIONAL,
+        
+        -- liste des fichiers selectionnes (envoyee par Ihm)
+        listeFichiers  [4] SEQUENCE OF IA5String OPTIONAL,
+        systeme        [5] IA5String OPTIONAL
+    };
+
+    -- **********************
+    -- Suppression de systeme
+    -- **********************
+    SuppressionSysteme ::= SEQUENCE
+    {   
+        type       [0] ENUMERATED {init(0), mise-a-jour(1), supprimer(2), fermer(3)},
+        commun      [1] Handle DEFAULT 0,
+
+        -- reponse ok ou ko
+        statut         [2] Statut OPTIONAL,
+        
+        -- liste des systemes (envoyee par le moteur)
+        listeSystemes  [3] SEQUENCE OF IA5String OPTIONAL,
+
+        -- systeme selectionne (envoyee par Ihm)
+        systeme        [4] IA5String OPTIONAL
+    };
+    
+    -- ************************************************************
+    -- Statut = reponse ok ou ko et message d'erreur a une question
+    -- ************************************************************
+    Statut ::= SEQUENCE
+    {   
+        
+        -- reponse ok ou ko
+        ok      [0] BOOLEAN,
+        
+        -- message d'erreur si reponse ko
+        message [1] IA5String OPTIONAL
+    };
+    
+    -- **********************************
+    -- Message box
+    -- **********************************
+    MessageBox ::= SEQUENCE
+    {   
+        commun  [1] Handle,
+        
+        -- boutons a proposer
+        ack     [2] ENUMERATED {fermer(0), ouiNon(1), ouiNonAnnuler(3)}
+            DEFAULT fermer,
+        
+        -- icone a afficher
+        icone   [3] 
+            ENUMERATED {erreur(0), warning(1), information(2)
+                , confirmation(3)
+                    , avertissement(4)}
+            DEFAULT information,
+        
+        -- tire de la boite de dialogue
+        titre   [3] IA5String OPTIONAL,
+        
+        -- message a afficher
+        message [4] SEQUENCE OF IA5String OPTIONAL,
+        
+        -- reponse de l'utilisateur
+        reponse [5] ENUMERATED {fermer(0), oui(1), non(2), annuler(3)}
+			OPTIONAL,
+
+		bloquant	[6] BOOLEAN DEFAULT TRUE,
+
+        -- si mesg associe a une execution de scenario
+        executionScenario [7] BOOLEAN DEFAULT FALSE
+    };
+    
+    -- ***************************************
+    -- Fichier = decoupage nom et localisation
+    -- ***************************************
+    Fichier ::= SEQUENCE
+    {   
+        
+        -- nom du fichier avec extension
+        nomFichier  [0] IA5String,
+        
+        -- localisation
+        cheminAcces [1] IA5String
+    };
+    
+    AttributsScenario ::= SEQUENCE
+    {   
+        nomScenario     [0] IA5String OPTIONAL,
+        fichierScenario [1] IA5String OPTIONAL,
+        aideScenario    [2] IA5String OPTIONAL
+    };
+    
+    AttributsScenario1 ::= SEQUENCE
+    {   
+        nomScenario     [0] IA5String OPTIONAL,
+        fichierScenario [1] Fichier OPTIONAL,
+        aideScenario    [2] IA5String OPTIONAL
+    };
+    
+    -- **********************************
+    -- Declarations de types particuliers
+    -- **********************************
+    Handle ::= INTEGER;
+    
+    -- **********************************
+    -- Gestion de l'aide html
+    -- **********************************
+    Aide ::= SEQUENCE
+    {   
+        statut      [0] Statut OPTIONAL,
+        
+        -- pour aide scenario
+        scenario    [1] Fichier OPTIONAL,
+        communExe   [2] INTEGER OPTIONAL,
+        
+        -- pour aide masque scenario, commande, generalites
+        systeme     [3] IA5String OPTIONAL,
+        niveau      [4] IA5String OPTIONAL,
+        parametre   [5] IA5String OPTIONAL,
+        
+        -- en reponse du moteur uniquement
+        fichierAide [6] Fichier OPTIONAL
+    };
+    
+    -- **********************************
+    -- Gestion de l'aide pour editer
+    -- **********************************
+    EditionAide ::= SEQUENCE
+    {   
+        type    [0] ENUMERATED {editer(0), enregistrer(1), fermer(2)}
+            DEFAULT editer,
+        commun  [1] INTEGER DEFAULT 0,
+        statut  [2] Statut OPTIONAL,
+        aide    [3] Aide OPTIONAL,
+        titre   [4] IA5String OPTIONAL,
+        contenu [5] SEQUENCE OF IA5String OPTIONAL
+    };
+    
+    -- **********************************
+    -- Lancement de l'executable OCS
+    -- **********************************
+    LancementOCS ::= SEQUENCE
+    {   
+        type       [0] ENUMERATED {initialiser(0)},
+        statut     [1] Statut OPTIONAL,
+        fichierOcs [2] Fichier OPTIONAL
+    };
+    
+    -- **************************
+    -- Masque de saisie dynamique
+    -- **************************
+    MasqueSaisie ::= SEQUENCE
+    {   
+        handle            [0] Handle DEFAULT 0,
+        nom               [1] IA5String OPTIONAL,
+        dynamique         [2] BOOLEAN DEFAULT TRUE,
+        ordre             [3] 
+            ENUMERATED {validation-fin(0), validation-fin-temporaire(1)
+                , validation-intermediaire(2)
+                    , viderChamps(3)
+                    , annulerViderChamps(4), init(5)
+                    , sans-verification(6), annuler(7)},
+        
+        -- champs a remplir ou a creer
+        listeChampsSaisie [5] SEQUENCE OF ChampSaisie OPTIONAL,
+        
+        -- parametres supplementaires de question
+        question          [6] MasqueSaisieQuestion OPTIONAL,
+        
+        -- si c'est le masque d'une commande, il faut le nom du systeme associe
+        -- et l'identificateur de la commande
+        systeme           [7] IA5String OPTIONAL,
+        identCommande     [8] IA5String OPTIONAL,
+        
+        -- sinon c'est le masque d'un scenario
+        scenario          [9] Fichier OPTIONAL
+    };
+    
+    -- Types de questions possibles
+    MasqueSaisieQuestion ::= SEQUENCE
+    {   
+        
+        -- indice fenetre commande origine
+        recupererMasque [0] INTEGER OPTIONAL,
+        
+        -- identificateur liste
+        afficherListe   [2] ChampSaisie OPTIONAL
+    };
+    
+    ChampSaisie ::= SEQUENCE
+    {   
+        identificateur [0] IA5String,
+        libelle        [1] IA5String OPTIONAL,
+        aide           [2] IA5String OPTIONAL,
+        invalidate     [3] BOOLEAN DEFAULT false,
+        hidden         [4] BOOLEAN DEFAULT false,
+        indice         [5] INTEGER OPTIONAL,
+        indiceListe    [6] INTEGER OPTIONAL,
+	  obligatoire    [7] BOOLEAN DEFAULT false,
+        champ          [8] Champ
+    };
+    
+    Champ ::= CHOICE
+    {   
+        chaine      [0] TypeChaine,
+        decimal     [3] TypeDecimal,
+        hexadecimal [4] TypeHexadecimal,
+        choix       [5] TypeChoix,
+        texte       [6] TypeTexte,
+        liste       [7] TypeListe
+    };
+    
+    TypeChaine ::= SEQUENCE
+    {   
+        type     [0] 
+            ENUMERATED {quelconque(0), alphanumerique(1), numerique(2)},
+        lg_min   [1] INTEGER DEFAULT 0,
+        lg_max   [2] INTEGER DEFAULT 0,
+        val_part [3] IA5String OPTIONAL,
+        valeur   [4] IA5String OPTIONAL
+    };
+    
+    TypeDecimal ::= SEQUENCE
+    {   
+        val_min  [0] INTEGER DEFAULT 0,
+        val_max  [1] INTEGER DEFAULT 0,
+        val_part [2] IA5String OPTIONAL,
+        valeur   [3] IA5String OPTIONAL
+    };
+    
+    TypeHexadecimal ::= SEQUENCE
+    {   
+        val_min  [0] IA5String DEFAULT "0",
+        val_max  [1] IA5String DEFAULT "0",
+        val_part [2] IA5String OPTIONAL,
+        valeur   [3] IA5String OPTIONAL
+    };
+    
+    TypeChoix ::= SEQUENCE
+    {   
+        valeur     [0] IA5String,
+        listeChoix [1] SEQUENCE OF EltListeChoix OPTIONAL
+    };
+    
+    EltListeChoix ::= SEQUENCE
+    {   
+        identificateur [0] IA5String,
+        valeur         [1] IA5String,
+        aide           [2] IA5String
+    };
+    
+    TypeTexte ::= SEQUENCE
+    {   
+        etat [0] BOOLEAN
+    };
+    
+    TypeListe ::= SEQUENCE
+    {   
+        type              [0] ENUMERATED {listeSimple(0), listeMultiple(1)},
+        nb_max            [4] INTEGER OPTIONAL,
+        nb_min            [5] INTEGER OPTIONAL,
+        hors-sequence     [6] BOOLEAN OPTIONAL,
+        listeChampsSaisie [7] SEQUENCE OF ChampSaisie OPTIONAL,
+        rappelListe       [8] IA5String OPTIONAL
+    };
+
+	TranslationRep ::= SEQUENCE
+	{
+		type		[0]	ENUMERATED {question(0), reponse(1)},
+		repLocal	[1]	IA5String OPTIONAL,
+		repDistant	[2]	IA5String OPTIONAL
+	};
+
+	MessageDebug ::= SEQUENCE
+	{
+	      affichage [0] SEQUENCE OF IA5String OPTIONAL
+	};
+END
+
+

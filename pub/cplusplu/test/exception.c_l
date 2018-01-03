@@ -1,0 +1,14 @@
+#if defined(TOTTOTTO) && defined(TTTITIIT) && defined(SDFSDFSDFSDF) || defined(TTTTTTTTT) && defined(TTTITIIT) && defined(SDFSDFSDFSDF) || defined(TTTTTTTTT) && defined(TTTITIIT) && defined(SDFSDFSDFSDF) || defined(TTTTTTTTT)
+
+class toto {
+    void toti ( int i ) const
+        throw (fifi,toto::titi,pipo,tartempion,tartempon::tartempi
+            ,tartempion::tartempa,pipo,tartempion,tartempon::tartempi
+            ,tartempion::tartempa,tartempion::tartempa,pipo,tartempion
+            ,tartempon::tartempi,tartempion::tartempa,pipo,tartempion
+            ,tartempon::tartempi,tartempion::tartempa)
+    {
+        throw fifi ;
+    }
+};
+#endif

@@ -1,0 +1,43 @@
+tobe_done : all
+
+!include ../makefile.inc
+
+all :
+	cd asn
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd asnext
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd connect
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd asnquick
+	$(MAKE) -f makefile.vis all
+	cd ..
+
+clean :
+	cd asn
+	$(MAKE) -f makefile.vis clean
+	cd ..
+	cd asnext
+	$(MAKE) -f makefile.vis clean
+	cd ..
+	cd connect
+	$(MAKE) -f makefile.vis clean
+	cd ..
+	cd asnquick
+	$(MAKE) -f makefile.vis clean
+	cd ..
+
+install :
+
+   
+
+
+
+
+	   
+
+
+

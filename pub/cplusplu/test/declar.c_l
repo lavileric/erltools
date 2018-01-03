@@ -1,0 +1,30 @@
+main () {
+
+
+int fifi = lskdf + lsdf , fifo = sdlkf + lskdf , fifi = lsdfj +skdfjl
+           , sdklf = slkdfj + lskdjflsdf ;
+int i,j,k=8+c,lsldkf;
+int toto [5+a - b],fifi = 6 + a ;
+char toto [5], * pt ;
+int i,jkkkk,k,l,i = 5 /* entier indiquant rien du tout
+                         le commentaire et l'entier
+                         sont inutiles */
+         ,tto = 8/* commentaire sur un entier */
+         , fifi = 9/* commentaire fin*/
+                   /*autre comment */
+                   /* autre comment */,
+        j, k/* commentaire */, l
+         ;
+int variable = { {1,5,lksdf,sdlkf,slkdf},{sdjf , slkdflskdfj , slkdflskdfj,
+sldfksldf , lskdflskdfj } , {ksldflskdf, sldkfffflskdfj}}/* commentaire */;
+int variable = 10   /* commentaire */, v1 = 12 /* commentaire */;
+struct titi {
+	int i ; /* premier champ de la structure */
+	char * toto ; /* deuxieme champ de la structure */
+	struct titi * next ; /* dernier champ de la structure */
+} fifi , fofo /* la variable fofo*/, *ruru,*fifi/* le pointeur fifi */;
+printf("Corps du programme "); /* comment */
+for ( i=1;i++; i < 50) printf("Corps du programme "); /* comment */
+                                                      /* autre commentaire*/
+                                                      /* commentaire */
+}

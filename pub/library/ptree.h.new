@@ -1,0 +1,210 @@
+/*************************************************************************/
+/*                                                                       */
+/*        ptree.h - Built by Eric Lavillonniere on Tandon 486 - 96       */
+/*                                                                       */
+/*************************************************************************/
+/* This file is part of metagen                                             
+   
+   Metagen is a syntaxic analyser generator with backtrack.
+   
+   It runs on dos and unix. It generates c code. */
+/* Copyright(C) 1989 Eric Lavillonniere */
+/*
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 1, or (at your option)
+   any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; see the file COPYING. If not, write to 
+   the Free Software
+   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+   
+   */
+/*---------------------------------------*/
+/* MODIFICATIONS :                       */
+/*---------------------------------------*/
+/*  Loic Fournier - 9 Avril 1997         */
+/*                                       */
+/*   Added Methods in class PTREE
+             
+   	   
+   void ReplaceTree(const int n,const PTREE Tree);
+   const int TreeArity()const;
+   const int RankTree()const;
+   const char * Value()const;
+   PTREE(char ch[]);
+   PTREE(int NodeNumb,int Arity);
+        */
+#ifndef PTREE_FILE
+#define PTREE_FILE 
+#include "token.h"
+#include "memges.h"
+
+class PTREE
+{
+    
+    public :
+    
+        /* By LF << */
+        PTREE ( int NodeNumb, int Arity )
+        {
+            pt = ::MakeTree(NodeNumb, Arity);
+            if ( pt )                 
+                 AddRef(pt);
+        }
+        
+        PTREE ( char *Ch )
+        {
+            pt = MakeString(Ch);
+            if ( pt ) 
+                AddRef(pt);
+        }
+        
+        const int TreeArity () const
+        {
+            return treearity(*this);
+        }
+        
+        void ReplaceTree ( const int n, PTREE Tree )
+        {
+            ::ReplaceTree(*this, n, Tree);
+        }
+        
+        const int RankTree () const
+        {
+            return ::ranktree(*this);
+        }
+        
+        const char *Value () const
+        {
+            return ::Value(*this);
+        }
+        
+        /* >> End LF */
+        PTREE ()
+        {
+            pt = (PPTREE)0 ;
+        }
+        
+        PTREE ( const PTREE &ptree )
+        {
+            pt = ptree.pt ;
+            if ( pt ) 
+                AddRef(pt);
+        }
+        
+        PTREE ( const PPTREE pptree )
+        {
+            pt = pptree ;
+            if ( pt ) 
+                AddRef(pt);
+        }
+        
+        PTREE ( int addr )
+        {
+            pt = (PPTREE)addr ;
+            if ( pt ) 
+                AddRef(pt);
+        }
+        
+        ~PTREE ()
+        {
+            if ( pt ) 
+                FreeRef(pt);
+        }
+        
+        int NumberTree () const
+        {
+            return pt ? CacheRead((long)pt) & NODE_MASK : - 100 ;
+        }
+        
+        PPTREE Nextl ()
+        {
+            if ( NumberTree() == LIST ) 
+            {
+                PPTREE  inter = StoreRef(sontree(pt, 1));
+                *this = (PPTREE)sontree(pt, 2);
+                return inter ;
+            }
+            else 
+                return (PPTREE)0 ;
+        }
+        
+        PTREE &operator= ( const PTREE &ptree )
+        {
+            if ( ptree.pt ) 
+                AddRef(ptree.pt);
+            if ( pt ) 
+                FreeRef(pt);
+            pt = ptree.pt ;
+            return *this ;
+        }
+        
+        PTREE &operator= ( const PPTREE pptree )
+        {
+            if ( pptree ) 
+                AddRef(pptree);
+            if ( pt ) 
+                FreeRef(pt);
+            pt = pptree ;
+            return *this ;
+        }
+        
+        PTREE &operator+= ( PTREE &ptree )
+        {
+            PPTREE  father = FatherTree(pt);
+            int     rank = ranktree(pt);
+            
+            if ( father ) 
+                ::replacetree(father, rank, ptree.pt);
+            return ptree ;
+        }
+        
+        PTREE operator+= ( PPTREE pptree )
+        {
+            PPTREE  father = FatherTree(pt);
+            int     rank = ranktree(pt);
+            
+            if ( father ) 
+                ::replacetree(father, rank, pptree);
+            return PTREE(pptree);
+        }
+        
+        int operator== ( const PTREE &ptree ) const
+        {
+            return pt == ptree.pt ;
+        }
+        
+        int operator!= ( const PTREE &ptree ) const
+        {
+            return pt != ptree.pt ;
+        }
+        
+        PPTREE operator^ ( int nb ) const
+        {
+            return NFatherTree(pt, nb);
+        }
+        
+        PPTREE operator[] ( int nb ) const
+        {
+            return sontree(pt, nb);
+        }
+        
+        operator PPTREE ( void ) const
+        {
+            return pt ;
+        }
+    
+    //    operator const char * (void) { return Value(pt);}
+    
+    private :
+    
+        PPTREE  pt ;
+};
+#endif

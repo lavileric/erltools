@@ -1,0 +1,103 @@
+Ref { 2 3 9 } DEFINITIONS ::=
+BEGIN
+
+-- INTEGER --
+value1 INTEGER ::= 2;
+value2 INTEGER ::= -3;
+value3 INTEGER ::= value2;
+value3000 [3000] IMPLICIT INTEGER ::= value2;
+
+-- SIMPLE REAL --
+value4 REAL ::= PLUS-INFINITY;
+value5 REAL ::= MINUS-INFINITY;
+value6 REAL ::= 0;
+
+-- NULL VALUE --
+value7 NULL ::= NULL;
+
+-- BOOLEAN --
+value20 BOOLEAN ::= TRUE;
+value21 BOOLEAN ::= FALSE;
+
+-- ENUMERATED --
+TypeEnumerated ::= ENUMERATED { low(-1),medium(0),high(1)};
+value30 TypeEnumerated ::= low;
+value31 TypeEnumerated ::= medium;
+value32 TypeEnumerated ::= high;
+
+-- BIT,OCTET and CHARACTER STRING --
+value40 BIT STRING ::= '001110111011'B;
+value41 OCTET STRING ::= '0AE1C'H;
+value42 IA5String ::= "HELLO";
+value43 IA5String ::= {"HELLO"," ","BONJOUR"," ","IT IS A TEST"};
+value44 IA5String ::= {"HELLO"," ",{"BONJOUR"},{" "},"IT IS A TEST"};
+Couleur ::= [15] BIT STRING { rouge(0),vert(1),bleu(2),marron(15)};
+value45 Couleur ::= { vert,marron};
+value46 BIT STRING ::= { '101'B, '0101'B,'00001'B,'AA'H};
+value47 OCTET STRING ::= { '101'B, '0101'B,'00001'B,'AA'H};
+
+-- OBJECT IDENTIFIER --
+value50 OBJECT IDENTIFIER ::= { 2 6 6 247 1};
+value511 OBJECT IDENTIFIER ::= { 1 };
+value512 OBJECT IDENTIFIER ::= { 1, 2 ,1 };
+value513 OBJECT IDENTIFIER ::= {value512 value517(5) 8 }
+value514 OBJECT IDENTIFIER ::= {value512 value517(5) 8 9}
+value515 OBJECT IDENTIFIER ::= {value512 value517(5) 8 606}
+value516 OBJECT IDENTIFIER ::= {value512 value517(5) 9 999}
+
+-- SET,SEQUENCE,SET OF,SEQUENCE OF --
+TypSet1 ::= SET { p BOOLEAN, q INTEGER, r BIT STRING };
+value60 TypSet1 ::= { p TRUE, r '83F'H,q -7};
+TypSequence1 ::= SEQUENCE { p BOOLEAN, q INTEGER, r BIT STRING };
+value61 TypSequence1 ::= { p TRUE, q -7, r '83F'H};
+TypSequence2 ::= SEQUENCE { x INTEGER , y INTEGER DEFAULT 0};
+TypSeqOf2 ::= SEQUENCE OF TypSequence2;
+value62 SEQUENCE OF TypSequence2 ::= {
+	{ x 1, y 2},
+        { x 1 },
+        { x -1, y 9}
+};
+TypSequence3 ::= SEQUENCE { x INTEGER , y INTEGER OPTIONAL};
+TypSeqOf3 ::= SEQUENCE OF TypSequence3;
+value63 SEQUENCE OF TypSequence3 ::= {
+	{ x 1, y 2},
+        { x 1 },
+        { x -1, y 9}
+};
+TypSequence4 ::= SEQUENCE { name IA5String, COMPONENTS OF TypSequence3};
+value64 TypSequence4 ::= { name "coord", x 9};
+value65 TypSequence4 ::= { name "coord", x 3, y 9};
+TypSequence5 ::= SEQUENCE { x [0] INTEGER , y [1] IMPLICIT INTEGER OPTIONAL};
+value66 TypSequence5 ::= { x 3,y 9};
+TypSequence6 ::= SEQUENCE { x [0] [3] INTEGER , y [1] IMPLICIT [3] INTEGER OPTIONAL};
+value67 TypSequence6 ::= { x 3,y 9};
+TypSeq7 ::= [3] INTEGER;
+TypSequence7 ::= SEQUENCE { x TypSeq7, y [0] IMPLICIT TypSeq7};
+value68 TypSequence7 ::= { x 3,y 9};
+
+-- CHOICE --
+TypChoice2 ::= CHOICE { elem3 [0] IMPLICIT  INTEGER, elem4 [1] IMPLICIT IA5String}
+TypChoice1 ::= CHOICE { elem1 [0] IMPLICIT  INTEGER, elem2 [1] TypChoice2}
+value70 TypChoice2 ::= elem3 5;
+value71 TypChoice1 ::= elem2 elem4 "Content";
+value72 TypChoice1 ::= elem1 9;
+
+-- ANY --
+value80 ANY ::= INTEGER 3;
+TypeAny ::= SEQUENCE {
+    tag INTEGER,
+    value ANY 
+}
+
+value81 TypeAny ::= {
+    tag 9,
+    value IA5String "Hello"
+}
+
+value82 TypeAny ::= {
+    tag 10,
+    value [256] IMPLICIT INTEGER 9
+}
+
+END
+

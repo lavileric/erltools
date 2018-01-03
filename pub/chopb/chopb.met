@@ -1,0 +1,670 @@
+language chopb;
+
+global begin
+    {{
+        extern int nb_par_parse;
+           #ifdef IN
+           #undef IN
+           #endif
+    }}
+end;
+
+use "cplus.met";
+
+lexdefine LexComment;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage and not in context parse then
+        begin
+        skip '\t',' ','\r','\n';
+        end
+    else
+        if not in context parse then
+            begin
+            skip '\t',' ';
+            end
+        else
+            forgetl;
+    case
+        takel in ['/'] :
+            
+            /* definition of comment */
+            case
+                seel in ['/'] :
+                    begin
+                    begin_comment();
+                    storel takel ;
+                    while seel do
+                        case
+                            seel in ['\r','\n'] :
+                                begin
+                                store_comment_line();
+                                return take LexComment;
+                                end
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    end
+                takel in ['*'] :
+                    begin
+                    {{ {int level = 0; }};
+                    begin_comment();
+                    while seel do
+                        case
+                            takel "/*" :
+                                begin
+                                {{ level ++; }};
+                                storel "/*";
+                                end
+                            takel "*/" :
+                                begin
+                                if {{!level }} then
+                                    begin
+                                    store_comment_line();
+                                    return take LexComment;
+                                    end
+                                else
+                                    begin
+                                    {{ level --;}};
+                                    storel "*/";
+                                    end;
+                                end
+                            takel in ['\n'] : store_comment_line()
+                            takel in ['\r'] : 
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    {{} }};
+                    end
+                default :
+                    begin
+                    recoverl;
+                    end
+            end
+    end;
+end;
+
+lexdefine LexMeta;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage and not in context parse then
+        begin
+        skip '\t',' ','\r','\n';
+        end
+    else
+        if not in context parse then
+            begin
+            skip '\t',' ';
+            end
+        else
+            forgetl;
+    if not in context parse then
+        case
+            takel in ['$'] :
+                
+                /* definition of metavariables */
+                begin
+                if not seel in ['('] then
+                    while seel in ['a'..'z','A'..'Z','0'..'9','_'] do
+                        storel takel 
+                else
+                    begin
+                    {{ int nbPar = 0;}};
+                    storel takel ;
+                    while seel do
+                        case
+                            seel in ['('] :
+                                begin
+                                {{ nbPar++;}};
+                                storel takel ;
+                                end
+                            seel in [')'] :
+                                if {{!nbPar }} then
+                                    begin
+                                    storel takel ;
+                                    return !META;
+                                    end
+                                else
+                                    begin
+                                    storel takel ;
+                                    {{ nbPar--;}};
+                                    end
+                            default : storel takel 
+                        end;
+                    end;
+                return !META;
+                end
+        end;
+end;
+
+lexdefine LexSup;
+    if in context keepCarriage then
+        begin
+        skip ' ','\t';
+        end
+    else
+        begin
+        skip ' ','\t','\r','\n';
+        end;
+    case
+        seel in ['<'] :
+            begin
+            storel takel ;
+            return !MAKETREE_INF;
+            end
+        seel in ['>'] :
+            begin
+            storel takel ;
+            return !MAKETREE_SUP;
+            end
+    end;
+end;
+
+lexdefine formatBeg;
+    skip ' ','\t','\r','\n';
+    case
+        seel "<S," :
+            begin
+            takel "<S";
+            return !SPACE_BEG;
+            end
+        seel "<S>" :
+            begin
+            takel "<S";
+            return !SPACE_BEG;
+            end
+        seel "<T," :
+            begin
+            takel "<T";
+            return !TAB_BEG;
+            end
+        seel "<T>" :
+            begin
+            takel "<T";
+            return !TAB_BEG;
+            end
+        seel "<NL," :
+            begin
+            takel "<NL";
+            return !NL_BEG;
+            end
+        seel "<NL>" :
+            begin
+            takel "<NL";
+            return !NL_BEG;
+            end
+    end;
+end;
+
+lexdefine LexEtoiEtoi;
+    if in context keepCarriage then
+        begin
+        skip ' ','\t';
+        end
+    else
+        begin
+        skip ' ','\t','\r','\n';
+        end;
+    case
+        takel "**" :
+            if seel "=" then
+                recoverl
+            else
+                return !ETOI_ETOI
+        takel "*" :
+            if seel "=" then
+                recoverl
+            else
+                return !SIMP_ETOI
+    end;
+end;
+
+lexdefine LexParse;
+    if {{(nb_par_parse > 0)}} then
+        begin
+        forgetl;
+        while seel do
+            case
+                seel in ['('] :
+                    begin
+                    storel takel ;
+                    {{ nb_par_parse++;}};
+                    end
+                seel in [')'] :
+                    begin
+                    takel ;
+                    {{ nb_par_parse--;}};
+                    if {{(nb_par_parse <= 0)}} then
+                        return !PARSE_ELEM;
+                    storel ")";
+                    end
+                seel in ['\r'] : takel 
+                seel in ['\n'] :
+                    begin
+                    takel ;
+                    return !PARSE_ELEM;
+                    end
+                default : storel takel 
+            end;
+        end;
+end;
+
+define main_entry;
+    return take prog;
+end;
+
+define prog;
+    declare langTree;
+    take #"language";
+    langTree = maketree(CHOP_DEF,maketree(IDENT,take !IDENT),());
+    take ";";
+    replacetree(langTree,2,take program);
+    return langTree;
+end;
+
+define expression;
+    declare expTree,list;
+    expTree = take assignment_expression;
+    if not in context inMakeTree and see "," then
+        begin
+        addlist(list,expTree);
+        while take "," do
+            addlist(list,take assignment_expression);
+        return maketree(EXP_SEQ,list);
+        end
+    else
+        return expTree;
+end;
+
+define assignment_expression;
+    declare expTree,expFollow[2];
+    expTree = take conditional_expression;
+    case
+        take "**=" : return maketree(EXPO_AFF,expTree
+            ,take assignment_expression)
+        default :
+            if expFollow = take assignment_end then
+                begin
+                replacetree(expFollow,1,expTree);
+                expTree = expFollow;
+                end
+    end;
+    return expTree;
+end;
+
+define relational_expression;
+    declare expTree;
+    expTree = take shift_expression;
+    while see "<="
+            or see ">="
+            or (see ">" and not in context inMakeTree)
+            or (see "<"
+                    and not (see !SPACE_BEG or see !TAB_BEG or see !NL_BEG)) do
+        case
+            take "<=" : expTree
+                = maketree(LEQU,expTree,take shift_expression)
+            take ">=" : expTree
+                = maketree(GEQU,expTree,take shift_expression)
+            take ">" : expTree = maketree(GT,expTree,take shift_expression)
+            take "<" : expTree = maketree(LT,expTree,take shift_expression)
+        end;
+    return expTree;
+end;
+
+define shift_expression;
+    declare expTree;
+    expTree = take additive_expression;
+    while see "<<" or (not in context inMakeTree and see ">>") do
+        case
+            take "<<" : expTree
+                = maketree(LSHI,expTree,take additive_expression)
+            take ">>" : expTree
+                = maketree(RSHI,expTree,take additive_expression)
+        end;
+    return expTree;
+end;
+
+define postfix_expression;
+    declare expTree,expList;
+    if not expTree = take primary_expression then
+        begin
+        expTree = take simple_type_name;
+        if not see "(" then
+            break;
+        end;
+    while see "("
+            or see "["
+            or see !POINT
+            or see "->"
+            or see "++"
+            or see "--" do
+        case
+            take "(" : without context inMakeTree do
+                begin
+                if expList = take expression then
+                    expTree = maketree(EXP_LIST,expTree,expList)
+                else
+                    expTree = maketree(EXP_LIST,expTree,());
+                take ")";
+                end
+            take "[" : without context inMakeTree do
+                begin
+                if expList = take expression then
+                    expTree = maketree(EXP_ARRAY,expTree,expList)
+                else
+                    expTree = maketree(EXP_ARRAY,expTree,());
+                take "]";
+                end
+            take !POINT : expTree
+                = maketree(REF,expTree,take primary_expression)
+            take "->" : expTree
+                = maketree(ARROW,expTree,take primary_expression)
+            take "++" : expTree = maketree(AINCR,expTree)
+            take "--" : expTree = maketree(ADECR,expTree)
+        end;
+    return expTree;
+end;
+
+define multiplicative_expression;
+    declare expTree;
+    expTree = take pm_expression;
+    while see !SIMP_ETOI or see !ETOI_ETOI or see !SLAS or see "%" do
+        case
+            take !ETOI_ETOI : expTree
+                = maketree(EXPO,expTree,take pm_expression)
+            take !SIMP_ETOI : expTree
+                = maketree(MUL,expTree,take pm_expression)
+            take !SLAS : expTree = maketree(DIV,expTree,take pm_expression)
+            take "%" : expTree = maketree(REM,expTree,take pm_expression)
+        end;
+    return expTree;
+end;
+
+define cast_expression_value;
+    declare ret;
+    take "(";
+    without context inMakeTree do
+        ret = take type_name;
+    take ")";
+    return maketree(CAST,ret,take cast_expression);
+end;
+
+define exclusive_or_expression;
+    declare expTree,ret;
+    expTree = take and_expression;
+    while take "^" do
+        if ret = take and_expression then
+            expTree = maketree(LXOR,expTree,ret)
+        else
+            expTree = maketree(LXOR,expTree,());
+    return expTree;
+end;
+
+define primary_expression;
+    declare result,expTree,list,statTree;
+    case
+        take "<>" : return maketree(DEF_IDENT)
+        see "<" : return take take_follow
+        take "..." : return take take_follow_list
+        take #"value" :
+            begin
+            take "(";
+            case
+                see !IDENT : statTree
+                    = maketree(VALUE,maketree(IDENT,take !IDENT))
+                take "<>" : statTree = maketree(VALUE,maketree(DEF_IDENT))
+            end;
+            take ")";
+            return statTree;
+            end
+        take #"nextl" :
+            begin
+            take "(";
+            if see !IDENT then
+                statTree = maketree(NEXT,maketree(IDENT,take !IDENT))
+            else
+                begin
+                take "<>";
+                statTree = maketree(NEXT,maketree(DEF_IDENT));
+                end;
+            take ")";
+            return statTree;
+            end
+        take #"parse" :
+            begin
+            take #"(";
+            {{ nb_par_parse = 1 ; }};
+            with context parse do
+                while see !PARSE_ELEM do
+                    addlist(list,maketree(PARSE_ELEM,take !PARSE_ELEM));
+            return maketree(PARSE,list);
+            end
+        take #"in" :
+            begin
+            statTree = maketree(IN_LANG,take expression,());
+            return replacetree(statTree,2,take statement);
+            end
+        take "(" : without context inMakeTree do
+            begin
+            if expTree = take expression then
+                begin
+                take ")";
+                expTree = maketree(EXP,expTree);
+                end
+            else
+                begin
+                take ")";
+                expTree = maketree(NIL);
+                end;
+            return expTree;
+            end
+        see #"operator" : return take operator_function_name
+        see "~" : return take qualified_name
+        see !META :
+            begin
+            return maketree(META,take !META);
+            end
+        see !IDENT :
+            if result = take !PUSH_FUNCTION then
+                begin
+                take "(";
+                addlist(list,maketree(IDENT,take !PUSH_ARGUMENT));
+                take ",";
+                addlist(list,take expression);
+                expTree = maketree(EXP_SEQ,list);
+                take ")";
+                return maketree(EXP_LIST,maketree(IDENT,result),expTree);
+                end
+            else
+                return take qualified_name
+        see !STRING : return take string_list
+        take #"va_arg" :
+            begin
+            take "(";
+            expTree = maketree(VA_ARG,take assignment_expression,());
+            take ",";
+            replacetree(expTree,2,take type_name);
+            take ")";
+            return expTree;
+            end
+        default : return take constan
+    end;
+end;
+
+define statement;
+    declare statTree,inter,list;
+    case
+        take "@" :
+            begin
+            statTree = maketree(ARRO,maketree(IDENT,take !IDENT));
+            if take ";" then
+                ;
+            end
+        take "{{" :
+            begin
+            inter = take statement;
+            repeat
+                addlist(list,inter);
+                if take ";" then
+                    ;
+            until not inter = take statement;
+            statTree = maketree(ALINEA,list);
+            take "}}";
+            end
+        take "<SEPA>" : statTree = maketree(SEP_AFTER)
+        take "<SEPB>" : statTree = maketree(SEP_BEFORE)
+        take "<SEPO>" : statTree = maketree(SEP_OMIT)
+        see "<" :
+            begin
+            case
+                take !SPACE_BEG :
+                    case
+                        take ">" : statTree = maketree(SPACE,())
+                        take "," :
+                            begin
+                            statTree
+                                = maketree(SPACE
+                                    ,maketree(INTEGER,take !INTEGER));
+                            take ">";
+                            end
+                    end
+                take !TAB_BEG :
+                    case
+                        take ">" : statTree = maketree(TAB,())
+                        take "," :
+                            begin
+                            statTree
+                                = maketree(TAB
+                                    ,maketree(INTEGER,take !INTEGER));
+                            take ">";
+                            end
+                    end
+                take !NL_BEG :
+                    case
+                        take ">" : statTree = maketree(NEWLINE,())
+                        take "," :
+                            begin
+                            statTree
+                                = maketree(NEWLINE
+                                    ,maketree(INTEGER,take !INTEGER));
+                            take ">";
+                            end
+                    end
+            end;
+            if take ";" then
+                ;
+            end
+        take #"foreach" :
+            begin
+            statTree = maketree(FOREACH,(),(),());
+            take "(";
+            replacetree(statTree,1,take assignment_expression);
+            take ",";
+            replacetree(statTree,2,take assignment_expression);
+            take ",";
+            
+            /* on essaye de prendre un statement ou une
+              expression seul statement apres lequel le 
+              ; soit obligatoire */
+            if not inter = take statement then
+                inter = take expression;
+            replacetree(statTree,3,inter);
+            take ")";
+            if take ";" then
+                ;
+            end
+        take #"forallsons" :
+            begin
+            statTree = maketree(FORALLSONS,(),());
+            take "(";
+            replacetree(statTree,1,take assignment_expression);
+            take ",";
+            replacetree(statTree,2,take statement);
+            take ")";
+            if take ";" then
+                ;
+            end
+        default :
+            if statTree = take cplus::statement then
+                return statTree
+            else
+                begin
+                if see ident_mul then
+                    
+                    /* on supprime le cas a * 
+                      qui est un declaration */
+                    break
+                else
+                    begin
+                    statTree = take expression;
+                    if take ";" then
+                        ;
+                    end;
+                end
+    end;
+    return statTree;
+end;
+
+define take_follow_super;
+    declare identTree;
+    case
+        take "..." : return take take_follow_list
+        take "(" :
+            if take ")" then
+                return maketree(NIL)
+            else
+                begin
+                identTree = take assignment_expression;
+                take ")";
+                return identTree;
+                end
+        default : return take assignment_expression
+    end;
+end;
+
+define take_follow_list;
+    declare statTree,list,inter;
+    with context or_not_ok do
+        begin
+        statTree = maketree(NODE_LIST,());
+        if inter = take take_follow_super then
+            begin
+            addlist(list,inter);
+            while take "||" do
+                addlist(list,take take_follow_super);
+            end;
+        replacetree(statTree,1,list);
+        end;
+    return statTree;
+end;
+
+define take_follow;
+    declare statTree,list,name;
+    begin
+    statTree = maketree(NODE_TREE,());
+    if take "<>" then
+    else
+        begin
+        take "<";
+        if name = take qualified_name then
+            addlist(list,name)
+        else
+            addlist(list,());
+        with context inMakeTree do
+            while take "," do
+                addlist(list,take take_follow_super);
+        take !MAKETREE_SUP;
+        end;
+    replacetree(statTree,1,list);
+    end;
+    return statTree;
+end;
+
+define old;
+    return maketree(BOX,());
+end.
+

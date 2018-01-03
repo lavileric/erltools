@@ -1,0 +1,6 @@
+!include ./makefile.win
+
+configfo.exe : config.obj chopper.obj config0.obj
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:configfo.exe \
+	chopper.obj config.obj config0.obj $(LIBRARY)
+

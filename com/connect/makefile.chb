@@ -1,0 +1,53 @@
+META_DIR=..\..
+
+INCLUDE_DIR_LOC= -I..\asn -I..\asnext
+
+all : chop.exe
+
+
+
+!include $(META_DIR)\makefile.inc
+
+chop.obj : chop.cc $(META_DIR)\pub\library\token.h
+
+CPLUS=$(META_DIR)\pub\cplusplu\chopper.obj $(META_DIR)\pub\cplusplu\cplus.obj \
+	$(META_DIR)\pub\cplusplu\cplus0.obj $(META_DIR)\pub\cplusplu\cplus1.obj \
+	$(META_DIR)\pub\cplusplu\cplus2.obj $(META_DIR)\pub\cplusplu\cplus3.obj \
+	$(META_DIR)\pub\cplusplu\cplus4.obj $(META_DIR)\pub\cplusplu\cplus5.obj \
+	$(META_DIR)\pub\cplusplu\cplus6.obj $(META_DIR)\pub\cplusplu\cplus7.obj \
+	$(META_DIR)\pub\cplusplu\dchop.obj $(META_DIR)\pub\cplusplu\dchop1.obj \
+	$(META_DIR)\pub\cplusplu\dchop0.obj $(META_DIR)\pub\cplusplu\cplus8.obj
+
+CHOPB=$(META_DIR)\pub\chopb\chopb.obj $(META_DIR)\pub\chopb\chopb0.obj \
+	$(META_DIR)\pub\chopb\chopb1.obj $(META_DIR)\pub\chopb\decomp.obj
+
+METACHOP=$(META_DIR)\pub\metachop\metachop.obj \
+	 $(META_DIR)\pub\metachop\metacho0.obj \
+	 $(META_DIR)\pub\metachop\decomp0.obj $(META_DIR)\pub\metachop\decomp1.obj\
+	 $(META_DIR)\pub\metachop\decomp2.obj $(META_DIR)\pub\metachop\decomp3.obj\
+	 $(META_DIR)\pub\metachop\auxunpar.obj
+
+CHOPCORE=$(META_DIR)\pub\parser\verif.obj
+
+ASN_OBJECTS = ..\asn\asntiny.$(LIB_SUF)
+
+ASN_EXT_OBJECTS = ..\asnext\asnext.obj ..\asnext\asnext0.obj ..\asnext\asnext1.obj ..\asn\asnsymbol.obj
+
+OBJECTS = $(ASN_OBJECTS) $(ASN_EXT_OBJECTS)
+
+chop.exe : chop.obj $(OBJECTS) $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS_LNK)   chop.obj $(OBJECTS) $(CHOPCORE) $(CPLUS) $(CHOPB) \
+	$(METACHOP) $(LIBRARY)
+
+
+
+
+
+
+
+
+
+
+
+
+

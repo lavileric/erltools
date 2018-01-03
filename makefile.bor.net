@@ -1,0 +1,52 @@
+all : all_to_do
+
+!include makefile.inc
+
+all_to_do :
+	@- mkdir $(INSTALL_DIR_SKIMMED) 
+	cd pub 
+	$(MAKE) -f makefile.bor all
+	cd ..
+	cd regex
+	$(MAKE) -f makefile.bor all
+	cd ..
+	cd misc
+	$(MAKE) -f makefile.bor all
+	cd ..
+
+clean : clean_inc
+	cd pub
+	$(MAKE) -f makefile.bor clean
+	cd ..
+	cd regex
+	$(MAKE) -f makefile.bor clean
+	cd ..
+	cd misc 
+	$(MAKE) -f makefile.bor clean
+	cd ..
+
+
+install :
+	- mkdir $(INSTALL_DIR)  
+	cd pub 
+	$(MAKE) -f makefile.bor install
+	cd ..
+	cd misc 
+	$(MAKE) -f makefile.bor install
+	cd ..
+
+
+prettyprinter :
+	- mkdir $(INSTALL_DIR)
+	cd pub 
+	$(MAKE) -f makefile.bor prettyprinter
+	cd ..
+
+
+erlscale : 
+	cd pub 
+	$(MAKE) -f makefile.vis erlscale
+	cd ..
+	cd misc
+	$(MAKE) -f makefile.vis erlscale
+	cd ..

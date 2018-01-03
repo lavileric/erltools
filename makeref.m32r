@@ -1,0 +1,41 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+OUT_O=-o 
+
+#compiler choice
+#MACHFLAGS=-march=athlon-xp  -pipe 
+#MACHFLAGS=-march=pentium3  -pipe
+
+# cross compile
+CROSS_TOOL_DIR=/root/m32r/m32r-linux
+C_PLUS=$(CROSS_TOOL_DIR)/bin/m32r-linux-gnu-g++
+C_PLUS_LNK=$(CROSS_TOOL_DIR)/bin/m32r-linux-gnu-g++
+MACHFLAGS=-pipe -mmodel=medium
+CROSS_INC_DIR=-I $(CROSS_TOOL_DIR)/m32r-linux/include
+
+# direct compilation
+
+#C_PLUS=g++
+#C_PLUS_LNK=g++
+#MACHFLAGS=-pipe
+
+#endif
+
+LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
+
+# -static-libgcc -Wl,-O1  -Wl,-dynamic-linker=/usr/newlocal/lib/ld-linux.so.2
+C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wcast-align
+# -Wno-deprecated
+OPTIM_FLAGS=-O3 -g $(LIBC2FLAGS) -mmodel=medium
+#OPTIM_FLAGS=-O3 $(LIBC2FLAGS) -fomit-frame-pointer 
+#OPTIM_FLAGS=-g $(LIBC2FLAGS)
+#OPTIM_FLAGS=-gstabs+ $(LIBC2FLAGS)
+#OPTIM_FLAGS=$(LIBC2FLAGS)
+C_FLAGS=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS)
+LIB_PRIVATE_SYS=-lpthread
+#LIB_PRIVATE_SYS=
+
+SEP=/
+OBJ_EXT=o 
+LIB_SUF=a

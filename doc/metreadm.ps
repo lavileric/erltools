@@ -1,0 +1,15242 @@
+%!PS-Adobe-3.0
+%%Title: Microsoft Word - METREADM.DOC
+%%Creator: PSCRIPT.DRV Version 4.0
+%%CreationDate: 12/30/96 00:33:35
+%%BoundingBox: 18 23 578 820 
+%%Pages: (atend)
+%%PageOrder: Ascending
+%%Requirements: 
+%%DocumentNeededFonts: (atend)
+%%DocumentSuppliedFonts: (atend)
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 1
+%%EndComments
+
+[{
+%%BeginFeature: *JobPatchFile 1
+
+save 
+/version23-manualfeedpatch where { pop false } { true }ifelse
+ % we don't do an explicit 'get' since product and version MAY
+ % be in systemdict or statusdict - this technique gets the lookup
+ % without failure
+statusdict begin
+  product (LaserWriter) eq        % true if LaserWriter
+  version cvr 23.0 eq             % true if version 23
+end
+
+and  % only install this patch if both are true
+and  % true only if patch is not installed and is for this printer
+     % save object and boolean on stack
+dup { exch restore }if
+% either true OR saveobject false
+dup
+{
+  /version23-manualfeedpatch true def
+  /oldversion23-showpage /showpage load def
+  /showpage       % this showpage will wait extra time if manualfeed is true
+  {%
+     statusdict /manualfeed known
+     {% manualfeed known in statusdict
+        statusdict /manualfeed get
+        {% if true then we loop for 5 seconds
+           usertime 5000 add       % target usertime
+           { % loop
+             dup usertime sub 0 lt
+             { exit }if
+           }loop
+           pop             % pop the usertime off the stac
+        }if
+     }if
+     oldversion23-showpage
+  }bind def
+}if
+not{ restore }if
+
+%%EndFeature
+} stopped cleartomark
+%%BeginProlog 
+%%BeginProcSet: Pscript_Win_ErrorHandler 1.0 1
+/currentpacking where{pop/oldpack currentpacking def/setpacking where{pop
+false setpacking}if}if/$brkpage 64 dict def $brkpage begin/prnt{dup type
+/stringtype ne{=string cvs}if dup length 6 mul/tx exch def/ty 10 def
+currentpoint/toy exch def/tox exch def 1 setgray newpath tox toy 2 sub moveto
+0 ty rlineto tx 0 rlineto 0 ty neg rlineto closepath fill tox toy moveto 0
+setgray show}bind def/nl{currentpoint exch pop lmargin exch moveto 0 -10
+rmoveto}def/=={/cp 0 def typeprint nl}def/typeprint{dup type exec}readonly def
+/lmargin 72 def/rmargin 72 def/tprint{dup length cp add rmargin gt{nl/cp 0 def
+}if dup length cp add/cp exch def prnt}readonly def/cvsprint{=string cvs
+tprint( )tprint}readonly def/integertype{cvsprint}readonly def/realtype{
+cvsprint}readonly def/booleantype{cvsprint}readonly def/operatortype{(--)
+tprint =string cvs tprint(-- )tprint}readonly def/marktype{pop(-mark- )tprint}
+readonly def/dicttype{pop(-dictionary- )tprint}readonly def/nulltype{pop
+(-null- )tprint}readonly def/filetype{pop(-filestream- )tprint}readonly def
+/savetype{pop(-savelevel- )tprint}readonly def/fonttype{pop(-fontid- )tprint}
+readonly def/nametype{dup xcheck not{(/)tprint}if cvsprint}readonly def
+/stringtype{dup rcheck{(\()tprint tprint(\))tprint}{pop(-string- )tprint}
+ifelse}readonly def/arraytype{dup rcheck{dup xcheck{({)tprint{typeprint}forall
+(})tprint}{([)tprint{typeprint}forall(])tprint}ifelse}{pop(-array- )tprint}
+ifelse}readonly def/packedarraytype{dup rcheck{dup xcheck{({)tprint{typeprint}
+forall(})tprint}{([)tprint{typeprint}forall(])tprint}ifelse}{pop
+(-packedarray- )tprint}ifelse}readonly def/courier/Courier findfont 10
+scalefont def end errordict/handleerror{systemdict begin $error begin $brkpage
+begin newerror{/newerror false store vmstatus pop pop 0 ne{grestoreall}if
+showpage initgraphics courier setfont lmargin 720 moveto(ERROR: )prnt
+errorname prnt nl(OFFENDING COMMAND: )prnt/command load prnt $error/ostack
+known{nl nl(STACK:)prnt nl nl $error/ostack get aload length{==}repeat}if
+systemdict/showpage get exec(%%[ Error: )print errorname =print
+(; OffendingCommand: )print/command load =print( ]%%)= flush}if end end end}
+dup 0 systemdict put dup 4 $brkpage put bind readonly put/currentpacking where
+{pop/setpacking where{pop oldpack setpacking}if}if
+%%EndProcSet
+%%BeginProcSet: Pscript_Res_Emul 1.0 0
+/defineresource where{pop}{userdict begin/defineresource{userdict/Resources 2
+copy known{get begin}{15 dict dup begin put}ifelse exch readonly exch
+currentdict 1 index known not{dup 30 dict def}if load 3 -1 roll 2 index put
+end}bind readonly def/findresource{userdict/Resources get exch get exch get}
+bind readonly def/resourceforall{pop pop pop pop}bind readonly def
+/resourcestatus{userdict/Resources 2 copy known{get exch 2 copy known{get exch
+known{0 -1 true}{pop pop false}ifelse}{pop pop pop false}ifelse}{pop pop false
+}ifelse}bind readonly def end}ifelse
+%%EndProcSet
+%%BeginResource: procset Pscript_Win_Driver 2.0 0
+/Pscript_Win_Driver 200 dict dup begin
+%%BeginResource: file Pscript_FatalError 2.0 0
+/FatalErrorIf{{initgraphics findfont exch scalefont setfont counttomark 3 div
+cvi{moveto show}repeat showpage quit}{cleartomark}ifelse}bind def
+%%EndResource
+/VM? {vmstatus exch sub exch pop gt { [
+(This job requires more memory than is available in this printer.) 100 500
+(Try one or more of the following, and then print again:) 100 485
+(In the PostScript dialog box, click Optimize For Portability.) 115 470
+(In the Device Options dialog box, make sure the Available Printer Memory is accurate.) 115 455
+(Reduce the number of fonts in the document.) 115 440
+(Print the document in parts.) 115 425
+12 /Times-Roman showpage
+(%%[ PrinterError: Low Printer VM ]%%) =
+true FatalErrorIf}if} bind def
+30000  VM?
+%%BeginResource: file Pscript_Win_Utils 2.0 0
+/|/def load def/,/load load |/~/exch , |/?/ifelse , |/!/pop , |/`/begin , |/^
+/index , |/@/dup , |/+/translate , |/$/roll , |/U/userdict , |/M/moveto , |/-
+/rlineto , |/&/currentdict , |/:/gsave , |/;/grestore , |/F/false , |/T/true ,
+|/N/newpath , |/E/end , |/Ac/arc , |/An/arcn , |/A/ashow , |/D/awidthshow , |
+/C/closepath , |/V/div , |/O/eofill , |/L/fill , |/I/lineto , |/-C/rcurveto ,
+|/-M/rmoveto , |/+S/scale , |/Ji/setfont , |/Lc/setlinecap , |/Lj/setlinejoin
+, |/Lw/setlinewidth , |/S/show , |/LH/showpage , |/K/stroke , |/W/widthshow ,
+|/R/rotate , |/b{bind |}bind |/bd{bind |}bind |/xd{~ |}bd/ld{, |}bd/lw/Lw ld
+/lc/Lc ld/lj/Lj ld/sg/setgray ld/L2? F/languagelevel where{! languagelevel 2
+ge{! T}if}if |/g{@ not{U/DefIf_save save put}if U/DefIf_bool 2 ^ put}b
+/DefIf_El{if U/DefIf_bool get not @{U/DefIf_save get restore}if}b/e{DefIf_El !
+}b/self & |/reinitialize{[/TextInit/GraphInit/UtilsInit counttomark{@ where{
+self eq}{F}?{cvx exec}{!}?}repeat cleartomark}b/initialize{`{/ADO_mxRot ~ |
+/TextInitialised? F | reinitialize E}{U/Pscript_Win_Data 200 dict @ ` put
+/ADO_mxRot ~ |/TextInitialised? F | reinitialize}?}b/terminate{!{& self eq{
+exit}{E}?}loop E}b/suspend/terminate , |/resume{` Pscript_Win_Data `}b/snap{
+transform 0.25 sub round 0.25 add ~ 0.25 sub round 0.25 add ~ itransform}b
+/dsnap{dtransform round ~ round ~ idtransform}b<04>cvn{}|/setjn{{statusdict
+/jobname known{statusdict/jobname 3 -1 $ put}if}stopped cleartomark}b/solid{[]
+0 setdash}b/setdsh{0 setdash}b/colspRefresh{}b/rp{4 2 $ M 1 ^ 0 - 0 ~ - neg 0
+-}b/rr{1 ^ 0 - 0 ~ - neg 0 - C}b
+%%EndResource
+%%BeginResource: file Pscript_Win_Utils_L1 2.0 0
+L2? not g{/rf{N rp L}b/fx{1 1 dtransform @ 0 ge{1 sub 1}{1 add -0.25}? 3 -1 $
+@ 0 ge{1 sub 1}{1 add -0.25}? 3 1 $ 4 1 $ idtransform 4 -2 $ idtransform}b/BZ{
+4 -2 $ snap + +S fx rf}b/rs{N rp C K}b/rc{N rp clip N}b/sg{setgray}b/sco{
+setrgbcolor}b/sgco{{sg}{sco}?}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Utils_L2 2.0 0
+L2? g{/colspA/DeviceGray |/colspABC/DeviceRGB |/setAorABC{{colspA}{colspABC}?
+setcolorspace}b/rf/rectfill , |/fx{1 1 dtransform @ 0 ge{1 sub 0.5}{1 add -0.5
+}? 3 -1 $ @ 0 ge{1 sub 0.5}{1 add -0.5}? 3 1 $ 4 1 $ idtransform 4 -2 $
+idtransform}b/BZ{4 -2 $ snap + +S fx rf}b/rs/rectstroke , |/rc/rectclip , |/sg
+{@ @ setcolor}b/sco{setcolor}b/colspRefresh{colspABC setcolorspace}b/sgco{{sg
+}{sco}?}b/UtilsInit{F setglobal}b/definecolorrendering{/ColorRendering
+defineresource !}b/findcolorrendering{@/ColorRendering resourcestatus{! !
+/ColorRendering findresource T}{! F}?}b/selectcolorrendering{@/ColorRendering
+resourcestatus{! !/ColorRendering}{!/DefaultColorRendering/ColorRendering}?
+findresource setcolorrendering}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Encoding 2.0 0
+/bullets{{/bullet}repeat}b/ANSIEncoding[/grave/acute/circumflex/tilde/macron
+/breve/dotaccent/dieresis/ring/cedilla/hungarumlaut/ogonek/caron/dotlessi 18
+bullets StandardEncoding 32 95 getinterval aload ! 3 bullets/quotesinglbase
+/florin/quotedblbase/ellipsis/dagger/daggerdbl/circumflex/perthousand/Scaron
+/guilsinglleft/OE 4 bullets/quoteleft/quoteright/quotedblleft/quotedblright
+/bullet/endash/emdash/tilde/trademark/scaron/guilsinglright/oe 2 bullets
+/Ydieresis/space/exclamdown/cent/sterling/currency/yen/brokenbar/section
+/dieresis/copyright/ordfeminine/guillemotleft/logicalnot/hyphen/registered
+/macron/degree/plusminus/twosuperior/threesuperior/acute/mu/paragraph
+/periodcentered/cedilla/onesuperior/ordmasculine/guillemotright/onequarter
+/onehalf/threequarters/questiondown/Agrave/Aacute/Acircumflex/Atilde/Adieresis
+/Aring/AE/Ccedilla/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute
+/Icircumflex/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
+/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls
+/agrave/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute
+/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde/ograve
+/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex
+/udieresis/yacute/thorn/ydieresis]| ANSIEncoding @ 39/quotesingle put 96/grave
+put/ANSIEncodingOld ANSIEncoding 256 array copy | ANSIEncodingOld @[138 153
+154 169 172 174 177 178 179 181 185 188 189 190 208 215 221 222 240 247 253
+254]{/bullet put @}forall 166/bar put 176/ring put
+%%EndResource
+%%BeginResource: file Pscript_Win_Text 2.0 0
+/TextInit{TextInitialised? not{/Pscript_Windows_Font & |/TextInitialised? T |
+/fM[1 0 0 -1 0 0]|/mFM matrix |/iMat[1 0 0.212557 neg 1 0 0]|}if}b/xUP null |
+/yUP null |/uW null |/xSP null |/ySP null |/sW null |/copyfont{1 ^ length add
+dict `{1 ^/FID ne{|}{! !}?}forall & E}b/rF{3 copyfont @ `/Encoding
+ANSIEncoding &/CharStrings known{CharStrings/Eth known not{! ANSIEncodingOld}
+if}if | E}b/mF{findfont ~{@/Encoding get @ StandardEncoding eq{! T}{{
+ISOLatin1Encoding}stopped{! F}{eq}?{T}{@ ` T 32 1 127{Encoding 1 ^ get
+StandardEncoding 3 -1 $ get eq and}for E}?}?}{F}?{rF}{3 copyfont}? `
+/OrigFontType ~ |/OrigFontName ~ | & E 2 ^ ~ definefont fM 5 4 -1 $ put fM 4 0
+put fM makefont Pscript_Windows_Font 3 1 $ put}b/xF{scalefont
+Pscript_Windows_Font 3 1 $ put}b/xMF{mFM astore makefont Pscript_Windows_Font
+3 1 $ put}b/xF2/scalefont , |/xMF2{mFM astore makefont}b/sLT{: Lw -M
+currentpoint snap M 0 - 0 Lc K ;}b/sSU{N/uW ~ |/yUP ~ |/xUP ~ |}b/sU{xUP yUP
+uW sLT}b/sST{N/sW ~ |/ySP ~ |/xSP ~ |}b/sT{xSP ySP sW sLT}b/sR{: + R 0 0 M}b
+/sRxy{: matrix astore concat 0 0 M}b/eR/; , |
+%%EndResource
+%%BeginResource: file Pscript_Win_Text_Bold 2.0 0
+/mBF{@ 4 copyfont `/FontName ~ |/OrigFontType ~ |/OrigFontName ~ | 0
+FontMatrix idtransform ! &/PaintType known{PaintType 0 eq{/PaintType 2 |
+/StrokeWidth ~ |}{PaintType 1 eq PaintType 2 eq or PaintType 3 eq or &
+/StrokeWidth known and{StrokeWidth add/StrokeWidth ~ |}{!}?}?}{!}? @ & E
+definefont Pscript_Windows_Font 3 1 $ put}b/xBF{Pscript_Windows_Font ` 1 ^
+/FontName get 1 ^ scalefont 3 1 $ scalefont 2 copy ~ | ~ ! | E}b/xMBF{mFM
+astore Pscript_Windows_Font ` 1 ^/FontName get 1 ^ makefont 3 1 $ makefont 2
+copy ~ | ~ ! | E}b/xBF2{/sB0 ~ mBF/sB1 sB0 3 -1 $ xBF sB1}b/xMBF2{/sB0 ~ mBF
+mFM astore/sB1 sB0 3 -1 $ xMBF sB1}b/sB{: Pscript_Windows_Font currentfont get
+Ji @ S ; S}b/asB{: Pscript_Windows_Font currentfont get Ji 3 copy A ; A}b/wsB{
+: Pscript_Windows_Font currentfont get Ji 4 copy W ; W}b/awsB{:
+Pscript_Windows_Font currentfont get Ji 6 copy D ; D}b/sBT3{: @ S ; 1 1 -M S}b
+/asBT3{: 3 copy A ; 1 1 -M A}b/wsBT3{: 4 copy W ; 1 1 -M W}b/awsBT3{: 6 copy D
+; 1 1 -M D}b/mIF{iMat 4 3 -1 $ put 2 copyfont `/OrigFontType ~ |/OrigFontName
+~ | @ & E definefont iMat makefont Pscript_Windows_Font 3 1 $ put}b
+%%EndResource
+%%BeginResource: file Pscript_Win_Graphics 2.0 0
+/SavedCTM null |/CTMsave{/SavedCTM SavedCTM currentmatrix |}b/CTMrestore{
+SavedCTM setmatrix}b/mp null |/ADO_mxRot null |/GDIHMatrix null |
+/GDIHPatternDict 22 dict | GDIHPatternDict `/PatternType 1 |/PaintType 2 |
+/Reps L2?{1}{5}? |/XStep 8 Reps mul |/YStep XStep |/BBox[0 0 XStep YStep]|
+/TilingType 1 |/PaintProc{` 1 Lw[]0 setdash PaintData , exec E}b/FGnd null |
+/BGnd null |/HS_Horizontal{horiz}b/HS_Vertical{vert}b/HS_FDiagonal{fdiag}b
+/HS_BDiagonal{biag}b/HS_Cross{horiz vert}b/HS_DiagCross{fdiag biag}b/MaxXYStep
+XStep YStep gt{XStep}{YStep}? |/horiz{Reps{0 4 M XStep 0 - 0 8 +}repeat 0 -8
+Reps mul + K}b/vert{Reps{4 0 M 0 YStep - 8 0 +}repeat 0 -8 Reps mul + K}b/biag
+{Reps{0 0 M MaxXYStep @ - 0 YStep neg M MaxXYStep @ - 0 8 +}repeat 0 -8 Reps
+mul + 0 YStep M 8 8 - K}b/fdiag{Reps{0 0 M MaxXYStep @ neg - 0 YStep M
+MaxXYStep @ neg - 0 8 +}repeat 0 -8 Reps mul + MaxXYStep @ M 8 -8 - K}b E
+/makehatch{GDIHPatternDict/PaintData 3 -1 $ put CTMsave GDIHMatrix setmatrix
+GDIHPatternDict matrix mp CTMrestore ~ U ~ 2 ^ put}b/h0{/h0/HS_Horizontal
+makehatch}b/h1{/h1/HS_Vertical makehatch}b/h2{/h2/HS_FDiagonal makehatch}b/h3{
+/h3/HS_BDiagonal makehatch}b/h4{/h4/HS_Cross makehatch}b/h5{/h5/HS_DiagCross
+makehatch}b/GDIBWPatternDict 17 dict @ `/PatternType 1 |/PaintType L2?{1}{2}?
+|/RepsV L2?{1}{6}? |/RepsH L2?{1}{5}? |/BBox[0 0 RepsH 1]|/TilingType 1 |
+/XStep 1 |/YStep 1 |/Height 8 RepsV mul |/Width 8 |/mx[Width 0 0 Height neg 0
+Height]|/FGnd null |/BGnd null |/SetBGndFGnd L2?{{BGnd null ne{BGnd aload !
+sgco BBox aload ! 2 ^ sub ~ 3 ^ sub ~ rf}if FGnd null ne{FGnd aload ! sgco}if}
+}{{}}? b/PaintProc{` SetBGndFGnd RepsH{Width Height F mx PaintData imagemask
+Width 0 +}repeat E}b E |/GDIBWPatternMx null |/pfprep{save 4 1 $
+/PatternOfTheDay 4 1 $ GDIBWPatternDict `/PaintData ~ |/BGnd ~ |/FGnd ~ | E
+CTMsave GDIBWPatternMx setmatrix GDIBWPatternDict matrix mp CTMrestore ~ !}b
+/hrf null |/prf{pfprep ~ 6 1 $ 5 hrf restore}b/GraphInit{GDIHMatrix null eq{
+/SavedCTM matrix | : ADO_mxRot concat 0 0 snap + : 0.48 @ GDIHPatternDict `
+YStep mul ~ XStep mul ~ dsnap YStep V ~ XStep V ~ E +S/GDIHMatrix matrix
+currentmatrix readonly | ; : 0.24 -0.24 +S GDIBWPatternDict ` Width Height E
+dsnap +S/GDIBWPatternMx matrix currentmatrix readonly | ; ;}if}b/cirp{360 0 An
+C}b/ellp{CTMsave + +S 0.5 0 M 0 0 0.5 360 0 An C CTMrestore}b/rrp{/rad ~ |/y2
+~ |/x2 ~ |/y1 ~ |/x1 ~ | x2 x1 add 2 V y1 M x1 y1 x1 y2 rad arct x1 y2 x2 y2
+rad arct x2 y2 x2 y1 rad arct x2 y1 x1 y1 rad arct C}b/RRp{CTMsave + +S/dyS ~
+|/dxS ~ | dxS 2 V 0 M 0 0 0 dyS 0.5 arct 0 dyS dxS dyS 0.5 arct dxS dyS dxS 0
+0.5 arct dxS 0 0 0 0.5 arct C CTMrestore}b
+%%EndResource
+%%BeginResource: file Pscript_Win_Graphics_L1 2.0 0
+L2? not g{/arct{arcto ! ! ! !}b/GDIpattfill{@ ` BGnd null ne PaintType 2 eq
+and{: BGnd aload ! sgco fEOFill{O}{L}? ; FGnd aload ! U/fGray 2 ^ put{2}{4}?
+-1 $}if E @ patterncalc : 4 ^/PaintType get 2 eq{fGray{6 -1 $ sg}{8 -3 $ sco}?
+}if fEOFill{eoclip}{clip}? N patternfill ; N}b/hrf{/fGray 1 ^ 6 eq | -4 $ N rp
+C/fEOFill F | GDIpattfill}b/hfMain{/fEOFill ~ |/fGray ~ | GDIpattfill}b/hf{T
+hfMain}b/hfW{F hfMain}b/hs{currentpoint strokepath M hfW}b/pfMain{/fEOFill ~ |
+pfprep GDIpattfill restore N}b/pf{T pfMain}b/pfW{F pfMain}b/ps{currentpoint
+strokepath M pfW}b/mpstr 1 string |/mp{~ @ length 12 add dict copy `
+/PatternCTM matrix currentmatrix |/PatternMatrix ~ |/PatWidth XStep mpstr
+length mul |/PatHeight YStep |/FontType 3 |/Encoding 256 array | 3 string 0 1
+255{Encoding ~ @ 3 ^ cvs cvn put}for !/FontMatrix matrix |/FontBBox BBox |
+/BuildChar{! @ ` XStep 0 FontBBox aload ! setcachedevice/PaintProc , E : exec
+;}b & E ~ @ 3 -1 $ definefont}b/patterncalc{` : PatternCTM setmatrix
+PatternMatrix concat BBox aload ! ! ! + pathbbox ; PatHeight V ceiling 4 1 $
+PatWidth V ceiling 4 1 $ PatHeight V floor 4 1 $ PatWidth V floor 4 1 $ 2 ^
+sub cvi abs ~ 3 ^ sub cvi abs ~ 4 2 $ PatHeight mul ~ PatWidth mul ~ E}b
+/patternfill{5 -1 $ @ ` Ji PatternCTM setmatrix PatternMatrix concat 0 2 ^ 2 ^
+M 0 1 mpstr length 1 sub{1 ^ mpstr 3 1 $ put}for ! 2 ^{currentpoint 5 ^{mpstr
+S}repeat YStep add M}repeat ! ! ! ! E}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Graphics_L2 2.0 0
+L2? g{/mp/makepattern , |/hrf{6 eq setAorABC setpattern rectfill}b/hf{
+setAorABC setpattern O}b/hfW{setAorABC setpattern L}b/hs{setAorABC setpattern
+K}b/pf{pfprep setpattern O restore N}b/pfW{pfprep setpattern L restore N}b/ps{
+pfprep setpattern K restore N}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_BW_Images 2.0 0
+/iw 0 |/ih 0 |/im_save 0 |/s 0 |/polarity 0 |/smoothflag 0 |/mystring 0 |/bpc
+0 |/setup1asciiproc{[currentfile mystring/readhexstring cvx/! cvx]cvx bind}b
+/setup1binaryproc{[currentfile mystring/readstring cvx/! cvx]cvx bind}b
+/setup2asciiproc{currentfile/ASCII85Decode filter/RunLengthDecode filter}b
+/setup2binaryproc{currentfile/RunLengthDecode filter}b/mycolorspace{colspABC}|
+/myimagedict{/myimagedict 10 dict | myimagedict @ `/ImageType 1 |
+/MultipleDataSource F | E}b/imageprocarray[/setup1binaryproc/setup1asciiproc
+/setup2binaryproc/setup2asciiproc/setup1binarydecodeproc/setup1asciidecodeproc
+]|/L2Polarity{{[1 0]}{[0 1]}?}b/Q{/im_save save | imageprocarray ~ get/s ~ , |
+L2Polarity/polarity ~ |/smoothflag ~ | snap +/dx 2 ^ |/dy 1 ^ | +S/mystring ~
+string |/bpc ~ |/ih ~ |/iw ~ |}b/X{/im_save save | imageprocarray ~ get/s ~ ,
+| L2Polarity/polarity ~ |/smoothflag ~ | snap +/dx 2 ^ |/dy 1 ^ | +S/mystring
+~ string |/bpc ~ |/ih ~ |/iw ~ |}b/Z{im_save restore}b/Y{sgco myimagedict @ `
+/Width iw |/Height ih |/Decode polarity |/ImageMatrix[iw 0 0 ih 0 0]|
+/DataSource s |/BitsPerComponent 1 |/Interpolate smoothflag | E imagemask}b
+%%EndResource
+%%BeginResource: file Pscript_Win_BW_Images_L1 2.0 0
+L2? not g{/setup2asciiproc{[/Level2ImagesError , aload ! T FatalErrorIf}b
+/setup2binaryproc/setup2asciiproc , |/L2Polarity{}|/Y{sgco iw ih polarity[iw 0
+0 ih 0 0]s imagemask}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Co_Images_L1 2.0 0
+L2? not g{/testsystemdict{where{systemdict eq{T}{F}?}{F}?}b/c 1 |/colorimage
+where{! T}{F}?{/c 0 statusdict `/processcolors where{! ! processcolors}{
+/deviceinfo where{! deviceinfo/Colors known{!{deviceinfo/Colors get}}if}if}? E
+| c 0 ne{/colorimage testsystemdict/setcolortransfer testsystemdict
+/currentcolortransfer testsystemdict/currentcmykcolor testsystemdict and and
+and not{/c 0 |}if}if}if c @ 1 ne ~ @ 3 ne ~ 4 ne and and{/c 0 |}if c 1 eq g{
+/expandbw{expandfactor mul round cvi bwclut ~ get 255 V}b/doclutimage{!/bwclut
+~ | bpc @ 8 eq{! 255}{4 eq{15}{3}?}?/expandfactor ~ |[/expandbw ,/exec , @
+currenttransfer ~]cvx bind settransfer iw ih bpc[iw 0 0 ih 0 0]s image}b}e c @
+3 eq ~ 4 eq or g{/nullproc{{}}|/concatutil{/exec , 7 -1 $/exec ,}b/defsubclut{
+1 add getinterval |}b/spconcattransfer{/Dclut ~ |/Cclut ~ |/Bclut ~ |/Aclut ~
+|/ncompute ~ , | currentcolortransfer[{Aclut ncompute}concatutil]cvx[{Bclut
+ncompute}concatutil]cvx[{Cclut ncompute}concatutil]cvx[{Dclut ncompute}
+concatutil]cvx setcolortransfer}b/setuprgbcluts{/bit3x rgbclut length 3 sub |
+/bit1x bit3x 3 idiv |/rclut rgbclut |/gclut rclut 1 bit3x defsubclut/bclut
+rclut 2 bit3x defsubclut}b}e c 3 eq g{/3compute{~ bit3x mul round cvi get 255
+V}b/doclutimage{/rgbclut ~ | ! setuprgbcluts/3compute rclut gclut bclut @
+spconcattransfer iw ih bpc[iw 0 0 ih 0 0][s/exec ,/@ , @]cvx nullproc nullproc
+T 3 colorimage}b}e c 4 eq g{/ftoint{1 ~ sub 255 mul round cvi}b/stuffclut{
+cmykindex 3 -1 $ put}b/4compute{~ bit4x mul round cvi get 255 V}b
+/invalidcolortable? T |/computecmykclut{setuprgbcluts/bit4x rgbclut length 3
+idiv 4 mul 4 sub |/cmykclut bit4x 4 add string |/cclut cmykclut |/mclut cclut
+1 bit4x defsubclut/yclut cclut 2 bit4x defsubclut/kclut cclut 3 bit4x
+defsubclut/cmykindex 0 | 0 1 bit1x{@/cmykindex ~ bit1x ~ sub 4 mul | 3 mul @
+rclut ~ get 255 V ~ @ gclut ~ get 255 V ~ bclut ~ get 255 V setrgbcolor
+currentcmykcolor ftoint kclut stuffclut ftoint yclut stuffclut ftoint mclut
+stuffclut ftoint cclut stuffclut}for}b/doclutimage{/rgbclut ~ | !
+invalidcolortable?{computecmykclut}if/4compute cclut mclut yclut kclut
+spconcattransfer iw ih bpc[iw 0 0 ih 0 0][s/exec ,/@ , @ @]cvx nullproc
+nullproc nullproc T 4 colorimage}b}e c 0 eq g{/a{3 mul 3 getinterval
+putinterval ~ 3 add ~ 3 copy}b/8lookup/a , |/4lookup{/byte 1 ^ | -4 bitshift a
+byte 15 and a}b/2lookup{/byte 1 ^ | -6 bitshift a byte -4 bitshift 3 and a
+byte -2 bitshift 3 and a byte 3 and a}b/colorexpand{mystringexp 0 rgbclut 3
+copy 7 -1 $/mylookup , forall ! ! ! ! !}b/createexpandstr{/mystringexp ~
+mystring length mul string |}b/doclutimage{/rgbclut ~ | !/mylookup bpc 8 eq{3
+createexpandstr/8lookup}{bpc 4 eq{6 createexpandstr/4lookup}{12
+createexpandstr/2lookup}?}? , | iw ih bpc[iw 0 0 ih 0 0][s/exec ,/colorexpand
+,/exec ,]cvx F 3 colorimage}b}e/colorimage where{! T}{F}? g{/do24image{iw ih 8
+[iw 0 0 ih 0 0]s F 3 colorimage}b}DefIf_El{/rgbtogray{/str ~ |/len str length
+|/smlen len 3 idiv |/rstr str |/gstr str 1 len 1 sub getinterval |/bstr str 2
+len 2 sub getinterval | str @ 0 1 smlen 1 sub{@ 3 mul rstr 1 ^ get 0.3 mul
+gstr 2 ^ get 0.59 mul add bstr 3 -1 $ get 0.11 mul add round cvi put @}for ! 0
+smlen getinterval}b/do24image{iw ih 8[iw 0 0 ih 0 0][s/exec ,/rgbtogray ,/exec
+,]cvx bind image}b}e/doNimage{bpc 24 eq{do24image}{iw ih bpc[iw 0 0 ih 0 0]s
+image}?}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Co_Images_L2 2.0 0
+L2? g{/doclutimage{/rgbclut ~ | ! bpc @ 8 eq{! 255}{4 eq{15}{3}?}?/hival ~ |[
+/Indexed colspABC hival rgbclut]setcolorspace myimagedict @ `/Width iw |
+/Height ih |/Decode[0 hival]|/ImageMatrix[iw 0 0 ih 0 0]|/DataSource s |
+/BitsPerComponent bpc |/Interpolate smoothflag | E image}b/doCMYKclutimage{
+/CMYKclut ~ | ! bpc @ 8 eq{! 255}{4 eq{15}{3}?}?/hival ~ |[/Indexed/DeviceCMYK
+hival CMYKclut]setcolorspace myimagedict @ `/Width iw |/Height ih |/Decode[0
+hival]|/ImageMatrix[iw 0 0 ih 0 0]|/DataSource s |/BitsPerComponent bpc |
+/Interpolate smoothflag | E image}b/doNimage{bpc 24 eq{colspABC}{colspA}?
+setcolorspace myimagedict @ `/Width iw |/Height ih |/Decode bpc 24 eq{[0 1 0 1
+0 1]}{[0 1]}? |/ImageMatrix[iw 0 0 ih 0 0]|/DataSource s |/BitsPerComponent
+bpc 24 eq{8}{bpc}? |/Interpolate smoothflag | E image}b/doCMYKimage{
+/DeviceCMYK setcolorspace myimagedict @ `/Width iw |/Height ih |/Decode[0 1 0
+1 0 1 0 1]|/ImageMatrix[iw 0 0 ih 0 0]|/DataSource s |/BitsPerComponent 8 |
+/Interpolate smoothflag | E image}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Type3_Hdr 2.0 0
+/GreNewFont{10 dict @ 3 1 $ | @ ` 4 1 $/FontType 3 |/FontMatrix ~ |/FontBBox ~
+|/Encoding 256 array | 0 1 255{Encoding ~/.notdef put}for/CharProcs 257 dict |
+CharProcs/.notdef{}put/Metrics 257 dict | Metrics/.notdef 3 -1 $ put/BuildChar
+{/char ~ |/fontdict ~ |/charname fontdict/Encoding get char get | fontdict
+/Metrics get charname get aload ! setcachedevice fontdict ` Encoding char get
+CharProcs ~ get E exec}| E definefont !}|/AddChar{` Encoding 3 1 $ put
+CharProcs 3 1 $ put Metrics 3 1 $ put E}|
+%%EndResource
+%%BeginResource: file Pscript_Win_Type1_Hdr 2.0 0
+/FEbuf 2 string |/FEglyph 3 string |/FE{(G00)FEglyph copy ! 1 ~{@ 16 lt{
+/offset 2 store}{/offset 1 store}? @ 16 FEbuf cvrs FEglyph ~ offset ~
+putinterval 1 ^ ~ FEglyph cvn put}for}bind |/Type1Hdr{11 dict `/FontName ~ |
+/PaintType ~ |/FontType 1 |/FontMatrix[1 3 ^ V 0 0 1 6 ^ V 0 0]| !/Encoding
+256 array 0 1 255{1 ^ ~/.notdef put}for 3 ^ 3 ^ FE | ! !/FontBBox{0 0 0 0}| &
+E currentfile eexec}bind |
+%%EndResource
+/pp 1 string |/ss 1 string |/rledecodebinary{/DC 0 |/BC 0 |{DC mystring length
+ge{exit}if currentfile ss readstring ! 0 get/BC ~ | BC 127 le{/BC BC 1 add |
+DC 1 DC BC add 1 sub{mystring ~ currentfile ss readstring ! 0 get put}for}{/BC
+257 BC sub | currentfile ss readstring ! 0 get/pp ~ | DC 1 DC BC add 1 sub{
+mystring ~ pp put}for}?/DC DC BC add |}loop mystring}b/rledecodeascii{/DC 0 |
+/BC 0 |{DC mystring length ge{exit}if currentfile ss readhexstring ! 0 get/BC
+~ | BC 127 le{/BC BC 1 add | DC 1 DC BC add 1 sub{mystring ~ currentfile ss
+readhexstring ! 0 get put}for}{/BC 257 BC sub | currentfile ss readhexstring !
+0 get/pp ~ | DC 1 DC BC add 1 sub{mystring ~ pp put}for}?/DC DC BC add |}loop
+mystring}b/setup1asciidecodeproc{[/rledecodeascii cvx]cvx bind}b
+/setup1binarydecodeproc{[/rledecodebinary cvx]cvx bind}b
+%%BeginResource: file Pscript_Win_Compat 2.0 0
+userdict/Pscript_Win_Compat 13 dict dup begin/bd{bind def}bind def/ld{load def
+}bd/CB{pop pop pop pop}bind def/B{pop pop pop pop}bind def/$x matrix def/SS{
+/pagesave save def}bind def/RS{/pagesave where{pop pagesave restore}{$x matrix
+invertmatrix concat}ifelse}bind def/ANSIVec[0/grave 1/acute 2/circumflex 3
+/tilde 4/macron 5/breve 6/dotaccent 7/dieresis 8/ring 9/cedilla 10
+/hungarumlaut 11/ogonek 12/caron 13/dotlessi 39/quotesingle 96/grave 124/bar
+130/quotesinglbase 131/florin 132/quotedblbase 133/ellipsis 134/dagger 135
+/daggerdbl 136/circumflex 137/perthousand 138/Scaron 139/guilsinglleft 140/OE
+145/quoteleft 146/quoteright 147/quotedblleft 148/quotedblright 149/bullet 150
+/endash 151/emdash 152/tilde 153/trademark 154/scaron 155/guilsinglright 156
+/oe 159/Ydieresis 160/space 161/exclamdown 164/currency 165/yen 166/brokenbar
+167/section 168/dieresis 169/copyright 170/ordfeminine 171/guillemotleft 172
+/logicalnot 173/hyphen 174/registered 175/macron 176/degree 177/plusminus 178
+/twosuperior 179/threesuperior 180/acute 181/mu 182/paragraph 183
+/periodcentered 184/cedilla 185/onesuperior 186/ordmasculine 187
+/guillemotright 188/onequarter 189/onehalf 190/threequarters 191/questiondown
+192/Agrave 193/Aacute 194/Acircumflex 195/Atilde 196/Adieresis 197/Aring 198
+/AE 199/Ccedilla 200/Egrave 201/Eacute 202/Ecircumflex 203/Edieresis 204
+/Igrave 205/Iacute 206/Icircumflex 207/Idieresis 208/Eth 209/Ntilde 210/Ograve
+211/Oacute 212/Ocircumflex 213/Otilde 214/Odieresis 215/multiply 216/Oslash
+217/Ugrave 218/Uacute 219/Ucircumflex 220/Udieresis 221/Yacute 222/Thorn 223
+/germandbls 224/agrave 225/aacute 226/acircumflex 227/atilde 228/adieresis 229
+/aring 230/ae 231/ccedilla 232/egrave 233/eacute 234/ecircumflex 235/edieresis
+236/igrave 237/iacute 238/icircumflex 239/idieresis 240/eth 241/ntilde 242
+/ograve 243/oacute 244/ocircumflex 245/otilde 246/odieresis 247/divide 248
+/oslash 249/ugrave 250/uacute 251/ucircumflex 252/udieresis 253/yacute 254
+/thorn 255/ydieresis]def currentdict{dup type/operatortype eq{[exch]cvx def}{
+pop pop}ifelse}forall/initialize{currentdict exch begin begin}bind def
+/terminate{/@FL where not{pop end end}{pop}ifelse}bind def/suspend/terminate
+load def/resume/initialize load def/M/moveto load def end put/Courier findfont
+10 scalefont setfont
+%%EndResource
+end /ProcSet defineresource pop
+%%EndResource
+%%EndProlog
+
+%%BeginSetup 
+Pscript_Win_Compat dup /initialize get exec
+[ 1.000 0 0 1.000 0 0 ] false /Pscript_Win_Driver /ProcSet findresource dup /initialize get exec
+
+[{0 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/JobTimeout  4 -1 roll put setuserparams}{statusdict/setjobtimeout get exec}ifelse 
+} stopped cleartomark
+[{240 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/WaitTimeout 4 -1 roll put setuserparams}{statusdict/waittimeout 3 -1 roll put}ifelse 
+} stopped cleartomark
+[{1 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/NumCopies 4
+-1 roll put setpagedevice}{userdict/#copies 3 -1 roll put}ifelse
+
+} stopped cleartomark
+[{
+statusdict /manualfeed false put
+} stopped cleartomark
+[{
+%%BeginFeature: *InputSlot AutoSelect Tray
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *PageSize A4
+a4
+%%EndFeature
+} stopped cleartomark
+1 setlinecap 1 setlinejoin 
+/mysetup [ 0.240 0 0 -0.240 18.000 820.000 ] | 
+%%EndSetup
+
+[{1 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/NumCopies 4
+-1 roll put setpagedevice}{userdict/#copies 3 -1 roll put}ifelse
+
+} stopped cleartomark
+%%Page: 1 1
+%%BeginPageSetup
+[{
+%%BeginFeature: *Resolution 300dpi
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *Duplex 
+
+%%EndFeature
+} stopped cleartomark
+userdict begin /pagesave save def end mysetup concat colspRefresh : 1.000 1.000 1.000 sco 0 0 2479 3508 rf ; 
+userdict begin /savelevel1 save def end
+%%EndPageSetup
+
+: 0 0 2333 3321 rc %%BeginFont: MSTT31c1ac00
+27000  VM?
+/MSTT31c1ac00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1ac00 GreNewFont
+%%EndFont
+(F0) cvn
+0.929 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1ac00) cvn
+mF 
+9878  VM?
+/G30 [35.0 0.0 3.0 0.0 32.0 30.0 ]
+/G30 {
+    29 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FF800FF8
+FF800FF8
+FF800FF8
+FF800FF8
+FFC01FF8
+FFC01FF8
+FBC01EF8
+FBE03EF8
+FBE03EF8
+FBE03EF8
+F9E03CF8
+F9F07CF8
+F9F07CF8
+F8F078F8
+F8F078F8
+F8F8F8F8
+F8F8F8F8
+F878F0F8
+F878F0F8
+F87DF0F8
+F83DE0F8
+F83DE0F8
+F83FE0F8
+F81FC0F8
+F81FC0F8
+F81FC0F8
+F81FC0F8
+F80F80F8
+F80F80F8
+F80F80F8
+>} imagemask
+ }
+  48 /G30 MSTT31c1ac00 AddChar
+/G28 [28.0 0.0 3.0 0.0 26.0 30.0 ]
+/G28 {
+    23 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FFFFFC
+FFFFFC
+FFFFFC
+FFFFFC
+FFFFFC
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FFFFF8
+FFFFF8
+FFFFF8
+FFFFF8
+FFFFF8
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FFFFFE
+FFFFFE
+FFFFFE
+FFFFFE
+FFFFFE
+>} imagemask
+ }
+  40 /G28 MSTT31c1ac00 AddChar
+/G37 [27.0 0.0 2.0 0.0 26.0 30.0 ]
+/G37 {
+    24 30 true [1 0 0 -1 -2.0 30.0 ]
+{<FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+>} imagemask
+ }
+  55 /G37 MSTT31c1ac00 AddChar
+/G24 [29.0 0.0 0.0 0.0 29.0 30.0 ]
+/G24 {
+    29 30 true [1 0 0 -1 0.0 30.0 ]
+{<001FC000
+003FE000
+003FE000
+003FE000
+007FF000
+007DF000
+00FDF800
+00FDF800
+00F8F800
+01F8FC00
+01F8FC00
+01F07C00
+03F07E00
+03F07E00
+03E03E00
+07E03F00
+07E03F00
+0FC01F00
+0FFFFF80
+0FFFFF80
+1FFFFFC0
+1FFFFFC0
+1FFFFFC0
+3F0007E0
+3F0007E0
+3F0007E0
+7E0003F0
+7E0003F0
+7E0003F0
+FE0001F8
+>} imagemask
+ }
+  36 /G24 MSTT31c1ac00 AddChar
+/G2A [33.0 0.0 2.0 0.0 30.0 30.0 ]
+/G2A {
+    28 30 true [1 0 0 -1 -2.0 30.0 ]
+{<003FF000
+00FFFC00
+03FFFF00
+07FFFF80
+0FFFFFC0
+1FF03FE0
+3FC00FE0
+3F0007F0
+7F0007F0
+7E000380
+7E000000
+FC000000
+FC000000
+FC000000
+FC01FFF0
+FC01FFF0
+FC01FFF0
+FC01FFF0
+FC01FFF0
+7E0003F0
+7E0003F0
+7F0003F0
+3F8003F0
+3FC007F0
+1FF03FF0
+0FFFFFF0
+07FFFFE0
+03FFFF80
+00FFFE00
+001FF000
+>} imagemask
+ }
+  42 /G2A MSTT31c1ac00 AddChar
+/G31 [30.0 0.0 3.0 0.0 27.0 30.0 ]
+/G31 {
+    24 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FE001F
+FF001F
+FF001F
+FF801F
+FF801F
+FFC01F
+FFC01F
+FFE01F
+FBE01F
+FBF01F
+F9F01F
+F9F81F
+F8F81F
+F8FC1F
+F87C1F
+F87E1F
+F83E1F
+F83F1F
+F81F1F
+F81F9F
+F80F9F
+F80FDF
+F807DF
+F807FF
+F803FF
+F803FF
+F801FF
+F801FF
+F800FF
+F800FF
+>} imagemask
+ }
+  49 /G31 MSTT31c1ac00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1089 87 M 
+(0\(7$*\(1)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+2707  VM?
+/G10 [14.0 0.0 1.0 9.0 12.0 13.0 ]
+/G10 {
+    11 4 true [1 0 0 -1 -1.0 13.0 ]
+{<FFE0
+FFE0
+FFE0
+FFE0
+>} imagemask
+ }
+  16 /G10 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+0 0 0 sco (F2_42) cvn
+F2
+42 
+xF 
+F2_42
+Ji 
+1156 2963 M 
+(\020\003)S 
+; : 0 0 2333 3321 rc 1353  VM?
+/G14 [23.0 0.0 4.0 0.0 15.0 30.0 ]
+/G14 {
+    11 30 true [1 0 0 -1 -4.0 30.0 ]
+{<00E0
+00E0
+01E0
+03E0
+07E0
+1FE0
+3FE0
+FDE0
+F9E0
+E1E0
+81E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+01E0
+>} imagemask
+ }
+  20 /G14 MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+1182 2963 M 
+(\024)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F2_42
+Ji 
+1205 2963 M 
+(\003\020)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1c800
+27000  VM?
+/MSTT31c1c800 [67.0 0 0 0 0 0] [-67.0 -67.0 67.0 67.0 ] [1 67 div 0 0 1 67 div 0 0] /MSTT31c1c800 GreNewFont
+%%EndFont
+(F4) cvn
+0.925 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1c800) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 30326  VM?
+%%BeginFont: MSTT31c1c800
+27000  VM?
+/MSTT31c1c800 [67.0 0 0 0 0 0] [-67.0 -67.0 67.0 67.0 ] [1 67 div 0 0 1 67 div 0 0] /MSTT31c1c800 GreNewFont
+%%EndFont
+(F0) cvn
+0.925 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1c800) cvn
+mF 
+30326  VM?
+/G30 [57.0 0.0 5.0 0.0 52.0 48.0 ]
+/G30 {
+    47 48 true [1 0 0 -1 -5.0 48.0 ]
+{<FFFF0001FFFE
+FFFF0001FFFE
+FFFF0001FFFE
+FFFF0001FFFE
+FFFF8003FFFE
+FFFF8003FFFE
+FFFF8003FFFE
+FFFF8003FFFE
+FFFFC007FFFE
+FFFFC007FFFE
+FFBFC007FBFE
+FFBFC007FBFE
+FFBFE00FFBFE
+FFBFE00FFBFE
+FFBFE00FFBFE
+FF9FE00FF3FE
+FF9FF01FF3FE
+FF9FF01FF3FE
+FF9FF01FF3FE
+FF8FF01FE3FE
+FF8FF83FE3FE
+FF8FF83FE3FE
+FF8FF83FE3FE
+FF87F83FC3FE
+FF87F83FC3FE
+FF87FC7FC3FE
+FF87FC7FC3FE
+FF87FC7FC3FE
+FF83FC7F83FE
+FF83FEFF83FE
+FF83FEFF83FE
+FF83FEFF83FE
+FF81FEFF03FE
+FF81FFFF03FE
+FF81FFFF03FE
+FF81FFFF03FE
+FF80FFFE03FE
+FF80FFFE03FE
+FF80FFFE03FE
+FF80FFFE03FE
+FF80FFFE03FE
+FF807FFC03FE
+FF807FFC03FE
+FF807FFC03FE
+FF807FFC03FE
+FF803FF803FE
+FF803FF803FE
+FF803FF803FE
+>} imagemask
+ }
+  48 /G30 MSTT31c1c800 AddChar
+/G28 [45.0 0.0 5.0 0.0 42.0 48.0 ]
+/G28 {
+    37 48 true [1 0 0 -1 -5.0 48.0 ]
+{<FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFF0
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+>} imagemask
+ }
+  40 /G28 MSTT31c1c800 AddChar
+/G37 [40.0 0.0 2.0 0.0 39.0 48.0 ]
+/G37 {
+    37 48 true [1 0 0 -1 -2.0 48.0 ]
+{<FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+0003FE0000
+>} imagemask
+ }
+  55 /G37 MSTT31c1c800 AddChar
+/G24 [45.0 0.0 0.0 0.0 45.0 48.0 ]
+/G24 {
+    45 48 true [1 0 0 -1 0.0 48.0 ]
+{<00003FF00000
+00003FF00000
+00007FF00000
+00007FF80000
+00007FF80000
+0000FFFC0000
+0000FFFC0000
+0001FFFC0000
+0001FFFE0000
+0001FFFE0000
+0003FFFE0000
+0003FFFF0000
+0003FDFF0000
+0007FDFF0000
+0007FDFF8000
+000FF8FF8000
+000FF8FFC000
+000FF8FFC000
+001FF07FC000
+001FF07FE000
+003FE03FE000
+003FE03FE000
+003FE03FF000
+007FC01FF000
+007FC01FF000
+007FC01FF800
+00FF800FF800
+00FF800FFC00
+01FF800FFC00
+01FFFFFFFC00
+01FFFFFFFE00
+03FFFFFFFE00
+03FFFFFFFE00
+03FFFFFFFF00
+07FFFFFFFF00
+07FFFFFFFF00
+0FFFFFFFFF80
+0FF80000FF80
+0FF80000FFC0
+1FF80000FFC0
+1FF000007FC0
+3FF000007FE0
+3FF000003FE0
+3FE000003FE0
+7FE000003FF0
+7FC000001FF0
+7FC000001FF0
+FFC000001FF8
+>} imagemask
+ }
+  36 /G24 MSTT31c1c800 AddChar
+/G2A [52.0 0.0 3.0 -1.0 48.0 49.0 ]
+/G2A {
+    45 50 true [1 0 0 -1 -3.0 49.0 ]
+{<00003FFC0000
+0001FFFFC000
+000FFFFFF000
+001FFFFFFC00
+007FFFFFFE00
+00FFFFFFFF80
+01FFFFFFFF80
+03FFFFFFFFC0
+07FFF00FFFE0
+0FFF8001FFE0
+0FFE0000FFF0
+1FFC00007FF0
+1FF800003FF8
+3FF000001FF8
+3FE000001FE0
+7FE000000C00
+7FC000000000
+7FC000000000
+7FC000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000FFFFF8
+FF8000FFFFF8
+FF8000FFFFF8
+FF8000FFFFF8
+FF8000FFFFF8
+FF8000FFFFF8
+FF8000FFFFF8
+FFC000FFFFF8
+7FC000000FF8
+7FC000000FF8
+7FE000000FF8
+3FE000000FF8
+3FF000000FF8
+3FF000000FF8
+1FF800000FF8
+1FFC00001FF8
+0FFE00007FF8
+0FFF8001FFF8
+07FFF00FFFF8
+03FFFFFFFFF8
+01FFFFFFFFF0
+00FFFFFFFFE0
+007FFFFFFF80
+001FFFFFFE00
+0007FFFFF800
+0001FFFFC000
+00001FFC0000
+>} imagemask
+ }
+  42 /G2A MSTT31c1c800 AddChar
+/G31 [48.0 0.0 5.0 0.0 43.0 48.0 ]
+/G31 {
+    38 48 true [1 0 0 -1 -5.0 48.0 ]
+{<FFC00007FC
+FFC00007FC
+FFE00007FC
+FFF00007FC
+FFF00007FC
+FFF80007FC
+FFF80007FC
+FFFC0007FC
+FFFE0007FC
+FFFE0007FC
+FFFF0007FC
+FFFF0007FC
+FFFF8007FC
+FFFFC007FC
+FFFFC007FC
+FFFFE007FC
+FFFFE007FC
+FFBFF007FC
+FFBFF807FC
+FF9FF807FC
+FF8FFC07FC
+FF8FFC07FC
+FF87FE07FC
+FF87FF07FC
+FF83FF07FC
+FF81FF87FC
+FF81FF87FC
+FF80FFC7FC
+FF80FFE7FC
+FF807FE7FC
+FF803FF7FC
+FF803FFFFC
+FF801FFFFC
+FF801FFFFC
+FF800FFFFC
+FF8007FFFC
+FF8007FFFC
+FF8003FFFC
+FF8001FFFC
+FF8001FFFC
+FF8000FFFC
+FF8000FFFC
+FF80007FFC
+FF80003FFC
+FF80003FFC
+FF80001FFC
+FF80001FFC
+FF80000FFC
+>} imagemask
+ }
+  49 /G31 MSTT31c1c800 AddChar
+/G03 [19.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1c800 AddChar
+/G12 [19.0 0.0 0.0 0.0 19.0 48.0 ]
+/G12 {
+    19 48 true [1 0 0 -1 0.0 48.0 ]
+{<000FE0
+001FE0
+001FC0
+001FC0
+001FC0
+003FC0
+003F80
+003F80
+003F80
+007F80
+007F00
+007F00
+007F00
+00FF00
+00FE00
+00FE00
+00FE00
+01FE00
+01FC00
+01FC00
+01FC00
+03FC00
+03F800
+03F800
+03F800
+07F800
+07F000
+07F000
+07F000
+0FF000
+0FE000
+0FE000
+0FE000
+1FE000
+1FC000
+1FC000
+1FC000
+3FC000
+3F8000
+3F8000
+3F8000
+7F8000
+7F0000
+7F0000
+7F0000
+FF0000
+FE0000
+FE0000
+>} imagemask
+ }
+  18 /G12 MSTT31c1c800 AddChar
+/G26 [48.0 0.0 3.0 0.0 45.0 49.0 ]
+/G26 {
+    42 49 true [1 0 0 -1 -3.0 49.0 ]
+{<00007FF00000
+0003FFFE0000
+000FFFFF8000
+003FFFFFE000
+00FFFFFFF000
+01FFFFFFF800
+03FFFFFFFC00
+07FFFFFFFE00
+07FFC03FFF00
+0FFF000FFF00
+1FFC0003FF80
+1FF80001FF80
+3FF00001FFC0
+3FE00000FFC0
+3FE000007F00
+7FC000006000
+7FC000000000
+7FC000000000
+7F8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FF8000000000
+FFC000000000
+7FC000006000
+7FC000007C00
+7FC00000FF80
+7FE00000FFC0
+3FE00001FFC0
+3FF00001FF80
+1FF80003FF80
+1FFC0007FF00
+0FFE001FFF00
+0FFFC07FFE00
+07FFFFFFFE00
+03FFFFFFFC00
+01FFFFFFF800
+00FFFFFFF000
+003FFFFFC000
+001FFFFF8000
+0003FFFE0000
+00007FE00000
+>} imagemask
+ }
+  38 /G26 MSTT31c1c800 AddChar
+/G2B [48.0 0.0 5.0 0.0 43.0 48.0 ]
+/G2B {
+    38 48 true [1 0 0 -1 -5.0 48.0 ]
+{<FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FFFFFFFFFC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+FF800007FC
+>} imagemask
+ }
+  43 /G2B MSTT31c1c800 AddChar
+/G32 [52.0 0.0 3.0 -1.0 49.0 49.0 ]
+/G32 {
+    46 50 true [1 0 0 -1 -3.0 49.0 ]
+{<00007FF00000
+0003FFFF0000
+001FFFFFC000
+003FFFFFF000
+00FFFFFFF800
+01FFFFFFFE00
+03FFFFFFFF00
+07FFFFFFFF00
+07FFE01FFF80
+0FFF0003FFC0
+1FFE0001FFE0
+1FFC00007FE0
+3FF800007FF0
+3FF000003FF0
+3FE000001FF0
+7FE000001FF8
+7FC000000FF8
+7FC000000FF8
+7FC000000FF8
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FF80000007FC
+FFC000000FFC
+7FC000000FF8
+7FC000000FF8
+7FC000000FF8
+7FE000001FF8
+3FE000001FF0
+3FF000003FF0
+3FF800007FF0
+1FFC0000FFE0
+1FFE0001FFE0
+0FFF8003FFC0
+07FFE01FFF80
+07FFFFFFFF80
+03FFFFFFFF00
+01FFFFFFFE00
+007FFFFFF800
+003FFFFFF000
+000FFFFFC000
+0003FFFF0000
+00003FF00000
+>} imagemask
+ }
+  50 /G32 MSTT31c1c800 AddChar
+/G33 [45.0 0.0 5.0 0.0 42.0 48.0 ]
+/G33 {
+    37 48 true [1 0 0 -1 -5.0 48.0 ]
+{<FFFFFFC000
+FFFFFFF800
+FFFFFFFE00
+FFFFFFFF00
+FFFFFFFF80
+FFFFFFFFC0
+FFFFFFFFE0
+FFFFFFFFE0
+FF8001FFF0
+FF80007FF0
+FF80003FF8
+FF80001FF8
+FF80000FF8
+FF80000FF8
+FF80000FF8
+FF80000FF8
+FF80000FF8
+FF80000FF8
+FF80001FF8
+FF80003FF0
+FF80007FF0
+FF8003FFF0
+FFFFFFFFE0
+FFFFFFFFE0
+FFFFFFFFC0
+FFFFFFFF80
+FFFFFFFF00
+FFFFFFFC00
+FFFFFFF000
+FFFFFF8000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+FF80000000
+>} imagemask
+ }
+  51 /G33 MSTT31c1c800 AddChar
+0 0 0 sco (F0_67) cvn
+F0
+67 
+xF 
+F0_67
+Ji 
+220 188 M 
+(0\(7$*\(1\003\022\0030\(7$&+23)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1d300
+27000  VM?
+/MSTT31c1d300 [50.0 0 0 0 0 0] [-50.0 -50.0 50.0 50.0 ] [1 50 div 0 0 1 50 div 0 0] /MSTT31c1d300 GreNewFont
+%%EndFont
+(F2) cvn
+0.940 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1d300) cvn
+mF 
+2548  VM?
+/G14 [28.0 0.0 4.0 0.0 20.0 36.0 ]
+/G14 {
+    16 36 true [1 0 0 -1 -4.0 36.0 ]
+{<003F
+003F
+007F
+00FF
+01FF
+03FF
+07FF
+1FFF
+7FFF
+FFFF
+FF7F
+FE7F
+FC7F
+F07F
+807F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+007F
+>} imagemask
+ }
+  20 /G14 MSTT31c1d300 AddChar
+/G11 [14.0 0.0 3.0 0.0 10.0 7.0 ]
+/G11 {
+    7 7 true [1 0 0 -1 -3.0 7.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  17 /G11 MSTT31c1d300 AddChar
+/G03 [14.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1d300 AddChar
+0 0 0 sco (F2_50) cvn
+F2
+50 
+xF 
+F2_50
+Ji 
+220 578 M 
+16.000 0 3 (\024\021\003)W 
+; : 0 0 2333 3321 rc 23788  VM?
+/G27 [36.0 0.0 4.0 0.0 34.0 36.0 ]
+/G27 {
+    30 36 true [1 0 0 -1 -4.0 36.0 ]
+{<FFFFE000
+FFFFFC00
+FFFFFF00
+FFFFFF80
+FFFFFFC0
+FFFFFFE0
+FE007FE0
+FE001FF0
+FE0007F0
+FE0007F8
+FE0003F8
+FE0003F8
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0001FC
+FE0003F8
+FE0003F8
+FE0007F8
+FE0007F0
+FE000FF0
+FE003FE0
+FFFFFFE0
+FFFFFFC0
+FFFFFF80
+FFFFFF00
+FFFFFC00
+FFFFE000
+>} imagemask
+ }
+  39 /G27 MSTT31c1d300 AddChar
+/G48 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G48 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<00FF00
+03FFC0
+07FFF0
+1FFFF8
+1FFFF8
+3FC3FC
+7F81FE
+7F00FE
+7E007E
+FE007F
+FE007F
+FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+FE0000
+FE0000
+FE0000
+7F0078
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF80
+>} imagemask
+ }
+  72 /G48 MSTT31c1d300 AddChar
+/G56 [28.0 0.0 1.0 0.0 26.0 27.0 ]
+/G56 {
+    25 27 true [1 0 0 -1 -1.0 27.0 ]
+{<01FF8000
+07FFF000
+1FFFF800
+1FFFFC00
+3FFFFE00
+7F81FE00
+7F00FF00
+7F007800
+7F800000
+7FF00000
+7FFF0000
+3FFFE000
+1FFFFC00
+0FFFFE00
+03FFFF00
+007FFF00
+0007FF80
+00007F80
+1E003F80
+FF003F80
+7F003F80
+7FC0FF00
+3FFFFF00
+1FFFFE00
+0FFFFC00
+07FFF000
+00FFC000
+>} imagemask
+ }
+  86 /G56 MSTT31c1d300 AddChar
+/G46 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G46 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F80
+03FFE0
+07FFF8
+1FFFFC
+1FFFFC
+3FC1FE
+7F80FE
+7F007F
+7F0078
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0078
+7F007F
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF00
+>} imagemask
+ }
+  70 /G46 MSTT31c1d300 AddChar
+/G55 [19.0 0.0 3.0 0.0 20.0 27.0 ]
+/G55 {
+    17 27 true [1 0 0 -1 -3.0 27.0 ]
+{<003E00
+FC7F80
+FCFF80
+FDFF00
+FFFF00
+FFFF00
+FFC000
+FF8000
+FF0000
+FF0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+>} imagemask
+ }
+  85 /G55 MSTT31c1d300 AddChar
+/G4C [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4C {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+00
+00
+00
+00
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  76 /G4C MSTT31c1d300 AddChar
+/G53 [31.0 0.0 3.0 -10.0 29.0 27.0 ]
+/G53 {
+    26 37 true [1 0 0 -1 -3.0 27.0 ]
+{<001FC000
+FC7FF000
+FCFFFC00
+FDFFFE00
+FFFFFE00
+FFE1FF00
+FF807F80
+FF003F80
+FF003F80
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FF001FC0
+FF003F80
+FF803F80
+FF807F80
+FFE1FF00
+FFFFFE00
+FFFFFE00
+FEFFFC00
+FE3FF000
+FE0FC000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+>} imagemask
+ }
+  83 /G53 MSTT31c1d300 AddChar
+/G57 [17.0 0.0 1.0 0.0 16.0 35.0 ]
+/G57 {
+    15 35 true [1 0 0 -1 -1.0 35.0 ]
+{<0040
+01C0
+03C0
+0FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+FFFE
+FFFE
+FFFE
+FFFE
+FFFE
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FE2
+1FFE
+0FFE
+0FFE
+07FE
+01FC
+>} imagemask
+ }
+  87 /G57 MSTT31c1d300 AddChar
+/G52 [31.0 0.0 2.0 0.0 29.0 27.0 ]
+/G52 {
+    27 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F8000
+01FFF000
+07FFFC00
+0FFFFE00
+1FFFFF00
+3FE0FF80
+3FC07F80
+7F803FC0
+7F001FC0
+7F001FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FF001FC0
+7F001FC0
+7F803FC0
+3FC07F80
+3FE0FF80
+1FFFFF00
+0FFFFE00
+07FFFC00
+01FFF000
+003F8000
+>} imagemask
+ }
+  82 /G52 MSTT31c1d300 AddChar
+/G51 [30.0 0.0 3.0 0.0 27.0 27.0 ]
+/G51 {
+    24 27 true [1 0 0 -1 -3.0 27.0 ]
+{<000FC0
+FC7FF8
+FCFFFC
+FDFFFE
+FFFFFE
+FFC1FF
+FF80FF
+FF00FF
+FF007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+>} imagemask
+ }
+  81 /G51 MSTT31c1d300 AddChar
+/G47 [31.0 0.0 2.0 0.0 28.0 36.0 ]
+/G47 {
+    26 36 true [1 0 0 -1 -2.0 36.0 ]
+{<00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00FC1FC0
+03FF9FC0
+0FFFDFC0
+1FFFFFC0
+3FFFFFC0
+3FE1FFC0
+7F807FC0
+7F003FC0
+7F003FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+7F003FC0
+7F003FC0
+7F807FC0
+3FE1FFC0
+1FFFFFC0
+1FFFFFC0
+07FFEFC0
+03FFCFC0
+00FE0FC0
+>} imagemask
+ }
+  71 /G47 MSTT31c1d300 AddChar
+/G4F [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4F {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  79 /G4F MSTT31c1d300 AddChar
+/G44 [28.0 0.0 2.0 0.0 27.0 27.0 ]
+/G44 {
+    25 27 true [1 0 0 -1 -2.0 27.0 ]
+{<01FF8000
+07FFF000
+0FFFF800
+1FFFFC00
+3FFFFC00
+3F81FE00
+7F00FE00
+0E00FE00
+0000FE00
+0001FE00
+001FFE00
+03FFFE00
+0FFFFE00
+3FFFFE00
+7FFCFE00
+7FC0FE00
+FF00FE00
+FE00FE00
+FE00FE00
+FE01FE00
+FF01FE00
+FF87FE00
+7FFFFE00
+7FFFFE00
+3FFF7F00
+1FFE3F00
+07F03F80
+>} imagemask
+ }
+  68 /G44 MSTT31c1d300 AddChar
+/G58 [30.0 0.0 3.0 0.0 27.0 26.0 ]
+/G58 {
+    24 26 true [1 0 0 -1 -3.0 26.0 ]
+{<FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE00FF
+FF01FF
+7F83FF
+7FFFFF
+7FFFFF
+3FFFBF
+1FFE3F
+03F83F
+>} imagemask
+ }
+  88 /G58 MSTT31c1d300 AddChar
+/G50 [44.0 0.0 3.0 0.0 42.0 27.0 ]
+/G50 {
+    39 27 true [1 0 0 -1 -3.0 27.0 ]
+{<001FC01FC0
+FC7FF07FF0
+FCFFF8FFF8
+FDFFFDFFFC
+FFFFFFFFFC
+FFC3FFC3FE
+FF81FF81FE
+FF00FF00FE
+FF00FF00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+FE00FE00FE
+>} imagemask
+ }
+  80 /G50 MSTT31c1d300 AddChar
+0 0 0 sco F2_50
+Ji 
+292 578 M 
+('HVFULSWLRQ\003GH\003OD\003GRFXPHQWDWLRQ)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 97459  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+97459  VM?
+/G2F [23.0 0.0 3.0 0.0 22.0 30.0 ]
+/G2F {
+    19 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+FFFFE0
+FFFFE0
+FFFFE0
+FFFFE0
+>} imagemask
+ }
+  47 /G2F MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G30 [35.0 0.0 3.0 0.0 32.0 30.0 ]
+/G30 {
+    29 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FE0003F8
+FE0003F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+F7800F78
+F7800F78
+F7800F78
+F3C01E78
+F3C01E78
+F3C01E78
+F1E03C78
+F1E03C78
+F1E03C78
+F1E03C78
+F0F07878
+F0F07878
+F0F07878
+F078F078
+F078F078
+F078F078
+F03DE078
+F03DE078
+F03DE078
+F03DE078
+F01FC078
+F01FC078
+F01FC078
+F00F8078
+>} imagemask
+ }
+  48 /G30 MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G0F [12.0 0.0 4.0 -6.0 8.0 4.0 ]
+/G0F {
+    4 10 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+60
+E0
+40
+>} imagemask
+ }
+  15 /G0F MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G1D [12.0 0.0 4.0 0.0 8.0 22.0 ]
+/G1D {
+    4 22 true [1 0 0 -1 -4.0 22.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  29 /G1D MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 688 M 
+(/D\003GRFXPHQWDWLRQ\003VXU\0030HWDJHQ\017\003HW\0030HWDFKRS\003HVW\003GLYLVpH\003HQ\003WURLV\003SDUWLHV\003\035)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1de00
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 27000  VM?
+/MSTT31c1de00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1de00 GreNewFont
+%%EndFont
+(F0) cvn
+1.000 
+ (Symbol) cvn /TrueType 
+F 
+(MSTT31c1de00) cvn
+mF 
+2937  VM?
+/G78 [19.0 0.0 2.0 4.0 17.0 19.0 ]
+/G78 {
+    15 15 true [1 0 0 -1 -2.0 19.0 ]
+{<07C0
+1FF0
+3FF8
+7FFC
+7FFC
+FFFE
+FFFE
+FFFE
+FFFE
+FFFE
+7FFC
+7FFC
+3FF8
+1FF0
+07C0
+>} imagemask
+ }
+  120 /G78 MSTT31c1de00 AddChar
+/G03 [11.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1de00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+515 785 M 
+29.000 0 3 (x\003)W 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+48729  VM?
+/G38 [30.0 0.0 3.0 0.0 27.0 30.0 ]
+/G38 {
+    24 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0001F
+78001E
+78001E
+7C003E
+3F00FC
+3FFFF8
+1FFFF0
+07FFE0
+00FF00
+>} imagemask
+ }
+  56 /G38 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G54 [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G54 {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFDE0
+3E1FE0
+3C07E0
+7803E0
+7803E0
+F003E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+07FDE0
+03F1E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+>} imagemask
+ }
+  84 /G54 MSTT31c1bd00 AddChar
+/G30 [35.0 0.0 3.0 0.0 32.0 30.0 ]
+/G30 {
+    29 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FE0003F8
+FE0003F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+F7800F78
+F7800F78
+F7800F78
+F3C01E78
+F3C01E78
+F3C01E78
+F1E03C78
+F1E03C78
+F1E03C78
+F1E03C78
+F0F07878
+F0F07878
+F0F07878
+F078F078
+F078F078
+F078F078
+F03DE078
+F03DE078
+F03DE078
+F03DE078
+F01FC078
+F01FC078
+F01FC078
+F00F8078
+>} imagemask
+ }
+  48 /G30 MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+0 0 0 sco (F2_42) cvn
+F2
+42 
+xF 
+F2_42
+Ji 
+574 789 M 
+(8QH\003GRFXPHQWDWLRQ\003VSpFLILTXH\0030HWDJHQ)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+515 886 M 
+29.000 0 3 (x\003)W 
+; : 0 0 2333 3321 rc 1353  VM?
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+574 890 M 
+(8QH\003GRFXPHQWDWLRQ\003VSpFLILTXH\0030HWDFKRS)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+515 987 M 
+29.000 0 3 (x\003)W 
+; : 0 0 2333 3321 rc 14889  VM?
+/G26 [30.0 0.0 2.0 0.0 28.0 30.0 ]
+/G26 {
+    26 30 true [1 0 0 -1 -2.0 30.0 ]
+{<003F8000
+01FFF000
+07FFF800
+0FFFFC00
+1FC07E00
+1F003F00
+3E001F00
+7C000F80
+78000780
+78000400
+F8000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+78000300
+780003C0
+780007C0
+3C000780
+3E000F80
+1F001F00
+1FC07E00
+0FFFFE00
+07FFFC00
+01FFF000
+007FC000
+>} imagemask
+ }
+  38 /G26 MSTT31c1bd00 AddChar
+/G5B [22.0 0.0 0.0 0.0 22.0 22.0 ]
+/G5B {
+    22 22 true [1 0 0 -1 0.0 22.0 ]
+{<7C0078
+3E00F8
+1F01F0
+0F03E0
+0F83C0
+07C7C0
+03EF80
+01FF00
+01FE00
+00FC00
+007C00
+00FC00
+01FE00
+01FF00
+03EF00
+07CF80
+0F87C0
+1F03E0
+1E01E0
+3E01F0
+7C00F8
+F8007C
+>} imagemask
+ }
+  91 /G5B MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G1E [12.0 0.0 4.0 -6.0 8.0 22.0 ]
+/G1E {
+    4 28 true [1 0 0 -1 -4.0 22.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+30
+30
+30
+60
+E0
+40
+>} imagemask
+ }
+  30 /G1E MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+574 991 M 
+14.000 0 3 (&HWWH\003GRFXPHQWDWLRQ\003H[SOLTXDQW\003FRPPHQW\003FUpHU\003XQ\003SDUVHU\036\003FRPSLODWHXU)W 
+15.000 0 3 (\003SRXU\003XQ)W 
+; : 0 0 2333 3321 rc 1353  VM?
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+574 1039 M 
+(QRXYHDX\003ODQJDJH)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1d300
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 27000  VM?
+/MSTT31c1d300 [50.0 0 0 0 0 0] [-50.0 -50.0 50.0 50.0 ] [1 50 div 0 0 1 50 div 0 0] /MSTT31c1d300 GreNewFont
+%%EndFont
+(F0) cvn
+0.940 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1d300) cvn
+mF 
+2548  VM?
+/G15 [28.0 0.0 2.0 0.0 26.0 36.0 ]
+/G15 {
+    24 36 true [1 0 0 -1 -2.0 36.0 ]
+{<007F80
+03FFE0
+07FFF8
+0FFFFC
+1FFFFC
+3FFFFE
+3FC1FE
+3F80FF
+7F807F
+7F007F
+3F007F
+00007F
+00007F
+0000FE
+0000FE
+0001FE
+0003FC
+0007F8
+000FF8
+001FF0
+003FE0
+007FC0
+00FF80
+01FE00
+03FC00
+07F800
+0FF000
+0FE000
+1FC000
+3FFFFF
+3FFFFF
+7FFFFF
+7FFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+>} imagemask
+ }
+  21 /G15 MSTT31c1d300 AddChar
+/G11 [14.0 0.0 3.0 0.0 10.0 7.0 ]
+/G11 {
+    7 7 true [1 0 0 -1 -3.0 7.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  17 /G11 MSTT31c1d300 AddChar
+/G03 [14.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1d300 AddChar
+0 0 0 sco (F0_50) cvn
+F0
+50 
+xF 
+F0_50
+Ji 
+220 1138 M 
+16.000 0 3 (\025\021\003)W 
+; : 0 0 2333 3321 rc 26337  VM?
+/G2C [13.0 0.0 3.0 0.0 10.0 36.0 ]
+/G2C {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  44 /G2C MSTT31c1d300 AddChar
+/G51 [30.0 0.0 3.0 0.0 27.0 27.0 ]
+/G51 {
+    24 27 true [1 0 0 -1 -3.0 27.0 ]
+{<000FC0
+FC7FF8
+FCFFFC
+FDFFFE
+FFFFFE
+FFC1FF
+FF80FF
+FF00FF
+FF007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+>} imagemask
+ }
+  81 /G51 MSTT31c1d300 AddChar
+/G56 [28.0 0.0 1.0 0.0 26.0 27.0 ]
+/G56 {
+    25 27 true [1 0 0 -1 -1.0 27.0 ]
+{<01FF8000
+07FFF000
+1FFFF800
+1FFFFC00
+3FFFFE00
+7F81FE00
+7F00FF00
+7F007800
+7F800000
+7FF00000
+7FFF0000
+3FFFE000
+1FFFFC00
+0FFFFE00
+03FFFF00
+007FFF00
+0007FF80
+00007F80
+1E003F80
+FF003F80
+7F003F80
+7FC0FF00
+3FFFFF00
+1FFFFE00
+0FFFFC00
+07FFF000
+00FFC000
+>} imagemask
+ }
+  86 /G56 MSTT31c1d300 AddChar
+/G57 [17.0 0.0 1.0 0.0 16.0 35.0 ]
+/G57 {
+    15 35 true [1 0 0 -1 -1.0 35.0 ]
+{<0040
+01C0
+03C0
+0FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+FFFE
+FFFE
+FFFE
+FFFE
+FFFE
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FC0
+1FE2
+1FFE
+0FFE
+0FFE
+07FE
+01FC
+>} imagemask
+ }
+  87 /G57 MSTT31c1d300 AddChar
+/G44 [28.0 0.0 2.0 0.0 27.0 27.0 ]
+/G44 {
+    25 27 true [1 0 0 -1 -2.0 27.0 ]
+{<01FF8000
+07FFF000
+0FFFF800
+1FFFFC00
+3FFFFC00
+3F81FE00
+7F00FE00
+0E00FE00
+0000FE00
+0001FE00
+001FFE00
+03FFFE00
+0FFFFE00
+3FFFFE00
+7FFCFE00
+7FC0FE00
+FF00FE00
+FE00FE00
+FE00FE00
+FE01FE00
+FF01FE00
+FF87FE00
+7FFFFE00
+7FFFFE00
+3FFF7F00
+1FFE3F00
+07F03F80
+>} imagemask
+ }
+  68 /G44 MSTT31c1d300 AddChar
+/G4F [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4F {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  79 /G4F MSTT31c1d300 AddChar
+/G4C [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4C {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+00
+00
+00
+00
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  76 /G4C MSTT31c1d300 AddChar
+/G52 [31.0 0.0 2.0 0.0 29.0 27.0 ]
+/G52 {
+    27 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F8000
+01FFF000
+07FFFC00
+0FFFFE00
+1FFFFF00
+3FE0FF80
+3FC07F80
+7F803FC0
+7F001FC0
+7F001FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FF001FC0
+7F001FC0
+7F803FC0
+3FC07F80
+3FE0FF80
+1FFFFF00
+0FFFFE00
+07FFFC00
+01FFF000
+003F8000
+>} imagemask
+ }
+  82 /G52 MSTT31c1d300 AddChar
+/G47 [31.0 0.0 2.0 0.0 28.0 36.0 ]
+/G47 {
+    26 36 true [1 0 0 -1 -2.0 36.0 ]
+{<00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00FC1FC0
+03FF9FC0
+0FFFDFC0
+1FFFFFC0
+3FFFFFC0
+3FE1FFC0
+7F807FC0
+7F003FC0
+7F003FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+7F003FC0
+7F003FC0
+7F807FC0
+3FE1FFC0
+1FFFFFC0
+1FFFFFC0
+07FFEFC0
+03FFCFC0
+00FE0FC0
+>} imagemask
+ }
+  71 /G47 MSTT31c1d300 AddChar
+/G48 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G48 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<00FF00
+03FFC0
+07FFF0
+1FFFF8
+1FFFF8
+3FC3FC
+7F81FE
+7F00FE
+7E007E
+FE007F
+FE007F
+FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+FE0000
+FE0000
+FE0000
+7F0078
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF80
+>} imagemask
+ }
+  72 /G48 MSTT31c1d300 AddChar
+/G30 [41.0 0.0 4.0 0.0 37.0 36.0 ]
+/G30 {
+    33 36 true [1 0 0 -1 -4.0 36.0 ]
+{<FFE003FF80
+FFE003FF80
+FFE003FF80
+FFE003FF80
+FFF007FF80
+FFF007FF80
+FFF007FF80
+FFF007FF80
+FDF007DF80
+FDF80FDF80
+FDF80FDF80
+FDF80FDF80
+FCF80F9F80
+FCFC1F9F80
+FCFC1F9F80
+FCFC1F9F80
+FC7C1F1F80
+FC7C1F1F80
+FC7E3F1F80
+FC7E3F1F80
+FC7E3F1F80
+FC3E3E1F80
+FC3F7E1F80
+FC3F7E1F80
+FC3F7E1F80
+FC1F7C1F80
+FC1F7C1F80
+FC1FFC1F80
+FC1FFC1F80
+FC1FFC1F80
+FC0FF81F80
+FC0FF81F80
+FC0FF81F80
+FC0FF81F80
+FC07F01F80
+FC07F01F80
+>} imagemask
+ }
+  48 /G30 MSTT31c1d300 AddChar
+/G4A [31.0 0.0 2.0 -10.0 28.0 27.0 ]
+/G4A {
+    26 37 true [1 0 0 -1 -2.0 27.0 ]
+{<00FE0000
+03FF8FC0
+0FFFCFC0
+1FFFFFC0
+3FFFFFC0
+3FE1FFC0
+7F807FC0
+7F003FC0
+7F003FC0
+FE003FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE003FC0
+7F003FC0
+7F007FC0
+7F807FC0
+3FE1FFC0
+1FFFFFC0
+1FFFFFC0
+0FFFDFC0
+03FF9FC0
+00FE1FC0
+00001FC0
+00001FC0
+78001FC0
+7F003F80
+7F807F80
+3FFFFF00
+3FFFFF00
+1FFFFE00
+07FFF800
+00FFC000
+>} imagemask
+ }
+  74 /G4A MSTT31c1d300 AddChar
+/G46 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G46 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F80
+03FFE0
+07FFF8
+1FFFFC
+1FFFFC
+3FC1FE
+7F80FE
+7F007F
+7F0078
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0078
+7F007F
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF00
+>} imagemask
+ }
+  70 /G46 MSTT31c1d300 AddChar
+/G4B [30.0 0.0 3.0 0.0 27.0 36.0 ]
+/G4B {
+    24 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0FC0
+FE3FF8
+FE7FFC
+FEFFFE
+FFFFFE
+FFC1FE
+FF80FF
+FF007F
+FF007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+>} imagemask
+ }
+  75 /G4B MSTT31c1d300 AddChar
+/G53 [31.0 0.0 3.0 -10.0 29.0 27.0 ]
+/G53 {
+    26 37 true [1 0 0 -1 -3.0 27.0 ]
+{<001FC000
+FC7FF000
+FCFFFC00
+FDFFFE00
+FFFFFE00
+FFE1FF00
+FF807F80
+FF003F80
+FF003F80
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FF001FC0
+FF003F80
+FF803F80
+FF807F80
+FFE1FF00
+FFFFFE00
+FFFFFE00
+FEFFFC00
+FE3FF000
+FE0FC000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+>} imagemask
+ }
+  83 /G53 MSTT31c1d300 AddChar
+0 0 0 sco F0_50
+Ji 
+292 1138 M 
+(,QVWDOODWLRQ\003GH\0030HWDJHQ\003HW\0030HWDFKRS)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 124531  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+124531  VM?
+/G2C [12.0 0.0 4.0 0.0 8.0 30.0 ]
+/G2C {
+    4 30 true [1 0 0 -1 -4.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  44 /G2C MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G5C [21.0 0.0 1.0 -8.0 20.0 22.0 ]
+/G5C {
+    19 30 true [1 0 0 -1 -1.0 22.0 ]
+{<F001E0
+7801E0
+7803C0
+7C03C0
+3C03C0
+3C0780
+3E0780
+1E0780
+1E0F00
+1F0F00
+0F0F00
+0F9E00
+079E00
+079E00
+07DE00
+03DC00
+03FC00
+03FC00
+01F800
+01F800
+00F800
+00F000
+00F000
+01F000
+01E000
+03E000
+07C000
+7F8000
+3F8000
+3E0000
+>} imagemask
+ }
+  92 /G5C MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G54 [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G54 {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFDE0
+3E1FE0
+3C07E0
+7803E0
+7803E0
+F003E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+07FDE0
+03F1E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+>} imagemask
+ }
+  84 /G54 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+/G24 [28.0 0.0 0.0 0.0 27.0 30.0 ]
+/G24 {
+    27 30 true [1 0 0 -1 0.0 30.0 ]
+{<000E0000
+001F0000
+001F0000
+003F8000
+003B8000
+003B8000
+007BC000
+0071C000
+00F1E000
+00E0E000
+00E0E000
+01E0F000
+01C07000
+03C07800
+03C07800
+03803800
+07803C00
+07FFFC00
+0FFFFE00
+0FFFFE00
+0FFFFE00
+1E000F00
+1E000F00
+3C000780
+3C000780
+3C000780
+780003C0
+780003C0
+F80003E0
+F00001E0
+>} imagemask
+ }
+  36 /G24 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1248 M 
+7.000 0 3 (,QVWDOOHU\003OHV\003GLUHFWRU\\\003FRQWHQXV\003VXU)W 
+8.000 0 3 (\003OD\003GLVTXHWWH\003GDQV\003XQ\003UpSHUWRLUH\003PHWD\021\003$X\003QLYHDX\003GH\003PHWD)W 
+; : 0 0 2333 3321 rc savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 5414  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+25718  VM?
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G4E [21.0 0.0 3.0 0.0 21.0 30.0 ]
+/G4E {
+    18 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F01F00
+F03E00
+F07C00
+F0F800
+F1F000
+F3E000
+F7C000
+FF8000
+FF8000
+FFC000
+FFC000
+FBE000
+F1F000
+F0F000
+F0F800
+F07C00
+F03C00
+F03E00
+F01F00
+F00F00
+F00F80
+F007C0
+>} imagemask
+ }
+  78 /G4E MSTT31c1bd00 AddChar
+/G10 [14.0 0.0 1.0 9.0 12.0 13.0 ]
+/G10 {
+    11 4 true [1 0 0 -1 -1.0 13.0 ]
+{<FFE0
+FFE0
+FFE0
+FFE0
+>} imagemask
+ }
+  16 /G10 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1296 M 
+5.000 0 3 (ODQFHU\003XQ\003\005PDNH\003\020I\003)W 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+12441  VM?
+/G50 [35.0 0.0 1.0 0.0 35.0 23.0 ]
+/G50 {
+    34 23 true [1 0 0 -1 -1.0 23.0 ]
+{<000FC07E00
+0F1FE1FF00
+0F3FF3FF80
+0F71F78F80
+0FC0FE0780
+1F80FC07C0
+1F00F80780
+1F00F80780
+1E00F00780
+1E00F00780
+3E01F00F80
+3C01E00F80
+3C01E00F00
+3C01E00F00
+3C01E00F00
+7C03E01F00
+7803C01E00
+7803C01E00
+7803C01E00
+7803C01E00
+F807C03E00
+F007803C00
+F007803C00
+>} imagemask
+ }
+  80 /G50 MSTT31c1f700 AddChar
+/G44 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G44 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FFC0
+07FFE0
+0F83E0
+1E00F0
+1E00F0
+3C00F0
+0000F0
+0000F0
+007FF0
+0FFFE0
+3FFFE0
+7F01E0
+7801E0
+F803E0
+F003E0
+F003C0
+F007C0
+F80FC0
+7C3FC0
+7FFFC0
+3FF3C0
+0FC3C0
+>} imagemask
+ }
+  68 /G44 MSTT31c1f700 AddChar
+/G4E [21.0 0.0 1.0 0.0 23.0 30.0 ]
+/G4E {
+    22 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C000
+03C000
+07C000
+078000
+078000
+078000
+078000
+0F8000
+0F0078
+0F00F0
+0F01E0
+0F03C0
+1F0780
+1E0F00
+1E1E00
+1E3C00
+1E7800
+3EF800
+3DFC00
+3FBC00
+3F3E00
+3E1E00
+7C1F00
+780F00
+780F00
+780780
+780780
+F807C0
+F003C0
+F003C0
+>} imagemask
+ }
+  78 /G4E MSTT31c1f700 AddChar
+/G48 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G48 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FF80
+07FFC0
+0F83E0
+1E01E0
+3C01F0
+3C00F0
+7800F0
+7800F0
+7FFFF0
+FFFFF0
+FFFFF0
+F00000
+F00000
+F00000
+F001C0
+F003C0
+780780
+7C0F80
+3E1F00
+3FFE00
+1FFC00
+07F000
+>} imagemask
+ }
+  72 /G48 MSTT31c1f700 AddChar
+/G49 [12.0 0.0 2.0 0.0 17.0 30.0 ]
+/G49 {
+    15 30 true [1 0 0 -1 -2.0 30.0 ]
+{<00FE
+01FE
+03FE
+03FE
+07C0
+0780
+0780
+0780
+3FF8
+7FF8
+7FF0
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  73 /G49 MSTT31c1f700 AddChar
+/G4C [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4C {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+07C0
+0780
+0000
+0000
+0000
+0000
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  76 /G4C MSTT31c1f700 AddChar
+/G4F [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4F {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+03C0
+0780
+0780
+0780
+0780
+0780
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  79 /G4F MSTT31c1f700 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1f700 AddChar
+0 0 0 sco (F2_42) cvn
+F2
+42 
+xF 
+F2_42
+Ji 
+741 1296 M 
+5.000 0 3 (PDNHILOH\003)W 
+; : 0 0 2333 3321 rc 1353  VM?
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+913 1296 M 
+5.000 0 3 (DOO\005\003RX\003)W 
+; : 0 0 2333 3321 rc 0 0 0 sco F2_42
+Ji 
+1051 1296 M 
+(PDNHILOH)S 
+; : 0 0 2333 3321 rc 18950  VM?
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G5C [21.0 0.0 1.0 -8.0 20.0 22.0 ]
+/G5C {
+    19 30 true [1 0 0 -1 -1.0 22.0 ]
+{<F001E0
+7801E0
+7803C0
+7C03C0
+3C03C0
+3C0780
+3E0780
+1E0780
+1E0F00
+1F0F00
+0F0F00
+0F9E00
+079E00
+079E00
+07DE00
+03DC00
+03FC00
+03FC00
+01F800
+01F800
+00F800
+00F000
+00F000
+01F000
+01E000
+03E000
+07C000
+7F8000
+3F8000
+3E0000
+>} imagemask
+ }
+  92 /G5C MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G71 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G71 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  113 /G71 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+1206 1296 M 
+5.000 0 3 (\003FRUUHVSRQG\003DX\003ILFKLHU\003PDNH)W 
+6.000 0 3 (\003FUpp\003SRXU\003OH\003V\\VWqPH)W 
+; : 0 0 2333 3321 rc 10828  VM?
+/GA9 [9.0 0.0 3.0 20.0 7.0 30.0 ]
+/GA9 {
+    4 10 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+70
+E0
+40
+>} imagemask
+ }
+  169 /GA9 MSTT31c1bd00 AddChar
+/G5B [22.0 0.0 0.0 0.0 22.0 22.0 ]
+/G5B {
+    22 22 true [1 0 0 -1 0.0 22.0 ]
+{<7C0078
+3E00F8
+1F01F0
+0F03E0
+0F83C0
+07C7C0
+03EF80
+01FF00
+01FE00
+00FC00
+007C00
+00FC00
+01FE00
+01FF00
+03EF00
+07CF80
+0F87C0
+1F03E0
+1E01E0
+3E01F0
+7C00F8
+F8007C
+>} imagemask
+ }
+  91 /G5B MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+/G27 [30.0 0.0 3.0 0.0 28.0 30.0 ]
+/G27 {
+    25 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FFFF0000
+FFFFE000
+FFFFF000
+FFFFF800
+F001FC00
+F0007E00
+F0003E00
+F0001F00
+F0000F00
+F0000F00
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000F80
+F0000F00
+F0000F00
+F0001F00
+F0003E00
+F0007E00
+F001FC00
+FFFFF800
+FFFFF000
+FFFFE000
+FFFF0000
+>} imagemask
+ }
+  39 /G27 MSTT31c1bd00 AddChar
+/G7F [23.0 0.0 3.0 0.0 20.0 31.0 ]
+/G7F {
+    17 31 true [1 0 0 -1 -3.0 31.0 ]
+{<1F0000
+0F8000
+078000
+03C000
+01C000
+00E000
+000000
+000000
+000000
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  127 /G7F MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G0F [12.0 0.0 4.0 -6.0 8.0 4.0 ]
+/G0F {
+    4 10 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+60
+E0
+40
+>} imagemask
+ }
+  15 /G0F MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 1345 M 
+1.000 0 3 (G\251H[SORLWDWLRQ\021\003'DQV\003OH\003FDV\003R\003OHV\003IODJV\003GH)W 
+2.000 0 3 (\003FRPSLODWLRQV\003QH\003FRQYLHQQHQW\003SDV\017\003OHV\003PRGLILHU\003GDQV\003OH)W 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+368 1393 M 
+(ILFKLHU\003\005PDNHILOH\021LQF\005\003VH\003WURXYDQW\003GDQV\003OH\003UpSHUWRLUH\003PHWD\021)S 
+; : 0 0 2333 3321 rc 2707  VM?
+/G2F [23.0 0.0 3.0 0.0 22.0 30.0 ]
+/G2F {
+    19 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+FFFFE0
+FFFFE0
+FFFFE0
+FFFFE0
+>} imagemask
+ }
+  47 /G2F MSTT31c1bd00 AddChar
+/G54 [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G54 {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFDE0
+3E1FE0
+3C07E0
+7803E0
+7803E0
+F003E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+07FDE0
+03F1E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+>} imagemask
+ }
+  84 /G54 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 1491 M 
+8.000 0 3 (/RUVTXH\003OD\003FRPSLODWLRQ\003HVW\003WHUPLQpH\003ODQFHU\003XQ\003\005PDNH\003\020I\003)W 
+; : 0 0 2333 3321 rc 0 0 0 sco F2_42
+Ji 
+1468 1491 M 
+8.000 0 3 (PDNHILOH\003)W 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+1643 1491 M 
+9.000 0 3 (LQVWDOO\005\003TXL\003LQVWDOOH\003WRXV\003OHV)W 
+; : 0 0 2333 3321 rc 1353  VM?
+/G45 [23.0 0.0 3.0 0.0 22.0 30.0 ]
+/G45 {
+    19 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FF0F80
+FC0780
+F803C0
+F803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F803C0
+F803C0
+FC0780
+FE1F80
+F7FF00
+F7FE00
+F1F800
+>} imagemask
+ }
+  69 /G45 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 1540 M 
+(H[pFXWDEOHV\003GDQV\003OD\003GLUHFWRU\\\003\005RXWLOV\005\021)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1d300
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 27000  VM?
+/MSTT31c1d300 [50.0 0 0 0 0 0] [-50.0 -50.0 50.0 50.0 ] [1 50 div 0 0 1 50 div 0 0] /MSTT31c1d300 GreNewFont
+%%EndFont
+(F0) cvn
+0.940 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1d300) cvn
+mF 
+2548  VM?
+/G16 [28.0 0.0 2.0 0.0 26.0 36.0 ]
+/G16 {
+    24 36 true [1 0 0 -1 -2.0 36.0 ]
+{<00FE00
+03FFC0
+0FFFE0
+1FFFF0
+1FFFF8
+3FFFF8
+3FC3FC
+7F83FC
+7F01FC
+0F01FC
+0001FC
+0001FC
+0003F8
+0007F0
+001FF0
+003FC0
+003F80
+003FF0
+003FF8
+0001FC
+0000FE
+0000FE
+00007F
+00007F
+00007F
+3E007F
+FE007F
+FF00FF
+7F00FE
+7FC3FE
+3FFFFC
+3FFFFC
+1FFFF8
+0FFFF0
+03FFC0
+00FF00
+>} imagemask
+ }
+  22 /G16 MSTT31c1d300 AddChar
+/G11 [14.0 0.0 3.0 0.0 10.0 7.0 ]
+/G11 {
+    7 7 true [1 0 0 -1 -3.0 7.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  17 /G11 MSTT31c1d300 AddChar
+/G03 [14.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1d300 AddChar
+0 0 0 sco (F0_50) cvn
+F0
+50 
+xF 
+F0_50
+Ji 
+220 1639 M 
+16.000 0 3 (\026\021\003)W 
+; : 0 0 2333 3321 rc 24638  VM?
+/G30 [41.0 0.0 4.0 0.0 37.0 36.0 ]
+/G30 {
+    33 36 true [1 0 0 -1 -4.0 36.0 ]
+{<FFE003FF80
+FFE003FF80
+FFE003FF80
+FFE003FF80
+FFF007FF80
+FFF007FF80
+FFF007FF80
+FFF007FF80
+FDF007DF80
+FDF80FDF80
+FDF80FDF80
+FDF80FDF80
+FCF80F9F80
+FCFC1F9F80
+FCFC1F9F80
+FCFC1F9F80
+FC7C1F1F80
+FC7C1F1F80
+FC7E3F1F80
+FC7E3F1F80
+FC7E3F1F80
+FC3E3E1F80
+FC3F7E1F80
+FC3F7E1F80
+FC3F7E1F80
+FC1F7C1F80
+FC1F7C1F80
+FC1FFC1F80
+FC1FFC1F80
+FC1FFC1F80
+FC0FF81F80
+FC0FF81F80
+FC0FF81F80
+FC0FF81F80
+FC07F01F80
+FC07F01F80
+>} imagemask
+ }
+  48 /G30 MSTT31c1d300 AddChar
+/G4C [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4C {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+00
+00
+00
+00
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  76 /G4C MSTT31c1d300 AddChar
+/G56 [28.0 0.0 1.0 0.0 26.0 27.0 ]
+/G56 {
+    25 27 true [1 0 0 -1 -1.0 27.0 ]
+{<01FF8000
+07FFF000
+1FFFF800
+1FFFFC00
+3FFFFE00
+7F81FE00
+7F00FF00
+7F007800
+7F800000
+7FF00000
+7FFF0000
+3FFFE000
+1FFFFC00
+0FFFFE00
+03FFFF00
+007FFF00
+0007FF80
+00007F80
+1E003F80
+FF003F80
+7F003F80
+7FC0FF00
+3FFFFF00
+1FFFFE00
+0FFFFC00
+07FFF000
+00FFC000
+>} imagemask
+ }
+  86 /G56 MSTT31c1d300 AddChar
+/G48 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G48 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<00FF00
+03FFC0
+07FFF0
+1FFFF8
+1FFFF8
+3FC3FC
+7F81FE
+7F00FE
+7E007E
+FE007F
+FE007F
+FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+FE0000
+FE0000
+FE0000
+7F0078
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF80
+>} imagemask
+ }
+  72 /G48 MSTT31c1d300 AddChar
+/G51 [30.0 0.0 3.0 0.0 27.0 27.0 ]
+/G51 {
+    24 27 true [1 0 0 -1 -3.0 27.0 ]
+{<000FC0
+FC7FF8
+FCFFFC
+FDFFFE
+FFFFFE
+FFC1FF
+FF80FF
+FF00FF
+FF007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+>} imagemask
+ }
+  81 /G51 MSTT31c1d300 AddChar
+/G53 [31.0 0.0 3.0 -10.0 29.0 27.0 ]
+/G53 {
+    26 37 true [1 0 0 -1 -3.0 27.0 ]
+{<001FC000
+FC7FF000
+FCFFFC00
+FDFFFE00
+FFFFFE00
+FFE1FF00
+FF807F80
+FF003F80
+FF003F80
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FF001FC0
+FF003F80
+FF803F80
+FF807F80
+FFE1FF00
+FFFFFE00
+FFFFFE00
+FEFFFC00
+FE3FF000
+FE0FC000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+FE000000
+>} imagemask
+ }
+  83 /G53 MSTT31c1d300 AddChar
+/G4F [14.0 0.0 3.0 0.0 10.0 36.0 ]
+/G4F {
+    7 36 true [1 0 0 -1 -3.0 36.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  79 /G4F MSTT31c1d300 AddChar
+/G44 [28.0 0.0 2.0 0.0 27.0 27.0 ]
+/G44 {
+    25 27 true [1 0 0 -1 -2.0 27.0 ]
+{<01FF8000
+07FFF000
+0FFFF800
+1FFFFC00
+3FFFFC00
+3F81FE00
+7F00FE00
+0E00FE00
+0000FE00
+0001FE00
+001FFE00
+03FFFE00
+0FFFFE00
+3FFFFE00
+7FFCFE00
+7FC0FE00
+FF00FE00
+FE00FE00
+FE00FE00
+FE01FE00
+FF01FE00
+FF87FE00
+7FFFFE00
+7FFFFE00
+3FFF7F00
+1FFE3F00
+07F03F80
+>} imagemask
+ }
+  68 /G44 MSTT31c1d300 AddChar
+/G46 [28.0 0.0 2.0 0.0 26.0 27.0 ]
+/G46 {
+    24 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F80
+03FFE0
+07FFF8
+1FFFFC
+1FFFFC
+3FC1FE
+7F80FE
+7F007F
+7F0078
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0000
+FE0078
+7F007F
+7F00FF
+7F80FE
+3FC1FE
+1FFFFC
+1FFFF8
+0FFFF0
+03FFE0
+00FF00
+>} imagemask
+ }
+  70 /G46 MSTT31c1d300 AddChar
+/G47 [31.0 0.0 2.0 0.0 28.0 36.0 ]
+/G47 {
+    26 36 true [1 0 0 -1 -2.0 36.0 ]
+{<00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00001FC0
+00FC1FC0
+03FF9FC0
+0FFFDFC0
+1FFFFFC0
+3FFFFFC0
+3FE1FFC0
+7F807FC0
+7F003FC0
+7F003FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+7F003FC0
+7F003FC0
+7F807FC0
+3FE1FFC0
+1FFFFFC0
+1FFFFFC0
+07FFEFC0
+03FFCFC0
+00FE0FC0
+>} imagemask
+ }
+  71 /G47 MSTT31c1d300 AddChar
+/GA9 [14.0 0.0 2.0 21.0 10.0 36.0 ]
+/GA9 {
+    8 15 true [1 0 0 -1 -2.0 36.0 ]
+{<7F
+7F
+7F
+7F
+7F
+7F
+7F
+0F
+0F
+1F
+1E
+7E
+FC
+70
+60
+>} imagemask
+ }
+  169 /GA9 MSTT31c1d300 AddChar
+/G58 [30.0 0.0 3.0 0.0 27.0 26.0 ]
+/G58 {
+    24 26 true [1 0 0 -1 -3.0 26.0 ]
+{<FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE007F
+FE00FF
+FF01FF
+7F83FF
+7FFFFF
+7FFFFF
+3FFFBF
+1FFE3F
+03F83F
+>} imagemask
+ }
+  88 /G58 MSTT31c1d300 AddChar
+/G52 [31.0 0.0 2.0 0.0 29.0 27.0 ]
+/G52 {
+    27 27 true [1 0 0 -1 -2.0 27.0 ]
+{<007F8000
+01FFF000
+07FFFC00
+0FFFFE00
+1FFFFF00
+3FE0FF80
+3FC07F80
+7F803FC0
+7F001FC0
+7F001FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FE000FE0
+FF001FC0
+7F001FC0
+7F803FC0
+3FC07F80
+3FE0FF80
+1FFFFF00
+0FFFFE00
+07FFFC00
+01FFF000
+003F8000
+>} imagemask
+ }
+  82 /G52 MSTT31c1d300 AddChar
+/G59 [27.0 0.0 0.0 0.0 27.0 26.0 ]
+/G59 {
+    27 26 true [1 0 0 -1 0.0 26.0 ]
+{<7F001FC0
+7F001FC0
+7F001FC0
+3F803F80
+3F803F80
+1F803F00
+1FC07F00
+1FC07F00
+0FC07E00
+0FE0FE00
+07E0FC00
+07F1FC00
+07F1FC00
+03F1F800
+03F3F800
+01FBF800
+01FBF000
+01FBF000
+00FBE000
+00FFE000
+00FFE000
+007FC000
+007FC000
+003FC000
+003F8000
+003F8000
+>} imagemask
+ }
+  89 /G59 MSTT31c1d300 AddChar
+/G4A [31.0 0.0 2.0 -10.0 28.0 27.0 ]
+/G4A {
+    26 37 true [1 0 0 -1 -2.0 27.0 ]
+{<00FE0000
+03FF8FC0
+0FFFCFC0
+1FFFFFC0
+3FFFFFC0
+3FE1FFC0
+7F807FC0
+7F003FC0
+7F003FC0
+FE003FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE001FC0
+FE003FC0
+7F003FC0
+7F007FC0
+7F807FC0
+3FE1FFC0
+1FFFFFC0
+1FFFFFC0
+0FFFDFC0
+03FF9FC0
+00FE1FC0
+00001FC0
+00001FC0
+78001FC0
+7F003F80
+7F807F80
+3FFFFF00
+3FFFFF00
+1FFFFE00
+07FFF800
+00FFC000
+>} imagemask
+ }
+  74 /G4A MSTT31c1d300 AddChar
+0 0 0 sco F0_50
+Ji 
+292 1639 M 
+(0LVH\003HQ\003SODFH\003G\251XQ\003QRXYHDX\003ODQJDJH)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 128592  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+128592  VM?
+/G33 [28.0 0.0 3.0 0.0 26.0 30.0 ]
+/G33 {
+    23 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FFFF80
+FFFFE0
+FFFFF8
+FFFFF8
+F000FC
+F0003C
+F0003E
+F0001E
+F0001E
+F0001E
+F0001E
+F0003E
+F0003C
+F000FC
+FFFFF8
+FFFFF0
+FFFFE0
+FFFF00
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  51 /G33 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G0F [12.0 0.0 4.0 -6.0 8.0 4.0 ]
+/G0F {
+    4 10 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+60
+E0
+40
+>} imagemask
+ }
+  15 /G0F MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G5C [21.0 0.0 1.0 -8.0 20.0 22.0 ]
+/G5C {
+    19 30 true [1 0 0 -1 -1.0 22.0 ]
+{<F001E0
+7801E0
+7803C0
+7C03C0
+3C03C0
+3C0780
+3E0780
+1E0780
+1E0F00
+1F0F00
+0F0F00
+0F9E00
+079E00
+079E00
+07DE00
+03DC00
+03FC00
+03FC00
+01F800
+01F800
+00F800
+00F000
+00F000
+01F000
+01E000
+03E000
+07C000
+7F8000
+3F8000
+3E0000
+>} imagemask
+ }
+  92 /G5C MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1749 M 
+1.000 0 3 (3RXU\003FUpHU\003XQ\003QRXYHDX\003ODQJDJH\017\003VH\003SODFHU\003GDQV\003OD\003GLUHFWRU\\)W 
+2.000 0 3 (\003PHWD\003HW\003FUpHU\003XQ\003FRSLH\003GX\003UpSHUWRLUH)W 
+; : 0 0 2333 3321 rc savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 6768  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+104227  VM?
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G6A [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G6A {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  106 /G6A MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1797 M 
+(\005IRRDOO\005\003VRXV\003XQ\003UpSHUWRLUH\003GRQW\003OH\003QRP\003FRUUHVSRQG\003DX\003QRP\003GX\003ODQJDJH\003j\003FUpHU\021)S 
+; : 0 0 2333 3321 rc savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 6768  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+106934  VM?
+/G26 [30.0 0.0 2.0 0.0 28.0 30.0 ]
+/G26 {
+    26 30 true [1 0 0 -1 -2.0 30.0 ]
+{<003F8000
+01FFF000
+07FFF800
+0FFFFC00
+1FC07E00
+1F003F00
+3E001F00
+7C000F80
+78000780
+78000400
+F8000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+78000300
+780003C0
+780007C0
+3C000780
+3E000F80
+1F001F00
+1FC07E00
+0FFFFE00
+07FFFC00
+01FFF000
+007FC000
+>} imagemask
+ }
+  38 /G26 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G54 [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G54 {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFDE0
+3E1FE0
+3C07E0
+7803E0
+7803E0
+F003E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+07FDE0
+03F1E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+>} imagemask
+ }
+  84 /G54 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G5C [21.0 0.0 1.0 -8.0 20.0 22.0 ]
+/G5C {
+    19 30 true [1 0 0 -1 -1.0 22.0 ]
+{<F001E0
+7801E0
+7803C0
+7C03C0
+3C03C0
+3C0780
+3E0780
+1E0780
+1E0F00
+1F0F00
+0F0F00
+0F9E00
+079E00
+079E00
+07DE00
+03DC00
+03FC00
+03FC00
+01F800
+01F800
+00F800
+00F000
+00F000
+01F000
+01E000
+03E000
+07C000
+7F8000
+3F8000
+3E0000
+>} imagemask
+ }
+  92 /G5C MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1895 M 
+(&RPSLOHU\003HW\003LQVWDOOHU\003OH\003ILFKLHU\003FRQILJ\003TXL\003VH\003WURXYH\003GDQV\003OD\003GLUHFWRU\\\003FRQILJ\021)S 
+; : 0 0 2333 3321 rc savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 4060  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+59558  VM?
+/G27 [30.0 0.0 3.0 0.0 28.0 30.0 ]
+/G27 {
+    25 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FFFF0000
+FFFFE000
+FFFFF000
+FFFFF800
+F001FC00
+F0007E00
+F0003E00
+F0001F00
+F0000F00
+F0000F00
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000780
+F0000F80
+F0000F00
+F0000F00
+F0001F00
+F0003E00
+F0007E00
+F001FC00
+FFFFF800
+FFFFF000
+FFFFE000
+FFFF0000
+>} imagemask
+ }
+  39 /G27 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 1993 M 
+8.000 0 3 ('DQV\003FH\003QRXYHDX\003UpSHUWRLUH)W 
+9.000 0 3 (\003WDSHU\003\005FRQILJ\021VK\003)W 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 19353  VM?
+%%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+19353  VM?
+/G4F [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4F {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+03C0
+0780
+0780
+0780
+0780
+0780
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  79 /G4F MSTT31c1f700 AddChar
+/G44 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G44 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FFC0
+07FFE0
+0F83E0
+1E00F0
+1E00F0
+3C00F0
+0000F0
+0000F0
+007FF0
+0FFFE0
+3FFFE0
+7F01E0
+7801E0
+F803E0
+F003E0
+F003C0
+F007C0
+F80FC0
+7C3FC0
+7FFFC0
+3FF3C0
+0FC3C0
+>} imagemask
+ }
+  68 /G44 MSTT31c1f700 AddChar
+/G51 [23.0 0.0 1.0 0.0 22.0 23.0 ]
+/G51 {
+    21 23 true [1 0 0 -1 -1.0 23.0 ]
+{<0007C0
+0F1FF0
+0F3FF8
+0F70F8
+0FC078
+1F8078
+1F0078
+1F0078
+1E0078
+1E0078
+3E0078
+3C00F8
+3C00F0
+3C00F0
+3C00F0
+7C00F0
+7801E0
+7801E0
+7801E0
+7801E0
+F801E0
+F003C0
+F003C0
+>} imagemask
+ }
+  81 /G51 MSTT31c1f700 AddChar
+/G4A [23.0 0.0 1.0 -8.0 25.0 23.0 ]
+/G4A {
+    24 31 true [1 0 0 -1 -1.0 23.0 ]
+{<007E00
+01FF1E
+03FF9E
+07C1DE
+0F80FE
+1F007E
+1E007C
+3C007C
+3C003C
+3C003C
+78003C
+780078
+780078
+780078
+780078
+7800F0
+7800F0
+3C01F0
+3E03F0
+1F0FF0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+0003C0
+F003C0
+F00780
+F81F80
+7FFF00
+3FFE00
+0FF000
+>} imagemask
+ }
+  74 /G4A MSTT31c1f700 AddChar
+/G48 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G48 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FF80
+07FFC0
+0F83E0
+1E01E0
+3C01F0
+3C00F0
+7800F0
+7800F0
+7FFFF0
+FFFFF0
+FFFFF0
+F00000
+F00000
+F00000
+F001C0
+F003C0
+780780
+7C0F80
+3E1F00
+3FFE00
+1FFC00
+07F000
+>} imagemask
+ }
+  72 /G48 MSTT31c1f700 AddChar
+/G42 [23.0 0.0 -3.0 -8.0 21.0 -4.0 ]
+/G42 {
+    24 4 true [1 0 0 -1 3.0 -4.0 ]
+{<FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+>} imagemask
+ }
+  66 /G42 MSTT31c1f700 AddChar
+/G50 [35.0 0.0 1.0 0.0 35.0 23.0 ]
+/G50 {
+    34 23 true [1 0 0 -1 -1.0 23.0 ]
+{<000FC07E00
+0F1FE1FF00
+0F3FF3FF80
+0F71F78F80
+0FC0FE0780
+1F80FC07C0
+1F00F80780
+1F00F80780
+1E00F00780
+1E00F00780
+3E01F00F80
+3C01E00F80
+3C01E00F00
+3C01E00F00
+3C01E00F00
+7C03E01F00
+7803C01E00
+7803C01E00
+7803C01E00
+7803C01E00
+F807C03E00
+F007803C00
+F007803C00
+>} imagemask
+ }
+  80 /G50 MSTT31c1f700 AddChar
+/G05 [15.0 0.0 5.0 19.0 18.0 30.0 ]
+/G05 {
+    13 11 true [1 0 0 -1 -5.0 30.0 ]
+{<3C78
+3C78
+78F0
+78F0
+78F0
+78F0
+70E0
+F1E0
+F1E0
+E1C0
+E1C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1f700 AddChar
+/G11 [12.0 0.0 2.0 0.0 7.0 4.0 ]
+/G11 {
+    5 4 true [1 0 0 -1 -2.0 4.0 ]
+{<78
+78
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1f700 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1249 1993 M 
+(ODQJDJHBQDPH\005\021)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+39254  VM?
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G26 [30.0 0.0 2.0 0.0 28.0 30.0 ]
+/G26 {
+    26 30 true [1 0 0 -1 -2.0 30.0 ]
+{<003F8000
+01FFF000
+07FFF800
+0FFFFC00
+1FC07E00
+1F003F00
+3E001F00
+7C000F80
+78000780
+78000400
+F8000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+F0000000
+78000300
+780003C0
+780007C0
+3C000780
+3E000F80
+1F001F00
+1FC07E00
+0FFFFE00
+07FFFC00
+01FFF000
+007FC000
+>} imagemask
+ }
+  38 /G26 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+0 0 0 sco (F2_42) cvn
+F2
+42 
+xF 
+F2_42
+Ji 
+1550 1993 M 
+9.000 0 3 (\003&HWWH\003FRPPDQGH\003FRQILJXUH\003OHV)W 
+; : 0 0 2333 3321 rc 6768  VM?
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G6A [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G6A {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  106 /G6A MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+368 2042 M 
+(GLIIpUHQWV\003ILFKLHUV\003HQ\003IRQFWLRQ\003GX\003QRP\003GX\003ODQJDJH\003j\003FUpHU\021)S 
+; : 0 0 2333 3321 rc savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 8121  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+47376  VM?
+/G24 [28.0 0.0 0.0 0.0 27.0 30.0 ]
+/G24 {
+    27 30 true [1 0 0 -1 0.0 30.0 ]
+{<000E0000
+001F0000
+001F0000
+003F8000
+003B8000
+003B8000
+007BC000
+0071C000
+00F1E000
+00E0E000
+00E0E000
+01E0F000
+01C07000
+03C07800
+03C07800
+03803800
+07803C00
+07FFFC00
+0FFFFE00
+0FFFFE00
+0FFFFE00
+1E000F00
+1E000F00
+3C000780
+3C000780
+3C000780
+780003C0
+780003C0
+F80003E0
+F00001E0
+>} imagemask
+ }
+  36 /G24 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G71 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G71 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  113 /G71 MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+368 2140 M 
+5.000 0 3 ($SUqV\003DYRLU\003FRPSOpWp\003OHV\003ILFKLHUV\003\005)W 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 24883  VM?
+%%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+24883  VM?
+/G4F [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4F {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+03C0
+0780
+0780
+0780
+0780
+0780
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  79 /G4F MSTT31c1f700 AddChar
+/G44 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G44 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FFC0
+07FFE0
+0F83E0
+1E00F0
+1E00F0
+3C00F0
+0000F0
+0000F0
+007FF0
+0FFFE0
+3FFFE0
+7F01E0
+7801E0
+F803E0
+F003E0
+F003C0
+F007C0
+F80FC0
+7C3FC0
+7FFFC0
+3FF3C0
+0FC3C0
+>} imagemask
+ }
+  68 /G44 MSTT31c1f700 AddChar
+/G51 [23.0 0.0 1.0 0.0 22.0 23.0 ]
+/G51 {
+    21 23 true [1 0 0 -1 -1.0 23.0 ]
+{<0007C0
+0F1FF0
+0F3FF8
+0F70F8
+0FC078
+1F8078
+1F0078
+1F0078
+1E0078
+1E0078
+3E0078
+3C00F8
+3C00F0
+3C00F0
+3C00F0
+7C00F0
+7801E0
+7801E0
+7801E0
+7801E0
+F801E0
+F003C0
+F003C0
+>} imagemask
+ }
+  81 /G51 MSTT31c1f700 AddChar
+/G4A [23.0 0.0 1.0 -8.0 25.0 23.0 ]
+/G4A {
+    24 31 true [1 0 0 -1 -1.0 23.0 ]
+{<007E00
+01FF1E
+03FF9E
+07C1DE
+0F80FE
+1F007E
+1E007C
+3C007C
+3C003C
+3C003C
+78003C
+780078
+780078
+780078
+780078
+7800F0
+7800F0
+3C01F0
+3E03F0
+1F0FF0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+0003C0
+F003C0
+F00780
+F81F80
+7FFF00
+3FFE00
+0FF000
+>} imagemask
+ }
+  74 /G4A MSTT31c1f700 AddChar
+/G58 [23.0 0.0 3.0 0.0 23.0 22.0 ]
+/G58 {
+    20 22 true [1 0 0 -1 -3.0 22.0 ]
+{<1E00F0
+1E00F0
+1E00F0
+1E00F0
+3E01F0
+3C01E0
+3C01E0
+3C01E0
+3C01E0
+7803E0
+7803C0
+7803C0
+7803C0
+F807C0
+F007C0
+F00F80
+F00F80
+F01F80
+F87780
+FFE780
+7FCF00
+1F0F00
+>} imagemask
+ }
+  88 /G58 MSTT31c1f700 AddChar
+/G48 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G48 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FF80
+07FFC0
+0F83E0
+1E01E0
+3C01F0
+3C00F0
+7800F0
+7800F0
+7FFFF0
+FFFFF0
+FFFFF0
+F00000
+F00000
+F00000
+F001C0
+F003C0
+780780
+7C0F80
+3E1F00
+3FFE00
+1FFC00
+07F000
+>} imagemask
+ }
+  72 /G48 MSTT31c1f700 AddChar
+/G42 [23.0 0.0 -3.0 -8.0 21.0 -4.0 ]
+/G42 {
+    24 4 true [1 0 0 -1 3.0 -4.0 ]
+{<FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+>} imagemask
+ }
+  66 /G42 MSTT31c1f700 AddChar
+/G50 [35.0 0.0 1.0 0.0 35.0 23.0 ]
+/G50 {
+    34 23 true [1 0 0 -1 -1.0 23.0 ]
+{<000FC07E00
+0F1FE1FF00
+0F3FF3FF80
+0F71F78F80
+0FC0FE0780
+1F80FC07C0
+1F00F80780
+1F00F80780
+1E00F00780
+1E00F00780
+3E01F00F80
+3C01E00F80
+3C01E00F00
+3C01E00F00
+3C01E00F00
+7C03E01F00
+7803C01E00
+7803C01E00
+7803C01E00
+7803C01E00
+F807C03E00
+F007803C00
+F007803C00
+>} imagemask
+ }
+  80 /G50 MSTT31c1f700 AddChar
+/G11 [12.0 0.0 2.0 0.0 7.0 4.0 ]
+/G11 {
+    5 4 true [1 0 0 -1 -2.0 4.0 ]
+{<78
+78
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1f700 AddChar
+/G57 [12.0 0.0 1.0 0.0 14.0 30.0 ]
+/G57 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0020
+00E0
+03C0
+03C0
+03C0
+03C0
+0780
+0780
+3FF8
+7FF8
+7FF0
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F800
+7F00
+7F00
+3F00
+>} imagemask
+ }
+  87 /G57 MSTT31c1f700 AddChar
+/G05 [15.0 0.0 5.0 19.0 18.0 30.0 ]
+/G05 {
+    13 11 true [1 0 0 -1 -5.0 30.0 ]
+{<3C78
+3C78
+78F0
+78F0
+78F0
+78F0
+70E0
+F1E0
+F1E0
+E1C0
+E1C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1f700 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1027 2140 M 
+(ODQJXDJHBQDPH\021PHW\005)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 54144  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+54144  VM?
+/G0F [12.0 0.0 4.0 -6.0 8.0 4.0 ]
+/G0F {
+    4 10 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+60
+E0
+40
+>} imagemask
+ }
+  15 /G0F MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1421 2140 M 
+5.000 0 3 (\017\003\003HW\003\005FKRSSHU\021FK\005\003ODQFHU\003OD)W 
+6.000 0 3 (\003FRPSLODWLRQ)W 
+; : 0 0 2333 3321 rc 9475  VM?
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G6B [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G6B {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<00F000
+01F800
+03FC00
+079E00
+070E00
+0F0F00
+000000
+000000
+03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  107 /G6B MSTT31c1bd00 AddChar
+/G6A [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G6A {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  106 /G6A MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G4E [21.0 0.0 3.0 0.0 21.0 30.0 ]
+/G4E {
+    18 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F01F00
+F03E00
+F07C00
+F0F800
+F1F000
+F3E000
+F7C000
+FF8000
+FF8000
+FFC000
+FFC000
+FBE000
+F1F000
+F0F000
+F0F800
+F07C00
+F03C00
+F03E00
+F01F00
+F00F00
+F00F80
+F007C0
+>} imagemask
+ }
+  78 /G4E MSTT31c1bd00 AddChar
+/G10 [14.0 0.0 1.0 9.0 12.0 13.0 ]
+/G10 {
+    11 4 true [1 0 0 -1 -1.0 13.0 ]
+{<FFE0
+FFE0
+FFE0
+FFE0
+>} imagemask
+ }
+  16 /G10 MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 2189 M 
+3.000 0 3 (JUkFH\003j\003OD)W 
+4.000 0 3 (\003FRPPDQGH\003\005PDNH\003\020I\003)W 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 12441  VM?
+%%BeginFont: MSTT31c1f700
+27000  VM?
+/MSTT31c1f700 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1f700 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial,Italic) cvn /TrueType 
+F 
+(MSTT31c1f700) cvn
+mF 
+12441  VM?
+/G50 [35.0 0.0 1.0 0.0 35.0 23.0 ]
+/G50 {
+    34 23 true [1 0 0 -1 -1.0 23.0 ]
+{<000FC07E00
+0F1FE1FF00
+0F3FF3FF80
+0F71F78F80
+0FC0FE0780
+1F80FC07C0
+1F00F80780
+1F00F80780
+1E00F00780
+1E00F00780
+3E01F00F80
+3C01E00F80
+3C01E00F00
+3C01E00F00
+3C01E00F00
+7C03E01F00
+7803C01E00
+7803C01E00
+7803C01E00
+7803C01E00
+F807C03E00
+F007803C00
+F007803C00
+>} imagemask
+ }
+  80 /G50 MSTT31c1f700 AddChar
+/G44 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G44 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FFC0
+07FFE0
+0F83E0
+1E00F0
+1E00F0
+3C00F0
+0000F0
+0000F0
+007FF0
+0FFFE0
+3FFFE0
+7F01E0
+7801E0
+F803E0
+F003E0
+F003C0
+F007C0
+F80FC0
+7C3FC0
+7FFFC0
+3FF3C0
+0FC3C0
+>} imagemask
+ }
+  68 /G44 MSTT31c1f700 AddChar
+/G4E [21.0 0.0 1.0 0.0 23.0 30.0 ]
+/G4E {
+    22 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C000
+03C000
+07C000
+078000
+078000
+078000
+078000
+0F8000
+0F0078
+0F00F0
+0F01E0
+0F03C0
+1F0780
+1E0F00
+1E1E00
+1E3C00
+1E7800
+3EF800
+3DFC00
+3FBC00
+3F3E00
+3E1E00
+7C1F00
+780F00
+780F00
+780780
+780780
+F807C0
+F003C0
+F003C0
+>} imagemask
+ }
+  78 /G4E MSTT31c1f700 AddChar
+/G48 [23.0 0.0 2.0 0.0 22.0 23.0 ]
+/G48 {
+    20 23 true [1 0 0 -1 -2.0 23.0 ]
+{<00FE00
+03FF80
+07FFC0
+0F83E0
+1E01E0
+3C01F0
+3C00F0
+7800F0
+7800F0
+7FFFF0
+FFFFF0
+FFFFF0
+F00000
+F00000
+F00000
+F001C0
+F003C0
+780780
+7C0F80
+3E1F00
+3FFE00
+1FFC00
+07F000
+>} imagemask
+ }
+  72 /G48 MSTT31c1f700 AddChar
+/G49 [12.0 0.0 2.0 0.0 17.0 30.0 ]
+/G49 {
+    15 30 true [1 0 0 -1 -2.0 30.0 ]
+{<00FE
+01FE
+03FE
+03FE
+07C0
+0780
+0780
+0780
+3FF8
+7FF8
+7FF0
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  73 /G49 MSTT31c1f700 AddChar
+/G4C [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4C {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+07C0
+0780
+0000
+0000
+0000
+0000
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  76 /G4C MSTT31c1f700 AddChar
+/G4F [9.0 0.0 1.0 0.0 11.0 30.0 ]
+/G4F {
+    10 30 true [1 0 0 -1 -1.0 30.0 ]
+{<03C0
+03C0
+03C0
+0780
+0780
+0780
+0780
+0780
+0F00
+0F00
+0F00
+0F00
+0F00
+1E00
+1E00
+1E00
+1E00
+1E00
+3C00
+3C00
+3C00
+3C00
+3C00
+7800
+7800
+7800
+7800
+7800
+F000
+F000
+>} imagemask
+ }
+  79 /G4F MSTT31c1f700 AddChar
+/G05 [15.0 0.0 5.0 19.0 18.0 30.0 ]
+/G05 {
+    13 11 true [1 0 0 -1 -5.0 30.0 ]
+{<3C78
+3C78
+78F0
+78F0
+78F0
+78F0
+70E0
+F1E0
+F1E0
+E1C0
+E1C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1f700 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+975 2189 M 
+(PDNHILOH\005)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 73094  VM?
+%%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F0) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+73094  VM?
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+/G48 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G48 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  72 /G48 MSTT31c1bd00 AddChar
+/G51 [23.0 0.0 3.0 0.0 20.0 23.0 ]
+/G51 {
+    17 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F800
+F3FE00
+F7FF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  81 /G51 MSTT31c1bd00 AddChar
+/G46 [21.0 0.0 2.0 0.0 21.0 23.0 ]
+/G46 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3F0F80
+3C0780
+7803C0
+7803C0
+F00100
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00180
+F001E0
+7801E0
+7803C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+01F800
+>} imagemask
+ }
+  70 /G46 MSTT31c1bd00 AddChar
+/G4B [23.0 0.0 3.0 0.0 20.0 30.0 ]
+/G4B {
+    17 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F1F800
+F7FE00
+FFFF00
+FE1F00
+FC0F80
+F80780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+>} imagemask
+ }
+  75 /G4B MSTT31c1bd00 AddChar
+/G52 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G52 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03F800
+0FFE00
+1FFF00
+3E0F80
+3C0780
+7803C0
+7803C0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803C0
+7803C0
+3C0780
+3E0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  82 /G52 MSTT31c1bd00 AddChar
+/G4C [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4C {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+00
+00
+00
+00
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  76 /G4C MSTT31c1bd00 AddChar
+/G56 [20.0 0.0 1.0 0.0 19.0 23.0 ]
+/G56 {
+    18 23 true [1 0 0 -1 -1.0 23.0 ]
+{<07F800
+1FFE00
+3FFF00
+3E0F80
+780780
+780300
+780000
+7C0000
+7F0000
+3FE000
+1FFC00
+07FF00
+00FF80
+001FC0
+0007C0
+0003C0
+6003C0
+F003C0
+F80780
+7C0F80
+3FFF00
+1FFE00
+07F800
+>} imagemask
+ }
+  86 /G56 MSTT31c1bd00 AddChar
+/G44 [23.0 0.0 2.0 0.0 21.0 23.0 ]
+/G44 {
+    19 23 true [1 0 0 -1 -2.0 23.0 ]
+{<03FC00
+0FFF00
+1FFF80
+3E0F80
+3C07C0
+7C03C0
+7803C0
+1803C0
+0003C0
+000FC0
+03FFC0
+1FFFC0
+3FFBC0
+7F03C0
+F803C0
+F003C0
+F003C0
+F007C0
+F80FC0
+7C1FC0
+7FFBC0
+3FF3C0
+0FC1E0
+>} imagemask
+ }
+  68 /G44 MSTT31c1bd00 AddChar
+/G57 [12.0 0.0 0.0 0.0 11.0 30.0 ]
+/G57 {
+    11 30 true [1 0 0 -1 0.0 30.0 ]
+{<0000
+0600
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+FFC0
+FFC0
+FFC0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1FC0
+0FE0
+07E0
+>} imagemask
+ }
+  87 /G57 MSTT31c1bd00 AddChar
+/G4F [10.0 0.0 3.0 0.0 7.0 30.0 ]
+/G4F {
+    4 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  79 /G4F MSTT31c1bd00 AddChar
+/G49 [13.0 0.0 1.0 0.0 14.0 30.0 ]
+/G49 {
+    13 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01F8
+07F8
+0FF0
+1F00
+1E00
+1E00
+1E00
+1E00
+FFE0
+FFE0
+FFE0
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+1E00
+>} imagemask
+ }
+  73 /G49 MSTT31c1bd00 AddChar
+/G55 [14.0 0.0 3.0 0.0 15.0 23.0 ]
+/G55 {
+    12 23 true [1 0 0 -1 -3.0 23.0 ]
+{<03C0
+E7F0
+EFF0
+FC60
+F820
+F800
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+F000
+>} imagemask
+ }
+  85 /G55 MSTT31c1bd00 AddChar
+/G50 [36.0 0.0 3.0 0.0 33.0 23.0 ]
+/G50 {
+    30 23 true [1 0 0 -1 -3.0 23.0 ]
+{<00F80FC0
+F3FE3FF0
+F7FF7FF8
+FE1FF0F8
+FC0FE07C
+F807C03C
+F807803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+F007803C
+>} imagemask
+ }
+  80 /G50 MSTT31c1bd00 AddChar
+/G4E [21.0 0.0 3.0 0.0 21.0 30.0 ]
+/G4E {
+    18 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F01F00
+F03E00
+F07C00
+F0F800
+F1F000
+F3E000
+F7C000
+FF8000
+FF8000
+FFC000
+FFC000
+FBE000
+F1F000
+F0F000
+F0F800
+F07C00
+F03C00
+F03E00
+F01F00
+F00F00
+F00F80
+F007C0
+>} imagemask
+ }
+  78 /G4E MSTT31c1bd00 AddChar
+/G47 [23.0 0.0 1.0 0.0 20.0 30.0 ]
+/G47 {
+    19 30 true [1 0 0 -1 -1.0 30.0 ]
+{<0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+03F1E0
+0FFDE0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+0FFDE0
+03F1E0
+>} imagemask
+ }
+  71 /G47 MSTT31c1bd00 AddChar
+/G53 [23.0 0.0 3.0 -8.0 22.0 23.0 ]
+/G53 {
+    19 31 true [1 0 0 -1 -3.0 23.0 ]
+{<01F800
+F3FE00
+F7FF00
+FF0F80
+FC0780
+FC03C0
+F803C0
+F801E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001C0
+F803C0
+F803C0
+FC0780
+FE0F80
+FFFF00
+F7FC00
+F1F000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+F00000
+>} imagemask
+ }
+  83 /G53 MSTT31c1bd00 AddChar
+/G70 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G70 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<003E00
+007C00
+007800
+00F000
+00E000
+01C000
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  112 /G70 MSTT31c1bd00 AddChar
+/G58 [23.0 0.0 3.0 0.0 20.0 22.0 ]
+/G58 {
+    17 22 true [1 0 0 -1 -3.0 22.0 ]
+{<F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00780
+F00F80
+F81F80
+7C3F80
+7FF780
+3FE780
+0F8780
+>} imagemask
+ }
+  88 /G58 MSTT31c1bd00 AddChar
+/G5C [21.0 0.0 1.0 -8.0 20.0 22.0 ]
+/G5C {
+    19 30 true [1 0 0 -1 -1.0 22.0 ]
+{<F001E0
+7801E0
+7803C0
+7C03C0
+3C03C0
+3C0780
+3E0780
+1E0780
+1E0F00
+1F0F00
+0F0F00
+0F9E00
+079E00
+079E00
+07DE00
+03DC00
+03FC00
+03FC00
+01F800
+01F800
+00F800
+00F000
+00F000
+01F000
+01E000
+03E000
+07C000
+7F8000
+3F8000
+3E0000
+>} imagemask
+ }
+  92 /G5C MSTT31c1bd00 AddChar
+/G71 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G71 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<07C000
+03E000
+01E000
+00F000
+007000
+003800
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  113 /G71 MSTT31c1bd00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1145 2189 M 
+4.000 0 3 (\003HQ\003FKRLVLVVDQW\003OH\003ILFKLHU\003PDNHILLOH\003DGDSWp\003DX\003V\\VWqPH)W 
+; : 0 0 2333 3321 rc 10828  VM?
+/GA9 [9.0 0.0 3.0 20.0 7.0 30.0 ]
+/GA9 {
+    4 10 true [1 0 0 -1 -3.0 30.0 ]
+{<F0
+F0
+F0
+F0
+30
+30
+30
+70
+E0
+40
+>} imagemask
+ }
+  169 /GA9 MSTT31c1bd00 AddChar
+/G5B [22.0 0.0 0.0 0.0 22.0 22.0 ]
+/G5B {
+    22 22 true [1 0 0 -1 0.0 22.0 ]
+{<7C0078
+3E00F8
+1F01F0
+0F03E0
+0F83C0
+07C7C0
+03EF80
+01FF00
+01FE00
+00FC00
+007C00
+00FC00
+01FE00
+01FF00
+03EF00
+07CF80
+0F87C0
+1F03E0
+1E01E0
+3E01F0
+7C00F8
+F8007C
+>} imagemask
+ }
+  91 /G5B MSTT31c1bd00 AddChar
+/G11 [12.0 0.0 4.0 0.0 8.0 4.0 ]
+/G11 {
+    4 4 true [1 0 0 -1 -4.0 4.0 ]
+{<F0
+F0
+F0
+F0
+>} imagemask
+ }
+  17 /G11 MSTT31c1bd00 AddChar
+/G2C [12.0 0.0 4.0 0.0 8.0 30.0 ]
+/G2C {
+    4 30 true [1 0 0 -1 -4.0 30.0 ]
+{<F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+F0
+>} imagemask
+ }
+  44 /G2C MSTT31c1bd00 AddChar
+/G72 [23.0 0.0 2.0 0.0 21.0 31.0 ]
+/G72 {
+    19 31 true [1 0 0 -1 -2.0 31.0 ]
+{<00F000
+01F800
+03FC00
+079E00
+070E00
+0F0F00
+000000
+000000
+03F800
+0FFE00
+1FFF00
+3E0F80
+3C07C0
+7803C0
+7801C0
+F001E0
+F001E0
+FFFFE0
+FFFFE0
+FFFFE0
+F00000
+F00000
+F00000
+F80080
+7801E0
+7801C0
+3C03C0
+3F0F80
+1FFF00
+0FFE00
+03F800
+>} imagemask
+ }
+  114 /G72 MSTT31c1bd00 AddChar
+/G4A [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G4A {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFFE0
+3E0FE0
+3C07E0
+7803E0
+7803E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3E0FE0
+1FFFE0
+0FFDE0
+03F1E0
+0001E0
+6001E0
+7803C0
+7C03C0
+3E0F80
+3FFF80
+0FFE00
+03F800
+>} imagemask
+ }
+  74 /G4A MSTT31c1bd00 AddChar
+/G54 [23.0 0.0 1.0 -8.0 20.0 23.0 ]
+/G54 {
+    19 31 true [1 0 0 -1 -1.0 23.0 ]
+{<03F000
+0FF9E0
+1FFDE0
+3E1FE0
+3C07E0
+7803E0
+7803E0
+F003E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+F001E0
+7803E0
+7803E0
+3C07E0
+3F0FE0
+1FFFE0
+07FDE0
+03F1E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+0001E0
+>} imagemask
+ }
+  84 /G54 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 2238 M 
+1.000 0 3 (G\251H[SORLWDWLRQ\021\003,O\003SHXW\003DXVVL\003rWUH\003QpFHVVDLUH\003GH\003PRGLILHU\003OHV\003IODJV\003GH\003FRPSLODWLRQ\003TXL\003VRQW\003LQGLTXpV)W 
+; : 0 0 2333 3321 rc 2707  VM?
+/G05 [15.0 0.0 2.0 19.0 13.0 30.0 ]
+/G05 {
+    11 11 true [1 0 0 -1 -2.0 30.0 ]
+{<F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+F1E0
+60C0
+60C0
+60C0
+>} imagemask
+ }
+  5 /G05 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 2286 M 
+(GDQV\003OH\003ILFKLHU\003\005PDNHILOH\021LQF\005\003GDQV\003OH\003UpSHUWRLUH\003PHWD\021)S 
+; : 0 0 2333 3321 rc 2707  VM?
+/G38 [30.0 0.0 3.0 0.0 27.0 30.0 ]
+/G38 {
+    24 30 true [1 0 0 -1 -3.0 30.0 ]
+{<F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0000F
+F0001F
+78001E
+78001E
+7C003E
+3F00FC
+3FFFF8
+1FFFF0
+07FFE0
+00FF00
+>} imagemask
+ }
+  56 /G38 MSTT31c1bd00 AddChar
+/G59 [23.0 0.0 1.0 0.0 22.0 22.0 ]
+/G59 {
+    21 22 true [1 0 0 -1 -1.0 22.0 ]
+{<F00078
+7800F0
+7800F0
+7800F0
+3C01E0
+3C01E0
+1E03C0
+1E03C0
+1E03C0
+0F0780
+0F0780
+0F0780
+078F00
+078F00
+03CE00
+03DE00
+03DE00
+01DC00
+01FC00
+00F800
+00F800
+00F800
+>} imagemask
+ }
+  89 /G59 MSTT31c1bd00 AddChar
+0 0 0 sco F0_42
+Ji 
+368 2384 M 
+(8Q\003PLQL\003H[HPSOH\003VH\003WURXYH\003GDQV\003OH\003UpSHUWRLUH\003FDOF\021\003,O\003FRGH\003XQH\003FDOFXODWULFH\021)S 
+; 
+LH 
+savelevel1 restore 
+pagesave restore
+
+(%%[ Page: 1 ]%%)  =
+%%PageTrailer
+
+%%Page: 2 2
+%%BeginPageSetup
+[{
+%%BeginFeature: *Resolution 300dpi
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *Duplex 
+
+%%EndFeature
+} stopped cleartomark
+userdict begin /pagesave save def end mysetup concat colspRefresh : 1.000 1.000 1.000 sco 0 0 2479 3508 rf ; 
+userdict begin /savelevel1 save def end
+%%EndPageSetup
+
+: 0 0 2333 3321 rc %%BeginFont: MSTT31c1ac00
+27000  VM?
+/MSTT31c1ac00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1ac00 GreNewFont
+%%EndFont
+(F0) cvn
+0.929 
+ (Arial,Bold) cvn /TrueType 
+F 
+(MSTT31c1ac00) cvn
+mF 
+9878  VM?
+/G30 [35.0 0.0 3.0 0.0 32.0 30.0 ]
+/G30 {
+    29 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FF800FF8
+FF800FF8
+FF800FF8
+FF800FF8
+FFC01FF8
+FFC01FF8
+FBC01EF8
+FBE03EF8
+FBE03EF8
+FBE03EF8
+F9E03CF8
+F9F07CF8
+F9F07CF8
+F8F078F8
+F8F078F8
+F8F8F8F8
+F8F8F8F8
+F878F0F8
+F878F0F8
+F87DF0F8
+F83DE0F8
+F83DE0F8
+F83FE0F8
+F81FC0F8
+F81FC0F8
+F81FC0F8
+F81FC0F8
+F80F80F8
+F80F80F8
+F80F80F8
+>} imagemask
+ }
+  48 /G30 MSTT31c1ac00 AddChar
+/G28 [28.0 0.0 3.0 0.0 26.0 30.0 ]
+/G28 {
+    23 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FFFFFC
+FFFFFC
+FFFFFC
+FFFFFC
+FFFFFC
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FFFFF8
+FFFFF8
+FFFFF8
+FFFFF8
+FFFFF8
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FC0000
+FFFFFE
+FFFFFE
+FFFFFE
+FFFFFE
+FFFFFE
+>} imagemask
+ }
+  40 /G28 MSTT31c1ac00 AddChar
+/G37 [27.0 0.0 2.0 0.0 26.0 30.0 ]
+/G37 {
+    24 30 true [1 0 0 -1 -2.0 30.0 ]
+{<FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+FFFFFF
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+007E00
+>} imagemask
+ }
+  55 /G37 MSTT31c1ac00 AddChar
+/G24 [29.0 0.0 0.0 0.0 29.0 30.0 ]
+/G24 {
+    29 30 true [1 0 0 -1 0.0 30.0 ]
+{<001FC000
+003FE000
+003FE000
+003FE000
+007FF000
+007DF000
+00FDF800
+00FDF800
+00F8F800
+01F8FC00
+01F8FC00
+01F07C00
+03F07E00
+03F07E00
+03E03E00
+07E03F00
+07E03F00
+0FC01F00
+0FFFFF80
+0FFFFF80
+1FFFFFC0
+1FFFFFC0
+1FFFFFC0
+3F0007E0
+3F0007E0
+3F0007E0
+7E0003F0
+7E0003F0
+7E0003F0
+FE0001F8
+>} imagemask
+ }
+  36 /G24 MSTT31c1ac00 AddChar
+/G2A [33.0 0.0 2.0 0.0 30.0 30.0 ]
+/G2A {
+    28 30 true [1 0 0 -1 -2.0 30.0 ]
+{<003FF000
+00FFFC00
+03FFFF00
+07FFFF80
+0FFFFFC0
+1FF03FE0
+3FC00FE0
+3F0007F0
+7F0007F0
+7E000380
+7E000000
+FC000000
+FC000000
+FC000000
+FC01FFF0
+FC01FFF0
+FC01FFF0
+FC01FFF0
+FC01FFF0
+7E0003F0
+7E0003F0
+7F0003F0
+3F8003F0
+3FC007F0
+1FF03FF0
+0FFFFFF0
+07FFFFE0
+03FFFF80
+00FFFE00
+001FF000
+>} imagemask
+ }
+  42 /G2A MSTT31c1ac00 AddChar
+/G31 [30.0 0.0 3.0 0.0 27.0 30.0 ]
+/G31 {
+    24 30 true [1 0 0 -1 -3.0 30.0 ]
+{<FE001F
+FF001F
+FF001F
+FF801F
+FF801F
+FFC01F
+FFC01F
+FFE01F
+FBE01F
+FBF01F
+F9F01F
+F9F81F
+F8F81F
+F8FC1F
+F87C1F
+F87E1F
+F83E1F
+F83F1F
+F81F1F
+F81F9F
+F80F9F
+F80FDF
+F807DF
+F807FF
+F803FF
+F803FF
+F801FF
+F801FF
+F800FF
+F800FF
+>} imagemask
+ }
+  49 /G31 MSTT31c1ac00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+1089 87 M 
+(0\(7$*\(1)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c1bd00
+27000  VM?
+/MSTT31c1bd00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c1bd00 GreNewFont
+%%EndFont
+(F2) cvn
+0.905 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c1bd00) cvn
+mF 
+2707  VM?
+/G10 [14.0 0.0 1.0 9.0 12.0 13.0 ]
+/G10 {
+    11 4 true [1 0 0 -1 -1.0 13.0 ]
+{<FFE0
+FFE0
+FFE0
+FFE0
+>} imagemask
+ }
+  16 /G10 MSTT31c1bd00 AddChar
+/G03 [12.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c1bd00 AddChar
+0 0 0 sco (F2_42) cvn
+F2
+42 
+xF 
+F2_42
+Ji 
+1156 2963 M 
+(\020\003)S 
+; : 0 0 2333 3321 rc 1353  VM?
+/G15 [23.0 0.0 1.0 0.0 21.0 30.0 ]
+/G15 {
+    20 30 true [1 0 0 -1 -1.0 30.0 ]
+{<01FC00
+07FF00
+1FFFC0
+1FFFC0
+3F07E0
+3C01F0
+7C01F0
+7800F0
+1800F0
+0000F0
+0000F0
+0001E0
+0001E0
+0003C0
+0007C0
+000F80
+001F00
+007E00
+00FC00
+01F800
+03E000
+0FC000
+1F8000
+1F0000
+3E0000
+7C0000
+7FFFF0
+FFFFF0
+FFFFF0
+FFFFF0
+>} imagemask
+ }
+  21 /G15 MSTT31c1bd00 AddChar
+0 0 0 sco F2_42
+Ji 
+1182 2963 M 
+(\025)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F2_42
+Ji 
+1205 2963 M 
+(\003\020)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c20200
+27000  VM?
+/MSTT31c20200 [75.0 0 0 0 0 0] [-75.0 -75.0 75.0 75.0 ] [1 75 div 0 0 1 75 div 0 0] /MSTT31c20200 GreNewFont
+%%EndFont
+(F4) cvn
+0.893 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c20200) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 32270  VM?
+%%BeginFont: MSTT31c20200
+27000  VM?
+/MSTT31c20200 [75.0 0 0 0 0 0] [-75.0 -75.0 75.0 75.0 ] [1 75 div 0 0 1 75 div 0 0] /MSTT31c20200 GreNewFont
+%%EndFont
+(F0) cvn
+0.893 
+ (Arial) cvn /TrueType 
+F 
+(MSTT31c20200) cvn
+mF 
+32270  VM?
+/G37 [45.0 0.0 1.0 0.0 44.0 54.0 ]
+/G37 {
+    43 54 true [1 0 0 -1 -1.0 54.0 ]
+{<FFFFFFFFFFE0
+FFFFFFFFFFE0
+FFFFFFFFFFE0
+FFFFFFFFFFE0
+FFFFFFFFFFE0
+FFFFFFFFFFE0
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+00003F800000
+>} imagemask
+ }
+  55 /G37 MSTT31c20200 AddChar
+/G24 [50.0 0.0 0.0 0.0 49.0 54.0 ]
+/G24 {
+    49 54 true [1 0 0 -1 0.0 54.0 ]
+{<00000FF8000000
+00000FF8000000
+00001FFC000000
+00001FFC000000
+00001FFC000000
+00003FFE000000
+00003F7E000000
+00003F7E000000
+00007F7F000000
+00007E3F000000
+0000FE3F800000
+0000FC1F800000
+0000FC1F800000
+0001FC1FC00000
+0001F80FC00000
+0003F80FE00000
+0003F80FE00000
+0003F007E00000
+0007F007F00000
+0007F007F00000
+0007E003F00000
+000FE003F80000
+000FC001F80000
+001FC001FC0000
+001FC001FC0000
+001F8000FC0000
+003F8000FE0000
+003F8000FE0000
+007F00007F0000
+007F00007F0000
+007F00007F0000
+00FFFFFFFF8000
+00FFFFFFFF8000
+00FFFFFFFF8000
+01FFFFFFFFC000
+01FFFFFFFFC000
+03FFFFFFFFE000
+03F800000FE000
+03F800000FE000
+07F0000007F000
+07F0000007F000
+0FF0000007F800
+0FE0000003F800
+0FE0000003F800
+1FC0000001FC00
+1FC0000001FC00
+1FC0000001FC00
+3F80000000FE00
+3F80000000FE00
+7F80000000FF00
+7F000000007F00
+7F000000007F00
+FF000000007F80
+FE000000003F80
+>} imagemask
+ }
+  36 /G24 MSTT31c20200 AddChar
+/G25 [50.0 0.0 6.0 0.0 46.0 54.0 ]
+/G25 {
+    40 54 true [1 0 0 -1 -6.0 54.0 ]
+{<FFFFFFC000
+FFFFFFFC00
+FFFFFFFF00
+FFFFFFFF80
+FFFFFFFFC0
+FFFFFFFFE0
+FE00007FF0
+FE00000FF0
+FE000007F8
+FE000003F8
+FE000003FC
+FE000001FC
+FE000001FC
+FE000001FC
+FE000001FC
+FE000001FC
+FE000001FC
+FE000001F8
+FE000003F8
+FE000003F0
+FE000007F0
+FE00001FE0
+FE00007FC0
+FFFFFFFF80
+FFFFFFFE00
+FFFFFFFF00
+FFFFFFFFC0
+FFFFFFFFE0
+FFFFFFFFF0
+FE00003FF8
+FE000007FC
+FE000003FC
+FE000001FE
+FE000000FE
+FE000000FF
+FE0000007F
+FE0000007F
+FE0000007F
+FE0000007F
+FE0000007F
+FE0000007F
+FE0000007F
+FE000000FE
+FE000000FE
+FE000001FE
+FE000003FC
+FE000007FC
+FE00003FF8
+FFFFFFFFF0
+FFFFFFFFF0
+FFFFFFFFC0
+FFFFFFFF80
+FFFFFFFE00
+FFFFFFE000
+>} imagemask
+ }
+  37 /G25 MSTT31c20200 AddChar
+/G2F [42.0 0.0 6.0 0.0 40.0 54.0 ]
+/G2F {
+    34 54 true [1 0 0 -1 -6.0 54.0 ]
+{<FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+FFFFFFFFC0
+>} imagemask
+ }
+  47 /G2F MSTT31c20200 AddChar
+/G28 [50.0 0.0 6.0 0.0 46.0 54.0 ]
+/G28 {
+    40 54 true [1 0 0 -1 -6.0 54.0 ]
+{<FFFFFFFFFE
+FFFFFFFFFE
+FFFFFFFFFE
+FFFFFFFFFE
+FFFFFFFFFE
+FFFFFFFFFE
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FFFFFFFFF8
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FE00000000
+FFFFFFFFFF
+FFFFFFFFFF
+FFFFFFFFFF
+FFFFFFFFFF
+FFFFFFFFFF
+FFFFFFFFFF
+>} imagemask
+ }
+  40 /G28 MSTT31c20200 AddChar
+/G03 [21.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c20200 AddChar
+/G27 [54.0 0.0 6.0 0.0 50.0 54.0 ]
+/G27 {
+    44 54 true [1 0 0 -1 -6.0 54.0 ]
+{<FFFFFFC00000
+FFFFFFFC0000
+FFFFFFFF0000
+FFFFFFFFC000
+FFFFFFFFE000
+FFFFFFFFF800
+FE00007FFC00
+FE00000FFC00
+FE000003FE00
+FE000001FF00
+FE000000FF00
+FE0000007F80
+FE0000003F80
+FE0000003FC0
+FE0000001FC0
+FE0000001FC0
+FE0000000FE0
+FE0000000FE0
+FE0000000FE0
+FE0000000FE0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE00000007F0
+FE0000000FF0
+FE0000000FE0
+FE0000000FE0
+FE0000000FE0
+FE0000001FE0
+FE0000001FC0
+FE0000001FC0
+FE0000003FC0
+FE0000003F80
+FE0000007F80
+FE000000FF00
+FE000001FF00
+FE000003FE00
+FE00000FFC00
+FE00007FF800
+FFFFFFFFF000
+FFFFFFFFE000
+FFFFFFFFC000
+FFFFFFFF0000
+FFFFFFFC0000
+FFFFFFC00000
+>} imagemask
+ }
+  39 /G27 MSTT31c20200 AddChar
+/G36 [50.0 0.0 4.0 -1.0 46.0 55.0 ]
+/G36 {
+    42 56 true [1 0 0 -1 -4.0 55.0 ]
+{<0001FFE00000
+000FFFFC0000
+003FFFFF8000
+00FFFFFFC000
+01FFFFFFF000
+03FFFFFFF800
+07FF003FFC00
+0FF80007FC00
+0FF00003FE00
+1FE00001FE00
+1FC00000FF00
+3FC000007F00
+3F8000007F80
+3F8000003F80
+3F8000003F80
+3F8000003F80
+3F8000000000
+3FC000000000
+3FC000000000
+1FE000000000
+1FF800000000
+0FFF00000000
+0FFFE0000000
+07FFFE000000
+03FFFFE00000
+00FFFFFC0000
+007FFFFF8000
+001FFFFFE000
+0003FFFFF000
+00007FFFFC00
+000007FFFE00
+0000007FFE00
+0000000FFF00
+00000001FF80
+00000000FF80
+000000007F80
+000000003FC0
+FE0000001FC0
+FE0000001FC0
+FE0000001FC0
+FF0000001FC0
+7F0000001FC0
+7F0000001FC0
+7F8000003FC0
+3F8000003F80
+3FC000007F80
+1FE000007F00
+1FF80001FF00
+0FFE0003FE00
+07FFC01FFC00
+03FFFFFFFC00
+01FFFFFFF000
+00FFFFFFE000
+003FFFFF8000
+000FFFFE0000
+0000FFF00000
+>} imagemask
+ }
+  54 /G36 MSTT31c20200 AddChar
+/G30 [61.0 0.0 5.0 0.0 56.0 54.0 ]
+/G30 {
+    51 54 true [1 0 0 -1 -5.0 54.0 ]
+{<FFE0000000FFE0
+FFE0000000FFE0
+FFF0000001FFE0
+FFF0000001FFE0
+FFF0000001FFE0
+FFF8000003FFE0
+FFF8000003FFE0
+FFF8000003FFE0
+FFFC000007FFE0
+FEFC000007EFE0
+FEFC000007EFE0
+FEFE00000FEFE0
+FE7E00000FCFE0
+FE7E00000FCFE0
+FE7F00001FCFE0
+FE3F00001F8FE0
+FE3F00001F8FE0
+FE3F80001F8FE0
+FE1F80003F0FE0
+FE1F80003F0FE0
+FE1F80003F0FE0
+FE0FC0007E0FE0
+FE0FC0007E0FE0
+FE0FC0007E0FE0
+FE07E000FC0FE0
+FE07E000FC0FE0
+FE07E000FC0FE0
+FE07F001FC0FE0
+FE03F001F80FE0
+FE03F001F80FE0
+FE03F803F80FE0
+FE01F803F00FE0
+FE01F803F00FE0
+FE01FC07F00FE0
+FE00FC07E00FE0
+FE00FC07E00FE0
+FE00FE0FE00FE0
+FE007E0FC00FE0
+FE007E0FC00FE0
+FE007F1FC00FE0
+FE003F1F800FE0
+FE003F1F800FE0
+FE003F1F800FE0
+FE001FBF000FE0
+FE001FBF000FE0
+FE001FBF000FE0
+FE001FFF000FE0
+FE000FFE000FE0
+FE000FFE000FE0
+FE000FFE000FE0
+FE0007FC000FE0
+FE0007FC000FE0
+FE0007FC000FE0
+FE0003F8000FE0
+>} imagemask
+ }
+  48 /G30 MSTT31c20200 AddChar
+/G2C [21.0 0.0 7.0 0.0 14.0 54.0 ]
+/G2C {
+    7 54 true [1 0 0 -1 -7.0 54.0 ]
+{<FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+FE
+>} imagemask
+ }
+  44 /G2C MSTT31c20200 AddChar
+/G35 [54.0 0.0 6.0 0.0 52.0 54.0 ]
+/G35 {
+    46 54 true [1 0 0 -1 -6.0 54.0 ]
+{<FFFFFFFC0000
+FFFFFFFFC000
+FFFFFFFFF000
+FFFFFFFFF800
+FFFFFFFFFC00
+FFFFFFFFFE00
+FE00000FFF00
+FE000001FF00
+FE000000FF80
+FE0000007F80
+FE0000003FC0
+FE0000003FC0
+FE0000001FC0
+FE0000001FC0
+FE0000001FC0
+FE0000001FC0
+FE0000001FC0
+FE0000001FC0
+FE0000003F80
+FE0000003F80
+FE0000007F80
+FE000000FF00
+FE000003FF00
+FE00000FFE00
+FFFFFFFFFC00
+FFFFFFFFF800
+FFFFFFFFE000
+FFFFFFFF8000
+FFFFFFFC0000
+FFFFFFF00000
+FE000FFC0000
+FE0003FE0000
+FE0001FF0000
+FE0000FF8000
+FE00007F8000
+FE00003FC000
+FE00001FE000
+FE00001FF000
+FE00000FF000
+FE000007F800
+FE000007F800
+FE000003FC00
+FE000001FE00
+FE000001FE00
+FE000000FF00
+FE000000FF00
+FE0000007F80
+FE0000003FC0
+FE0000003FC0
+FE0000001FE0
+FE0000001FE0
+FE0000000FF0
+FE00000007F8
+FE00000007F8
+>} imagemask
+ }
+  53 /G35 MSTT31c20200 AddChar
+0 0 0 sco (F0_75) cvn
+F0
+75 
+xF 
+F0_75
+Ji 
+368 286 M 
+(7$%/\(\003'\(6\0030$7,\(5\(6)S 
+; : 0 0 2333 3321 rc %%BeginFont: MSTT31c20d00
+27000  VM?
+/MSTT31c20d00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c20d00 GreNewFont
+%%EndFont
+(F2) cvn
+0.929 
+ (Times New Roman,Bold) cvn /TrueType 
+F 
+(MSTT31c20d00) cvn
+mF 
+savelevel1 restore 
+userdict begin /savelevel1 save def end
+: 0 0 0 sco 1 Lc 1 Lj solid 0 0 2333 3321 rc 47001  VM?
+%%BeginFont: MSTT31c20d00
+27000  VM?
+/MSTT31c20d00 [42.0 0 0 0 0 0] [-42.0 -42.0 42.0 42.0 ] [1 42 div 0 0 1 42 div 0 0] /MSTT31c20d00 GreNewFont
+%%EndFont
+(F0) cvn
+0.929 
+ (Times New Roman,Bold) cvn /TrueType 
+F 
+(MSTT31c20d00) cvn
+mF 
+47001  VM?
+/G14 [21.0 0.0 3.0 0.0 18.0 28.0 ]
+/G14 {
+    15 28 true [1 0 0 -1 -3.0 28.0 ]
+{<0060
+01E0
+07E0
+1FE0
+7FE0
+CFE0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+07E0
+0FF0
+FFFE
+>} imagemask
+ }
+  20 /G14 MSTT31c20d00 AddChar
+/G11 [11.0 0.0 1.0 -1.0 8.0 6.0 ]
+/G11 {
+    7 7 true [1 0 0 -1 -1.0 6.0 ]
+{<38
+7C
+FE
+FE
+FE
+7C
+38
+>} imagemask
+ }
+  17 /G11 MSTT31c20d00 AddChar
+/G03 [11.0 0.0 0.0 0.0 0.0 0.0 ]
+/G03 {
+}
+  3 /G03 MSTT31c20d00 AddChar
+/G27 [30.0 0.0 1.0 0.0 28.0 28.0 ]
+/G27 {
+    27 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFF8000
+1FFFF000
+0FE1FC00
+0FE0FE00
+0FE07F00
+0FE07F80
+0FE03F80
+0FE03FC0
+0FE03FC0
+0FE01FC0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FE0
+0FE01FC0
+0FE01FC0
+0FE03FC0
+0FE03F80
+0FE03F80
+0FE07F00
+0FE0FE00
+0FE1FC00
+1FFFF000
+FFFF8000
+>} imagemask
+ }
+  39 /G27 MSTT31c20d00 AddChar
+/G28 [28.0 0.0 1.0 0.0 26.0 28.0 ]
+/G28 {
+    25 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFFFE00
+1FFFFE00
+0FE03E00
+0FE01E00
+0FE00E00
+0FE00600
+0FE08600
+0FE08200
+0FE08200
+0FE18000
+0FE18000
+0FE18000
+0FE78000
+0FFF8000
+0FFF8000
+0FE78000
+0FE38000
+0FE18000
+0FE18000
+0FE08080
+0FE08080
+0FE08180
+0FE00180
+0FE00300
+0FE00700
+0FF01F00
+1FFFFF00
+FFFFFF00
+>} imagemask
+ }
+  40 /G28 MSTT31c20d00 AddChar
+/G36 [23.0 0.0 2.0 -1.0 21.0 29.0 ]
+/G36 {
+    19 30 true [1 0 0 -1 -2.0 29.0 ]
+{<07E080
+1FF880
+3C1F80
+780780
+700380
+F00180
+F00180
+F80080
+FC0080
+FE0000
+FF8000
+7FE000
+7FF800
+3FFE00
+1FFF00
+0FFF80
+03FFC0
+00FFC0
+003FE0
+000FE0
+8007E0
+8003E0
+C001E0
+C001E0
+E001C0
+F001C0
+F80380
+FE0700
+C7FE00
+81F800
+>} imagemask
+ }
+  54 /G36 MSTT31c20d00 AddChar
+/G26 [30.0 0.0 2.0 -1.0 28.0 29.0 ]
+/G26 {
+    26 30 true [1 0 0 -1 -2.0 29.0 ]
+{<001FE040
+007FFCC0
+01FC1FC0
+07F007C0
+0FE003C0
+0FC001C0
+1FC000C0
+3F8000C0
+3F800040
+7F800040
+7F000000
+7F000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF000000
+7F000000
+7F800000
+7F800000
+3F800000
+3FC00080
+1FC00080
+0FE00180
+07F00700
+03F81E00
+00FFF800
+003FE000
+>} imagemask
+ }
+  38 /G26 MSTT31c20d00 AddChar
+/G35 [30.0 0.0 1.0 0.0 31.0 28.0 ]
+/G35 {
+    30 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFFF000
+1FFFFE00
+0FE0FF00
+0FE03F80
+0FE03F80
+0FE01FC0
+0FE01FC0
+0FE01FC0
+0FE01FC0
+0FE01FC0
+0FE03F80
+0FE03F00
+0FE0FE00
+0FFFF800
+0FFFF000
+0FE7F800
+0FE3FC00
+0FE3FC00
+0FE1FE00
+0FE1FE00
+0FE0FF00
+0FE07F80
+0FE07F80
+0FE03FC0
+0FE03FC0
+0FE01FE0
+1FF00FF0
+FFFE0FFC
+>} imagemask
+ }
+  53 /G35 MSTT31c20d00 AddChar
+/G2C [16.0 0.0 1.0 0.0 16.0 28.0 ]
+/G2C {
+    15 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFE
+1FF0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+0FE0
+1FF0
+FFFE
+>} imagemask
+ }
+  44 /G2C MSTT31c20d00 AddChar
+/G33 [25.0 0.0 0.0 0.0 24.0 28.0 ]
+/G33 {
+    24 28 true [1 0 0 -1 0.0 28.0 ]
+{<FFFFC0
+1FFFF0
+0FE3FC
+0FE0FE
+0FE0FE
+0FE07F
+0FE07F
+0FE07F
+0FE07F
+0FE07F
+0FE07F
+0FE0FE
+0FE0FE
+0FE3FC
+0FFFF0
+0FFFC0
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+0FE000
+1FF000
+FFFE00
+>} imagemask
+ }
+  51 /G33 MSTT31c20d00 AddChar
+/G37 [28.0 0.0 2.0 0.0 27.0 28.0 ]
+/G37 {
+    25 28 true [1 0 0 -1 -2.0 28.0 ]
+{<FFFFFF80
+FFFFFF80
+F07F0780
+E07F0380
+C07F0180
+C07F0180
+807F0080
+807F0080
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+007F0000
+00FF8000
+07FFF000
+>} imagemask
+ }
+  55 /G37 MSTT31c20d00 AddChar
+/G32 [33.0 0.0 2.0 -1.0 31.0 29.0 ]
+/G32 {
+    29 30 true [1 0 0 -1 -2.0 29.0 ]
+{<003FE000
+01FFFC00
+03F07E00
+07E03F00
+0FC01F80
+1FC00FC0
+3F800FE0
+3F800FE0
+7F800FF0
+7F0007F0
+7F0007F0
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+FF0007F8
+7F0007F0
+7F0007F0
+7F800FF0
+3F800FE0
+3F800FE0
+1FC01FC0
+0FC01F80
+07E03F00
+03F07E00
+00FFF800
+003FE000
+>} imagemask
+ }
+  50 /G32 MSTT31c20d00 AddChar
+/G31 [30.0 0.0 1.0 -1.0 29.0 28.0 ]
+/G31 {
+    28 29 true [1 0 0 -1 -1.0 28.0 ]
+{<FFC03FF0
+3FE00780
+1FF00300
+0FF00300
+0FF80300
+0FFC0300
+0FFE0300
+0DFE0300
+0CFF0300
+0CFF8300
+0C7FC300
+0C3FC300
+0C1FE300
+0C1FF300
+0C0FFB00
+0C07FB00
+0C03FF00
+0C03FF00
+0C01FF00
+0C00FF00
+0C007F00
+0C007F00
+0C003F00
+0C001F00
+0C000F00
+0C000F00
+1F000700
+FFC00300
+00000100
+>} imagemask
+ }
+  49 /G31 MSTT31c20d00 AddChar
+/G2F [28.0 0.0 1.0 0.0 27.0 28.0 ]
+/G2F {
+    26 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFE0000
+1FF00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00000
+0FE00040
+0FE00040
+0FE000C0
+0FE000C0
+0FE001C0
+0FE00180
+0FE00380
+0FF00F80
+1FFFFF80
+FFFFFF80
+>} imagemask
+ }
+  47 /G2F MSTT31c20d00 AddChar
+/G24 [30.0 0.0 0.0 0.0 30.0 29.0 ]
+/G24 {
+    30 29 true [1 0 0 -1 0.0 29.0 ]
+{<00030000
+00030000
+00038000
+00078000
+0007C000
+000FC000
+000FE000
+001FE000
+001FE000
+003FF000
+0037F000
+0037F800
+0063F800
+0063FC00
+00C1FC00
+00C1FC00
+0181FE00
+0180FE00
+03FFFF00
+03FFFF00
+03007F80
+06003F80
+06003FC0
+0C003FC0
+0C001FC0
+1C001FE0
+1C001FE0
+7E001FF0
+FFC0FFFC
+>} imagemask
+ }
+  36 /G24 MSTT31c20d00 AddChar
+/G38 [30.0 0.0 1.0 -1.0 29.0 28.0 ]
+/G38 {
+    28 29 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFE3FF0
+1FF00780
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+0FE00300
+07E00700
+07F00600
+03F00E00
+03FC1C00
+00FFF800
+003FC000
+>} imagemask
+ }
+  56 /G38 MSTT31c20d00 AddChar
+/G30 [40.0 0.0 1.0 0.0 39.0 28.0 ]
+/G30 {
+    38 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFF8003FFC
+1FF8007FE0
+0FF8007FC0
+0FFC007FC0
+0FFC00DFC0
+0DFE00DFC0
+0DFE019FC0
+0CFE019FC0
+0CFF019FC0
+0C7F031FC0
+0C7F831FC0
+0C7F831FC0
+0C3F861FC0
+0C3FC61FC0
+0C1FCC1FC0
+0C1FEC1FC0
+0C0FEC1FC0
+0C0FF81FC0
+0C0FF81FC0
+0C07F81FC0
+0C07F01FC0
+0C03F01FC0
+0C03E01FC0
+0C03E01FC0
+0C01E01FC0
+0C01C01FC0
+1E00C03FE0
+FFC0C1FFFC
+>} imagemask
+ }
+  48 /G30 MSTT31c20d00 AddChar
+0 0 0 sco (F0_42) cvn
+F0
+42 
+xF 
+F0_42
+Ji 
+220 581 M 
+(\024\021\003'\(6&5,37,21\003'\(\003/$\003'2&80\(17$7,21)S 
+; : 1045 581 1288 48 rc 0 0 0 sco F0_42
+Ji 
+1089 581 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1397 581 936 48 rc 0 0 0 sco F0_42
+Ji 
+1441 581 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1749 581 584 48 rc 0 0 0 sco F0_42
+Ji 
+1793 581 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+2089 581 M 
+(\024)S 
+; : 0 0 2333 3321 rc 4147  VM?
+/G15 [21.0 0.0 1.0 0.0 19.0 28.0 ]
+/G15 {
+    18 28 true [1 0 0 -1 -1.0 28.0 ]
+{<03F000
+0FFC00
+1FFE00
+3FFF00
+3FFF00
+707F80
+603F80
+403F80
+001F80
+001F80
+001F00
+001F00
+001E00
+003E00
+003C00
+003800
+007000
+00F000
+00E000
+01C000
+038040
+070040
+0600C0
+0FFF80
+1FFF80
+3FFF80
+7FFF80
+FFFF80
+>} imagemask
+ }
+  21 /G15 MSTT31c20d00 AddChar
+/G2A [33.0 0.0 2.0 -1.0 33.0 29.0 ]
+/G2A {
+    31 30 true [1 0 0 -1 -2.0 29.0 ]
+{<001FF020
+00FFFC60
+01FC1FE0
+07F007E0
+0FE001E0
+1FC000E0
+1FC000E0
+3F800060
+7F800060
+7F800020
+7F000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF000000
+FF00FFFE
+FF001FF0
+7F000FE0
+7F000FE0
+7F800FE0
+3F800FE0
+3F800FE0
+1FC00FE0
+0FE00FE0
+07F00FE0
+03F81FC0
+00FFFF00
+001FF800
+>} imagemask
+ }
+  42 /G2A MSTT31c20d00 AddChar
+/G2B [33.0 0.0 1.0 0.0 32.0 28.0 ]
+/G2B {
+    31 28 true [1 0 0 -1 -1.0 28.0 ]
+{<FFFEFFFE
+1FF01FF0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FFFFFE0
+0FFFFFE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+0FE00FE0
+1FF01FF0
+FFFEFFFE
+>} imagemask
+ }
+  43 /G2B MSTT31c20d00 AddChar
+0 0 0 sco F0_42
+Ji 
+220 681 M 
+(\025\021\003,167$//$7,21\003'\(\0030\(7$*\(1\003\(7\0030\(7$&+23)S 
+; : 1166 681 1167 48 rc 0 0 0 sco F0_42
+Ji 
+1210 681 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1518 681 815 48 rc 0 0 0 sco F0_42
+Ji 
+1562 681 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1870 681 463 48 rc 0 0 0 sco F0_42
+Ji 
+1914 681 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+2089 681 M 
+(\024)S 
+; : 0 0 2333 3321 rc 4147  VM?
+/G16 [21.0 0.0 1.0 0.0 19.0 28.0 ]
+/G16 {
+    18 28 true [1 0 0 -1 -1.0 28.0 ]
+{<01F800
+07FE00
+0FFF00
+187F80
+203F80
+601F80
+001F80
+001F00
+001E00
+003C00
+007800
+00FE00
+03FF00
+01FF80
+007F80
+003FC0
+001FC0
+001FC0
+000FC0
+000FC0
+000FC0
+600F80
+F80F80
+FC1F00
+FE3E00
+FFFC00
+7FF800
+1FC000
+>} imagemask
+ }
+  22 /G16 MSTT31c20d00 AddChar
+/GA9 [14.0 0.0 3.0 15.0 11.0 29.0 ]
+/GA9 {
+    8 14 true [1 0 0 -1 -3.0 29.0 ]
+{<3C
+7E
+FE
+FF
+FF
+7F
+7F
+07
+06
+06
+0C
+18
+30
+40
+>} imagemask
+ }
+  169 /GA9 MSTT31c20d00 AddChar
+/G39 [30.0 0.0 0.0 -1.0 30.0 28.0 ]
+/G39 {
+    30 29 true [1 0 0 -1 0.0 28.0 ]
+{<FFFC07FC
+3FE000F8
+3FC000F0
+1FC000E0
+1FE000C0
+0FE000C0
+0FF001C0
+07F00180
+07F80380
+03F80300
+03F80300
+03FC0600
+01FC0600
+01FE0C00
+00FE0C00
+00FF1C00
+007F1800
+007F1800
+007FB000
+003FB000
+003FE000
+001FE000
+001FC000
+000FC000
+000FC000
+000F8000
+00078000
+00070000
+00030000
+>} imagemask
+ }
+  57 /G39 MSTT31c20d00 AddChar
+0 0 0 sco F0_42
+Ji 
+220 781 M 
+(\026\021\0030,6\(\003\(1\0033/$&\(\003'\25181\0031289\($8\003/$1*$*\()S 
+; : 1111 781 1222 48 rc 0 0 0 sco F0_42
+Ji 
+1155 781 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1463 781 870 48 rc 0 0 0 sco F0_42
+Ji 
+1507 781 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 1815 781 518 48 rc 0 0 0 sco F0_42
+Ji 
+1859 781 M 
+(\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021\021)S 
+; : 0 0 2333 3321 rc 0 0 0 sco F0_42
+Ji 
+2089 781 M 
+(\024)S 
+; 
+LH 
+savelevel1 restore 
+pagesave restore
+
+(%%[ Page: 2 ]%%)  =
+%%PageTrailer
+
+%%Trailer
+%%DocumentNeededFonts: 
+%%DocumentSuppliedFonts: 
+/Pscript_Win_Driver /ProcSet findresource dup /terminate get exec
+Pscript_Win_Compat dup /terminate get exec
+%%Pages: 2
+(%%[ LastPage ]%%)  =
+%%EOF
+

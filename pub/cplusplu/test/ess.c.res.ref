@@ -1,0 +1,57 @@
+/****************************************************************************/
+/*                                                                          */
+/*                                Comment Describing the whole program      */
+/*                                                                          */
+/****************************************************************************/
+int type_def ;
+
+/****************************************************************************/
+/*                                 Comment explaining the function          */
+/****************************************************************************/
+function /* comment on the function name */ ()
+
+/* comment on parameters which are not here*/
+/* another comment */
+/* comment on the body of function  */
+{
+    int c, ident ;
+    
+    c = ident ; /* value of c becomes ident */ 
+    c = ident /* ident is a parameter of function */ ;
+    proc_call(c /* comment on the parameter */ );
+    
+    /* comment before printf
+       which has got more than one line
+       
+       which has got more than one line */
+    /* another comment before */
+    printf /*printf*/ ( /**/ /*comm1*/ "ident\n" /*comm2*/ ); /* comment after */ /* another comment after */ 
+    ident /* comment for ident */ 
+        = /* here */ c /* comment for ident c */ ; /* prepost */ 
+}
+
+function2 ( a, b ) /* now we have got parameters, it's better */ 
+int a, b ;
+{} /* this function doesn't do a lot of work */ 
+
+function3 ( a, c )
+int a, b ;
+{
+    int ident1, ident2 ;
+    
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+    ident1 /* ident1 */ = ident /* ident2 */ ; /* assignement */ 
+}
+
+/****************************************************************************/
+/*                                                                          */
+/*               Comment explaining that program is finished                */
+/*                                                                          */
+/****************************************************************************/
+

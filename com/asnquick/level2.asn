@@ -1,0 +1,93 @@
+TransferGrammar 
+DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+    Root ::= CHOICE
+    {   
+        declaration-testeur        [0]    SEQUENCE
+        {   
+            name IA5String,
+            ip-address IA5String,
+            address INTEGER,
+            ack BOOLEAN DEFAULT FALSE
+        },
+        declaration-pco            [1]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            output-only BOOLEAN DEFAULT false
+        },
+        test-pco                   [2]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            state BOOLEAN OPTIONAL,
+            size-packet INTEGER OPTIONAL
+        },
+        envoie-evenement           [3]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            sender IA5String OPTIONAL,
+            content OCTET STRING,
+            time [0] INTEGER OPTIONAL,
+            utime [1] INTEGER OPTIONAL,
+            ctime [2] INTEGER OPTIONAL,
+            cutime [3] INTEGER OPTIONAL
+        },
+        reception-evenement        [4]    SEQUENCE
+        {   
+            name IA5String
+        },
+        reception-evenement-bloque [5]    SEQUENCE
+        {   
+            name IA5String
+        },
+        envoie-evenement-chunk     [6]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            sender IA5String OPTIONAL,
+            content OCTET STRING
+        },
+        envoie-evenement-chunk-end [7]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            sender IA5String OPTIONAL,
+            content OCTET STRING,
+            time [0] INTEGER OPTIONAL,
+            utime [1] INTEGER OPTIONAL
+        },
+        close-pco                  [8]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String OPTIONAL
+        },
+        number-connect             [9]    SEQUENCE
+        {   
+            name IA5String,
+            pco IA5String,
+            number INTEGER OPTIONAL
+        },
+        kill                       [10]   IA5String,
+        kill-bus                   [11]   IA5String,
+        kill-old                   [13]   IA5String,
+        enumerate                  [12]   SEQUENCE
+        {   
+            name IA5String OPTIONAL,
+            enumeration SEQUENCE OF SEQUENCE
+            {   
+                bus IA5String,
+                connected SEQUENCE OF IA5String
+            } OPTIONAL
+        },
+        acknowledgement            [1000] NULL,
+        named-acknowledgement      [1002] IA5String,
+        pas-evenement              [1001] NULL,
+        version                    [1003] IA5String
+    };
+    
+END
+
+

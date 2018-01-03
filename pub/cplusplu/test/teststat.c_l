@@ -1,0 +1,36 @@
+main ()
+{
+    if ( a > b ) {
+        a = b ;
+    }
+    if ( a > b ) 
+        a = b ;
+    if ( a > b ) 
+        a = b ;
+    else {
+        a = b ;
+    }
+    if ( a > b ) 
+        a = b ;
+    else 
+        a = b ;
+    while ( a > b ) 
+        a = b ;
+    do
+        a = b ;
+    while ( a > b );
+    while ( a > b ) {
+        a = b ;
+    }
+    do {
+        a = b ;
+    } while ( a > b );
+    switch ( a ) {
+        case b : a = b ;
+        case b : a = b ; a = b;
+        case c : 
+            {
+                a = b ;
+            }
+    }
+}

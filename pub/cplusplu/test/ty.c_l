@@ -1,0 +1,56 @@
+int a,b,lkjlk ; /* sldfkj slkdfj */
+int a ; /* dljf */
+char * toto ; /* lkjlkj ljlkj lkjlkj lkjlkj */
+char toutooo , lkfsldkf , ksdfj ; /* sldfksdklf */
+
+/* commentaire avant la structure */
+struct toto {
+    int toto ; /* une variable */
+    char * fifififi ; /* une seconde variable */
+    char * * skldf ; /* une troisieme */
+} aa ;
+
+char * fifi ( char * toto , void * fifi, int skfjlkdsfj , char ** ssssss,
+			  char * toto , void * fifi, int skfjlkdsfj , char ** ssssss,
+			  char * toto , void * fifi, int skfjlkdsfj , char ** ssssss);
+typedef int PTREE ;
+PTREE ( * ptFunction ) () ;
+
+main()
+{
+/* commentaire avant le statement */
+*ptDest ++ = *ptString ++;
+				while (*ptString != '\n' && *ptString )
+						if ( *ptString != '\b')
+								*ptDest ++ = *ptString ++;
+						else  {
+								if (ptDest > outBuf)
+										ptDest --;
+								ptString++;
+						}
+}
+main()
+{
+*ptDest ++ = *ptString ++;
+				while (*ptString != '\n' && *ptString )
+						if ( *ptString != '\b')
+								*ptDest ++ = *ptString ++;
+						else  {
+								if (ptDest > outBuf)
+										ptDest --;
+								ptString++;
+						}
+}
+main()
+{
+*ptDest ++ = *ptString ++;
+				while (*ptString != '\n' && *ptString )
+						if ( *ptString != '\b')
+								*ptDest ++ = *ptString ++;
+						else  {
+								if (ptDest > outBuf)
+										ptDest --;
+								ptString++;
+						}
+}
+

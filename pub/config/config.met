@@ -1,0 +1,44 @@
+language config;
+
+global begin
+    {{ extern char * theLanguage;}}
+end;
+
+lexdefine Lex;
+    skip '\r';
+    case
+        takel "foo" : return !FOO_LOW
+        takel "FOO" : return !FOO_UPP
+    end;
+    recognize_string;
+    storel takel ;
+    return !CHARACTER;
+end;
+
+define main_entry;
+    return take langage;
+end;
+
+define langage;
+    while seel do
+        case
+            take !FOO_LOW : {{ write(1,theLanguage,strlen(theLanguage));}}
+            take !FOO_UPP : {{
+                                {
+                                				char string [80];
+                                				char *point = string ;
+                                				strcpy(string,theLanguage);
+                                				while ( *point) {
+                                					*point = toupper (*point);
+                                					point++;
+                                				}
+                                				write(1,string,strlen(string)); }
+                            }}
+            take !CHARACTER : {{ write(1,lexEl.string(),1);}}
+        end;
+end;
+
+define parse_entry;
+    {{ goto parse_entry_exit;}};
+end.
+

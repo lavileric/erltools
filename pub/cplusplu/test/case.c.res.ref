@@ -1,0 +1,45 @@
+main ()
+{
+    switch ( feuille ) {
+        case CANDIDAT_FEUILLE : 
+            {
+                
+                /* on a change la valeur d'un champ du candidat */
+                if ( action >= 1 && action <= 10 ) {
+                    char    *string ;
+                    DecodeString(&string);
+                    if ( strlen(string)
+                            && strncmp(leCandidat.candidat [action - 1]
+                                , string, 80) ) 
+                        modification = 1 ;
+                    strncpy(leCandidat.candidat [action - 1], string, 80);
+                    PRINTF(
+                        " Feuille Candidat changement du champ %d en %s\n"
+                        , action, string);
+                } else if ( action == INITIALISATION ) {
+                    
+                    /* initialisation de l'application on initialise les
+                       champs du candidat */
+                    PRINTF(" Initialisation de l'application\n");
+                    Initialisation(1);
+                }
+                break ;
+            }
+        case QUESTION_FEUILLE : 
+            {
+                
+                /* on passe les feuilles de questions */
+                switch ( action ) {
+                    case INITIALISATION : 
+                        {
+                            int nbFeuille ;
+                            PRINTF(
+                                "Initialisation de la feuille de question\n");
+                            DecodeInt(&nbFeuille);
+                            InitQuestion(nbFeuille);
+                            break ;
+                        }
+                }
+            }
+    }
+}

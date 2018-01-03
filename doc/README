@@ -1,0 +1,14 @@
+Content of doc directory
+------------------------
+
+metreadm.ps : french introduction on metagen / metachop
+metreaen.ps : english introduction on metagen / metachop
+
+metageen.ps  : french documentation on metagen
+metagefr.ps  : english documentation on metagen
+
+metachfr.ps  : french documentation on metachop
+metachen.ps  : english documentation on metachop
+
+prreaden     : english documentation on prettyprinter flags
+

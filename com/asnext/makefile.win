@@ -1,0 +1,67 @@
+
+INCLUDE_DIR_LOC= -I..\asn -I..\asnext
+
+all : m_done asnext.exe dasnext.exe asnext.lib
+
+!include ..\..\makefile.der
+
+clean : clean_inc_appli
+	- $(RM) asnext.h
+    - $(RM) asnext.exe
+    - $(RM) dasnext.exe
+	- $(RM) dchopext.cc
+    - $(RM) chopper.cc
+    - $(RM) dchopper.cc
+    - deltree /y compile.dir
+
+test :
+	asnext ref.asn > ref.res 2>\dev\null
+	diff ref.res ref.ref
+	rm ref.res
+	asnext refext.asn > refext.res 2>\dev\null
+	diff refext.res refext.ref
+	rm refext.res
+	asnext refext.asn refext.bin 1>\dev\null 2>&1
+	dasnext refext.asn refext.bin > drefext.res  2>\dev\null
+	diff drefext.res drefext.ref
+
+m_done : asnext.met ..\asn\asn.met
+	-@ mkdir compile.dir
+    @- $(RM) compile.dir\asnext.met
+	@copy asnext.met compile.dir\asnext.met
+	@echo "metagen -c++ asnext.met"
+	cd compile.dir 
+	  metagen -c++ $(METAOPT) -path ..\..\asn;$(META_DIR)\pub\library asnext.met
+          unify asnext.h ..\asnext.h
+          unify asnext.cpp ..\asnext.cc
+	  unify asnext0.cpp ..\asnext0.cc
+	  unify asnext1.cpp ..\asnext1.cc
+    cd ..
+	@echo "ok" > m_done
+
+asnext.obj : asnext.cc asnext.h
+
+asnext0.obj : asnext0.cc asnext.h
+
+asnext1.obj : asnext1.cc asnext.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.cc : dchopper.ch chop.exe
+
+dchopext.cc : dchopext.ch chop.exe
+
+chopper.obj : chopper.cc asnext.h $(META_DIR)\pub\library\token.h decasnext.h
+
+dchopper.obj : dchopper.cc asnext.h $(META_DIR)\pub\library\token.h decasnext.h
+
+dchopext.obj : dchopext.cc asnext.h decasnext.h
+
+decasnext.h : ..\asn\decasn.h
+	 $(MAKE) -t decasnext.h
+	
+
+ASN_OBJECTS =..\asn\asn.$(LIB_SUF)
+
+OBJECTS = asnext.obj asnext0.obj asnext1.obj dchopext.obj
+

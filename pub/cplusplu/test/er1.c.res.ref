@@ -1,0 +1,26 @@
+/* main function of program */
+main ()
+{
+    int i /* quel joli nom */ , j, k /* integer variables */ ;
+    int toto [62] /* un tableau */ ;
+    
+    for ( i = 0 ; i < 64 ; i++ ) {
+        
+        /* on fait quelque chose et on l'explique */
+        printf("On fait quelque chose ");
+    }
+}
+
+/* main function of program */
+main ()
+{
+    int i /* quel joli nom */ , j, k /* integer variables */ ;
+    int toto [62] /* un tableau */ ;
+    int toto [62][64];
+    
+    for ( i = 0 ; i < 64 ; i++ ) {
+        
+        /* on fait quelque chose et on l'explique */
+        printf("On fait quelque chose ");
+    }
+}

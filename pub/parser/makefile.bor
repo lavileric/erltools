@@ -1,0 +1,16 @@
+!include ./makefile.win
+
+metagen.exe : $(OBJECTS) $(METACHOPGEN)
+	$(C_PLUS_LNK) $(OBJECTS) $(LIBRARY)
+
+chop.exe : chopper.obj $(METAGENCORE)  $(CPLUS) $(CHOPB) $(METACHOP)
+	$(C_PLUS_LNK) chopper.obj $(METAGENCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+    - del chop.exe
+	- copy chopper.exe chop.exe
+
+
+
+
+
+
+

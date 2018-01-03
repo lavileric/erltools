@@ -1,0 +1,7 @@
+
+!include ./makefile.win
+
+erlms.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(LIBRARY)
+	- $(RM) erlms.exe
+    ren msc.exe erlms.exe

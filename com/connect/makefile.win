@@ -1,0 +1,104 @@
+THE_LIB=.\connect.$(LIB_SUF)
+
+INCLUDE_DIR_LOC= -I..\asn -I..\asnext -I..\asnquick
+
+all : connect.lib qconnectlib chop.exe dispatcher.exe spy.exe  killapp.exe ddispatcher.exe
+
+test : tdispatcher.exe app1.exe app2.exe testdos.exe spy.exe erlecho.exe
+
+!include ../../makefile.der
+
+clean : clean_inc_appli
+	- $(RM) $(THE_LIB)
+    - $(RM) connect.cc
+    - $(RM) inetutil.cc
+    - $(RM) dispatcher.cc
+    - $(RM) killapp.cc
+    - $(RM) metaconnect.cc
+    - $(RM) metainetutil.cc
+    - $(RM) spy.cc
+    - $(RM) chop.exe
+    - $(RM) dispatcher.exe
+    - $(RM) tdispatcher.exe
+	- $(RM) qtdispatcher.exe
+    - $(RM) app1.exe
+    - $(RM) app2.exe
+    - $(RM) spy.exe
+    - $(RM) killapp.exe
+	- $(RM) transfer.dll
+
+ASN_OBJECTS =..\asn\asn.$(LIB_SUF) ..\asnquick\qconnect.lib
+
+OPT_FLAGS=-DDUMP_COORD -DWITHOUT_EXCEPT  
+# -DDISPATCH_DEBUG -DDEBUG_SOCK
+
+clean : clean_inc
+
+dispatcher.cc : dispatcher.ch chop.exe
+
+tdispatcher.cc : tdispatcher.ch chop.exe
+
+tdisapt.cc : tdispat.ch chop.exe
+
+app1.cc : app1.ch chop.exe
+
+app2.cc : app2.ch chop.exe
+
+testdos.cc : testdos.ch chop.exe
+
+inetutil.cc : inetutil.ch chop.exe
+
+connect.cc : connect.ch chop.exe
+
+metaconnect.cc : metaconnect.ch chop.exe
+
+metainetutil.cc : metainetutil.ch chop.exe
+
+spy.cc : spy.ch chop.exe
+
+killapp.cc : killapp.ch chop.exe
+
+erlsock.obj : erlsock.cc erlsock.h
+
+dispatcher.obj : dispatcher.cc supervisor.h inetutil.h erlsock.h
+
+ddispatcher.obj : ddispatcher.cc dispatcher.cc
+
+dsupervisor.obj : dsupervisor.cc supervisor.cc
+
+tdispatcher.obj : tdispatcher.cc supervisor.h inetutil.h erlsock.h
+
+ndispatcher.obj : ndispatcher.cc supervisor.h inetutil.h erlsock.h
+
+app1.obj : app1.cc inetutil.h erlsock.h
+
+app2.obj : app2.cc inetutil.h erlsock.h
+
+spy.obj : spy.cc inetutil.h erlsock.h
+
+killapp.obj : killapp.cc inetutil.h erlsock.h
+
+supervisor.obj : supervisor.cc supervisor.h inetutil.h erlsock.h
+
+inetutil.obj : inetutil.cc inetutil.h erlsock.h metainetutil.h
+
+connect.obj : connect.cc connect.h erlsock.h
+
+tdispat.obj : tdispat.cc erlsock.h
+
+ndispat.obj : ndispat.cc erlsock.h
+
+metaconnect.obj : metaconnect.cc metaconnect.h
+
+metainetutil.obj : metainetutil.cc metainetutil.h
+
+qtdispatcher.obj : qtdispatcher.cc tdispatcher.cc metainetutil.h
+
+##### snmp #####
+
+transfer.cc : transfer.asn
+	..\asnquick\quickcode transfer.asn  
+	cpb transfer.cc
+	cpb transfer.h
+
+transfer.obj : transfer.cc transfer.h 

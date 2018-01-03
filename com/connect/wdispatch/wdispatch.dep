@@ -1,0 +1,35 @@
+# Microsoft Developer Studio Generated Dependency File, included by wdispatch.mak
+
+.\MainFrm.cpp : \
+	".\MainFrm.h"\
+	".\wdispatch.h"\
+	
+
+.\StdAfx.cpp : \
+	"..\..\..\..\..\install\microsoft visual studio\vc98\include\basetsd.h"\
+	".\StdAfx.h"\
+	
+
+.\wdispatch.cpp : \
+	".\MainFrm.h"\
+	".\wdispatch.h"\
+	".\wdispatchDoc.h"\
+	".\wdispatchView.h"\
+	
+
+.\wdispatch.rc : \
+	".\res\wdispatch.ico"\
+	".\res\wdispatch.rc2"\
+	".\res\wdispatchDoc.ico"\
+	
+
+.\wdispatchDoc.cpp : \
+	".\wdispatch.h"\
+	".\wdispatchDoc.h"\
+	
+
+.\wdispatchView.cpp : \
+	".\wdispatch.h"\
+	".\wdispatchDoc.h"\
+	".\wdispatchView.h"\
+	

@@ -1,0 +1,1404 @@
+SortKeyWord ( defaultValue )
+int defaultValue ;
+{
+    register int    Value ;
+    
+    Value = strcmp(lexEl.string, "enum");
+    if ( Value > 0 ) {
+        Value = strcmp(lexEl.string, "pascal");
+        if ( Value > 0 ) {
+            Value = strcmp(lexEl.string, "struct");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "union");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "while");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "unsigned") ) {
+                            return (UNSIGNED_c);
+                        }
+                    } else 
+                        return (WHILE_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "typedef");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "switch") ) {
+                            return (SWITCH_c);
+                        }
+                    } else 
+                        return (TYPEDEF_c);
+                } else 
+                    return (UNION_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "short");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "static");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "signed") ) {
+                            return (SIGNED_c);
+                        }
+                    } else 
+                        return (STATIC_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "return");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "register") ) {
+                            return (REGISTER_c);
+                        }
+                    } else 
+                        return (RETURN_c);
+                } else 
+                    return (SHORT_c);
+            } else 
+                return (STRUCT_c);
+        } else if ( Value < 0 ) {
+            Value = strcmp(lexEl.string, "huge");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "int");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "near");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "long") ) {
+                            return (LONG_c);
+                        }
+                    } else 
+                        return (NEAR_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "include");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "if") ) {
+                            return (IF_c);
+                        }
+                    } else 
+                        return (INCLUDE_c);
+                } else 
+                    return (INT_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "for");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "goto");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "fortran") ) {
+                            return (FORTRAN_c);
+                        }
+                    } else 
+                        return (GOTO_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "far");
+                    if ( Value > 0 ) {
+                        if ( !strcmp(lexEl.string, "float") ) {
+                            return (FLOAT_c);
+                        }
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "extern") ) {
+                            return (EXTERN_c);
+                        }
+                    } else 
+                        return (FAR_c);
+                } else 
+                    return (FOR_c);
+            } else 
+                return (HUGE_c);
+        } else 
+            return (PASCAL_c);
+    } else if ( Value < 0 ) {
+        Value = strcmp(lexEl.string, "_FAR_");
+        if ( Value > 0 ) {
+            Value = strcmp(lexEl.string, "continue");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "do");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "else");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "double") ) {
+                            return (DOUBLE_c);
+                        }
+                    } else 
+                        return (ELSE_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "define");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "default") ) {
+                            return (DEFAULT_c);
+                        }
+                    } else 
+                        return (DEFINE_c);
+                } else 
+                    return (DO_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "case");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "char");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "cdecl") ) {
+                            return (CDECL_c);
+                        }
+                    } else 
+                        return (CHAR_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "break");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "auto") ) {
+                            return (AUTO_c);
+                        }
+                    } else 
+                        return (BREAK_c);
+                } else 
+                    return (CASE_c);
+            } else 
+                return (CONTINUE_c);
+        } else if ( Value < 0 ) {
+            Value = strcmp(lexEl.string, "HUGE");
+            if ( Value > 0 ) {
+                Value = strcmp(lexEl.string, "PROG_EXIT");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "TOKEN_EXIT");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "PUSH_CALLlAFF") ) {
+                            return (PUSH_CALLlAFF_c);
+                        }
+                    } else 
+                        return (TOKEN_EXIT_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, "PASCAL");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "NEAR") ) {
+                            return (NEAR1_c);
+                        }
+                    } else 
+                        return (PASCAL1_c);
+                } else 
+                    return (PROG_EXIT_c);
+            } else if ( Value < 0 ) {
+                Value = strcmp(lexEl.string, "CDECL");
+                if ( Value > 0 ) {
+                    Value = strcmp(lexEl.string, "FORTRAN");
+                    if ( Value > 0 ) {
+                        return (defaultValue);
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "FAR") ) {
+                            return (FAR1_c);
+                        }
+                    } else 
+                        return (FORTRAN1_c);
+                } else if ( Value < 0 ) {
+                    Value = strcmp(lexEl.string, ")");
+                    if ( Value > 0 ) {
+                        if ( !strcmp(lexEl.string, "CASE_EXIT") ) {
+                            return (CASE_EXIT_c);
+                        }
+                    } else if ( Value < 0 ) {
+                        if ( !strcmp(lexEl.string, "(") ) {
+                            return (POUV_c);
+                        }
+                    } else 
+                        return (PFER_c);
+                } else 
+                    return (CDECL1_c);
+            } else 
+                return (HUGE1_c);
+        } else 
+            return (_FAR__c);
+    } else 
+        return (ENUM_c);
+    return (defaultValue);
+}
+
+UpSortKeyWord ( value )
+int value ;
+{
+    register char   *ptSource = lexEl.string ;
+    
+    for (; *ptSource ; ptSource++ ) 
+        *ptSource = toupper(*ptSource);
+    return SortKeyWord(value);
+}
+
+Lex_c ()
+{
+    char    *_ptString ;
+    int     _nbCharact ;
+    int     bidon = oldLine = line ;
+    
+    ptStockBuf = - 1 ;
+    while ( c == ' ' || c == '\t' || c == '\r' || c == '\n' ) 
+        NextChar();
+    ptStockBuf = - 1 ;
+    *lexEl.string = '\0';
+    _nbCharact = 0 ;
+    tokenAhead = 0 ;
+    _ptString = lexEl.string ;
+    switch ( c ) {
+        case '#' : 
+            NextChar();
+            switch ( c ) {
+                case 'i' : 
+                    NextChar();
+                    switch ( c ) {
+                        case 'n' : 
+                            NextChar();
+                            if ( GetStringS("clude", 1) ) {
+                                lexEl.Value = DIESINCLUDE_c ;
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                return (1);
+                            } else {
+                                UnputChar(1);
+                                goto _exitDumpToken3 ;
+                            }
+                            break ;
+                        case 'f' : 
+                            NextChar();
+                            switch ( c ) {
+                                case 'd' : 
+                                    NextChar();
+                                    if ( GetStringS("ef", 1) ) {
+                                        lexEl.Value = DIESIFDEF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken5 ;
+                                    }
+                                    break ;
+                                case 'n' : 
+                                    NextChar();
+                                    if ( GetStringS("def", 1) ) {
+                                        lexEl.Value = DIESIFNDEF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken5 ;
+                                    }
+                                    break ;
+                                _exitDumpToken5 : 
+                                    ;
+                                default : 
+                                    lexEl.Value = DIESIF_c ;
+                                    *_ptString = '\0';
+                                    firstOnLine = 0 ;
+                                    tokenAhead = 1 ;
+                                    return (1);
+                            }
+                            break ;
+                        _exitDumpToken3 : 
+                            ;
+                        default : 
+                            UnputChar(1);
+                            goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'd' : 
+                    NextChar();
+                    if ( GetStringS("efine", 1) ) {
+                        lexEl.Value = DIESDEFINE_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'e' : 
+                    NextChar();
+                    switch ( c ) {
+                        case 'l' : 
+                            NextChar();
+                            switch ( c ) {
+                                case 's' : 
+                                    NextChar();
+                                    if ( GetStringS("e", 1) ) {
+                                        lexEl.Value = DIESELSE_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken10 ;
+                                    }
+                                    break ;
+                                case 'i' : 
+                                    NextChar();
+                                    if ( GetStringS("f", 1) ) {
+                                        lexEl.Value = DIESELIF_c ;
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return (1);
+                                    } else {
+                                        UnputChar(1);
+                                        goto _exitDumpToken10 ;
+                                    }
+                                    break ;
+                                _exitDumpToken10 : 
+                                    ;
+                                default : 
+                                    UnputChar(1);
+                                    goto _exitDumpToken9 ;
+                            }
+                            break ;
+                        case 'n' : 
+                            NextChar();
+                            if ( GetStringS("dif", 1) ) {
+                                lexEl.Value = DIESENDIF_c ;
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                return (1);
+                            } else {
+                                UnputChar(1);
+                                goto _exitDumpToken9 ;
+                            }
+                            break ;
+                        _exitDumpToken9 : 
+                            ;
+                        default : 
+                            UnputChar(1);
+                            goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'l' : 
+                    NextChar();
+                    if ( GetStringS("ine", 1) ) {
+                        lexEl.Value = DIESLINE_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'u' : 
+                    NextChar();
+                    if ( GetStringS("ndef", 1) ) {
+                        lexEl.Value = DIESUNDEF_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                case 'p' : 
+                    NextChar();
+                    if ( GetStringS("ragma", 1) ) {
+                        lexEl.Value = DIESPRAGMA_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken2 ;
+                    }
+                    break ;
+                _exitDumpToken2 : 
+                    ;
+                default : 
+                    lexEl.Value = DIES_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case ';' : 
+            NextChar();
+            lexEl.Value = PVIR_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '=' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = EGALEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken18 : 
+                    ;
+                default : 
+                    lexEl.Value = EGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case ',' : 
+            NextChar();
+            lexEl.Value = VIRG_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '{' : 
+            NextChar();
+            lexEl.Value = AOUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '}' : 
+            NextChar();
+            lexEl.Value = AFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '*' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = ETOIEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '*' : 
+                    NextChar();
+                    if ( GetStringS("=", 1) ) {
+                        lexEl.Value = ETOIETOIEGAL_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken23 ;
+                    }
+                    break ;
+                _exitDumpToken23 : 
+                    ;
+                default : 
+                    lexEl.Value = ETOI_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '(' : 
+            NextChar();
+            lexEl.Value = POUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ')' : 
+            NextChar();
+            lexEl.Value = PFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '[' : 
+            NextChar();
+            lexEl.Value = COUV_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ']' : 
+            NextChar();
+            lexEl.Value = CFER_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case ':' : 
+            NextChar();
+            lexEl.Value = DPOI_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '%' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = POURCEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken31 : 
+                    ;
+                default : 
+                    lexEl.Value = POURC_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '+' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = PLUSEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '+' : 
+                    NextChar();
+                    lexEl.Value = PLUSPLUS_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken33 : 
+                    ;
+                default : 
+                    lexEl.Value = PLUS_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '-' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = TIREEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '-' : 
+                    NextChar();
+                    lexEl.Value = TIRETIRE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '>' : 
+                    NextChar();
+                    lexEl.Value = TIRESUPE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken36 : 
+                    ;
+                default : 
+                    lexEl.Value = TIRE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '<' : 
+            NextChar();
+            switch ( c ) {
+                case '<' : 
+                    NextChar();
+                    switch ( c ) {
+                        case '=' : 
+                            NextChar();
+                            lexEl.Value = INFEINFEEGAL_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                            break ;
+                        _exitDumpToken41 : 
+                            ;
+                        default : 
+                            lexEl.Value = INFEINFE_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                    }
+                    break ;
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = INFEEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken40 : 
+                    ;
+                default : 
+                    lexEl.Value = INFE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '>' : 
+            NextChar();
+            switch ( c ) {
+                case '>' : 
+                    NextChar();
+                    switch ( c ) {
+                        case '=' : 
+                            NextChar();
+                            lexEl.Value = SUPESUPEEGAL_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                            break ;
+                        _exitDumpToken45 : 
+                            ;
+                        default : 
+                            lexEl.Value = SUPESUPE_c ;
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            return (1);
+                    }
+                    break ;
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = SUPEEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken44 : 
+                    ;
+                default : 
+                    lexEl.Value = SUPE_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '&' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = ETCOEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '&' : 
+                    NextChar();
+                    lexEl.Value = ETCOETCO_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken48 : 
+                    ;
+                default : 
+                    lexEl.Value = ETCO_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '|' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = VBAREGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                case '|' : 
+                    NextChar();
+                    lexEl.Value = VBARVBAR_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken51 : 
+                    ;
+                default : 
+                    lexEl.Value = VBAR_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '^' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = CHAPEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken54 : 
+                    ;
+                default : 
+                    lexEl.Value = CHAP_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '?' : 
+            NextChar();
+            lexEl.Value = INTE_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '!' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    lexEl.Value = EXCLEGAL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+                    break ;
+                _exitDumpToken57 : 
+                    ;
+                default : 
+                    lexEl.Value = EXCL_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        case '~' : 
+            NextChar();
+            lexEl.Value = TILD_c ;
+            *_ptString = '\0';
+            firstOnLine = 0 ;
+            tokenAhead = 1 ;
+            return (1);
+            break ;
+        case '.' : 
+            NextChar();
+            switch ( c ) {
+                case '.' : 
+                    NextChar();
+                    if ( GetStringS(".", 1) ) {
+                        lexEl.Value = POINPOINPOIN_c ;
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        return (1);
+                    } else {
+                        UnputChar(1);
+                        goto _exitDumpToken60 ;
+                    }
+                    break ;
+                _exitDumpToken60 : 
+                    ;
+                default : 
+                    lexEl.Value = POIN_c ;
+                    *_ptString = '\0';
+                    firstOnLine = 0 ;
+                    tokenAhead = 1 ;
+                    return (1);
+            }
+            break ;
+        _exitDumpToken0 : 
+            ;
+        default : break ;
+    }
+    if ( ptStockBuf > - 1 ) 
+        UnputBuf();
+    *lexEl.string = '\0';
+    _nbCharact = 0 ;
+    tokenAhead = 0 ;
+    _ptString = lexEl.string ;
+    switch ( c ) {
+        case 'a' : 
+        case 'b' : 
+        case 'c' : 
+        case 'd' : 
+        case 'e' : 
+        case 'f' : 
+        case 'g' : 
+        case 'h' : 
+        case 'i' : 
+        case 'j' : 
+        case 'k' : 
+        case 'l' : 
+        case 'm' : 
+        case 'n' : 
+        case 'o' : 
+        case 'p' : 
+        case 'q' : 
+        case 'r' : 
+        case 's' : 
+        case 't' : 
+        case 'u' : 
+        case 'v' : 
+        case 'w' : 
+        case 'x' : 
+        case 'y' : 
+        case 'z' : 
+        case 'A' : 
+        case 'B' : 
+        case 'C' : 
+        case 'D' : 
+        case 'E' : 
+        case 'F' : 
+        case 'G' : 
+        case 'H' : 
+        case 'I' : 
+        case 'J' : 
+        case 'K' : 
+        case 'L' : 
+        case 'M' : 
+        case 'N' : 
+        case 'O' : 
+        case 'P' : 
+        case 'Q' : 
+        case 'R' : 
+        case 'S' : 
+        case 'T' : 
+        case 'U' : 
+        case 'V' : 
+        case 'W' : 
+        case 'X' : 
+        case 'Y' : 
+        case 'Z' : 
+        case '_' : 
+            while ( 'a' <= c && c <= 'z'
+                        || 'A' <= c && c <= 'Z'
+                        || c == '_'
+                        || '0' <= c && c <= '9' ) {
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+            }
+            {
+                *_ptString = '\0';
+                firstOnLine = 0 ;
+                tokenAhead = 1 ;
+                lexEl.Value = SortKeyWord(IDENT_c);
+                return (1);
+            }
+            break ;
+        case '"' : 
+            NextChar();
+            while ( c != EOF ) {
+                switch ( c ) {
+                    case '"' : 
+                        NextChar();
+                        if ( c == '"' ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        } else {
+                            {
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                lexEl.Value = STRING_c ;
+                                return (1);
+                            }
+                        }
+                        break ;
+                    case '\\' : 
+                        NextChar();
+                        {
+                            if ( _nbCharact + strlen("\\") < MAXLENGTH ) 
+                                strcpy(_ptString, "\\");
+                            _nbCharact += strlen("\\");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        if ( !(c == '\r') ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        } else {
+                            if ( !(c != EOF && NextChar()) ) 
+                                ;
+                        }
+                        break ;
+                    default : 
+                        if ( c != EOF ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                        break ;
+                }
+            }
+            break ;
+        case '\'' : 
+            NextChar();
+            while ( c != EOF ) {
+                if ( GetString("'", 1) && NextChar() ) {
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = CHARACT_c ;
+                        return (1);
+                    }
+                } else if ( c != EOF ) {
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                } else 
+                    ;
+            }
+            break ;
+        case '1' : 
+        case '2' : 
+        case '3' : 
+        case '4' : 
+        case '5' : 
+        case '6' : 
+        case '7' : 
+        case '8' : 
+        case '9' : 
+            while ( '0' <= c && c <= '9' ) {
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+            }
+            switch ( c ) {
+                case 'l' : 
+                case 'L' : 
+                    NextChar();
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = LINTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                case 'e' : 
+                case 'E' : 
+                    NextChar();
+                    {
+                        if ( _nbCharact + strlen("e") < MAXLENGTH ) 
+                            strcpy(_ptString, "e");
+                        _nbCharact += strlen("e");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    if ( c == '+' || c == '-' ) {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    while ( '0' <= c && c <= '9' ) {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = FLOAT_c ;
+                        return (1);
+                    }
+                    break ;
+                case '.' : 
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                    while ( '0' <= c && c <= '9' ) {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    if ( (c == 'e' || c == 'E') && NextChar() ) {
+                        {
+                            if ( _nbCharact + strlen("e") < MAXLENGTH ) 
+                                strcpy(_ptString, "e");
+                            _nbCharact += strlen("e");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        if ( c == '+' || c == '-' ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                        while ( '0' <= c && c <= '9' ) {
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = FLOAT_c ;
+                        return (1);
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = INTEGER_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            }
+            break ;
+        case '0' : 
+            NextChar();
+            switch ( c ) {
+                case 'x' : 
+                case 'X' : 
+                    NextChar();
+                    {
+                        if ( _nbCharact + strlen("0x") < MAXLENGTH ) 
+                            strcpy(_ptString, "0x");
+                        _nbCharact += strlen("0x");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    while ( '0' <= c && c <= '9'
+                                || 'a' <= c && c <= 'f'
+                                || 'A' <= c && c <= 'F' ) {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = INTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                case '0' : 
+                case '1' : 
+                case '2' : 
+                case '3' : 
+                case '4' : 
+                case '5' : 
+                case '6' : 
+                case '7' : 
+                    {
+                        if ( _nbCharact + strlen("0") < MAXLENGTH ) 
+                            strcpy(_ptString, "0");
+                        _nbCharact += strlen("0");
+                        _ptString = lexEl.string + _nbCharact ;
+                    }
+                    while ( '0' <= c && c <= '7' ) {
+                        {
+                            if ( _nbCharact++ < MAXLENGTH ) 
+                                *_ptString++ = c ;
+                            NextChar();
+                        }
+                    }
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = INTEGER_c ;
+                        return (1);
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            if ( _nbCharact + strlen("0") < MAXLENGTH ) 
+                                strcpy(_ptString, "0");
+                            _nbCharact += strlen("0");
+                            _ptString = lexEl.string + _nbCharact ;
+                        }
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = INTEGER_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            }
+            break ;
+        case '$' : 
+            NextChar();
+            if ( !(c == '(') ) {
+                while ( 'a' <= c && c <= 'z'
+                            || 'A' <= c && c <= 'Z'
+                            || '0' <= c && c <= '9'
+                            || c == '_' ) {
+                    {
+                        if ( _nbCharact++ < MAXLENGTH ) 
+                            *_ptString++ = c ;
+                        NextChar();
+                    }
+                }
+            } else {
+                int nbPar = 0 ;
+                {
+                    if ( _nbCharact++ < MAXLENGTH ) 
+                        *_ptString++ = c ;
+                    NextChar();
+                }
+                while ( c != EOF ) {
+                    switch ( c ) {
+                        case '(' : 
+                            nbPar++ ;
+                            {
+                                if ( _nbCharact++ < MAXLENGTH ) 
+                                    *_ptString++ = c ;
+                                NextChar();
+                            }
+                            break ;
+                        case '\n' : 
+                            {
+                                *_ptString = '\0';
+                                firstOnLine = 0 ;
+                                tokenAhead = 1 ;
+                                lexEl.Value = META_c ;
+                                return (1);
+                            }
+                            break ;
+                        case ')' : 
+                            if ( !nbPar ) {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                                {
+                                    *_ptString = '\0';
+                                    firstOnLine = 0 ;
+                                    tokenAhead = 1 ;
+                                    lexEl.Value = META_c ;
+                                    return (1);
+                                }
+                            } else {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                                nbPar-- ;
+                            }
+                            break ;
+                        default : 
+                            if ( c != EOF ) {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                            }
+                            break ;
+                    }
+                }
+            }
+            {
+                *_ptString = '\0';
+                firstOnLine = 0 ;
+                tokenAhead = 1 ;
+                lexEl.Value = META_c ;
+                return (1);
+            }
+            break ;
+        case '/' : 
+            NextChar();
+            switch ( c ) {
+                case '=' : 
+                    NextChar();
+                    {
+                        *_ptString = '\0';
+                        firstOnLine = 0 ;
+                        tokenAhead = 1 ;
+                        lexEl.Value = SLASEGAL_c ;
+                        return (1);
+                    }
+                    break ;
+                case '*' : 
+                    NextChar();
+                    {
+                        int level = 0 ;
+                        begin_comment();
+                        while ( c != EOF ) {
+                            if ( GetString("/*", 1) && NextChar() ) {
+                                level++ ;
+                                {
+                                    if ( _nbCharact + strlen("/*")
+                                        < MAXLENGTH ) 
+                                        strcpy(_ptString, "/*");
+                                    _nbCharact += strlen("/*");
+                                    _ptString = lexEl.string + _nbCharact ;
+                                }
+                            } else if ( GetString("*/", 1) && NextChar() ) {
+                                if ( !level ) {
+                                    {
+                                        store_comment_line(_nbCharact);
+                                        _nbCharact = 0 ;
+                                        _ptString = lexEl.string ;
+                                        ptStockBuf = - 1 ;
+                                    }
+                                    {
+                                        *_ptString = '\0';
+                                        firstOnLine = 0 ;
+                                        tokenAhead = 1 ;
+                                        return Lex_c();
+                                    }
+                                } else {
+                                    level-- ;
+                                    {
+                                        if ( _nbCharact + strlen("*/")
+                                            < MAXLENGTH ) 
+                                            strcpy(_ptString, "*/");
+                                        _nbCharact += strlen("*/");
+                                        _ptString
+                                            = lexEl.string + _nbCharact ;
+                                    }
+                                }
+                            } else if ( c == '\n' && NextChar() ) {
+                                {
+                                    store_comment_line(_nbCharact);
+                                    _nbCharact = 0 ;
+                                    _ptString = lexEl.string ;
+                                    ptStockBuf = - 1 ;
+                                }
+                            } else if ( c == '\r' && NextChar() ) {
+                            } else if ( c != EOF ) {
+                                {
+                                    if ( _nbCharact++ < MAXLENGTH ) 
+                                        *_ptString++ = c ;
+                                    NextChar();
+                                }
+                            } else 
+                                ;
+                        }
+                    }
+                    break ;
+                default : 
+                    if ( c != EOF ) {
+                        {
+                            *_ptString = '\0';
+                            firstOnLine = 0 ;
+                            tokenAhead = 1 ;
+                            lexEl.Value = SLAS_c ;
+                            return (1);
+                        }
+                    }
+                    break ;
+            }
+            break ;
+    }
+    line = oldLine ;
+    sprintf(errStr, "Error unexpected \"%s\" at line %d \n", GetLexString()
+        , line);
+    PrintError(errStr, 0);
+    lexEl.Value = - 1 ;
+}

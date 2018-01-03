@@ -1,0 +1,38 @@
+typedef int ECHELLE ;
+
+#pragma nopretty 
+ECHELLE A = {
+    1,14,    /* questions */
+    1,14,    /* min max */
+    14,11,7,6,3, /* dominante ... carence */
+    14,11,8,5,2, /* 4 echelles */
+    {{14,130},{11,131},{8,132},{6,133},{3,134},{-1,-1},{-1,-1}},  /* scores */
+    {{100,14},{75,11},{50,8},{0,6},{0,-1}} /* proba excellence */
+} ;
+ECHELLE B = {
+    15,64,  /* quesstions */
+    19,43,  /* min max */
+    43,38,31,30,23,      /* dominante ... carence */
+    43,38,31,27,23,     /* 4 echelles */
+    {{43,135},{38,136},{33,137},{29,138},{23,139},{-1,-1},{-1,-1}}, /* scores */
+    {{100,43},{75,38},{50,33},{0,29},{0,-1}}  /* proba excellence */
+} ;
+#pragma pretty
+
+#ifndef toto
+
+#define merlin(i) 6+a
+
+static int                  i,j,              k;
+#endif
+
+main ()
+{
+int i = 5 ; i++;
+#pragma nopretty
+        i = 5 ;         /* presentation speciale */
+        j = 6 ;         /* bien a moi */
+        k = 7 ;         /* que je ne veux pas voir cassee */
+#pragma pretty
+if ( i) j += j ;
+}

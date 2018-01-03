@@ -1,0 +1,20 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+OUT_O=-o 
+
+#compiler choice
+MACHFLAGS=-DSUN -DLINUX -m486 -pipe -fhandle-exceptions
+// LIBC2FLAGS=-DREENTRANT -DGLIBC2
+C_PLUS=g++
+C_PLUS_LNK= g++
+C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch \
+	   -Wcomment -Wformat -Wchar-subscripts -Wuninitialized
+#OPTIM_FLAGS=-O2 $(LIBC2FLAGS)
+OPTIM_FLAGS=-g $(LIBC2FLAGS)
+C_FLAGS=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS)
+
+SEP=/
+
+LIB_SUF=a
+

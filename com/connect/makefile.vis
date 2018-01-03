@@ -1,0 +1,63 @@
+!include ./makefile.win
+
+connect.lib : connect.obj inetutil.obj erlsock.obj metaconnect.obj metainetutil.obj
+	-$(RM) $(THE_LIB)
+	$(LINKER) -lsocket $(LNK_FLAGS) /out:$(THE_LIB) connect.obj inetutil.obj erlsock.obj metaconnect.obj \
+						metainetutil.obj
+
+qconnectlib :
+	cd ..\asnquick
+	$(MAKE) -f makefile.vis chop.exe
+	$(MAKE) -f makefile.vis qconnect.lib
+	cd ..\connect
+
+chop.exe :
+	nmake -f makefile.chv
+
+wdispatcher.obj : wdispatcher.cpp
+
+dispatcher.exe : dispatcher.obj wdispatcher.obj supervisor.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:dispatcher.exe dispatcher.obj supervisor.obj wsock32.lib $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+ddispatcher.exe : ddispatcher.obj dsupervisor.obj wdispatcher.obj supervisor.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:ddispatcher.exe ddispatcher.obj dsupervisor.obj wsock32.lib $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+tdispatcher.exe : tdispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:tdispatcher.exe tdispatcher.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+ndispatcher.exe : ndispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:ndispatcher.exe ndispatcher.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+app1.exe : app1.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:app1.exe app1.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+app2.exe : app2.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:app2.exe app2.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+testdos.exe : testdos.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:testdos.exe testdos.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+spy.exe : spy.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:spy.exe spy.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+killapp.exe : killapp.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:killapp.exe killapp.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+tdispat.exe : tdispat.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:tdispat.exe tdispat.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+ndispat.exe : ndispat.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:ndispat.exe ndispat.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+testconn.exe : testconn.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:testconn.exe testconn.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+erlecho.exe : erlecho.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	link  $(LNK_FLAGS) /out:erlecho.exe erlecho.obj $(THE_LIB) wsock32.lib $(ASN_OBJECTS) $(LIBRARY)
+
+transfer.dll : transfer.obj
+     link $(LNK_FLAGS) -DLL /out:transfer.dll transfer.obj ..\asnquick\qconnect.lib $(LIBRARY)
+
+qtdispatcher.exe : qtdispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY) transfer.dll
+	link  $(LNK_FLAGS) /out:qtdispatcher.exe qtdispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY) wsock32.lib 
+

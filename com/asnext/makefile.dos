@@ -1,0 +1,38 @@
+
+all : m_done msc
+
+include ../makefile.inc
+
+clean : clean_inc_appli
+	- rm msc.h msc
+
+m_done : msc.met ../cplusplu/cplus.met
+	-@mkdir compile.dir
+	-@cp msc.met compile.dir
+	-@echo "metagen -c++ msc.met"
+	@cd compile.dir 
+	go32 $(UTIL_DIR)metagen -c++ -path ..\\..\\cplusplu $(METAOPT) msc.met 
+	-@unify msc.h ..\\msc.h
+	-@unify msc.cpp ..\\msc.cc
+	-@unify msc0.cpp ..\\msc0.cc
+	cd ..
+	@echo "ok" > m_done
+
+msc.o : msc.cc msc.h
+
+msc0.o : msc0.cc msc.h
+
+chopper.cc : chopper.ch
+
+compute.cc : compute.ch
+
+chopper.o : chopper.cc ../parser/token.h compute.h
+
+compute.o : compute.cc ../parser/token.h compute.h msc.h
+
+CPLUS=../cplusplu/chopper.o ../cplusplu/cplus.o ../cplusplu/cplus0.o ../cplusplu/cplus1.o ../cplusplu/cplus2.o ../cplusplu/cplus3.o ../cplusplu/cplus4.o ../cplusplu/cplus5.o ../cplusplu/cplus6.o ../cplusplu/cplus7.o ../cplusplu/dchop.o ../cplusplu/dchop1.o ../cplusplu/dchop0.o
+OBJECTS = msc.o msc0.o chopper.o compute.o
+
+msc : $(OBJECTS) 
+	gcc -v -o msc $(OBJECTS) $(CPLUS) $(LIBRARY)
+

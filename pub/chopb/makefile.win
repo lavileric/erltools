@@ -1,0 +1,47 @@
+
+all : m_done chopb.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+!include ..\..\makefile.inc
+
+clean : clean_inc
+	- $(RM) chopb
+    - $(RM) chopb.exe
+
+chopb.obj : chopb.cc chopb.h
+
+chopb0.obj : chopb0.cc chopb.h
+
+chopb1.obj : chopb1.cc chopb.h
+
+m_done : chopb.met ..\cplusplu\cplus.met
+	-@ mkdir compile.dir
+	@copy chopb.met compile.dir
+	@cd compile.dir
+	metagen -c++ -path ..\..\library\;..\..\cplusplu $(METAOPT) chopb.met
+	@-copy chopb.h ..\chopb.h
+	@-copy chopb.cpp ..\chopb.cc
+	@-copy chopb0.cpp ..\chopb0.cc
+	@-copy chopb1.cpp ..\chopb1.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+decomp.cc: decomp.ch
+
+chopper.obj : chopper.cc ..\library\token.h chopb.h
+
+decomp.obj : decomp.cc ..\library\token.h chopb.h
+
+CPLUS= ..\cplus\cplus.lib
+LIB_OBJECTS = chopb.obj chopb0.obj chopb1.obj decomp.obj
+OBJECTS = $(LIB_OBJECTS) chopper.obj
+
+
+
+
+
+
+

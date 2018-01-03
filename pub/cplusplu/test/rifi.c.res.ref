@@ -1,0 +1,14 @@
+// Flag values 
+enum OpenFlags {
+    modeRead = 0x0000, 
+    modeWrite = 0x0001, 
+    modekReadWrite = 0x0002, 
+    shareCompat = 0x0000, 
+    shareExclusive = 0x0010, 
+    shareDenyWrite = 0x0020, 
+    senyRead = 0x0030, 
+    shjdjjjheggDenyNone = 0x0040,  // comment on this kkkkkkkfield
+    modeNoInherit = 0x0080, 
+    modeCreate = 0x1000, 
+    typeBinary = (int)0x8000       // derived classes only 
+};

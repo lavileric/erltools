@@ -1,0 +1,16 @@
+main ()
+{
+	;
+	;
+	a = ((a *c ) + ( c *d)) ;
+	a = ((( a * c ) / ( c * d))+ e) + f;
+	a = (!(a . c) ) && ( (a . c) -> f) && ~(~e);
+	for(;;);
+	for(;i;i++){i+=0;};
+	while(i) i++;
+	while(i) {i++;j++;}
+	do ; while(i--);
+	tata();
+	tata(a);
+	switch (((a+b)/c)) {}
+}

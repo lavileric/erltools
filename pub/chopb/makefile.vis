@@ -1,0 +1,14 @@
+!include ./makefile.win
+
+chopb.exe : chopb.lib $(OBJECTS)
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:chopb.exe chopper.obj chopb.lib ..\cplusplu\cplus.lib $(LIBRARY)
+
+
+chopb.lib : $(LIB_OBJECTS)
+	-$(RM) chopb.lib
+	$(LINKER) $(LNK_FLAGS) /out:chopb.lib $(LIB_OBJECTS)
+
+
+
+
+

@@ -1,0 +1,6 @@
+
+!include ./makefile.win
+
+erlmsch.exe : $(OBJECTS)
+	link  $(LNK_FLAGS) /out:erlmsch.exe $(OBJECTS) $(CPLUS) $(CHOPB) $(LIBRARY)
+	 

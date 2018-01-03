@@ -1,0 +1,27 @@
+
+all : chop.exe
+
+!include ..\..\makefile.der
+
+chop.obj : chop.cc $(ERLTOOLS_DIR)\pub\library\token.h
+    	
+CPLUS=$(META_DIR)\pub\cplusplu\cplus.lib \
+	$(META_DIR)\pub\cplusplu\dchop.obj $(META_DIR)\pub\cplusplu\dchop1.obj \
+	$(META_DIR)\pub\cplusplu\dchop0.obj 
+
+CHOPB=$(META_DIR)\pub\chopb\chopb.obj $(META_DIR)\pub\chopb\chopb0.obj \
+	$(META_DIR)\pub\chopb\chopb1.obj $(META_DIR)\pub\chopb\decomp.obj
+
+METACHOP=$(META_DIR)\pub\metachop\metachop.obj \
+	 $(META_DIR)\pub\metachop\metacho0.obj \
+	 $(META_DIR)\pub\metachop\decomp0.obj $(META_DIR)\pub\metachop\decomp1.obj\
+	 $(META_DIR)\pub\metachop\decomp2.obj $(META_DIR)\pub\metachop\decomp3.obj\
+	 $(META_DIR)\pub\metachop\auxunpar.obj
+
+
+CHOPCORE=$(ERLTOOLS_DIR)\pub\parser\verif.obj
+
+chop.exe : chop.obj foo.obj foo0.obj $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS_LNK) chop.obj foo.obj foo0.obj $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+
+

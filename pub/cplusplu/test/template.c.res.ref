@@ -1,0 +1,3 @@
+std::map<int, EString, std::less<int> >     toto ;
+std::map<int, int> ::iterator   iter ;
+std::map<int, vector<int> > ::iterator  iter ;

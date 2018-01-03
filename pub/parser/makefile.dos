@@ -1,0 +1,98 @@
+all : m_done metagen.exe metachopdo chop.exe
+
+OPT_FLAGS=-DDUMP_COORD
+
+include ../../makefile.inc
+ 
+clean : clean_inc
+	-  rm metagen.exe chop.exe
+
+../metachop/chop_com.o :
+	(cd ../metachop ; $(MAKE) -f makefile.uni chop_com.o)
+ 
+m_done : metalang.met
+	-@ mkdir compile.dir
+	-@ rm compile.dir/metalang.met
+	-@ cp metalang.met compile.dir/metalang.met
+	@cd compile.dir 
+	metagen -c++ -path ..\\..\\library $(METAOPT) metalang.met 
+	@-unify metalang.h ..\\metalang.h
+	@-unify metalang.cpp ..\\metalang.cc
+	@-unify metalan0.cpp ..\\metalan0.cc
+	@-unify metalan1.cpp ..\\metalan1.cc
+	@-unify metalan2.cpp ..\\metalan2.cc
+	cd ..
+	@echo "ok" > m_done
+
+
+trait.cc : trait.ch 
+	chop -c++ trait.ch > trait.cc
+
+speed.cc : speed.ch 
+	chop -c++ speed.ch > speed.cc
+
+toksearc.cc : toksearc.ch 
+	chop -c++ toksearc.ch > toksearc.cc
+
+trait.o : metalang.h trait.cc
+
+metalang.o : metalang.cc ../library/token.h metalang.h
+
+metalan0.o : metalan0.cc ../library/token.h metalang.h
+
+metalan1.o : metalan1.cc ../library/token.h metalang.h
+
+metalan2.o : metalan2.cc ../library/token.h metalang.h
+
+comp.o : comp.cc ../library/token.h metalang.h
+
+verif.o : verif.cc ../library/token.h
+
+gesttok.o : gesttok.cc ../library/token.h
+
+metagen.o : metagen.cc  ../library/token.h
+
+toksearc.o : toksearc.cc ../library/token.h metalang.h
+
+speed.o : speed.cc ../library/token.h metalang.h
+
+METAGENCORE = metalang.o metalan0.o metalan1.o metalan2.o \
+			  verif.o 
+
+OBJECTS = $(METAGENCORE) metagen.o comp.o gesttok.o  \
+		  trait.o speed.o toksearc.o
+
+metagen.exe : $(OBJECTS) $(METACHOPGEN)
+	$(C_PLUS) -o metagen $(OBJECTS) $(LIBRARY)
+	stubify metagen
+	del metagen
+ 
+chopper.o : chopper.cc ../library/token.h
+
+CPLUS=../cplusplu/chopper.o ../cplusplu/cplus.o ../cplusplu/cplus0.o ../cplusplu/cplus1.o ../cplusplu/cplus2.o ../cplusplu/cplus3.o ../cplusplu/cplus4.o ../cplusplu/cplus5.o ../cplusplu/cplus6.o ../cplusplu/cplus7.o ../cplusplu/dchop.o ../cplusplu/dchop1.o ../cplusplu/dchop0.o
+CHOPB=../chopb/chopb.o ../chopb/chopb0.o ../chopb/chopb1.o ../chopb/decomp.o 
+METACHOP=../metachop/metachop.o ../metachop/metacho0.o ../metachop/decomp0.o ../metachop/decomp1.o ../metachop/decomp2.o ../metachop/decomp3.o ../metachop/auxunpar.o  
+
+metachopdo : 
+	cd ..\cplusplu 
+	$(MAKE) -f makefile.dos m_done $(CPLUS)
+	cd ..\parser
+	cd ..\chopb 
+	$(MAKE) -f makefile.dos m_done $(CHOPB)
+	cd ..\parser
+	cd ..\metachop 
+	$(MAKE) -f makefile.dos m_done $(METACHOP)
+	cd ..\parser
+
+chop.exe : chopper.o $(METAGENCORE)  $(CPLUS) $(CHOPB) $(METACHOP)
+	$(C_PLUS) -o chop chopper.o $(METAGENCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	stubify chop
+	del chop
+
+
+
+
+
+
+
+

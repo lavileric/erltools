@@ -1,0 +1,29 @@
+TheOutcome toto::activateByParsingFromLegacyFile ( 
+    StringToken *sevenDayScheduleFileName, int toto )
+  {}
+
+TheOutcome toto::activateByParsingFromLegacyFile ( 
+    StringToken *sevenDayScheduleFileName )
+  {}
+
+TheOutcome toto::activateByParsingFromLegacyFile ( StringToken *seeName ) {}
+
+TheOutcome toto::activateByParsingFromLegacyFile ( 
+    StringToken *sevenDayScheduleFileName, int toto, int fifi, int fofo
+    , int ruru, int fidfi )
+{
+    int i ;
+}
+
+TheOutcome activateByParsingFromLegacyFile ( 
+    StringToken *sevenDayScheduleFileName, int toto, int fifi, int fofo
+    , int ruru, int fidfi )
+{
+    int i ;
+}
+
+TheOutcome activateByParsingFromLegacyFile ( int fileName, int toto
+    , int fifi, int fofo, int ruru, int fidfi )
+{
+    int i ;
+}

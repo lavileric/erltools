@@ -1,0 +1,104 @@
+THE_LIB= ./cplus.a
+
+all : DOLIB cplus
+
+LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o
+
+libcplus.so : $(LIB_OBJECTS)
+	$(C_PLUS) -shared -o libcplus.so $(LIB_OBJECTS) ; 
+
+DOLIB : m_done $(THE_LIB)(chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o\
+					 dchop.o dchop1.o dchop0.o cplus8.o cplus9.o ) 
+OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc
+	- rm -f cplus error
+	- (cd test ; $(MAKE) -f makefile.uni clean);
+
+cplus.o : cplus.cc cplus.h ../library/token.h
+
+cplus0.o : cplus0.cc cplus.h ../library/token.h 
+
+cplus1.o : cplus1.cc cplus.h ../library/token.h
+
+cplus2.o : cplus2.cc cplus.h ../library/token.h
+
+cplus3.o : cplus3.cc cplus.h ../library/token.h
+
+cplus4.o : cplus4.cc cplus.h ../library/token.h
+
+cplus5.o : cplus5.cc cplus.h ../library/token.h
+
+cplus6.o : cplus6.cc cplus.h ../library/token.h
+
+cplus7.o : cplus7.cc cplus.h ../library/token.h
+
+cplus8.o : cplus8.cc cplus.h ../library/token.h
+
+cplus9.o : cplus9.cc cplus.h ../library/token.h
+
+m_done : cplus.met
+	-@ mkdir compile.dir
+	@cp cplus.met compile.dir
+	@echo "metagen -c++ cplus.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../library $(METAOPT) cplus.met ;\
+		  unify cplus.h ../cplus.h;\
+	  unify cplus.cpp ../cplus.cc;\
+	  unify cplus0.cpp ../cplus0.cc;\
+	  unify cplus1.cpp ../cplus1.cc;\
+		  unify cplus2.cpp ../cplus2.cc;\
+		  unify cplus3.cpp ../cplus3.cc;\
+		  unify cplus4.cpp ../cplus4.cc;\
+		  unify cplus5.cpp ../cplus5.cc;\
+		  unify cplus6.cpp ../cplus6.cc;\
+		  unify cplus8.cpp ../cplus8.cc;\
+		  unify cplus9.cpp ../cplus9.cc;\
+		  unify cplus7.cpp ../cplus7.cc)
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch
+
+dchop.cc: dchop.ch
+	metachop -c++ dchop.ch > dchop.cc
+	@grep -v "#line" dchop.cc > .res
+	@mv .res dchop.cc
+
+dchop0.cc : dchop0.ch
+	metachop -c++ dchop0.ch > dchop0.cc
+
+dchop1.cc : dchop1.ch
+
+kern.cc : kern.ch
+
+chopper.o : chopper.cc ../library/token.h cplus.h deccplus.h
+
+dchop.o : dchop.cc ../library/token.h cplus.h deccplus.h
+
+dchop0.o : dchop0.cc ../library/token.h cplus.h deccplus.h
+
+dchop1.o : dchop1.cc ../library/token.h cplus.h deccplus.h
+
+kern.o : kern.cc ../library/token.h cplus.h deccplus.h
+
+# OBJECTS = cplus.o cplus0.o cplus1.o cplus2.o cplus3.o \
+#		  cplus4.o cplus5.o cplus6.o cplus7.o cplus8.o cplus9.o \
+#		  dchop.o dchop0.o dchop1.o kern.o chopper.o 
+
+OBJECTS=kern.o
+
+SO_LIB = -L . -lcplus -L ../library -lmeta
+
+cplus : $(OBJECTS) $(THE_LIB) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libcplus.so ;\
+		$(C_PLUS) $(OPTIM_FLAGS) -o cplus $(OBJECTS) $(SO_LIB) ; \
+	else\
+		$(C_PLUS) $(OPTIM_FLAG) -o cplus $(OBJECTS) $(THE_LIB) $(LIBRARY) ;\
+	fi
+
+testall :
+	(cd test ; $(MAKE) test)
+

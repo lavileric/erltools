@@ -1,0 +1,34 @@
+struct toto {
+    int i ; // comment 
+    int j ; // com
+};
+enum toto { green, red
+    , reddfdfdfdffhhhhhhhhhfffffffffffffffffffffffffffffffffffffff = 8
+    , blue };
+enum toto {
+    green,  // comment 
+    red,    // comment1
+    reddfdfdfdffhhhhhhhhhfffffffffffffffffffffffffffffffffffffff = 8,  // comment1
+    blue
+};
+
+funct bidule ()
+{
+    
+    struct toto {
+        int i ;        // comment 
+        int jhgjhgjh ; // com
+    };
+    enum toto {
+        green,                          // comment1
+        turlu, 
+        
+        // before 
+        red = 3,                        // comment2
+        red = 4,                        // comment2
+        red = 5,                        // comment2
+        arrrrrrrrrrrrrrrrrrrrrred = 6,  // comment2
+        //avant
+        blue                            // apres
+    };
+}

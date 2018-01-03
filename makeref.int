@@ -1,0 +1,14 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+OUT_O=-o 
+
+#compiler choice
+MACHFLAGS=MACHFLAGS=-DSUN -DI386 -D_POSIX_SOURCE -D_SYSV3
+C_PLUS=g++
+C_PLUS_LNK=g++
+C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch \
+	   -Wcomment -Wformat -Wchar-subscripts -Wuninitialized
+#OPTIM_FLAGS=-g
+SEP=/
+LIB_SUF=a

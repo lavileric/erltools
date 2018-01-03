@@ -1,0 +1,31 @@
+META_DIR=../..
+
+all : chop
+
+include $(META_DIR)/makefile.der
+
+chop.o : chop.cc $(META_DIR)/pub/library/token.h
+
+CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
+
+CHOPB=$(META_DIR)/pub/chopb/chopb.a
+
+METACHOP=$(META_DIR)/pub/metachop/metachop.a
+
+CHOPCORE=$(META_DIR)/pub/parser/verif.o
+
+chop : chop.o foo.o foo0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS) -o chop foo.o foo0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	strip chop
+
+
+
+
+
+
+
+
+
+
+
+

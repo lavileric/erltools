@@ -1,0 +1,47 @@
+
+all : m_done metab.exe
+
+OPT_FLAGS=-DCHOPB
+
+!include ..\..\makefile.inc
+
+clean : clean_inc_appli
+	- $(RM) metab.h
+	- $(RM) metab
+    	- deltree /y compile.dir
+
+m_done : metab.met ..\parser\metalang.met
+	-@ mkdir compile.dir
+	-@copy metab.met compile.dir
+	@cd compile.dir
+	$(INSTALL_DIR)\metagen.exe -c++ -path ..\..\parser\;..\..\library $(METAOPT) metab.met 
+	-@unify metab.h ..\metab.h
+	-@unify metab.cpp ..\metab.cc
+	-@unify metab0.cpp ..\metab0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+decomp.cc : decomp.ch
+
+chopper.cc : chopper.ch
+
+decomp.obj : decomp.cc
+
+chopper.obj : chopper.cc
+
+metab.obj : metab.cc
+
+metab0.obj : metab0.cc
+
+METAGEN= ..\parser\metalang.obj ..\parser\metalan0.obj ..\parser\metalan1.obj \
+		 ..\parser\metalan2.obj\
+		 ..\parser\comp.obj ..\parser\gesttok.obj ..\parser\verif.obj \
+		 ..\parser\speed.obj ..\parser\toksearc.obj ..\parser\trait.obj
+OBJECTS= metab.obj metab0.obj chopper.obj decomp.obj
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+!include ./makefile.win
+
+qconnectlib :
+	cd ..\asnquick
+	$(MAKE) -f makefile.bor chop.exe
+	$(MAKE) -f makefile.bor qconnect.lib
+	cd ..\connect
+
+connect.lib : connect.obj inetutil.obj erlsock.obj metainetutil.obj metaconnect.obj
+	-$(RM) $(THE_LIB)
+    -tlib /P64 $(THE_LIB) +connect +inetutil +erlsock +metainetutil +metaconnect,connect.lst
+
+
+chop.exe :
+	$(MAKE) -f makefile.chb
+
+dispatcher.exe : dispatcher.obj supervisor.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) dispatcher.obj supervisor.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+ddispatcher.exe : dispatcher.exe 
+
+tdispatcher.exe : tdispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) tdispatcher.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+
+app1.exe : app1.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) app1.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+app2.exe : app2.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) app2.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+testdos.exe : testdos.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) testdos.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+spy.exe : spy.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) spy.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+killapp.exe : killapp.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) killapp.obj $(THE_LIB) $(ASN_OBJECTS) $(LIBRARY)
+
+

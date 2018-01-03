@@ -1,0 +1,203 @@
+language foo;
+
+lexdefine LexComment;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    case
+        takel in ['/'] :
+            
+            /* definition of comment */
+            case
+                seel in ['/'] :
+                    begin
+                    begin_comment();
+                    storel takel ;
+                    while seel do
+                        case
+                            seel in ['\r','\n'] :
+                                begin
+                                store_comment_line();
+                                return take LexComment;
+                                end
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    store_comment_line();
+                    end
+                takel in ['*'] :
+                    begin
+                    {{ {int level = 0; }};
+                    begin_comment();
+                    while seel do
+                        case
+                            takel "/*" :
+                                begin
+                                {{ level ++; }};
+                                storel "/*";
+                                end
+                            takel "*/" :
+                                begin
+                                if {{!level }} then
+                                    begin
+                                    store_comment_line();
+                                    return take LexComment;
+                                    end
+                                else
+                                    begin
+                                    {{ level --;}};
+                                    storel "*/";
+                                    end;
+                                end
+                            takel in ['\n'] : store_comment_line()
+                            takel in ['\r'] : 
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    store_comment_line();
+                    {{} }};
+                    end
+                default :
+                    begin
+                    recoverl;
+                    end
+            end
+    end;
+end;
+
+lexdefine LexMeta;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    case
+        takel in ['$'] :
+            
+            /* definition of metavariables */
+            begin
+            if not seel in ['('] then
+                while seel in ['a'..'z','A'..'Z','0'..'9','_'] do
+                    storel takel 
+            else
+                begin
+                {{ int nbPar = 0;}};
+                storel takel ;
+                while seel do
+                    case
+                        seel in ['('] :
+                            begin
+                            {{ nbPar++;}};
+                            storel takel ;
+                            end
+                        seel in ['\n'] :
+                            begin
+                            
+                            /* do not take line feed */
+                            return !META;
+                            end
+                        seel in [')'] :
+                            if {{!nbPar }} then
+                                begin
+                                storel takel ;
+                                return !META;
+                                end
+                            else
+                                begin
+                                storel takel ;
+                                {{ nbPar--;}};
+                                end
+                        default : storel takel 
+                    end;
+                end;
+            return !META;
+            end
+    end;
+end;
+
+lexdefine Lex;
+    skip ' ','\t','\r','\n';
+    
+    /* ou faire un forget */
+    recognize_string;
+    case
+        seel in ['a'..'z','A'..'Z'] :
+            /*definition of ident */
+            begin
+            while seel in ['a'..'z','A'..'Z','_','0'..'9'] do
+                storel takel ;
+            return SortKeyWord(!IDENT);
+            end
+        takel in ['"'] :
+            
+            /* definition of string */
+            while seel do
+                case
+                    takel in ['\r','\n'] :
+                        begin
+                        return !STRING;
+                        end
+                    takel in ['"'] :
+                        if seel in ['"'] then
+                            storel takel 
+                        else
+                            begin
+                            return !STRING;
+                            end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        if not seel in ['\r'] then
+                            
+                            /* pour eviter un
+                              double \r a l'ecriture formatee */
+                            storel takel 
+                        else
+                            takel ;
+                        end
+                    seel : storel takel 
+                end
+        takel "'" :
+            
+            /* definition of character */
+            while seel do
+                case
+                    takel "'" :
+                        begin
+                        return !CHARACTER;
+                        end
+                    takel in ['\\'] :
+                        begin
+                        storel "\\";
+                        storel takel ;
+                        end
+                    seel : storel takel 
+                end
+        seel in ['0'..'9'] :
+            
+            /* definition of number */
+            begin
+            while seel in ['0'..'9'] do
+                storel takel ;
+            return !NUMB;
+            end
+    end;
+end;
+
+define main_entry;
+end;
+
+define bidon_bidon;
+    take !IDENT;
+    take !STRING;
+    take !NUMB;
+    take !CHARACTER;
+end;
+
+define parse_entry;
+    {{ goto parse_entry_exit;}};
+    take !IDENT;
+end.
+

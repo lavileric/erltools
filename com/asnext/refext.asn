@@ -1,0 +1,172 @@
+Ref { 2 3 9 } DEFINITIONS ::=
+BEGIN
+
+-- type for extensions
+ExtensionField ::= SEQUENCE {
+    standard-extension [0] IMPLICIT ExtensionType,
+    criticality [1] Criticality DEFAULT {},
+    value [2] ANY DEFINED BY type DEFAULT NULL NULL }
+
+ExtensionType ::= INTEGER(0..ub-extension-types)
+
+Criticality ::= BIT STRING {
+    for-submission (0),
+    for-transfer (1),
+    for-delivery(2) } (SIZE(0..ub-bit-options))
+
+-- some extension values 
+recipient-reassignment-prohibited EXTENSION
+    RecipientReassignmentProhibited DEFAULT recipient-reassignment-allowed
+    CRITICAL FOR DELIVERY
+    ::= 1
+
+RecipientReassignmentProhibited ::= ENUMERATED {
+    recipient-reassignment-allowed (0),
+    recipient-reassignment-prohibited (1)}
+
+originator-requested-alternate-recipient EXTENSION
+    OriginatorRequestedAlternateRecipient
+    CRITICAL FOR SUBMISSION
+    ::= 2
+
+OriginatorRequestedAlternateRecipient ::= INTEGER
+
+dl-expansion EXTENSION
+    DLExpansionProhibited DEFAULT dl-expansion-allowed
+    CRITICAL FOR DELIVERY
+    ::= 3
+
+DLExpansionProhibited ::= ENUMERATED {
+    dl-expansion-allowed (0),
+    dl-expansion-prohibited(1)
+}
+
+ExtensionTest ::= SET {
+    name[0] IA5String,
+    extensions [3] EXTENSIONS CHOSEN FROM {
+        recipient-reassignment-prohibited,
+        originator-requested-alternate-recipient
+    }
+}    
+
+extensionValue ExtensionTest ::= {
+    name "NameTest",
+    extensions {
+        { standard-extension recipient-reassignment-prohibited,
+          criticality { for-submission }, 
+          value RecipientReassignmentProhibited 
+		recipient-reassignment-allowed},
+        { standard-extension originator-requested-alternate-recipient,
+          criticality { for-transfer },
+          value OriginatorRequestedAlternateRecipient 8}
+    }
+}
+
+extensionValue1 ExtensionTest ::= {
+    name "NameTest",
+    extensions {
+        { standard-extension originator-requested-alternate-recipient,
+          criticality { for-transfer } ,
+          value OriginatorRequestedAlternateRecipient 0}
+    }
+}
+
+extensionValue2 ExtensionTest ::= {
+    name "NameTest",
+    extensions {
+        { standard-extension repient-rement-prohibited,
+          criticality { for-submission }, 
+          value DLExpansionProhibited
+		dl-expansion-prohibited},
+        { standard-extension recipient-reassignment-prohibited,
+          criticality { for-submission }, 
+          value DLExpansionProhibited
+		dl-expansion-prohibited},
+        { standard-extension dl-expansion,
+          criticality { for-submission }, 
+          value DLExpansionProhibited
+		      dl-expansion-prohibited},
+        { standard-extension originator-requested-alternate-recipient,
+          criticality { for-transfer },
+          value OriginatorRequestedAlternateRecipient 8}
+    }
+}
+
+-- tests for simple extensions
+
+ExtensionAttribute ::= SEQUENCE {
+    extension-attribute-type [0] INTEGER,
+    extension-attribute-value [1] ANY DEFINED BY extension-attribute-type }
+
+common-name EXTENSION-ATTRIBUTE 
+    CommonName
+    ::= 1
+
+CommonName ::= PrintableString(SIZE(1..ub-common-name-length))
+
+Token ::= SEQUENCE {
+    token-type-identifier [0] IMPLICIT OBJECT IDENTIFIER,
+    token [1] ANY DEFINED BY token-type-identifier
+}
+
+asymmetricToken TOKEN INTEGER ::= { 0, 1 }
+
+TokenData ::= SEQUENCE {
+    type [0] IMPLICIT INTEGER,
+    value [1] ANY DEFINED BY type }
+
+bind-token-signed-data TOKEN-DATA BindTokenSignedData ::= 16
+
+BindTokenSignedData ::= BIT STRING
+
+-- test values
+
+test-simple-1 ExtensionAttribute ::= {
+    extension-attribute-type common-name,
+    extension-attribute-value CommonName "fff"
+}
+
+test-simple-10 ExtensionAttribute ::= {
+    extension-attribute-type common-name,
+    extension-attribute-value INTEGER 5
+}
+
+test-simple-11 ExtensionAttribute ::= {
+    extension-attribute-type toto,
+    extension-attribute-value CommonName "fff"
+}
+
+
+test-simple-2 Token ::= {
+    token-type-identifier asymmetricToken ,
+    token INTEGER 5
+}
+
+test-simple-20 Token ::= {
+    token-type-identifier asymmetricToken,
+    token IA5String "aaa"
+}
+
+test-simple-21 Token ::= {
+    token-type-identifier common-name,
+    token INTEGER 6
+}
+
+test-simple-3 TokenData ::= {
+    type bind-token-signed-data,
+    value BindTokenSignedData '10'B
+}
+
+test-simple-30 TokenData ::= {
+    type bind-token-signed-data,
+    value INTEGER 7
+}
+
+test-simple-31 TokenData ::= {
+    type bindoken-signed-data,
+    value BindTokenSignedData '10'B
+}
+
+
+END
+

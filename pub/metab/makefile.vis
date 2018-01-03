@@ -1,0 +1,15 @@
+!include ./makefile.win
+
+metab.exe : $(METAGEN) $(OBJECTS)
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:metab.exe $(OBJECTS) $(METAGEN) $(LIBRARY)
+
+ 
+
+
+
+
+
+
+
+
+

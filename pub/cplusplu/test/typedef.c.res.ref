@@ -1,0 +1,22 @@
+#include "typedef.h"
+
+FARPROC bidon ;
+
+typedef void    UnCandidat ;
+
+void Interprete ()
+{
+    int         feuille ;
+    int         action ;
+    UnCandidat  monCandidat ;
+    
+    DecodeInit();
+    DecodeInt(&feuille);
+    DecodeInt(&action);
+    PRINTF(">>>> %d %d ", feuille, action);
+}
+
+main ()
+{
+    char    filePath [512];
+}

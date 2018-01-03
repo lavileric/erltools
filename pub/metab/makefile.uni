@@ -1,0 +1,56 @@
+
+all : m_done metab
+
+OPT_FLAGS=-DCHOPB -Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc_appli
+	- rm -f metab.h metab *.cc
+
+m_done : metab.met ../parser/metalang.met
+	-@ mkdir compile.dir
+	@cp metab.met compile.dir
+	@echo "metagen -c++ metab.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../parser:../../library $(METAOPT) metab.met ;\
+		  unify metab.h ../metab.h;\
+		  unify metab.cpp ../metab.cc;\
+	  unify metab0.cpp ../metab0.cc;)
+	@echo "ok" > m_done
+
+decomp.cc : decomp.ch
+
+chopper.cc : chopper.ch
+
+decomp.o : decomp.cc
+
+chopper.o : chopper.cc
+
+metab.o : metab.cc
+
+metab0.o : metab0.cc
+
+METAGEN= ../parser/metalang.o ../parser/metalan0.o ../parser/metalan1.o \
+		 ../parser/metalan2.o\
+		 ../parser/comp.o ../parser/gesttok.o ../parser/verif.o \
+		 ../parser/speed.o ../parser/toksearc.o ../parser/trait.o
+OBJECTS= metab.o metab0.o chopper.o decomp.o
+
+SO_LIB = -L ../parser -lmetagen -L ../library -lmeta 
+
+metab : $(METAGEN) $(OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) $(OPTIM_FLAGS) -o metab $(OBJECTS) $(SO_LIB);\
+	else\
+		$(C_PLUS) -o metab $(OBJECTS) $(METAGEN) $(LIBRARY);\
+	fi
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+META_DIR=..\..
+
+ASN_LIB = ..\asn\.\asn.$(LIB_SUF)
+
+INCLUDE_DIR_LOC= -I..\asn -I..\connect
+
+all : quickcode.exe
+
+!include $(META_DIR)\makefile.der
+
+clean : clean_inc_appli
+	@- del quickcode.cc	
+	@- del ihm.h 
+	@- del level2.h
+
+quickcode.obj : quickcode.cc quickcode.h
+

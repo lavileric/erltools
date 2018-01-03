@@ -1,0 +1,11 @@
+#!/bin/sh
+listFile=`ls *.c_l | sort -d`
+echo $listFile
+for i in $listFile  ; do
+    echo $i;
+    name=`echo $i | sed 's/_l$//'`;
+    echo;
+    ../cplus $i > $name.res;
+    diff $name.res $name.res.ref
+    echo
+done

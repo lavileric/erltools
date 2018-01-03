@@ -1,0 +1,72 @@
+fifi ()
+{
+    register char   *ptSource, *ptDest ;
+    
+    i = 5 ;
+}
+
+/**************************************************************
+           PrintError : print the first error
+   ***************************************************************/
+int         xErr = 0, yErr = 0 ; /* current column and line when error
+                                    is found */ 
+
+/* JPJ << */
+int         yErrBeg = 0 ;        /* beginning line for the token 
+                                    yErrBeg <= yErr */ 
+char        *tokErr ;            /* content of the error most generally a token
+                                    which was not found */ 
+static int  lengthTokErr ;       /* length of the token */ 
+
+/* JPJ >> */
+/* EL << */
+static int  typeErr ;            /* type of the error 0<= type <= 3
+                                    The error message depends on the type */ 
+static char *searchedErr ;       /* the searched thing */ 
+
+/* EL >> */
+fonction ()
+{
+    
+    int         toot ;                        // comment
+    sdlfk       totototo ;                    // comment1
+    ksjhhhhjjkj *(*fonction)(int) ;           // comment
+    char        *totot [5];                   // comment
+    tartempion  titi = {{ 0, 4 }, { 0, 5 }};  // un autre commentaire
+    tartempion  titi
+        = {{ 0, 4 }, { 0, 5 }, { 0, 4 }, { 0, 5 }, { 0, 4 }, { 0, 5 }
+            , { 0, 4 }, { 0, 5 }, { 0, 4 }, { 0, 5 }, { 0, 4 }, { 0, 5 }
+            , { 0, 4 }}; // commentaires
+    
+    struct fifi {
+        int i ;
+    };                                        // comment pour struct
+    
+    // commentaire sur l'affectation qui va faire changer sa grandeur
+    i = 5 ; // commentaire sur l'affectation qui va faire changer sa grandeur
+    turlu = turlu++ ;
+    fi = fofo ;
+    if ( !node
+            || (comm = (PTREE)SON_READ(node, 0), NumberTree(comm) != GEO) ) {
+        *x = *y = *dx = *dy = 0 ;
+        return 0 ;
+    }
+    
+    // comment
+    int toto ; // comm 
+    
+    if ( i = 5 ) {}
+    if ( i = 5 ) {
+    } else {
+    }
+    for ( i = 0 ; 
+            slkdfjskfjlks < slkdfjsdlkf && sldkfjsdlfkjds > lskdfjsldkfj ; 
+            j++ ) {
+        i++ ;
+    }
+    for ( i = 0 ; 
+            slkdfjskfjlks < slkdfjsdlkf && sldkfjsdlfkjds > lskdfjsldkfj ; 
+            lksdfksdf = lsdkjflsdkfj = lskdfjlkdsfj = slkdfsldkfj ) {
+        j++ ;
+    }
+}

@@ -1,0 +1,2 @@
+typedef void (CALLBACK*     FARPROC)(void);
+FARPROC toto ;

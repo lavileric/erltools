@@ -1,0 +1,17 @@
+!include ./makefile.win
+
+asnext.exe : $(OBJECTS) chopper.obj $(ASN_OBJECTS) $(LIBRARY)
+	link $(LNK_FLAGS) /out:asnext.exe $(OBJECTS) chopper.obj $(ASN_OBJECTS) $(LIBRARY)
+
+dasnext.exe : $(OBJECTS) dchopper.obj $(ASN_OBJECTS) $(LIBRARY)
+	link $(LNK_FLAGS) /out:dasnext.exe dchopper.obj $(OBJECTS) $(ASN_OBJECTS) $(LIBRARY)
+
+asnext.lib : $(OBJECTS) 
+		$(LINKER) $(LNK_FLAGS) /out:asnext.lib $(OBJECTS)
+	 
+chop.exe :	chop.cc m_done
+	$(MAKE) -f makefile.chv
+
+
+
+

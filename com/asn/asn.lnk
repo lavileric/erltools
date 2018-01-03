@@ -1,0 +1,8 @@
+..\metachop\metacho1.lib+
+..\metachop\metacho2.lib+
+..\parser\metagen.lib+
+chopper+asn+asn0+asn1+asn2+dchop+pretty+compile+verify+compound+scn+memorize
+asn
+
+
+asn.def;

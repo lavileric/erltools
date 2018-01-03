@@ -1,0 +1,374 @@
+For prettyprinting a file either use the command "cpb filename" or use the macro 
+provided in the .emacs file of the cplusplu directory.
+Flags are set in c.set file in $HOME directory or in $PATH
+
+Two rules are applied on prettyprinting
+=======================================
+
+1) An empty line is put before comments whose first character is a space
+
+2) Code between the pragmas :
+
+    #pragma nopretty
+    #pragma pretty 
+
+    is not prettyprinted. It is left as it.
+
+The prettyprinting can be tailored using some flags of the c.set file :
+
+tab value : set the indentation value  
+=====================================
+
+example with 2
+==============
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+  
+  int nbLoop ;  // number of loop to be done
+  int nothing ; // variable with no use
+  
+  for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+    printf("Value of nbLoop %d \n", nbLoop);
+  }
+}
+
+example with 4
+==============
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+}
+
+mode : set the laying of braces in if,while,for ...
+===================================================
+
+example with ansi
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) 
+    {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+}
+
+example with ritchie
+=======================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+}
+
+brace_align : in ansi mode align code on brace or not
+=====================================================
+
+example with code
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+
+int nbLoop ;  // number of loop to be done
+int nothing ; // variable with no use
+
+for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) 
+    {
+    printf("Value of nbLoop %d \n", nbLoop);
+    }
+}
+
+example with normal
+===================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) 
+    {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+}
+
+
+single_switch_indent : tell how to indent a single switch instruction
+=====================================================================
+
+example with off
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : 
+            printf("Strange \n");
+    }
+}
+
+example with on
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+
+assign_align : tell if equal sign of assignments are aligned
+=====================================================================
+
+example with on
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop  =  1 ;
+    nothing =  5 ;
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+example with off
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop = 1 ;
+    nothing = 5 ;
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+
+margin : try to squeeze the code in the indicated width, adjust to your screen
+==============================================================================
+
+example with 20
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+main ( int argc
+        , char **argv )
+{
+    
+    int nbLoop ; // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop = 1 ;
+    nothing = 5 ;
+    for ( nbLoop = 4 ; 
+            nbLoop
+                > 0 ; 
+            nbLoop-- ) {
+  printf(
+    "Value of nbLoop %d \n"
+    , nbLoop);
+    }
+  switch ( nbLoop ) {
+    case 4 : printf(
+                "Strange \n");
+  }
+}
+
+comment : modify beginning middle and end string (number of space)
+==============================================================================
+
+example with middle " "
+======================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+int main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop = 1 ;
+    nothing = 5 ;
+    
+    /*  A comment on loop
+     *  the end of comment is 
+     *  here 
+     */
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+
+indent_function_type : indent after the function type or not
+==============================================================================
+
+example with on
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+int
+main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop = 1 ;
+    nothing = 5 ;
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+example with off
+=================
+
+#include "stdio.h"
+
+// 
+// main : main program showing the usage of prettyprinter
+//
+int main ( int argc, char **argv )
+{
+    
+    int nbLoop ;  // number of loop to be done
+    int nothing ; // variable with no use
+    
+    nbLoop = 1 ;
+    nothing = 5 ;
+    
+    for ( nbLoop = 4 ; nbLoop > 0 ; nbLoop-- ) {
+        printf("Value of nbLoop %d \n", nbLoop);
+    }
+    switch ( nbLoop ) {
+        case 4 : printf("Strange \n");
+    }
+}
+
+simplify : suppress unecessary parenthesis in expressions
+==========================================================
+
+
+
+
+

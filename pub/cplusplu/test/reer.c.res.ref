@@ -1,0 +1,35 @@
+main ()
+{
+    if ( (new TimeLexicallyClassifiedTokenAndParser)->plusOrMinus() ) {}
+    theCatalogOfViewPeriodsBySpacecraftAndStation
+        = GlossaryOf<aaaa, bbb
+            , AccomodatingArrayOf<ASetOfInterestingViewPeriodEvents *> > ();
+    
+    FillInTheBlankForm  *viewPeriodFileNameForm
+        = new FillInTheBlankForm(
+            new FormTextField(
+                new TextString("View Period  File Name Definition"))
+            , userSuppliedViewPeriodFileName
+            , new FormTextField(new TextString("View Period File Name = ")));
+    
+    *viewPeriodFileNameForm
+        = new FillInTheBlankForm(
+            new FormTextField(
+                new TextString("View Period  File Name Definition"))
+            , userSuppliedViewPeriodFileName
+            , new FormTextField(new TextString("View Period File Name = ")));
+    scopedGlossary = AScopedGlossaryOf<TextString> ();
+    scopedGlossary = AScopedGlossaryOf<TextString> ::toto();
+    scopedGlossary = AScopedGlossaryOf<TextString> () > 5 ;
+    scopedGlossary = AScopedGlossaryOf<TextString> ::toto() < 6 ;
+    a = toto < 6 ;
+    a = toto < fifi<fofo> ();
+    a = fifi < fofo<fafa> ();
+    a = fifi < fofo<fafa, fifi, fufu> ();
+    a = toto < fifi<(fofo < fafa)> ();
+    a = toto < fifi < (fofo < fafa), a<b> ();
+    a = "dddd\nrrr";
+    TextStringTokenizer ourNextStringTokenizer
+        =TextStringTokenizer(
+    "Test  \nTextStringTokenizer: create ServicePackage myActivity  \nFileName<whateveractivitiesdesired>");
+}

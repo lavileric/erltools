@@ -1,0 +1,24 @@
+INCLUDE_DIR_LOC= -I /usr/include/python2.2
+
+all : pythontree.o
+	rm -f build/temp.linux-i686-2.2/*
+	for i in build/temp.* ; do cp *.o $$i ; done
+#	cp *.o build/temp.linux-i686-2.2/
+	cp $(ERLTOOLS_DIR)/pub/library/meta.a ./libmeta.a
+	cp $(ERLTOOLS_DIR)/pub/cplusplu/cplus.a ./libcplus.a
+	python treesetup.py build
+
+install :
+	python treesetup.py install
+
+include ../../makefile.der
+
+#for serlecho sputech select SIMPLE or MESSAGE or DISPATCHER
+OPT_FLAGS=-DDUMP_COORD -DWITHOUT_EXCEPT -DSWITCHER_TABLE -D_SIMPLE -DMESSAGE -DDISPATCHER -D_DISPATCH_DEBUG -fPIC
+
+pythontree.cc : pythontree.ch
+
+clean : clean_inc_appli
+	- $(RM) *.o *.cc build/*/*.o build/*/*.so *.a
+
+

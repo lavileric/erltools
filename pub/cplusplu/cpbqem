@@ -1,0 +1,36 @@
+#!/bin/sh
+
+#find suffix of name
+name=`basename $1`
+suffix=`echo $name | sed 's/.*\.//'`
+
+#suppress tabulations in file
+# deltab $1
+
+#if ch use chopb else cplus
+if [ $suffix = "ch" ]
+then
+    chunkch $1 $3 > res1.cpb
+elif [ $suffix = "met" ]
+then
+    exit 0
+else
+    chunkc $1 $3  > res1.cpb
+fi
+cp $1 $2
+result=$?
+if [ $result != 0 ] ; then
+    exit $result
+else
+    ex $2 < res1.cpb > /dev/null
+    rm res1.cpb
+fi
+
+
+
+
+
+
+
+
+

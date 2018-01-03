@@ -1,0 +1,288 @@
+#if defined(VAXVMS)
+#   include <signal.h>
+#   include <Intrinsic.h>
+#   include <StringDefs.h> /*#include <Label.h>*/ 
+#else 
+#   include <sys/signal.h>
+#   include <X11/Intrinsic.h>
+#   include <X11/StringDefs.h> /*#include <X11/Label.h>*/ 
+#endif
+
+#include <ctovms.h>
+#include <vms_main.h>
+#include <resource.h>
+#include <common.h>
+#include <hilited_val.h>
+
+GLOBALDEF XtAppContext  application_context ;
+GLOBALDEF Display       *dpy ;
+static void             activate () ;
+static int              view ;
+static Widget           vw ;
+GLOBALDEF XtCallbackRec callbacks []
+    = {{ activate, (caddr_t)0 }, {(XtCallbackProc)0, (caddr_t)0 }};
+
+vms_getsym () {}
+
+void vms_pusharg () {}
+
+vms_lispcall () {}
+
+static  void finish ()
+{
+    view_stop();
+    rsrc_stop();
+    XtCloseDisplay(dpy);
+    XtDestroyApplicationContext(application_context);
+}
+
+static  void error_hdl ( dpy, error_event )
+Display     *dpy ;
+XErrorEvent *error_event ;
+{
+    printf("Erreur %d\n", (int)error_event->error_code);
+    finish();
+    exit(1);
+}
+
+static  void sigint_hdl ()
+{
+    printf("REMOVE_FILTER %d\n", i_view_remove_filter(view, "F1"));
+    i_view_hide(view);
+    i_view_destroy(view);
+    finish();
+    exit(0);
+}
+
+static  void designation ( w, client_data, event )
+Widget  w ;
+caddr_t client_data ;
+XEvent  *event ;
+{
+    switch ( event->xbutton.button ) {
+        case Button1 : 
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 6));
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 8));
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 7));
+            break ;
+        case Button2 : 
+            printf("REMOVE HILITED %d\n"
+                , i_view_remove_hilited(view, H_REVERSE));
+            printf("REMOVE HILITED %d\n"
+                , i_view_remove_hilited(view, H_UNDERLINE));
+            break ;
+        case Button3 : 
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 6));
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 8));
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 7));
+            break ;
+    }
+}
+
+static  void button_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("BUTTON: %x\n", (int)call_data);
+}
+
+static  void button_help_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("BUTTON HELP: %x\n", (int)call_data);
+}
+
+static  void h_help_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("HORIZONTAL SCROLLBAR HELP\n");
+}
+
+static  void h_jump_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("HORIZONTAL JUMP SCROLL %d\n", (int)call_data);
+    i_view_set_hscrl(view, (int)call_data, -1);
+}
+
+static  void h_scroll_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    switch ( (int)call_data ) {
+        case V_PAGE_LEFT : 
+            printf("PAGE_LEFT\n");
+            break ;
+        case V_PAGE_RIGHT : 
+            printf("PAGE_RIGHT\n");
+            break ;
+        case V_LINE_LEFT : 
+            printf("LINE_LEFT\n");
+            break ;
+        case V_LINE_RIGHT : 
+            printf("LINE_RIGHT\n");
+            break ;
+        default : printf("HORIZONTAL SCROLL: UNKNOWN\n");
+    }
+}
+
+static  void title_proc ( w, client_data, call_data )
+{
+    switch ( (int)call_data ) {
+        case V_TITLE1 : 
+            printf("ADD HILITED %d\n", i_view_add_hilited(view, 1));
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 6));
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 45));
+            printf("ADD BUTTON %d\n", i_view_add_button(view, 7));
+            break ;
+        case V_TITLE3 : 
+            printf("ADD HILITED %d\n", i_view_add_hilited(view, 2));
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 6));
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 45));
+            printf("REMOVE BUTTON %d\n", i_view_remove_button(view, 7));
+            break ;
+    }
+}
+
+static  void v_help_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("VERTICAL SCROLLBAR HELP\n");
+}
+
+static  void v_jump_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("VERTICAL JUMP SCROLL %d\n", (int)call_data);
+    i_view_set_vscrl(view, (int)call_data, -1);
+}
+
+static  void v_scroll_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    switch ( (int)call_data ) {
+        case V_PAGE_UP : 
+            printf("PAGE_UP\n");
+            break ;
+        case V_PAGE_DOWN : 
+            printf("PAGE_DOWN\n");
+            break ;
+        case V_LINE_UP : 
+            printf("LINE_UP\n");
+            break ;
+        case V_LINE_DOWN : 
+            printf("LINE_DOWN\n");
+            break ;
+        default : printf("VERTICAL SCROLL: UNKNOWN\n");
+    }
+}
+
+static  void debug_proc ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    printf("DEBUG\n");
+}
+
+static  void activate ( w, client_data, call_data )
+Widget  w ;
+caddr_t client_data ;
+caddr_t call_data ;
+{
+    Arg args [2];
+    
+    XtSetArg(args [0], XtNx, (XtArgVal)0);
+    XtSetArg(args [1], XtNheight, (XtArgVal)200);
+    XtSetValues(vw, args, XtNumber(args));
+}
+
+main ()
+{
+    int         ret ;
+    Cardinal    argc ;
+    Widget      button ;
+    Arg         args [1];
+    String      argv [2];
+    
+    llpusharg = vms_pusharg ;
+    llgetsym = vms_getsym ;
+    lllispcall = vms_lispcall ;
+    signal(SIGINT, sigint_hdl);
+    XSetErrorHandler(error_hdl);
+    XtToolkitInitialize();
+    application_context = XtCreateApplicationContext();
+    argv [0] = "concerto";
+    argv [1] = (String)0 ;
+    argc = (Cardinal)1 ;
+    dpy = XtOpenDisplay(application_context, (String)0, "concerto"
+        , "concerto", (XrmOptionDescRec *)0, (Cardinal)0, &argc, argv);
+    if ( !dpy ) {
+        printf("Bad server\n");
+        XtDestroyApplicationContext(application_context);
+        exit(1);
+    }
+    XSynchronize(dpy, TRUE);
+    if ( (ret = rsrc_start()) < 0 ) {
+        printf("Error %d\n", ret);
+        XtCloseDisplay(dpy);
+        XtDestroyApplicationContext(application_context);
+        exit(1);
+    }
+    view_start();
+    view = i_view_create(20, 700, 200, 100
+        , C_TITLE | C_VSCRL | C_HSCRL | C_BUTTONS, -1, 1, 0);
+    if ( view < 0 ) {
+        printf("VIEW_CREATE ERROR %d\n", ret);
+        finish();
+        exit(1);
+    }
+    vw = (Widget)rsrc_get(view, R_VIEW);
+    XtAddCallback(vw, XtNbuttonHelpProc, button_help_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNbuttonProc, button_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNhHelpProc, h_help_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNhJumpProc, h_jump_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNhScrollProc, h_scroll_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNtitleProc, title_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNvHelpProc, v_help_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNvJumpProc, v_jump_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNvScrollProc, v_scroll_proc, (caddr_t)NULL);
+    XtAddCallback(vw, XtNdebugProc, debug_proc, (caddr_t)NULL);
+    /*
+       XtAddEventHandler(vw, ButtonPressMask, False, designation,
+           (caddr_t)NULL);
+             */
+    /*
+       XtSetArg(args[0], XtNcallback, (XtArgVal)callbacks);
+             
+       button = XtCreateManagedWidget("button", labelWidgetClass, vw, args,
+           XtNumber(args));
+             */
+    printf("IS REALIZED %d\n", i_view_is_realized(view));
+    view_realize(vw);
+    printf("IS REALIZED %d\n", i_view_is_realized(view));
+    i_view_set_title(view, "Titre joli");
+    i_view_set_icon(view, "Icone");
+    i_view_show(view);
+    i_view_set_vscrl(view, SCRL_SCALE / 2, SCRL_SCALE / 3);
+    i_view_set_hscrl(view, SCRL_SCALE / 2, SCRL_SCALE / 3);
+    printf("ADD_FILTER %d\n", i_view_add_filter(view, "F1"));
+    XtAppMainLoop(application_context);
+}
+
+lisp_rsrc_free () {} /*GLOBALDEF int choiceWidgetClass;
+                        GLOBALDEF int   labelframeWidgetClass;*/ 

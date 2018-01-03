@@ -1,0 +1,78 @@
+THE_LIB= ./metachop.a
+
+LIB_OBJECTS=metachop.o metacho0.o decomp0.o decomp1.o decomp2.o decomp3.o auxunpar.o  
+
+all : DOLIB metachop
+
+libmetachop.so : $(LIB_OBJECTS)
+	$(C_PLUS) -shared -o libmetachop.so $(LIB_OBJECTS) 
+
+
+DOLIB : m_done $(THE_LIB)(metachop.o metacho0.o decomp0.o decomp1.o decomp2.o decomp3.o auxunpar.o) 
+
+OPT_FLAGS=-DDUMP_COORD  -Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc
+	- rm -f metachop
+
+metachop.o : metachop.cc metachop.h
+
+metacho0.o : metacho0.cc metachop.h
+
+m_done : metachop.met ../cplusplu/cplus.met ../chopb/chopb.met
+	-@ mkdir compile.dir
+	@cp metachop.met compile.dir
+	@echo "metagen -c++ metachop.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../cplusplu:../../chopb:../../library $(METAOPT) metachop.met ;\
+	  unify metachop.h ../metachop.h;\
+	  unify metachop.cpp ../metachop.cc;\
+	  unify metacho0.cpp ../metacho0.cc;)
+	@echo "ok" > m_done
+
+chopper.cc : chopper.ch 
+
+decomp0.cc: decomp0.ch 
+
+decomp1.cc: decomp1.ch 
+
+decomp2.cc: decomp2.ch 
+
+decomp3.cc: decomp3.ch
+
+auxunpar.cc: auxunpar.ch
+
+chopper.o : chopper.cc ../library/token.h metachop.h
+
+decomp0.o : decomp0.cc ../library/token.h metachop.h
+
+decomp1.o : decomp1.cc ../library/token.h metachop.h
+
+decomp2.o : decomp2.cc ../library/token.h metachop.h
+
+decomp3.o : decomp3.cc ../library/token.h metachop.h
+
+auxunpar.o : auxunpar.cc ../library/token.h metachop.h
+
+CPLUS=../cplusplu/cplus.a
+CHOPB=../chopb/chopb.a
+OBJECTS = chopper.o
+METAGEN= ../parser/verif.o 
+
+SO_LIB = -L ../cplusplu -lcplus -L ../chopb -lchopb -L. -lmetachop -L ../library -lmeta 
+
+metachop : $(OBJECTS) $(THE_LIB) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(MAKE) libmetachop.so ; \
+		$(C_PLUS) $(OPTIM_FLAGS) -o metachop $(OBJECTS) $(METAGEN) $(SO_LIB) ; \
+	else\
+		$(C_PLUS) $(OPTIM_FLAGS) -o metachop $(OBJECTS) $(METAGEN) $(THE_LIB) $(CHOPB) $(CPLUS) $(LIBRARY) ;\
+	fi
+
+chop : m_done chop.cc
+	echo "" > chop
+#       make -f makefile.cho
+
+

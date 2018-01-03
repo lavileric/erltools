@@ -1,0 +1,34 @@
+#!/bin/sh
+
+touch //c/erlmarker
+
+displayHeader=$1
+if [ ${displayHeader} = "-c" ] ; then
+  shift;
+else
+  displayHeader="" ;
+fi
+
+for i in $* ; do
+  #display processed file
+  echo "==> Processing $i"
+
+  #find suffix of name
+  name=`basename $i`
+  suffix=`echo $name | sed 's/.*\.//'`
+
+  #if ch use erlmsch otherwise erlms
+  if [ $suffix = "ch" ]
+  then
+    erlmsch ${displayHeader} $i > error 2>&1
+  else
+    erlms ${displayHeader} $i > error 2>&1 
+  fi
+  result=$?
+  cat error
+  grep "#line" error | sed -e "1p;q"
+  rm  //c/erlmarker
+  if [ $result != 0 ] ; then
+    exit $result
+  fi
+done;

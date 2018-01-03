@@ -1,0 +1,3779 @@
+araz.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+6,25c6,20
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                 }
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     }
+<                 }
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     }
+<                 }
+---
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }               
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }   
+> }               
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }   
+> }               
+case.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+6,24c6,23
+<                 
+<                 /* on a change la valeur d'un champ du candidat */
+<                 if ( action >= 1 && action <= 10 ) {
+<                     char    *string ;
+<                     DecodeString(&string);
+<                     if ( strlen(string)
+<                              && strncmp(leCandidat.candidat [action - 1]
+<                                 , string, 80) ) 
+<                         modification = 1 ;
+<                     strncpy(leCandidat.candidat [action - 1], string, 80);
+<                     PRINTF(" Feuille Candidat changement du champ %d en %s\n"
+<                         , action, string);
+<                 } else if ( action == INITIALISATION ) {
+<                     
+<                     /* initialisation de l'application on initialise les
+<                        champs du candidat */
+<                     PRINTF(" Initialisation de l'application\n");
+<                     Initialisation(1);
+<                 }
+---
+> 
+> /* on a change la valeur d'un champ du candidat */
+> if ( action >= 1 && action <= 10 ) {
+>     char    *string ;
+>     DecodeString(&string);
+>     if ( strlen(string)
+>              && strncmp(leCandidat.candidat [action - 1], string, 80) ) 
+>         modification = 1 ;
+>     strncpy(leCandidat.candidat [action - 1], string, 80);
+>     PRINTF(" Feuille Candidat changement du champ %d en %s\n", action
+>         , string);
+> } else if ( action == INITIALISATION ) {
+>     
+>     /* initialisation de l'application on initialise les
+>        champs du candidat */
+>     PRINTF(" Initialisation de l'application\n");
+>     Initialisation(1);
+> }               
+concert.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+##
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+dec.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,7c3,7
+<     int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl
+<             , skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf
+<             , slkdfj = lksdflk ;
+<     int titi ;           /* la variable titi */ 
+<     int lskflskdfsldkf ; /* la variable suivante */ 
+---
+>     int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl, 
+>         skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf, 
+>         slkdfj = lksdflk ;
+>     int titi ;              /* la variable titi */ 
+>     int lskflskdfsldkf ;    /* la variable suivante */ 
+9c9
+<     int fifi ;           /* comment sur fifi */ 
+---
+>     int fifi ;              /* comment sur fifi */ 
+dec1.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+5c5,6
+<                 , { sdjf, slkdflskdfj, slkdflskdfj, sldfksldf, lskdflskdfj }
+---
+>                 , { sdjf, slkdflskdfj, slkdflskdfj, sldfksldf
+>                     , lskdflskdfj }
+7c8,9
+<     int variable = 10/* commentaire */ , v1 = 12/* comm */ ;
+---
+>     int variable = 10   /* commentaire */ , 
+>         v1 = 12         /* comm */ ;
+dec2.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,4c3,5
+<     int varffffffffffable = 10/* commffffffffentaire */ 
+<             , v1 = 12/* comm */ , v3 = djfkd/* comment*/ ;
+---
+>     int varffffffffffable = 10  /* commffffffffentaire */ , 
+>         v1 = 12                 /* comm */ , 
+>         v3 = djfkd              /* comment*/ ;
+decl.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+5,6c5,6
+<         int toto ; /* comment */ 
+<         int titi ; /* comment 2*/ 
+---
+>         int toto ;/* comment */ 
+>         int titi ;/* comment 2*/ 
+declar.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,4c3,4
+<     int fifi = lskdf + lsdf, fifo = sdlkf + lskdf, fifi = lsdfj + skdfjl
+<             , sdklf = slkdfj + lskdjflsdf ;
+---
+>     int fifi = lskdf + lsdf, fifo = sdlkf + lskdf, fifi = lsdfj + skdfjl, 
+>         sdklf = slkdfj + lskdjflsdf ;
+8,14c8,16
+<     int i, jkkkk, k, l, i = 5/* entier indiquant rien du tout
+<                                 le commentaire et l'entier
+<                                 sont inutiles */ 
+<             , tto = 8/* commentaire sur un entier */ 
+<             , fifi
+<                  = 9/* commentaire fin*/ /*autre comment */ /* autre comment */ 
+<             , j, k/* commentaire */ , l ;
+---
+>     int i, jkkkk, k, l, 
+>         i = 5       /* entier indiquant rien du tout
+>                        le commentaire et l'entier
+>                        sont inutiles */ , 
+>         tto = 8     /* commentaire sur un entier */ , 
+>         fifi = 9    /* commentaire fin*/ /*autre comment */ /* autre comment */ , 
+>         j, 
+>         k           /* commentaire */ , 
+>         l ;
+18,19c20,22
+<                 , { ksldflskdf, sldkfffflskdfj }}/* commentaire */ ;
+<     int variable = 10/* commentaire */ , v1 = 12/* commentaire */ ;
+---
+>                 , { ksldflskdf, sldkfffflskdfj }}   /* commentaire */ ;
+>     int variable = 10   /* commentaire */ , 
+>         v1 = 12         /* commentaire */ ;
+22,26c25,31
+<         int i ;             /* premier champ de la structure */ 
+<         char    *toto ;     /* deuxieme champ de la structure */ 
+<         struct titi *next ; /* dernier champ de la structure */ 
+<     } fifi, fofo/* la variable fofo*/ , *ruru
+<         , *fifi/* le pointeur fifi */ ;
+---
+>         int i ;/* premier champ de la structure */ 
+>         char    *toto ;/* deuxieme champ de la structure */ 
+>         struct titi *next ;/* dernier champ de la structure */ 
+>     } fifi, 
+>      fofo   /* la variable fofo*/ , 
+>      *ruru, 
+>      *fifi  /* le pointeur fifi */ ;
+eless.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+++++++++##+#+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+84c84
+< int doit ; /* coupure obligatoire : pour le lex */ 
+---
+> int doit ;  /* coupure obligatoire : pour le lex */ 
+elessai.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+####++#+######+#+#+++++++++++#++++#######++##++##
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+elmain.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+++++++####################
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+er.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+er1.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+##
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+4,5c4,7
+<     int i/* quel joli nom */ , j, k/* integer variables */ ;
+<     int toto [62]/* un tableau */ ;
+---
+>     int i   /* quel joli nom */ , 
+>         j, 
+>         k   /* integer variables */ ;
+>     int toto [62]   /* un tableau */ ;
+17,18c19,22
+<     int i/* quel joli nom */ , j, k/* integer variables */ ;
+<     int toto [62]/* un tableau */ ;
+---
+>     int i   /* quel joli nom */ , 
+>         j, 
+>         k   /* integer variables */ ;
+>     int toto [62]   /* un tableau */ ;
+ess.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++###
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+29,30c29
+<     ident/* comment for ident */ 
+<         = /* here */ c/* comment for ident c */ ;/* prepost */ 
+---
+>     ident/* comment for ident */ = /* here */ c/* comment for ident c */ ;/* prepost */ 
+essai.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#++++++#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+8,11c8,11
+< int toto ;        /* variables 1 */ 
+< int toto, titi ;  /* variables 2 */ 
+< int fifi, qiqi ;  /* variables 3 */ 
+< int lskfjsldfkj ; /* var */ 
+---
+> int toto ;          /* variables 1 */ 
+> int toto, titi ;    /* variables 2 */ 
+> int fifi, qiqi ;    /* variables 3 */ 
+> int lskfjsldfkj ;   /* var */ 
+14,16c14,16
+<     int titi ;             /* une var */ 
+<     int fofo ;             /* une autre var */ 
+<     char    *toto, *titi ; /* encore une autre */ 
+---
+>     int titi ;              /* une var */ 
+>     int fofo ;              /* une autre var */ 
+>     char    *toto, *titi ;  /* encore une autre */ 
+fa.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+ff.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+fi.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+fifi.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+1,2c1
+< enum bidon { lksdjflskdjflskdfjlsdjflksdfjl
+<                  = sdslkdflskdflsdflskdflsdjfsldkfsdfjsldslflsd };
+---
+> enum bidon { lksdjflskdjflskdfjlsdjflksdfjl = sdslkdflskdflsdflskdflsdjfsldkfsdfjsldslflsd };
+fo.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,11c3,9
+<     alskdfjklsd
+<          = aslkdf
+<              + akdflk
+<                  * ffifi(asfdk, aklsdf, alkdf, aklsjf
+<                     , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj + lksdjflskdf
+<                          + lskdflsdkf + lskflksdf + lksdfjlksdf
+<                          + lksdflksdjf
+<                     , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+<                     , aklsdj, alsdk);
+---
+>     alskdfjklsd = aslkdf
+>          + akdflk
+>              * ffifi(asfdk, aklsdf, alkdf, aklsjf
+>                 , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj + lksdjflskdf
+>                      + lskdflsdkf + lskflksdf + lksdfjlksdf + lksdflksdjf
+>                 , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds, aklsdj
+>                 , alsdk);
+fofo.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+++++#+++++
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+2,3c2,4
+< void    toffffffffffffffffffto (int skdfjklsdf, int sdkfjlksdfj, int sdkflskdfj
+<                 , int sdkfjs// commentaire
+---
+> void    toffffffffffffffffffto (int skdfjklsdf, int sdkfjlksdfj
+>                 , int sdkflskdfj, int sdkfjslkdf, int lskdjfskdf
+>                 , char skdfjlksdfj) ;   // commentaire
+9c10,11
+<     : dkfjkdf(dfkjdf),  skldfksldf(slkdflsldf),  lsdkjfsldkf(lskdfksldf)
+---
+>     : dkfjkdf(dfkjdf)
+>         ,  skldfksldf(slkdflsldf),  lsdkjfsldkf(lskdfksldf)
+22,27c24,25
+< enum { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf, sldkfslkdf
+<         , ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf, slkdflskdf
+<         , lskjdflskdf };
+< enum toto { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf
+<             , sldkfslkdf, ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf
+<             , slkdflskdf, lskjdflskdf };
+---
+> enum { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf, sldkfslkdf, ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf, slkdflskdf, lskjdflskdf };
+> enum toto { sldkjf, sldfskldf, slkdjfslkdf, slkdfslkdf, slkdfslkdf, sldkfslkdf, ssdjflksjf, lskdflksf, skdflsdkf, skjflksdf, slkdflskdf, lskjdflskdf };
+35,44c33,35
+<     enum OpenFlags { modeRead = 0x0000, modeWrite = 0x0001
+<                         , modeReadWrite = 0x0002, shareCompat = 0x0000
+<                         , shareExclusive = 0x0010, shareDenyWrite = 0x0020
+<                         , shareDenyRead = 0x0030, shareDenyNone = 0x0040
+<                         , modeNoInherit = 0x0080, modeCreate = 0x1000
+<                         , typeBinary = (int)0x8000// derived classes only 
+<     };
+<     enum Attribute { normal = 0x00, readOnly = 0x01, hidden = 0x02
+<                         , system = 0x04, volume = 0x08, directory = 0x10
+<                         , archive = 0x20 };
+---
+>     enum OpenFlags { modeRead = 0x0000, modeWrite = 0x0001, modeReadWrite = 0x0002, shareCompat = 0x0000, shareExclusive = 0x0010, shareDenyWrite = 0x0020, shareDenyRead = 0x0030, shareDenyNone = 0x0040, modeNoInherit = 0x0080, modeCreate = 0x1000, typeBinary = (int)0x8000// derived classes only 
+>                                     };
+>     enum Attribute { normal = 0x00, readOnly = 0x01, hidden = 0x02, system = 0x04, volume = 0x08, directory = 0x10, archive = 0x20 };
+fu.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+6,24c6,26
+< sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+<      = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh * iiii
+<                      * kkkkk * llllll * kkkkkkkkkk * ffafasd * sldfk
+<                  + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf + laflaf
+<                  + sdflksdfj)
+<              * tututuut * titititi * fififif * tititi * fofofo * rararar
+<              * dififii * sdflkjsdlkf * lsdflksdjf * lksdjflksdjf * a
+<          + 5
+<          + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c * b
+<              * c * c * b * c
+<              * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n / o
+<                  / p / q / r / s / t / u / v / w / x / y / z)
+<              * c * a * b
+<          + u ;
+<         if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+<                  + lakfaksdfj + adfklakdf + lskflskdf
+<              < slkdf + lsdflskdf + sldkfldsk ) 
+<             a = b ;
+<     }
+---
+>          = sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+>          = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh
+>                          * iiii * kkkkk * llllll * kkkkkkkkkk * ffafasd
+>                          * sldfk
+>                      + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf
+>                      + laflaf + sdflksdfj)
+>                  * tututuut * titititi * fififif * tititi * fofofo
+>                  * rararar * dififii * sdflkjsdlkf * lsdflksdjf
+>                  * lksdjflksdjf * a
+>              + 5
+>              + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c
+>                  * b * c * c * b * c
+>                  * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n
+>                      / o / p / q / r / s / t / u / v / w / x / y / z)
+>                  * c * a * b
+>              + u ;
+>     if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+>              + lakfaksdfj + adfklakdf + lskflskdf
+>          < slkdf + lsdflskdf + sldkfldsk ) 
+>         a = b ;
+> }
+func.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+fy.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,31c3,31
+<     if ( slkdjf && lskdfjlskdf + sdlfkj + slkdf + skldfj + lsdfj + lsdjf
+<                          + sldfkdsf * tuorutoi * lskdjfl * lksdjfl
+<                              * lskdjfl
+<                          + fonct(slkdfj, sdklf, lksdf, skldfj, skldfj
+<                                 , slkdf, slkdfj, skfj, skldfj)
+<                              * sdfjlsd * lskdf * lksdjf * lsdkfj * lsjdf
+<                              * lsdkjf * lksjdf * lkjsf * lskdjf
+<                      == 0
+<                  && sldkfskdlfj
+<                  && skdflksdfj
+<                  && lskdfsldkfj
+<                  && lskdjflksdfj
+<                  && lskdfslkdfj
+<                  && (lskjflskdfj
+<                          || slkdf
+<                          || lksdflksjdflksdfj
+<                          || lskdjflskdjf
+<                          || kdsflksdf
+<                          || skdflksdfj
+<                          || slkdfjlskdjf
+<                          || ksdfjlksd && sdlkjfsdklf)
+<                  && lskjflskdfj
+<              || slkdf
+<              || lksdflksjdflksdfj
+<              || lskdjflskdjf
+<              || kdsflksdf
+<              || skdflksdfj
+<              || slkdfjlskdjf
+<              || ksdfjlksd && sdlkjfsdklf && slkjdflskdjf ) 
+---
+>     if ( slkdjf
+>              && lskdfjlskdf + sdlfkj + slkdf + skldfj + lsdfj + lsdjf
+>                      + sldfkdsf * tuorutoi * lskdjfl * lksdjfl * lskdjfl
+>                      + fonct(slkdfj, sdklf, lksdf, skldfj, skldfj, slkdf
+>                             , slkdfj, skfj, skldfj)
+>                          * sdfjlsd * lskdf * lksdjf * lsdkfj * lsjdf
+>                          * lsdkjf * lksjdf * lkjsf * lskdjf
+>                  == 0
+>              && sldkfskdlfj
+>              && skdflksdfj
+>              && lskdfsldkfj
+>              && lskdjflksdfj
+>              && lskdfslkdfj
+>              && (lskjflskdfj
+>                      || slkdf
+>                      || lksdflksjdflksdfj
+>                      || lskdjflskdjf
+>                      || kdsflksdf
+>                      || skdflksdfj
+>                      || slkdfjlskdjf
+>                      || ksdfjlksd && sdlkjfsdklf)
+>              && lskjflskdfj
+>           || slkdf
+>           || lksdflksjdflksdfj
+>           || lskdjflskdjf
+>           || kdsflksdf
+>           || skdflksdfj
+>           || slkdfjlskdjf
+>           || ksdfjlksd && sdlkjfsdklf && slkjdflskdjf ) 
+oo.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,13c3,11
+<     alskdfjklsd
+<          = aslkdf
+<              + akdflk
+<                  * ffifi(asfdk, aklsdf, alkdf, aklsjf
+<                     , lskdfj * lskdjf * lskdjf * lskdjf * lskdjf * lskjdf
+<                          * lskdjf * lskdfj * sdlkjf * lskdjf * lskdjf
+<                     , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj + lksdjflskdf
+<                          + lskdflsdkf + lskflksdf + lksdfjlksdf
+<                          + lksdflksdjf
+<                     , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+<                     , aklsdj, alsdk);
+---
+>     alskdfjklsd = aslkdf
+>          + akdflk
+>              * ffifi(asfdk, aklsdf, alkdf, aklsjf
+>                 , lskdfj * lskdjf * lskdjf * lskdjf * lskdjf * lskjdf
+>                      * lskdjf * lskdfj * sdlkjf * lskdjf * lskdjf
+>                 , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj + lksdjflskdf
+>                      + lskdflsdkf + lskflksdf + lksdfjlksdf + lksdflksdjf
+>                 , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds, aklsdj
+>                 , alsdk);
+re.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+13,15c13,14
+<                                             if ( a < b ) {
+< alskdfjklsd
+<      = aslkdf
+---
+> if ( a < b ) {
+>     alskdfjklsd = aslkdf
+21,22c20,21
+<                 , alsdk);                       
+<                                             }
+---
+>                 , alsdk);
+> }                                           
+ref.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+Abort : Invalid Reference Number
+0a1,703
+> #include "token.h"
+> 
+> /******************************************************************
+>            Comp : Display a tree on screen
+>    *******************************************************************/
+> void _fastcall Comp ( tree )
+> PTREE   tree ;
+> {
+> switch ( NumberTree(tree) ) {
+>     case LIST : 
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+>     case DEFINE_metalang : 
+> if ( !VerifyFileLine() ) {
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>     NewLine();
+>     WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>     NewLine();
+>     WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     NewLine();
+>     WriteString("#include \"token.h\"");
+>     NewLine();
+>     WriteString("#include \"");
+>     WriteString(llanguageName);
+>     WriteString("\"");
+>     NewLine();
+>     NewLine();
+>     NewLine();
+>     WriteString("#define _Lex ");
+>     WriteString(NameLang(lexName));
+>     NewLine();
+>     WriteString("#define SortKeyWord ");
+>     WriteString(NameLang("SortKeyWord"));
+>     NewLine();
+>     WriteString("#define UpSortKeyWord ");
+>     WriteString(NameLang("UpSortKeyWord"));
+>     NewLine();
+>     NewLine();
+> }       
+>         WriteString("PTREE ");
+>         WriteString(NameLang(Value(tree)));
+>         strcpy(nameDefine, Value(tree));
+>         FuncName(nameDefine);
+>         WriteString("(error_free)");
+>         NewLine();
+>         WriteString("int error_free;");
+>         NewLine();
+>         WriteString("{");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+>         NewLine();
+>         WriteString("int _value,_nbPre = 0 ;");
+>         NewLine();
+>         WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+>         WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+>         NewLine();
+>         WriteString("PTREE lastTree = _lastTree,_retValue ;");
+>         NewLine();
+>         Comp(SonTree(tree, 2));
+>         UnMark();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return((PTREE) 0);");
+>         NewLine();
+>         NewLine();
+>         WriteString(Label(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         NewLine();
+>         Tab();
+>         Mark();
+>         FuncLibre();/* free pointers before exiting */ 
+>         WriteString("_funcLevel--;");
+>         NewLine();
+>         WriteString("return((PTREE) -1) ;");
+>         UnMark();
+>         NewLine();
+>         NewLine();
+>         WriteString(RetLab(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         NewLine();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return _retValue ;");
+>         UnMark();
+>         NewLine();
+>         WriteString("}");
+>         NewLine();
+>         NewLine();
+>         FuncFree();
+>         break ;
+>     case CASE_metalang : 
+>         oldFirstMeta = firstMeta ;
+>         firstMeta = 1 ;
+>         i = ClassifyCase(SonTree(tree, 1));
+>         if ( i == 1 ) {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             WriteString("switch( lexEl.Value) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             length = ListLength(SonTree(tree, 1));
+>             if ( length ) 
+>                 NegateCond();
+>             Comp(SonTree(tree, 1));
+>             while ( length-- ) 
+>                 FreeCond();
+>             if ( Nodefault(SonTree(tree, 1)) ) {
+>                 WriteString("default :");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 WriteString("CASE_EXIT(");
+>                 WriteString(Label(nameDefine));
+>                 WriteString(",\"");
+>                 tree = SonTree(tree, 1);
+>                 if ( !SonTree(tree, 2) ) 
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                 else {
+>                     WriteString("either ");
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     while ( SonTree(tree, 2) ) {
+>                         tree = SonTree(tree, 2);
+>                         WriteString(" or ");
+>                         CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     }
+>                 }
+>                 WriteString("\")");
+>                 NewLine();
+>                 WriteString("break;");
+>                 NewLine();
+>                 UnMark();
+>             }
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 2 && inLex ) {
+>             simpleCase = 1 ;
+>             WriteString("switch (c) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             Comp(SonTree(tree, 1));
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 3 && inLex ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         } else {
+>             ifCase = 1 ;/* case as if out lex */ 
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         }
+>         firstMeta = oldFirstMeta ;
+>         break ;
+>     case SWITCH_metalang : 
+>         i = NumberTree(SonTree(tree, 1));
+>         if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang) ) {
+>             ptTree = SonTree(SonTree(tree, 1), 1);
+>             NegateCond();
+>             if ( NumberTree(ptTree) == EXCLA_metalang
+>                      && FindConst("META") != - 1
+>                      && firstMeta
+>                      && strcmp(Value(ptTree), "NOTHING")
+>                      && (strcmp(Value(ptTree), "META") || (firstMeta = 0)) ) {
+>                 firstMeta = 0 ;
+>                 WriteString("case ");
+>                 WriteString(NameLang("META"));
+>                 WriteString(":");
+>                 NewLine();
+>             }
+>             if ( NumberTree(ptTree) != EXCLA_metalang
+>                      || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+>                         , "NOTHING") ) {
+>                 AllocCond(SonTree(tree, 1));
+>                 WriteString("case ");
+>                 Comp(ptTree);
+>             } else 
+>                 WriteString("default");
+>             WriteString(" : ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+>                 WriteString("tokenAhead = 0 ;");
+>                 NewLine();
+>                 WriteString("CommTerm();");
+>                 NewLine();
+>             }
+>             statement = 1 ;
+>             Comp(SonTree(tree, 2));
+>             WriteString("break;");
+>             NewLine();
+>             UnMark();
+>             GotoMark();
+>         } else {
+>             if ( !ifCase && simpleCase ) {
+>                 Comp(SonTree(tree, 1));
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 if ( !SonTree(SonTree(tree, 1), 1) ) {
+>                     length = 1 ;
+>                     WriteString(" if (c!= EOF) {");
+>                     NewLine();
+>                     Tab();
+>                     Mark();
+>                 }
+>                 if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>                     WriteString("NextChar();");
+>                     NewLine();
+>                 }
+>                 simpleCase = 0 ;
+>                 Comp(SonTree(tree, 2));
+>                 if ( length ) {
+>                     UnMark();
+>                     GotoMark();
+>                     WriteString("}");
+>                     NewLine();
+>                 }
+>                 WriteString("break ;");
+>                 UnMark();
+>                 NewLine();
+>             } else {
+>                 i = 0 ;
+>                 ptTree = SonTree(SonTree(tree, 1), 1);
+>                 if ( (NumberTree(SonTree(tree, 1)) == TAKE_metalang
+>                          || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+>                          && NumberTree(ptTree) == IDENT_metalang ) {
+>                     i = 1 ;
+>                 }
+>                 statement = 0 ;
+>                 if ( !ptTree
+>                          || NumberTree(ptTree) != EXCLA_metalang
+>                          || strcmp(BrainyValue(ptTree), "NOTHING") ) {
+>                     WriteString("if(");
+>                     Comp(SonTree(tree, 1));
+>                     WriteString(")");
+>                 } else 
+>                     WriteString("if (1) ");
+>                 statement = 1 ;
+>                 WriteString("{");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 Comp(SonTree(tree, 2));
+>                 UnMark();
+>                 GotoMark();
+>                 WriteString("} else ");
+>             }
+>         }
+>         break ;
+>     case STOREL_metalang : 
+>         if ( !inLex ) {
+>             WriteString("if (tokenAhead) ExtUnputBuf() ;");
+>             NewLine();
+>         }
+>         if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+>             NewLine();
+>             WriteString("NextChar();");
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         } else {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact + strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(") < MAXLENGTH) ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("strcpy(_ptString,");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             UnMark();
+>             NewLine();
+>             WriteString("_nbCharact += strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             WriteString("_ptString = lexEl.string + _nbCharact;");
+>             NewLine();
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         }
+>         break ;
+>     case TAKEL_metalang : length = 1 ;
+>     case SEEL_metalang : 
+>         if ( simpleCase ) {
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("default : ");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>                 CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+>             else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 while ( tree ) {
+> if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>     CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+> else {
+>     cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+>     carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+>     CaseCharac(cardeb);
+>     while ( IncrChar(cardeb, carend) ) {
+>         NewLine();
+>         CaseCharac(cardeb);
+>     }
+>     NewLine();
+>     CaseCharac(carend);
+> }
+>                     if ( tree = SonTree(tree, 2) ) 
+>                         NewLine();
+>                 }
+>             }
+>         } else {
+>             if ( statement ) 
+>                 WriteString("if (!");
+>             if ( !inLex ) 
+>                 WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+>             WriteString("(");
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("c != EOF");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 i = 0 ;
+>                 WriteString("(");
+>                 while ( tree ) {
+>                     if ( i ) 
+>                         WriteString("||");
+>                     else 
+>                         i = 1 ;
+>                     WriteString("(");
+>                     if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                         WriteString("c == ");
+>                         Comp(SonTree(tree, 1));
+>                     } else {
+>                         Comp(SonTree(SonTree(tree, 1), 1));
+>                         WriteString(" <= c && c <= ");
+>                         Comp(SonTree(SonTree(tree, 1), 2));
+>                     }
+>                     WriteString(")");
+>                     tree = SonTree(tree, 2);
+>                 }
+>                 WriteString(")");
+>             } else {
+>                 WriteString("GetString(");
+>                 WriteString("\"");
+>                 WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 WriteString("\"");
+>                 if ( length ) 
+>                     WriteString(",1)");
+>                 else 
+>                     WriteString(",0)");
+>             }
+>             if ( length ) 
+>                 WriteString("&& NextChar())");
+>             else 
+>                 WriteString(")");
+>             if ( !inLex ) 
+>                 WriteString(")");
+>             if ( statement ) {
+> if ( !inLex ) {
+>     WriteString(") {");
+>     NewLine();
+>     Tab();
+>     Mark();
+>     WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+>     NewLine();
+>     WriteString("PrintError(errStr,error_free);");
+>     NewLine();
+>     WriteString("goto ");
+>     WriteString(Label(nameDefine));
+>     WriteString(";");
+>     UnMark();
+>     NewLine();
+>     WriteString("}");
+>     NewLine();
+> } else {
+>     WriteString(") ;");
+>     NewLine();
+> }
+>             }
+>         }
+>         break ;
+>     case TAKE_metalang : 
+>         if ( !statement ) 
+>             if ( NumberTree(tree) == IDENT_metalang ) {
+>                 WriteString("(PUSH_CALL_AFF(");
+>                 if ( equality ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = ");
+>                 } else 
+>                     WriteString("NOTHING");
+>                 WriteString(",");
+>                 WriteString(NameLang(Value(tree)));
+>                 WriteString("))");
+>             } else {
+>                 WriteString("((tokenAhead || _Lex()) && ");
+>                 i = 0 ;/* is a meta welcomed here */ 
+>                 if ( FindConst("META") != - 1
+>                          && NumberTree(tree) == EXCLA_metalang ) {
+>                     i = 1 ;
+>                     WriteString("TERM_OR_META(");
+>                     Comp(tree);
+>                     WriteString(")");
+>                 } else {
+>                     WriteString("lexEl.Value == ");
+>                     Comp(tree);
+>                 }
+>                 if ( equality ) {
+>                     WriteString(" && !(tokenAhead = 0) && (");
+>                     if ( !i ) {
+>                         WriteString(ptEquality);
+>                         WriteString(" = CommString(lexEl.string)))");
+>                     } else {
+>                         WriteString(" BUILD_TERM_META(");
+>                         WriteString(ptEquality);
+>                         WriteString("))) ");
+>                     }
+>                 } else 
+>                     WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+>             }
+>         else if ( NumberTree(tree) == IDENT_metalang ) {
+>             WriteString("if ( (");
+>             if ( equality ) {
+>                 WriteString(ptEquality);
+>                 WriteString("=");
+>             }
+>             WriteString(NameLang(Value(tree)));
+>             WriteString("(error_free)) == (PTREE) -1 ) ");
+>             NewLine();
+>             Tab();
+>             WriteString("PROG_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             WriteString(nameDefine);
+>             WriteString("\")");
+>             NewLine();
+>         } else {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             i = 0 ;/* is a meta welcomed here */ 
+>             if ( FindConst("META") != - 1
+>                      && NumberTree(tree) == EXCLA_metalang ) {
+>                 i = 1 ;
+>                 WriteString("if ( ! TERM_OR_META(");
+>                 Comp(tree);
+>                 WriteString(")");
+>             } else {
+>                 WriteString("if (  lexEl.Value != ");
+>                 Comp(tree);
+>             }
+>             if ( equality ) {
+>                 WriteString(" || !(");
+>                 if ( !i ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = CommString(lexEl.string))");
+>                 } else {
+>                     WriteString("BUILD_TERM_META(");
+>                     WriteString(ptEquality);
+>                     WriteString("))");
+>                 }
+>             } else 
+>                 WriteString(" || !(CommTerm(),1)");
+>             WriteString(") ");
+>             NewLine();
+>             Tab();
+>             WriteString("TOKEN_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             CompString(tree);
+>             WriteString("\")");
+>             NewLine();
+>         }
+>         break ;
+>     case LANGUAGE_metalang : 
+>         WriteString("\
+> /*************************************************************************/");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>         NewLine();
+>         WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>         NewLine();
+>         WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*************************************************************************/");
+>         WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+>         WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+>         WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+>                 WriteString("PTREE ");
+>                 WriteString(NameLang(Value(ptTree)));
+> #ifndef SUN
+>                 WriteString(" ( int );");
+> #else 
+>                 WriteString("();");
+> #endif
+>                 NewLine();
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+>                 lexName = AllocString(Value(ptTree));
+>                 foundLexName = 1 ;
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+>                 ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+>             else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+>                 nbLexDefine++ ;
+>                 if ( !foundLexName ) 
+>                     lexName = AllocString(Value(ptTree));
+>             }
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( ptTree
+>                      && NumberTree(SonTree(ptTree, 1))
+>                          == LEXDEFINE_metalang ) {
+>                 CompLexDefine(SonTree(ptTree, 1));
+>                 NewLine();
+>             }
+>         DumpNode();
+> #ifdef SUN
+>         writeLine = 0 ;
+>         output = loutput ;
+>         LispMake();
+>         output = coutput ;
+> #endif
+>         break ;
+>     case EQUAL_metalang : 
+>         switch ( NumberTree(SonTree(tree, 2)) ) {
+>             case NIL_metalang : 
+>             case FUNC_metalang : 
+>             case IDENT_metalang : 
+>             case NUMB_metalang : 
+>                 if ( !statement ) 
+>                     WriteString("(");
+>                 Comp(SonTree(tree, 1));
+>                 if ( statement ) 
+>                     WriteString("= ");
+>                 else 
+>                     WriteString("== ");
+>                 Comp(SonTree(tree, 2));
+>                 if ( !statement ) 
+>                     WriteString(")");
+>                 if ( statement ) 
+> if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+>     WriteString(";");
+>     NewLine();
+>     interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>     MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+>     free(interString);
+> } else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+>     WriteString(";");
+>     NewLine();
+> }               
+>                 break ;
+>             case TAKE_metalang : 
+>                 equality = 1 ;
+>                 ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 Comp(SonTree(tree, 2));
+>                 equality = 0 ;
+>                 SetUse(ptEquality);
+>                 free(ptEquality);
+>                 break ;
+>             case MAKETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 MakeTreeGen(interString, SonTree(tree, 2), 0);
+>                 free(interString);
+>                 break ;
+>             case ADDLIST_metalang : 
+>                 AddListGen(interString, SonTree(tree, 2), 0);
+>                 break ;
+>             case REPLACETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+>         }
+>         break ;
+>     case FUNC_metalang : 
+>         if ( !statement ) 
+>             WriteString("(");
+>         Comp(SonTree(tree, 1));
+>         WriteString("(");
+>         tree = SonTree(tree, 2);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(")");
+>         if ( statement ) {
+>             WriteString(";");
+>             NewLine();
+>         } else 
+>             WriteString(")");
+>         break ;
+>     case STRING_metalang : 
+>         tree = SonTree(tree, 1);
+>         treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+>             , treeToken);
+>         WriteString(SymboName(Value(tree), 0));
+>         break ;
+>     case DECLARE_metalang : 
+>         WriteString("PTREE ");
+>         ptTree = tree = SonTree(tree, 1);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString("= (PTREE) 0");
+>             InsertDecElem(AllocString(Value(tree)));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(";");
+>         NewLine();
+>         break ;
+>     case SKIP_metalang : 
+>         ptTree = tree = SonTree(tree, 1);
+>         i = 0 ;
+>         if ( inLex ) 
+>             WriteString("ptStockBuf = -1;");
+>         else 
+>             WriteString("ExtUnputBuf();");
+>         NewLine();
+>         WriteString("while (");
+>         while ( tree ) {
+>             if ( i ) 
+>                 WriteString("||");
+>             else 
+>                 i = 1 ;
+>             WriteString("(");
+>             if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else {
+>                 Comp(SonTree(SonTree(tree, 1), 1));
+>                 WriteString(" <= c && c <= ");
+>                 Comp(SonTree(SonTree(tree, 1), 2));
+>             }
+>             WriteString(")");
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+> }
+> }
+ru.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+ta.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+tans1.c
+Reading c.set ...
+ Done
+ Unexpected "_far "  at line 8  instead of (
+Reading c.set ...
+ Done
+ Unexpected "_far "  at line 8  instead of (
+te.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+13,28c13,33
+<                                             if ( a < b ) {
+<                                                 if ( a = b ) {
+<                                                     if ( a = b ) {
+<                                                         if ( a = b ) {
+<                                                             if ( a = b ) {
+< if ( a = b ) {
+<     if ( a < b ) {
+<         alskdfjklsd
+<              = aslkdf
+<                  + akdflk
+<                      * ffifi(asfdk, aklsdf, alkdf, aklsjf
+<                         , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj
+<                              + lksdjflskdf + lskdflsdkf + lskflksdf
+<                              + lksdfjlksdf + lksdflksdjf
+<                         , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+<                         , aklsdj, alsdk);
+---
+> if ( a < b ) {
+>     if ( a = b ) {
+>         if ( a = b ) {
+>             if ( a = b ) {
+>                 if ( a = b ) {
+>                     if ( a = b ) {
+>                         if ( a < b ) {
+>                             alskdfjklsd = aslkdf
+>                                  + akdflk
+>                                      * ffifi(asfdk, aklsdf, alkdf, aklsjf
+>                                         , aklsdjf + lksdlkfjsd + lskjfl
+>                                              + lskflksdfj + lksdjflskdf
+>                                              + lskdflsdkf + lskflksdf
+>                                              + lksdfjlksdf + lksdflksdjf
+>                                         , akldfj, alkdj, alskdfj, akldj
+>                                         , aklsd, aklsd, akds, aklsdj, alsdk);
+>                         }
+>                     }
+>                 }
+>             }
+>         }
+30,44c35,45
+< }                                                               
+<                                                             }
+<                                                         }
+<                                                     }
+<                                                 }
+<                                             } else {
+< lskdf = alskdfjklsd
+<      = aslkdf
+<          + akdflk
+<              * ffifi(asfdk, aklsdf, alkdf, aklsjf
+<                 , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj + lksdjflskdf
+<                      + lskdflsdkf + lskflksdf + lksdfjlksdf + lksdflksdjf
+<                 , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds, aklsdj
+<                 , alsdk);                       
+<                                             }
+---
+> } else {
+>     lskdf = alskdfjklsd
+>          = aslkdf
+>              + akdflk
+>                  * ffifi(asfdk, aklsdf, alkdf, aklsjf
+>                     , aklsdjf + lksdlkfjsd + lskjfl + lskflksdfj
+>                          + lksdjflskdf + lskdflsdkf + lskflksdf
+>                          + lksdfjlksdf + lksdflksdjf
+>                     , akldfj, alkdj, alskdfj, akldj, aklsd, aklsd, akds
+>                     , aklsdj, alsdk);
+> }
+test.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#+####
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+2,3c2,3
+<     int i, j ;            // premiere ligne 
+<     char    dslfklsdfjk ; // deuxieme ligne
+---
+>     int i, j ;              // premiere ligne 
+>     char    dslfklsdfjk ;   // deuxieme ligne
+7c7,8
+<     : B(1),  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+---
+>     : B(1)
+>         ,  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+13,15c14
+< class A : private virtual Bsdskldjf, protected sdlkfjsdlfk
+<     , private sdkfslkdf, protected virtual sldkfjlskdfj
+<     , public sldfkjlsdkfj, public slkdflskdfjsdkfj, slkdfslkdfj {
+---
+> class A : private virtual Bsdskldjf, protected sdlkfjsdlfk, private sdkfslkdf, protected virtual sldkfjlskdfj, public sldfkjlsdkfj, public slkdflskdfjsdkfj, slkdfslkdfj {
+21c20,21
+<         : B(1),  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+---
+>         : B(1)
+>             ,  C(1),  B(*new string("sldkf")),  B(1),  C(1)
+32,33c32
+<     BEGIN_MESSAGE_MAP (sdklf, slkdfj) ON_WM_PAINT () ON_COMMAND (IDM_ABOUT
+<             , OnAbout) END_MESSAGE_MAP () // declare the class as dynamic
+---
+>     BEGIN_MESSAGE_MAP (sdklf, slkdfj) ON_WM_PAINT () ON_COMMAND (IDM_ABOUT, OnAbout) END_MESSAGE_MAP () // declare the class as dynamic
+82,83c81,82
+<     int a, b ; /* sdflk lskdfj */ 
+<     int e ;    /* sdfdsf */ 
+---
+>     int a, b ;  /* sdflk lskdfj */ 
+>     int e ;     /* sdfdsf */ 
+91,92c90,91
+<     a = new (1, 2) STRING(sdlfk, slkdfj, slkdfj, lskdfj, skldfj, skdjf, skdfj
+<         , ksldf, lksdjf, lskdfj, ksldjf, lksdjf, slkdjf, skdjf);
+---
+>     a = new (1, 2) STRING(sdlfk, slkdfj, slkdfj, lskdfj, skldfj, skdjf
+>         , skdfj, ksldf, lksdjf, lskdfj, ksldjf, lksdjf, slkdjf, skdjf);
+test1.c
+Reading c.set ...
+ Done
+ Bad cast_expression_value at line 180 
+Reading c.set ...
+ Done
+ Bad cast_expression_value at line 180 
+toto.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3c3,4
+< typedef BOOL    (PASCAL *AFX_ALLOC_HOOK)(size_t nSize, BOOL bObject, LONG lRequestNumber) ;
+---
+> typedef BOOL    (PASCAL *AFX_ALLOC_HOOK)(size_t nSize, BOOL bObject
+>                     , LONG lRequestNumber) ;
+try.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+++++++#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,8c3,8
+< extern int  isVirtMod ;        /* est ce que la decompilation
+<                                   se fait en mode virtuel? */ 
+< extern int  currLine ;         /* la ligne courante */ 
+< extern int  rightMargin ;      /* la marge droite */ 
+< extern int  isRefT ;           /* comptabilise le nombre
+<                                   de marques trouvees */ 
+---
+> extern int  isVirtMod ;         /* est ce que la decompilation
+>                                    se fait en mode virtuel? */ 
+> extern int  currLine ;          /* la ligne courante */ 
+> extern int  rightMargin ;       /* la marge droite */ 
+> extern int  isRefT ;            /* comptabilise le nombre
+>                                    de marques trouvees */ 
+10,11c10,11
+< extern int  xFather, yFather ; /* coordonnees du pere lors
+<                                   d'une decompilation*/ 
+---
+> extern int  xFather, yFather ;  /* coordonnees du pere lors
+>                                    d'une decompilation*/ 
+tstruct.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+tu.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,7c3,7
+<     int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl
+<             , skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf
+<             , slkdfj = lksdflk ;
+<     int titi ;               /* la variable titi */ 
+<     int lffffsffkfl [6][4];  /* la variable suivante */ 
+---
+>     int totoi, ksdf, sflksdflk, sdflksdfl, sdflksdjflk, lksdflksd, skldfl, 
+>         skdfj, lksdfjlksd, lkjlk, lkjlkj, lskdjfl = lskdjflsdk, lksdf, 
+>         slkdfj = lksdflk ;
+>     int titi ;              /* la variable titi */ 
+>     int lffffsffkfl [6][4]; /* la variable suivante */ 
+9c9
+<     int fifi ;               /* comment sur fifi */ 
+---
+>     int fifi ;              /* comment sur fifi */ 
+tw.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+Abort : Invalid Reference Number
+0a1,703
+> #include "token.h"
+> 
+> /******************************************************************
+>            Comp : Display a tree on screen
+>    *******************************************************************/
+> void _fastcall Comp ( tree )
+> PTREE   tree ;
+> {
+> switch ( NumberTree(tree) ) {
+>     case LIST : 
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+>     case DEFINE_metalang : 
+> if ( !VerifyFileLine() ) {
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>     NewLine();
+>     WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>     NewLine();
+>     WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     NewLine();
+>     WriteString("#include \"token.h\"");
+>     NewLine();
+>     WriteString("#include \"");
+>     WriteString(llanguageName);
+>     WriteString("\"");
+>     NewLine();
+>     NewLine();
+>     NewLine();
+>     WriteString("#define _Lex ");
+>     WriteString(NameLang(lexName));
+>     NewLine();
+>     WriteString("#define SortKeyWord ");
+>     WriteString(NameLang("SortKeyWord"));
+>     NewLine();
+>     WriteString("#define UpSortKeyWord ");
+>     WriteString(NameLang("UpSortKeyWord"));
+>     NewLine();
+>     NewLine();
+> }       
+>         WriteString("PTREE ");
+>         WriteString(NameLang(Value(tree)));
+>         strcpy(nameDefine, Value(tree));
+>         FuncName(nameDefine);
+>         WriteString("(error_free)");
+>         NewLine();
+>         WriteString("int error_free;");
+>         NewLine();
+>         WriteString("{");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+>         NewLine();
+>         WriteString("int _value,_nbPre = 0 ;");
+>         NewLine();
+>         WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+>         WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+>         NewLine();
+>         WriteString("PTREE lastTree = _lastTree,_retValue ;");
+>         NewLine();
+>         Comp(SonTree(tree, 2));
+>         UnMark();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return((PTREE) 0);");
+>         NewLine();
+>         NewLine();
+>         WriteString(Label(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         NewLine();
+>         Tab();
+>         Mark();
+>         FuncLibre();/* free pointers before exiting */ 
+>         WriteString("_funcLevel--;");
+>         NewLine();
+>         WriteString("return((PTREE) -1) ;");
+>         UnMark();
+>         NewLine();
+>         NewLine();
+>         WriteString(RetLab(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         NewLine();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return _retValue ;");
+>         UnMark();
+>         NewLine();
+>         WriteString("}");
+>         NewLine();
+>         NewLine();
+>         FuncFree();
+>         break ;
+>     case CASE_metalang : 
+>         oldFirstMeta = firstMeta ;
+>         firstMeta = 1 ;
+>         i = ClassifyCase(SonTree(tree, 1));
+>         if ( i == 1 ) {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             WriteString("switch( lexEl.Value) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             length = ListLength(SonTree(tree, 1));
+>             if ( length ) 
+>                 NegateCond();
+>             Comp(SonTree(tree, 1));
+>             while ( length-- ) 
+>                 FreeCond();
+>             if ( Nodefault(SonTree(tree, 1)) ) {
+>                 WriteString("default :");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 WriteString("CASE_EXIT(");
+>                 WriteString(Label(nameDefine));
+>                 WriteString(",\"");
+>                 tree = SonTree(tree, 1);
+>                 if ( !SonTree(tree, 2) ) 
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                 else {
+>                     WriteString("either ");
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     while ( SonTree(tree, 2) ) {
+>                         tree = SonTree(tree, 2);
+>                         WriteString(" or ");
+>                         CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     }
+>                 }
+>                 WriteString("\")");
+>                 NewLine();
+>                 WriteString("break;");
+>                 NewLine();
+>                 UnMark();
+>             }
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 2 && inLex ) {
+>             simpleCase = 1 ;
+>             WriteString("switch (c) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             Comp(SonTree(tree, 1));
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 3 && inLex ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         } else {
+>             ifCase = 1 ;/* case as if out lex */ 
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         }
+>         firstMeta = oldFirstMeta ;
+>         break ;
+>     case SWITCH_metalang : 
+>         i = NumberTree(SonTree(tree, 1));
+>         if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang) ) {
+>             ptTree = SonTree(SonTree(tree, 1), 1);
+>             NegateCond();
+>             if ( NumberTree(ptTree) == EXCLA_metalang
+>                      && FindConst("META") != - 1
+>                      && firstMeta
+>                      && strcmp(Value(ptTree), "NOTHING")
+>                      && (strcmp(Value(ptTree), "META") || (firstMeta = 0)) ) {
+>                 firstMeta = 0 ;
+>                 WriteString("case ");
+>                 WriteString(NameLang("META"));
+>                 WriteString(":");
+>                 NewLine();
+>             }
+>             if ( NumberTree(ptTree) != EXCLA_metalang
+>                      || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+>                         , "NOTHING") ) {
+>                 AllocCond(SonTree(tree, 1));
+>                 WriteString("case ");
+>                 Comp(ptTree);
+>             } else 
+>                 WriteString("default");
+>             WriteString(" : ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+>                 WriteString("tokenAhead = 0 ;");
+>                 NewLine();
+>                 WriteString("CommTerm();");
+>                 NewLine();
+>             }
+>             statement = 1 ;
+>             Comp(SonTree(tree, 2));
+>             WriteString("break;");
+>             NewLine();
+>             UnMark();
+>             GotoMark();
+>         } else {
+>             if ( !ifCase && simpleCase ) {
+>                 Comp(SonTree(tree, 1));
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 if ( !SonTree(SonTree(tree, 1), 1) ) {
+>                     length = 1 ;
+>                     WriteString(" if (c!= EOF) {");
+>                     NewLine();
+>                     Tab();
+>                     Mark();
+>                 }
+>                 if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>                     WriteString("NextChar();");
+>                     NewLine();
+>                 }
+>                 simpleCase = 0 ;
+>                 Comp(SonTree(tree, 2));
+>                 if ( length ) {
+>                     UnMark();
+>                     GotoMark();
+>                     WriteString("}");
+>                     NewLine();
+>                 }
+>                 WriteString("break ;");
+>                 UnMark();
+>                 NewLine();
+>             } else {
+>                 i = 0 ;
+>                 ptTree = SonTree(SonTree(tree, 1), 1);
+>                 if ( (NumberTree(SonTree(tree, 1)) == TAKE_metalang
+>                          || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+>                          && NumberTree(ptTree) == IDENT_metalang ) {
+>                     i = 1 ;
+>                 }
+>                 statement = 0 ;
+>                 if ( !ptTree
+>                          || NumberTree(ptTree) != EXCLA_metalang
+>                          || strcmp(BrainyValue(ptTree), "NOTHING") ) {
+>                     WriteString("if(");
+>                     Comp(SonTree(tree, 1));
+>                     WriteString(")");
+>                 } else 
+>                     WriteString("if (1) ");
+>                 statement = 1 ;
+>                 WriteString("{");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 Comp(SonTree(tree, 2));
+>                 UnMark();
+>                 GotoMark();
+>                 WriteString("} else ");
+>             }
+>         }
+>         break ;
+>     case STOREL_metalang : 
+>         if ( !inLex ) {
+>             WriteString("if (tokenAhead) ExtUnputBuf() ;");
+>             NewLine();
+>         }
+>         if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+>             NewLine();
+>             WriteString("NextChar();");
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         } else {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact + strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(") < MAXLENGTH) ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("strcpy(_ptString,");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             UnMark();
+>             NewLine();
+>             WriteString("_nbCharact += strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             WriteString("_ptString = lexEl.string + _nbCharact;");
+>             NewLine();
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         }
+>         break ;
+>     case TAKEL_metalang : length = 1 ;
+>     case SEEL_metalang : 
+>         if ( simpleCase ) {
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("default : ");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>                 CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+>             else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 while ( tree ) {
+> if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>     CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+> else {
+>     cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+>     carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+>     CaseCharac(cardeb);
+>     while ( IncrChar(cardeb, carend) ) {
+>         NewLine();
+>         CaseCharac(cardeb);
+>     }
+>     NewLine();
+>     CaseCharac(carend);
+> }
+>                     if ( tree = SonTree(tree, 2) ) 
+>                         NewLine();
+>                 }
+>             }
+>         } else {
+>             if ( statement ) 
+>                 WriteString("if (!");
+>             if ( !inLex ) 
+>                 WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+>             WriteString("(");
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("c != EOF");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 i = 0 ;
+>                 WriteString("(");
+>                 while ( tree ) {
+>                     if ( i ) 
+>                         WriteString("||");
+>                     else 
+>                         i = 1 ;
+>                     WriteString("(");
+>                     if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                         WriteString("c == ");
+>                         Comp(SonTree(tree, 1));
+>                     } else {
+>                         Comp(SonTree(SonTree(tree, 1), 1));
+>                         WriteString(" <= c && c <= ");
+>                         Comp(SonTree(SonTree(tree, 1), 2));
+>                     }
+>                     WriteString(")");
+>                     tree = SonTree(tree, 2);
+>                 }
+>                 WriteString(")");
+>             } else {
+>                 WriteString("GetString(");
+>                 WriteString("\"");
+>                 WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 WriteString("\"");
+>                 if ( length ) 
+>                     WriteString(",1)");
+>                 else 
+>                     WriteString(",0)");
+>             }
+>             if ( length ) 
+>                 WriteString("&& NextChar())");
+>             else 
+>                 WriteString(")");
+>             if ( !inLex ) 
+>                 WriteString(")");
+>             if ( statement ) {
+> if ( !inLex ) {
+>     WriteString(") {");
+>     NewLine();
+>     Tab();
+>     Mark();
+>     WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+>     NewLine();
+>     WriteString("PrintError(errStr,error_free);");
+>     NewLine();
+>     WriteString("goto ");
+>     WriteString(Label(nameDefine));
+>     WriteString(";");
+>     UnMark();
+>     NewLine();
+>     WriteString("}");
+>     NewLine();
+> } else {
+>     WriteString(") ;");
+>     NewLine();
+> }
+>             }
+>         }
+>         break ;
+>     case TAKE_metalang : 
+>         if ( !statement ) 
+>             if ( NumberTree(tree) == IDENT_metalang ) {
+>                 WriteString("(PUSH_CALL_AFF(");
+>                 if ( equality ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = ");
+>                 } else 
+>                     WriteString("NOTHING");
+>                 WriteString(",");
+>                 WriteString(NameLang(Value(tree)));
+>                 WriteString("))");
+>             } else {
+>                 WriteString("((tokenAhead || _Lex()) && ");
+>                 i = 0 ;/* is a meta welcomed here */ 
+>                 if ( FindConst("META") != - 1
+>                          && NumberTree(tree) == EXCLA_metalang ) {
+>                     i = 1 ;
+>                     WriteString("TERM_OR_META(");
+>                     Comp(tree);
+>                     WriteString(")");
+>                 } else {
+>                     WriteString("lexEl.Value == ");
+>                     Comp(tree);
+>                 }
+>                 if ( equality ) {
+>                     WriteString(" && !(tokenAhead = 0) && (");
+>                     if ( !i ) {
+>                         WriteString(ptEquality);
+>                         WriteString(" = CommString(lexEl.string)))");
+>                     } else {
+>                         WriteString(" BUILD_TERM_META(");
+>                         WriteString(ptEquality);
+>                         WriteString("))) ");
+>                     }
+>                 } else 
+>                     WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+>             }
+>         else if ( NumberTree(tree) == IDENT_metalang ) {
+>             WriteString("if ( (");
+>             if ( equality ) {
+>                 WriteString(ptEquality);
+>                 WriteString("=");
+>             }
+>             WriteString(NameLang(Value(tree)));
+>             WriteString("(error_free)) == (PTREE) -1 ) ");
+>             NewLine();
+>             Tab();
+>             WriteString("PROG_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             WriteString(nameDefine);
+>             WriteString("\")");
+>             NewLine();
+>         } else {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             i = 0 ;/* is a meta welcomed here */ 
+>             if ( FindConst("META") != - 1
+>                      && NumberTree(tree) == EXCLA_metalang ) {
+>                 i = 1 ;
+>                 WriteString("if ( ! TERM_OR_META(");
+>                 Comp(tree);
+>                 WriteString(")");
+>             } else {
+>                 WriteString("if (  lexEl.Value != ");
+>                 Comp(tree);
+>             }
+>             if ( equality ) {
+>                 WriteString(" || !(");
+>                 if ( !i ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = CommString(lexEl.string))");
+>                 } else {
+>                     WriteString("BUILD_TERM_META(");
+>                     WriteString(ptEquality);
+>                     WriteString("))");
+>                 }
+>             } else 
+>                 WriteString(" || !(CommTerm(),1)");
+>             WriteString(") ");
+>             NewLine();
+>             Tab();
+>             WriteString("TOKEN_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             CompString(tree);
+>             WriteString("\")");
+>             NewLine();
+>         }
+>         break ;
+>     case LANGUAGE_metalang : 
+>         WriteString("\
+> /*************************************************************************/");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>         NewLine();
+>         WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>         NewLine();
+>         WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*************************************************************************/");
+>         WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+>         WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+>         WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+>                 WriteString("PTREE ");
+>                 WriteString(NameLang(Value(ptTree)));
+> #ifndef SUN
+>                 WriteString(" ( int );");
+> #else 
+>                 WriteString("();");
+> #endif
+>                 NewLine();
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+>                 lexName = AllocString(Value(ptTree));
+>                 foundLexName = 1 ;
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+>                 ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+>             else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+>                 nbLexDefine++ ;
+>                 if ( !foundLexName ) 
+>                     lexName = AllocString(Value(ptTree));
+>             }
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( ptTree
+>                      && NumberTree(SonTree(ptTree, 1))
+>                          == LEXDEFINE_metalang ) {
+>                 CompLexDefine(SonTree(ptTree, 1));
+>                 NewLine();
+>             }
+>         DumpNode();
+> #ifdef SUN
+>         writeLine = 0 ;
+>         output = loutput ;
+>         LispMake();
+>         output = coutput ;
+> #endif
+>         break ;
+>     case EQUAL_metalang : 
+>         switch ( NumberTree(SonTree(tree, 2)) ) {
+>             case NIL_metalang : 
+>             case FUNC_metalang : 
+>             case IDENT_metalang : 
+>             case NUMB_metalang : 
+>                 if ( !statement ) 
+>                     WriteString("(");
+>                 Comp(SonTree(tree, 1));
+>                 if ( statement ) 
+>                     WriteString("= ");
+>                 else 
+>                     WriteString("== ");
+>                 Comp(SonTree(tree, 2));
+>                 if ( !statement ) 
+>                     WriteString(")");
+>                 if ( statement ) 
+> if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+>     WriteString(";");
+>     NewLine();
+>     interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>     MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+>     free(interString);
+> } else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+>     WriteString(";");
+>     NewLine();
+> }               
+>                 break ;
+>             case TAKE_metalang : 
+>                 equality = 1 ;
+>                 ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 Comp(SonTree(tree, 2));
+>                 equality = 0 ;
+>                 SetUse(ptEquality);
+>                 free(ptEquality);
+>                 break ;
+>             case MAKETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 MakeTreeGen(interString, SonTree(tree, 2), 0);
+>                 free(interString);
+>                 break ;
+>             case ADDLIST_metalang : 
+>                 AddListGen(interString, SonTree(tree, 2), 0);
+>                 break ;
+>             case REPLACETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+>         }
+>         break ;
+>     case FUNC_metalang : 
+>         if ( !statement ) 
+>             WriteString("(");
+>         Comp(SonTree(tree, 1));
+>         WriteString("(");
+>         tree = SonTree(tree, 2);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(")");
+>         if ( statement ) {
+>             WriteString(";");
+>             NewLine();
+>         } else 
+>             WriteString(")");
+>         break ;
+>     case STRING_metalang : 
+>         tree = SonTree(tree, 1);
+>         treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+>             , treeToken);
+>         WriteString(SymboName(Value(tree), 0));
+>         break ;
+>     case DECLARE_metalang : 
+>         WriteString("PTREE ");
+>         ptTree = tree = SonTree(tree, 1);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString("= (PTREE) 0");
+>             InsertDecElem(AllocString(Value(tree)));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(";");
+>         NewLine();
+>         break ;
+>     case SKIP_metalang : 
+>         ptTree = tree = SonTree(tree, 1);
+>         i = 0 ;
+>         if ( inLex ) 
+>             WriteString("ptStockBuf = -1;");
+>         else 
+>             WriteString("ExtUnputBuf();");
+>         NewLine();
+>         WriteString("while (");
+>         while ( tree ) {
+>             if ( i ) 
+>                 WriteString("||");
+>             else 
+>                 i = 1 ;
+>             WriteString("(");
+>             if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else {
+>                 Comp(SonTree(SonTree(tree, 1), 1));
+>                 WriteString(" <= c && c <= ");
+>                 Comp(SonTree(SonTree(tree, 1), 2));
+>             }
+>             WriteString(")");
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+> }
+> }
+twi.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+Abort : Invalid Reference Number
+0a1,814
+> #include "token.h"
+> 
+> /******************************************************************
+>            Comp : Display a tree on screen
+>    *******************************************************************/
+> void _fastcall Comp ( tree )
+> PTREE   tree ;
+> {
+> switch ( NumberTree(tree) ) {
+>     case LIST : 
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+>     case DEFINE_metalang : 
+> if ( !VerifyFileLine() ) {
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>     NewLine();
+>     WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>     NewLine();
+>     WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>     NewLine();
+>     WriteString("\
+> /*                                                                       */");
+>     NewLine();
+>     WriteString("\
+> /*************************************************************************/");
+>     NewLine();
+>     NewLine();
+>     WriteString("#include \"token.h\"");
+>     NewLine();
+>     WriteString("#include \"");
+>     WriteString(llanguageName);
+>     WriteString("\"");
+>     NewLine();
+>     NewLine();
+>     NewLine();
+>     WriteString("#define _Lex ");
+>     WriteString(NameLang(lexName));
+>     NewLine();
+>     WriteString("#define SortKeyWord ");
+>     WriteString(NameLang("SortKeyWord"));
+>     NewLine();
+>     WriteString("#define UpSortKeyWord ");
+>     WriteString(NameLang("UpSortKeyWord"));
+>     NewLine();
+>     NewLine();
+> }       
+>         WriteString("PTREE ");
+>         WriteString(NameLang(Value(tree)));
+>         strcpy(nameDefine, Value(tree));
+>         FuncName(nameDefine);
+>         WriteString("(error_free)");
+>         NewLine();
+>         WriteString("int error_free;");
+>         NewLine();
+>         WriteString("{");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         WriteString("PFILE_POSITION _filePosition = (PFILE_POSITION) 0;\n");
+>         NewLine();
+>         WriteString("int _value,_nbPre = 0 ;");
+>         NewLine();
+>         WriteString("PCOMM_ELEM _ptPreComm = (tokenAhead || _Lex");
+>         WriteString("(),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));");
+>         NewLine();
+>         WriteString("PTREE lastTree = _lastTree,_retValue ;");
+>         NewLine();
+>         Comp(SonTree(tree, 2));
+>         UnMark();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PTREE) 0,lastTree); else {_lastTree=(PTREE)0;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return((PTREE) 0);");
+>         NewLine();
+>         NewLine();
+>         WriteString(Label(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         NewLine();
+>         Tab();
+>         Mark();
+>         FuncLibre();/* free pointers before exiting */ 
+>         WriteString("_funcLevel--;");
+>         NewLine();
+>         WriteString("return((PTREE) -1) ;");
+>         UnMark();
+>         NewLine();
+>         NewLine();
+>         WriteString(RetLab(nameDefine));
+>         WriteString(" :");
+>         NewLine();
+>         Tab();
+>         Mark();
+>         NewLine();
+>         WriteString("if (!tokenAhead) _Lex() ;");
+>         NewLine();
+>         WriteString("if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}");
+>         NewLine();
+>         WriteString("return _retValue ;");
+>         UnMark();
+>         NewLine();
+>         WriteString("}");
+>         NewLine();
+>         NewLine();
+>         FuncFree();
+>         break ;
+>     case CASE_metalang : 
+>         oldFirstMeta = firstMeta ;
+>         firstMeta = 1 ;
+>         i = ClassifyCase(SonTree(tree, 1));
+>         if ( i == 1 ) {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             WriteString("switch( lexEl.Value) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             length = ListLength(SonTree(tree, 1));
+>             if ( length ) 
+>                 NegateCond();
+>             Comp(SonTree(tree, 1));
+>             while ( length-- ) 
+>                 FreeCond();
+>             if ( Nodefault(SonTree(tree, 1)) ) {
+>                 WriteString("default :");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 WriteString("CASE_EXIT(");
+>                 WriteString(Label(nameDefine));
+>                 WriteString(",\"");
+>                 tree = SonTree(tree, 1);
+>                 if ( !SonTree(tree, 2) ) 
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                 else {
+>                     WriteString("either ");
+>                     CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     while ( SonTree(tree, 2) ) {
+>                         tree = SonTree(tree, 2);
+>                         WriteString(" or ");
+>                         CompString(SonTree(SonTree(SonTree(tree, 1), 1), 1));
+>                     }
+>                 }
+>                 WriteString("\")");
+>                 NewLine();
+>                 WriteString("break;");
+>                 NewLine();
+>                 UnMark();
+>             }
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 2 && inLex ) {
+>             simpleCase = 1 ;
+>             WriteString("switch (c) {");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             Comp(SonTree(tree, 1));
+>             UnMark();
+>             GotoMark();
+>             WriteString("}");
+>             NewLine();
+>         } else if ( i == 3 && inLex ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         } else {
+>             ifCase = 1 ;/* case as if out lex */ 
+>             Comp(SonTree(tree, 1));
+>             WriteString(" ;");
+>             NewLine();
+>         }
+>         firstMeta = oldFirstMeta ;
+>         break ;
+>     case SWITCH_metalang : 
+>         i = NumberTree(SonTree(tree, 1));
+>         if ( !ifCase && (i == TAKE_metalang || i == SEE_metalang) ) {
+>             ptTree = SonTree(SonTree(tree, 1), 1);
+>             NegateCond();
+>             if ( NumberTree(ptTree) == EXCLA_metalang
+>                      && FindConst("META") != - 1
+>                      && firstMeta
+>                      && strcmp(Value(ptTree), "NOTHING")
+>                      && (strcmp(Value(ptTree), "META") || (firstMeta = 0)) ) {
+>                 firstMeta = 0 ;
+>                 WriteString("case ");
+>                 WriteString(NameLang("META"));
+>                 WriteString(":");
+>                 NewLine();
+>             }
+>             if ( NumberTree(ptTree) != EXCLA_metalang
+>                      || strcmp(Value(SonTree(SonTree(ptTree, 1), 1))
+>                         , "NOTHING") ) {
+>                 AllocCond(SonTree(tree, 1));
+>                 WriteString("case ");
+>                 Comp(ptTree);
+>             } else 
+>                 WriteString("default");
+>             WriteString(" : ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             if ( NumberTree(SonTree(tree, 1)) == TAKE_metalang ) {
+>                 WriteString("tokenAhead = 0 ;");
+>                 NewLine();
+>                 WriteString("CommTerm();");
+>                 NewLine();
+>             }
+>             statement = 1 ;
+>             Comp(SonTree(tree, 2));
+>             WriteString("break;");
+>             NewLine();
+>             UnMark();
+>             GotoMark();
+>         } else {
+>             if ( !ifCase && simpleCase ) {
+>                 Comp(SonTree(tree, 1));
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 if ( !SonTree(SonTree(tree, 1), 1) ) {
+>                     length = 1 ;
+>                     WriteString(" if (c!= EOF) {");
+>                     NewLine();
+>                     Tab();
+>                     Mark();
+>                 }
+>                 if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>                     WriteString("NextChar();");
+>                     NewLine();
+>                 }
+>                 simpleCase = 0 ;
+>                 Comp(SonTree(tree, 2));
+>                 if ( length ) {
+>                     UnMark();
+>                     GotoMark();
+>                     WriteString("}");
+>                     NewLine();
+>                 }
+>                 WriteString("break ;");
+>                 UnMark();
+>                 NewLine();
+>             } else {
+>                 i = 0 ;
+>                 ptTree = SonTree(SonTree(tree, 1), 1);
+>                 if ( (NumberTree(SonTree(tree, 1)) == TAKE_metalang
+>                          || NumberTree(SonTree(tree, 1)) == SEE_metalang)
+>                          && NumberTree(ptTree) == IDENT_metalang ) {
+>                     i = 1 ;
+>                 }
+>                 statement = 0 ;
+>                 if ( !ptTree
+>                          || NumberTree(ptTree) != EXCLA_metalang
+>                          || strcmp(BrainyValue(ptTree), "NOTHING") ) {
+>                     WriteString("if(");
+>                     Comp(SonTree(tree, 1));
+>                     WriteString(")");
+>                 } else 
+>                     WriteString("if (1) ");
+>                 statement = 1 ;
+>                 WriteString("{");
+>                 NewLine();
+>                 Tab();
+>                 Mark();
+>                 Comp(SonTree(tree, 2));
+>                 UnMark();
+>                 GotoMark();
+>                 WriteString("} else ");
+>             }
+>         }
+>         break ;
+>     case STOREL_metalang : 
+>         if ( !inLex ) {
+>             WriteString("if (tokenAhead) ExtUnputBuf() ;");
+>             NewLine();
+>         }
+>         if ( NumberTree(SonTree(tree, 1)) == TAKEL_metalang ) {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact++ < MAXLENGTH) *_ptString++ = c;");
+>             NewLine();
+>             WriteString("NextChar();");
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         } else {
+>             WriteString("{");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("if (_nbCharact + strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(") < MAXLENGTH) ");
+>             NewLine();
+>             Tab();
+>             Mark();
+>             WriteString("strcpy(_ptString,");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             UnMark();
+>             NewLine();
+>             WriteString("_nbCharact += strlen(");
+>             WriteString("\"");
+>             WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>             WriteString("\"");
+>             WriteString(");");
+>             WriteString("_ptString = lexEl.string + _nbCharact;");
+>             NewLine();
+>             UnMark();
+>             NewLine();
+>             WriteString("}");
+>             NewLine();
+>         }
+>         break ;
+>     case TAKEL_metalang : length = 1 ;
+>     case SEEL_metalang : 
+>         if ( simpleCase ) {
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("default : ");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>                 CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+>             else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 while ( tree ) {
+> if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) 
+>     CaseCharac(Value(SonTree(SonTree(tree, 1), 1)));
+> else {
+>     cardeb = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 1), 1)));
+>     carend = ConvertChar(Value(SonTree(SonTree(SonTree(tree, 1), 2), 1)));
+>     CaseCharac(cardeb);
+>     while ( IncrChar(cardeb, carend) ) {
+>         NewLine();
+>         CaseCharac(cardeb);
+>     }
+>     NewLine();
+>     CaseCharac(carend);
+> }
+>                     if ( tree = SonTree(tree, 2) ) 
+>                         NewLine();
+>                 }
+>             }
+>         } else {
+>             if ( statement ) 
+>                 WriteString("if (!");
+>             if ( !inLex ) 
+>                 WriteString("((!tokenAhead || ExtUnputBuf ()) && ");
+>             WriteString("(");
+>             if ( !SonTree(tree, 1) ) 
+>                 WriteString("c != EOF");
+>             else if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else if ( NumberTree(SonTree(tree, 1)) == IN_metalang ) {
+>                 tree = SonTree(SonTree(SonTree(tree, 1), 1), 1);
+>                 i = 0 ;
+>                 WriteString("(");
+>                 while ( tree ) {
+>                     if ( i ) 
+>                         WriteString("||");
+>                     else 
+>                         i = 1 ;
+>                     WriteString("(");
+>                     if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                         WriteString("c == ");
+>                         Comp(SonTree(tree, 1));
+>                     } else {
+>                         Comp(SonTree(SonTree(tree, 1), 1));
+>                         WriteString(" <= c && c <= ");
+>                         Comp(SonTree(SonTree(tree, 1), 2));
+>                     }
+>                     WriteString(")");
+>                     tree = SonTree(tree, 2);
+>                 }
+>                 WriteString(")");
+>             } else {
+>                 WriteString("GetString(");
+>                 WriteString("\"");
+>                 WriteString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 WriteString("\"");
+>                 if ( length ) 
+>                     WriteString(",1)");
+>                 else 
+>                     WriteString(",0)");
+>             }
+>             if ( length ) 
+>                 WriteString("&& NextChar())");
+>             else 
+>                 WriteString(")");
+>             if ( !inLex ) 
+>                 WriteString(")");
+>             if ( statement ) {
+> if ( !inLex ) {
+>     WriteString(") {");
+>     NewLine();
+>     Tab();
+>     Mark();
+>     WriteString("sprintf(errStr,\"Error unexpected \\\"%s\\\" at line %d \\n\",GetLexString(),line);");
+>     NewLine();
+>     WriteString("PrintError(errStr,error_free);");
+>     NewLine();
+>     WriteString("goto ");
+>     WriteString(Label(nameDefine));
+>     WriteString(";");
+>     UnMark();
+>     NewLine();
+>     WriteString("}");
+>     NewLine();
+> } else {
+>     WriteString(") ;");
+>     NewLine();
+> }
+>             }
+>         }
+>         break ;
+>     case TAKE_metalang : 
+>         tree = SonTree(tree, 1);
+>         if ( inLex ) {
+>             WriteString(NameLang(Value(tree)));
+>             WriteString("();");
+>             NewLine();
+>             break ;
+>         }
+>         if ( !statement ) 
+>             if ( NumberTree(tree) == IDENT_metalang ) {
+>                 WriteString("(PUSH_CALL_AFF(");
+>                 if ( equality ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = ");
+>                 } else 
+>                     WriteString("NOTHING");
+>                 WriteString(",");
+>                 WriteString(NameLang(Value(tree)));
+>                 WriteString("))");
+>             } else {
+>                 WriteString("((tokenAhead || _Lex()) && ");
+>                 i = 0 ;/* is a meta welcomed here */ 
+>                 if ( FindConst("META") != - 1
+>                          && NumberTree(tree) == EXCLA_metalang ) {
+>                     i = 1 ;
+>                     WriteString("TERM_OR_META(");
+>                     Comp(tree);
+>                     WriteString(")");
+>                 } else {
+>                     WriteString("lexEl.Value == ");
+>                     Comp(tree);
+>                 }
+>                 if ( equality ) {
+>                     WriteString(" && !(tokenAhead = 0) && (");
+>                     if ( !i ) {
+>                         WriteString(ptEquality);
+>                         WriteString(" = CommString(lexEl.string)))");
+>                     } else {
+>                         WriteString(" BUILD_TERM_META(");
+>                         WriteString(ptEquality);
+>                         WriteString("))) ");
+>                     }
+>                 } else 
+>                     WriteString(" && (tokenAhead = 0,CommTerm(),1))");
+>             }
+>         else if ( NumberTree(tree) == IDENT_metalang ) {
+>             WriteString("if ( (");
+>             if ( equality ) {
+>                 WriteString(ptEquality);
+>                 WriteString("=");
+>             }
+>             WriteString(NameLang(Value(tree)));
+>             WriteString("(error_free)) == (PTREE) -1 ) ");
+>             NewLine();
+>             Tab();
+>             WriteString("PROG_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             WriteString(nameDefine);
+>             WriteString("\")");
+>             NewLine();
+>         } else {
+>             WriteString("if (!tokenAhead) _Lex() ;");
+>             NewLine();
+>             i = 0 ;/* is a meta welcomed here */ 
+>             if ( FindConst("META") != - 1
+>                      && NumberTree(tree) == EXCLA_metalang ) {
+>                 i = 1 ;
+>                 WriteString("if ( ! TERM_OR_META(");
+>                 Comp(tree);
+>                 WriteString(")");
+>             } else {
+>                 WriteString("if (  lexEl.Value != ");
+>                 Comp(tree);
+>             }
+>             if ( equality ) {
+>                 WriteString(" || !(");
+>                 if ( !i ) {
+>                     WriteString(ptEquality);
+>                     WriteString(" = CommString(lexEl.string))");
+>                 } else {
+>                     WriteString("BUILD_TERM_META(");
+>                     WriteString(ptEquality);
+>                     WriteString("))");
+>                 }
+>             } else 
+>                 WriteString(" || !(CommTerm(),1)");
+>             WriteString(") ");
+>             NewLine();
+>             Tab();
+>             WriteString("TOKEN_EXIT(");
+>             WriteString(Label(nameDefine));
+>             WriteString(",\"");
+>             CompString(tree);
+>             WriteString("\")");
+>             NewLine();
+>         }
+>         break ;
+>     case LANGUAGE_metalang : 
+>         WriteString("\
+> /*************************************************************************/");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*        Produced by MetaGen version 1.1  -    1989                     */");
+>         NewLine();
+>         WriteString("\
+> /*       Syntaxic Analyzer Meta Generator developped by                  */");
+>         NewLine();
+>         WriteString("\
+> /*                  Eric Lavillonniere                                   */");
+>         NewLine();
+>         WriteString("\
+> /*                                                                       */");
+>         NewLine();
+>         WriteString("\
+> /*************************************************************************/");
+>         NewLine();
+>         NewLine();
+>         WriteString("#include \"token.h\"");
+>         NewLine();
+>         WriteString("#include \"");
+>         strcpy(tabLabel, Value(SonTree(SonTree(tree, 1), 1)));
+>         ptTab = strlen(tabLabel) + tabLabel ;
+>         if ( ptTab > tabLabel + 8 ) 
+>             ptTab = tabLabel + 8 ;
+>         strcpy(ptTab, ".h");
+>         WriteString(tabLabel);
+>         WriteString("\"");
+>         strcpy(llanguageName, tabLabel);
+>         NewLine();
+>         NewLine();
+>         AddConst("PRE");
+>         AddConst("POST");
+>         AddConst("PREPOST");
+>         AddConst("META");
+>         AddConst("IN_LANGUAGE");
+>         DeclareNode("PRE", 1);
+>         DeclareNode("POST", 1);
+>         DeclareNode("PREPOST", 1);
+>         DeclareNode("META", 1);
+>         DeclareNode("IN_LANGUAGE", 2);
+>         AddConst(SymboName("META", 0));
+>         output = houtput ;
+>         WriteString("extern int oldLine;");
+>         NewLine();
+>         WriteString("extern char errStr [512];");
+>         NewLine();
+>         WriteString("extern char * _ptString;");
+>         NewLine();
+>         WriteString("extern int _nbCharact;");
+>         NewLine();
+>         WriteString("extern char * stringlex ;");
+>         NewLine();
+>         WriteString("extern LEX_STRUCT lexEl;");
+>         NewLine();
+>         WriteString("extern int line;");
+>         NewLine();
+>         WriteString("extern char c;");
+>         NewLine();
+>         WriteString("extern int tokenAhead ;");
+>         NewLine();
+>         WriteString("extern int ptStockBuf;");
+>         NewLine();
+>         WriteString("extern int input ;");
+>         NewLine();
+>         WriteString("extern int col ;");
+>         NewLine();
+>         WriteString("extern int firstOnLine;");
+>         NewLine();
+>         WriteString("extern PTREE _lastTree;");
+>         NewLine();
+>         WriteString("extern int _funcLevel;");
+>         NewLine();
+>         WriteString("extern PCOMM_ELEM listComm;");
+>         NewLine();
+>         NewLine();
+>         WriteString("#undef TERM_OR_META");
+>         NewLine();
+>         WriteString("#undef BUILD_TERM_META");
+>         NewLine();
+>         WriteString("#define TERM_OR_META(x) (lexEl.Value == x || lexEl.Value ==");
+>         WriteString(NameLang("META"));
+>         WriteString(")");
+>         NewLine();
+>         WriteString("#define BUILD_TERM_META(x) (lexEl.Value ==");
+>         WriteString(NameLang("META"));
+>         WriteString("?( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string))): (x= CommString(lexEl.string)))");
+>         NewLine();
+>         NewLine();
+>         ptTree = tree ;
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( NumberTree(SonTree(ptTree, 1)) == DEFINE_metalang ) {
+>                 WriteString("PTREE ");
+>                 WriteString(NameLang(Value(ptTree)));
+> #ifndef SUN
+>                 WriteString(" ( int );");
+> #else 
+>                 WriteString("();");
+> #endif
+>                 NewLine();
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == LEX_metalang ) {
+>                 lexName = AllocString(Value(ptTree));
+>                 foundLexName = 1 ;
+>             } else if ( NumberTree(SonTree(ptTree, 1)) == GLOBAL_metalang ) 
+>                 ptGlobal = SonTree(SonTree(ptTree, 1), 1);
+>             else if ( NumberTree(SonTree(ptTree, 1)) == LEXDEFINE_metalang ) {
+>                 nbLexDefine++ ;
+>                 if ( !foundLexName ) 
+>                     lexName = AllocString(Value(ptTree));
+>             }
+>         NewLine();
+>         NewLine();
+>         WriteString("extern int ");
+>         WriteString(NameLang("_arityNode"));
+>         WriteString("[];");
+>         NewLine();
+>         WriteString("extern int ");
+>         WriteString(NameLang("Arity"));
+>         WriteString("();");
+>         NewLine();
+>         NewLine();
+>         output = coutput ;
+>         if ( !foundLexName && nbLexDefine > 1 ) {
+>             write(2, "Lex is not defined\n", 19);
+>             exit( - 1);
+>         }
+>         WriteString("#define _Lex ");
+>         WriteString(NameLang(lexName));
+>         NewLine();
+>         WriteString("#define SortKeyWord ");
+>         WriteString(NameLang("SortKeyWord"));
+>         NewLine();
+>         WriteString("#define UpSortKeyWord ");
+>         WriteString(NameLang("UpSortKeyWord"));
+>         NewLine();
+>         NewLine();
+>         output = houtput ;
+>         Comp(ptGlobal);
+>         NewLine();
+>         output = coutput ;
+>         Comp(SonTree(tree, 2));
+>         DumpKeyWord();/* dump the keywords */ 
+>         ptTree = tree ;
+>         while ( ptTree = SonTree(ptTree, 2) ) 
+>             if ( ptTree
+>                      && NumberTree(SonTree(ptTree, 1))
+>                          == LEXDEFINE_metalang ) {
+>                 CompLexDefine(SonTree(ptTree, 1));
+>                 NewLine();
+>             }
+>         DumpNode();
+> #ifdef SUN
+>         writeLine = 0 ;
+>         output = loutput ;
+>         LispMake();
+>         output = coutput ;
+> #endif
+>         break ;
+>     case EQUAL_metalang : 
+>         switch ( NumberTree(SonTree(tree, 2)) ) {
+>             case NIL_metalang : 
+>             case FUNC_metalang : 
+>             case IDENT_metalang : 
+>             case NUMB_metalang : 
+>                 if ( !statement ) 
+>                     WriteString("(");
+>                 Comp(SonTree(tree, 1));
+>                 if ( statement ) 
+>                     WriteString("= ");
+>                 else 
+>                     WriteString("== ");
+>                 Comp(SonTree(tree, 2));
+>                 if ( !statement ) 
+>                     WriteString(")");
+>                 if ( statement ) 
+> if ( NumberTree(SonTree(tree, 2)) == IDENT_metalang ) {
+>     WriteString(";");
+>     NewLine();
+>     interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>     MakeEquiv(interString, Value(SonTree(SonTree(tree, 2), 1)));
+>     free(interString);
+> } else if ( NumberTree(SonTree(tree, 2)) == NIL_metalang ) {
+>     WriteString(";");
+>     NewLine();
+> }               
+>                 break ;
+>             case TAKE_metalang : 
+>                 equality = 1 ;
+>                 ptEquality = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 Comp(SonTree(tree, 2));
+>                 equality = 0 ;
+>                 SetUse(ptEquality);
+>                 free(ptEquality);
+>                 break ;
+>             case MAKETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 MakeTreeGen(interString, SonTree(tree, 2), 0);
+>                 free(interString);
+>                 break ;
+>             case ADDLIST_metalang : 
+>                 AddListGen(interString, SonTree(tree, 2), 0);
+>                 break ;
+>             case REPLACETREE_metalang : 
+>                 interString = AllocString(Value(SonTree(SonTree(tree, 1), 1)));
+>                 ReplaceTreeGen(interString, SonTree(tree, 2), 0);
+>         }
+>         break ;
+>     case FUNC_metalang : 
+>         if ( !statement ) 
+>             WriteString("(");
+>         Comp(SonTree(tree, 1));
+>         WriteString("(");
+>         tree = SonTree(tree, 2);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(")");
+>         if ( statement ) {
+>             WriteString(";");
+>             NewLine();
+>         } else 
+>             WriteString(")");
+>         break ;
+>     case STRING_metalang : 
+>         tree = SonTree(tree, 1);
+>         treeToken = AddToken(Value(tree), SymboName(Value(tree), 0)
+>             , treeToken);
+>         WriteString(SymboName(Value(tree), 0));
+>         break ;
+>     case DECLARE_metalang : 
+>         WriteString("PTREE ");
+>         ptTree = tree = SonTree(tree, 1);
+>         while ( tree ) {
+>             Comp(SonTree(tree, 1));
+>             WriteString("= (PTREE) 0");
+>             InsertDecElem(AllocString(Value(tree)));
+>             tree = SonTree(tree, 2);
+>             if ( tree ) 
+>                 WriteString(",");
+>         }
+>         WriteString(";");
+>         NewLine();
+>         break ;
+>     case SKIP_metalang : 
+>         ptTree = tree = SonTree(tree, 1);
+>         i = 0 ;
+>         if ( inLex ) 
+>             WriteString("ptStockBuf = -1;");
+>         else 
+>             WriteString("ExtUnputBuf();");
+>         NewLine();
+>         WriteString("while (");
+>         while ( tree ) {
+>             if ( i ) 
+>                 WriteString("||");
+>             else 
+>                 i = 1 ;
+>             WriteString("(");
+>             if ( NumberTree(SonTree(tree, 1)) == CHARACTER_metalang ) {
+>                 WriteString("c == ");
+>                 Comp(SonTree(tree, 1));
+>             } else {
+>                 Comp(SonTree(SonTree(tree, 1), 1));
+>                 WriteString(" <= c && c <= ");
+>                 Comp(SonTree(SonTree(tree, 1), 2));
+>             }
+>             WriteString(")");
+>             tree = SonTree(tree, 2);
+>         }
+>         break ;
+> }
+> }
+ty.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++++++++###
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+1,4c1,4
+< int a, b, lkjlk ;                  /* sldfkj slkdfj */ 
+< int a ;                            /* dljf */ 
+< char    *toto ;                    /* lkjlkj ljlkj lkjlkj lkjlkj */ 
+< char    toutooo, lkfsldkf, ksdfj ; /* sldfksdklf */ 
+---
+> int a, b, lkjlk ;                   /* sldfkj slkdfj */ 
+> int a ;                             /* dljf */ 
+> char    *toto ;                     /* lkjlkj ljlkj lkjlkj lkjlkj */ 
+> char    toutooo, lkfsldkf, ksdfj ;  /* sldfksdklf */ 
+typedef.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
++##
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+tz.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+3,9c3,9
+<     sldfk -> lkdsflsdfk -> lskdfjlkdf
+<          = ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+<              + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+<                  * ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+<                      -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+<                      -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+<              + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf ;
+---
+>     sldfk -> lkdsflsdfk -> lskdfjlkdf = ksdfdkf -> sldfkjkdsf -> slkfjlsdkf
+>              -> lsdkfldksf
+>          + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+>              * ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf
+>                  -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf -> sldfkjkdsf
+>                  -> slkfjlsdkf -> lsdkfldksf
+>          + ksdfdkf -> sldfkjkdsf -> slkfjlsdkf -> lsdkfldksf ;
+yy.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+6,24c6,26
+< sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+<      = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh * iiii
+<                      * kkkkk * llllll * kkkkkkkkkk * ffafasd * sldfk
+<                  + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf + laflaf
+<                  + sdflksdfj)
+<              * tututuut * titititi * fififif * tititi * fofofo * rararar
+<              * dififii * sdflkjsdlkf * lsdflksdjf * lksdjflksdjf * a
+<          + 5
+<          + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c * b
+<              * c * c * b * c
+<              * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n / o
+<                  / p / q / r / s / t / u / v / w / x / y / z)
+<              * c * a * b
+<          + u ;
+<         if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+<                  + lakfaksdfj + adfklakdf + lskflskdf
+<              < slkdf + lsdflskdf + sldkfldsk ) 
+<             a = b ;
+<     }
+---
+>          = sdflkjsldfkj = slkdjflksdfj = lsdflskdjf = lsdfsldkjf
+>          = (tatat + adlkfj * bidon / bidon * aaaaa * bbbb * cccc * hhhh
+>                          * iiii * kkkkk * llllll * kkkkkkkkkk * ffafasd
+>                          * sldfk
+>                      + lakjdflsjf + lajdflakf + ladflkasjf + afalkdf
+>                      + laflaf + sdflksdfj)
+>                  * tututuut * titititi * fififif * tititi * fofofo
+>                  * rararar * dififii * sdflkjsdlkf * lsdflksdjf
+>                  * lksdjflksdjf * a
+>              + 5
+>              + a * b * c * b * c * b * c * b * c * b * c * b * c * b * c
+>                  * b * c * c * b * c
+>                  * ~!(a / b / c / d / e / f / g / h / i / j / k / l / m / n
+>                      / o / p / q / r / s / t / u / v / w / x / y / z)
+>                  * c * a * b
+>              + u ;
+>     if ( sdlfkj + slkfjlsdf + sldfjlkj + laflaksdfj + alkflaksdfj
+>              + lakfaksdfj + adfklakdf + lskflskdf
+>          < slkdf + lsdflskdf + sldkfldsk ) 
+>         a = b ;
+> }
+yyy.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+4,5c4,5
+<                  + leCandidat -> score [GSCALE])
+<              / 2 ;
+---
+>                      + leCandidat -> score [GSCALE])
+>                  / 2 ;
+zz.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+6,25c6,20
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                 }
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     }
+<                 }
+<                 if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     if ( a ) {
+< sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl
+<      = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+<                     }
+<                 }
+---
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }               
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }   
+> }               
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> if ( a ) {
+>     sdfklsdfsdflksdflksdflksdflskdflsdkflskdfjlsdkfjsldkfjsldkfjsdlksdl = ssldkfslkdfjlsdkfjlsdfkjsdlkf ;
+> }   
+> }               
+zzz.c
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+#
+Reading c.set ...
+ Done
+
+ C++ prettyPrinter version 2.0, CopyRight(C) 1989-95 Eric Lavillonniere 
+ C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it 
+ under certain conditions.
+ For details see file COPYING in C++ prettyPrinter directory.
+
+

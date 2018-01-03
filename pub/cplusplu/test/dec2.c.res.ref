@@ -1,0 +1,5 @@
+main ()
+{
+    int varffffffffffable = 10 /* commffffffffentaire */ 
+        , v1 = 12 /* comm */ , v3 = djfkd /* comment*/ ;
+}

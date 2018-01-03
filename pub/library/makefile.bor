@@ -1,0 +1,13 @@
+!include ./makefile.win
+
+meta.lib : m_done auxpars.obj itptree.obj outil.obj ptree.obj compleme.obj tablist.obj \
+	tabsort.obj clpretty.obj pretty.obj pretty0.obj symb.obj
+	-$(RM) meta.lib
+    -tlib /P32 meta.lib +auxpars + itptree +outil +ptree +compleme +tablist + tabsort + clpretty \
+         +pretty +pretty0 +symb,meta.lst
+
+
+
+clpretty.obj : clpretty.cc clpretty.h token.h
+	$(C_PLUS) -c $(MACHFLAGS) -Pcc -w- -y -v -R -Od $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) clpretty.cc
+

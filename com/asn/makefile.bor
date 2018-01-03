@@ -1,0 +1,32 @@
+!include ./makefile.win
+
+asn.lib : m_done $(OBJECTS)
+	-$(RM) $( ASN_LIB)
+    -tlib /P64 $(ASN_LIB) +asn +asn0 +asn1 +asn2 +asn3 +compile +pretty +dchop +verify\
+                          +memorize +coding +decomp +asnsymbol ,asn.lst
+
+asntiny.lib :m_done asn.obj asn0.obj asn1.obj asn2.obj asn3.obj
+ 	-$(RM) $(ASN_LIB_TINY)
+    -tlib /P32 $(ASN_LIB_TINY) +asn +asn0 +asn1 +asn2 +asn3 +asnsymbol ,asn.lst
+
+
+
+asn.exe : chopper.obj $(OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) $(OPTIM_FLAGS) chopper.obj $( ASN_LIB) $(LIBRARY)
+    @- $(RM) asn.exe
+    ren chopper.exe asn.exe
+
+dasn.exe : dchopper.obj $(OBJECTS) $(LIBRARY)
+	$(C_PLUS_LNK) dchopper.obj $( ASN_LIB) $(LIBRARY)
+    @- $(RM) dasn.exe
+    ren dchopper.exe dasn.exe
+
+
+
+
+
+
+
+
+
+

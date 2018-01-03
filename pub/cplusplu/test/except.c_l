@@ -1,0 +1,31 @@
+void GfxAbsorbNewProcess ( const LPTSTR strGuts, const size_t idxFrom )
+{
+    try {
+        
+        //  oink
+        absorbNewProcessGuarded(strGuts, idxFrom);
+    } //  end of the try block
+     catch ( TCHAR const *complaint ) {
+        UtlAlert(complaint);
+        return ;
+     }
+    
+    // first catch
+    catch ( const CString &complaint ) {
+        UtlAlert(complaint);
+        return ;
+    }
+    try {
+        
+        //  oink
+        absorbNewProcessGuarded(strGuts, idxFrom);
+    } catch ( TCHAR const *complaint ) {
+        UtlAlert(complaint);
+        return ;
+    }
+    catch ( const CString &complaint ) {
+        UtlAlert(complaint);
+        return ;
+    }
+} //  high-level system to thrust a new process into an existing graph
+

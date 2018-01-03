@@ -1,0 +1,82 @@
+
+INCLUDE_DIR_LOC= -I ../asn -I ../asnext
+
+all : m_done asnext dasnext asnext.a(asnext.o asnext0.o asnext1.o dchopext.o )
+
+shared : all 
+
+include ../../makefile.der
+
+OPT_FLAGS= -Wno-empty-body
+
+clean : clean_inc_appli
+	- rm -f asnext.h asnext dasnext chop
+	- rm -f dchopext.cc chopper.cc dchopper.cc 
+	- rm -f asnext.cc asnext0.cc asnext1.cc
+
+test : 
+	asnext ref.asn > ref.res 2>/dev/null
+	diff ref.res ref.ref
+	rm ref.res
+	asnext refext.asn > refext.res 2>/dev/null
+	diff refext.res refext.ref
+	rm refext.res
+	asnext refext.asn refext.bin 1>/dev/null 2>&1
+	dasnext refext.asn refext.bin > drefext.res  2>/dev/null
+	diff drefext.res drefext.ref
+
+m_done : asnext.met ../asn/asn.met
+	-@ mkdir compile.dir
+	@cp asnext.met compile.dir
+	@echo "metagen -c++ asnext.met"
+	@( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) -path ../../asn:$(META_DIR)/pub/library asnext.met ;\
+          unify asnext.h ../asnext.h;\
+          unify asnext.cpp ../asnext.cc;\
+	  unify asnext0.cpp ../asnext0.cc;\
+	  unify asnext1.cpp ../asnext1.cc;)
+	@echo "ok" > m_done
+
+asnext.o : asnext.cc asnext.h
+
+asnext0.o : asnext0.cc asnext.h
+
+asnext1.o : asnext1.cc asnext.h
+
+chopper.cc : chopper.ch chop
+
+chopper.cc : dchopper.ch chop
+
+dchopext.cc : dchopext.ch chop
+
+chopper.o : chopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
+
+dchopper.o : dchopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
+
+dchopext.o : dchopext.cc asnext.h decasnext.h
+
+decasnext.h : ../asn/decasn.h
+	touch decasnext.h
+
+ASN_OBJECTS =../asn/asn.a
+
+OBJECTS = asnext.o asnext0.o asnext1.o dchopext.o
+
+asnext : $(OBJECTS) chopper.o $(ASN_OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS_LNK) -o asnext chopper.o $(OBJECTS) -L ../asn -lasn -L $(META_DIR)/pub/library -lmeta;\
+	else\
+		$(C_PLUS_LNK) -o asnext chopper.o $(OBJECTS) $(ASN_OBJECTS) $(LIBRARY);\
+	fi
+
+dasnext : $(OBJECTS) dchopper.o $(ASN_OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS_LNK) -o dasnext dchopper.o $(OBJECTS) -L ../asn -lasn -L $(META_DIR)/pub/library -lmeta;\
+	else\
+		$(C_PLUS_LNK) -o dasnext dchopper.o $(OBJECTS) $(ASN_OBJECTS) $(LIBRARY);\
+	fi
+
+chop :	chop.cc m_done
+	$(MAKE) -f makefile.cho
+
+

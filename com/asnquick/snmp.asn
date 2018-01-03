@@ -1,0 +1,100 @@
+SNMP 
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+    Root ::= SEQUENCE
+    {   
+        version   INTEGER,
+        community OCTET STRING,
+        data      SnmpPdu
+    };
+    
+    SnmpPdu ::= CHOICE
+    {   
+        get-request      [0] PDU,
+        get-next-request [1] PDU,
+        get-bulk-request [2] PDU,
+        response         [3] PDU,
+        set-request      [4] PDU,
+        inform-request   [5] PDU,
+        snmpV2-trap      [6] PDU
+    };
+    
+    PDU ::= SEQUENCE
+    {   
+        request-id        INTEGER,
+        error-status      INTEGER,
+        error-index       INTEGER,
+        variable-bindings VarBindList
+    };
+    
+    VarBindList ::= SEQUENCE OF VarBind;
+    
+    VarBind ::= SEQUENCE
+    {   
+        name    OBJECT IDENTIFIER,
+        content BindContent
+    };
+    
+    BindContent ::= CHOICE
+    {   
+        value          ObjectSyntax,
+        unSpcefied     NULL,
+        noSuchObject   [0] NULL,
+        noSuchInstance [1] NULL,
+        endOfMibView   [2] NULL
+    };
+    
+    ObjectSyntax ::= CHOICE
+    {   
+        simple           SimpleSyntax,
+        application-wide ApplicationSyntax
+    };
+    
+    SimpleSyntax ::= CHOICE
+    {   
+        integer-value  INTEGER,
+        string-value   OCTET STRING,
+        objectID-value OBJECT IDENTIFIER,
+        bit-value      BIT STRING
+    };
+    
+    ApplicationSyntax ::= CHOICE
+    {   
+        ipAddress-value        [APPLICATION 0] OCTET STRING,
+        counter-value          [APPLICATION 1] INTEGER,
+        gauge-value            [APPLICATION 2] INTEGER,
+        timeticks-value        [APPLICATION 3] INTEGER,
+        arbitrary-value        [APPLICATION 4] OCTET STRING,
+        nsapAddress-value      [APPLICATION 5] OCTET STRING,
+        big-counter-value      [APPLICATION 6] INTEGER,
+        unsigned-integer-value [APPLICATION 7] INTEGER
+    };
+    
+    iso OBJECT IDENTIFIER ::= {1};
+    
+    internet OBJECT IDENTIFIER ::= { iso 3 6 1 };
+    
+    directory OBJECT IDENTIFIER ::= {internet 1};
+    
+    mgmt OBJECT IDENTIFIER ::= {internet 2};
+    
+    experimental OBJECT IDENTIFIER ::= {internet 3};
+    
+    private OBJECT IDENTIFIER ::= {internet 4};
+    
+    enterprises OBJECT IDENTIFIER ::= {private 1};
+    
+    security OBJECT IDENTIFIER ::= {internet 5};
+    
+    snmpV2 OBJECT IDENTIFIER ::= {internet 6};
+    
+    snmpDomains OBJECT IDENTIFIER ::= {snmpV2 1};
+    
+    snmpProxys OBJECT IDENTIFIER ::= {snmpV2 2};
+    
+    snmpModules OBJECT IDENTIFIER ::= {snmpV2 3};
+    
+END
+
+

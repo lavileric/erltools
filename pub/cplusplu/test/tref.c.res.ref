@@ -1,0 +1,27 @@
+#include "token.h"
+
+/******************************************************************
+           Comp : Display a tree on screen
+   *******************************************************************/
+void _fastcall Comp ( tree )
+PTREE   tree ;
+{
+    switch ( i ) {
+        case i : 
+            if ( simpleCase ) {
+                if ( i ) {
+                    while ( tree ) {
+                        if ( i ) 
+                            i ;
+                        else {
+                            cardeb
+                                = ConvertChar(
+                                    Value(
+                                        SonTree(
+                                            SonTree(SonTree(tree, 1), 1), 1)));
+                        }
+                    }
+                }
+            }
+    }
+}

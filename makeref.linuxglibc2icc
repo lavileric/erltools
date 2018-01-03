@@ -1,0 +1,24 @@
+
+# system
+RM_UNIX="rm *.*~ *~ \#*\#"
+OUT_O=-o 
+
+#compiler choice
+MACHFLAGS=-mcpu=pentium4  
+LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
+C_PLUS=icpc
+C_PLUS_LNK= icpc
+# -static-libgcc -Wl,-O1  -Wl,-dynamic-linker=/usr/newlocal/lib/ld-linux.so.2
+# C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wcast-align
+C_WARNING =-w 
+#C_WARNING=-Wall -wd1418 -wd177 -wd593 -wd869 -wd981 -wd1419 -wd279 -wd111
+# -Wno-deprecated
+#OPTIM_FLAGS=-O3 -g $(LIBC2FLAGS)
+#OPTIM_FLAGS=-O3 $(LIBC2FLAGS) -fomit-frame-pointer 
+OPTIM_FLAGS=-g $(LIBC2FLAGS)
+C_FLAGS=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS)
+LIB_PRIVATE_SYS=-lpthread
+
+SEP=/
+OBJ_EXT=o 
+LIB_SUF=a

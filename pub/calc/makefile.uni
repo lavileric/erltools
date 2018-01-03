@@ -1,0 +1,48 @@
+
+all : m_done calc chop
+
+META_DIR=../..
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm calc.h calc.cc calc0.cc chopper.cc
+	-rm calc chop 
+	-rm -r compile.dir
+
+test : all_test
+
+m_done : calc.met
+	-@ mkdir compile.dir
+	@cp calc.met compile.dir
+	@echo "metagen -c++ calc.met"
+	@( cd compile.dir ;\
+	  metagen -c++ $(METAOPT) calc.met ;\
+	  unify calc.h ../calc.h;\
+	  unify calc.cpp ../calc.cc;\
+	  unify calc0.cpp ../calc0.cc;)
+	@echo "ok" > m_done
+
+calc.o : calc.cc calc.h
+
+calc0.o : calc0.cc calc.h
+
+chopper.cc : chopper.ch chop
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
+
+OBJECTS = calc.o calc0.o chopper.o 
+
+calc : $(OBJECTS) $(LIBRARY)
+	g++ -o calc $(OBJECTS) $(LIBRARY)
+
+chop : 
+	make -f makefile.cho
+
+
+
+
+
+
+
+

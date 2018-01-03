@@ -1,0 +1,17 @@
+
+# system / djgpp
+RM_UNIX=@echo on
+
+# compiler/djgpp
+MACHFLAGS=-DSUN -DLINUX -DDOS
+C_PLUS=gcc
+C_PLUS_LNK=g++
+C_WARNING =  -W -Wimplicit -Wreturn-type -Wswitch \
+	   -Wcomment -Wformat -Wchar-subscripts -Wuninitialized
+LIB_SYS=-lgpp -liostr
+
+#OPTIM_FLAGS=-g
+
+SEP=/
+
+LIB_SUF=a

@@ -1,0 +1,482 @@
+language asnext;
+
+global begin
+    {{
+               #ifdef OPTIONAL
+               #undef OPTIONAL
+               #ifndef OPTIONAL_VAR
+               static const int OPTIONAL = 1 ;
+               #define OPTIONAL_VAR
+               #endif
+               #endif
+               #ifdef FALSE
+               #undef FALSE
+               #ifndef FALSE_VAR
+        static const int FALSE = 0;
+               #define FALSE_VAR
+               #endif
+               #endif
+               #ifdef TRUE
+               #undef TRUE
+               #ifndef TRUE_VAR
+               #define TRUE_VAR
+        static const int TRUE = 1;
+               #endif
+               #endif
+               #ifdef MIN
+               #undef MIN
+               #endif
+               #ifdef MAX
+               #undef MAX
+               #endif
+    }};
+    {{
+        #ifdef NULL
+        #undef NULL
+        #ifndef NULL_VAR
+        #define NULL_VAR
+        static const void * NULL = 0;
+        #endif
+        #endif
+    }}
+end;
+
+use "asn.met";
+
+lexdefine Match;
+    skip ' ','\t','\r','\n';
+    case
+        takel "EQUALITY" :
+            begin
+            storel "EQUALITY";
+            return !MESSAGE_STORE_MATCHING;
+            end
+        takel "SUBSTRINGS" :
+            begin
+            storel "SUBSTRINGS";
+            return !MESSAGE_STORE_MATCHING;
+            end
+        takel "ORDERING" :
+            begin
+            storel "ORDERING";
+            return !MESSAGE_STORE_MATCHING;
+            end
+    end;
+end;
+
+lexdefine ConsumerSupplier;
+    skip ' ','\t','\r','\n';
+    case
+        takel "S" : return !TYPE_SUPP
+        takel "C" : return !TYPE_CONS
+    end;
+end;
+
+define IncludeDir;
+    take !INCLUDE_DIR;
+    case
+        see !INCLUDE_SYS :
+            begin
+            {{ ReadInclude(lexEl.string(),0);}};
+            return maketree(INCLUDE_DIR,take !INCLUDE_SYS);
+            end
+        see !INCLUDE_LOCAL :
+            begin
+            {{ ReadInclude(lexEl.string(),1);}};
+            return maketree(INCLUDE_DIR
+                ,maketree(STRING,take !INCLUDE_LOCAL));
+            end
+    end;
+end;
+
+define NamedNumber;
+    declare retTree,val,add;
+    retTree = maketree(NAMED_NUMBER,maketree(IDENT,take !IDENT),());
+    take "(";
+    if val = take SignedNumber or val = take DefinedValue then
+        begin
+        while take "+" do
+            if add = take SignedNumber or add = take DefinedValue then
+                val = maketree(ADD,val,add);
+        take ")";
+        return replacetree(retTree,2,val);
+        end
+    else
+        break;
+end;
+
+/*************************
+     les opérations
+  *************************/
+define ParameterValue;
+    declare val;
+    case
+        take #"NULL" : return maketree(NULL_PARAMETER)
+        default :
+            if val = take Type then
+                return val
+            else
+                begin
+                return maketree(PARAMETER_VALUE,take AnIdent,take Type);
+                end
+    end;
+end;
+
+define AbstractOperation;
+    declare operation,list;
+    take #"ABSTRACT-OPERATION";
+    operation = maketree(ABSTRACT_OPERATION,(),(),());
+    if take #"ARGUMENT" then
+        replacetree(operation,1,take ParameterValue);
+    if take #"RESULT" then
+        replacetree(operation,2,take ParameterValue);
+    if take #"ERRORS" then
+        begin
+        take "{";
+        if not see "}" then
+            repeat
+                addlist(list,take Type);
+            until not take ",";
+        take "}";
+        replacetree(operation,3,list);
+        end;
+    return operation;
+end;
+
+define AbstractError;
+    declare error;
+    take #"ABSTRACT-ERROR";
+    error = maketree(ABSTRACT_ERROR,());
+    if take #"PARAMETER" then
+        replacetree(error,1,take ParameterValue);
+    return error;
+end;
+
+define AbstractBind;
+    declare operation,list;
+    take #"ABSTRACT-BIND";
+    operation = maketree(ABSTRACT_BIND,(),(),(),());
+    if take #"TO" then
+        begin
+        take "{";
+        if not see "}" then
+            repeat
+                addlist(list,take AnIdent);
+            until not take ",";
+        take "}";
+        replacetree(operation,1,list);
+        end;
+    take #"BIND";
+    if take #"ARGUMENT" then
+        replacetree(operation,2,take ParameterValue);
+    if take #"RESULT" then
+        replacetree(operation,3,take ParameterValue);
+    if take #"BIND-ERROR" then
+        replacetree(operation,4,take ParameterValue);
+    return operation;
+end;
+
+define AbstractUnBind;
+    declare operation,list;
+    take #"ABSTRACT-UNBIND";
+    operation = maketree(ABSTRACT_UNBIND,());
+    if take #"FROM" then
+        begin
+        take "{";
+        if not see "}" then
+            repeat
+                addlist(list,take AnIdent);
+            until not take ",";
+        take "}";
+        end;
+    return replacetree(operation,1,list);
+end;
+
+define Port;
+    declare port,list;
+    take #"PORT";
+    port = maketree(PORT,(),());
+    if take #"CONSUMER" then
+        begin
+        take #"INVOKES";
+        take #"{";
+        if not see "}" then
+            repeat
+                addlist(list,take Type);
+            until not take ",";
+        take "}";
+        replacetree(port,1,list);
+        end;
+    if take #"SUPPLIER" then
+        begin
+        {{ list = (PPTREE) 0;}};
+        take #"INVOKES";
+        take #"{";
+        if not see "}" then
+            repeat
+                addlist(list,take Type);
+            until not take ",";
+        take "}";
+        replacetree(port,2,list);
+        end;
+    return port;
+end;
+
+define MhsOperation;
+    declare val;
+    if val = take AbstractOperation
+        or val = take AbstractError
+        or val = take AbstractBind
+        or val = take AbstractUnBind
+        or val = take Port then
+        return val
+    else
+        break;
+end;
+
+/*************************
+     les extensions
+  *************************/
+define ExtensionType;
+    declare retTree,val;
+    take #"EXTENSION";
+    retTree = maketree(EXTENSION,(),(),());
+    if val = take Type then
+        begin
+        replacetree(retTree,1,val);
+        if take #"DEFAULT" then
+            replacetree(retTree,2,take Value);
+        end;
+    if take #"CRITICAL" and take #"FOR" then
+        begin
+        case
+            take #"SUBMISSION" :
+                begin
+                end
+            take #"TRANSFER" :
+                begin
+                end
+            take #"DELIVERY" :
+                begin
+                end
+        end;
+        replacetree(retTree,3,stringlex);
+        end;
+    return retTree;
+end;
+
+define ExtensionsType;
+    declare retTree,list;
+    take #"EXTENSIONS";
+    take #"CHOSEN";
+    take #"FROM";
+    take "{";
+    retTree = maketree(EXTENSIONS,());
+    repeat
+        addlist(list,take Value);
+    until not take ",";
+    take "}";
+    return replacetree(retTree,1,list);
+end;
+
+define OneExtension;
+    declare val;
+    case
+        take #"SIGNATURE" : return maketree(SIGNATURE,take Type)
+        take #"SIGNED" : return maketree(SIGNED,take Type)
+        take #"ENCRYPTED" : return maketree(ENCRYPTED,take Type)
+        take #"EXTENSION-ATTRIBUTE" : return maketree(EXTATTRIBUTE
+            ,take Type)
+        take #"SECURITY-CATEGORY" : return maketree(SECCATEGORY,take Type)
+        take #"TOKEN" : return maketree(TOKEN,take Type)
+        take #"TOKEN-DATA" : return maketree(TOKENDATA,take Type)
+        default : 
+    end;
+    if val = take ExtensionType or val = take ExtensionsType then
+        return val
+    else
+        break;
+end;
+
+/*************************
+     les extensions p22
+  *************************/
+define X500Extension;
+    declare retTree;
+    case
+        take #"ALGORITHM" :
+            begin
+            retTree = maketree(ALGORITHM,());
+            if take #"PARAMETER" then
+                replacetree(retTree,1,take Type);
+            end
+    end;
+    return retTree;
+end;
+
+define IPMSExtension;
+    declare retTree,list;
+    case
+        take #"IPMS-EXTENSION" :
+            begin
+            take #"VALUE";
+            retTree = maketree(IPMS_EXTENSION,take Type);
+            end
+        take #"DIST-EXTENSION" :
+            begin
+            take #"VALUE";
+            retTree = maketree(DIST_EXTENSION,take Type);
+            end
+        take #"EXTENDED-BODY-PART-TYPE" :
+            begin
+            retTree = maketree(EXTENDED_BODY,(),(),());
+            if take #"PARAMETERS" then
+                begin
+                replacetree(retTree,1,take Type);
+                take #"IDENTIFIED";
+                take #"BY";
+                replacetree(retTree,2,take Value);
+                end;
+            take #"DATA";
+            replacetree(retTree,3,take Type);
+            end
+        take #"ATTRIBUTE" :
+            begin
+            
+            /* syntax */
+            retTree = maketree(MS_ATTRIBUTE,(),(),());
+            take #"WITH";
+            take #"ATTRIBUTE-SYNTAX";
+            replacetree(retTree,1,take Type);
+            
+            /* matches */
+            if take #"MATCHES" then
+                begin
+                take #"FOR";
+                repeat
+                    addlist(list
+                        ,maketree(IDENT,take !MESSAGE_STORE_MATCHING));
+                until not take ",";
+                replacetree(retTree,2,maketree(MATCHING_LIST,list));
+                end;
+            
+            /* type of value */
+            case
+                take #"SINGLE" : replacetree(retTree,3,maketree(SINGLE))
+                take #"MULTI" : replacetree(retTree,3,maketree(MULTI))
+            end;
+            take #"VALUE";
+            end
+    end;
+    return retTree;
+end;
+
+/*************************
+     les objets
+  *************************/
+define PortPair;
+    declare retValue,list,val;
+    retValue = maketree(PORT_PAIR,take AnIdent,(),());
+    if take "[" then
+        begin
+        case
+            take !TYPE_CONS : val = maketree(CONSUMER)
+            take !TYPE_SUPP : val = maketree(SUPPLIER)
+        end;
+        replacetree(retValue,2,val);
+        take "]";
+        end;
+    case
+        take #"VISIBLE" : replacetree(retValue,3,maketree(VISIBLE))
+        take #"PAIRED" :
+            begin
+            take #"WITH";
+            repeat
+                addlist(list,take AnIdent);
+            until not take ",";
+            replacetree(retValue,3,maketree(PAIR_LIST,list));
+            end
+    end;
+    return retValue;
+end;
+
+define ObjectRefinement;
+    declare retValue,list,port;
+    retValue = maketree(REFINEMENT,take AnIdent,(),());
+    if take #"RECURRING" then
+        replacetree(retValue,2,maketree(RECURRING));
+    if see PortPair then
+        begin
+        while port = take PortPair do
+            addlist(list,port);
+        replacetree(retValue,3,maketree(PORT_PAIR_LIST,list));
+        end;
+    return retValue;
+end;
+
+define AbstractObject;
+    declare retValue,list,port,object,val;
+    case
+        take #"OBJECT" :
+            begin
+            retValue = maketree(ABSTRACT_OBJECT,());
+            if take #"PORTS" then
+                begin
+                take "{";
+                repeat
+                    port = maketree(PORT_DEF,take AnIdent,());
+                    if take "[" then
+                        begin
+                        case
+                            take !TYPE_CONS : val = maketree(CONSUMER)
+                            take !TYPE_SUPP : val = maketree(SUPPLIER)
+                        end;
+                        replacetree(port,2,val);
+                        take "]";
+                        addlist(list,port);
+                        end;
+                until not take ",";
+                replacetree(retValue,1,maketree(PORT_DEF_LIST,list));
+                take "}";
+                end;
+            end
+        take #"REFINE" :
+            begin
+            retValue = maketree(REFINE,take AnIdent,());
+            take #"AS";
+            while object = take ObjectRefinement do
+                addlist(list,object);
+            replacetree(retValue,2,maketree(REFINEMENT_LIST,list));
+            end
+    end;
+    return retValue;
+end;
+
+define Type;
+    declare retTree,list,val;
+    while val = take Tag do
+        addlist(list,val);
+    retTree = maketree(TYP,list,(),());
+    if val = take BuiltinType
+        or val = take OneExtension
+        or val = take MhsOperation
+        or val = take DefinedType
+        or val = take IPMSExtension
+        or val = take X500Extension
+        or val = take AbstractObject then
+        replacetree(retTree,2,val)
+    else
+        break;
+    {{ list = (PPTREE) 0 ; }};
+    while val = take SubTypeSpec do
+        addlist(list,val);
+    return replacetree(retTree,3,list);
+end;
+
+define nothing;
+    declare node;
+    node = maketree(BITINLA);
+    node = maketree(EXTENSION_FIELD,());
+    return node;
+end.
+

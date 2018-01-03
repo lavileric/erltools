@@ -1,0 +1,50 @@
+
+all : m_done erlms
+
+OPT_FLAGS=-Wno-empty-body
+
+include ../../makefile.inc
+
+clean : clean_inc_appli
+	- rm -f msc.h erlms msc0.cc msc.cc msc.h compute.cc chopper.cc
+
+m_done : msc.met $(META_DIR)/pub/cplusplu/cplus.met
+	-@ mkdir compile.dir
+	@cp msc.met compile.dir
+	@echo "metagen -c++ msc.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path $(ERLTOOLS_DIR)/pub/cplusplu:$(ERLTOOLS_DIR)/pub/library \
+                                    $(METAOPT) msc.met ;\
+          unify msc.h ../msc.h;\
+          unify msc.cpp ../msc.cc;\
+	  unify msc0.cpp ../msc0.cc;)
+	@echo "ok" > m_done
+
+msc.o : msc.cc msc.h
+
+msc0.o : msc0.cc msc.h
+
+chopper.cc : chopper.ch
+
+compute.cc : compute.ch
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h compute.h
+
+compute.o : compute.cc $(META_DIR)/pub/library/token.h compute.h msc.h
+
+CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
+OBJECTS = msc.o msc0.o chopper.o compute.o
+
+SO_LIB = -L $(META_DIR)/pub/cplusplu -lcplus  -L $(META_DIR)/pub/library -lmeta 
+
+erlms : $(OBJECTS) $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) -o erlms $(OBJECTS) $(META_DIR)/pub/cplusplu/chopper.o $(SO_LIB);\
+	else\
+		$(C_PLUS) -o erlms $(OBJECTS) $(CPLUS) $(LIBRARY);\
+	fi
+
+
+
+
+

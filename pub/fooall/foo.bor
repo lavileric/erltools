@@ -1,0 +1,40 @@
+
+all : m_done foo.exe chop.exe
+
+clean : clean_inc_appli
+	-del foo.h 
+	-del foo*.cc 
+	-del chopper.cc
+	-del foo.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+!include ..\..\makefile.der
+
+#if your grammar becomes too big you will have to foo1 ...
+m_done : foo.met
+	-@ mkdir compile.dir
+	-@copy foo.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ $(METAOPT) foo.met 
+	@-unify foo.h ..\foo.h
+	@-unify foo.cpp ..\foo.cc
+	@-unify foo0.cpp ..\foo0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+foo.obj : foo.cc foo.h
+
+foo0.obj : foo0.cc foo.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.obj : chopper.cc $(ERLTOOLS_DIR)\pub\library\token.h
+
+OBJECTS = foo.obj foo0.obj chopper.obj
+
+foo.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) $(OBJECTS) $(LIBRARY)
+
+chop.exe : 
+	make -f makefile.bch

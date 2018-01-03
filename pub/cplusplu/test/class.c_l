@@ -1,0 +1,6 @@
+class A ; // comment
+class B ;
+
+class B {
+    Toto<Fifi>  A ;
+};

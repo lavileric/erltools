@@ -1,0 +1,99 @@
+
+#include "range.h"
+
+typedef int (__cdecl * _onexit_t) ();
+
+typedef int (__far __cdecl * _fonexit_t) ();
+
+
+int FAR PASCAL _export 
+bidon (int i) 
+{
+  
+}
+
+
+int toto;			/* variables 1 */
+
+int toto, titi;			/* variables 2 */
+
+int fifi, qiqi;			/* variables 3 */
+
+int lskfjsldfkj;		/* var */
+
+
+struct fifi
+  {
+    
+    int titi;			/* une var */
+     
+    int fofo;			/* une autre var */
+     
+    char *toto, *titi;		/* encore une autre */
+     
+  }
+toto;
+
+
+int toto[] =
+{
+  {1, 2, 3, 4},
+  {1, 2, 3, 4, 5},
+  {1, 2, 3, 4, 5} 
+  ,
+  {1, 2, 3, 4, 5},
+  {1, 2, 3, 4, 5} 
+  ,
+  {1, 2, 3, 4, 5},
+  {1, 2, 3, 4, 5} 
+  ,
+  {1, 2, 3, 4, 5},
+  {1, 2, 3, 4, 5} 
+  ,
+  {1, 2, 3, 4, 5},
+  {1, 2, 3, 4, 5}};
+
+
+TypDef (tree) 
+PTREE tree;
+
+{
+  
+    register PTREE _inter;
+  
+    PTREE list = (PTREE) 0;
+  
+    int toto[] =
+  {
+    {1, 2, 3, 4} /*                                 */ 
+    ,
+    {1, 2, 3, 4, 5} /*                           */ 
+    ,
+    {1, 2, 3, 4, 5} 
+    ,
+    {1, 2, 3, 4, 5} /*                           */ 
+    ,
+    {1, 2, 3, 4, 5} 
+    ,
+    {1, 2, 3, 4, 5} /*                           */ 
+    ,
+    {1, 2, 3, 4, 5} 
+    ,
+    {1, 2, 3, 4, 5} /*                           */ 
+    ,
+    {1, 2, 3, 4, 5} 
+    ,
+    {1, 2, 3, 4, 5} /*                           */ 
+    ,
+    {1, 2, 3, 4, 5}};
+  
+    
+    (a = 1, 2) && (a = 4);
+  
+    a && 5;
+  
+}
+
+
+
+

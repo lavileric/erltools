@@ -1,0 +1,8 @@
+auto int    c ;
+
+main ()
+{
+    std::vector<int>    vect ;
+    
+    for ( auto iter = vect.begin() ; iter != vect.end() ; iter++ ) {}
+}
