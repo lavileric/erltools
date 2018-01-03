@@ -5,7 +5,7 @@
 #       define STRING_BASIC STRING_QUANT-1
 #   endif
 #   include <stdlib.h>
-#   include <string.h>
+#   include <string>
 #   include <ctype.h>
 #   define IN_ERLSTRING 1
 #   include "smtoken.h"

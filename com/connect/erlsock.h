@@ -6,7 +6,7 @@
 #   else 
 #       if defined(BORLAND) || defined(VISUAL)
 #           if !defined(VISUAL) || _WIN32_WINNT >= 0x0400
-#               include <winsock2.h>
+// #               include <winsock2.h>
 #           endif
 #           include <io.h>
 #           define EADDRINUSE WSAEADDRINUSE
@@ -23,7 +23,7 @@
 #           else 
 #               include <netinet/in.h>
 #           endif
-#           include <string.h>
+#           include <string>
 #           include <unistd.h>
 #           include <errno.h>
 #           define SOCKET int

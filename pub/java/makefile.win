@@ -18,6 +18,7 @@ m_done : java.met $(META_DIR)\pub\cplusplu\cplus.met
 	-@unify java.cpp ..\java.cc
 	-@unify java0.cpp ..\java0.cc
 	-@unify java1.cpp ..\java1.cc
+	-@unify java2.cpp ..\java2.cc
 	cd ..
 	@echo "ok" > m_done
 
@@ -26,6 +27,8 @@ java.obj : java.cc java.h
 java0.obj : java0.cc java.h
 
 java1.obj : java1.cc java.h
+
+java2.obj : java2.cc java.h
 
 chopper.cc : chopper.ch decjava.h
 
@@ -39,5 +42,5 @@ CPLUS=$(CPLUS_DIR)\cplus.lib \
       $(CPLUS_DIR)\dchop.obj $(CPLUS_DIR)\dchop1.obj  \
       $(CPLUS_DIR)\dchop0.obj
 
-OBJECTS = java.obj java0.obj java1.obj chopper.obj decomp.obj 
+OBJECTS = java.obj java0.obj java1.obj java2.obj chopper.obj decomp.obj 
 

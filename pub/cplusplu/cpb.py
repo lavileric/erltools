@@ -12,40 +12,41 @@ import glob
 
 def Exit(error):
     
-    if error == -1 :
-        print "usage : cpb [-emacs] [-set setfile] filename(s)"
-        sys.exit(error)
-    else :
-		print "!!!! Failed"
+	if error == -1 :
+		print ("usage : cpb [-emacs] [-set setfile] filename(s)")
+		sys.exit(error)
+	else :
+		print ("!!!! Failed")
         
 def Print(inputFile):
-    for line in fileinput.input(inputFile):
-        print line
-    fileinput.close()
+	for line in fileinput.input(inputFile):
+		print (line)
+	fileinput.close()
 
 def Cpbem(fileName,fileOutput,errorFile,setOrder) :
 
-    extension = string.upper(os.path.splitext(os.path.basename(fileName)) [1])
+	extension = os.path.splitext(os.path.basename(fileName)) [1]
+	extension = extension.upper()
 
-    if extension == ".CH" :
-        command = "chopb " + setOrder + " " + fileName + " > " + fileOutput
-    elif extension == ".MET" :
-        command = "metab " + " " + fileName + " > " + fileOutput  
-    elif extension == ".MKP" or extension == ".MKO" :
-        command = "asnext2 -b " + " " + fileName + " > " + fileOutput
-    elif extension == ".JAVA" :
-        command = "pjava " + " " + fileName + " > " + fileOutput
-    else :
-        command = "cplus " + setOrder + " " + fileName + " > " + fileOutput
+	if extension == ".CH" :
+		command = "chopb " + setOrder + " " + fileName + " > " + fileOutput
+	elif extension == ".MET" :
+		command = "metab " + " " + fileName + " > " + fileOutput  
+	elif extension == ".MKP" or extension == ".MKO" :
+		command = "asnext2 -b " + " " + fileName + " > " + fileOutput
+	elif extension == ".JAVA" :
+		command = "pjava " + " " + fileName + " > " + fileOutput
+	else :
+		command = "cplus " + setOrder + " " + fileName + " > " + fileOutput
         
-    command += " 2>" + errorFile
+	command += " 2>" + errorFile
     
-    result=os.system(command)
-    if result == 0 :
-        if extension == ".ASN" or extension == ".MKP" or extension == ".MKO" :
-            command = 'echo "asn pretty printing. No Error Found." >> ' + errorFile
-            os.system(command)      
-    return result 
+	result=os.system(command)
+	if result == 0 :
+		if extension == ".ASN" or extension == ".MKP" or extension == ".MKO" :
+			command = 'echo "asn pretty printing. No Error Found." >> ' + errorFile
+			os.system(command)      
+	return result 
     
 def Grep(searched,file):
     for line in fileinput.input(file):
@@ -103,7 +104,7 @@ while len(sys.argv) > indexArg :
         #pretty file
         inputFile = listFile[indexList]
         indexList += 1
-        print "Processing file : ",inputFile
+        print ("Processing file : ",inputFile)
         result = Cpbem(inputFile,resFile,errorFile,setOrder) 
         if result != 0 :
             Print(errorFile)
@@ -118,6 +119,6 @@ while len(sys.argv) > indexArg :
         else :
             os.remove(inputFile)
             os.rename(resFile,inputFile)
-        print "done"
+        print ("done")
 
     indexArg += 1

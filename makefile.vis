@@ -10,9 +10,9 @@ all_to_do :
 	cd pub 
 	$(MAKE) -f makefile.vis all
 	cd ..
-	cd regex
-	$(MAKE) -f makefile.bor all
-	cd ..
+#	cd regex
+#	$(MAKE) -f makefile.bor all
+#	cd ..
 	cd misc
 	$(MAKE) -f makefile.vis all
 	cd ..
@@ -27,9 +27,9 @@ clean : clean_inc
 	cd pub
 	$(MAKE) -f makefile.vis clean
 	cd ..
-	cd regex
-	$(MAKE) -f makefile.bor clean
-	cd ..
+# 	cd regex
+#	$(MAKE) -f makefile.bor clean
+#	cd ..
 	cd misc 
 	$(MAKE) -f makefile.vis clean
 	cd ..
