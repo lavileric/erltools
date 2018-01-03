@@ -8,10 +8,12 @@ INSTALL_DIR=/home/lavil/outils
 #include system parameters
 # for linux emt64
 #include $(ERLTOOLS_DIR)/makeref.linuxemt64
+# for linux 
+include $(ERLTOOLS_DIR)/makeref.linux
 # for linux gcc 3
 #include $(ERLTOOLS_DIR)/makeref.linuxglibc2gcc3
 # for linux gcc 3 core 2
-include $(ERLTOOLS_DIR)/makeref.linuxglibc2gcc3core2
+# include $(ERLTOOLS_DIR)/makeref.linuxglibc2gcc3core2
 # for m32r
 # include $(ERLTOOLS_DIR)/makeref.m32r
 # for linux icc
