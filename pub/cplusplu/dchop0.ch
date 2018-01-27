@@ -186,6 +186,7 @@ void DecompCplus::control_stat1 ( PTREE paramTree ) /* on expression write ; <NL
         case <IF_DIR> : return ;
         case <IFDEF_DIR> : return ;
         case <IFNDEF_DIR> : return ;
+        case <NOT_MANAGED> : return ;
         case <NO_PRETTY> : return ;
         case <DEFINE_DIR> : return ;
         case <TYPEDEF> : return ;
@@ -513,6 +514,7 @@ int DecompCplus::IsTopInstr ( PTREE tree )
         case <IF_DIR> : return 15 ;
         case <IFDEF_DIR> : return 16 ;
         case <IFNDEF_DIR> : return 17 ;
+        case <NOT_MANAGED> : return 17 ;
         case <NO_PRETTY> : return 17 ;
         case <AFF> : return 19 ;
         case <MUL_AFF> : return 20 ;

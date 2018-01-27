@@ -47,6 +47,7 @@ int DecompCplus::TypeOfBlock ( PTREE tree )
         case <IF_DIR> : 
         case <IFDEF_DIR> : 
         case <IFNDEF_DIR> : 
+        case <NOT_MANAGED> : 
         case <NO_PRETTY> : 
             typeBlock = 3 ;
             break ;
@@ -1214,6 +1215,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                             case <IF_DIR> : 
                             case <IFDEF_DIR> : 
                             case <IFNDEF_DIR> : 
+                            case <NOT_MANAGED> : 
                             case <NO_PRETTY> : 
                             case <ATTRIBUTS> : 
                             case <EXCEPTION> : 
@@ -1521,6 +1523,20 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 }
                 <NL>
                 "#pragma pretty";
+                if ( !LastInTopList(paramTree) ) 
+                    <NL>
+            }}
+            break ;
+        case <NOT_MANAGED,list> : 
+            GotoCol(0);
+            {{
+                "#pragma notmanaged" <NL>
+                while ( list != () ) {
+                    son =  nextl(list);
+                    @son <NL>
+                }
+                <NL>
+                "#pragma managed";
                 if ( !LastInTopList(paramTree) ) 
                     <NL>
             }}
@@ -1924,7 +1940,7 @@ void DecompCplus::copy ()
         return ;
     else 
         copyPrinted =  true ;
-    str =  "\n\r C++ prettyPrinter version 4.1.0, CopyRight(C) 1989-2017 Eric Lavillonniere \n\r";
+    str =  "\n\r C++ prettyPrinter version 6.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
     str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));

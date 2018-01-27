@@ -307,15 +307,12 @@
                 virtual EStringRoot at ( int deb, unsigned int len ) const
                 {
                     if ( deb < 0 ) {
+			 len =  (unsigned int)( -deb);
                         deb += length();
-                    }
-                    if ( deb < 0 ) {
-                        int lg = (int)len ;
-                        lg  += deb ;
-                        deb =  0 ;
-                        if ( lg < 0 ) 
-                            lg =  0 ;
-                        len =  (unsigned int)lg ;
+                        if ( deb < 0 ) {
+                            deb =  0 ;
+			    len  =  length();
+                        }
                     }
                     if ( (unsigned int)deb >= length() ) 
                         deb =  length();
@@ -328,6 +325,14 @@
                 {
                     int lg = length() - deb ;
                     
+                    if ( deb < 0 ) {
+			lg  =  -deb ;
+                        deb += length();
+                        if ( deb < 0 ) {
+                            deb =  0 ;
+                            lg  =  length();
+                        }
+                    }
                     if ( lg < 0 ) 
                         lg =  0 ;
                     return at(deb, (unsigned int)lg);

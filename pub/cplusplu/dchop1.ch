@@ -204,6 +204,7 @@ int DecompCplus::IsTop ( PTREE tree, int internal )
         case <IFDEF_DIR> : return 16 ;
         case <IFNDEF_DIR> : return 17 ;
         case <NO_PRETTY> : return 17 ;
+        case <NOT_MANAGED> : return 17 ;
         case <AFF> : ;
         case <MUL_AFF> : ;
         case <DIV_AFF> : ;
@@ -259,6 +260,7 @@ int DecompCplus::IsTop ( PTREE tree, int internal )
                             return 17 ;
                         else 
                             return -1 ;
+                    case <NOT_MANAGED> : return 17 ;
                     case <NO_PRETTY> : return 17 ;
                     case <AFF> : ;
                     case <MUL_AFF> : ;
@@ -607,7 +609,8 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                 int deltaLoop = 0 ;
                 
                 // get on last declaration
-                if ( declaration == <DECLARATION,<>,type,listDecl> || declaration == <DECLARATOR,<>,type> ) {}
+                if ( declaration == <DECLARATION,<>,type,listDecl> || declaration == <DECLARATOR,<>,type> ) {
+                }
             loop : 
                 while ( listDecl != <,<>,()> ) 
                     nextl(listDecl);

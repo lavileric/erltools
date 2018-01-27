@@ -637,6 +637,8 @@ lexdefine LexPragma;
     case
         takel "pretty" : return !PRAGMA_PRETTY
         takel "nopretty" : return !PRAGMA_NOPRETTY
+        takel "managed" : return !PRAGMA_MANAGED
+        takel "notmanaged" : return !PRAGMA_NOT_MANAGED
         takel "config" : return !PRAGMA_CONFIG
         takel "tab_directive" : return !PRAGMA_TAB_DIRECTIVE
         takel "tab" : return !PRAGMA_TAB
@@ -805,6 +807,11 @@ end;
 define end_pragma;
     take !PRAGMA_DIR;
     take !PRAGMA_PRETTY;
+end;
+
+define end_pragma_managed;
+    take !PRAGMA_DIR;
+    take !PRAGMA_MANAGED;
 end;
 
 define other_config;
@@ -1301,6 +1308,23 @@ define directive;
                     /* to be able to swallow comments again, pretty again was blocked by a end of line so nothing*/
                     {{ tokenAhead = 0;}};
                     return maketree(NO_PRETTY,list);
+                    end
+                take !PRAGMA_NOT_MANAGED :
+                    begin
+                    with context keepCarriage do
+                        begin
+                        with context keepAll do
+                            begin
+                            take !END_LINE;
+			    while not see end_pragma_managed do
+                                addlist(list,maketree(ALINE,take !END_LINE));
+			    take end_pragma_managed;
+                            end;
+                        end;
+                    
+                    /* to be able to swallow comments again, pretty again was blocked by a end of line so nothing*/
+                    {{ tokenAhead = 0;}};
+                    return maketree(NOT_MANAGED,list);
                     end
                 take !PRAGMA_CONFIG :
                     begin
