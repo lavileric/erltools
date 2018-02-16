@@ -189,6 +189,8 @@ void DecompCplus::control_stat1 ( PTREE paramTree ) /* on expression write ; <NL
         case <NOT_MANAGED> : return ;
         case <NO_PRETTY> : return ;
         case <DEFINE_DIR> : return ;
+        case <LINE_DIR> : return ;
+        case <LINE_REFERENCE_DIR> : return ;
         case <TYPEDEF> : return ;
         case <AFF> : goto terminal ;
         case <MUL_AFF> : goto terminal ;

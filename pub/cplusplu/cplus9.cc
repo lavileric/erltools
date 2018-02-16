@@ -11,495 +11,495 @@
 
 
 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 int cplus::SortKeyWord (int defaultValue)
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     register int Value;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     Value = strcmp(lexEl.string(),"namespace");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         Value = strcmp(lexEl.string(),"template");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             Value = strcmp(lexEl.string(),"using");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"void");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"while");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"volatile")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(VOLATILE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(WHILE);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"virtual");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"va_arg")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(VA_ARG) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(VIRTUAL);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(VOID);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"typename");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"unsigned");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"union")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(UNION) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(UNSIGNED);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"try");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"typedef")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(TYPEDEF) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"throw")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(THROW) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(TRY);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(TYPENAME);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 return(USING);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             Value = strcmp(lexEl.string(),"return");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"static");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"switch");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"struct")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(STRUCT) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(SWITCH);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"signed");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"sizeof")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(SIZEOF) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"short")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(SHORT) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(SIGNED);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(STATIC);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"protected");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"register");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"public")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(PUBLIC) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(REGISTER);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"operator");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"private")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(PRIVATE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"new")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(NEW) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(OPERATOR);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(PROTECTED);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 return(RETURN);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             return(TEMPLATE);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         Value = strcmp(lexEl.string(),"double");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             Value = strcmp(lexEl.string(),"friend");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"inline");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"long");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"int")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(INT) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(LONG);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"if");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"goto")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(GOTO) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(IF);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(INLINE);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"float");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"forallsons");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"for")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(FOR) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(FORALLSONS);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"enum");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"extern")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(EXTERN) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"else")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(ELSE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(ENUM);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(FLOAT);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 return(FRIEND);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             Value = strcmp(lexEl.string(),"char");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"default");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"do");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"delete")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(DELETE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(DO);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"const");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"continue")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(CONTINUE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"class")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(CLASS) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(CONST);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(DEFAULT);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 Value = strcmp(lexEl.string(),"break");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"catch");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"case")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(CASE) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(CATCH);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     Value = strcmp(lexEl.string(),"asm");
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     if (Value > 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"auto")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(AUTO) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else if (Value < 0) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         if(!strcmp(lexEl.string(),"+____------____")) {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                             return(PLUS____TIRETIRETIRETIRETIRETIRE____) ;
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                         return(ASM);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                     return(BREAK);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
                 return(CHAR);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
             return(DOUBLE);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     } else 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
         return(NAMESPACE);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     return(defaultValue);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 int cplus::UpSortKeyWord(int value) 
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 {
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     register char * ptSource=lexEl.string();
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     for (;*ptSource;ptSource++) *ptSource = toupper(*ptSource);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
     return SortKeyWord (value);
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 }
-#line 2795 "cplus.met"
+#line 2815 "cplus.met"
 #line 303 "cplus.met"
 int cplus::Lex ()
 #line 303 "cplus.met"
@@ -3656,281 +3656,301 @@ int cplus::Lex ()
 #line 562 "cplus.met"
             } else 
 #line 562 "cplus.met"
+#line 563 "cplus.met"
+            if(((('0' <= c && c <= '9')))){
+#line 563 "cplus.met"
+#line 563 "cplus.met"
+                {
+#line 563 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 563 "cplus.met"
+                    tokenAhead =1;
+#line 563 "cplus.met"
+                    lexEl.Value=LINE_REFERENCE_DIR;
+#line 563 "cplus.met"
+                    PUT_COORD_CALL;
+#line 563 "cplus.met"
+                    return(1);
+#line 563 "cplus.met"
+                }
+#line 563 "cplus.met"
+            } else 
+#line 563 "cplus.met"
              ;
-#line 562 "cplus.met"
-#line 562 "cplus.met"
+#line 563 "cplus.met"
+#line 563 "cplus.met"
             break ;
-#line 562 "cplus.met"
-#line 565 "cplus.met"
+#line 563 "cplus.met"
+#line 566 "cplus.met"
         case '\r' :
-#line 565 "cplus.met"
+#line 566 "cplus.met"
         case '\n' :
-#line 565 "cplus.met"
+#line 566 "cplus.met"
             NextChar();
-#line 565 "cplus.met"
-#line 565 "cplus.met"
+#line 566 "cplus.met"
+#line 566 "cplus.met"
             {
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 firstOnLine = 0 ; 
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 tokenAhead =1;
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 lexEl.Value=CARRIAGE_RETURN;
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 firstOnLine = 1 ; 
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 PUT_COORD_CALL;
-#line 565 "cplus.met"
+#line 566 "cplus.met"
                 return(1);
-#line 565 "cplus.met"
+#line 566 "cplus.met"
             }
-#line 565 "cplus.met"
+#line 566 "cplus.met"
             break ;
-#line 565 "cplus.met"
-#line 566 "cplus.met"
-        case '/' :
-#line 566 "cplus.met"
-            NextChar();
 #line 566 "cplus.met"
 #line 567 "cplus.met"
-#line 568 "cplus.met"
-            if (((c == '='))){
+        case '/' :
+#line 567 "cplus.met"
+            NextChar();
+#line 567 "cplus.met"
 #line 568 "cplus.met"
 #line 569 "cplus.met"
+            if (((c == '='))){
+#line 569 "cplus.met"
 #line 570 "cplus.met"
+#line 571 "cplus.met"
                 if (!(c != EOF&& NextChar())) ;
-#line 570 "cplus.met"
 #line 571 "cplus.met"
+#line 572 "cplus.met"
                 {
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                     firstOnLine = 0 ; 
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                     tokenAhead =1;
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                     lexEl.Value=SLASEGAL;
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                     PUT_COORD_CALL;
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                     return(1);
-#line 571 "cplus.met"
+#line 572 "cplus.met"
                 }
-#line 571 "cplus.met"
-#line 571 "cplus.met"
-#line 571 "cplus.met"
+#line 572 "cplus.met"
+#line 572 "cplus.met"
+#line 572 "cplus.met"
             } else {
-#line 571 "cplus.met"
-#line 574 "cplus.met"
+#line 572 "cplus.met"
+#line 575 "cplus.met"
                 {
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                     firstOnLine = 0 ; 
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                     tokenAhead =1;
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                     lexEl.Value=SLAS;
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                     PUT_COORD_CALL;
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                     return(1);
-#line 574 "cplus.met"
+#line 575 "cplus.met"
                 }
-#line 574 "cplus.met"
+#line 575 "cplus.met"
             }
-#line 574 "cplus.met"
-#line 574 "cplus.met"
+#line 575 "cplus.met"
+#line 575 "cplus.met"
             break ;
-#line 574 "cplus.met"
-#line 576 "cplus.met"
+#line 575 "cplus.met"
+#line 577 "cplus.met"
         case '.' :
-#line 576 "cplus.met"
 #line 577 "cplus.met"
 #line 578 "cplus.met"
-            {
-#line 578 "cplus.met"
-                lexEl . AddChar(c);
-#line 578 "cplus.met"
-                NextChar();
-#line 578 "cplus.met"
-            }
-#line 578 "cplus.met"
 #line 579 "cplus.met"
-            if ((('0' <= c && c <= '9'))){
+            {
+#line 579 "cplus.met"
+                lexEl . AddChar(c);
+#line 579 "cplus.met"
+                NextChar();
+#line 579 "cplus.met"
+            }
 #line 579 "cplus.met"
 #line 580 "cplus.met"
+            if ((('0' <= c && c <= '9'))){
+#line 580 "cplus.met"
 #line 581 "cplus.met"
+#line 582 "cplus.met"
                 while ((('0' <= c && c <= '9'))) { 
-#line 581 "cplus.met"
-#line 582 "cplus.met"
-                    {
-#line 582 "cplus.met"
-                        lexEl . AddChar(c);
-#line 582 "cplus.met"
-                        NextChar();
-#line 582 "cplus.met"
-                    }
-#line 582 "cplus.met"
-                } 
 #line 582 "cplus.met"
 #line 583 "cplus.met"
-                if (((c == 'e')||(c == 'E'))&& NextChar()){
+                    {
+#line 583 "cplus.met"
+                        lexEl . AddChar(c);
+#line 583 "cplus.met"
+                        NextChar();
+#line 583 "cplus.met"
+                    }
+#line 583 "cplus.met"
+                } 
 #line 583 "cplus.met"
 #line 584 "cplus.met"
+                if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 584 "cplus.met"
 #line 585 "cplus.met"
+#line 586 "cplus.met"
                     {
-#line 585 "cplus.met"
+#line 586 "cplus.met"
                         lexEl.AddString("e");
-#line 585 "cplus.met"
-                    }
-#line 585 "cplus.met"
 #line 586 "cplus.met"
+                    }
+#line 586 "cplus.met"
+#line 587 "cplus.met"
                     if (((c == '+')||(c == '-'))){
-#line 586 "cplus.met"
 #line 587 "cplus.met"
+#line 588 "cplus.met"
                         {
-#line 587 "cplus.met"
+#line 588 "cplus.met"
                             lexEl . AddChar(c);
-#line 587 "cplus.met"
+#line 588 "cplus.met"
                             NextChar();
-#line 587 "cplus.met"
+#line 588 "cplus.met"
                         }
-#line 587 "cplus.met"
+#line 588 "cplus.met"
                     }
-#line 587 "cplus.met"
 #line 588 "cplus.met"
+#line 589 "cplus.met"
                     while ((('0' <= c && c <= '9'))) { 
-#line 588 "cplus.met"
 #line 589 "cplus.met"
+#line 590 "cplus.met"
                         {
-#line 589 "cplus.met"
+#line 590 "cplus.met"
                             lexEl . AddChar(c);
-#line 589 "cplus.met"
+#line 590 "cplus.met"
                             NextChar();
-#line 589 "cplus.met"
+#line 590 "cplus.met"
                         }
-#line 589 "cplus.met"
+#line 590 "cplus.met"
                     } 
-#line 589 "cplus.met"
-#line 589 "cplus.met"
-#line 589 "cplus.met"
+#line 590 "cplus.met"
+#line 590 "cplus.met"
+#line 590 "cplus.met"
                 }
-#line 589 "cplus.met"
-#line 591 "cplus.met"
+#line 590 "cplus.met"
+#line 592 "cplus.met"
                 switch (c) {
-#line 591 "cplus.met"
 #line 592 "cplus.met"
+#line 593 "cplus.met"
                     case 'f' :
-#line 592 "cplus.met"
-#line 592 "cplus.met"
-                        {
-#line 592 "cplus.met"
-                            lexEl . AddChar(c);
-#line 592 "cplus.met"
-                            NextChar();
-#line 592 "cplus.met"
-                        }
-#line 592 "cplus.met"
-                        break ;
-#line 592 "cplus.met"
 #line 593 "cplus.met"
+#line 593 "cplus.met"
+                        {
+#line 593 "cplus.met"
+                            lexEl . AddChar(c);
+#line 593 "cplus.met"
+                            NextChar();
+#line 593 "cplus.met"
+                        }
+#line 593 "cplus.met"
+                        break ;
+#line 593 "cplus.met"
+#line 594 "cplus.met"
                     case 'F' :
-#line 593 "cplus.met"
-#line 593 "cplus.met"
-                        {
-#line 593 "cplus.met"
-                            lexEl . AddChar(c);
-#line 593 "cplus.met"
-                            NextChar();
-#line 593 "cplus.met"
-                        }
-#line 593 "cplus.met"
-                        break ;
-#line 593 "cplus.met"
 #line 594 "cplus.met"
+#line 594 "cplus.met"
+                        {
+#line 594 "cplus.met"
+                            lexEl . AddChar(c);
+#line 594 "cplus.met"
+                            NextChar();
+#line 594 "cplus.met"
+                        }
+#line 594 "cplus.met"
+                        break ;
+#line 594 "cplus.met"
+#line 595 "cplus.met"
                     case 'l' :
-#line 594 "cplus.met"
-#line 594 "cplus.met"
-                        {
-#line 594 "cplus.met"
-                            lexEl . AddChar(c);
-#line 594 "cplus.met"
-                            NextChar();
-#line 594 "cplus.met"
-                        }
-#line 594 "cplus.met"
-                        break ;
-#line 594 "cplus.met"
 #line 595 "cplus.met"
+#line 595 "cplus.met"
+                        {
+#line 595 "cplus.met"
+                            lexEl . AddChar(c);
+#line 595 "cplus.met"
+                            NextChar();
+#line 595 "cplus.met"
+                        }
+#line 595 "cplus.met"
+                        break ;
+#line 595 "cplus.met"
+#line 596 "cplus.met"
                     case 'L' :
-#line 595 "cplus.met"
-#line 595 "cplus.met"
+#line 596 "cplus.met"
+#line 596 "cplus.met"
                         {
-#line 595 "cplus.met"
+#line 596 "cplus.met"
                             lexEl . AddChar(c);
-#line 595 "cplus.met"
+#line 596 "cplus.met"
                             NextChar();
-#line 595 "cplus.met"
+#line 596 "cplus.met"
                         }
-#line 595 "cplus.met"
+#line 596 "cplus.met"
                         break ;
-#line 595 "cplus.met"
+#line 596 "cplus.met"
                 }
-#line 595 "cplus.met"
-#line 597 "cplus.met"
+#line 596 "cplus.met"
+#line 598 "cplus.met"
                 {
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                     firstOnLine = 0 ; 
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                     tokenAhead =1;
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                     lexEl.Value=FLOATVAL;
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                     PUT_COORD_CALL;
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                     return(1);
-#line 597 "cplus.met"
+#line 598 "cplus.met"
                 }
-#line 597 "cplus.met"
-#line 597 "cplus.met"
-#line 597 "cplus.met"
+#line 598 "cplus.met"
+#line 598 "cplus.met"
+#line 598 "cplus.met"
             } else {
-#line 597 "cplus.met"
-#line 600 "cplus.met"
+#line 598 "cplus.met"
 #line 601 "cplus.met"
+#line 602 "cplus.met"
                 {
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                     firstOnLine = 0 ; 
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                     tokenAhead =1;
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                     lexEl.Value=POINT;
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                     PUT_COORD_CALL;
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                     return(1);
-#line 601 "cplus.met"
+#line 602 "cplus.met"
                 }
-#line 601 "cplus.met"
-#line 601 "cplus.met"
+#line 602 "cplus.met"
+#line 602 "cplus.met"
             }
-#line 601 "cplus.met"
-#line 601 "cplus.met"
+#line 602 "cplus.met"
+#line 602 "cplus.met"
             break ;
-#line 601 "cplus.met"
+#line 602 "cplus.met"
     }
-#line 601 "cplus.met"
-#line 601 "cplus.met"
-#line 604 "cplus.met"
+#line 602 "cplus.met"
+#line 602 "cplus.met"
+#line 605 "cplus.met"
     line = oldLine;
-#line 604 "cplus.met"
+#line 605 "cplus.met"
     LEX_EXIT(0,"")
-#line 604 "cplus.met"
+#line 605 "cplus.met"
     lexEl.Value = -1 ;
-#line 604 "cplus.met"
+#line 605 "cplus.met"
     return -1 ; 
-#line 604 "cplus.met"
+#line 605 "cplus.met"
 }
-#line 604 "cplus.met"
+#line 605 "cplus.met"
 
-#line 604 "cplus.met"
+#line 605 "cplus.met"
 #line 162 "cplus.met"
 int cplus::LexComment ()
 #line 162 "cplus.met"
@@ -4360,565 +4380,565 @@ int cplus::LexComment ()
 #line 248 "cplus.met"
 
 #line 248 "cplus.met"
-#line 687 "cplus.met"
+#line 688 "cplus.met"
 int cplus::LexDefine ()
-#line 687 "cplus.met"
+#line 688 "cplus.met"
 {
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 687 "cplus.met"
+#line 688 "cplus.met"
         FreePos(lastContextPos);
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 687 "cplus.met"
+#line 688 "cplus.met"
         ExtUnputBuf();
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     #ifdef DUMP_COORD
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     #endif
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     tokenAhead = 0;
-#line 687 "cplus.met"
+#line 688 "cplus.met"
     if(LexMeta() != -1){tokenAhead =3; return 1;}
-#line 687 "cplus.met"
-#line 688 "cplus.met"
-    ptStockBuf = -1;
-#line 688 "cplus.met"
-    lexEl.Erase();
-#line 688 "cplus.met"
-    tokenAhead = 0;
-#line 688 "cplus.met"
-    if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
-#line 688 "cplus.met"
-    lastContextPos = (PFILE_POSITION) 0 ;
 #line 688 "cplus.met"
 #line 689 "cplus.met"
-    if (c != EOF){
+    ptStockBuf = -1;
+#line 689 "cplus.met"
+    lexEl.Erase();
+#line 689 "cplus.met"
+    tokenAhead = 0;
+#line 689 "cplus.met"
+    if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
+#line 689 "cplus.met"
+    lastContextPos = (PFILE_POSITION) 0 ;
 #line 689 "cplus.met"
 #line 690 "cplus.met"
-#line 691 "cplus.met"
-        while (c != EOF) { 
+    if (c != EOF){
+#line 690 "cplus.met"
 #line 691 "cplus.met"
 #line 692 "cplus.met"
-#line 693 "cplus.met"
-            while ((c != EOF) && 
-#line 693 "cplus.met"
-                  (! (((c == '\n')||(c == '\r')||(c == '\\'))))) { 
+        while (c != EOF) { 
+#line 692 "cplus.met"
 #line 693 "cplus.met"
 #line 694 "cplus.met"
-#line 695 "cplus.met"
-                if((GetString("/*",1)&& NextChar())){
+            while ((c != EOF) && 
+#line 694 "cplus.met"
+                  (! (((c == '\n')||(c == '\r')||(c == '\\'))))) { 
+#line 694 "cplus.met"
 #line 695 "cplus.met"
 #line 696 "cplus.met"
+                if((GetString("/*",1)&& NextChar())){
+#line 696 "cplus.met"
 #line 697 "cplus.met"
+#line 698 "cplus.met"
                      nbOpenComment+= 1;
-#line 697 "cplus.met"
 #line 698 "cplus.met"
+#line 699 "cplus.met"
                     {
-#line 698 "cplus.met"
+#line 699 "cplus.met"
                         lexEl.AddString("/*");
-#line 698 "cplus.met"
+#line 699 "cplus.met"
                     }
-#line 698 "cplus.met"
-#line 698 "cplus.met"
+#line 699 "cplus.met"
+#line 699 "cplus.met"
                 } else 
-#line 698 "cplus.met"
-#line 700 "cplus.met"
+#line 699 "cplus.met"
+#line 701 "cplus.met"
                 if((GetString("*/",1)&& NextChar())){
-#line 700 "cplus.met"
 #line 701 "cplus.met"
 #line 702 "cplus.met"
+#line 703 "cplus.met"
                      if (nbOpenComment > 0) nbOpenComment-= 1;
-#line 702 "cplus.met"
 #line 703 "cplus.met"
+#line 704 "cplus.met"
                     {
-#line 703 "cplus.met"
+#line 704 "cplus.met"
                         lexEl.AddString("*/");
-#line 703 "cplus.met"
+#line 704 "cplus.met"
                     }
-#line 703 "cplus.met"
-#line 703 "cplus.met"
+#line 704 "cplus.met"
+#line 704 "cplus.met"
                 } else 
-#line 703 "cplus.met"
-#line 705 "cplus.met"
+#line 704 "cplus.met"
+#line 706 "cplus.met"
                 if((c != EOF)){
-#line 705 "cplus.met"
-#line 705 "cplus.met"
+#line 706 "cplus.met"
+#line 706 "cplus.met"
                     {
-#line 705 "cplus.met"
+#line 706 "cplus.met"
                         lexEl . AddChar(c);
-#line 705 "cplus.met"
+#line 706 "cplus.met"
                         NextChar();
-#line 705 "cplus.met"
+#line 706 "cplus.met"
                     }
-#line 705 "cplus.met"
+#line 706 "cplus.met"
                 } else 
-#line 705 "cplus.met"
+#line 706 "cplus.met"
                  ;
-#line 705 "cplus.met"
+#line 706 "cplus.met"
             } 
-#line 705 "cplus.met"
-#line 707 "cplus.met"
+#line 706 "cplus.met"
+#line 708 "cplus.met"
             if ((((c == '\\'))) || 
-#line 707 "cplus.met"
+#line 708 "cplus.met"
                nbOpenComment ){
-#line 707 "cplus.met"
 #line 708 "cplus.met"
 #line 709 "cplus.met"
+#line 710 "cplus.met"
                 if (((c == '\\'))){
-#line 709 "cplus.met"
 #line 710 "cplus.met"
 #line 711 "cplus.met"
+#line 712 "cplus.met"
                     {
-#line 711 "cplus.met"
+#line 712 "cplus.met"
                         lexEl . AddChar(c);
-#line 711 "cplus.met"
+#line 712 "cplus.met"
                         NextChar();
-#line 711 "cplus.met"
+#line 712 "cplus.met"
                     }
-#line 711 "cplus.met"
-#line 711 "cplus.met"
-#line 711 "cplus.met"
+#line 712 "cplus.met"
+#line 712 "cplus.met"
+#line 712 "cplus.met"
                 }
-#line 711 "cplus.met"
-#line 713 "cplus.met"
+#line 712 "cplus.met"
+#line 714 "cplus.met"
                 if (((c == '\n')||(c == '\r'))){
-#line 713 "cplus.met"
 #line 714 "cplus.met"
 #line 715 "cplus.met"
+#line 716 "cplus.met"
                     while (((c == '\n')||(c == '\r'))) { 
-#line 715 "cplus.met"
 #line 716 "cplus.met"
+#line 717 "cplus.met"
                         if (!(c != EOF&& NextChar())) ;
-#line 716 "cplus.met"
+#line 717 "cplus.met"
                     } 
-#line 716 "cplus.met"
 #line 717 "cplus.met"
+#line 718 "cplus.met"
                     {
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                         firstOnLine = 0 ; 
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                         tokenAhead =3;
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                         lexEl.Value=DEFINED_CONTINUED;
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                         PUT_COORD_CALL;
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                         return(1);
-#line 717 "cplus.met"
+#line 718 "cplus.met"
                     }
-#line 717 "cplus.met"
-#line 717 "cplus.met"
-#line 717 "cplus.met"
-                }
-#line 717 "cplus.met"
-#line 717 "cplus.met"
 #line 718 "cplus.met"
+#line 718 "cplus.met"
+#line 718 "cplus.met"
+                }
+#line 718 "cplus.met"
+#line 718 "cplus.met"
+#line 719 "cplus.met"
             } else {
-#line 718 "cplus.met"
-#line 721 "cplus.met"
-#line 724 "cplus.met"
+#line 719 "cplus.met"
+#line 722 "cplus.met"
+#line 725 "cplus.met"
                 {
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                     firstOnLine = 0 ; 
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                     tokenAhead =3;
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                     lexEl.Value=DEFINED_NOT_CONTINUED;
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                     PUT_COORD_CALL;
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                     return(1);
-#line 724 "cplus.met"
+#line 725 "cplus.met"
                 }
-#line 724 "cplus.met"
-#line 724 "cplus.met"
+#line 725 "cplus.met"
+#line 725 "cplus.met"
             }
-#line 724 "cplus.met"
-#line 724 "cplus.met"
+#line 725 "cplus.met"
+#line 725 "cplus.met"
         } 
-#line 724 "cplus.met"
-#line 724 "cplus.met"
-#line 727 "cplus.met"
+#line 725 "cplus.met"
+#line 725 "cplus.met"
+#line 728 "cplus.met"
     }
-#line 727 "cplus.met"
-#line 727 "cplus.met"
 #line 728 "cplus.met"
+#line 728 "cplus.met"
+#line 729 "cplus.met"
     line = oldLine;
-#line 728 "cplus.met"
+#line 729 "cplus.met"
     LEX_EXIT(0,"")
-#line 728 "cplus.met"
+#line 729 "cplus.met"
     lexEl.Value = -1 ;
-#line 728 "cplus.met"
+#line 729 "cplus.met"
     return -1 ; 
-#line 728 "cplus.met"
+#line 729 "cplus.met"
 }
-#line 728 "cplus.met"
+#line 729 "cplus.met"
 
-#line 728 "cplus.met"
-#line 628 "cplus.met"
+#line 729 "cplus.met"
+#line 629 "cplus.met"
 int cplus::LexDefineName ()
-#line 628 "cplus.met"
+#line 629 "cplus.met"
 {
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 628 "cplus.met"
+#line 629 "cplus.met"
         FreePos(lastContextPos);
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 628 "cplus.met"
+#line 629 "cplus.met"
         ExtUnputBuf();
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     #ifdef DUMP_COORD
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     #endif
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     tokenAhead = 0;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     if(LexMeta() != -1){tokenAhead =4; return 1;}
-#line 628 "cplus.met"
-#line 628 "cplus.met"
+#line 629 "cplus.met"
+#line 629 "cplus.met"
     ptStockBuf = -1;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     while ((c == ' ')||(c == '\t')||(c == ''))
-#line 628 "cplus.met"
+#line 629 "cplus.met"
         NextChar() ;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     ptStockBuf = -1;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     lexEl.Erase();
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     tokenAhead = 0;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     oldLine=line,oldCol=col;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     if ( !lexCallLex) {
-#line 628 "cplus.met"
+#line 629 "cplus.met"
         PUT_COORD_CALL;
-#line 628 "cplus.met"
+#line 629 "cplus.met"
     }
-#line 628 "cplus.met"
-#line 630 "cplus.met"
+#line 629 "cplus.met"
+#line 631 "cplus.met"
     while ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9'))) { 
-#line 630 "cplus.met"
 #line 631 "cplus.met"
+#line 632 "cplus.met"
         {
-#line 631 "cplus.met"
+#line 632 "cplus.met"
             lexEl . AddChar(c);
-#line 631 "cplus.met"
+#line 632 "cplus.met"
             NextChar();
-#line 631 "cplus.met"
+#line 632 "cplus.met"
         }
-#line 631 "cplus.met"
+#line 632 "cplus.met"
     } 
-#line 631 "cplus.met"
 #line 632 "cplus.met"
+#line 633 "cplus.met"
     {
-#line 632 "cplus.met"
+#line 633 "cplus.met"
         firstOnLine = 0 ; 
-#line 632 "cplus.met"
+#line 633 "cplus.met"
         tokenAhead =4;
-#line 632 "cplus.met"
+#line 633 "cplus.met"
         lexEl.Value=DEFINE_NAME;
-#line 632 "cplus.met"
+#line 633 "cplus.met"
         PUT_COORD_CALL;
-#line 632 "cplus.met"
+#line 633 "cplus.met"
         return(1);
-#line 632 "cplus.met"
+#line 633 "cplus.met"
     }
-#line 632 "cplus.met"
-#line 632 "cplus.met"
-#line 632 "cplus.met"
-    
 #line 633 "cplus.met"
+#line 633 "cplus.met"
+#line 633 "cplus.met"
+    
+#line 634 "cplus.met"
     line = oldLine;
-#line 633 "cplus.met"
+#line 634 "cplus.met"
     LEX_EXIT(0,"")
-#line 633 "cplus.met"
+#line 634 "cplus.met"
     lexEl.Value = -1 ;
-#line 633 "cplus.met"
+#line 634 "cplus.met"
     return -1 ; 
-#line 633 "cplus.met"
+#line 634 "cplus.met"
 }
-#line 633 "cplus.met"
+#line 634 "cplus.met"
 
-#line 633 "cplus.met"
-#line 607 "cplus.met"
+#line 634 "cplus.met"
+#line 608 "cplus.met"
 int cplus::LexEndLine ()
-#line 607 "cplus.met"
+#line 608 "cplus.met"
 {
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 607 "cplus.met"
+#line 608 "cplus.met"
         FreePos(lastContextPos);
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 607 "cplus.met"
+#line 608 "cplus.met"
         ExtUnputBuf();
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     #ifdef DUMP_COORD
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     #endif
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     tokenAhead = 0;
-#line 607 "cplus.met"
+#line 608 "cplus.met"
     if(LexMeta() != -1){tokenAhead =5; return 1;}
-#line 607 "cplus.met"
-#line 608 "cplus.met"
-    ptStockBuf = -1;
-#line 608 "cplus.met"
-    lexEl.Erase();
-#line 608 "cplus.met"
-    tokenAhead = 0;
-#line 608 "cplus.met"
-    if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
-#line 608 "cplus.met"
-    lastContextPos = (PFILE_POSITION) 0 ;
 #line 608 "cplus.met"
 #line 609 "cplus.met"
-    if (c != EOF){
+    ptStockBuf = -1;
+#line 609 "cplus.met"
+    lexEl.Erase();
+#line 609 "cplus.met"
+    tokenAhead = 0;
+#line 609 "cplus.met"
+    if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
+#line 609 "cplus.met"
+    lastContextPos = (PFILE_POSITION) 0 ;
 #line 609 "cplus.met"
 #line 610 "cplus.met"
+    if (c != EOF){
+#line 610 "cplus.met"
 #line 611 "cplus.met"
+#line 612 "cplus.met"
         while ((c != EOF) && 
-#line 611 "cplus.met"
+#line 612 "cplus.met"
               (! (((c == '\n')||(c == '\r'))))) { 
-#line 611 "cplus.met"
 #line 612 "cplus.met"
+#line 613 "cplus.met"
             {
-#line 612 "cplus.met"
+#line 613 "cplus.met"
                 lexEl . AddChar(c);
-#line 612 "cplus.met"
+#line 613 "cplus.met"
                 NextChar();
-#line 612 "cplus.met"
+#line 613 "cplus.met"
             }
-#line 612 "cplus.met"
-        } 
-#line 612 "cplus.met"
 #line 613 "cplus.met"
+        } 
+#line 613 "cplus.met"
+#line 614 "cplus.met"
         while (((c == '\n')||(c == '\r'))) { 
-#line 613 "cplus.met"
 #line 614 "cplus.met"
+#line 615 "cplus.met"
             if (!(c != EOF&& NextChar())) ;
-#line 614 "cplus.met"
+#line 615 "cplus.met"
         } 
-#line 614 "cplus.met"
 #line 615 "cplus.met"
+#line 616 "cplus.met"
         {
-#line 615 "cplus.met"
+#line 616 "cplus.met"
             firstOnLine = 0 ; 
-#line 615 "cplus.met"
+#line 616 "cplus.met"
             tokenAhead =5;
-#line 615 "cplus.met"
+#line 616 "cplus.met"
             lexEl.Value=END_LINE;
-#line 615 "cplus.met"
+#line 616 "cplus.met"
             PUT_COORD_CALL;
-#line 615 "cplus.met"
+#line 616 "cplus.met"
             return(1);
-#line 615 "cplus.met"
+#line 616 "cplus.met"
         }
-#line 615 "cplus.met"
-#line 615 "cplus.met"
-#line 615 "cplus.met"
-    }
-#line 615 "cplus.met"
-#line 615 "cplus.met"
 #line 616 "cplus.met"
+#line 616 "cplus.met"
+#line 616 "cplus.met"
+    }
+#line 616 "cplus.met"
+#line 616 "cplus.met"
+#line 617 "cplus.met"
     line = oldLine;
-#line 616 "cplus.met"
+#line 617 "cplus.met"
     LEX_EXIT(0,"")
-#line 616 "cplus.met"
+#line 617 "cplus.met"
     lexEl.Value = -1 ;
-#line 616 "cplus.met"
+#line 617 "cplus.met"
     return -1 ; 
-#line 616 "cplus.met"
+#line 617 "cplus.met"
 }
-#line 616 "cplus.met"
+#line 617 "cplus.met"
 
-#line 616 "cplus.met"
-#line 731 "cplus.met"
+#line 617 "cplus.met"
+#line 732 "cplus.met"
 int cplus::LexInclude ()
-#line 731 "cplus.met"
+#line 732 "cplus.met"
 {
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 731 "cplus.met"
+#line 732 "cplus.met"
         FreePos(lastContextPos);
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 731 "cplus.met"
+#line 732 "cplus.met"
         ExtUnputBuf();
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     #ifdef DUMP_COORD
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     #endif
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     tokenAhead = 0;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     if(LexMeta() != -1){tokenAhead =6; return 1;}
-#line 731 "cplus.met"
-#line 731 "cplus.met"
+#line 732 "cplus.met"
+#line 732 "cplus.met"
     ptStockBuf = -1;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     while ((c == ' ')||(c == '\t'))
-#line 731 "cplus.met"
+#line 732 "cplus.met"
         NextChar() ;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     ptStockBuf = -1;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     lexEl.Erase();
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     tokenAhead = 0;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     oldLine=line,oldCol=col;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     if ( !lexCallLex) {
-#line 731 "cplus.met"
+#line 732 "cplus.met"
         PUT_COORD_CALL;
-#line 731 "cplus.met"
+#line 732 "cplus.met"
     }
-#line 731 "cplus.met"
-#line 733 "cplus.met"
+#line 732 "cplus.met"
+#line 734 "cplus.met"
     switch (c) {
-#line 733 "cplus.met"
-#line 734 "cplus.met"
-        case '<' :
-#line 734 "cplus.met"
-            NextChar();
 #line 734 "cplus.met"
 #line 735 "cplus.met"
-#line 736 "cplus.met"
-            while (! (((c == '>')||(c == '\r')||(c == '\n')))) { 
-#line 736 "cplus.met"
-#line 737 "cplus.met"
-                {
-#line 737 "cplus.met"
-                    lexEl . AddChar(c);
-#line 737 "cplus.met"
-                    NextChar();
-#line 737 "cplus.met"
-                }
-#line 737 "cplus.met"
-            } 
-#line 737 "cplus.met"
-#line 738 "cplus.met"
-            if (!(c != EOF&& NextChar())) ;
-#line 738 "cplus.met"
-#line 739 "cplus.met"
-            {
-#line 739 "cplus.met"
-                firstOnLine = 0 ; 
-#line 739 "cplus.met"
-                tokenAhead =6;
-#line 739 "cplus.met"
-                lexEl.Value=INCLUDE_SYS;
-#line 739 "cplus.met"
-                PUT_COORD_CALL;
-#line 739 "cplus.met"
-                return(1);
-#line 739 "cplus.met"
-            }
-#line 739 "cplus.met"
-#line 739 "cplus.met"
-            break ;
-#line 739 "cplus.met"
-#line 741 "cplus.met"
-        case '"' :
-#line 741 "cplus.met"
+        case '<' :
+#line 735 "cplus.met"
             NextChar();
-#line 741 "cplus.met"
+#line 735 "cplus.met"
+#line 736 "cplus.met"
+#line 737 "cplus.met"
+            while (! (((c == '>')||(c == '\r')||(c == '\n')))) { 
+#line 737 "cplus.met"
+#line 738 "cplus.met"
+                {
+#line 738 "cplus.met"
+                    lexEl . AddChar(c);
+#line 738 "cplus.met"
+                    NextChar();
+#line 738 "cplus.met"
+                }
+#line 738 "cplus.met"
+            } 
+#line 738 "cplus.met"
+#line 739 "cplus.met"
+            if (!(c != EOF&& NextChar())) ;
+#line 739 "cplus.met"
+#line 740 "cplus.met"
+            {
+#line 740 "cplus.met"
+                firstOnLine = 0 ; 
+#line 740 "cplus.met"
+                tokenAhead =6;
+#line 740 "cplus.met"
+                lexEl.Value=INCLUDE_SYS;
+#line 740 "cplus.met"
+                PUT_COORD_CALL;
+#line 740 "cplus.met"
+                return(1);
+#line 740 "cplus.met"
+            }
+#line 740 "cplus.met"
+#line 740 "cplus.met"
+            break ;
+#line 740 "cplus.met"
+#line 742 "cplus.met"
+        case '"' :
+#line 742 "cplus.met"
+            NextChar();
 #line 742 "cplus.met"
 #line 743 "cplus.met"
+#line 744 "cplus.met"
             while (! (((c == '"')||(c == '\r')||(c == '\n')))) { 
-#line 743 "cplus.met"
 #line 744 "cplus.met"
+#line 745 "cplus.met"
                 {
-#line 744 "cplus.met"
+#line 745 "cplus.met"
                     lexEl . AddChar(c);
-#line 744 "cplus.met"
+#line 745 "cplus.met"
                     NextChar();
-#line 744 "cplus.met"
+#line 745 "cplus.met"
                 }
-#line 744 "cplus.met"
+#line 745 "cplus.met"
             } 
-#line 744 "cplus.met"
 #line 745 "cplus.met"
+#line 746 "cplus.met"
             if (!(c != EOF&& NextChar())) ;
-#line 745 "cplus.met"
 #line 746 "cplus.met"
+#line 747 "cplus.met"
             {
-#line 746 "cplus.met"
+#line 747 "cplus.met"
                 firstOnLine = 0 ; 
-#line 746 "cplus.met"
+#line 747 "cplus.met"
                 tokenAhead =6;
-#line 746 "cplus.met"
+#line 747 "cplus.met"
                 lexEl.Value=INCLUDE_LOCAL;
-#line 746 "cplus.met"
+#line 747 "cplus.met"
                 PUT_COORD_CALL;
-#line 746 "cplus.met"
+#line 747 "cplus.met"
                 return(1);
-#line 746 "cplus.met"
+#line 747 "cplus.met"
             }
-#line 746 "cplus.met"
-#line 746 "cplus.met"
+#line 747 "cplus.met"
+#line 747 "cplus.met"
             break ;
-#line 746 "cplus.met"
+#line 747 "cplus.met"
     }
-#line 746 "cplus.met"
-#line 746 "cplus.met"
-#line 748 "cplus.met"
+#line 747 "cplus.met"
+#line 747 "cplus.met"
+#line 749 "cplus.met"
     line = oldLine;
-#line 748 "cplus.met"
+#line 749 "cplus.met"
     LEX_EXIT(0,"")
-#line 748 "cplus.met"
+#line 749 "cplus.met"
     lexEl.Value = -1 ;
-#line 748 "cplus.met"
+#line 749 "cplus.met"
     return -1 ; 
-#line 748 "cplus.met"
+#line 749 "cplus.met"
 }
-#line 748 "cplus.met"
+#line 749 "cplus.met"
 
-#line 748 "cplus.met"
+#line 749 "cplus.met"
 #line 251 "cplus.met"
 int cplus::LexMeta ()
 #line 251 "cplus.met"
@@ -5201,350 +5221,330 @@ int cplus::LexMeta ()
 #line 300 "cplus.met"
 
 #line 300 "cplus.met"
-#line 635 "cplus.met"
+#line 636 "cplus.met"
 int cplus::LexPragma ()
-#line 635 "cplus.met"
+#line 636 "cplus.met"
 {
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 635 "cplus.met"
+#line 636 "cplus.met"
         FreePos(lastContextPos);
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 635 "cplus.met"
+#line 636 "cplus.met"
         ExtUnputBuf();
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     #ifdef DUMP_COORD
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     #endif
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     tokenAhead = 0;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     if(LexMeta() != -1){tokenAhead =8; return 1;}
-#line 635 "cplus.met"
-#line 635 "cplus.met"
+#line 636 "cplus.met"
+#line 636 "cplus.met"
     ptStockBuf = -1;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     while ((c == '\t')||(c == ' ')||(c == ''))
-#line 635 "cplus.met"
+#line 636 "cplus.met"
         NextChar() ;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     ptStockBuf = -1;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     lexEl.Erase();
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     tokenAhead = 0;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     oldLine=line,oldCol=col;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     if ( !lexCallLex) {
-#line 635 "cplus.met"
+#line 636 "cplus.met"
         PUT_COORD_CALL;
-#line 635 "cplus.met"
+#line 636 "cplus.met"
     }
-#line 635 "cplus.met"
-#line 637 "cplus.met"
+#line 636 "cplus.met"
 #line 638 "cplus.met"
+#line 639 "cplus.met"
     if((GetString("pretty",1)&& NextChar())){
-#line 638 "cplus.met"
-#line 638 "cplus.met"
+#line 639 "cplus.met"
+#line 639 "cplus.met"
         {
-#line 638 "cplus.met"
+#line 639 "cplus.met"
             firstOnLine = 0 ; 
-#line 638 "cplus.met"
+#line 639 "cplus.met"
             tokenAhead =8;
-#line 638 "cplus.met"
+#line 639 "cplus.met"
             lexEl.Value=PRAGMA_PRETTY;
-#line 638 "cplus.met"
-            PUT_COORD_CALL;
-#line 638 "cplus.met"
-            return(1);
-#line 638 "cplus.met"
-        }
-#line 638 "cplus.met"
-    } else 
-#line 638 "cplus.met"
 #line 639 "cplus.met"
+            PUT_COORD_CALL;
+#line 639 "cplus.met"
+            return(1);
+#line 639 "cplus.met"
+        }
+#line 639 "cplus.met"
+    } else 
+#line 639 "cplus.met"
+#line 640 "cplus.met"
     if((GetString("nopretty",1)&& NextChar())){
-#line 639 "cplus.met"
-#line 639 "cplus.met"
+#line 640 "cplus.met"
+#line 640 "cplus.met"
         {
-#line 639 "cplus.met"
+#line 640 "cplus.met"
             firstOnLine = 0 ; 
-#line 639 "cplus.met"
+#line 640 "cplus.met"
             tokenAhead =8;
-#line 639 "cplus.met"
+#line 640 "cplus.met"
             lexEl.Value=PRAGMA_NOPRETTY;
-#line 639 "cplus.met"
-            PUT_COORD_CALL;
-#line 639 "cplus.met"
-            return(1);
-#line 639 "cplus.met"
-        }
-#line 639 "cplus.met"
-    } else 
-#line 639 "cplus.met"
 #line 640 "cplus.met"
+            PUT_COORD_CALL;
+#line 640 "cplus.met"
+            return(1);
+#line 640 "cplus.met"
+        }
+#line 640 "cplus.met"
+    } else 
+#line 640 "cplus.met"
+#line 641 "cplus.met"
     if((GetString("managed",1)&& NextChar())){
-#line 640 "cplus.met"
-#line 640 "cplus.met"
+#line 641 "cplus.met"
+#line 641 "cplus.met"
         {
-#line 640 "cplus.met"
+#line 641 "cplus.met"
             firstOnLine = 0 ; 
-#line 640 "cplus.met"
+#line 641 "cplus.met"
             tokenAhead =8;
-#line 640 "cplus.met"
+#line 641 "cplus.met"
             lexEl.Value=PRAGMA_MANAGED;
-#line 640 "cplus.met"
-            PUT_COORD_CALL;
-#line 640 "cplus.met"
-            return(1);
-#line 640 "cplus.met"
-        }
-#line 640 "cplus.met"
-    } else 
-#line 640 "cplus.met"
 #line 641 "cplus.met"
+            PUT_COORD_CALL;
+#line 641 "cplus.met"
+            return(1);
+#line 641 "cplus.met"
+        }
+#line 641 "cplus.met"
+    } else 
+#line 641 "cplus.met"
+#line 642 "cplus.met"
     if((GetString("notmanaged",1)&& NextChar())){
-#line 641 "cplus.met"
-#line 641 "cplus.met"
+#line 642 "cplus.met"
+#line 642 "cplus.met"
         {
-#line 641 "cplus.met"
+#line 642 "cplus.met"
             firstOnLine = 0 ; 
-#line 641 "cplus.met"
+#line 642 "cplus.met"
             tokenAhead =8;
-#line 641 "cplus.met"
+#line 642 "cplus.met"
             lexEl.Value=PRAGMA_NOT_MANAGED;
-#line 641 "cplus.met"
-            PUT_COORD_CALL;
-#line 641 "cplus.met"
-            return(1);
-#line 641 "cplus.met"
-        }
-#line 641 "cplus.met"
-    } else 
-#line 641 "cplus.met"
 #line 642 "cplus.met"
+            PUT_COORD_CALL;
+#line 642 "cplus.met"
+            return(1);
+#line 642 "cplus.met"
+        }
+#line 642 "cplus.met"
+    } else 
+#line 642 "cplus.met"
+#line 643 "cplus.met"
     if((GetString("config",1)&& NextChar())){
-#line 642 "cplus.met"
-#line 642 "cplus.met"
+#line 643 "cplus.met"
+#line 643 "cplus.met"
         {
-#line 642 "cplus.met"
+#line 643 "cplus.met"
             firstOnLine = 0 ; 
-#line 642 "cplus.met"
+#line 643 "cplus.met"
             tokenAhead =8;
-#line 642 "cplus.met"
+#line 643 "cplus.met"
             lexEl.Value=PRAGMA_CONFIG;
-#line 642 "cplus.met"
-            PUT_COORD_CALL;
-#line 642 "cplus.met"
-            return(1);
-#line 642 "cplus.met"
-        }
-#line 642 "cplus.met"
-    } else 
-#line 642 "cplus.met"
 #line 643 "cplus.met"
+            PUT_COORD_CALL;
+#line 643 "cplus.met"
+            return(1);
+#line 643 "cplus.met"
+        }
+#line 643 "cplus.met"
+    } else 
+#line 643 "cplus.met"
+#line 644 "cplus.met"
     if((GetString("tab_directive",1)&& NextChar())){
-#line 643 "cplus.met"
-#line 643 "cplus.met"
+#line 644 "cplus.met"
+#line 644 "cplus.met"
         {
-#line 643 "cplus.met"
+#line 644 "cplus.met"
             firstOnLine = 0 ; 
-#line 643 "cplus.met"
+#line 644 "cplus.met"
             tokenAhead =8;
-#line 643 "cplus.met"
+#line 644 "cplus.met"
             lexEl.Value=PRAGMA_TAB_DIRECTIVE;
-#line 643 "cplus.met"
-            PUT_COORD_CALL;
-#line 643 "cplus.met"
-            return(1);
-#line 643 "cplus.met"
-        }
-#line 643 "cplus.met"
-    } else 
-#line 643 "cplus.met"
 #line 644 "cplus.met"
+            PUT_COORD_CALL;
+#line 644 "cplus.met"
+            return(1);
+#line 644 "cplus.met"
+        }
+#line 644 "cplus.met"
+    } else 
+#line 644 "cplus.met"
+#line 645 "cplus.met"
     if((GetString("tab",1)&& NextChar())){
-#line 644 "cplus.met"
-#line 644 "cplus.met"
+#line 645 "cplus.met"
+#line 645 "cplus.met"
         {
-#line 644 "cplus.met"
+#line 645 "cplus.met"
             firstOnLine = 0 ; 
-#line 644 "cplus.met"
+#line 645 "cplus.met"
             tokenAhead =8;
-#line 644 "cplus.met"
+#line 645 "cplus.met"
             lexEl.Value=PRAGMA_TAB;
-#line 644 "cplus.met"
-            PUT_COORD_CALL;
-#line 644 "cplus.met"
-            return(1);
-#line 644 "cplus.met"
-        }
-#line 644 "cplus.met"
-    } else 
-#line 644 "cplus.met"
 #line 645 "cplus.met"
+            PUT_COORD_CALL;
+#line 645 "cplus.met"
+            return(1);
+#line 645 "cplus.met"
+        }
+#line 645 "cplus.met"
+    } else 
+#line 645 "cplus.met"
+#line 646 "cplus.met"
     if((GetString("range",1)&& NextChar())){
-#line 645 "cplus.met"
-#line 645 "cplus.met"
+#line 646 "cplus.met"
+#line 646 "cplus.met"
         {
-#line 645 "cplus.met"
+#line 646 "cplus.met"
             firstOnLine = 0 ; 
-#line 645 "cplus.met"
+#line 646 "cplus.met"
             tokenAhead =8;
-#line 645 "cplus.met"
+#line 646 "cplus.met"
             lexEl.Value=PRAGMA_RANGE;
-#line 645 "cplus.met"
-            PUT_COORD_CALL;
-#line 645 "cplus.met"
-            return(1);
-#line 645 "cplus.met"
-        }
-#line 645 "cplus.met"
-    } else 
-#line 645 "cplus.met"
 #line 646 "cplus.met"
+            PUT_COORD_CALL;
+#line 646 "cplus.met"
+            return(1);
+#line 646 "cplus.met"
+        }
+#line 646 "cplus.met"
+    } else 
+#line 646 "cplus.met"
+#line 647 "cplus.met"
     if((GetString("mode",1)&& NextChar())){
-#line 646 "cplus.met"
-#line 646 "cplus.met"
+#line 647 "cplus.met"
+#line 647 "cplus.met"
         {
-#line 646 "cplus.met"
+#line 647 "cplus.met"
             firstOnLine = 0 ; 
-#line 646 "cplus.met"
+#line 647 "cplus.met"
             tokenAhead =8;
-#line 646 "cplus.met"
+#line 647 "cplus.met"
             lexEl.Value=PRAGMA_MODE;
-#line 646 "cplus.met"
-            PUT_COORD_CALL;
-#line 646 "cplus.met"
-            return(1);
-#line 646 "cplus.met"
-        }
-#line 646 "cplus.met"
-    } else 
-#line 646 "cplus.met"
 #line 647 "cplus.met"
+            PUT_COORD_CALL;
+#line 647 "cplus.met"
+            return(1);
+#line 647 "cplus.met"
+        }
+#line 647 "cplus.met"
+    } else 
+#line 647 "cplus.met"
+#line 648 "cplus.met"
     if((GetString("brace_align",1)&& NextChar())){
-#line 647 "cplus.met"
-#line 647 "cplus.met"
+#line 648 "cplus.met"
+#line 648 "cplus.met"
         {
-#line 647 "cplus.met"
+#line 648 "cplus.met"
             firstOnLine = 0 ; 
-#line 647 "cplus.met"
+#line 648 "cplus.met"
             tokenAhead =8;
-#line 647 "cplus.met"
+#line 648 "cplus.met"
             lexEl.Value=PRAGMA_BRACE_ALIGN;
-#line 647 "cplus.met"
-            PUT_COORD_CALL;
-#line 647 "cplus.met"
-            return(1);
-#line 647 "cplus.met"
-        }
-#line 647 "cplus.met"
-    } else 
-#line 647 "cplus.met"
 #line 648 "cplus.met"
+            PUT_COORD_CALL;
+#line 648 "cplus.met"
+            return(1);
+#line 648 "cplus.met"
+        }
+#line 648 "cplus.met"
+    } else 
+#line 648 "cplus.met"
+#line 649 "cplus.met"
     if((GetString("simplify",1)&& NextChar())){
-#line 648 "cplus.met"
-#line 648 "cplus.met"
+#line 649 "cplus.met"
+#line 649 "cplus.met"
         {
-#line 648 "cplus.met"
+#line 649 "cplus.met"
             firstOnLine = 0 ; 
-#line 648 "cplus.met"
+#line 649 "cplus.met"
             tokenAhead =8;
-#line 648 "cplus.met"
+#line 649 "cplus.met"
             lexEl.Value=PRAGMA_SIMPLIFY;
-#line 648 "cplus.met"
-            PUT_COORD_CALL;
-#line 648 "cplus.met"
-            return(1);
-#line 648 "cplus.met"
-        }
-#line 648 "cplus.met"
-    } else 
-#line 648 "cplus.met"
 #line 649 "cplus.met"
+            PUT_COORD_CALL;
+#line 649 "cplus.met"
+            return(1);
+#line 649 "cplus.met"
+        }
+#line 649 "cplus.met"
+    } else 
+#line 649 "cplus.met"
+#line 650 "cplus.met"
     if((GetString("single_switch_indent",1)&& NextChar())){
-#line 649 "cplus.met"
-#line 649 "cplus.met"
+#line 650 "cplus.met"
+#line 650 "cplus.met"
         {
-#line 649 "cplus.met"
+#line 650 "cplus.met"
             firstOnLine = 0 ; 
-#line 649 "cplus.met"
+#line 650 "cplus.met"
             tokenAhead =8;
-#line 649 "cplus.met"
+#line 650 "cplus.met"
             lexEl.Value=PRAGMA_SINGLE_SWITCH_INDENT;
-#line 649 "cplus.met"
-            PUT_COORD_CALL;
-#line 649 "cplus.met"
-            return(1);
-#line 649 "cplus.met"
-        }
-#line 649 "cplus.met"
-    } else 
-#line 649 "cplus.met"
 #line 650 "cplus.met"
+            PUT_COORD_CALL;
+#line 650 "cplus.met"
+            return(1);
+#line 650 "cplus.met"
+        }
+#line 650 "cplus.met"
+    } else 
+#line 650 "cplus.met"
+#line 651 "cplus.met"
     if((GetString("assign_align",1)&& NextChar())){
-#line 650 "cplus.met"
-#line 650 "cplus.met"
+#line 651 "cplus.met"
+#line 651 "cplus.met"
         {
-#line 650 "cplus.met"
+#line 651 "cplus.met"
             firstOnLine = 0 ; 
-#line 650 "cplus.met"
+#line 651 "cplus.met"
             tokenAhead =8;
-#line 650 "cplus.met"
+#line 651 "cplus.met"
             lexEl.Value=PRAGMA_ASSIGN_ALIGN;
-#line 650 "cplus.met"
-            PUT_COORD_CALL;
-#line 650 "cplus.met"
-            return(1);
-#line 650 "cplus.met"
-        }
-#line 650 "cplus.met"
-    } else 
-#line 650 "cplus.met"
 #line 651 "cplus.met"
+            PUT_COORD_CALL;
+#line 651 "cplus.met"
+            return(1);
+#line 651 "cplus.met"
+        }
+#line 651 "cplus.met"
+    } else 
+#line 651 "cplus.met"
+#line 652 "cplus.met"
     if((GetString("decl_align",1)&& NextChar())){
-#line 651 "cplus.met"
-#line 651 "cplus.met"
+#line 652 "cplus.met"
+#line 652 "cplus.met"
         {
-#line 651 "cplus.met"
+#line 652 "cplus.met"
             firstOnLine = 0 ; 
-#line 651 "cplus.met"
+#line 652 "cplus.met"
             tokenAhead =8;
-#line 651 "cplus.met"
+#line 652 "cplus.met"
             lexEl.Value=PRAGMA_DECL_ALIGN;
-#line 651 "cplus.met"
-            PUT_COORD_CALL;
-#line 651 "cplus.met"
-            return(1);
-#line 651 "cplus.met"
-        }
-#line 651 "cplus.met"
-    } else 
-#line 651 "cplus.met"
-#line 652 "cplus.met"
-    if((GetString("margin",1)&& NextChar())){
-#line 652 "cplus.met"
-#line 652 "cplus.met"
-        {
-#line 652 "cplus.met"
-            firstOnLine = 0 ; 
-#line 652 "cplus.met"
-            tokenAhead =8;
-#line 652 "cplus.met"
-            lexEl.Value=PRAGMA_MARGIN;
 #line 652 "cplus.met"
             PUT_COORD_CALL;
 #line 652 "cplus.met"
@@ -5555,496 +5555,516 @@ int cplus::LexPragma ()
     } else 
 #line 652 "cplus.met"
 #line 653 "cplus.met"
-    if((GetString("comment",1)&& NextChar())){
+    if((GetString("margin",1)&& NextChar())){
+#line 653 "cplus.met"
+#line 653 "cplus.met"
+        {
+#line 653 "cplus.met"
+            firstOnLine = 0 ; 
+#line 653 "cplus.met"
+            tokenAhead =8;
+#line 653 "cplus.met"
+            lexEl.Value=PRAGMA_MARGIN;
+#line 653 "cplus.met"
+            PUT_COORD_CALL;
+#line 653 "cplus.met"
+            return(1);
+#line 653 "cplus.met"
+        }
+#line 653 "cplus.met"
+    } else 
 #line 653 "cplus.met"
 #line 654 "cplus.met"
-#line 655 "cplus.met"
-        ptStockBuf = -1;
-#line 655 "cplus.met"
-        while ((c == ' ')||(c == '\t'))
-#line 655 "cplus.met"
-            NextChar() ;
-#line 655 "cplus.met"
-        ptStockBuf = -1;
-#line 655 "cplus.met"
-        lexEl.Erase();
-#line 655 "cplus.met"
-        tokenAhead = 0;
-#line 655 "cplus.met"
-        oldLine=line,oldCol=col;
-#line 655 "cplus.met"
-        if ( !lexCallLex) {
-#line 655 "cplus.met"
-            PUT_COORD_CALL;
-#line 655 "cplus.met"
-        }
+    if((GetString("comment",1)&& NextChar())){
+#line 654 "cplus.met"
 #line 655 "cplus.met"
 #line 656 "cplus.met"
+        ptStockBuf = -1;
+#line 656 "cplus.met"
+        while ((c == ' ')||(c == '\t'))
+#line 656 "cplus.met"
+            NextChar() ;
+#line 656 "cplus.met"
+        ptStockBuf = -1;
+#line 656 "cplus.met"
+        lexEl.Erase();
+#line 656 "cplus.met"
+        tokenAhead = 0;
+#line 656 "cplus.met"
+        oldLine=line,oldCol=col;
+#line 656 "cplus.met"
+        if ( !lexCallLex) {
+#line 656 "cplus.met"
+            PUT_COORD_CALL;
+#line 656 "cplus.met"
+        }
+#line 656 "cplus.met"
 #line 657 "cplus.met"
+#line 658 "cplus.met"
         if((GetString("start",1)&& NextChar())){
-#line 657 "cplus.met"
-#line 657 "cplus.met"
+#line 658 "cplus.met"
+#line 658 "cplus.met"
             {
-#line 657 "cplus.met"
+#line 658 "cplus.met"
                 firstOnLine = 0 ; 
-#line 657 "cplus.met"
+#line 658 "cplus.met"
                 tokenAhead =8;
-#line 657 "cplus.met"
+#line 658 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_START;
-#line 657 "cplus.met"
-                PUT_COORD_CALL;
-#line 657 "cplus.met"
-                return(1);
-#line 657 "cplus.met"
-            }
-#line 657 "cplus.met"
-        } else 
-#line 657 "cplus.met"
 #line 658 "cplus.met"
+                PUT_COORD_CALL;
+#line 658 "cplus.met"
+                return(1);
+#line 658 "cplus.met"
+            }
+#line 658 "cplus.met"
+        } else 
+#line 658 "cplus.met"
+#line 659 "cplus.met"
         if((GetString("middle",1)&& NextChar())){
-#line 658 "cplus.met"
-#line 658 "cplus.met"
+#line 659 "cplus.met"
+#line 659 "cplus.met"
             {
-#line 658 "cplus.met"
+#line 659 "cplus.met"
                 firstOnLine = 0 ; 
-#line 658 "cplus.met"
+#line 659 "cplus.met"
                 tokenAhead =8;
-#line 658 "cplus.met"
+#line 659 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_MIDDLE;
-#line 658 "cplus.met"
-                PUT_COORD_CALL;
-#line 658 "cplus.met"
-                return(1);
-#line 658 "cplus.met"
-            }
-#line 658 "cplus.met"
-        } else 
-#line 658 "cplus.met"
 #line 659 "cplus.met"
+                PUT_COORD_CALL;
+#line 659 "cplus.met"
+                return(1);
+#line 659 "cplus.met"
+            }
+#line 659 "cplus.met"
+        } else 
+#line 659 "cplus.met"
+#line 660 "cplus.met"
         if((GetString("end",1)&& NextChar())){
-#line 659 "cplus.met"
-#line 659 "cplus.met"
+#line 660 "cplus.met"
+#line 660 "cplus.met"
             {
-#line 659 "cplus.met"
+#line 660 "cplus.met"
                 firstOnLine = 0 ; 
-#line 659 "cplus.met"
+#line 660 "cplus.met"
                 tokenAhead =8;
-#line 659 "cplus.met"
+#line 660 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_END;
-#line 659 "cplus.met"
-                PUT_COORD_CALL;
-#line 659 "cplus.met"
-                return(1);
-#line 659 "cplus.met"
-            }
-#line 659 "cplus.met"
-        } else 
-#line 659 "cplus.met"
 #line 660 "cplus.met"
+                PUT_COORD_CALL;
+#line 660 "cplus.met"
+                return(1);
+#line 660 "cplus.met"
+            }
+#line 660 "cplus.met"
+        } else 
+#line 660 "cplus.met"
+#line 661 "cplus.met"
         if((GetString("plus",1)&& NextChar())){
-#line 660 "cplus.met"
-#line 660 "cplus.met"
+#line 661 "cplus.met"
+#line 661 "cplus.met"
             {
-#line 660 "cplus.met"
+#line 661 "cplus.met"
                 firstOnLine = 0 ; 
-#line 660 "cplus.met"
+#line 661 "cplus.met"
                 tokenAhead =8;
-#line 660 "cplus.met"
+#line 661 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_PLUS;
-#line 660 "cplus.met"
+#line 661 "cplus.met"
                 PUT_COORD_CALL;
-#line 660 "cplus.met"
+#line 661 "cplus.met"
                 return(1);
-#line 660 "cplus.met"
+#line 661 "cplus.met"
             }
-#line 660 "cplus.met"
+#line 661 "cplus.met"
         } else 
-#line 660 "cplus.met"
+#line 661 "cplus.met"
          ;
-#line 660 "cplus.met"
-#line 660 "cplus.met"
+#line 661 "cplus.met"
+#line 661 "cplus.met"
     } else 
-#line 660 "cplus.met"
-#line 663 "cplus.met"
+#line 661 "cplus.met"
+#line 664 "cplus.met"
     if((GetString("indent_function_type",1)&& NextChar())){
-#line 663 "cplus.met"
-#line 663 "cplus.met"
+#line 664 "cplus.met"
+#line 664 "cplus.met"
         {
-#line 663 "cplus.met"
+#line 664 "cplus.met"
             firstOnLine = 0 ; 
-#line 663 "cplus.met"
+#line 664 "cplus.met"
             tokenAhead =8;
-#line 663 "cplus.met"
+#line 664 "cplus.met"
             lexEl.Value=PRAGMA_INDENT_FUNCTION_TYPE;
-#line 663 "cplus.met"
-            PUT_COORD_CALL;
-#line 663 "cplus.met"
-            return(1);
-#line 663 "cplus.met"
-        }
-#line 663 "cplus.met"
-    } else 
-#line 663 "cplus.met"
 #line 664 "cplus.met"
+            PUT_COORD_CALL;
+#line 664 "cplus.met"
+            return(1);
+#line 664 "cplus.met"
+        }
+#line 664 "cplus.met"
+    } else 
+#line 664 "cplus.met"
+#line 665 "cplus.met"
     if((GetString("func_header",1)&& NextChar())){
-#line 664 "cplus.met"
-#line 664 "cplus.met"
+#line 665 "cplus.met"
+#line 665 "cplus.met"
         {
-#line 664 "cplus.met"
+#line 665 "cplus.met"
             firstOnLine = 0 ; 
-#line 664 "cplus.met"
+#line 665 "cplus.met"
             tokenAhead =8;
-#line 664 "cplus.met"
+#line 665 "cplus.met"
             lexEl.Value=PRAGMA_FUNC_HEADER;
-#line 664 "cplus.met"
-            PUT_COORD_CALL;
-#line 664 "cplus.met"
-            return(1);
-#line 664 "cplus.met"
-        }
-#line 664 "cplus.met"
-    } else 
-#line 664 "cplus.met"
 #line 665 "cplus.met"
+            PUT_COORD_CALL;
+#line 665 "cplus.met"
+            return(1);
+#line 665 "cplus.met"
+        }
+#line 665 "cplus.met"
+    } else 
+#line 665 "cplus.met"
+#line 666 "cplus.met"
     if((GetString("parameters_under_tab",1)&& NextChar())){
-#line 665 "cplus.met"
-#line 665 "cplus.met"
+#line 666 "cplus.met"
+#line 666 "cplus.met"
         {
-#line 665 "cplus.met"
+#line 666 "cplus.met"
             firstOnLine = 0 ; 
-#line 665 "cplus.met"
+#line 666 "cplus.met"
             tokenAhead =8;
-#line 665 "cplus.met"
+#line 666 "cplus.met"
             lexEl.Value=PRAGMA_PARAMETERS_UNDER;
-#line 665 "cplus.met"
-            PUT_COORD_CALL;
-#line 665 "cplus.met"
-            return(1);
-#line 665 "cplus.met"
-        }
-#line 665 "cplus.met"
-    } else 
-#line 665 "cplus.met"
 #line 666 "cplus.met"
+            PUT_COORD_CALL;
+#line 666 "cplus.met"
+            return(1);
+#line 666 "cplus.met"
+        }
+#line 666 "cplus.met"
+    } else 
+#line 666 "cplus.met"
+#line 667 "cplus.met"
     if((GetString("parameters",1)&& NextChar())){
-#line 666 "cplus.met"
-#line 666 "cplus.met"
+#line 667 "cplus.met"
+#line 667 "cplus.met"
         {
-#line 666 "cplus.met"
+#line 667 "cplus.met"
             firstOnLine = 0 ; 
-#line 666 "cplus.met"
+#line 667 "cplus.met"
             tokenAhead =8;
-#line 666 "cplus.met"
+#line 667 "cplus.met"
             lexEl.Value=PRAGMA_PARAMETERS;
-#line 666 "cplus.met"
-            PUT_COORD_CALL;
-#line 666 "cplus.met"
-            return(1);
-#line 666 "cplus.met"
-        }
-#line 666 "cplus.met"
-    } else 
-#line 666 "cplus.met"
 #line 667 "cplus.met"
+            PUT_COORD_CALL;
+#line 667 "cplus.met"
+            return(1);
+#line 667 "cplus.met"
+        }
+#line 667 "cplus.met"
+    } else 
+#line 667 "cplus.met"
+#line 668 "cplus.met"
     if((GetString("space_arrow",1)&& NextChar())){
-#line 667 "cplus.met"
-#line 667 "cplus.met"
+#line 668 "cplus.met"
+#line 668 "cplus.met"
         {
-#line 667 "cplus.met"
+#line 668 "cplus.met"
             firstOnLine = 0 ; 
-#line 667 "cplus.met"
+#line 668 "cplus.met"
             tokenAhead =8;
-#line 667 "cplus.met"
+#line 668 "cplus.met"
             lexEl.Value=PRAGMA_SPACE_ARROW;
-#line 667 "cplus.met"
-            PUT_COORD_CALL;
-#line 667 "cplus.met"
-            return(1);
-#line 667 "cplus.met"
-        }
-#line 667 "cplus.met"
-    } else 
-#line 667 "cplus.met"
 #line 668 "cplus.met"
+            PUT_COORD_CALL;
+#line 668 "cplus.met"
+            return(1);
+#line 668 "cplus.met"
+        }
+#line 668 "cplus.met"
+    } else 
+#line 668 "cplus.met"
+#line 669 "cplus.met"
     if((GetString("enum_vert",1)&& NextChar())){
-#line 668 "cplus.met"
-#line 668 "cplus.met"
+#line 669 "cplus.met"
+#line 669 "cplus.met"
         {
-#line 668 "cplus.met"
+#line 669 "cplus.met"
             firstOnLine = 0 ; 
-#line 668 "cplus.met"
+#line 669 "cplus.met"
             tokenAhead =8;
-#line 668 "cplus.met"
+#line 669 "cplus.met"
             lexEl.Value=PRAGMA_ENUM_VERT;
-#line 668 "cplus.met"
+#line 669 "cplus.met"
             PUT_COORD_CALL;
-#line 668 "cplus.met"
+#line 669 "cplus.met"
             return(1);
-#line 668 "cplus.met"
+#line 669 "cplus.met"
         }
-#line 668 "cplus.met"
+#line 669 "cplus.met"
     } else 
-#line 668 "cplus.met"
-#line 671 "cplus.met"
+#line 669 "cplus.met"
+#line 672 "cplus.met"
     if((c != EOF)){
+#line 672 "cplus.met"
 #line 671 "cplus.met"
-#line 670 "cplus.met"
-#line 671 "cplus.met"
+#line 672 "cplus.met"
         while ((! (((c == '\n')||(c == '\r')))) && 
-#line 671 "cplus.met"
+#line 672 "cplus.met"
               (c != EOF)) { 
-#line 671 "cplus.met"
 #line 672 "cplus.met"
+#line 673 "cplus.met"
             {
-#line 672 "cplus.met"
+#line 673 "cplus.met"
                 lexEl . AddChar(c);
-#line 672 "cplus.met"
+#line 673 "cplus.met"
                 NextChar();
-#line 672 "cplus.met"
+#line 673 "cplus.met"
             }
-#line 672 "cplus.met"
+#line 673 "cplus.met"
         } 
-#line 672 "cplus.met"
 #line 673 "cplus.met"
+#line 674 "cplus.met"
         {
-#line 673 "cplus.met"
+#line 674 "cplus.met"
             firstOnLine = 0 ; 
-#line 673 "cplus.met"
+#line 674 "cplus.met"
             tokenAhead =8;
-#line 673 "cplus.met"
+#line 674 "cplus.met"
             lexEl.Value=PRAGMA_CONTENT;
-#line 673 "cplus.met"
+#line 674 "cplus.met"
             PUT_COORD_CALL;
-#line 673 "cplus.met"
+#line 674 "cplus.met"
             return(1);
-#line 673 "cplus.met"
+#line 674 "cplus.met"
         }
-#line 673 "cplus.met"
-#line 673 "cplus.met"
+#line 674 "cplus.met"
+#line 674 "cplus.met"
     } else 
-#line 673 "cplus.met"
+#line 674 "cplus.met"
      ;
-#line 673 "cplus.met"
-#line 673 "cplus.met"
-#line 675 "cplus.met"
+#line 674 "cplus.met"
+#line 674 "cplus.met"
+#line 676 "cplus.met"
     line = oldLine;
-#line 675 "cplus.met"
+#line 676 "cplus.met"
     LEX_EXIT(0,"")
-#line 675 "cplus.met"
+#line 676 "cplus.met"
     lexEl.Value = -1 ;
-#line 675 "cplus.met"
+#line 676 "cplus.met"
     return -1 ; 
-#line 675 "cplus.met"
+#line 676 "cplus.met"
 }
-#line 675 "cplus.met"
+#line 676 "cplus.met"
 
-#line 675 "cplus.met"
-#line 678 "cplus.met"
+#line 676 "cplus.met"
+#line 679 "cplus.met"
 int cplus::LexPragmaSmall ()
-#line 678 "cplus.met"
+#line 679 "cplus.met"
 {
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 678 "cplus.met"
+#line 679 "cplus.met"
         FreePos(lastContextPos);
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 678 "cplus.met"
+#line 679 "cplus.met"
         ExtUnputBuf();
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     #ifdef DUMP_COORD
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     #endif
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     tokenAhead = 0;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     if(LexMeta() != -1){tokenAhead =9; return 1;}
-#line 678 "cplus.met"
-#line 678 "cplus.met"
+#line 679 "cplus.met"
+#line 679 "cplus.met"
     ptStockBuf = -1;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     while ((c == ' ')||(c == '\t'))
-#line 678 "cplus.met"
+#line 679 "cplus.met"
         NextChar() ;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     ptStockBuf = -1;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     lexEl.Erase();
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     tokenAhead = 0;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     oldLine=line,oldCol=col;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     if ( !lexCallLex) {
-#line 678 "cplus.met"
+#line 679 "cplus.met"
         PUT_COORD_CALL;
-#line 678 "cplus.met"
+#line 679 "cplus.met"
     }
-#line 678 "cplus.met"
-#line 680 "cplus.met"
+#line 679 "cplus.met"
+#line 681 "cplus.met"
     while (((c != EOF) && 
-#line 680 "cplus.met"
+#line 681 "cplus.met"
            ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9')))) && 
-#line 680 "cplus.met"
+#line 681 "cplus.met"
           (! (((c == '\n')||(c == '\r'))))) { 
-#line 680 "cplus.met"
-#line 683 "cplus.met"
+#line 681 "cplus.met"
+#line 684 "cplus.met"
         {
-#line 683 "cplus.met"
+#line 684 "cplus.met"
             lexEl . AddChar(c);
-#line 683 "cplus.met"
+#line 684 "cplus.met"
             NextChar();
-#line 683 "cplus.met"
+#line 684 "cplus.met"
         }
-#line 683 "cplus.met"
+#line 684 "cplus.met"
     } 
-#line 683 "cplus.met"
 #line 684 "cplus.met"
+#line 685 "cplus.met"
     {
-#line 684 "cplus.met"
+#line 685 "cplus.met"
         firstOnLine = 0 ; 
-#line 684 "cplus.met"
+#line 685 "cplus.met"
         tokenAhead =9;
-#line 684 "cplus.met"
+#line 685 "cplus.met"
         lexEl.Value=SMALL_PRAGMA_CONTENT;
-#line 684 "cplus.met"
+#line 685 "cplus.met"
         PUT_COORD_CALL;
-#line 684 "cplus.met"
+#line 685 "cplus.met"
         return(1);
-#line 684 "cplus.met"
+#line 685 "cplus.met"
     }
-#line 684 "cplus.met"
-#line 684 "cplus.met"
-#line 684 "cplus.met"
+#line 685 "cplus.met"
+#line 685 "cplus.met"
+#line 685 "cplus.met"
     
-#line 685 "cplus.met"
+#line 686 "cplus.met"
     line = oldLine;
-#line 685 "cplus.met"
+#line 686 "cplus.met"
     LEX_EXIT(0,"")
-#line 685 "cplus.met"
+#line 686 "cplus.met"
     lexEl.Value = -1 ;
-#line 685 "cplus.met"
+#line 686 "cplus.met"
     return -1 ; 
-#line 685 "cplus.met"
+#line 686 "cplus.met"
 }
-#line 685 "cplus.met"
+#line 686 "cplus.met"
 
-#line 685 "cplus.met"
-#line 619 "cplus.met"
+#line 686 "cplus.met"
+#line 620 "cplus.met"
 int cplus::LexUndef ()
-#line 619 "cplus.met"
+#line 620 "cplus.met"
 {
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 619 "cplus.met"
+#line 620 "cplus.met"
         FreePos(lastContextPos);
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 619 "cplus.met"
+#line 620 "cplus.met"
         ExtUnputBuf();
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     #ifdef DUMP_COORD
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     #endif
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     tokenAhead = 0;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     if(LexMeta() != -1){tokenAhead =10; return 1;}
-#line 619 "cplus.met"
-#line 619 "cplus.met"
+#line 620 "cplus.met"
+#line 620 "cplus.met"
     ptStockBuf = -1;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     while ((c == ' ')||(c == '\t')||(c == ''))
-#line 619 "cplus.met"
+#line 620 "cplus.met"
         NextChar() ;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     ptStockBuf = -1;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     lexEl.Erase();
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     tokenAhead = 0;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     oldLine=line,oldCol=col;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     if ( !lexCallLex) {
-#line 619 "cplus.met"
+#line 620 "cplus.met"
         PUT_COORD_CALL;
-#line 619 "cplus.met"
+#line 620 "cplus.met"
     }
-#line 619 "cplus.met"
-#line 621 "cplus.met"
+#line 620 "cplus.met"
+#line 622 "cplus.met"
     while ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9'))) { 
-#line 621 "cplus.met"
 #line 622 "cplus.met"
+#line 623 "cplus.met"
         {
-#line 622 "cplus.met"
+#line 623 "cplus.met"
             lexEl . AddChar(c);
-#line 622 "cplus.met"
+#line 623 "cplus.met"
             NextChar();
-#line 622 "cplus.met"
+#line 623 "cplus.met"
         }
-#line 622 "cplus.met"
-    } 
-#line 622 "cplus.met"
 #line 623 "cplus.met"
+    } 
+#line 623 "cplus.met"
+#line 624 "cplus.met"
     while (((c == ' ')||(c == '\t'))) { 
-#line 623 "cplus.met"
 #line 624 "cplus.met"
+#line 625 "cplus.met"
         if (!(c != EOF&& NextChar())) ;
-#line 624 "cplus.met"
+#line 625 "cplus.met"
     } 
-#line 624 "cplus.met"
 #line 625 "cplus.met"
+#line 626 "cplus.met"
     {
-#line 625 "cplus.met"
+#line 626 "cplus.met"
         firstOnLine = 0 ; 
-#line 625 "cplus.met"
+#line 626 "cplus.met"
         tokenAhead =10;
-#line 625 "cplus.met"
+#line 626 "cplus.met"
         lexEl.Value=UNDEF_CONTENT;
-#line 625 "cplus.met"
+#line 626 "cplus.met"
         PUT_COORD_CALL;
-#line 625 "cplus.met"
+#line 626 "cplus.met"
         return(1);
-#line 625 "cplus.met"
+#line 626 "cplus.met"
     }
-#line 625 "cplus.met"
-#line 625 "cplus.met"
-#line 625 "cplus.met"
+#line 626 "cplus.met"
+#line 626 "cplus.met"
+#line 626 "cplus.met"
     
-#line 626 "cplus.met"
+#line 627 "cplus.met"
     line = oldLine;
-#line 626 "cplus.met"
+#line 627 "cplus.met"
     LEX_EXIT(0,"")
-#line 626 "cplus.met"
+#line 627 "cplus.met"
     lexEl.Value = -1 ;
-#line 626 "cplus.met"
+#line 627 "cplus.met"
     return -1 ; 
-#line 626 "cplus.met"
+#line 627 "cplus.met"
 }
-#line 626 "cplus.met"
+#line 627 "cplus.met"
 
-#line 626 "cplus.met"
+#line 627 "cplus.met"
 #line 140 "cplus.met"
 int cplus::PushArgument ()
 #line 140 "cplus.met"
@@ -7342,6 +7362,7 @@ int cplus::the_exit ()
 -- 18 -- bit_field_decl
     META
     IDENT
+    DPOI
 -- 19 -- cast_expression
     META
     IDENT
@@ -7790,6 +7811,7 @@ int cplus::the_exit ()
     ERROR_DIR
     DEFINE_DIR
     UNDEF_DIR
+    LINE_REFERENCE_DIR
 -- 51 -- end_pragma
     META
     PRAGMA_DIR
@@ -8111,6 +8133,7 @@ int cplus::the_exit ()
     ERROR_DIR
     DEFINE_DIR
     UNDEF_DIR
+    LINE_REFERENCE_DIR
 -- 71 -- ext_decl_if_dir
     META
     IDENT
@@ -8301,6 +8324,7 @@ int cplus::the_exit ()
 -- 82 -- inside_declaration2
     META
     IDENT
+    DPOI
 -- 83 -- inside_declaration_extension
     ALWAYS
 -- 84 -- label_beg
@@ -8882,6 +8906,7 @@ int cplus::the_exit ()
     ERROR_DIR
     DEFINE_DIR
     UNDEF_DIR
+    LINE_REFERENCE_DIR
 -- 130 -- stat_dir_switch
     META
     INCLUDE_DIR
@@ -8893,6 +8918,7 @@ int cplus::the_exit ()
     ERROR_DIR
     DEFINE_DIR
     UNDEF_DIR
+    LINE_REFERENCE_DIR
 -- 131 -- stat_if_dir
     META
     IDENT
@@ -9077,6 +9103,7 @@ int cplus::the_exit ()
     ERROR_DIR
     DEFINE_DIR
     UNDEF_DIR
+    LINE_REFERENCE_DIR
     CASE
     DEFAULT
 -- 137 -- switch_list
@@ -9271,149 +9298,149 @@ signed char *cplus::_tokenArray [146] = {
     (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\060\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\140\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\001\040\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\001\040\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\070\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\160\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\376\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\002\100\000\000\000\000\000\070\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\002\100\000\000\000\000\000\070\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\160\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\340\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\100\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\200\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\370\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\370\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\360\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\300\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\074\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\170\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\106\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\370\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\214\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\360\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\063\000\040\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\147\000\100\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\060\000\040\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\140\000\100\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\040\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\070\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\100\030\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\340\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\200\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\004\200\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\004\200\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\010\000\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\010\000\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\004\200\377\377\377\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\010\000\377\377\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\007\000\000\000\000\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\374\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\060\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\370\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\344\377\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\004\200\377\077\000\340\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\310\377\377\007\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\010\000\377\177\000\300\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 };
 typedef int (cplus::*(DEF_FUNC_TOKEN_ARRAY [146]))() ;
 DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
@@ -9716,33 +9743,34 @@ int _arityNode_cplus[] = {   2 , 1 , 1 , 1 , 1 , 2 , -1 , 3 , 1 , 1 , 1 , 0
                            , 0 , 1 , 1 , 1 , 1 , -1 , 1 , -1 , -1 , -1 , -1
                            , -1 , -1 , -1 , 1 , -1 , -1 , -1 , -1 , -1 , 1 , -1
                            , -1 , -1 , -1 , -1 , 1 , 1 , 3 , 3 , 3 , -1 , -1
-                           , -1 , 2 , -1 , -1 , 3 , -1 , -1 , -1 , -1 , 1 , -1
+                           , -1 , 2 , -1 , -1 , 3 , -1 , 3 , -1 , -1 , -1 , 1
                            , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
                            , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
                            , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
                            , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
-                           , -1 , -1 , -1 , -1 , -1 , 2 , 0 , -1 , -1 , -1 , -1
-                           , -1 , -1 , -1 , -1 , 2 , -1 , -1 , 4 , 1 , -1 , -1
-                           , 1 , 1 , 0 , -1 , 1 , -1 , -1 , -1 , -1 , -1 , -1
-                           , 1 , 1 , 1 , 2 , -1 , 4 , 3 , -1 , 1 , 2 , 2
-                           , 2 , -1 , -1 , 2 , 1 , -1 , -1 , 2 , -1 , -1 , -1
-                           , -1 , 4 , 2 , 2 , 1 , -1 , -1 , -1 , -1 , -1 , -1
-                           , -1 , -1 , -1 , -1 , -1 , -1 , -1 , 2 , -1 , 2 , 2
-                           , 1 , -1 , 1 , 1 , 1 , -1 , 1 , 2 , 2 , -1 , 1
-                           , 2 , -1 , 2 , 2 , 2 , 3 , 0 , 2 , 2 , 2 , 2
-                           , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 1 , 2 , 2 , -1
-                           , 2 , 0 , 2 , -1 , 1 , 1 , -1 , 3 , 2 , 1 , 1
-                           , 1 , 1 , 1 , 1 , 2 , 1 , 3 , 3 , -1 , -1 , 2
-                           , 2 , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+                           , -1 , -1 , -1 , -1 , -1 , -1 , 2 , 0 , -1 , -1 , -1
+                           , -1 , -1 , -1 , -1 , -1 , 2 , -1 , -1 , 4 , 1 , -1
+                           , -1 , 1 , 1 , 0 , -1 , 1 , -1 , -1 , -1 , -1 , -1
+                           , -1 , 1 , 1 , 1 , 2 , -1 , 4 , 3 , -1 , 1 , 2
+                           , 2 , 2 , -1 , -1 , 2 , 1 , -1 , -1 , 2 , -1 , -1
+                           , -1 , -1 , 4 , 2 , 2 , 1 , -1 , -1 , -1 , -1 , -1
+                           , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , 2 , -1
+                           , 2 , 2 , 1 , -1 , 1 , 1 , 1 , -1 , 1 , 2 , 2
+                           , -1 , 1 , 2 , -1 , 2 , 2 , 2 , 3 , 0 , 2 , 2
+                           , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 1 , 2
+                           , 2 , 2 , 0 , 2 , -1 , 1 , 1 , -1 , 3 , 2 , 1
+                           , 1 , 1 , 1 , 1 , 1 , 2 , 1 , 3 , 3 , -1 , -1
+                           , 2 , 2 , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
                            , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
-                           , 1 , 1 , 1 , -1 , -1 , 2 , 2 , 2 , 2 , 1 , -1
-                           , 2 , 1 , 1 , -1 , 2 , 0 , 2 , 9 , -1 , 2 , 1
-                           , 2 , 1 , -1 , 2 , -1 , 2 , 0 , 1 , 1 , 0 , 2
-                           , 1 , -1 , 2 , 2 , 2 , 2 , 1 , 2 , 0 , -1 , -1
-                           , -1 , -1 , -1 , -1 , -1 , 2 , 2 , 2 , 2 , 2 , 2
-                           , 1 , 1 , 1 , 1 , 2 , 1 , 1 , 1 , 1 , 2 , 2
-                           , 2 , 2 , 2 , 2 , 1 , 0 , 0 , 1 , 1 , -1 , 1
-                           , 2 , 1 , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 1 };
+                           , 1 , 1 , 1 , 1 , -1 , -1 , 2 , 2 , 2 , 2 , 1
+                           , -1 , 2 , 1 , 1 , -1 , 2 , 0 , 2 , 9 , -1 , 2
+                           , 1 , 2 , 1 , -1 , 2 , -1 , 2 , 0 , 1 , 1 , 0
+                           , 2 , 1 , -1 , 2 , 2 , 2 , 2 , 1 , 2 , 0 , -1
+                           , -1 , -1 , -1 , -1 , -1 , -1 , 2 , 2 , 2 , 2 , 2
+                           , 2 , 1 , 1 , 1 , 1 , 2 , 1 , 1 , 1 , 1 , 2
+                           , 2 , 2 , 2 , 2 , 2 , 1 , 0 , 0 , 1 , 1 , -1
+                           , 1 , 2 , 1 , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 1
+ };
 
     
 STRINGELEM * listConst_cplus;
@@ -9759,296 +9787,297 @@ void cplus::InitConst()
         
         STRINGELEM * inter = listConst;
         listConst = (STRINGELEM *) 0;
-        AddConstVal("cplus::BDECR", 340);
-        AddConstVal("cplus::BINCR", 339);
-        AddConstVal("cplus::ADDR", 338);
-        AddConstVal("cplus::NOT", 337);
-        AddConstVal("cplus::LNEG", 336);
-        AddConstVal("cplus::POS", 335);
-        AddConstVal("cplus::NEG", 334);
-        AddConstVal("cplus::PARAM_TYPE", 333);
-        AddConstVal("cplus::STRING_LIST", 332);
-        AddConstVal("cplus::LABEL", 331);
-        AddConstVal("cplus::THROW_ANSI", 330);
-        AddConstVal("cplus::ELSE", 329);
-        AddConstVal("cplus::TUNSIGNED", 328);
-        AddConstVal("cplus::TSIGNED", 327);
-        AddConstVal("cplus::TFLOAT", 326);
-        AddConstVal("cplus::TDOUBLE", 325);
-        AddConstVal("cplus::TIDENT", 324);
-        AddConstVal("cplus::RSHI", 323);
-        AddConstVal("cplus::LSHI", 322);
-        AddConstVal("cplus::LT", 321);
-        AddConstVal("cplus::GT", 320);
-        AddConstVal("cplus::GEQU", 319);
-        AddConstVal("cplus::LEQU", 318);
-        AddConstVal("cplus::SPACE_ARROW", 317);
-        AddConstVal("cplus::TAB_DIRECTIVE", 316);
-        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 315);
-        AddConstVal("cplus::ENUM_VERT_VALUE", 314);
-        AddConstVal("cplus::PROTECT_MEMB", 313);
-        AddConstVal("cplus::LANGUAGE", 312);
-        AddConstVal("cplus::EXP", 311);
-        AddConstVal("cplus::ADECR", 310);
-        AddConstVal("cplus::AINCR", 309);
-        AddConstVal("cplus::ARROW", 308);
-        AddConstVal("cplus::REF", 307);
-        AddConstVal("cplus::EXP_ARRAY", 306);
-        AddConstVal("cplus::EXP_LIST", 305);
-        AddConstVal("cplus::ARROW_MEMB", 304);
-        AddConstVal("cplus::DOT_MEMB", 303);
-        AddConstVal("cplus::POINETOI", 302);
-        AddConstVal("cplus::TIRESUPEETOI", 301);
-        AddConstVal("cplus::TIRESUPE", 300);
-        AddConstVal("cplus::SUPESUPE", 299);
-        AddConstVal("cplus::INFEINFE", 298);
-        AddConstVal("cplus::SUPEEGAL", 297);
-        AddConstVal("cplus::INFEEGAL", 296);
-        AddConstVal("cplus::NONE", 295);
-        AddConstVal("cplus::NEW_DECLARATOR", 294);
-        AddConstVal("cplus::USING_NAMESPACE", 293);
-        AddConstVal("cplus::NAMESPACE_ALIAS", 292);
-        AddConstVal("cplus::REM", 291);
-        AddConstVal("cplus::DIV", 290);
-        AddConstVal("cplus::MUL", 289);
-        AddConstVal("cplus::POURC", 288);
-        AddConstVal("cplus::MESSAGE_MAP", 287);
-        AddConstVal("cplus::MACRO", 286);
-        AddConstVal("cplus::TCHAR", 285);
-        AddConstVal("cplus::TSHORT", 284);
-        AddConstVal("cplus::TLONG", 283);
-        AddConstVal("cplus::TINT", 282);
-        AddConstVal("cplus::OR", 281);
-        AddConstVal("cplus::VBARVBAR", 280);
-        AddConstVal("cplus::AND", 279);
-        AddConstVal("cplus::ETCOETCO", 278);
-        AddConstVal("cplus::COMPOUND_EXT", 277);
-        AddConstVal("cplus::EXTERNAL", 276);
-        AddConstVal("cplus::INITIALIZER", 275);
-        AddConstVal("cplus::LOR", 274);
-        AddConstVal("cplus::VBAR", 273);
-        AddConstVal("cplus::FUNC", 272);
-        AddConstVal("cplus::ALL_OF", 271);
-        AddConstVal("cplus::STAT_VOID", 270);
-        AddConstVal("cplus::TEMPLATE_DECL", 269);
-        AddConstVal("cplus::SUPE", 268);
-        AddConstVal("cplus::CLASS_PARAM", 267);
-        AddConstVal("cplus::EXP_SEQ", 266);
-        AddConstVal("cplus::LXOR", 265);
-        AddConstVal("cplus::CHAP", 264);
-        AddConstVal("cplus::EXCEPTION_LIST", 263);
-        AddConstVal("cplus::EXCEPTION_ANSI", 262);
-        AddConstVal("cplus::EXCEPTION", 261);
-        AddConstVal("cplus::NEQU", 260);
-        AddConstVal("cplus::EQU", 259);
-        AddConstVal("cplus::EXCLEGAL", 258);
-        AddConstVal("cplus::EGALEGAL", 257);
-        AddConstVal("cplus::PRAGMA", 256);
-        AddConstVal("cplus::PARAMETERS", 255);
-        AddConstVal("cplus::FUNC_HEADER", 254);
-        AddConstVal("cplus::INDENT_FUNCTION_TYPE", 253);
-        AddConstVal("cplus::COMMENT_PLUS", 252);
-        AddConstVal("cplus::COMMENT_END", 251);
-        AddConstVal("cplus::COMMENT_MIDDLE", 250);
-        AddConstVal("cplus::COMMENT_START", 249);
-        AddConstVal("cplus::MARGIN_VALUE", 248);
-        AddConstVal("cplus::BRACE_ALIGN_VALUE", 247);
-        AddConstVal("cplus::DECL_ALIGN", 246);
-        AddConstVal("cplus::ASSIGN_ALIGN", 245);
-        AddConstVal("cplus::SINGLE_SWITCH_INDENT_VALUE", 244);
-        AddConstVal("cplus::SIMPLIFY_VALUE", 243);
-        AddConstVal("cplus::SIMPLIFY", 242);
-        AddConstVal("cplus::MODE_VALUE", 241);
-        AddConstVal("cplus::TAB_VALUE", 240);
-        AddConstVal("cplus::CONFIG", 239);
-        AddConstVal("cplus::NOT_MANAGED", 238);
-        AddConstVal("cplus::NO_PRETTY", 237);
-        AddConstVal("cplus::ALINE", 236);
-        AddConstVal("cplus::ERROR", 235);
-        AddConstVal("cplus::UNDEF", 234);
-        AddConstVal("cplus::TYP_AFF_CALL", 233);
-        AddConstVal("cplus::MEMBER_DECLARATOR", 232);
-        AddConstVal("cplus::TYP_ARRAY", 231);
-        AddConstVal("cplus::CFER", 230);
-        AddConstVal("cplus::COUV", 229);
-        AddConstVal("cplus::FOR_DECLARATION", 228);
-        AddConstVal("cplus::DECLARATION", 227);
-        AddConstVal("cplus::CTOR_INITIALIZER", 226);
-        AddConstVal("cplus::CTOR_INIT", 225);
-        AddConstVal("cplus::LONGLONG", 224);
-        AddConstVal("cplus::IUNLONGLONG", 223);
-        AddConstVal("cplus::IUNLONG", 222);
-        AddConstVal("cplus::IUN", 221);
-        AddConstVal("cplus::ILONGLONG", 220);
-        AddConstVal("cplus::ILONG", 219);
-        AddConstVal("cplus::RANGE_MODIFIER", 218);
-        AddConstVal("cplus::COND_AFF", 217);
-        AddConstVal("cplus::INTE", 216);
-        AddConstVal("cplus::COMPOUND", 215);
-        AddConstVal("cplus::CLASS_DECL", 214);
-        AddConstVal("cplus::AFER", 213);
-        AddConstVal("cplus::CATCH_ANSI", 212);
-        AddConstVal("cplus::EXCEPT_ANSI_ALL", 211);
-        AddConstVal("cplus::CAST", 210);
-        AddConstVal("cplus::DPOI", 209);
-        AddConstVal("cplus::TYP_BIT", 208);
-        AddConstVal("cplus::PROTECT", 207);
-        AddConstVal("cplus::BASE_LIST", 206);
-        AddConstVal("cplus::XOR_AFF", 205);
-        AddConstVal("cplus::OR_AFF", 204);
-        AddConstVal("cplus::AND_AFF", 203);
-        AddConstVal("cplus::RSH_AFF", 202);
-        AddConstVal("cplus::LSH_AFF", 201);
-        AddConstVal("cplus::MIN_AFF", 200);
-        AddConstVal("cplus::PLU_AFF", 199);
-        AddConstVal("cplus::REM_AFF", 198);
-        AddConstVal("cplus::DIV_AFF", 197);
-        AddConstVal("cplus::MUL_AFF", 196);
-        AddConstVal("cplus::AFF", 195);
-        AddConstVal("cplus::VAR_LIST", 194);
-        AddConstVal("cplus::TYP_LIST", 193);
-        AddConstVal("cplus::TYP_AFF", 192);
-        AddConstVal("cplus::ABST_DECLARATOR", 191);
-        AddConstVal("cplus::DECLARATOR", 190);
-        AddConstVal("cplus::POINPOINPOIN", 189);
-        AddConstVal("cplus::LAND", 188);
-        AddConstVal("cplus::INIT_NEW", 187);
-        AddConstVal("cplus::VIRG", 186);
-        AddConstVal("cplus::QUALIFIED", 185);
-        AddConstVal("cplus::MINUS", 184);
-        AddConstVal("cplus::TYP", 183);
-        AddConstVal("cplus::PFER", 182);
-        AddConstVal("cplus::DESTRUCT", 181);
-        AddConstVal("cplus::TYP_REF", 180);
-        AddConstVal("cplus::TYP_ADDR", 179);
-        AddConstVal("cplus::INFE", 178);
-        AddConstVal("cplus::USING", 177);
-        AddConstVal("cplus::NAMESPACE", 176);
-        AddConstVal("cplus::TYPEDEF", 175);
-        AddConstVal("cplus::TEMPLATE", 174);
-        AddConstVal("cplus::CATCH", 173);
-        AddConstVal("cplus::PUBLIC", 172);
-        AddConstVal("cplus::PROTECTED", 171);
-        AddConstVal("cplus::PRIVATE", 170);
-        AddConstVal("cplus::CHAPEGAL", 169);
-        AddConstVal("cplus::VBAREGAL", 168);
-        AddConstVal("cplus::ETCOEGAL", 167);
-        AddConstVal("cplus::SUPESUPEEGAL", 166);
-        AddConstVal("cplus::INFEINFEEGAL", 165);
-        AddConstVal("cplus::TIREEGAL", 164);
-        AddConstVal("cplus::PLUSEGAL", 163);
-        AddConstVal("cplus::POURCEGAL", 162);
-        AddConstVal("cplus::ETOIEGAL", 161);
-        AddConstVal("cplus::EGAL", 160);
-        AddConstVal("cplus::ASM", 159);
-        AddConstVal("cplus::VA_ARG", 158);
-        AddConstVal("cplus::DELETE", 157);
-        AddConstVal("cplus::NEW", 156);
-        AddConstVal("cplus::SIZEOF", 155);
-        AddConstVal("cplus::TIRETIRE", 154);
-        AddConstVal("cplus::PLUSPLUS", 153);
-        AddConstVal("cplus::EXCL", 152);
-        AddConstVal("cplus::PLUS", 151);
-        AddConstVal("cplus::TIRE", 150);
-        AddConstVal("cplus::POUV", 149);
-        AddConstVal("cplus::DEFAULT", 148);
-        AddConstVal("cplus::CASE", 147);
-        AddConstVal("cplus::TRY", 146);
-        AddConstVal("cplus::THROW", 145);
-        AddConstVal("cplus::FORALLSONS", 144);
-        AddConstVal("cplus::WHILE", 143);
-        AddConstVal("cplus::SWITCH", 142);
-        AddConstVal("cplus::RETURN", 141);
-        AddConstVal("cplus::PVIR", 140);
-        AddConstVal("cplus::IF", 139);
-        AddConstVal("cplus::FOR", 138);
-        AddConstVal("cplus::AOUV", 137);
-        AddConstVal("cplus::DO", 136);
-        AddConstVal("cplus::CONTINUE", 135);
-        AddConstVal("cplus::BREAK", 134);
-        AddConstVal("cplus::OPERATOR", 133);
-        AddConstVal("cplus::TILD", 132);
-        AddConstVal("cplus::ETCO", 131);
-        AddConstVal("cplus::ETOI", 130);
-        AddConstVal("cplus::SHORT", 129);
-        AddConstVal("cplus::UNSIGNED", 128);
-        AddConstVal("cplus::SIGNED", 127);
-        AddConstVal("cplus::LONG", 126);
-        AddConstVal("cplus::DPOIDPOI", 125);
-        AddConstVal("cplus::VOID", 124);
-        AddConstVal("cplus::FLOAT", 123);
-        AddConstVal("cplus::CHAR", 122);
-        AddConstVal("cplus::INT", 121);
-        AddConstVal("cplus::DOUBLE", 120);
-        AddConstVal("cplus::TYPENAME", 119);
-        AddConstVal("cplus::CLASS", 118);
-        AddConstVal("cplus::UNION", 117);
-        AddConstVal("cplus::STRUCT", 116);
-        AddConstVal("cplus::ENUM", 115);
-        AddConstVal("cplus::CONST", 114);
-        AddConstVal("cplus::FRIEND", 113);
-        AddConstVal("cplus::VIRTUAL", 112);
-        AddConstVal("cplus::INLINE", 111);
-        AddConstVal("cplus::VOLATILE", 110);
-        AddConstVal("cplus::REGISTER", 109);
-        AddConstVal("cplus::EXTERN", 108);
-        AddConstVal("cplus::STATIC", 107);
-        AddConstVal("cplus::AUTO", 106);
-        AddConstVal("cplus::FUNC_SPEC", 105);
-        AddConstVal("cplus::TRY_UPPER", 104);
-        AddConstVal("cplus::END_CATCH", 103);
-        AddConstVal("cplus::END_CATCH_ALL", 102);
-        AddConstVal("cplus::AND_CATCH", 101);
-        AddConstVal("cplus::CATCH_UPPER", 100);
-        AddConstVal("cplus::CATCH_ALL", 99);
-        AddConstVal("cplus::END_MESSAGE_MAP", 98);
-        AddConstVal("cplus::BEGIN_MESSAGE_MAP", 97);
-        AddConstVal("cplus::DECLARE_MESSAGE_MAP", 96);
-        AddConstVal("cplus::IMPLEMENT_SERIAL", 95);
-        AddConstVal("cplus::IMPLEMENT_DYNCREATE", 94);
-        AddConstVal("cplus::IMPLEMENT_DYNAMIC", 93);
-        AddConstVal("cplus::DECLARE_SERIAL", 92);
-        AddConstVal("cplus::DECLARE_DYNAMIC", 91);
-        AddConstVal("cplus::PUSH_FUNCTION", 90);
-        AddConstVal("cplus::PUSH_ARGUMENT", 89);
-        AddConstVal("cplus::UNDEF_CONTENT", 88);
-        AddConstVal("cplus::SMALL_PRAGMA_CONTENT", 87);
-        AddConstVal("cplus::PRAGMA_CONTENT", 86);
-        AddConstVal("cplus::PRAGMA_ENUM_VERT", 85);
-        AddConstVal("cplus::PRAGMA_SPACE_ARROW", 84);
-        AddConstVal("cplus::PRAGMA_PARAMETERS", 83);
-        AddConstVal("cplus::PRAGMA_PARAMETERS_UNDER", 82);
-        AddConstVal("cplus::PRAGMA_FUNC_HEADER", 81);
-        AddConstVal("cplus::PRAGMA_INDENT_FUNCTION_TYPE", 80);
-        AddConstVal("cplus::PRAGMA_COMMENT_PLUS", 79);
-        AddConstVal("cplus::PRAGMA_COMMENT_END", 78);
-        AddConstVal("cplus::PRAGMA_COMMENT_MIDDLE", 77);
-        AddConstVal("cplus::PRAGMA_COMMENT_START", 76);
-        AddConstVal("cplus::PRAGMA_MARGIN", 75);
-        AddConstVal("cplus::PRAGMA_DECL_ALIGN", 74);
-        AddConstVal("cplus::PRAGMA_ASSIGN_ALIGN", 73);
-        AddConstVal("cplus::PRAGMA_SINGLE_SWITCH_INDENT", 72);
-        AddConstVal("cplus::PRAGMA_SIMPLIFY", 71);
-        AddConstVal("cplus::PRAGMA_BRACE_ALIGN", 70);
-        AddConstVal("cplus::PRAGMA_MODE", 69);
-        AddConstVal("cplus::PRAGMA_RANGE", 68);
-        AddConstVal("cplus::PRAGMA_TAB", 67);
-        AddConstVal("cplus::PRAGMA_TAB_DIRECTIVE", 66);
-        AddConstVal("cplus::PRAGMA_CONFIG", 65);
-        AddConstVal("cplus::PRAGMA_NOT_MANAGED", 64);
-        AddConstVal("cplus::PRAGMA_MANAGED", 63);
-        AddConstVal("cplus::PRAGMA_NOPRETTY", 62);
-        AddConstVal("cplus::PRAGMA_PRETTY", 61);
-        AddConstVal("cplus::INCLUDE_LOCAL", 60);
-        AddConstVal("cplus::INCLUDE_SYS", 59);
-        AddConstVal("cplus::END_LINE", 58);
-        AddConstVal("cplus::DEFINE_NAME", 57);
-        AddConstVal("cplus::DEFINED_NOT_CONTINUED", 56);
-        AddConstVal("cplus::DEFINED_CONTINUED", 55);
-        AddConstVal("cplus::POINT", 54);
-        AddConstVal("cplus::SLAS", 53);
-        AddConstVal("cplus::SLASEGAL", 52);
-        AddConstVal("cplus::CARRIAGE_RETURN", 51);
+        AddConstVal("cplus::BDECR", 341);
+        AddConstVal("cplus::BINCR", 340);
+        AddConstVal("cplus::ADDR", 339);
+        AddConstVal("cplus::NOT", 338);
+        AddConstVal("cplus::LNEG", 337);
+        AddConstVal("cplus::POS", 336);
+        AddConstVal("cplus::NEG", 335);
+        AddConstVal("cplus::PARAM_TYPE", 334);
+        AddConstVal("cplus::STRING_LIST", 333);
+        AddConstVal("cplus::LABEL", 332);
+        AddConstVal("cplus::THROW_ANSI", 331);
+        AddConstVal("cplus::ELSE", 330);
+        AddConstVal("cplus::TUNSIGNED", 329);
+        AddConstVal("cplus::TSIGNED", 328);
+        AddConstVal("cplus::TFLOAT", 327);
+        AddConstVal("cplus::TDOUBLE", 326);
+        AddConstVal("cplus::TIDENT", 325);
+        AddConstVal("cplus::RSHI", 324);
+        AddConstVal("cplus::LSHI", 323);
+        AddConstVal("cplus::LT", 322);
+        AddConstVal("cplus::GT", 321);
+        AddConstVal("cplus::GEQU", 320);
+        AddConstVal("cplus::LEQU", 319);
+        AddConstVal("cplus::SPACE_ARROW", 318);
+        AddConstVal("cplus::TAB_DIRECTIVE", 317);
+        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 316);
+        AddConstVal("cplus::ENUM_VERT_VALUE", 315);
+        AddConstVal("cplus::PROTECT_MEMB", 314);
+        AddConstVal("cplus::LANGUAGE", 313);
+        AddConstVal("cplus::EXP", 312);
+        AddConstVal("cplus::ADECR", 311);
+        AddConstVal("cplus::AINCR", 310);
+        AddConstVal("cplus::ARROW", 309);
+        AddConstVal("cplus::REF", 308);
+        AddConstVal("cplus::EXP_ARRAY", 307);
+        AddConstVal("cplus::EXP_LIST", 306);
+        AddConstVal("cplus::ARROW_MEMB", 305);
+        AddConstVal("cplus::DOT_MEMB", 304);
+        AddConstVal("cplus::POINETOI", 303);
+        AddConstVal("cplus::TIRESUPEETOI", 302);
+        AddConstVal("cplus::TIRESUPE", 301);
+        AddConstVal("cplus::SUPESUPE", 300);
+        AddConstVal("cplus::INFEINFE", 299);
+        AddConstVal("cplus::SUPEEGAL", 298);
+        AddConstVal("cplus::INFEEGAL", 297);
+        AddConstVal("cplus::NONE", 296);
+        AddConstVal("cplus::NEW_DECLARATOR", 295);
+        AddConstVal("cplus::USING_NAMESPACE", 294);
+        AddConstVal("cplus::NAMESPACE_ALIAS", 293);
+        AddConstVal("cplus::REM", 292);
+        AddConstVal("cplus::DIV", 291);
+        AddConstVal("cplus::MUL", 290);
+        AddConstVal("cplus::POURC", 289);
+        AddConstVal("cplus::MESSAGE_MAP", 288);
+        AddConstVal("cplus::MACRO", 287);
+        AddConstVal("cplus::TCHAR", 286);
+        AddConstVal("cplus::TSHORT", 285);
+        AddConstVal("cplus::TLONG", 284);
+        AddConstVal("cplus::TINT", 283);
+        AddConstVal("cplus::OR", 282);
+        AddConstVal("cplus::VBARVBAR", 281);
+        AddConstVal("cplus::AND", 280);
+        AddConstVal("cplus::ETCOETCO", 279);
+        AddConstVal("cplus::COMPOUND_EXT", 278);
+        AddConstVal("cplus::EXTERNAL", 277);
+        AddConstVal("cplus::INITIALIZER", 276);
+        AddConstVal("cplus::LOR", 275);
+        AddConstVal("cplus::VBAR", 274);
+        AddConstVal("cplus::FUNC", 273);
+        AddConstVal("cplus::ALL_OF", 272);
+        AddConstVal("cplus::STAT_VOID", 271);
+        AddConstVal("cplus::TEMPLATE_DECL", 270);
+        AddConstVal("cplus::SUPE", 269);
+        AddConstVal("cplus::CLASS_PARAM", 268);
+        AddConstVal("cplus::EXP_SEQ", 267);
+        AddConstVal("cplus::LXOR", 266);
+        AddConstVal("cplus::CHAP", 265);
+        AddConstVal("cplus::EXCEPTION_LIST", 264);
+        AddConstVal("cplus::EXCEPTION_ANSI", 263);
+        AddConstVal("cplus::EXCEPTION", 262);
+        AddConstVal("cplus::NEQU", 261);
+        AddConstVal("cplus::EQU", 260);
+        AddConstVal("cplus::EXCLEGAL", 259);
+        AddConstVal("cplus::EGALEGAL", 258);
+        AddConstVal("cplus::PRAGMA", 257);
+        AddConstVal("cplus::PARAMETERS", 256);
+        AddConstVal("cplus::FUNC_HEADER", 255);
+        AddConstVal("cplus::INDENT_FUNCTION_TYPE", 254);
+        AddConstVal("cplus::COMMENT_PLUS", 253);
+        AddConstVal("cplus::COMMENT_END", 252);
+        AddConstVal("cplus::COMMENT_MIDDLE", 251);
+        AddConstVal("cplus::COMMENT_START", 250);
+        AddConstVal("cplus::MARGIN_VALUE", 249);
+        AddConstVal("cplus::BRACE_ALIGN_VALUE", 248);
+        AddConstVal("cplus::DECL_ALIGN", 247);
+        AddConstVal("cplus::ASSIGN_ALIGN", 246);
+        AddConstVal("cplus::SINGLE_SWITCH_INDENT_VALUE", 245);
+        AddConstVal("cplus::SIMPLIFY_VALUE", 244);
+        AddConstVal("cplus::SIMPLIFY", 243);
+        AddConstVal("cplus::MODE_VALUE", 242);
+        AddConstVal("cplus::TAB_VALUE", 241);
+        AddConstVal("cplus::CONFIG", 240);
+        AddConstVal("cplus::NOT_MANAGED", 239);
+        AddConstVal("cplus::NO_PRETTY", 238);
+        AddConstVal("cplus::ALINE", 237);
+        AddConstVal("cplus::ERROR", 236);
+        AddConstVal("cplus::UNDEF", 235);
+        AddConstVal("cplus::TYP_AFF_CALL", 234);
+        AddConstVal("cplus::MEMBER_DECLARATOR", 233);
+        AddConstVal("cplus::TYP_ARRAY", 232);
+        AddConstVal("cplus::CFER", 231);
+        AddConstVal("cplus::COUV", 230);
+        AddConstVal("cplus::FOR_DECLARATION", 229);
+        AddConstVal("cplus::DECLARATION", 228);
+        AddConstVal("cplus::CTOR_INITIALIZER", 227);
+        AddConstVal("cplus::CTOR_INIT", 226);
+        AddConstVal("cplus::LONGLONG", 225);
+        AddConstVal("cplus::IUNLONGLONG", 224);
+        AddConstVal("cplus::IUNLONG", 223);
+        AddConstVal("cplus::IUN", 222);
+        AddConstVal("cplus::ILONGLONG", 221);
+        AddConstVal("cplus::ILONG", 220);
+        AddConstVal("cplus::RANGE_MODIFIER", 219);
+        AddConstVal("cplus::COND_AFF", 218);
+        AddConstVal("cplus::INTE", 217);
+        AddConstVal("cplus::COMPOUND", 216);
+        AddConstVal("cplus::CLASS_DECL", 215);
+        AddConstVal("cplus::AFER", 214);
+        AddConstVal("cplus::CATCH_ANSI", 213);
+        AddConstVal("cplus::EXCEPT_ANSI_ALL", 212);
+        AddConstVal("cplus::CAST", 211);
+        AddConstVal("cplus::TYP_BIT", 210);
+        AddConstVal("cplus::PROTECT", 209);
+        AddConstVal("cplus::BASE_LIST", 208);
+        AddConstVal("cplus::XOR_AFF", 207);
+        AddConstVal("cplus::OR_AFF", 206);
+        AddConstVal("cplus::AND_AFF", 205);
+        AddConstVal("cplus::RSH_AFF", 204);
+        AddConstVal("cplus::LSH_AFF", 203);
+        AddConstVal("cplus::MIN_AFF", 202);
+        AddConstVal("cplus::PLU_AFF", 201);
+        AddConstVal("cplus::REM_AFF", 200);
+        AddConstVal("cplus::DIV_AFF", 199);
+        AddConstVal("cplus::MUL_AFF", 198);
+        AddConstVal("cplus::AFF", 197);
+        AddConstVal("cplus::VAR_LIST", 196);
+        AddConstVal("cplus::TYP_LIST", 195);
+        AddConstVal("cplus::TYP_AFF", 194);
+        AddConstVal("cplus::ABST_DECLARATOR", 193);
+        AddConstVal("cplus::DECLARATOR", 192);
+        AddConstVal("cplus::POINPOINPOIN", 191);
+        AddConstVal("cplus::LAND", 190);
+        AddConstVal("cplus::INIT_NEW", 189);
+        AddConstVal("cplus::VIRG", 188);
+        AddConstVal("cplus::QUALIFIED", 187);
+        AddConstVal("cplus::MINUS", 186);
+        AddConstVal("cplus::TYP", 185);
+        AddConstVal("cplus::PFER", 184);
+        AddConstVal("cplus::DESTRUCT", 183);
+        AddConstVal("cplus::TYP_REF", 182);
+        AddConstVal("cplus::TYP_ADDR", 181);
+        AddConstVal("cplus::INFE", 180);
+        AddConstVal("cplus::USING", 179);
+        AddConstVal("cplus::NAMESPACE", 178);
+        AddConstVal("cplus::TYPEDEF", 177);
+        AddConstVal("cplus::TEMPLATE", 176);
+        AddConstVal("cplus::CATCH", 175);
+        AddConstVal("cplus::DPOI", 174);
+        AddConstVal("cplus::PUBLIC", 173);
+        AddConstVal("cplus::PROTECTED", 172);
+        AddConstVal("cplus::PRIVATE", 171);
+        AddConstVal("cplus::CHAPEGAL", 170);
+        AddConstVal("cplus::VBAREGAL", 169);
+        AddConstVal("cplus::ETCOEGAL", 168);
+        AddConstVal("cplus::SUPESUPEEGAL", 167);
+        AddConstVal("cplus::INFEINFEEGAL", 166);
+        AddConstVal("cplus::TIREEGAL", 165);
+        AddConstVal("cplus::PLUSEGAL", 164);
+        AddConstVal("cplus::POURCEGAL", 163);
+        AddConstVal("cplus::ETOIEGAL", 162);
+        AddConstVal("cplus::EGAL", 161);
+        AddConstVal("cplus::ASM", 160);
+        AddConstVal("cplus::VA_ARG", 159);
+        AddConstVal("cplus::DELETE", 158);
+        AddConstVal("cplus::NEW", 157);
+        AddConstVal("cplus::SIZEOF", 156);
+        AddConstVal("cplus::TIRETIRE", 155);
+        AddConstVal("cplus::PLUSPLUS", 154);
+        AddConstVal("cplus::EXCL", 153);
+        AddConstVal("cplus::PLUS", 152);
+        AddConstVal("cplus::TIRE", 151);
+        AddConstVal("cplus::POUV", 150);
+        AddConstVal("cplus::DEFAULT", 149);
+        AddConstVal("cplus::CASE", 148);
+        AddConstVal("cplus::TRY", 147);
+        AddConstVal("cplus::THROW", 146);
+        AddConstVal("cplus::FORALLSONS", 145);
+        AddConstVal("cplus::WHILE", 144);
+        AddConstVal("cplus::SWITCH", 143);
+        AddConstVal("cplus::RETURN", 142);
+        AddConstVal("cplus::PVIR", 141);
+        AddConstVal("cplus::IF", 140);
+        AddConstVal("cplus::FOR", 139);
+        AddConstVal("cplus::AOUV", 138);
+        AddConstVal("cplus::DO", 137);
+        AddConstVal("cplus::CONTINUE", 136);
+        AddConstVal("cplus::BREAK", 135);
+        AddConstVal("cplus::OPERATOR", 134);
+        AddConstVal("cplus::TILD", 133);
+        AddConstVal("cplus::ETCO", 132);
+        AddConstVal("cplus::ETOI", 131);
+        AddConstVal("cplus::SHORT", 130);
+        AddConstVal("cplus::UNSIGNED", 129);
+        AddConstVal("cplus::SIGNED", 128);
+        AddConstVal("cplus::LONG", 127);
+        AddConstVal("cplus::DPOIDPOI", 126);
+        AddConstVal("cplus::VOID", 125);
+        AddConstVal("cplus::FLOAT", 124);
+        AddConstVal("cplus::CHAR", 123);
+        AddConstVal("cplus::INT", 122);
+        AddConstVal("cplus::DOUBLE", 121);
+        AddConstVal("cplus::TYPENAME", 120);
+        AddConstVal("cplus::CLASS", 119);
+        AddConstVal("cplus::UNION", 118);
+        AddConstVal("cplus::STRUCT", 117);
+        AddConstVal("cplus::ENUM", 116);
+        AddConstVal("cplus::CONST", 115);
+        AddConstVal("cplus::FRIEND", 114);
+        AddConstVal("cplus::VIRTUAL", 113);
+        AddConstVal("cplus::INLINE", 112);
+        AddConstVal("cplus::VOLATILE", 111);
+        AddConstVal("cplus::REGISTER", 110);
+        AddConstVal("cplus::EXTERN", 109);
+        AddConstVal("cplus::STATIC", 108);
+        AddConstVal("cplus::AUTO", 107);
+        AddConstVal("cplus::FUNC_SPEC", 106);
+        AddConstVal("cplus::TRY_UPPER", 105);
+        AddConstVal("cplus::END_CATCH", 104);
+        AddConstVal("cplus::END_CATCH_ALL", 103);
+        AddConstVal("cplus::AND_CATCH", 102);
+        AddConstVal("cplus::CATCH_UPPER", 101);
+        AddConstVal("cplus::CATCH_ALL", 100);
+        AddConstVal("cplus::END_MESSAGE_MAP", 99);
+        AddConstVal("cplus::BEGIN_MESSAGE_MAP", 98);
+        AddConstVal("cplus::DECLARE_MESSAGE_MAP", 97);
+        AddConstVal("cplus::IMPLEMENT_SERIAL", 96);
+        AddConstVal("cplus::IMPLEMENT_DYNCREATE", 95);
+        AddConstVal("cplus::IMPLEMENT_DYNAMIC", 94);
+        AddConstVal("cplus::DECLARE_SERIAL", 93);
+        AddConstVal("cplus::DECLARE_DYNAMIC", 92);
+        AddConstVal("cplus::PUSH_FUNCTION", 91);
+        AddConstVal("cplus::PUSH_ARGUMENT", 90);
+        AddConstVal("cplus::UNDEF_CONTENT", 89);
+        AddConstVal("cplus::SMALL_PRAGMA_CONTENT", 88);
+        AddConstVal("cplus::PRAGMA_CONTENT", 87);
+        AddConstVal("cplus::PRAGMA_ENUM_VERT", 86);
+        AddConstVal("cplus::PRAGMA_SPACE_ARROW", 85);
+        AddConstVal("cplus::PRAGMA_PARAMETERS", 84);
+        AddConstVal("cplus::PRAGMA_PARAMETERS_UNDER", 83);
+        AddConstVal("cplus::PRAGMA_FUNC_HEADER", 82);
+        AddConstVal("cplus::PRAGMA_INDENT_FUNCTION_TYPE", 81);
+        AddConstVal("cplus::PRAGMA_COMMENT_PLUS", 80);
+        AddConstVal("cplus::PRAGMA_COMMENT_END", 79);
+        AddConstVal("cplus::PRAGMA_COMMENT_MIDDLE", 78);
+        AddConstVal("cplus::PRAGMA_COMMENT_START", 77);
+        AddConstVal("cplus::PRAGMA_MARGIN", 76);
+        AddConstVal("cplus::PRAGMA_DECL_ALIGN", 75);
+        AddConstVal("cplus::PRAGMA_ASSIGN_ALIGN", 74);
+        AddConstVal("cplus::PRAGMA_SINGLE_SWITCH_INDENT", 73);
+        AddConstVal("cplus::PRAGMA_SIMPLIFY", 72);
+        AddConstVal("cplus::PRAGMA_BRACE_ALIGN", 71);
+        AddConstVal("cplus::PRAGMA_MODE", 70);
+        AddConstVal("cplus::PRAGMA_RANGE", 69);
+        AddConstVal("cplus::PRAGMA_TAB", 68);
+        AddConstVal("cplus::PRAGMA_TAB_DIRECTIVE", 67);
+        AddConstVal("cplus::PRAGMA_CONFIG", 66);
+        AddConstVal("cplus::PRAGMA_NOT_MANAGED", 65);
+        AddConstVal("cplus::PRAGMA_MANAGED", 64);
+        AddConstVal("cplus::PRAGMA_NOPRETTY", 63);
+        AddConstVal("cplus::PRAGMA_PRETTY", 62);
+        AddConstVal("cplus::INCLUDE_LOCAL", 61);
+        AddConstVal("cplus::INCLUDE_SYS", 60);
+        AddConstVal("cplus::END_LINE", 59);
+        AddConstVal("cplus::DEFINE_NAME", 58);
+        AddConstVal("cplus::DEFINED_NOT_CONTINUED", 57);
+        AddConstVal("cplus::DEFINED_CONTINUED", 56);
+        AddConstVal("cplus::POINT", 55);
+        AddConstVal("cplus::SLAS", 54);
+        AddConstVal("cplus::SLASEGAL", 53);
+        AddConstVal("cplus::CARRIAGE_RETURN", 52);
+        AddConstVal("cplus::LINE_REFERENCE_DIR", 51);
         AddConstVal("cplus::UNDEF_DIR", 50);
         AddConstVal("cplus::DEFINE_DIR", 49);
         AddConstVal("cplus::ERROR_DIR", 48);
@@ -10102,7 +10131,7 @@ void cplus::InitConst()
         AddConstVal("LIST",0);
         listConst_cplus = listConst;
         listConst = inter;
-        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,340,(OVER_LANG *) 0);
+        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,341,(OVER_LANG *) 0);
         }
 }
 

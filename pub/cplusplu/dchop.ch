@@ -1467,6 +1467,36 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             }
             "pragma " value(exp)
             break ;
+        case <LINE_DIR,exp,exp1> : 
+            {
+                if ( tabDirective ) 
+                    Mark();
+                gotocol(0);
+                "#";
+                if ( tabDirective ) 
+                    UnMark();
+                "line " @exp " " @exp1
+            }
+            break ;
+        case <LINE_REFERENCE_DIR,exp,exp1,exp2> : 
+            {
+                PTREE   elem ;
+                if ( tabDirective ) 
+                    Mark();
+                gotocol(0);
+                "#";
+                if ( tabDirective ) 
+                    UnMark();
+                " " @exp " " @exp1
+#if 0
+                if ( exp2 == <LIST> ) {
+                    " ";
+                    while ( (elem = nextl(exp2)) ) 
+                        @exp2 
+                }
+#endif
+            }
+            break ;
         case <CONFIG,exp> : 
             {
                 if ( tabDirective ) 
@@ -1940,7 +1970,7 @@ void DecompCplus::copy ()
         return ;
     else 
         copyPrinted =  true ;
-    str =  "\n\r C++ prettyPrinter version 6.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
+    str =  "\n\r C++ prettyPrinter version 6.0.1, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
     str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));

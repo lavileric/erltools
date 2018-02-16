@@ -21,4 +21,4 @@
 14/05/06 4.01 port for visual 2005
 20/06/13 5.00 64 bits + corrections
 24/12/17 6.00 compiled under gcc 2014, pretty suppport some options of C++ 2014
-
+17/2/13  6.01 bad definition of NULL, corrected

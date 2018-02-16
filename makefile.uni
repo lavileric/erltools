@@ -91,7 +91,7 @@ erlscale : prettyprinter
 
 mv-files : 
 	clean
-	-rm -r ../erltools.net
+	-rm -rf ../erltools.net
 	mkdir ../erltools.net
 	mkdir ../erltools.net/erltools
 	tar cf - . | ( cd ../erltools.net/erltools ; tar xf -)

@@ -560,6 +560,7 @@ lexdefine Lex;
                 takel "error" : return !ERROR_DIR
                 takel "define" : return !DEFINE_DIR
                 takel "undef" : return !UNDEF_DIR
+                seel in ['0'..'9'] : return !LINE_REFERENCE_DIR
             end;
             end
         takel in ['\r','\n'] : return !CARRIAGE_RETURN
@@ -769,7 +770,7 @@ define program;
         {{ hasGotError = 1 ;}};
         {{ goto debut ;}};
         end;
-    if {{ hasGotError }} then
+    if {{ hasGotError && ! _inhibit_exit_on_error  }} then
         {{ exit (-1);}};
     return maketree(LANGUAGE,list);
 end;
@@ -1272,7 +1273,7 @@ define ext_decl_dir;
 end;
 
 define directive;
-    declare retTree,interTree,list;
+    declare retTree,interTree,list,exp;
     case
         see !DEFINE_DIR : return take define_dir
         see !INCLUDE_DIR : return take include_dir
@@ -1283,6 +1284,21 @@ define directive;
                 retTree = maketree(LINE_DIR,take expression,());
                 if interTree = take !STRING then
                     replacetree(retTree,2,maketree(STRING,interTree));
+                take !CARRIAGE_RETURN;
+                end;
+            return retTree;
+            end
+        take !LINE_REFERENCE_DIR :
+            begin
+            with context keepCarriage do
+                begin
+                retTree
+                    = maketree(LINE_REFERENCE_DIR,take expression,(),());
+                if interTree = take !STRING then
+                    replacetree(retTree,2,maketree(STRING,interTree));
+                while exp = take expression do
+                    addlist(list,exp);
+                replacetree(retTree,3,list);
                 take !CARRIAGE_RETURN;
                 end;
             return retTree;
@@ -1316,9 +1332,9 @@ define directive;
                         with context keepAll do
                             begin
                             take !END_LINE;
-			    while not see end_pragma_managed do
+                            while not see end_pragma_managed do
                                 addlist(list,maketree(ALINE,take !END_LINE));
-			    take end_pragma_managed;
+                            take end_pragma_managed;
                             end;
                         end;
                     
@@ -2354,20 +2370,20 @@ define abstract_declarator;
             take ")";
             if valTree = take declarator_follow then
                 {{
-                    { PPTREE theTree ;
-                      theTree = valTree ;
-                      if (theTree) {
-                          while (SonTree(theTree,1))
-                       if (NumberTree(theTree)
-                    	   != RANGE_MODIFIER)
-                           theTree = SonTree(theTree,1);
-                       else
-                           theTree = SonTree(theTree,2);
-                          ReplaceTree(theTree,1,retTree);
-                          /* modif portage sun */
-                          retTree = valTree;
-                      }
-                         }
+                         { PPTREE theTree ;
+                    theTree = valTree ;
+                    if (theTree) {
+                        while (SonTree(theTree,1))
+                     if (NumberTree(theTree)
+                         != RANGE_MODIFIER)
+                         theTree = SonTree(theTree,1);
+                     else
+                         theTree = SonTree(theTree,2);
+                        ReplaceTree(theTree,1,retTree);
+                        /* modif portage sun */
+                        retTree = valTree;
+                    }
+                       }
                 }};
             end
         see !IDENT :
@@ -2546,8 +2562,12 @@ define new_type_name;
 end;
 
 define bit_field_decl;
-    declare retTree;
-    retTree = maketree(TYP_BIT,maketree(IDENT,take !IDENT),());
+    declare retTree,ident;
+    
+    /* retTree = maketree(TYP_BIT,maketree(IDENT,take !IDENT),());*/
+    retTree = maketree(TYP_BIT,(),());
+    if see !IDENT then
+        replacetree(retTree,1,maketree(IDENT,take !IDENT));
     take ":";
     return replacetree(retTree,2,take assignment_expression);
 end;
@@ -2769,15 +2789,15 @@ define unary_expression;
                 begin
                 inter = take unary_expression;
                 {{
-                        /* on libere le chapeau : un EXP, sans liberer
-                     l'interieur */
-                       if (NumberTree(inter) == EXP) {
-                      expTree = SonTree(inter,1);
-                      AddRef(expTree);
-                      FreeTreeRec(inter);
-                      RemRef(expTree);
-                    } else
-                      expTree = inter;
+                       /* on libere le chapeau : un EXP, sans liberer
+                    l'interieur */
+                      if (NumberTree(inter) == EXP) {
+                     expTree = SonTree(inter,1);
+                     AddRef(expTree);
+                     FreeTreeRec(inter);
+                     RemRef(expTree);
+                          } else
+                     expTree = inter;
                 }};
                 end;
             return maketree(EXP_LIST,maketree(IDENT,"sizeof"),expTree);
@@ -3093,7 +3113,7 @@ define type_descr;
 end;
 
 define parameter_list;
-    declare paramList;
+    declare paramList,none;
     take "(";
     if see !IDENT then
         begin
@@ -3112,7 +3132,9 @@ define parameter_list;
         if not {{ exit }} and take "..." then
             addlist(paramList,maketree(VAR_LIST));
         {{ } }};
-        end;
+        end
+    else
+        addlist(paramList,none);
     take ")";
     return paramList;
 end;

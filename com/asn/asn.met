@@ -37,7 +37,7 @@ global begin
         #undef NULL
         #ifndef NULL_VAR
         #define NULL_VAR
-        static const void * NULL = 0;
+        static void * NULL = 0;
         #endif
         #endif
     }}
