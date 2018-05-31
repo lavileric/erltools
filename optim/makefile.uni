@@ -19,10 +19,10 @@ lib :
 	(cd ../pub/library ; $(MAKE))
 
 testu : $(OBJECTS) testu.cc lib
-	$(C_PLUS) -std=c++14 $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testu testu.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
+	$(C_PLUS)  $(MACHFLAGS) $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testu testu.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
 
 testu1 : $(OBJECTS) testu1.cc lib
-	$(C_PLUS) -std=c++14 $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testu1 testu1.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
+	$(C_PLUS)  $(MACHFLAGS) $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testu1 testu1.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
 
 
 

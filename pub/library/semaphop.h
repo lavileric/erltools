@@ -4,7 +4,7 @@
    \author P. MOREL (Dassault Data Services)
    \ COPYRIGHT (C) 2002 MITSUBISHI ELECTRIC CORPORATION 
    \version 1.0
-   $Revision: 6.1 $
+   $Revision: 6.2 $
    \date 09/2002
    */
 /*
@@ -50,7 +50,7 @@
         
         inline void InitializeCriticalSection ( HANDLE_CRITICAL **handle )
         {
-            *handle = new pthread_mutex_t ;
+            *handle =  new pthread_mutex_t ;
             
             int ret = pthread_mutex_init(*handle, 0);
             
@@ -85,7 +85,7 @@
                     fprintf(stderr, "Error in DeleteCriticalSection : %d, in %s, line %d\n", errCode, __FILE__, __LINE__);
                 }
                 delete *handle ;
-                *handle = 0 ;
+                *handle =  0 ;
             }
         }
         
@@ -112,7 +112,7 @@
             int result = 0 ;
             
             if ( pTime ) 
-                result = pthread_cond_timedwait(pCond, *sC, pTime);
+                result =  pthread_cond_timedwait(pCond, *sC, pTime);
             else 
                 pthread_cond_wait(pCond, *sC);
             return result ;
@@ -135,18 +135,18 @@
                     {
                         struct _timeb tstruct ;
                         _ftime(&tstruct);
-                        sTime.tv_sec = tstruct.time + tval.tv_sec ;
-                        sTime.tv_nsec = (tstruct.millitm * 1000 + tval.tv_usec) * 1000 ;
+                        sTime.tv_sec  =  tstruct.time + tval.tv_sec ;
+                        sTime.tv_nsec =  (tstruct.millitm * 1000 + tval.tv_usec) * 1000 ;
                     }
 #               else 
                     {
                         struct timeb tstruct ;
                         ::ftime(&tstruct);
-                        sTime.tv_sec = tstruct.time + tval.tv_sec ;
-                        sTime.tv_nsec = (tstruct.millitm * 1000 + tval.tv_usec) * 1000 ;
+                        sTime.tv_sec  =  tstruct.time + tval.tv_sec ;
+                        sTime.tv_nsec =  (tstruct.millitm * 1000 + tval.tv_usec) * 1000 ;
                     }
 #               endif
-                pTime = &sTime ;
+                pTime =  &sTime ;
             }
             return pTime ;
         }
@@ -166,12 +166,12 @@
             DWORD               ident ;    // ident 
             SECURITY_ATTRIBUTES security ; // security
             
-            security.nLength = sizeof(SECURITY_ATTRIBUTES);
-            security.lpSecurityDescriptor = 0 ;
-            security.bInheritHandle = true ;
-            *pMutex = CreateMutex(&security, false, 0);
+            security.nLength              =  sizeof(SECURITY_ATTRIBUTES);
+            security.lpSecurityDescriptor =  0 ;
+            security.bInheritHandle       =  true ;
+            *pMutex                       =  CreateMutex(&security, false, 0);
             if ( !*pMutex ) {
-                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int) *pMutex, __FILE__, __LINE__);
+                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int)*pMutex, __FILE__, __LINE__);
             }
         }
         
@@ -180,7 +180,7 @@
             DWORD   ret = WaitForSingleObject(*pMutex, INFINITE);
             
             if ( ret != WAIT_OBJECT_0 ) {
-                fprintf(stderr, "Error in EnterCriticalSection : %d, in %s, line %d\n", (int) ret, __FILE__, __LINE__);
+                fprintf(stderr, "Error in EnterCriticalSection : %d, in %s, line %d\n", (int)ret, __FILE__, __LINE__);
             }
         }
         
@@ -197,7 +197,7 @@
         {
             if ( *pMutex ) {
                 CloseHandle(*pMutex);
-                *pMutex = 0 ;
+                *pMutex =  0 ;
             }
         }
         
@@ -207,12 +207,12 @@
             DWORD               ident ;    // ident 
             SECURITY_ATTRIBUTES security ; // security
             
-            security.nLength = sizeof(SECURITY_ATTRIBUTES);
-            security.lpSecurityDescriptor = 0 ;
-            security.bInheritHandle = true ;
-            *pEvent = CreateEvent(&security, true, false, 0);
+            security.nLength              =  sizeof(SECURITY_ATTRIBUTES);
+            security.lpSecurityDescriptor =  0 ;
+            security.bInheritHandle       =  true ;
+            *pEvent                       =  CreateEvent(&security, true, false, 0);
             if ( !*pEvent ) {
-                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int) *pEvent, __FILE__, __LINE__);
+                fprintf(stderr, "Error in InitializeCriticalSection : %d, in %s, line %d\n", (int)*pEvent, __FILE__, __LINE__);
             }
             return 0 ;
         }
@@ -236,9 +236,9 @@
             int result = 0 ;
             
             if ( pTime ) 
-                result = ESignal(*pSc, *pCond, pTime->tv_sec * 1000 + pTime->tv_usec / 1000) != WAIT_OBJECT_0 ? 1 : 0 ;
+                result =  ESignal(*pSc, *pCond, pTime->tv_sec * 1000 + pTime->tv_usec / 1000) != WAIT_OBJECT_0 ? 1 : 0 ;
             else 
-                result = ESignal(*pSc, *pCond, INFINITE);
+                result =  ESignal(*pSc, *pCond, INFINITE);
             EnterCriticalSection(pSc);
             return result ;
         }
@@ -255,9 +255,9 @@
             struct timespec *pTime = 0 ;
             
             if ( tval.tv_sec != 0 || tval.tv_usec != 0 ) {
-                sTime.tv_sec = tval.tv_sec ;
-                sTime.tv_usec = tval.tv_usec ;
-                pTime = &sTime ;
+                sTime.tv_sec  =  tval.tv_sec ;
+                sTime.tv_usec =  tval.tv_usec ;
+                pTime         =  &sTime ;
             }
             return pTime ;
         }
@@ -274,20 +274,20 @@
         public :
         
             Semaphop ()
-                : nbMaxRessource(0),  tooMuchRessources(0),  noRessourcesLeft(0),  nbMaxCurrent(0),  pvOn(true)
+                : nbMaxRessource(0),  tooMuchRessources(0),  noRessourcesLeft(0),  nbMaxCurrent(0),  pvOn(true),  usedRessources(0)
             {
                 InitializeCriticalSection(&ressourceSC);
                 ReInit();
-                tval.tv_sec = tval.tv_usec = 0 ;
+                tval.tv_sec =  tval.tv_usec = 0 ;
                 memset((char *)pvTabPriority, 0, NB_PRIORITY * sizeof(unsigned int));
             }
             
             Semaphop ( unsigned int initRessource )
-                : nbMaxRessource(initRessource),  tooMuchRessources(0),  noRessourcesLeft(0),  nbMaxCurrent(0),  pvOn(true)
+                : nbMaxRessource(initRessource),  tooMuchRessources(0),  noRessourcesLeft(0),  nbMaxCurrent(0),  pvOn(true),  usedRessources(0)
             {
                 InitializeCriticalSection(&ressourceSC);
                 ReInit();
-                tval.tv_sec = tval.tv_usec = 0 ;
+                tval.tv_sec =  tval.tv_usec = 0 ;
                 memset((char *)pvTabPriority, 0, NB_PRIORITY * sizeof(unsigned int));
             }
             
@@ -300,15 +300,15 @@
             
             void CreateLimitedRessourceStock ( int iNbMax )
             {
-                nbMaxRessource = iNbMax ;
-                usedRessources = 0 ;
+                nbMaxRessource =  iNbMax ;
+                usedRessources =  0 ;
             }
             
             void ReInit ()
             {
                 InitCondition(&condGetRessource);
                 InitCondition(&condPutRessource);
-                usedRessources = 0 ;
+                usedRessources =  0 ;
             }
             
             /*!
@@ -332,16 +332,16 @@
                     
                     // set time limit
                     if ( withTimeVal ) 
-                        pTime = SetTimeOffset(tval, sTime);
+                        pTime =  SetTimeOffset(tval, sTime);
                     else {
                         struct timeval tval ;
-                        tval.tv_sec = 1 ;
-                        tval.tv_usec = 0 ;
-                        pTime = SetTimeOffset(tval, sTime);
+                        tval.tv_sec  =  1 ;
+                        tval.tv_usec =  0 ;
+                        pTime        =  SetTimeOffset(tval, sTime);
                     }
                     
                     // wait do not get out if more important guy
-                    timedOut = SleepUntilCondition(&condPutRessource, &ressourceSC, pTime);
+                    timedOut =  SleepUntilCondition(&condPutRessource, &ressourceSC, pTime);
                     if ( timedOut && withTimeVal ) 
                         break ;
                 }
@@ -433,17 +433,17 @@
                     
                     // set time limit
                     if ( withTimeVal ) 
-                        pTime = SetTimeOffset(tval, sTime);
+                        pTime =  SetTimeOffset(tval, sTime);
                     else {
                         struct timeval tval ;
-                        tval.tv_sec = 1 ;
-                        tval.tv_usec = 0 ;
-                        pTime = SetTimeOffset(tval, sTime);
+                        tval.tv_sec  =  1 ;
+                        tval.tv_usec =  0 ;
+                        pTime        =  SetTimeOffset(tval, sTime);
                     }
                     
                     // want some nut ?
                     do {
-                        timedOut = SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
+                        timedOut =  SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
                         if ( timedOut && withTimeVal ) 
                             break ;
                     } while ( priority < NB_PRIORITY && pvTabPriority [priority + 1] );
@@ -526,17 +526,17 @@
                     
                     // set time limit
                     if ( withTimeVal ) 
-                        pTime = SetTimeOffset(tval, sTime);
+                        pTime =  SetTimeOffset(tval, sTime);
                     else {
                         struct timeval tval ;
-                        tval.tv_sec = 1 ;
-                        tval.tv_usec = 0 ;
-                        pTime = SetTimeOffset(tval, sTime);
+                        tval.tv_sec  =  1 ;
+                        tval.tv_usec =  0 ;
+                        pTime        =  SetTimeOffset(tval, sTime);
                     }
                     
                     // want some nut ?
                     do {
-                        timedOut = SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
+                        timedOut =  SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
                         if ( timedOut && withTimeVal ) 
                             break ;
                     } while ( priority < NB_PRIORITY && pvTabPriority [priority + 1] );
@@ -600,7 +600,7 @@
                 if ( nbMaxRessource > 0 && usedRessources == nbMaxRessource ) 
                     tooMuchRessources++ ;
                 if ( usedRessources > nbMaxCurrent ) 
-                    nbMaxCurrent = usedRessources ;
+                    nbMaxCurrent =  usedRessources ;
                 if ( usedRessources == 0 ) {
                     noRessourcesLeft++ ;
                 }
@@ -645,8 +645,8 @@
             {
                 
                 // set timeval struct
-                tval.tv_sec = val.tv_sec ;
-                tval.tv_usec = val.tv_usec ;
+                tval.tv_sec  =  val.tv_sec ;
+                tval.tv_usec =  val.tv_usec ;
             }
             
             // TimeVal : get time val
@@ -658,7 +658,7 @@
             // On : change state of semaphop
             Semaphop &On ( bool on )
             {
-                pvOn = on ;
+                pvOn =  on ;
                 return *this ;
             }
             
@@ -702,7 +702,7 @@
             
             void setCrazyWakeUp ( bool i_crazyWakeUp )
             {
-                m_crazyWakeUp = i_crazyWakeUp ;
+                m_crazyWakeUp =  i_crazyWakeUp ;
             }
             
             bool getCrazyWakeUp ( void )

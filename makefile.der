@@ -1,6 +1,6 @@
 # for unix ( in particular linux)
-ERLTOOLS_DIR=/home/lavil/erltools
-INSTALL_DIR=/home/lavil/outils
+ERLTOOLS_DIR ?= /home/lavil/erltools
+INSTALL_DIR ?= /home/lavil/outils
 #for borland or for visual
 #ERLTOOLS_DIR=d:\lavil\erltools
 #INSTALL_DIR=d:\lavil\util

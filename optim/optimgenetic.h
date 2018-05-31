@@ -67,8 +67,8 @@
                 }
                 
                 // Methods
-                void            InitPopulation (EString fileName = "") ;
-                virtual bool    Init (EString fileName = "") ;
+		void            InitPopulation (EString fileName = "", bool init = true ) ;
+		virtual bool    Init (EString fileName = "", bool init = true ) ;
                 virtual bool    Loop (bool verbose = true) ;
                 
                 virtual bool Run ( EString fileName = "", bool verbose = true )
@@ -273,7 +273,7 @@
                 bool                                pvRec ;
         };
     template <class IndividualType> 
-        void OptimGenetic<IndividualType> ::InitPopulation ( EString fileName )
+	void OptimGenetic<IndividualType> ::InitPopulation ( EString fileName, bool init)
         {
             unsigned int    currentSize = pvPopulationSize ;
             unsigned int    startInit = 0 ;
@@ -312,7 +312,7 @@
                 pvNbMaxSteadyGenerations =  pvPopulationSize ;
             
             // not already initialized do it
-            if ( !startInit ) {
+	    if ( !startInit && init ) {
                 if ( pvPopulationSize > 50 ) {
                     unsigned int    bestSlice = pvPopulationSize * pvBestSlice / 100 ;
                     if ( bestSlice > 50 ) {
@@ -340,7 +340,7 @@
         }
         
     template <class IndividualType> 
-        bool OptimGenetic<IndividualType> ::Init ( EString fileName )
+	bool OptimGenetic<IndividualType> ::Init ( EString fileName , bool init )
         {
             
             // std::cout << "Starting Genetic Algorithm Optimization\n";
@@ -354,7 +354,7 @@
                 _close(_open(fileName, O_CREAT | O_RDWR | O_TRUNC, 0666));
             }
             pvWritten =  0 ;
-            InitPopulation(fileName);
+	    InitPopulation(fileName,init);
             return true ;
         }
         
@@ -467,7 +467,7 @@
             nextPopulation.resize(refPopulation.size());
             Hybridation(refPopulation, nextPopulation, sortArray);
             if ( pvSteadyGenerationNumber && Vibrato() ) {
-                int nbCreated = RandomValue(0, pvBestSlice * pvPopulationSize / 100);
+		int nbCreated = MTRandomValue(0, pvBestSlice * pvPopulationSize / 100);
                 if ( nbCreated < 1 ) 
                     nbCreated =  1 ;
                 while ( nbCreated-- ) {
@@ -732,10 +732,10 @@
                     unsigned int    sum ;
                     unsigned int    lMother = 0 ;
                     unsigned int    lFather = 0 ;
-                    lFather =  sortArray [this->RankingSelect(RandomValue(0, (refPop * (refPop + 1))))].index ;
+		    lFather =  sortArray [this->RankingSelect(MTRandomValue(0, (refPop * (refPop + 1))))].index ;
                     
                     // select mother
-                    index   =  this->RankingSelect(RandomValue(0, (refPop * (refPop + 1))));
+		    index   =  this->RankingSelect(MTRandomValue(0, (refPop * (refPop + 1))));
                     {
                         lMother =  sortArray [index].index ;
                         if ( lMother == lFather ) {
@@ -865,7 +865,7 @@
                     
                     // Randomly choose the individual index
                     // ------------------------------------
-                    lFather =  sortArray [ /* refPop - 1 - */ this->RankingSelect(RandomValue(0, (limitBest * (limitBest + 1))))].index ;
+		    lFather =  sortArray [ /* refPop - 1 - */ this->RankingSelect(MTRandomValue(0, (limitBest * (limitBest + 1))))].index ;
                     
                     // Mutate this elememnt
                     MutateElem(lFather, refPopulation, nextPopulation, initNext + index++);
@@ -907,7 +907,7 @@
                 int             selectedIndex ;
                 IndividualType  newType ;
                 newType.Affect(
-                    refPopulation [selectedIndex = sortArray [this->RankingSelect(RandomValue((lIndIndex + 1) * (lIndIndex + 2), refPop * (refPop + 1)))].index].Self());
+		    refPopulation [selectedIndex = sortArray [this->RankingSelect(MTRandomValue((lIndIndex + 1) * (lIndIndex + 2), refPop * (refPop + 1)))].index].Self());
                 typename IndividualType::TypeParam  oldFeature ;
                 typename IndividualType::TypeParam  newFeature ;
                 bool                                sthingChanged = true ;
@@ -938,8 +938,8 @@
                             break ;
                         auto             accessSet = setParam.begin();
                         
-                        // accessSet = accessSet + (int)RandomValue(0, newType.Size() - param);
-                        unsigned int    pos = (int)RandomValue(0, setParam.size());
+			// accessSet = accessSet + (int)MTRandomValue(0, newType.Size() - param);
+			unsigned int    pos = (int)MTRandomValue(0, setParam.size());
                         if ( pos ) 
                             std::advance(accessSet, pos);
                         accessor =  *accessSet ;
@@ -1059,7 +1059,7 @@
                     unsigned int    index = 0 ;
                     long            sum = 0 ;
                     unsigned int    indexOrg ;
-                    index =  this->RankingSelect(RandomValue(0, multiplier));
+		    index =  this->RankingSelect(MTRandomValue(0, multiplier));
                     if ( index >= nbIndividuals - firstSlice ) 
                         index =  nbIndividuals - firstSlice - 1 ;
                     indexOrg =  index ;

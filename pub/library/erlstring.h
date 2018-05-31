@@ -49,7 +49,7 @@
                     Malloc(siz + 1);
                     pvLength =  siz ;
                     if ( siz ) 
-                        memcpy(pvString, val, pvLength + 1);
+                        memcpy(pvString, val, pvLength);
                     *(pvString + siz) =  '\0';
                 }
                 
@@ -307,11 +307,11 @@
                 virtual EStringRoot at ( int deb, unsigned int len ) const
                 {
                     if ( deb < 0 ) {
-			 len =  (unsigned int)( -deb);
+                        len =  (unsigned int)( -deb);
                         deb += length();
                         if ( deb < 0 ) {
                             deb =  0 ;
-			    len  =  length();
+                            len =  length();
                         }
                     }
                     if ( (unsigned int)deb >= length() ) 
@@ -326,7 +326,7 @@
                     int lg = length() - deb ;
                     
                     if ( deb < 0 ) {
-			lg  =  -deb ;
+                        lg  =  -deb ;
                         deb += length();
                         if ( deb < 0 ) {
                             deb =  0 ;
@@ -692,7 +692,10 @@
                         return this->length() == 0 ;
                     length =  strlen(str);
                     if ( this->length() == length ) {
-                        return !memcmp(c_str(), str, length);
+                        if ( length == 0 ) 
+                            return true ;
+                        else 
+                            return !memcmp(c_str(), str, length);
                     }
                     return false ;
                 }
@@ -705,7 +708,10 @@
                 bool operator== ( const EStringRoot &str ) const
                 {
                     if ( length() == str.length() ) {
-                        return !memcmp(c_str(), str.c_str(), pvLength);
+                        if ( length() == 0 ) 
+                            return true ;
+                        else 
+                            return !memcmp(c_str(), str.c_str(), pvLength);
                     }
                     return false ;
                 }
@@ -721,6 +727,15 @@
                     
                     if ( str.length() < shtLength ) {
                         shtLength =  str.length();
+                    }
+                    if ( str.length() == length() ) {
+                        if ( shtLength == 0 ) 
+                            return false ;
+                    } else {
+                        if ( length() == 0 ) 
+                            return true ;
+                        else if ( str.length() == 0 ) 
+                            return false ;
                     }
                     
                     int comp ; // result of comparison
@@ -742,6 +757,15 @@
                     if ( str.length() < shtLength ) {
                         shtLength =  str.length();
                     }
+                    if ( str.length() == length() ) {
+                        if ( shtLength == 0 ) 
+                            return true ;
+                    } else {
+                        if ( length() == 0 ) 
+                            return false ;
+                        else if ( str.length() == 0 ) 
+                            return false ;
+                    }
                     
                     int comp ; // result of comparison
                     
@@ -762,6 +786,15 @@
                     if ( str.length() < shtLength ) {
                         shtLength =  str.length();
                     }
+                    if ( str.length() == length() ) {
+                        if ( shtLength == 0 ) 
+                            return false ;
+                    } else {
+                        if ( length() == 0 ) 
+                            return false ;
+                        else if ( str.length() == 0 ) 
+                            return true ;
+                    }
                     
                     int comp ; // result of comparison
                     
@@ -781,6 +814,15 @@
                     
                     if ( str.length() < shtLength ) {
                         shtLength =  str.length();
+                    }
+                    if ( str.length() == length() ) {
+                        if ( shtLength == 0 ) 
+                            return true ;
+                    } else {
+                        if ( length() == 0 ) 
+                            return false ;
+                        else if ( str.length() == 0 ) 
+                            return true ;
                     }
                     
                     int comp ; // result of comparison

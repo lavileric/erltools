@@ -7,14 +7,50 @@
 #   include "erlstring.h"
 #   include "semaphop.h"
 #   include <list>
-    static const int    MAX_MODIFICATION = 10 ;
-    static const int    NB_MAX_TRY_IND = 100 ;
+#   include <random>
+    static const int        MAX_MODIFICATION = 10 ;
+    static const int        NB_MAX_TRY_IND = 100 ;
     class DelayedEvaluator ;
     
     // for threaded treatment
-    void                *TreatWaitingIndividual (void *pParam) ;
-    extern void         AddWaitingIndividuals (DelayedEvaluator *pIndividual) ;
-    extern unsigned int GetWaitingIndividuals () ;
+    void                    *TreatWaitingIndividual (void *pParam) ;
+    extern void             AddWaitingIndividuals (DelayedEvaluator *pIndividual) ;
+    extern unsigned int     GetWaitingIndividuals () ;
+    extern std::mt19937_64  randGen ;
+#   if 0
+        inline long long MTRandomValue ( long long min, long long max )
+        {
+            return RandomValue(min, max);
+        }
+#   else 
+        
+        // [ min , max [
+        inline long long MTRandomValue ( long long minVal, long long maxVal, bool full = false )
+        {
+            long long           ret ;
+            long double         maxValFloat = maxVal ;
+            long double         minValFloat = minVal ;
+            static long double  maxForRand = std::numeric_limits<std::mt19937_64::result_type> ::max();
+            static long double  minScaledForRand = (long double)(std::numeric_limits<std::mt19937_64::result_type> ::lowest()) / maxForRand ;
+            
+            if ( maxVal <= minVal + 1 && !full ) 
+                return minVal ;
+            if ( maxVal == minVal + 2 && !full ) 
+                return randGen() & 0x1 + minVal ;
+            
+            std::mt19937_64::result_type    randValue = randGen();
+            
+            if ( randValue == maxForRand ) 
+                return full ? maxVal : maxVal - 1 ;
+            else {
+                ret =  (long long)floor(
+                    1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
+                        * ((long double)randValue / maxForRand - minScaledForRand) * maxForRand);
+                ret += minVal ;
+                return ret ;
+            }
+        }
+#   endif
     
     inline EString ToString ( double val )
     {
@@ -105,7 +141,7 @@
                                     val =  pvMax ;
                             } else 
                                 val =  pvMax ;
-			} else if ( (val < pvMin || val > pvMax) && pvMin == 0 ) {
+                        } else if ( (val < pvMin || val > pvMax) && pvMin == 0 ) {
                             val &= pvMax ;
                         }
 #                   endif
@@ -121,7 +157,7 @@
                     return *&pvMax ;
                 }
                 
-                // set max 
+                // set max
                 FeatureLimit &Max ( TypeFeature &max )
                 {
                     pvMax =  max ;
@@ -147,7 +183,7 @@
                     return *&pvStep ;
                 }
                 
-                // set step 
+                // set step
                 FeatureLimit Step ( StepFeature &step )
                 {
                     pvStep =  step ;
@@ -178,7 +214,7 @@
                     return typeFeature ;
                 }
                 
-                // Content 
+                // Content
                 virtual EString Content () const
                 {
                     EString content ;
@@ -224,7 +260,7 @@
                 // Random : set a random value
                 virtual TypeFeature Random () const
                 {
-                    unsigned int    index = RandomValue(0, pvSetFeature.size());
+                    unsigned int    index = MTRandomValue(0, pvSetFeature.size());
                     
                     if ( !pvSetFeature.empty() ) 
                         return pvSetFeature [index];
@@ -281,7 +317,7 @@
                     return typeFeature ;
                 }
                 
-                // Content 
+                // Content
                 virtual EString Content () const
                 {
                     EString         content ;
@@ -342,17 +378,17 @@
                 // Random : get a random value
                 virtual SimpleType Random () const
                 {
-                    return RandomValue((long)this->Min(), (long)this->Max() + 1);
+                    return MTRandomValue((long)this->Min(), (long)this->Max() + 1);
                 }
                 
                 // Random : get a random value
                 virtual SimpleType Vibrato ( SimpleType &currVal )
                 {
                     int step = 0 ;
-                    int typeStep = RandomValue(0, 2);
+                    int typeStep = MTRandomValue(0, 2);
                     
                     while ( step == 0 ) 
-                        step =  RandomValue( -1, 2);
+                        step =  MTRandomValue( -1, 2);
                     pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this->Step()) /*this->Step()*/ ;
                     
                     SimpleType  newVal = currVal + pvLastApplied ;
@@ -378,7 +414,7 @@
                     return newVal ;
                 }
                 
-                // Content 
+                // Content
                 virtual EString Content () const
                 {
                     EString content ;
@@ -427,14 +463,14 @@
                 
                 virtual ~Individual () {}
                 
-                // copy constructor 
+                // copy constructor
                 Individual ( const Individual &individual )
                     : DelayedEvaluator()
                 {
                     Affect(individual);
                 }
                 
-                // copy constructor 
+                // copy constructor
                 Individual &operator= ( const Individual &individual )
                 {
                     Affect(individual);
@@ -458,7 +494,7 @@
                     return *&pvFeatures ;
                 }
                 
-                // get feature of individual 
+                // get feature of individual
                 const TypeFeature &Feature ( unsigned int index ) const
                 {
                     if ( index < Size() ) {
@@ -471,7 +507,7 @@
                     return *&pvFeatures [0];
                 }
                 
-                // get feature of individual 
+                // get feature of individual
                 const TypeFeature &FeatureCopy ( TypeFeature *dest, unsigned int start, unsigned int size ) const
                 {
                     if ( start < Size() && start + size <= Size() ) {
@@ -548,7 +584,7 @@
                     return *this ;
                 }
                 
-                // get feature limit of individual 
+                // get feature limit of individual
                 FeatureLimits &Limits ( unsigned int index )
                 {
                     if ( index < Size() ) {
@@ -635,7 +671,7 @@
                     return *this ;
                 }
                 
-                // Evaluate individual 
+                // Evaluate individual
                 virtual FeatureCost Evaluate ( Semaphop *pSemaphop = 0, bool withMessage = true )
                 {
                     Evaluated(true, pSemaphop);
@@ -665,7 +701,7 @@
                     return pvFeatures.size();
                 }
                 
-                // Cost : get cost 
+                // Cost : get cost
                 virtual FeatureCost Cost ()
                 {
                     if ( !Evaluated() ) 
@@ -673,7 +709,7 @@
                     return pvCost ;
                 }
                 
-                // Cost : get cost 
+                // Cost : get cost
                 virtual FeatureCost Cost ( bool evaluate ) const
                 {
                     return pvCost ;
@@ -696,7 +732,7 @@
                     return *this ;
                 }
                 
-                // Cost : get cost 
+                // Cost : get cost
                 virtual bool Evaluated () const
                 {
                     return pvEvaluated ;
@@ -776,6 +812,17 @@
                     Evaluated(false);
                 }
                 
+                // RandomFill : random fill an individual
+                virtual void FillZero ()
+                {
+                    unsigned int    index ;
+                    
+                    for ( index = 0 ; index < Size() ; index++ ) {
+                        Feature(index, 0);
+                    }
+                    Evaluated(false);
+                }
+                
                 virtual void MergeFrom ( Individual &father, Individual &mother )
                 {
                     unsigned int    size = father.Size();
@@ -788,13 +835,13 @@
                     std::vector<unsigned int>   vectorg(size, 1);
                     
                     // put mother characteristics for at most 10 characteristics
-                    unsigned int                nbMerge = RandomValue(0, size);
+                    unsigned int                nbMerge = MTRandomValue(0, size);
                     
                     for ( index = 0 ; index < nbMerge ; index++ ) 
-                        vectorg [RandomValue(0, size)] =  RandomValue(0, 2) ? 2 : 1 ;
+                        vectorg [MTRandomValue(0, size)] =  MTRandomValue(0, 2) ? 2 : 1 ;
                     /*for ( index = 0 ; index < size ; index++ )
-                       if ( RandomValue(0, 2) ) 
-                           vectorg [index] = 2 ;*/
+                          if ( MTRandomValue(0, 2) )
+                       vectorg [index] = 2 ;*/
                     for ( unsigned int param = 0 ; param < size ; param++ ) {
                         Feature(param, vectorg [param] == 1 ? father.Feature(param) : mother.Feature(param)
                             , vectorg [param] == 1 ? father.Limits(param) : mother.Limits(param));
@@ -813,7 +860,7 @@
                     
                     // Then randomly choose the nb of param to be mutated for this cell
                     // ----------------------------------------------------------------
-                    int NB_PARAM = RandomValue(1, Size() + 1);
+                    int NB_PARAM = MTRandomValue(1, Size() + 1);
                     
                     // For each param to be mutated
                     // ----------------------------
@@ -821,7 +868,7 @@
                         
                         // Randomly choose this param index
                         // --------------------------------
-                        int         lParamIndex = RandomValue(0, Size());
+                        int         lParamIndex = MTRandomValue(0, Size());
                         
                         // Then randomly change this optimisation parameter
                         // ------------------------------------------------
@@ -908,7 +955,7 @@
                 
                 virtual ~OrderedIndividual () {}
                 
-                // copy constructor 
+                // copy constructor
                 OrderedIndividual ( const OrderedIndividual &individual )
                     : Individual<TypeFeature, FeatureLimits, FeatureCost> ()
                 {
@@ -923,7 +970,7 @@
                     if ( size < 3 ) 
                         return ;
                     
-                    unsigned int            mergePoint = RandomValue(1, size - 1);
+                    unsigned int            mergePoint = MTRandomValue(1, size - 1);
                     unsigned int            indexInsert, index ;
                     std::set<TypeFeature>   alreadyPut ;
                     
@@ -953,7 +1000,7 @@
                     
                     // Then randomly choose the nb of param to be mutated for this cell
                     // ----------------------------------------------------------------
-                    int NB_PARAM = RandomValue(1, (this->Size() + 1) / 2);
+                    int NB_PARAM = MTRandomValue(1, (this->Size() + 1) / 2);
                     
                     // For each param to be mutated
                     // ----------------------------
@@ -964,12 +1011,12 @@
                             
                             // Randomly choose parameters index
                             // --------------------------------
-                            int lParamIndex = RandomValue(0, this->Size());
+                            int lParamIndex = MTRandomValue(0, this->Size());
                             int lParamIndex1 = lParamIndex ;
                             if ( this->Size() <= 1 ) 
                                 return ;
                             while ( lParamIndex1 == lParamIndex ) 
-                                lParamIndex1 =  RandomValue(0, this->Size());
+                                lParamIndex1 =  MTRandomValue(0, this->Size());
                             
                             // if exchange is allowed do it
                             if ( this->CanExchange(lParamIndex, lParamIndex1) ) {
