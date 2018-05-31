@@ -4900,7 +4900,7 @@ void DecompCplus::copy ()
     else 
         copyPrinted = true ;
     
-    str = "\n\r C++ prettyPrinter version 6.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
+    str = "\n\r C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
     str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));
@@ -4908,7 +4908,7 @@ void DecompCplus::copy ()
     _write(2, str, strlen(str));
     str = " under certain conditions.\n\r";
     _write(2, str, strlen(str));
-    str = " For details see file COPYING in C++ prettyPrinter directory.\n\r\n\r";
+    str = " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
     _write(2, str, strlen(str));
     
 }

@@ -105,7 +105,7 @@ int                     oldColEntry, oldLineEntry ;
 char                    errStr [512];
 char                    *_ptString ;
 int                     _nbCharact ;
-std::vector<EString>    stackFileRead ;
+static std::vector<EString>    stackFileRead ;
 static EString          lastFileRead ;
 bool                    emacsCompatibleError = false ;
 int                     keepOutputString ;
@@ -4549,7 +4549,7 @@ PPTREE Parser::ReadInFile ( int oldInput )
         /* el 31/03/98 */
 #       if 0
             lseek(input, posFileInput - lBufInput + posBufInput + 1, SEEK_SET);
-#       else 
+#       else
             _lseek(input, posFileInput - lBufInput + posBufInput, SEEK_SET); /* restore other things */ 
 #       endif
         input        =  oldInput ;

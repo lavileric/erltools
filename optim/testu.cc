@@ -43,12 +43,12 @@ class CostFunction {
             int *pCoeffs ;
             int *pDestCoeffs ;
             
-            for ( pCoeffs = coeffs, pDestCoeffs = pvCoeffs ; NOT_AT_END_COEFFS(pCoeffs, coeffs) ; pCoeffs += 2, pDestCoeffs += 2 ) {
-                *(pDestCoeffs) = *pCoeffs ;
-                *(pDestCoeffs + 1) = *(pCoeffs + 1);
+            for ( pCoeffs     = coeffs, pDestCoeffs = pvCoeffs ; NOT_AT_END_COEFFS(pCoeffs, coeffs) ; pCoeffs                      += 2, pDestCoeffs += 2 ) {
+                *(pDestCoeffs)     =  *pCoeffs ;
+                *(pDestCoeffs + 1) =  *(pCoeffs + 1);
             }
-            *pDestCoeffs++ = 0 ;
-            *pDestCoeffs = 0 ;
+            *pDestCoeffs++ =  0 ;
+            *pDestCoeffs   =  0 ;
         }
         
         virtual double operator() ( double *param )
@@ -82,9 +82,9 @@ class Individuals : public Individual<double, SimpleLimit<double> , double> {
                 double          *param = new double [Size() + 1];
                 unsigned int    index ;
                 for ( index = 0 ; index < Size() ; index++ ) 
-                    param [index] = Feature(index);
-                param [index] = 0 ;
-                pvCost = (*pCostFunction)(param);
+                    param [index] =  Feature(index);
+                param [index] =  0 ;
+                pvCost        =  (*pCostFunction)(param);
                 delete [] param ;
             }
             if ( withMessage ) 
@@ -96,7 +96,7 @@ class Individuals : public Individual<double, SimpleLimit<double> , double> {
         
         void SetCostFunction ( CostFunction *parampCostFunction )
         {
-            pCostFunction = parampCostFunction ;
+            pCostFunction =  parampCostFunction ;
         }
         
         Individuals ( const Individual<double, SimpleLimit<double> , double> &src )
@@ -113,7 +113,7 @@ class Individuals : public Individual<double, SimpleLimit<double> , double> {
         
         virtual void Affect ( const Individual<double, SimpleLimit<double> , double> &src )
         {
-            pCostFunction = ((Individuals &)src).pCostFunction ;
+            pCostFunction =  ((Individuals &)src).pCostFunction ;
             Individual<double, SimpleLimit<double> , double> ::Affect(src);
         }
         
@@ -144,7 +144,7 @@ template <int min,int max,int step>
                 
                 individual.SetCostFunction(pvpCostFunction);
                 if ( size < 1 ) 
-                    size = 1 ;
+                    size =  1 ;
                 individual.Limits(size - 1, SimpleLimit<double> (min, max));
                 return individual ;
             }
@@ -208,7 +208,7 @@ class InvFunction : public CostFunction {
             for ( pCoeffs = Coeffs() ; NOT_AT_END_COEFFS(pCoeffs, Coeffs()) ; pCoeffs += 2, pParam++ ) {
                 double  diff = *pParam - double(*pCoeffs);
                 if ( diff < 0.0 ) 
-                    diff = -1 * diff ;
+                    diff =  -1 * diff ;
                 sum += diff > 1.0 ? floor(*(pCoeffs + 1) / diff) : *(pCoeffs + 1);
             }
             
@@ -240,12 +240,12 @@ class FujiFunction : public CostFunction {
             for ( pCoeffs = Coeffs() ; NOT_AT_END_COEFFS(pCoeffs, Coeffs()) ; pCoeffs += 2, pParam++ ) {
                 double  diff = *pParam - double(*pCoeffs);
                 if ( diff < 0.0 ) 
-                    diff = -1 * diff ;
+                    diff =  -1 * diff ;
                 mult *= diff > 1.0 ? diff : 1.0 ;
                 if ( diff > Coeffs()[1] / 2 ) 
-                    zeroSetter = 0 ;
+                    zeroSetter =  0 ;
             }
-            mult = zeroSetter * Coeffs()[1] / mult ;
+            mult =  zeroSetter * Coeffs()[1] / mult ;
             
             // return result
             return mult ;
@@ -272,8 +272,8 @@ class CompositeCost : public CostFunction {
             CostFunction    **pDestCostFunctions = pvCostFunctions ;
             
             while ( *pCostFunctions && pDestCostFunctions - pvCostFunctions < DIM_COEFF ) 
-                *pDestCostFunctions++ = *pCostFunctions++ ;
-            *pDestCostFunctions = 0 ;
+                *pDestCostFunctions++ =  *pCostFunctions++ ;
+            *pDestCostFunctions =  0 ;
         }
         
         virtual double operator() ( double param [] )
@@ -303,7 +303,7 @@ template <class TypeFeature,class FeatureLimits>
         double      sum = 0 ;
         int         indexIndividual ;
         
-        for ( pCoeffs = coeffs, indexIndividual = 0 ; *pCoeffs ; pCoeffs += 2, indexIndividual++ ) {
+        for ( pCoeffs         = coeffs, indexIndividual = 0 ; *pCoeffs ; pCoeffs += 2, indexIndividual++ ) {
             double  diff = individual.Feature(indexIndividual) - double(*pCoeffs);
             sum += SQUARE(diff);
         }
@@ -334,19 +334,19 @@ void Optimize ( unsigned int nbParameters, int coeffs [] )
             
             // compute distance to correct solution and display it
             {
-                CIndividual & bestIndividual = cOptimisation.BestIndividual();
+                CIndividual & bestIndividual =  cOptimisation.BestIndividual();
                 EString message("Local Gradient \n");
                 write(2, message.c_str(), message.length());
                 EString dist("    Square of Distance to best individual : ");
                 dist << int(SquareDist(coeffs, bestIndividual)) << "\n";
                 write(2, dist.c_str(), dist.length());
-                dist = "";
+                dist =  "";
                 dist << "    Best top : " << bestIndividual.OptimCost() << "\n";
                 write(2, dist.c_str(), dist.length());
-                message = "";
+                message =  "";
                 message << "    Nb Simulated : " << cOptimisation.NbSimulatedVectors() << "\n";
                 write(2, message.c_str(), message.length());
-                message = EString("   ") + bestIndividual.Content();
+                message =  EString("   ") + bestIndividual.Content();
                 write(2, message.c_str(), message.length());
             }
         }
@@ -375,20 +375,20 @@ void Optimize ( unsigned int nbParameters, int coeffs [] )
             
             // compute distance to correct solution and display it
             {
-                CIndividual & bestIndividual = cOptimisation.BestIndividual();
+                CIndividual & bestIndividual =  cOptimisation.BestIndividual();
                 EString message("Simulated Annealing \n");
                 write(2, message.c_str(), message.length());
                 EString dist("    Square of Distance to best individual : ");
                 dist << int(SquareDist(coeffs, bestIndividual));
                 dist << " \n";
                 write(2, dist.c_str(), dist.length());
-                dist = "";
+                dist =  "";
                 dist << "    Best top : " << bestIndividual.OptimCost() << "\n";
                 write(2, dist.c_str(), dist.length());
-                message = "";
+                message =  "";
                 message << "    Nb Simulated : " << cOptimisation.NbSimulatedVectors() << "\n";
                 write(2, message.c_str(), message.length());
-                message = EString("   ") + bestIndividual.Content();
+                message =  EString("   ") + bestIndividual.Content();
                 write(2, message.c_str(), message.length());
             }
         }
@@ -408,19 +408,19 @@ void Optimize ( unsigned int nbParameters, int coeffs [] )
         
         // compute distance to correct solution and display it
         {
-            LocalNursery::TypeIndividual & bestIndividual = optimGenetic.BestIndividual();
+            LocalNursery::TypeIndividual & bestIndividual =  optimGenetic.BestIndividual();
             EString message("\nGenetic Algorithm \n");
             write(2, message.c_str(), message.length());
             EString dist("    Square of Distance to best individual : ");
             dist << int(SquareDist<LocalNursery::TypeIndividual::TypeParam, LocalNursery::TypeIndividual::TypeLimit> (coeffs, bestIndividual)) << " \n";
             write(2, dist.c_str(), dist.length());
-            dist = "";
+            dist =  "";
             dist << "    Best top : " << optimGenetic.OptimCost() << "\n";
             write(2, dist.c_str(), dist.length());
-            message = "";
+            message =  "";
             message << "    Nb Simulated : " << optimGenetic.SimulatedVectors() << "\n";
             write(2, message.c_str(), message.length());
-            message = EString("   ") + bestIndividual.Content();
+            message =  EString("   ") + bestIndividual.Content();
             write(2, message.c_str(), message.length());
         }
     }
@@ -448,11 +448,23 @@ int main ()
     
     EString header("\n---------------------\n\n");
     
+    {
+        int tab [102];
+        for ( unsigned int index = 0 ; index < 102 ; index++ ) 
+            tab [index] =  0 ;
+        for ( unsigned int index = 0 ; index < 100000 ; index++ ) 
+            tab [MTRandomValue(0, 100)]++ ;
+        for ( unsigned int index = 0 ; index < 102 ; index++ ) {
+            printf("%i -> %i", index, tab [index]);
+            printf("\n");
+        }
+    }
+    
     // optimize with square (2 parameters
     {
         int             squareCoeffs [] = { 250, -5, 600, -50, 0, 1000, 0, 0 };
         SquareFunction  squareFunction (squareCoeffs) ;
-        pCostFunction = &squareFunction ;
+        pCostFunction =  &squareFunction ;
         EString message ;
         message << header << "Square Optimisation 2 parameters (best 1000) \n" << header ;
         write(2, message, message.length());
@@ -464,7 +476,7 @@ int main ()
     {
         int             squareCoeffs [] = { 250, -5, 600, -50, 200, -200, 8000, -10, 0, 1000, 0, 0 };
         SquareFunction  squareFunction (squareCoeffs) ;
-        pCostFunction = &squareFunction ;
+        pCostFunction =  &squareFunction ;
         EString message ;
         message << header << "Square Optimisation 4 parameters (best 1000)\n" << header ;
         write(2, message, message.length());
@@ -486,7 +498,7 @@ int main ()
         int             emptyCoeff [] = { 0, 0 };
         CompositeCost   compositeCost (emptyCoeff) ;
         compositeCost.SetFunctions(costFunctions);
-        pCostFunction = &compositeCost ;
+        pCostFunction =  &compositeCost ;
         EString message ;
         message << header << "Inv Optimisation 4 parameters (best 400)\n" << header ;
         write(2, message, message.length());
@@ -509,7 +521,7 @@ int main ()
         int             emptyCoeff [] = { 0, 0 };
         CompositeCost   compositeCost (emptyCoeff) ;
         compositeCost.SetFunctions(costFunctions);
-        pCostFunction = &compositeCost ;
+        pCostFunction =  &compositeCost ;
         EString message ;
         message << header << "Fuji Optimisation 4 parameters (best 1000) \n" << header ;
         write(2, message, message.length());
@@ -542,7 +554,7 @@ int main ()
         int             emptyCoeff [] = { 0, 0 };
         CompositeCost   compositeCost (emptyCoeff) ;
         compositeCost.SetFunctions(costFunctions);
-        pCostFunction = &compositeCost ;
+        pCostFunction =  &compositeCost ;
         EString message ;
         message << header << "Inv Optimisation with 24 parameters (best 2400)\n" << header ;
         write(2, message, message.length());
@@ -551,6 +563,3 @@ int main ()
     }
     return 0 ;
 }
-
-
- 
