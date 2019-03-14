@@ -772,7 +772,7 @@ PTREE   funcName ; /* name of function we are looking for an accelerator */
                 PARRAY_ENTRY    pt = AllocArrayEntryUnit();
                 memcpy(pt->arrayEntry, arrayEntry, MAX_TOKEN / 8);
                 {
-                    char    name [10];
+		    char    name [20];
                     sprintf(name, "%d", nbArrayEntry++);
                     funcElem += <,<LIST,<LIST,<NUMB,MakeString(name)>,()>,copytree(lexEntryFunc)>>;
                     sprintf(name, "%d", lexEntry);

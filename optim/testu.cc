@@ -453,7 +453,7 @@ int main ()
         for ( unsigned int index = 0 ; index < 102 ; index++ ) 
             tab [index] =  0 ;
         for ( unsigned int index = 0 ; index < 100000 ; index++ ) 
-            tab [MTRandomValue(0, 100)]++ ;
+            tab [MTRandomValue<int>(0, 100)]++ ;
         for ( unsigned int index = 0 ; index < 102 ; index++ ) {
             printf("%i -> %i", index, tab [index]);
             printf("\n");

@@ -1216,27 +1216,27 @@ PTREE FunctionContent ( PTREE function, TabList *allFunction, PTREE stacked )
     
 #line 222 "speed.ch"
 #line 225 "speed.ch"
-    if ( (elem=(PPTREE)(*allFunction)[function]) ) {
+    if ( ((elem=(PPTREE)(*allFunction)[function])) ) {
 #line 225 "speed.ch"
 #line 228 "speed.ch"
-                                                            FunctionExpand(elem, allFunction, stacked);
+                                                                FunctionExpand(elem, allFunction, stacked);
 #line 228 "speed.ch"
 #line 231 "speed.ch"
-                                                            (elem?elem.Nextl():(PPTREE)0);
+                                                                (elem?elem.Nextl():(PPTREE)0);
 #line 231 "speed.ch"
 #line 232 "speed.ch"
-                                                            (elem?elem.Nextl():(PPTREE)0);
+                                                                (elem?elem.Nextl():(PPTREE)0);
 #line 232 "speed.ch"
 #line 233 "speed.ch"
-                                                            (retValue=copytree(elem));
+                                                                (retValue=copytree(elem));
 #line 233 "speed.ch"
-                                                            
+                                                                
 #line 233 "speed.ch"
 #line 234 "speed.ch"
-                                                            
+                                                                
 #line 234 "speed.ch"
 #line 234 "speed.ch"
-                                                          } else 
+                                                             } else 
 #line 234 "speed.ch"
     {
 #line 234 "speed.ch"
@@ -2709,38 +2709,38 @@ void TreeTokenAnalyze ( const PTREE &tree )
                                 
 #line 516 "speed.ch"
 #line 517 "speed.ch"
-                                while ( (elem=(list?list.Nextl():(PPTREE)0)) ) {
+                                while ( ((elem=(list?list.Nextl():(PPTREE)0))) ) {
 #line 517 "speed.ch"
-#line 518 "speed.ch"
-                                                                                    {
-#line 518 "speed.ch"
-                                                                                        PPTREE _ptTree0= (PPTREE) 0 ;
 #line 518 "speed.ch"
                                                                                         {
 #line 518 "speed.ch"
-                                                                                            PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
+                                                                                            PPTREE _ptTree0= (PPTREE) 0 ;
 #line 518 "speed.ch"
-                                                                                            _ptRes1 = MakeTree(metalang::IDENT, 1);
+                                                                                            {
 #line 518 "speed.ch"
-                                                                                            _ptTree1 = StoreRef(MakeString(Value(elem)));
+                                                                                                PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
 #line 518 "speed.ch"
-                                                                                            ReplaceTree(_ptRes1, 1, _ptTree1);
+                                                                                                _ptRes1 = MakeTree(metalang::IDENT, 1);
 #line 518 "speed.ch"
-                                                                                            _ptTree0 = _ptRes1;
+                                                                                                _ptTree1 = StoreRef(MakeString(Value(elem)));
+#line 518 "speed.ch"
+                                                                                                ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 518 "speed.ch"
+                                                                                                _ptTree0 = _ptRes1;
+#line 518 "speed.ch"
+                                                                                            }
+#line 518 "speed.ch"
+                                                                                            newList =  AddList( newList,_ptTree0);
 #line 518 "speed.ch"
                                                                                         }
 #line 518 "speed.ch"
-                                                                                        newList =  AddList( newList,_ptTree0);
-#line 518 "speed.ch"
-                                                                                    }
-#line 518 "speed.ch"
-                                                                                    
+                                                                                        
 #line 518 "speed.ch"
 #line 519 "speed.ch"
-                                                                                    
+                                                                                        
 #line 519 "speed.ch"
 #line 519 "speed.ch"
-                                                                                   }
+                                                                                      }
 #line 519 "speed.ch"
 #line 520 "speed.ch"
                                 {
@@ -2771,50 +2771,50 @@ void TreeTokenAnalyze ( const PTREE &tree )
         
 #line 525 "speed.ch"
 #line 526 "speed.ch"
-        while ( (elem=(list?list.Nextl():(PPTREE)0)) ) {
+        while ( ((elem=(list?list.Nextl():(PPTREE)0))) ) {
 #line 526 "speed.ch"
 #line 527 "speed.ch"
-                                                            if ( !(*listFuncToken)[elem] ) {
+                                                                if ( !(*listFuncToken)[elem] ) {
 #line 527 "speed.ch"
-#line 528 "speed.ch"
-                                                                                                    {
-#line 528 "speed.ch"
-                                                                                                        PPTREE _ptTree0= (PPTREE) 0 ;
 #line 528 "speed.ch"
                                                                                                         {
 #line 528 "speed.ch"
-                                                                                                            PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
+                                                                                                            PPTREE _ptTree0= (PPTREE) 0 ;
 #line 528 "speed.ch"
-                                                                                                            _ptRes1 = MakeTree(metalang::IDENT, 1);
+                                                                                                            {
 #line 528 "speed.ch"
-                                                                                                            _ptTree1 = StoreRef(MakeString(Value(elem)));
+                                                                                                                PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
 #line 528 "speed.ch"
-                                                                                                            ReplaceTree(_ptRes1, 1, _ptTree1);
+                                                                                                                _ptRes1 = MakeTree(metalang::IDENT, 1);
 #line 528 "speed.ch"
-                                                                                                            _ptTree0 = _ptRes1;
+                                                                                                                _ptTree1 = StoreRef(MakeString(Value(elem)));
+#line 528 "speed.ch"
+                                                                                                                ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 528 "speed.ch"
+                                                                                                                _ptTree0 = _ptRes1;
+#line 528 "speed.ch"
+                                                                                                            }
+#line 528 "speed.ch"
+                                                                                                            newList =  AddList( newList,_ptTree0);
 #line 528 "speed.ch"
                                                                                                         }
 #line 528 "speed.ch"
-                                                                                                        newList =  AddList( newList,_ptTree0);
+                                                                                                        
 #line 528 "speed.ch"
+#line 529 "speed.ch"
+                                                                                                        
+#line 529 "speed.ch"
+#line 529 "speed.ch"
                                                                                                     }
-#line 528 "speed.ch"
-                                                                                                    
-#line 528 "speed.ch"
-#line 529 "speed.ch"
-                                                                                                    
-#line 529 "speed.ch"
-#line 529 "speed.ch"
-                                                                                                }
 #line 529 "speed.ch"
 #line 530 "speed.ch"
-                                                            listFuncToken -> InsertRemove(elem);
+                                                                listFuncToken -> InsertRemove(elem);
 #line 530 "speed.ch"
 #line 531 "speed.ch"
-                                                            
+                                                                
 #line 531 "speed.ch"
 #line 531 "speed.ch"
-                                                           }
+                                                              }
 #line 531 "speed.ch"
 #line 534 "speed.ch"
         {
@@ -2851,18 +2851,18 @@ void TreeTokenAnalyze ( const PTREE &tree )
                         
 #line 544 "speed.ch"
 #line 545 "speed.ch"
-                        while ( (name=(elem?elem.Nextl():(PPTREE)0)) ) {
+                        while ( ((name=(elem?elem.Nextl():(PPTREE)0))) ) {
 #line 545 "speed.ch"
 #line 546 "speed.ch"
-                                                                            (function=FuncAccelerator(name));
+                                                                                (function=FuncAccelerator(name));
 #line 546 "speed.ch"
-                                                                            
+                                                                                
 #line 546 "speed.ch"
 #line 547 "speed.ch"
-                                                                            
+                                                                                
 #line 547 "speed.ch"
 #line 547 "speed.ch"
-                                                                           }
+                                                                              }
 #line 547 "speed.ch"
 #line 548 "speed.ch"
                         
@@ -3035,7 +3035,7 @@ PTREE FuncAccelerator ( PTREE funcName )
     
 #line 605 "speed.ch"
 #line 608 "speed.ch"
-    if ( (funcElem=(PPTREE)(*listFuncToken)[funcName]) ) {
+    if ( ((funcElem=(PPTREE)(*listFuncToken)[funcName])) ) {
 #line 608 "speed.ch"
 #line 609 "speed.ch"
                                                                     PTREE   ptArray ;
@@ -3128,77 +3128,77 @@ PTREE FuncAccelerator ( PTREE funcName )
                                                                             
 #line 635 "speed.ch"
 #line 636 "speed.ch"
-                                                                            while ( (tokenElem=(tokenList?tokenList.Nextl():(PPTREE)0)) ) {
+                                                                            while ( ((tokenElem=(tokenList?tokenList.Nextl():(PPTREE)0))) ) {
 #line 636 "speed.ch"
 #line 639 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                 if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 639 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                        (NumberTree(_inter) == metalang::STRING) &&
 #line 639 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_ALL_")) &&
+                                                                                                                                                        (!strcmp(Value(SonTree(_inter,1)),"_ALL_")) &&
 #line 639 "speed.ch"
-        1) ) {
+                                                                                                                                                        1) ) {
 #line 639 "speed.ch"
 #line 640 "speed.ch"
-                getAll = 1 ;
+                                                                                                                                                             getAll = 1 ;
 #line 640 "speed.ch"
 #line 641 "speed.ch"
-                break ;
-                
+                                                                                                                                                             break ;
+                                                                                                                                                             
 #line 641 "speed.ch"
 #line 642 "speed.ch"
-                
+                                                                                                                                                             
 #line 642 "speed.ch"
 #line 642 "speed.ch"
-             } else 
+                                                                                                                                                             } else 
 #line 642 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                 if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 642 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                        (NumberTree(_inter) == metalang::STRING) &&
 #line 642 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
+                                                                                                                                                        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
 #line 642 "speed.ch"
-        1) ) {
+                                                                                                                                                        1) ) {
 #line 642 "speed.ch"
 #line 643 "speed.ch"
-                nbNoStop += 1 ;
+                                                                                                                                                             nbNoStop += 1 ;
 #line 643 "speed.ch"
 #line 644 "speed.ch"
-                continue ;
-                
+                                                                                                                                                             continue ;
+                                                                                                                                                             
 #line 644 "speed.ch"
 #line 645 "speed.ch"
-                
+                                                                                                                                                             
 #line 645 "speed.ch"
 #line 645 "speed.ch"
-             } else 
+                                                                                                                                                             } else 
 #line 645 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                 if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 645 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                        (NumberTree(_inter) == metalang::STRING) &&
 #line 645 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
+                                                                                                                                                        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
 #line 645 "speed.ch"
-        1) ) {
+                                                                                                                                                        1) ) {
 #line 645 "speed.ch"
 #line 646 "speed.ch"
-                nbNoStop -= 1 ;
+                                                                                                                                                             nbNoStop -= 1 ;
 #line 646 "speed.ch"
 #line 647 "speed.ch"
-                continue ;
-                
+                                                                                                                                                             continue ;
+                                                                                                                                                             
 #line 647 "speed.ch"
 #line 648 "speed.ch"
-                
+                                                                                                                                                             
 #line 648 "speed.ch"
 #line 648 "speed.ch"
-             }
+                                                                                                                                                             }
 #line 648 "speed.ch"
 #line 649 "speed.ch"
-
+                                                                                                                                                 
 #line 649 "speed.ch"
 #line 649 "speed.ch"
-                                                                                                                                              }
+                                                                                                                                                 }
 #line 649 "speed.ch"
 #line 650 "speed.ch"
                                                                             
@@ -3229,108 +3229,108 @@ if ( ((_inter = (PPTREE)tokenElem,1) &&
                                                                                                         
 #line 659 "speed.ch"
 #line 660 "speed.ch"
-                                                                                                        while ( (tokenElem=(listToken?listToken.Nextl():(PPTREE)0)) ) {
+                                                                                                        while ( ((tokenElem=(listToken?listToken.Nextl():(PPTREE)0))) ) {
 #line 660 "speed.ch"
 #line 661 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                                             if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 661 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                                                    (NumberTree(_inter) == metalang::STRING) &&
 #line 661 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_ALL_")) &&
+                                                                                                                                                                                    (!strcmp(Value(SonTree(_inter,1)),"_ALL_")) &&
 #line 661 "speed.ch"
-        1) ) {
+                                                                                                                                                                                    1) ) {
 #line 661 "speed.ch"
 #line 662 "speed.ch"
-                output = 2 ;
+                                                                                                                                                                                         output = 2 ;
 #line 662 "speed.ch"
 #line 663 "speed.ch"
-                gotocol(1);
+                                                                                                                                                                                         gotocol(1);
 #line 663 "speed.ch"
 #line 664 "speed.ch"
-                PrintString("Warning -> Rule may take all tokens");
+                                                                                                                                                                                         PrintString("Warning -> Rule may take all tokens");
 #line 664 "speed.ch"
 #line 664 "speed.ch"
-                LNewLine(1);
+                                                                                                                                                                                         LNewLine(1);
 #line 664 "speed.ch"
-                
+                                                                                                                                                                                         
 #line 664 "speed.ch"
 #line 665 "speed.ch"
-                output = oldOutput ;
+                                                                                                                                                                                         output = oldOutput ;
 #line 665 "speed.ch"
 #line 666 "speed.ch"
-                break ;
-                
+                                                                                                                                                                                         break ;
+                                                                                                                                                                                         
 #line 666 "speed.ch"
 #line 667 "speed.ch"
-                
+                                                                                                                                                                                         
 #line 667 "speed.ch"
 #line 667 "speed.ch"
-             } else 
+                                                                                                                                                                                         } else 
 #line 667 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                                             if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 667 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                                                    (NumberTree(_inter) == metalang::STRING) &&
 #line 667 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
+                                                                                                                                                                                    (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
 #line 667 "speed.ch"
-        1) ) {
+                                                                                                                                                                                    1) ) {
 #line 667 "speed.ch"
 #line 668 "speed.ch"
-                noStopAllFound = true ;
+                                                                                                                                                                                         noStopAllFound = true ;
 #line 668 "speed.ch"
 #line 669 "speed.ch"
-                continue ;
-                
+                                                                                                                                                                                         continue ;
+                                                                                                                                                                                         
 #line 669 "speed.ch"
 #line 670 "speed.ch"
-                
+                                                                                                                                                                                         
 #line 670 "speed.ch"
 #line 670 "speed.ch"
-             } else 
+                                                                                                                                                                                         } else 
 #line 670 "speed.ch"
-if ( !noStopAllFound && ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                                                             if ( !noStopAllFound && ((_inter = (PPTREE)tokenElem,1) && 
 #line 670 "speed.ch"
-                                (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                                                                                         (NumberTree(_inter) == metalang::STRING) &&
 #line 670 "speed.ch"
-                                (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
+                                                                                                                                                                                                         (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
 #line 670 "speed.ch"
-                                1) ) {
+                                                                                                                                                                                                         1) ) {
 #line 670 "speed.ch"
 #line 671 "speed.ch"
-                                        output = 2 ;
+                                                                                                                                                                                                              output = 2 ;
 #line 671 "speed.ch"
 #line 672 "speed.ch"
-                                        gotocol(1);
+                                                                                                                                                                                                              gotocol(1);
 #line 672 "speed.ch"
 #line 673 "speed.ch"
-                                        PrintString("Warning -> Rule must allways be looked at");
+                                                                                                                                                                                                              PrintString("Warning -> Rule must allways be looked at");
 #line 673 "speed.ch"
 #line 673 "speed.ch"
-                                        LNewLine(1);
+                                                                                                                                                                                                              LNewLine(1);
 #line 673 "speed.ch"
-                                        
+                                                                                                                                                                                                              
 #line 673 "speed.ch"
 #line 674 "speed.ch"
-                                        output = oldOutput ;
+                                                                                                                                                                                                              output = oldOutput ;
 #line 674 "speed.ch"
 #line 675 "speed.ch"
-                                        break ;
-                                        
+                                                                                                                                                                                                              break ;
+                                                                                                                                                                                                              
 #line 675 "speed.ch"
 #line 676 "speed.ch"
-                                        
+                                                                                                                                                                                                              
 #line 676 "speed.ch"
 #line 676 "speed.ch"
-                                     }
+                                                                                                                                                                                                              }
 #line 676 "speed.ch"
 #line 677 "speed.ch"
-noStopAllFound = false ;
+                                                                                                                                                                             noStopAllFound = false ;
 #line 677 "speed.ch"
 #line 678 "speed.ch"
-
+                                                                                                                                                                             
 #line 678 "speed.ch"
 #line 678 "speed.ch"
-                                                                                                                                                                          }
+                                                                                                                                                                             }
 #line 678 "speed.ch"
 #line 679 "speed.ch"
                                                                                                         
@@ -3342,11 +3342,11 @@ noStopAllFound = false ;
                                                                         if ( !getAll && !nbNoStop ) {
 #line 682 "speed.ch"
 #line 683 "speed.ch"
-                                                                                                            PDESCRIPT_ELEM  pDescript = (PDESCRIPT_ELEM)0 ;
+                                                                                                            PDESCRIPT_ELEM pDescript = (PDESCRIPT_ELEM)0 ;
                                                                                                             
 #line 683 "speed.ch"
 #line 684 "speed.ch"
-                                                                                                            PDESCRIPT_ELEM  ptDescriptOld = (PDESCRIPT_ELEM)0 ;
+                                                                                                            PDESCRIPT_ELEM ptDescriptOld = (PDESCRIPT_ELEM)0 ;
                                                                                                             
 #line 684 "speed.ch"
 #line 685 "speed.ch"
@@ -3357,281 +3357,281 @@ noStopAllFound = false ;
                                                                                                             while ( funcElem ) {
 #line 686 "speed.ch"
 #line 687 "speed.ch"
-(tokenElem=(funcElem?funcElem.Nextl():(PPTREE)0));
+                                                                                                                                (tokenElem=(funcElem?funcElem.Nextl():(PPTREE)0));
 #line 687 "speed.ch"
-
+                                                                                                                                
 #line 687 "speed.ch"
 #line 692 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 692 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                       (NumberTree(_inter) == metalang::STRING) &&
 #line 692 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
+                                                                                                                                       (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_")) &&
 #line 692 "speed.ch"
-        1) ) {
+                                                                                                                                       1) ) {
 #line 692 "speed.ch"
 #line 693 "speed.ch"
-                continue ;
-                
+                                                                                                                                            continue ;
+                                                                                                                                            
 #line 693 "speed.ch"
 #line 694 "speed.ch"
-                
+                                                                                                                                            
 #line 694 "speed.ch"
 #line 694 "speed.ch"
-             } else 
+                                                                                                                                            } else 
 #line 694 "speed.ch"
-if ( ((_inter = (PPTREE)tokenElem,1) && 
+                                                                                                                                if ( ((_inter = (PPTREE)tokenElem,1) && 
 #line 694 "speed.ch"
-        (NumberTree(_inter) == metalang::STRING) &&
+                                                                                                                                       (NumberTree(_inter) == metalang::STRING) &&
 #line 694 "speed.ch"
-        (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
+                                                                                                                                       (!strcmp(Value(SonTree(_inter,1)),"_NO_STOP_ALL_FOUND_")) &&
 #line 694 "speed.ch"
-        1) ) {
+                                                                                                                                       1) ) {
 #line 694 "speed.ch"
 #line 695 "speed.ch"
-                continue ;
-                
+                                                                                                                                            continue ;
+                                                                                                                                            
 #line 695 "speed.ch"
 #line 696 "speed.ch"
-                
+                                                                                                                                            
 #line 696 "speed.ch"
 #line 696 "speed.ch"
-             }
+                                                                                                                                            }
 #line 696 "speed.ch"
 #line 697 "speed.ch"
-switch ( NumberTree(tokenElem) ) {
+                                                                                                                                switch ( NumberTree(tokenElem) ) {
 #line 697 "speed.ch"
 #line 699 "speed.ch"
-    case metalang::TOKEN : 
+                                                                                                                                case metalang::TOKEN : 
 #line 699 "speed.ch"
 #line 699 "speed.ch"
-    _Case69 : 
+                                                                                                                                _Case69 : 
 #line 699 "speed.ch"
 #line 699 "speed.ch"
-        ;
+                                                                                                                                ;
 #line 699 "speed.ch"
 #line 699 "speed.ch"
-        pDescript = FindStringDescript(AddKey(BrainyValue(tokenElem)), tokenElem);
+                                                                                                                                pDescript = FindStringDescript(AddKey(BrainyValue(tokenElem)), tokenElem);
 #line 699 "speed.ch"
 #line 700 "speed.ch"
-        if ( cplusGen ) 
+                                                                                                                                if ( cplusGen ) 
 #line 700 "speed.ch"
 #line 701 "speed.ch"
-            nbToken = AddConst(AddKey(BrainyValue(tokenElem)));
+                                                                                                                                nbToken = AddConst(AddKey(BrainyValue(tokenElem)));
 #line 701 "speed.ch"
-        else 
+                                                                                                                                else 
 #line 701 "speed.ch"
 #line 703 "speed.ch"
-            nbToken = AddConst(AddKey(BrainyValue(tokenElem)));
+                                                                                                                                nbToken = AddConst(AddKey(BrainyValue(tokenElem)));
 #line 703 "speed.ch"
-        
+                                                                                                                                
 #line 703 "speed.ch"
 #line 704 "speed.ch"
-        break ;
-        
+                                                                                                                                break ;
+                                                                                                                                
 #line 704 "speed.ch"
 #line 704 "speed.ch"
-    case metalang::STRING : 
+                                                                                                                                case metalang::STRING : 
 #line 704 "speed.ch"
 #line 704 "speed.ch"
-    _Case70 : 
+                                                                                                                                _Case70 : 
 #line 704 "speed.ch"
 #line 704 "speed.ch"
-        ;
+                                                                                                                                ;
 #line 704 "speed.ch"
 #line 704 "speed.ch"
-        goto _Case71 ;
-        
+                                                                                                                                goto _Case71 ;
+                                                                                                                                
 #line 704 "speed.ch"
 #line 707 "speed.ch"
-    case metalang::EXCLA : 
+                                                                                                                                case metalang::EXCLA : 
 #line 707 "speed.ch"
 #line 707 "speed.ch"
-    _Case71 : 
+                                                                                                                                _Case71 : 
 #line 707 "speed.ch"
 #line 707 "speed.ch"
-        ;
+                                                                                                                                ;
 #line 707 "speed.ch"
 #line 707 "speed.ch"
-        pDescript = FindStringDescript(SymboName(BrainyValue(tokenElem), 0), tokenElem);
+                                                                                                                                pDescript = FindStringDescript(SymboName(BrainyValue(tokenElem), 0), tokenElem);
 #line 707 "speed.ch"
 #line 708 "speed.ch"
-        nbToken = AddConst(SymboName(BrainyValue(tokenElem), 0));
+                                                                                                                                nbToken = AddConst(SymboName(BrainyValue(tokenElem), 0));
 #line 708 "speed.ch"
 #line 709 "speed.ch"
-        break ;
-        
+                                                                                                                                break ;
+                                                                                                                                
 #line 709 "speed.ch"
 #line 711 "speed.ch"
-    default : 
+                                                                                                                                default : 
 #line 711 "speed.ch"
 #line 711 "speed.ch"
-    _Case72 : 
+                                                                                                                                _Case72 : 
 #line 711 "speed.ch"
 #line 711 "speed.ch"
-        ;
+                                                                                                                                ;
 #line 711 "speed.ch"
 #line 711 "speed.ch"
-        pDescript = (PDESCRIPT_ELEM)0 ;
+                                                                                                                                pDescript = (PDESCRIPT_ELEM)0 ;
 #line 711 "speed.ch"
 #line 712 "speed.ch"
-        lexEntry = -2 ;
+                                                                                                                                lexEntry = -2 ;
 #line 712 "speed.ch"
 #line 713 "speed.ch"
-        nbToken = 0 ;
+                                                                                                                                nbToken = 0 ;
 #line 713 "speed.ch"
-}
+                                                                                                                                }
 #line 713 "speed.ch"
-
+                                                                                                                                
 #line 713 "speed.ch"
 #line 715 "speed.ch"
-if ( pDescript ) {
+                                                                                                                                if ( pDescript ) {
 #line 715 "speed.ch"
 #line 718 "speed.ch"
-                    if ( lexEntry == -1 ) {
+                                                                                                                                                  if ( lexEntry == -1 ) {
 #line 718 "speed.ch"
 #line 719 "speed.ch"
-                                                lexEntry = pDescript -> offset ;
+                                                                                                                                                                           lexEntry = pDescript -> offset ;
 #line 719 "speed.ch"
 #line 720 "speed.ch"
-                                                (lexEntryFunc=pDescript -> proc);
+                                                                                                                                                                           (lexEntryFunc=pDescript -> proc);
 #line 720 "speed.ch"
-                                                
+                                                                                                                                                                           
 #line 720 "speed.ch"
 #line 721 "speed.ch"
-                                                ptDescriptOld = pDescript ;
+                                                                                                                                                                           ptDescriptOld = pDescript ;
 #line 721 "speed.ch"
 #line 722 "speed.ch"
-                                                
+                                                                                                                                                                           
 #line 722 "speed.ch"
 #line 722 "speed.ch"
-                                             } else 
+                                                                                                                                                                           } else 
 #line 722 "speed.ch"
-                    if ( lexEntry != pDescript -> offset ) {
+                                                                                                                                                  if ( lexEntry != pDescript -> offset ) {
 #line 722 "speed.ch"
 #line 723 "speed.ch"
-                                                                int oldOutput = output ;
-                                                                
+                                                                                                                                                                                            int oldOutput = output ;
+                                                                                                                                                                                            
 #line 723 "speed.ch"
 #line 726 "speed.ch"
-                                                                PDESCRIPT_ELEM  ptDescriptMeta = FindStringDescript("META", (PTREE)0);
-                                                                
+                                                                                                                                                                                            PDESCRIPT_ELEM ptDescriptMeta = FindStringDescript("META", (PTREE)0);
+                                                                                                                                                                                            
 #line 726 "speed.ch"
 #line 729 "speed.ch"
-                                                                if ( ptDescriptOld == ptDescriptMeta ) {
+                                                                                                                                                                                            if ( ptDescriptOld == ptDescriptMeta ) {
 #line 729 "speed.ch"
 #line 730 "speed.ch"
-                                                                                                            lexEntry = pDescript -> offset ;
+                                                                                                                                                                                                                                     lexEntry = pDescript -> offset ;
 #line 730 "speed.ch"
 #line 731 "speed.ch"
-                                                                                                            (lexEntryFunc=pDescript -> proc);
+                                                                                                                                                                                                                                     (lexEntryFunc=pDescript -> proc);
 #line 731 "speed.ch"
-                                                                                                            
+                                                                                                                                                                                                                                     
 #line 731 "speed.ch"
 #line 732 "speed.ch"
-                                                                                                            ptDescriptOld = pDescript ;
+                                                                                                                                                                                                                                     ptDescriptOld = pDescript ;
 #line 732 "speed.ch"
 #line 733 "speed.ch"
-                                                                                                            
+                                                                                                                                                                                                                                     
 #line 733 "speed.ch"
 #line 733 "speed.ch"
-                                                                                                         }
+                                                                                                                                                                                                                                     }
 #line 733 "speed.ch"
 #line 736 "speed.ch"
-                                                                if ( pDescript != ptDescriptMeta ) {
+                                                                                                                                                                                            if ( pDescript != ptDescriptMeta ) {
 #line 736 "speed.ch"
 #line 739 "speed.ch"
-                                                                                                        output = 2 ;
+                                                                                                                                                                                                                                 output = 2 ;
 #line 739 "speed.ch"
 #line 740 "speed.ch"
-                                                                                                        gotocol(1);
+                                                                                                                                                                                                                                 gotocol(1);
 #line 740 "speed.ch"
 #line 741 "speed.ch"
-                                                                                                        PrintString("Warning -> Rule use lex entry : ");
+                                                                                                                                                                                                                                 PrintString("Warning -> Rule use lex entry : ");
 #line 741 "speed.ch"
 #line 741 "speed.ch"
-                                                                                                        WriteString(Value(lexEntryFunc));
+                                                                                                                                                                                                                                 WriteString(Value(lexEntryFunc));
 #line 741 "speed.ch"
 #line 741 "speed.ch"
-                                                                                                        PrintString(" and ");
+                                                                                                                                                                                                                                 PrintString(" and ");
 #line 741 "speed.ch"
 #line 741 "speed.ch"
-                                                                                                        WriteString(Value(pDescript -> proc));
+                                                                                                                                                                                                                                 WriteString(Value(pDescript -> proc));
 #line 741 "speed.ch"
 #line 741 "speed.ch"
-                                                                                                        LNewLine(1);
+                                                                                                                                                                                                                                 LNewLine(1);
 #line 741 "speed.ch"
-                                                                                                        
+                                                                                                                                                                                                                                 
 #line 741 "speed.ch"
 #line 742 "speed.ch"
-                                                                                                        gotocol(1);
+                                                                                                                                                                                                                                 gotocol(1);
 #line 742 "speed.ch"
 #line 743 "speed.ch"
-                                                                                                        WriteString("    For entries ");
+                                                                                                                                                                                                                                 WriteString("    For entries ");
 #line 743 "speed.ch"
 #line 743 "speed.ch"
-                                                                                                        WriteString(pDescript -> name);
+                                                                                                                                                                                                                                 WriteString(pDescript -> name);
 #line 743 "speed.ch"
 #line 743 "speed.ch"
-                                                                                                        WriteString(" And ");
+                                                                                                                                                                                                                                 WriteString(" And ");
 #line 743 "speed.ch"
 #line 743 "speed.ch"
-                                                                                                        WriteString(ptDescriptOld -> name);
+                                                                                                                                                                                                                                 WriteString(ptDescriptOld -> name);
 #line 743 "speed.ch"
 #line 743 "speed.ch"
-                                                                                                        LNewLine(1);
+                                                                                                                                                                                                                                 LNewLine(1);
 #line 743 "speed.ch"
-                                                                                                        
+                                                                                                                                                                                                                                 
 #line 743 "speed.ch"
 #line 744 "speed.ch"
-                                                                                                        output = oldOutput ;
+                                                                                                                                                                                                                                 output = oldOutput ;
 #line 744 "speed.ch"
 #line 745 "speed.ch"
-                                                                                                        lexEntry = -1 ;
+                                                                                                                                                                                                                                 lexEntry = -1 ;
 #line 745 "speed.ch"
 #line 746 "speed.ch"
-                                                                                                        break ;
-                                                                                                        
+                                                                                                                                                                                                                                 break ;
+                                                                                                                                                                                                                                 
 #line 746 "speed.ch"
 #line 747 "speed.ch"
-                                                                                                        
+                                                                                                                                                                                                                                 
 #line 747 "speed.ch"
 #line 747 "speed.ch"
-                                                                                                     }
+                                                                                                                                                                                                                                 }
 #line 747 "speed.ch"
 #line 748 "speed.ch"
-                                                                
+                                                                                                                                                                                            
 #line 748 "speed.ch"
 #line 748 "speed.ch"
-                                                              }
+                                                                                                                                                                                            }
 #line 748 "speed.ch"
 #line 751 "speed.ch"
-                    SET_ARRAY_VALUE(arrayEntry, nbToken);
+                                                                                                                                                  SET_ARRAY_VALUE(arrayEntry, nbToken);
 #line 751 "speed.ch"
 #line 752 "speed.ch"
-                    
+                                                                                                                                                  
 #line 752 "speed.ch"
 #line 752 "speed.ch"
-                  } else 
+                                                                                                                                                  } else 
 #line 752 "speed.ch"
-{
+                                                                                                                                {
 #line 752 "speed.ch"
 #line 753 "speed.ch"
-    lexEntry = -2 ;
+                                                                                                                                lexEntry = -2 ;
 #line 753 "speed.ch"
 #line 754 "speed.ch"
-    break ;
-    
+                                                                                                                                break ;
+                                                                                                                                
 #line 754 "speed.ch"
 #line 755 "speed.ch"
-    
+                                                                                                                                
 #line 755 "speed.ch"
 #line 755 "speed.ch"
-}
-
+                                                                                                                                }
+                                                                                                                                
 #line 755 "speed.ch"
 #line 756 "speed.ch"
-
+                                                                                                                                
 #line 756 "speed.ch"
 #line 756 "speed.ch"
                                                                                                                                 }
@@ -3646,14 +3646,14 @@ if ( pDescript ) {
                                                                         if ( FindStringDescript("META", (PTREE)0) ) {
 #line 760 "speed.ch"
 #line 761 "speed.ch"
-int nbToken = AddConst("META");
-
+                                                                                                                         int nbToken = AddConst("META");
+                                                                                                                         
 #line 761 "speed.ch"
 #line 762 "speed.ch"
-SET_ARRAY_VALUE(arrayEntry, nbToken);
+                                                                                                                         SET_ARRAY_VALUE(arrayEntry, nbToken);
 #line 762 "speed.ch"
 #line 763 "speed.ch"
-
+                                                                                                                         
 #line 763 "speed.ch"
 #line 763 "speed.ch"
                                                                                                                          }
@@ -3686,7 +3686,7 @@ SET_ARRAY_VALUE(arrayEntry, nbToken);
                                                                                                 {
 #line 775 "speed.ch"
 #line 775 "speed.ch"
-                                                                                                    char    name [10];
+                                                                                                    char    name [20];
                                                                                                     
 #line 775 "speed.ch"
 #line 776 "speed.ch"
@@ -4109,7 +4109,7 @@ SET_ARRAY_VALUE(arrayEntry, nbToken);
                                                                     
 #line 838 "speed.ch"
 #line 838 "speed.ch"
-                                                                }
+                                                                   }
 #line 838 "speed.ch"
 #line 841 "speed.ch"
     return (PTREE)0 ;
@@ -4266,117 +4266,117 @@ void DumpTokenArray ()
                                                                                     if ( !strcmp(Value(sontree(elem, 2)), name) ) {
 #line 891 "speed.ch"
 #line 892 "speed.ch"
-DumpBrainyValue(elem);
+                                                                                                                                         DumpBrainyValue(elem);
 #line 892 "speed.ch"
-
+                                                                                                                                         
 #line 892 "speed.ch"
 #line 893 "speed.ch"
-((_inter = (PPTREE)elem,1) && 
+                                                                                                                                         ((_inter = (PPTREE)elem,1) && 
 #line 893 "speed.ch"
-    (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
+                                                                                                                                         (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
 #line 893 "speed.ch"
-        (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
+                                                                                                                                         (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
 #line 893 "speed.ch"
-            ((elem=SonTree(_inter,2)),1) &&
+                                                                                                                                         ((elem=SonTree(_inter,2)),1) &&
 #line 893 "speed.ch"
-            1),
+                                                                                                                                         1),
 #line 893 "speed.ch"
-            (_inter=_storeVal[2],1),_retVal[2]) &&
+                                                                                                                                         (_inter=_storeVal[2],1),_retVal[2]) &&
 #line 893 "speed.ch"
-        1),
+                                                                                                                                         1),
 #line 893 "speed.ch"
-        (_inter=_storeVal[1],1),_retVal[1]) &&
+                                                                                                                                         (_inter=_storeVal[1],1),_retVal[1]) &&
 #line 893 "speed.ch"
-    1);
+                                                                                                                                         1);
 #line 893 "speed.ch"
-;
+                                                                                                                                         ;
 #line 893 "speed.ch"
 #line 894 "speed.ch"
-if ( strcmp(Value(elem), "0") ) {
+                                                                                                                                         if ( strcmp(Value(elem), "0") ) {
 #line 894 "speed.ch"
 #line 895 "speed.ch"
-                                        LNewLine(1);
+                                                                                                                                                                             LNewLine(1);
 #line 895 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 895 "speed.ch"
 #line 896 "speed.ch"
-                                        Tab();
+                                                                                                                                                                             Tab();
 #line 896 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 896 "speed.ch"
 #line 897 "speed.ch"
-                                        Mark();
+                                                                                                                                                                             Mark();
 #line 897 "speed.ch"
 #line 897 "speed.ch"
-                                        for ( col = 0 ; col < numberConst ; col++ ) {
+                                                                                                                                                                             for ( col = 0 ; col < numberConst ; col++ ) {
 #line 897 "speed.ch"
 #line 898 "speed.ch"
-                                                                                            if ( GET_ARRAY_VALUE(ptArray -> arrayEntry, col) ) 
+                                                                                                                                                                                                                              if ( GET_ARRAY_VALUE(ptArray -> arrayEntry, col) ) 
 #line 898 "speed.ch"
 #line 899 "speed.ch"
-                                                                                                WriteString(NameConst(col));
+                                                                                                                                                                                                                              WriteString(NameConst(col));
 #line 899 "speed.ch"
 #line 900 "speed.ch"
-                                                                                            LNewLine(1);
+                                                                                                                                                                                                                              LNewLine(1);
 #line 900 "speed.ch"
-                                                                                            
+                                                                                                                                                                                                                              
 #line 900 "speed.ch"
 #line 901 "speed.ch"
-                                                                                            
+                                                                                                                                                                                                                              
 #line 901 "speed.ch"
 #line 901 "speed.ch"
-                                                                                         }
+                                                                                                                                                                                                                              }
 #line 901 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 901 "speed.ch"
-                                        UnMark();
+                                                                                                                                                                             UnMark();
 #line 901 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 901 "speed.ch"
 #line 902 "speed.ch"
-                                        LNewLine(1);
+                                                                                                                                                                             LNewLine(1);
 #line 902 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 902 "speed.ch"
 #line 903 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 903 "speed.ch"
 #line 903 "speed.ch"
-                                    } else 
+                                                                                                                                                                             } else 
 #line 903 "speed.ch"
-{
+                                                                                                                                         {
 #line 903 "speed.ch"
 #line 904 "speed.ch"
-    LNewLine(1);
+                                                                                                                                         LNewLine(1);
 #line 904 "speed.ch"
-    
+                                                                                                                                         
 #line 904 "speed.ch"
 #line 905 "speed.ch"
-    Tab();
+                                                                                                                                         Tab();
 #line 905 "speed.ch"
-    
-#line 905 "speed.ch"
-#line 905 "speed.ch"
-    PrintString("ALWAYS");
+                                                                                                                                         
 #line 905 "speed.ch"
 #line 905 "speed.ch"
-    LNewLine(1);
+                                                                                                                                         PrintString("ALWAYS");
 #line 905 "speed.ch"
-    
+#line 905 "speed.ch"
+                                                                                                                                         LNewLine(1);
+#line 905 "speed.ch"
+                                                                                                                                         
 #line 905 "speed.ch"
 #line 906 "speed.ch"
-    
+                                                                                                                                         
 #line 906 "speed.ch"
 #line 906 "speed.ch"
-}
-
+                                                                                                                                         }
+                                                                                                                                         
 #line 906 "speed.ch"
 #line 907 "speed.ch"
-break ;
-
+                                                                                                                                         break ;
+                                                                                                                                         
 #line 907 "speed.ch"
 #line 908 "speed.ch"
-
+                                                                                                                                         
 #line 908 "speed.ch"
 #line 908 "speed.ch"
                                                                                                                                          }
@@ -4706,13 +4706,13 @@ break ;
                                                                 for ( col = 0 ; col < (numberConst + 8) / 8 ; col++ ) {
 #line 976 "speed.ch"
 #line 977 "speed.ch"
-sprintf(name, "\\%s", ConvertToOctal(ptArray -> arrayEntry [col]));
+                                                                                                                              sprintf(name, "\\%s", ConvertToOctal(ptArray -> arrayEntry [col]));
 #line 977 "speed.ch"
 #line 978 "speed.ch"
-WriteString(name);
+                                                                                                                              WriteString(name);
 #line 978 "speed.ch"
 #line 979 "speed.ch"
-
+                                                                                                                              
 #line 979 "speed.ch"
 #line 979 "speed.ch"
                                                                                                                               }
@@ -4880,105 +4880,105 @@ WriteString(name);
                                                                                     if ( !strcmp(Value(sontree(elem, 2)), name) ) {
 #line 1005 "speed.ch"
 #line 1006 "speed.ch"
-PrintString("/*");
+                                                                                                                                         PrintString("/*");
 #line 1006 "speed.ch"
 #line 1006 "speed.ch"
-DumpBrainyValue(elem);
+                                                                                                                                         DumpBrainyValue(elem);
 #line 1006 "speed.ch"
-
+                                                                                                                                         
 #line 1006 "speed.ch"
 #line 1007 "speed.ch"
-gotocol(38);
+                                                                                                                                         gotocol(38);
 #line 1007 "speed.ch"
 #line 1008 "speed.ch"
-PrintString("*/");
+                                                                                                                                         PrintString("*/");
 #line 1008 "speed.ch"
 #line 1009 "speed.ch"
-((_inter = (PPTREE)elem,1) && 
+                                                                                                                                         ((_inter = (PPTREE)elem,1) && 
 #line 1009 "speed.ch"
-    (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
+                                                                                                                                         (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
 #line 1009 "speed.ch"
-        (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
+                                                                                                                                         (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
 #line 1009 "speed.ch"
-            ((elem=SonTree(_inter,2)),1) &&
+                                                                                                                                         ((elem=SonTree(_inter,2)),1) &&
 #line 1009 "speed.ch"
-            1),
+                                                                                                                                         1),
 #line 1009 "speed.ch"
-            (_inter=_storeVal[2],1),_retVal[2]) &&
+                                                                                                                                         (_inter=_storeVal[2],1),_retVal[2]) &&
 #line 1009 "speed.ch"
-        1),
+                                                                                                                                         1),
 #line 1009 "speed.ch"
-        (_inter=_storeVal[1],1),_retVal[1]) &&
+                                                                                                                                         (_inter=_storeVal[1],1),_retVal[1]) &&
 #line 1009 "speed.ch"
-    1);
+                                                                                                                                         1);
 #line 1009 "speed.ch"
-;
+                                                                                                                                         ;
 #line 1009 "speed.ch"
 #line 1010 "speed.ch"
-gotocol(40);
+                                                                                                                                         gotocol(40);
 #line 1010 "speed.ch"
 #line 1011 "speed.ch"
-if ( strcmp(Value(elem), "0") ) {
+                                                                                                                                         if ( strcmp(Value(elem), "0") ) {
 #line 1011 "speed.ch"
 #line 1012 "speed.ch"
-                                        PrintString("(&");
+                                                                                                                                                                             PrintString("(&");
 #line 1012 "speed.ch"
 #line 1013 "speed.ch"
-                                        if ( cplusGen ) {
+                                                                                                                                                                             if ( cplusGen ) {
 #line 1013 "speed.ch"
 #line 1014 "speed.ch"
-                                                            WriteString(LanguageName(LO_CASE));
+                                                                                                                                                                                              WriteString(LanguageName(LO_CASE));
 #line 1014 "speed.ch"
 #line 1014 "speed.ch"
-                                                            WriteString("::");
+                                                                                                                                                                                              WriteString("::");
 #line 1014 "speed.ch"
 #line 1014 "speed.ch"
-                                                            WriteString(Value(elem));
+                                                                                                                                                                                              WriteString(Value(elem));
 #line 1014 "speed.ch"
 #line 1015 "speed.ch"
-                                                            
+                                                                                                                                                                                              
 #line 1015 "speed.ch"
 #line 1015 "speed.ch"
-                                                         } else 
+                                                                                                                                                                                              } else 
 #line 1015 "speed.ch"
 #line 1016 "speed.ch"
-                                            WriteString(NameLang(Value(elem)));
+                                                                                                                                                                             WriteString(NameLang(Value(elem)));
 #line 1016 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 1016 "speed.ch"
 #line 1017 "speed.ch"
-                                        PrintString(")");
+                                                                                                                                                                             PrintString(")");
 #line 1017 "speed.ch"
 #line 1018 "speed.ch"
-                                        break ;
-                                        
+                                                                                                                                                                             break ;
+                                                                                                                                                                             
 #line 1018 "speed.ch"
 #line 1019 "speed.ch"
-                                        
+                                                                                                                                                                             
 #line 1019 "speed.ch"
 #line 1019 "speed.ch"
-                                    } else 
+                                                                                                                                                                             } else 
 #line 1019 "speed.ch"
-{
+                                                                                                                                         {
 #line 1019 "speed.ch"
 #line 1020 "speed.ch"
-    DumpBrainyValue(elem);
+                                                                                                                                         DumpBrainyValue(elem);
 #line 1020 "speed.ch"
-    
+                                                                                                                                         
 #line 1020 "speed.ch"
 #line 1021 "speed.ch"
-    
+                                                                                                                                         
 #line 1021 "speed.ch"
 #line 1021 "speed.ch"
-}
-
+                                                                                                                                         }
+                                                                                                                                         
 #line 1021 "speed.ch"
 #line 1022 "speed.ch"
-break ;
-
+                                                                                                                                         break ;
+                                                                                                                                         
 #line 1022 "speed.ch"
 #line 1023 "speed.ch"
-
+                                                                                                                                         
 #line 1023 "speed.ch"
 #line 1023 "speed.ch"
                                                                                                                                          }
@@ -5124,58 +5124,58 @@ break ;
                                                                                     if ( !strcmp(Value(sontree(elem, 2)), name) ) {
 #line 1045 "speed.ch"
 #line 1046 "speed.ch"
-PrintString("/*");
+                                                                                                                                         PrintString("/*");
 #line 1046 "speed.ch"
 #line 1046 "speed.ch"
-DumpBrainyValue(elem);
+                                                                                                                                         DumpBrainyValue(elem);
 #line 1046 "speed.ch"
-
+                                                                                                                                         
 #line 1046 "speed.ch"
 #line 1047 "speed.ch"
-gotocol(38);
+                                                                                                                                         gotocol(38);
 #line 1047 "speed.ch"
 #line 1048 "speed.ch"
-PrintString("*/");
+                                                                                                                                         PrintString("*/");
 #line 1048 "speed.ch"
 #line 1049 "speed.ch"
-gotocol(40);
+                                                                                                                                         gotocol(40);
 #line 1049 "speed.ch"
 #line 1050 "speed.ch"
-((_inter = (PPTREE)elem,1) && 
+                                                                                                                                         ((_inter = (PPTREE)elem,1) && 
 #line 1050 "speed.ch"
-    (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
+                                                                                                                                         (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
 #line 1050 "speed.ch"
-        (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
+                                                                                                                                         (_retVal[2]=((_storeVal[2]=_inter,_inter=SonTree(_inter,1),1) &&
 #line 1050 "speed.ch"
-            (_retVal[3]=((_storeVal[3]=_inter,_inter=SonTree(_inter,1),1) &&
+                                                                                                                                         (_retVal[3]=((_storeVal[3]=_inter,_inter=SonTree(_inter,1),1) &&
 #line 1050 "speed.ch"
-                ((elem=SonTree(_inter,2)),1) &&
+                                                                                                                                         ((elem=SonTree(_inter,2)),1) &&
 #line 1050 "speed.ch"
-                1),
+                                                                                                                                         1),
 #line 1050 "speed.ch"
-                (_inter=_storeVal[3],1),_retVal[3]) &&
+                                                                                                                                         (_inter=_storeVal[3],1),_retVal[3]) &&
 #line 1050 "speed.ch"
-            1),
+                                                                                                                                         1),
 #line 1050 "speed.ch"
-            (_inter=_storeVal[2],1),_retVal[2]) &&
+                                                                                                                                         (_inter=_storeVal[2],1),_retVal[2]) &&
 #line 1050 "speed.ch"
-        1),
+                                                                                                                                         1),
 #line 1050 "speed.ch"
-        (_inter=_storeVal[1],1),_retVal[1]) &&
+                                                                                                                                         (_inter=_storeVal[1],1),_retVal[1]) &&
 #line 1050 "speed.ch"
-    1);
+                                                                                                                                         1);
 #line 1050 "speed.ch"
-;
+                                                                                                                                         ;
 #line 1050 "speed.ch"
 #line 1051 "speed.ch"
-WriteString(Value(elem));
+                                                                                                                                         WriteString(Value(elem));
 #line 1051 "speed.ch"
 #line 1052 "speed.ch"
-break ;
-
+                                                                                                                                         break ;
+                                                                                                                                         
 #line 1052 "speed.ch"
 #line 1053 "speed.ch"
-
+                                                                                                                                         
 #line 1053 "speed.ch"
 #line 1053 "speed.ch"
                                                                                                                                          }
@@ -5497,16 +5497,16 @@ void ReleasePosComment ( PTREE tree )
             replacetree(elem, 0, (PTREE)0);
 #line 1101 "speed.ch"
 #line 1102 "speed.ch"
-            while ( (elem=(list?list.Nextl():(PPTREE)0)) ) {
+            while ( ((elem=(list?list.Nextl():(PPTREE)0))) ) {
 #line 1102 "speed.ch"
 #line 1103 "speed.ch"
-                                                                ReleasePosComment(elem);
+                                                                    ReleasePosComment(elem);
 #line 1103 "speed.ch"
 #line 1104 "speed.ch"
-                                                                
+                                                                    
 #line 1104 "speed.ch"
 #line 1104 "speed.ch"
-                                                               }
+                                                                  }
 #line 1104 "speed.ch"
 #line 1105 "speed.ch"
             break ;

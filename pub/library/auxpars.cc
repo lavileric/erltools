@@ -62,58 +62,58 @@
 #include <vector>
 
 /* void SwitchLang PARAM((char *)); */
-void                    SwitchLang (char *) ;
-void                    FreeHeadComm () ;
-void                    InitStoreRef () ;
-int                     isVirtMod = 0 ;
-int                     input, output ;         /* files for input and output */ 
-int                     *tabArity ;
-EString                 outputString ;
+void                            SwitchLang (char *) ;
+void                            FreeHeadComm () ;
+void                            InitStoreRef () ;
+int                             isVirtMod = 0 ;
+int                             input, output ;         /* files for input and output */ 
+int                             *tabArity ;
+EString                         outputString ;
 
 /* int     (*FuncArity)( ); */
-int                     languageMask ;
-static int              nbLanguage = 0 ;
-PPTREE                  (*the_parse_entry_pt)(int) ;
-STRINGELEM              *listConst = (STRINGELEM *)0 ;
-char                    c ;
-int                     line = 1, col = 0, firstOnLine = 1 ;
-int                     metaDebug = 1 ;
-static int              storLine = -1, storCol = -1 ;
-int                     _funcLevel = 0 ;
-PPTREE                  _lastTree = (PPTREE)0 ; /* last tree created by a parser function */ 
-char                    oldBuf [MAXLENGTH];     /* use to retrieve character
-                                                   read and not used */ 
-char                    stockBuf [MAXLENGTH];   /* the characters for the current token */ 
-int                     ptOldBuf = -1 ;
-int                     ptStockBuf = -1 ;
-int                     tokenAhead = 0 ;
-int                     tabValue = 4 ;
-int                     lexCallLex = 0 ;        /* indicates that a lex procedure call lex */ 
-int                     dumpCoord = 1 ;         /* indicates that we must put coord commentaries */ 
-PCOMM_ELEM              listComm = (PCOMM_ELEM)0 ;
-static PCOMM_ELEM       listCommFree = (PCOMM_ELEM)0 ;
-int                     rightMargin = 75 ;      /* right margin, after this column a tab goto
-                                                   column 0 */ 
-char                    *currentLanguage ;
-PLANG                   pCurrentLanguage = (PLANG)0 ;
-static int              noErr = 0 ;             /* do not trigger error in getstring
-                                                   (used in getstrings) */ 
-LEX_STRUCT              lexEl ;
-int                     oldLine = 1 ;
-int                     oldCol ;
-int                     oldColEntry, oldLineEntry ;
-char                    errStr [512];
-char                    *_ptString ;
-int                     _nbCharact ;
-static std::vector<EString>    stackFileRead ;
-static EString          lastFileRead ;
-bool                    emacsCompatibleError = false ;
-int                     keepOutputString ;
+int                             languageMask ;
+static int                      nbLanguage = 0 ;
+PPTREE                          (*the_parse_entry_pt)(int) ;
+STRINGELEM                      *listConst = (STRINGELEM *)0 ;
+char                            c ;
+int                             line = 1, col = 0, firstOnLine = 1 ;
+int                             metaDebug = 1 ;
+static int                      storLine = -1, storCol = -1 ;
+int                             _funcLevel = 0 ;
+PPTREE                          _lastTree = (PPTREE)0 ; /* last tree created by a parser function */ 
+char                            oldBuf [MAXLENGTH];     /* use to retrieve character
+                                                           read and not used */ 
+char                            stockBuf [MAXLENGTH];   /* the characters for the current token */ 
+int                             ptOldBuf = -1 ;
+int                             ptStockBuf = -1 ;
+int                             tokenAhead = 0 ;
+int                             tabValue = 4 ;
+int                             lexCallLex = 0 ;        /* indicates that a lex procedure call lex */ 
+int                             dumpCoord = 1 ;         /* indicates that we must put coord commentaries */ 
+PCOMM_ELEM                      listComm = (PCOMM_ELEM)0 ;
+static PCOMM_ELEM               listCommFree = (PCOMM_ELEM)0 ;
+int                             rightMargin = 75 ;      /* right margin, after this column a tab goto
+                                                           column 0 */ 
+char                            *currentLanguage ;
+PLANG                           pCurrentLanguage = (PLANG)0 ;
+static int                      noErr = 0 ;             /* do not trigger error in getstring
+                                                           (used in getstrings) */ 
+LEX_STRUCT                      lexEl ;
+int                             oldLine = 1 ;
+int                             oldCol ;
+int                             oldColEntry, oldLineEntry ;
+char                            errStr [512];
+char                            *_ptString ;
+int                             _nbCharact ;
+static std::vector<EString>     stackFileRead ;
+static EString                  lastFileRead ;
+bool                            emacsCompatibleError = false ;
+int                             keepOutputString ;
 
 // char                *stringlex = lexEl.string ;
-int                     currCol = 0 ;           /* the current column for the display */ 
-int                     currLine = 0 ;          /* the current line for the display */ 
-int                     writeCol = 0 ;          /* the column of the last write */ 
+int                             currCol = 0 ;           /* the current column for the display */ 
+int                             currLine = 0 ;          /* the current line for the display */ 
+int                             writeCol = 0 ;          /* the column of the last write */ 
 
 #define MAXTABTAB 80
 
@@ -149,7 +149,7 @@ void Flush ()
 
 int True ()
 {
-    return (1);
+    return 1 ;
 }
 
 /******************************************************************
@@ -334,7 +334,9 @@ void _fastcall TabInt ()
     
     keepCol =  writeCol ;
     NewCol  =  TAB_VALUE(currCol, 1);
-    while ( currCol != NewCol ) {
+    if ( NewCol < 0 || NewCol > rightMargin ) 
+        return ;
+    while ( currCol < NewCol ) {
         WriteStringInt(" "); /* WriteString increments currCol */ 
         HasPutWhite =  1 ;
         justPutSpace++ ;
@@ -637,7 +639,7 @@ int _fastcall GetString ( const char *string, int retrieve )
                 ptStockBuf =  -1 ;
         }
     else 
-        return (0);
+        return 0 ;
     return !*string ;
 }
 
@@ -1558,6 +1560,8 @@ void InitOutput ()
     justPutNewLine =  justPutSpace = justPutTab = 0 ;
     output         =  1 ;
     storLine       =  storCol = -1 ;
+    tabValue       =  4 ;
+    rightMargin    =  256 ;
 }
 
 static char *metaName = 0 ;
@@ -2127,7 +2131,7 @@ unsigned int TreeSize ( PPTREE tree )
     PPTREE  myTree ;
     
     if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
-        return (0);
+        return 0 ;
     switch ( NumberTree(tree) ) {
         case TERM_TREE : 
             return (char *)SON_READ(tree, 2) - (char *)0 + TreeSize((PPTREE)SON_READ(tree, 0)) + (2 + 2) * sizeof(PPTREE) + 2 * sizeof(int);
@@ -4549,7 +4553,7 @@ PPTREE Parser::ReadInFile ( int oldInput )
         /* el 31/03/98 */
 #       if 0
             lseek(input, posFileInput - lBufInput + posBufInput + 1, SEEK_SET);
-#       else
+#       else 
             _lseek(input, posFileInput - lBufInput + posBufInput, SEEK_SET); /* restore other things */ 
 #       endif
         input        =  oldInput ;
@@ -5015,9 +5019,9 @@ void    (*ptMetaExit)(int, const char *) = &DefaultExit ; // function called on 
 //              string : a string displayed before exiting
 void MetaExit ( int level, const char *string )
 {
+    
     // int i = 1 ;
     // int j = 1 / (i - 1);
-    
     write(2, string, strlen(string));
     ClearStoreRef();
     (*ptMetaExit)(level, string);

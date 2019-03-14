@@ -1,5 +1,8 @@
 #ifndef OPTIM_GENETIC_HEADER_
 #   define OPTIM_GENETIC_HEADER_ 
+#   define MAX_GENERATED 128
+#   define MAX_GENERATED_FLOAT 64000
+#   define SEARCH_DIVIDER 2
     
     // system include
 #   include <vector>
@@ -67,8 +70,8 @@
                 }
                 
                 // Methods
-		void            InitPopulation (EString fileName = "", bool init = true ) ;
-		virtual bool    Init (EString fileName = "", bool init = true ) ;
+                void            InitPopulation (EString fileName = "", bool init = true) ;
+                virtual bool    Init (EString fileName = "", bool init = true) ;
                 virtual bool    Loop (bool verbose = true) ;
                 
                 virtual bool Run ( EString fileName = "", bool verbose = true )
@@ -245,8 +248,8 @@
                 bool                                Hybridation (std::vector<IndividualType> &, std::vector<IndividualType> &, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray) ;
                 void                                Mutation (std::vector<IndividualType> &, std::vector<IndividualType> &, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray) ;
                 void                                MutateElem (int lFather, std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, unsigned int index) ;
-                void                                Vibrato (std::vector<IndividualType> &, std::vector<IndividualType> &
-                    , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool max = false) ;
+                bool                                Vibrato (std::vector<IndividualType> &, std::vector<IndividualType> &
+                    , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool max = false, bool best = false) ;
                 void                                SurvivalSelection (std::vector<IndividualType> &, std::vector<IndividualType> &, std::vector<IndividualType> &
                     , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray) ;
                 bool                                IsIndividualAClone (std::vector<IndividualType> &, std::vector<IndividualType> &, unsigned int rank) ;
@@ -273,7 +276,7 @@
                 bool                                pvRec ;
         };
     template <class IndividualType> 
-	void OptimGenetic<IndividualType> ::InitPopulation ( EString fileName, bool init)
+        void OptimGenetic<IndividualType> ::InitPopulation ( EString fileName, bool init )
         {
             unsigned int    currentSize = pvPopulationSize ;
             unsigned int    startInit = 0 ;
@@ -312,7 +315,7 @@
                 pvNbMaxSteadyGenerations =  pvPopulationSize ;
             
             // not already initialized do it
-	    if ( !startInit && init ) {
+            if ( !startInit && init ) {
                 if ( pvPopulationSize > 50 ) {
                     unsigned int    bestSlice = pvPopulationSize * pvBestSlice / 100 ;
                     if ( bestSlice > 50 ) {
@@ -340,7 +343,7 @@
         }
         
     template <class IndividualType> 
-	bool OptimGenetic<IndividualType> ::Init ( EString fileName , bool init )
+        bool OptimGenetic<IndividualType> ::Init ( EString fileName, bool init )
         {
             
             // std::cout << "Starting Genetic Algorithm Optimization\n";
@@ -354,7 +357,7 @@
                 _close(_open(fileName, O_CREAT | O_RDWR | O_TRUNC, 0666));
             }
             pvWritten =  0 ;
-	    InitPopulation(fileName,init);
+            InitPopulation(fileName, init);
             return true ;
         }
         
@@ -467,17 +470,37 @@
             nextPopulation.resize(refPopulation.size());
             Hybridation(refPopulation, nextPopulation, sortArray);
             if ( pvSteadyGenerationNumber && Vibrato() ) {
-		int nbCreated = MTRandomValue(0, pvBestSlice * pvPopulationSize / 100);
+                bool    first = true ;
+                int     nbCreated = MTRandomValue<int> (0, pvBestSlice * pvPopulationSize / 100);
                 if ( nbCreated < 1 ) 
                     nbCreated =  1 ;
+                
+                // if there are already some final elements do not do vibrato
+                {
+                    unsigned int    popSize = refPopulation.size();
+                    for ( unsigned int index = 0 ; index < popSize ; index++ ) {
+                        if ( refPopulation [index].Final() ) {
+                            nbCreated =  0 ;
+                        }
+                    }
+                }
+                
+                // do vibrato
+                if ( Vibrato() && nbCreated-- ) 
+                    if ( Vibrato(refPopulation, nextPopulation, sortArray, true, true) ) 
+                        nbCreated =  0 ;
                 while ( nbCreated-- ) {
                     if ( Vibrato() ) {
-                        
-                        // small vibrato
-                        Vibrato(refPopulation, nextPopulation, sortArray);
+#                       if 0
+                            
+                            // small vibrato
+                            if ( Vibrato(refPopulation, nextPopulation, sortArray) ) 
+                                break ;
+#                       endif
                         
                         // vibrato with extreme value
-                        Vibrato(refPopulation, nextPopulation, sortArray, true);
+                        if ( Vibrato(refPopulation, nextPopulation, sortArray, true) ) 
+                            break ;
                     }
                 }
             }
@@ -732,10 +755,10 @@
                     unsigned int    sum ;
                     unsigned int    lMother = 0 ;
                     unsigned int    lFather = 0 ;
-		    lFather =  sortArray [this->RankingSelect(MTRandomValue(0, (refPop * (refPop + 1))))].index ;
+                    lFather =  sortArray [this->RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))))].index ;
                     
                     // select mother
-		    index   =  this->RankingSelect(MTRandomValue(0, (refPop * (refPop + 1))));
+                    index   =  this->RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))));
                     {
                         lMother =  sortArray [index].index ;
                         if ( lMother == lFather ) {
@@ -865,7 +888,7 @@
                     
                     // Randomly choose the individual index
                     // ------------------------------------
-		    lFather =  sortArray [ /* refPop - 1 - */ this->RankingSelect(MTRandomValue(0, (limitBest * (limitBest + 1))))].index ;
+                    lFather =  sortArray [ /* refPop - 1 - */ this->RankingSelect(MTRandomValue<int> (0, (limitBest * (limitBest + 1))))].index ;
                     
                     // Mutate this elememnt
                     MutateElem(lFather, refPopulation, nextPopulation, initNext + index++);
@@ -883,14 +906,14 @@
     //
     //*****************************************************************************
     template <class IndividualType> 
-        void OptimGenetic<IndividualType> ::Vibrato ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-            , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool max )
+        bool OptimGenetic<IndividualType> ::Vibrato ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
+            , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool max, bool best )
         {
             unsigned int    refPop = refPopulation.size();
             
             // empty do nothing
             if ( !nextPopulation.size() ) 
-                return ;
+                return false ;
             
             // For each individual to be mutated
             // ---------------------------------
@@ -906,26 +929,41 @@
                 // ----------------------------
                 int             selectedIndex ;
                 IndividualType  newType ;
-                newType.Affect(
-		    refPopulation [selectedIndex = sortArray [this->RankingSelect(MTRandomValue((lIndIndex + 1) * (lIndIndex + 2), refPop * (refPop + 1)))].index].Self());
+                if ( best ) {
+                    newType.Affect(refPopulation [selectedIndex = sortArray [this->RankingSelect(refPop * (refPop + 1) - 1)].index].Self());
+                } else {
+                    newType.Affect(
+                        refPopulation [selectedIndex = sortArray [this->RankingSelect(MTRandomValue<int> (lIndIndex * (lIndIndex + 1), refPop * (refPop + 1)))].index
+                            ].Self());
+                }
+                
+                // if useless to do vibrato on this individual skip
+                if ( !newType.Self().Vibrato() || newType.Final() ) 
+                    return false ;
+                
+                // --
                 typename IndividualType::TypeParam  oldFeature ;
                 typename IndividualType::TypeParam  newFeature ;
                 bool                                sthingChanged = true ;
                 
                 // FeatureType     *tabFeature = new FeatureType [newType.Size()];
-                typename IndividualType::TypeCost   bestCost, currCost ;
-                bestCost =  currCost = ComputeCost(refPopulation [sortArray [lIndIndex].index]);
-                IndividualType  tempo ;
+                typename IndividualType::TypeCost   bestCost, currCost, oldCost, currCost1, currCost2 ;
+                
+                // --
+                IndividualType                      tempo ;
                 tempo.Affect(newType.Self());
-                bool                                improved = true ;
-                bool                                record = false ;
-                typename IndividualType::TypeCost   oldCost = ComputeCost(tempo);
-                int                                 counter = 3 ;
-                int                                 nbGenerated = 1 ;
-                tempo.Affect(newType);
-                newType.Affect(refPopulation [selectedIndex]);
+                bool            improved = true ;
+                bool            record = false ;
+                unsigned int    nbGenerated = 1 ;
+                oldCost =  bestCost = currCost = ComputeCost(tempo);
+                
+                // --
+                // tempo.Affect(newType);
+                // newType.Affect(refPopulation [selectedIndex]);
                 std::set<unsigned int>  setParam ;
-                while ( improved && nbGenerated < 100 ) {
+                unsigned int            maxGenerated ;
+                maxGenerated =  MAX_GENERATED ;
+                while ( improved && nbGenerated < maxGenerated ) {
                     unsigned int    accessor ;
                     improved =  false ;
                     setParam.clear();
@@ -933,37 +971,56 @@
                         setParam.insert(param);
                     }
                     unsigned int    nbBoucle = 36 ;
-                    for ( unsigned int param = 0 ; param < newType.Size() && nbGenerated < 100 && nbBoucle-- ; param++ ) {
+                    for ( unsigned int param = 0 ; param < newType.Size() && nbGenerated < maxGenerated && nbBoucle-- ; param++ ) {
                         if ( setParam.empty() ) 
                             break ;
                         auto             accessSet = setParam.begin();
                         
-			// accessSet = accessSet + (int)MTRandomValue(0, newType.Size() - param);
-			unsigned int    pos = (int)MTRandomValue(0, setParam.size());
+                        // select a parameter to modify
+                        // accessSet = accessSet + (int)MTRandomValue(0, newType.Size() - param);
+                        unsigned int    pos = (int)MTRandomValue<int> (0, setParam.size());
                         if ( pos ) 
                             std::advance(accessSet, pos);
+                        
+                        // select given element and remove it from selectable
                         accessor =  *accessSet ;
                         setParam.erase(accessSet);
                         sthingChanged =  false ;
-                        tempo.Feature(accessor, (newFeature = tempo.Limits(accessor).Vibrato(oldFeature = tempo.Feature(accessor))));
-                        if ( newFeature != oldFeature && nbGenerated++ < 100 && (currCost = ComputeCost(tempo)) > oldCost ) {
+                        
+                        // treating floats, more iterations
+                        if ( tempo.Limits(accessor).Step() < 1 ) 
+                            maxGenerated =  MAX_GENERATED_FLOAT ;
+                        
+                        // change value for selected element
+                        newFeature =  oldFeature = tempo.Feature(accessor);
+                        newFeature =  tempo.Limits(accessor).Vibrato(newFeature);
+                        tempo.Feature(accessor, newFeature);
+                        typename IndividualType::TypeLimit::TypeLimit   currentVal = tempo.Limits(accessor).VibratoValue();
+                        if ( newFeature != oldFeature && nbGenerated++ < maxGenerated && (currCost = ComputeCost(tempo)) > oldCost ) {
                             
                             //          tabFeature [param] = newFeature ;
+                            oldFeature    =  newFeature ;
                             oldCost       =  currCost ;
                             sthingChanged =  true ;
                             improved      =  true ;
                             record        =  true ;
                         } else {
-                            double  currentVal = tempo.Limits(accessor).VibratoValue();
-                            tempo.Feature(accessor, (newFeature = tempo.Limits(accessor).Vibrato(oldFeature, -1 * currentVal)));
-                            if ( newFeature != oldFeature && nbGenerated++ < 100 && (currCost = ComputeCost(tempo)) > oldCost ) {
+                            if ( currCost != oldCost ) 
+                                sthingChanged =  true ;
+                            newFeature =  oldFeature - currentVal ;
+                            tempo.Feature(accessor, newFeature);
+                            if ( newFeature != oldFeature && nbGenerated++ < maxGenerated && (currCost = ComputeCost(tempo)) > oldCost ) {
                                 
                                 //          tabFeature [param] = newFeature ;
+                                oldFeature    =  newFeature ;
                                 oldCost       =  currCost ;
                                 sthingChanged =  true ;
                                 improved      =  true ;
                                 record        =  true ;
+                                currentVal    =  -currentVal ;
                             } else {
+                                if ( currCost != oldCost ) 
+                                    sthingChanged =  true ;
                                 
                                 // tabFeature [param] = oldFeature ;
                                 tempo.Feature(accessor, oldFeature);
@@ -971,45 +1028,131 @@
                         }
                         
                         // try to increase to big value in same direction
-                        if ( max && sthingChanged ) {
-                            typename IndividualType::TypeLimit::TypeLimit   currentVal ;
-                            while ( max && sthingChanged ) {
-                                sthingChanged =  false ;
-                                currentVal    =  tempo.Limits(accessor).VibratoValue();
-                                if ( currentVal >= 0 && 2 * currentVal < 0 || currentVal <= 0 && 2 * currentVal > 0 ) 
-                                    continue ;
-                                tempo.Feature(accessor, (newFeature = tempo.Limits(accessor).Vibrato(oldFeature = tempo.Feature(accessor), 2 * currentVal)));
-                                if ( newFeature != oldFeature && nbGenerated++ < 100 && (currCost = ComputeCost(tempo)) > oldCost ) 
-                                {
-                                    
-                                    //          tabFeature [param] = newFeature ;
-                                    oldCost       =  currCost ;
-                                    sthingChanged =  true ;
-                                } else 
-                                    // tabFeature [param] = oldFeature ;
-                                    tempo.Feature(accessor, oldFeature);
+                        // if no change in cost maybe effect of change not visible because of precision, only for floats
+                        typename IndividualType::TypeLimit::TypeLimit   multiplier = 1 ;
+                        unsigned int                                    multiplierStep = currCost == oldCost ? 10 : 2 ;
+                        if ( max && (sthingChanged /* || currCost == oldCost && tempo.Limits(accessor).VibratoValue() < 1*/ ) ) {
+                            bool    isRightVal (false) ;
+                            if ( improved ) 
+                                while ( true ) {
+                                    multiplier *= multiplierStep ;
+                                    if ( currentVal >= 0 && multiplier * currentVal < 0
+                                            || currentVal <= 0 && multiplier * currentVal > 0
+                                            || isnan(oldFeature + multiplier * currentVal)
+                                            || isnan(multiplier) ) 
+                                        break ;
+                                    newFeature =  oldFeature + currentVal * multiplier ;
+                                    tempo.Feature(accessor, newFeature);
+                                    if ( nbGenerated++ < maxGenerated && newFeature != oldFeature && (currCost = ComputeCost(tempo)) >= oldCost ) {
+                                        if ( currCost > oldCost ) {
+                                            oldCost        =  currCost ;
+                                            oldFeature     =  newFeature ;
+                                            isRightVal     =  true ;
+                                            multiplierStep =  2 ;
+                                        } else if ( multiplierStep == 2 ) {
+                                            
+                                            // we are in the case of some effects were observed so if no longer effect exit
+                                            tempo.Feature(accessor, oldFeature);
+                                            break ;
+                                        }
+                                    } else {
+                                        tempo.Feature(accessor, oldFeature);
+                                        break ;
+                                    }
+                                }
+                            if ( !isRightVal ) {
+                                multiplier =  1 ;
                             }
                             
-                            // then find the max going back
-                            typename IndividualType::TypeLimit::TypeLimit   newVal = currentVal ;
-                            sthingChanged =  true ;
-                            unsigned int    divider = 1 ;
-                            
-                            // search the furthest highest
-                            while ( currentVal / (2 * divider * divider) >= 1 ) {
-                                divider    *= 2 ;
+                            // then find a better best by dichotomy
+                            {
+                                typename IndividualType::TypeLimit::TypeLimit   maxVal = multiplier * currentVal ;
+                                typename IndividualType::TypeLimit::TypeLimit   middleVal = maxVal / SEARCH_DIVIDER ;
+                                bool                                            backAllowed = true ;
+                                unsigned int                                    sameDir = 0 ;
                                 
-                                // feature has already taken into account new base
-                                currentVal =  currentVal / divider ;
-                                for ( unsigned int multiplier = divider - 1 ; multiplier > 0 ; multiplier-- ) {
-                                    tempo.Feature(accessor
-                                        , (newFeature = tempo.Limits(accessor).Vibrato(oldFeature = tempo.Feature(accessor), currentVal * multiplier / divider)));
-                                    if ( newFeature != oldFeature && nbGenerated++ < 100 && (currCost = ComputeCost(tempo)) > oldCost ) {
+                                // with integer to look just after
+                                if ( maxVal > 1 && middleVal == 0 ) 
+                                    middleVal =  1 ;
+                                if ( maxVal < -1 && middleVal == 0 ) 
+                                    middleVal =  -1 ;
+                                while ( true ) {
+                                    typename IndividualType::TypeLimit::TypeLimit   oldMiddleVal = middleVal ;
+                                    if ( sameDir + middleVal >= maxVal ) {
+                                        sameDir   =  0 ;
+                                        maxVal    =  middleVal ;
+                                        middleVal /= SEARCH_DIVIDER ;
                                         
-                                        //          tabFeature [param] = newFeature ;
-                                        oldCost =  currCost ;
-                                    } else 
+                                        // with integer to look just after
+                                        if ( oldMiddleVal > 1 && middleVal == 0 ) 
+                                            middleVal =  1 ;
+                                        if ( oldMiddleVal < -1 && middleVal == 0 ) 
+                                            middleVal =  -1 ;
+                                    }
+                                    if ( nbGenerated++ >= maxGenerated ) 
+                                        break ;
+                                    newFeature =  oldFeature + middleVal ;
+                                    if ( middleVal > 0 && newFeature < oldFeature || middleVal < 0 && newFeature > oldFeature || isnan(newFeature) ) {
+                                        if ( middleVal > 0 ) {
+                                            middleVal  =  std::numeric_limits<typename IndividualType::TypeParam> ::max() - middleVal ;
+                                            newFeature =  std::numeric_limits<typename IndividualType::TypeParam> ::max();
+                                        } else {
+                                            middleVal  =  std::numeric_limits<typename IndividualType::TypeParam> ::lowest() - middleVal ;
+                                            newFeature =  std::numeric_limits<typename IndividualType::TypeParam> ::lowest();
+                                        }
+                                    }
+                                    tempo.Feature(accessor, newFeature);
+                                    if ( newFeature != oldFeature ) {
+                                        currCost1 =  ComputeCost(tempo);
+                                        if ( currCost1 > oldCost ) {
+                                            oldFeature  =  newFeature ;
+					    oldCost     =  currCost1 ;
+                                            backAllowed =  false ;
+                                            improved    =  true ;
+                                            record      =  true ;
+                                            sameDir     += middleVal > 0 ? middleVal : -middleVal ;
+                                        } else if ( backAllowed ) {
+                                            newFeature =  oldFeature - middleVal ;
+                                            tempo.Feature(accessor, newFeature);
+                                            nbGenerated++ ;
+                                            currCost2 =  ComputeCost(tempo);
+                                            if ( currCost2 > oldCost ) {
+                                                oldFeature  =  newFeature ;
+						oldCost     =  currCost2 ;
+                                                middleVal   =  -middleVal ;
+                                                backAllowed =  false ;
+                                                improved    =  true ;
+                                                record      =  true ;
+                                                sameDir     += middleVal > 0 ? middleVal : -middleVal ;
+                                            } else {
+						// probably rounding pb
+                                                if ( currCost1 == currCost2 && currCost1 == oldCost ) 
+                                                    break ;
+                                                maxVal    =  middleVal ;
+                                                middleVal /= SEARCH_DIVIDER ;
+                                                if ( oldMiddleVal > 1 && middleVal == 0 ) 
+                                                    middleVal =  1 ;
+                                                if ( oldMiddleVal < -1 && middleVal == 0 ) 
+                                                    middleVal =  -1 ;
+                                                backAllowed =  true ;
+                                                tempo.Feature(accessor, oldFeature);
+                                                sameDir =  0 ;
+                                            }
+                                        } else {
+                                            maxVal    =  middleVal ;
+                                            middleVal /= SEARCH_DIVIDER ;
+                                            if ( oldMiddleVal > 1 && middleVal == 0 ) 
+                                                middleVal =  1 ;
+                                            if ( oldMiddleVal < -1 && middleVal == 0 ) 
+                                                middleVal =  -1 ;
+                                            backAllowed =  true ;
+                                            tempo.Feature(accessor, oldFeature);
+                                            sameDir =  0 ;
+                                        }
+                                    } else {
                                         tempo.Feature(accessor, oldFeature);
+                                        break ;
+                                    }
                                 }
                             }
                         }
@@ -1018,11 +1161,14 @@
                 if ( record && !(SuppressClone() && IsIndividualACloneFull(refPopulation, nextPopulation, newType)) ) {
                     
                     // refPopulation [selectedIndex] = newType ;
+                    ComputeCost(tempo);
                     nextPopulation.push_back(tempo);
+                    return tempo.Final();
                 }
                 
                 // delete [] tabFeature ;
             }
+            return false ;
         }
         
     //*****************************************************************************
@@ -1034,7 +1180,7 @@
         void OptimGenetic<IndividualType> ::SurvivalSelection ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
             , std::vector<IndividualType> &newPopulation, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray )
         {
-            typename IndividualType::TypeCost   lPrevBestCost = OPTIM_COST_MAX ;
+            typename IndividualType::TypeCost   lPrevBestCost = OPTIM_COST_MAX(IndividualType::TypeCost);
             int                                 lPrevIndex1 = -1 ;
             int                                 lPrevIndex2 = -1 ;
             unsigned int                        refPop = refPopulation.size();
@@ -1059,7 +1205,7 @@
                     unsigned int    index = 0 ;
                     long            sum = 0 ;
                     unsigned int    indexOrg ;
-		    index =  this->RankingSelect(MTRandomValue(0, multiplier));
+                    index =  this->RankingSelect(MTRandomValue<int> (0, multiplier));
                     if ( index >= nbIndividuals - firstSlice ) 
                         index =  nbIndividuals - firstSlice - 1 ;
                     indexOrg =  index ;
@@ -1224,7 +1370,7 @@
         IndividualType &OptimGenetic<IndividualType> ::BestIndividual ( std::vector<IndividualType> &population )
         {
             unsigned int                        index ;
-            typename IndividualType::TypeCost   bestCost = OPTIM_COST_MIN ;
+            typename IndividualType::TypeCost   bestCost = OPTIM_COST_MIN(IndividualType::TypeCost);
             unsigned int                        indexBest = 0 ;
             unsigned int                        size = population.size();
             

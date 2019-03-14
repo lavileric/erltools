@@ -2,8 +2,8 @@
 #   define OPTIM_ALGO_HEADER_ 
 #   include "individual.h"
 #   include <map>
-    static const double OPTIM_COST_MAX = 1.e+50 ;
-    static const double OPTIM_COST_MIN = -OPTIM_COST_MAX ;
+#   define OPTIM_COST_MAX(type) std::numeric_limits<typename type> ::max()
+#   define OPTIM_COST_MIN(type) std::numeric_limits<typename type>::lowest()
     typedef enum { LOCAL_GRADIENT_ALGO, GENETIC_ALGORITHM_ALGO, SIMULATED_ANNEALING_ALGO, NO_ALGO } EAlgoType ;
     
     //*****************************************************************************
@@ -25,10 +25,10 @@
                 
                 void Affect ( bool paramPopulation, int paramIndex, FeatureCost paramCost )
                 {
-                    population = paramPopulation ;
-                    index = paramIndex ;
-                    cost = paramCost ;
-                    selected = false ;
+                    population =  paramPopulation ;
+                    index      =  paramIndex ;
+                    cost       =  paramCost ;
+                    selected   =  false ;
                 }
                 
                 bool operator< ( const SortUnit &sortUnit ) const
@@ -78,20 +78,20 @@
                 }
                 
                 // Methods
-                virtual bool    Run (EString fileName = "", bool verbose = true ) = 0 ;
+                virtual bool    Run (EString fileName = "", bool verbose = true) = 0 ;
                 bool            Step (std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-                    , std::vector<IndividualType> &newPopulation, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool verbose =true) ;
+                    , std::vector<IndividualType> &newPopulation, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool verbose = true) ;
                 virtual void    Print () = 0 ;
                 
                 OptimAlgo &MaxSimulatedVectors ( unsigned int maxSimulatedVectors )
                 {
-                    pvMaxSimulatedVectors = maxSimulatedVectors ;
+                    pvMaxSimulatedVectors =  maxSimulatedVectors ;
                     return *this ;
                 }
                 
                 OptimAlgo &MaxSteadyVectors ( unsigned int maxSteadyVectors )
                 {
-                    pvMaxSteadyVectors = maxSteadyVectors ;
+                    pvMaxSteadyVectors =  maxSteadyVectors ;
                     return *this ;
                 }
                 
@@ -117,13 +117,13 @@
                 
                 virtual OptimAlgo &SimulatedVectors ( unsigned int simulatedVectors )
                 {
-                    pvSimulatedVectors = simulatedVectors ;
+                    pvSimulatedVectors =  simulatedVectors ;
                     return *this ;
                 }
                 
                 virtual OptimAlgo &SteadyVectors ( unsigned int steadyVectors )
                 {
-                    pvSteadyVectors = steadyVectors ;
+                    pvSteadyVectors =  steadyVectors ;
                     return *this ;
                 }
                 
@@ -135,7 +135,7 @@
                 // Nursery : set nursery for this algo
                 OptimAlgo &SetNursery ( Nursery<IndividualType> &nursery )
                 {
-                    pvpNursery = &nursery ;
+                    pvpNursery =  &nursery ;
                     return *this ;
                 }
                 
@@ -147,7 +147,7 @@
                 
                 virtual IndividualType &BestIndividual ()
                 {
-                    pvBestIndividual = GetNursery().Create();
+                    pvBestIndividual =  GetNursery().Create();
                     return pvBestIndividual ;
                 }
                 
@@ -164,19 +164,19 @@
                     
                     if ( tabSize <= 0 || (tabSize)*(tabSize + 1) <= target ) {
                         if ( tabSize > 0 ) {
-                            sum = tabSize * (tabSize + 1);
-                            index = tabSize - 1 ;
+                            sum   =  tabSize * (tabSize + 1);
+                            index =  tabSize - 1 ;
                         } else {
-                            sum = 0 ;
-                            index = -1 ;
+                            sum   =  0 ;
+                            index =  -1 ;
                         }
                         for (;;) {
                             if ( index != -1 && sum >= target ) {
                                 return index ;
                             }
                             index++ ;
-                            sum += 2 * (index + 1);
-                            pvRankingTab [sum] = index ;
+                            sum                += 2 * (index + 1);
+                            pvRankingTab [sum] =  index ;
                         }
                     }
                     

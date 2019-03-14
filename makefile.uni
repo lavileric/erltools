@@ -55,7 +55,7 @@ updatelinks :
 	find . -name "m_done" -exec touch {} \;
 
 
-install : checkpath
+install : checkpath 
 	- mkdir $(INSTALL_DIR) 2>/dev/null
 	( cd pub ; $(MAKE) -f makefile.uni install)
 	if [ -d ./misc ] ; then \

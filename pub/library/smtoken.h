@@ -517,7 +517,7 @@
 
 	    inline EString Compactlltoa ( INT_64 nb )
 	    {
-		char    string [20];
+		char    string [30];
 
 		sprintf((char *)string, "%lld", nb);
 		return EString(string);
@@ -533,7 +533,7 @@
 
 	    inline EString Compactlltoa ( INT_64 nb )
 	    {
-		char    string [20];
+		char    string [30];
 
 		_i64toa(nb, string, 10);
 		return EString(string);

@@ -498,7 +498,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                 if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
                     tabMax =  x ;
                 else if ( realign && x <= tabMax ) {
-                    char    string [10];
+		    char    string [20];
                     sprintf(string, "%d", tabMax);
                     att += <,MakeString(string)>;
                 } else if ( realign ) {
@@ -642,7 +642,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                 if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
                     tabMax =  x ;
                 else if ( realign && x <= tabMax ) {
-                    char    string [10];
+		    char    string [20];
                     sprintf(string, "%d", tabMax);
                     att += <,MakeString(string)>;
                 } else if ( realign ) {

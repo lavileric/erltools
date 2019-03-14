@@ -14,6 +14,10 @@
 #   define IN_ERLSTRING 1
 #   include "smtoken.h"
 #   undef IN_ERLSTRING
+#   include <iostream>
+#   include <sstream>
+#   include <iomanip>
+#   include <limits>
     
     /* LF 04/10/2000 */
 #   if 0
@@ -61,7 +65,7 @@
                     else 
                         pvLength =  strlen(val);
                     Malloc(pvLength + 1);
-                    if ( pvLength ) 
+                    if ( val ) 
                         memcpy(pvString, val, pvLength + 1);
                     else 
                         *pvString =  '\0';
@@ -136,8 +140,15 @@
                 EStringRoot ( float value )
                     : pvStart(0)
                 {
-                    std::string pValue = std::to_string(value);
-                    
+#                   if 1
+                        
+                        std::ostringstream  stm ;
+                        
+                        stm << std::setprecision(std::numeric_limits<float> ::digits10) << value ;
+                        std::string pValue = stm.str();
+#                   else 
+                        std::string pValue = std::to_string(value);
+#                   endif
                     Malloc((pvLength = pValue.length()) + 1);
                     memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -146,8 +157,15 @@
                 EStringRoot ( double value )
                     : pvStart(0)
                 {
-                    std::string pValue = std::to_string(value);
-                    
+#                   if 1
+                        
+                        std::ostringstream  stm ;
+                        
+                        stm << std::setprecision(std::numeric_limits<double> ::digits10) << value ;
+                        std::string pValue = stm.str();
+#                   else 
+                        std::string pValue = std::to_string(value);
+#                   endif
                     Malloc((pvLength = pValue.length()) + 1);
                     memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -156,8 +174,15 @@
                 EStringRoot ( long double value )
                     : pvStart(0)
                 {
-                    std::string pValue = std::to_string(value);
-                    
+#                   if 1
+                        
+                        std::ostringstream  stm ;
+                        
+                        stm << std::setprecision(std::numeric_limits<long double> ::digits10) << value ;
+                        std::string pValue = stm.str();
+#                   else 
+                        std::string pValue = std::to_string(value);
+#                   endif
                     Malloc((pvLength = pValue.length()) + 1);
                     memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -503,8 +528,10 @@
                 
                 const char *c_str () const
                 {
+                    static const char   *nullString = "";
+                    
                     if ( !pvString ) 
-                        return "";
+                        return nullString ;
                     else 
                         return pvString + pvStart ;
                 }
@@ -690,7 +717,8 @@
                     
                     if ( !str ) 
                         return this->length() == 0 ;
-                    length =  strlen(str);
+                    else 
+                        length =  strlen(str);
                     if ( this->length() == length ) {
                         if ( length == 0 ) 
                             return true ;

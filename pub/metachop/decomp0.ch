@@ -223,7 +223,7 @@ char *Switcher ( PTREE paramTree, char *name, int level )
 void MakeTreeGen ( PTREE paramTree, char *name, int level )
 {
     int     nbParam, currParam, gennode ;
-    char    string [5], namePt [10], resPt [10], *retName ;
+    char    string [20], namePt [20], resPt [20], *retName ;
     PTREE   ptTree, son ;
     
     sprintf(namePt, "_ptTree%d", level);
@@ -283,7 +283,7 @@ void MakeTreeGen ( PTREE paramTree, char *name, int level )
 void ReplaceTreeGen ( PTREE paramTree, char *name, char *mod_name, int level )
 {
     int     nbParam, currParam, gennode ;
-    char    string [5], namePt [10], name1Pt [10], *retName ;
+    char    string [20], namePt [20], name1Pt [20], *retName ;
     int     treeType ;
     PTREE   ptTree, son, ident ;
     
@@ -348,8 +348,8 @@ void ReplaceTreeGen ( PTREE paramTree, char *name, char *mod_name, int level )
    *******************************************************************/
 void AddListGen ( PTREE paramTree, char *name, char *name_mod, int level )
 {
-    char    string [5];
-    char    namePt [10];
+    char    string [20];
+    char    namePt [20];
     char    *nameTree ;
     
     sprintf(namePt, "_ptTree%d", level);

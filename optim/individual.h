@@ -25,31 +25,53 @@
 #   else 
         
         // [ min , max [
-        inline long long MTRandomValue ( long long minVal, long long maxVal, bool full = false )
-        {
-            long long           ret ;
-            long double         maxValFloat = maxVal ;
-            long double         minValFloat = minVal ;
-            static long double  maxForRand = std::numeric_limits<std::mt19937_64::result_type> ::max();
-            static long double  minScaledForRand = (long double)(std::numeric_limits<std::mt19937_64::result_type> ::lowest()) / maxForRand ;
-            
-            if ( maxVal <= minVal + 1 && !full ) 
-                return minVal ;
-            if ( maxVal == minVal + 2 && !full ) 
-                return randGen() & 0x1 + minVal ;
-            
-            std::mt19937_64::result_type    randValue = randGen();
-            
-            if ( randValue == maxForRand ) 
-                return full ? maxVal : maxVal - 1 ;
-            else {
-                ret =  (long long)floor(
-                    1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
-                        * ((long double)randValue / maxForRand - minScaledForRand) * maxForRand);
-                ret += minVal ;
-                return ret ;
+        template <class TypeFeature> 
+            inline TypeFeature MTRandomValue ( TypeFeature minVal, TypeFeature maxVal, bool full = false )
+            {
+                TypeFeature         ret ;
+                long double         maxValFloat = maxVal ;
+                long double         minValFloat = minVal ;
+                static long double  maxForRand = std::numeric_limits<std::mt19937_64::result_type> ::max();
+                static long double  minForRand = std::numeric_limits<std::mt19937_64::result_type> ::lowest();
+                
+                if ( minVal == maxVal ) 
+                    return minVal ;
+                if ( isnan(minValFloat) ) 
+                    minValFloat =  std::numeric_limits<TypeFeature> ::lowest();
+                if ( isnan(maxValFloat) || maxValFloat <= minValFloat ) 
+                    maxValFloat =  std::numeric_limits<TypeFeature> ::max();
+                if ( maxValFloat <= minValFloat + 1 && !full ) 
+                    return minVal ;
+#               if defined(INDIV_FRAME_FEATURE)
+                    if ( maxVal == minVal + 2 && !full ) 
+                        return randGen() & 0x1 + minVal ;
+#               endif
+                
+                std::mt19937_64::result_type    randValue = randGen();
+                
+                if ( randValue == maxForRand ) 
+                    return full ? maxVal : maxVal - 1 ;
+                else {
+#                   if 0
+                        ret =  (TypeFeature)(1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
+                            * ((long double)randValue / maxForRand - minScaledForRand) * maxForRand);
+#                   else 
+                        long double factor = ((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand);
+                        long double excursion = (long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand);
+                        long double offset = excursion * factor ;
+                        long double res = minVal / (1.0 * maxForRand) + offset ;
+                        ret =  res * maxForRand ;
+                        
+                        // ret =  (TypeFeature)(1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
+                        //    * (((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand)) * maxForRand);
+#                   endif
+#                   if defined(INDIV_FRAME_FEATURE)
+                        ret =  floor(ret);
+#                   endif
+                    //ret += minVal ;
+                    return ret ;
+                }
             }
-        }
 #   endif
     
     inline EString ToString ( double val )
@@ -119,36 +141,45 @@
                 // Frame : Frame a value inside limits
                 void Frame ( TypeFeature &val ) const
                 {
-#                   if defined(INDIV_FRAME_FEATURE)
-                        
-                        // differentiate signed and unsigned
-                        if ( val > pvMax && pvMin != 0 ) {
+                    if ( val > pvMax || val < pvMin ) {
+                        if ( pvMax <= ((TypeFeature)std::numeric_limits<intmax_t> ::max())
+                                && pvMin >= ((TypeFeature)std::numeric_limits<intmax_t> ::min())
+                                && val <= ((TypeFeature)std::numeric_limits<intmax_t> ::max())
+                                && val >= ((TypeFeature)std::numeric_limits<intmax_t> ::min()) ) {
+                            intmax_t    mVal = (intmax_t)val ;
+                            intmax_t    mpvMax = (intmax_t)pvMax ;
+                            intmax_t    mpvMin = (intmax_t)pvMin ;
                             
-                            // may need a sign extension
-                            TypeFeature upVal = pvMax + 1 ;
-                            TypeFeature mask = 0 ;
-                            while ( mask + 1 < upVal ) 
+                            // differentiate signed and unsigned
+                            if ( mVal > mpvMax && mpvMin != 0 ) {
+                                
+                                // may need a sign extension
+                                intmax_t    upVal = mpvMax + 1 ;
+                                intmax_t    mask = 0 ;
+                                while ( mask + 1 < upVal ) 
+                                    mask =  mask << 1 | 0x1 ;
                                 mask =  mask << 1 | 0x1 ;
-                            mask =  mask << 1 | 0x1 ;
-                            mask =  ~mask ;
-                            TypeFeature newVal ;
-                            TypeFeature comp = val & mask ;
-                            if ( comp == 0 ) {
-                                newVal =  mask | val ;
-                                if ( newVal >= pvMin ) 
-                                    val =  newVal ;
-                                else 
-                                    val =  pvMax ;
-                            } else 
-                                val =  pvMax ;
-                        } else if ( (val < pvMin || val > pvMax) && pvMin == 0 ) {
-                            val &= pvMax ;
+                                mask =  ~mask ;
+                                intmax_t    newVal ;
+                                intmax_t    comp = mVal & mask ;
+                                if ( comp == 0 ) {
+                                    newVal =  mask | mVal ;
+                                    if ( newVal >= mpvMin ) 
+                                        mVal =  newVal ;
+                                    else 
+                                        mVal =  mpvMax ;
+                                } else 
+                                    mVal =  mpvMax ;
+                            } else if ( (mVal < mpvMin || mVal > mpvMax) && mpvMin == 0 ) {
+                                mVal &= mpvMax ;
+                            }
+                            val =  mVal ;
                         }
-#                   endif
-                    if ( val > pvMax ) 
-                        val =  pvMax ;
-                    if ( val < pvMin ) 
-                        val =  pvMin ;
+                        if ( val > pvMax ) 
+                            val =  pvMax ;
+                        if ( val < pvMin ) 
+                            val =  pvMin ;
+                    }
                 }
                 
                 // get max
@@ -219,7 +250,7 @@
                 {
                     EString content ;
                     
-                    content << "(" << Min() << "," << Max() << "," << Step() << ")";
+                    content << "(" << ((intmax_t)Min()) << "," << (intmax_t)Max() << "," << (intmax_t)Step() << ")";
                     return content ;
                 }
                 
@@ -260,7 +291,7 @@
                 // Random : set a random value
                 virtual TypeFeature Random () const
                 {
-                    unsigned int    index = MTRandomValue(0, pvSetFeature.size());
+                    unsigned int    index = MTRandomValue<int> (0, pvSetFeature.size());
                     
                     if ( !pvSetFeature.empty() ) 
                         return pvSetFeature [index];
@@ -370,7 +401,8 @@
                 SimpleLimit ( SimpleType min, SimpleType max, SimpleType step )
                     : FeatureLimit<SimpleType, SimpleType> (min, max, step)
                 {
-                    this->pvStep =  1 ;
+                    
+                    // this->pvStep =  1 ;
                 }
                 
                 virtual ~SimpleLimit () {}
@@ -378,26 +410,7 @@
                 // Random : get a random value
                 virtual SimpleType Random () const
                 {
-                    return MTRandomValue((long)this->Min(), (long)this->Max() + 1);
-                }
-                
-                // Random : get a random value
-                virtual SimpleType Vibrato ( SimpleType &currVal )
-                {
-                    int step = 0 ;
-                    int typeStep = MTRandomValue(0, 2);
-                    
-                    while ( step == 0 ) 
-                        step =  MTRandomValue( -1, 2);
-                    pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this->Step()) /*this->Step()*/ ;
-                    
-                    SimpleType  newVal = currVal + pvLastApplied ;
-                    
-                    if ( newVal > this->Max() ) 
-                        newVal =  this->Min();
-                    if ( newVal < this->Min() ) 
-                        newVal =  this->Max() - this->pvStep ;
-                    return newVal ;
+                    return MTRandomValue<SimpleType> (this->Min(), this->Max() + 1);
                 }
                 
                 // Vibrato with imposed value
@@ -412,6 +425,73 @@
                     if ( newVal < this->Min() ) 
                         newVal =  this->Max() - this->pvStep ;
                     return newVal ;
+                }
+                
+                // Random : get a random value
+                virtual SimpleType Vibrato ( SimpleType &currVal )
+                {
+                    SimpleType  step = 0 ;
+                    int         typeStep = MTRandomValue<int> (0, 2);
+                    
+                    while ( step == 0 ) 
+                        step =  MTRandomValue<int> ( -1, 2);
+                    pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this->Step()) /*this->Step()*/ ;
+                    if ( pvLastApplied == 0 ) 
+                        pvLastApplied =  this->Step();
+                    if ( isnan(currVal + pvLastApplied) ) 
+                        pvLastApplied =  -pvLastApplied ;
+                    
+                    // get a number big enough so that when added to currVal it does not disappear
+                    SimpleType  oldOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                    SimpleType  keepOffset = pvLastApplied ;
+                    
+                    while ( currVal + pvLastApplied == currVal ) {
+                        pvLastApplied *= 2 ;
+                        SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                        if ( newOffset < oldOffset || isnan(pvLastApplied) || isnan(currVal + pvLastApplied) ) {
+                            pvLastApplied =  keepOffset ;
+                            break ;
+                        }
+                        oldOffset  =  newOffset ;
+                        keepOffset =  pvLastApplied ;
+                    }
+                    
+                    // for floats should be also different at log level
+                    if ( (float)std::numeric_limits<SimpleType> ::max() >= std::numeric_limits<float> ::max() ) {
+                        SimpleType  absVal = currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                        double      logVal = log(absVal);
+                        double      newLogVal ;
+                        double      oldAbsVal = absVal ;
+                        oldOffset =  pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                        while ( (newLogVal = log(absVal)) == logVal ) {
+                            pvLastApplied *= 2 ;
+                            SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                            absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                            if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
+                                pvLastApplied =  keepOffset ;
+                                break ;
+                            }
+                            oldOffset  =  newOffset ;
+                            logVal     =  newLogVal ;
+                            keepOffset =  pvLastApplied ;
+                            oldAbsVal  =  absVal ;
+                        }
+#                       if 1
+                            
+                            // for small values multiply by 10 because of log
+                            if ( pvLastApplied < 1 ) {
+                                pvLastApplied *= 10 ;
+                                SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                                absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                                if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
+                                    pvLastApplied =  keepOffset ;
+                                }
+                            }
+#                       endif
+                        if ( isnan(newLogVal) ) 
+                            pvLastApplied =  keepOffset ;
+                    }
+                    return Vibrato(currVal, pvLastApplied);
                 }
                 
                 // Content
@@ -475,6 +555,11 @@
                 {
                     Affect(individual);
                     return *this ;
+                }
+                
+                virtual bool Final ()
+                {
+                    return false ;
                 }
                 
                 virtual void Affect ( const Individual &src )
@@ -553,7 +638,7 @@
                     }
                     
                     // we must evaluate individual again
-                    Evaluated(false);
+                    Self().Evaluated(false);
                     
                     // return object
                     return *this ;
@@ -578,7 +663,7 @@
                     }
                     
                     // we must evaluate individual again
-                    Evaluated(false);
+                    Self().Evaluated(false);
                     
                     // return object
                     return *this ;
@@ -620,7 +705,7 @@
                     }
                     
                     // we must evaluate individual again
-                    Evaluated(false);
+                    Self().Evaluated(false);
                     
                     // return object
                     return *this ;
@@ -646,7 +731,7 @@
                     }
                     
                     // we must evaluate individual again
-                    Evaluated(false);
+                    Self().Evaluated(false);
                     
                     // return object
                     return *this ;
@@ -665,7 +750,7 @@
                         }
                     
                     // we must evaluate individual again
-                    Evaluated(false);
+                    Self().Evaluated(false);
                     
                     // return object
                     return *this ;
@@ -674,7 +759,7 @@
                 // Evaluate individual
                 virtual FeatureCost Evaluate ( Semaphop *pSemaphop = 0, bool withMessage = true )
                 {
-                    Evaluated(true, pSemaphop);
+                    Self().Evaluated(true, pSemaphop);
                     return pvCost = 0 ;
                 }
                 
@@ -798,7 +883,7 @@
                     for ( index = 0 ; index < Size() ; index++ ) {
                         Feature(index, pvLimits [index].Max());
                     }
-                    Evaluated(false);
+                    Self().Evaluated(false);
                 }
                 
                 // RandomFill : random fill an individual
@@ -809,7 +894,7 @@
                     for ( index = 0 ; index < Size() ; index++ ) {
                         Feature(index, pvLimits [index].Min());
                     }
-                    Evaluated(false);
+                    Self().Evaluated(false);
                 }
                 
                 // RandomFill : random fill an individual
@@ -820,7 +905,18 @@
                     for ( index = 0 ; index < Size() ; index++ ) {
                         Feature(index, 0);
                     }
-                    Evaluated(false);
+                    Self().Evaluated(false);
+                }
+                
+                // RandomFill : random fill an individual
+                virtual void FillOne ()
+                {
+                    unsigned int    index ;
+                    
+                    for ( index = 0 ; index < Size() ; index++ ) {
+                        Feature(index, 1);
+                    }
+                    Self().Evaluated(false);
                 }
                 
                 virtual void MergeFrom ( Individual &father, Individual &mother )
@@ -835,12 +931,12 @@
                     std::vector<unsigned int>   vectorg(size, 1);
                     
                     // put mother characteristics for at most 10 characteristics
-                    unsigned int                nbMerge = MTRandomValue(0, size);
+                    unsigned int                nbMerge = MTRandomValue<TypeFeature> (0, size);
                     
                     for ( index = 0 ; index < nbMerge ; index++ ) 
-                        vectorg [MTRandomValue(0, size)] =  MTRandomValue(0, 2) ? 2 : 1 ;
+                        vectorg [MTRandomValue<int> (0, size)] =  MTRandomValue<int> (0, 2) ? 2 : 1 ;
                     /*for ( index = 0 ; index < size ; index++ )
-                          if ( MTRandomValue(0, 2) )
+                          if ( MTRandomValue<TypeFeature>(0, 2) )
                        vectorg [index] = 2 ;*/
                     for ( unsigned int param = 0 ; param < size ; param++ ) {
                         Feature(param, vectorg [param] == 1 ? father.Feature(param) : mother.Feature(param)
@@ -860,7 +956,7 @@
                     
                     // Then randomly choose the nb of param to be mutated for this cell
                     // ----------------------------------------------------------------
-                    int NB_PARAM = MTRandomValue(1, Size() + 1);
+                    int NB_PARAM = MTRandomValue<int> (1, Size() + 1);
                     
                     // For each param to be mutated
                     // ----------------------------
@@ -868,7 +964,7 @@
                         
                         // Randomly choose this param index
                         // --------------------------------
-                        int         lParamIndex = MTRandomValue(0, Size());
+                        int         lParamIndex = MTRandomValue<int> (0, Size());
                         
                         // Then randomly change this optimisation parameter
                         // ------------------------------------------------
@@ -898,6 +994,12 @@
                             pvLimits [index].Display(file);
                         }
 #                   endif
+                }
+                
+                // indicates if Vibrato useful on this individual
+                virtual bool Vibrato ()
+                {
+                    return true ;
                 }
                 
                 virtual void Read ( int file ) {}
@@ -970,7 +1072,7 @@
                     if ( size < 3 ) 
                         return ;
                     
-                    unsigned int            mergePoint = MTRandomValue(1, size - 1);
+                    unsigned int            mergePoint = MTRandomValue<int> (1, size - 1);
                     unsigned int            indexInsert, index ;
                     std::set<TypeFeature>   alreadyPut ;
                     
@@ -1000,7 +1102,7 @@
                     
                     // Then randomly choose the nb of param to be mutated for this cell
                     // ----------------------------------------------------------------
-                    int NB_PARAM = MTRandomValue(1, (this->Size() + 1) / 2);
+                    int NB_PARAM = MTRandomValue<int> (1, (this->Size() + 1) / 2);
                     
                     // For each param to be mutated
                     // ----------------------------
@@ -1011,12 +1113,12 @@
                             
                             // Randomly choose parameters index
                             // --------------------------------
-                            int lParamIndex = MTRandomValue(0, this->Size());
+                            int lParamIndex = MTRandomValue<int> (0, this->Size());
                             int lParamIndex1 = lParamIndex ;
                             if ( this->Size() <= 1 ) 
                                 return ;
                             while ( lParamIndex1 == lParamIndex ) 
-                                lParamIndex1 =  MTRandomValue(0, this->Size());
+                                lParamIndex1 =  MTRandomValue<int> (0, this->Size());
                             
                             // if exchange is allowed do it
                             if ( this->CanExchange(lParamIndex, lParamIndex1) ) {

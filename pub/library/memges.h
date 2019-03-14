@@ -31,6 +31,9 @@
    */
 #ifndef MEMGES_FILE
 #   define MEMGES_FILE 1
+    
+    /* register are no longer supported since version 17 of gcc */
+#   define register 
 #   include <stdio.h>
     
     /**************************************************************
@@ -61,7 +64,7 @@
     {
         register int    *addr = (int *)position ;
         
-        *addr = value ;
+        *addr =  value ;
     }
     
     /**************************************************************
@@ -77,7 +80,7 @@
        ***************************************************************/
     inline void LCacheWrite ( void **position, void *value )
     {
-        *position = value ;
+        *position =  value ;
     }
     
     /**************************************************************

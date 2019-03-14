@@ -374,7 +374,7 @@ void GetToken ( const char *name, PPTREE tree, int testType )
 void MakeTreeGen ( char *name, PPTREE tree, int level )
 {
     int             nbParam, currParam, gennode ;
-    char            string [5];
+    char            string [20];
     char            namePt [10];
     char            resPt [10];
     register PPTREE ptTree = tree ;
