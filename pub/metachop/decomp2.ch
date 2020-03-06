@@ -88,7 +88,7 @@ PTREE switch_el ( PTREE paramTree, int last )
             i =  1 ;
             nextl(list);
             while ( list != () ) {
-                if ( list == <,<AFF,ident>> || list == <,(ident = <IDENT>)> ) {
+                if ( list == <,<AFF,ident>> || list == <,ident> && ident == <IDENT> ) {
                     temporary =  parse ($aff1 = SonTree($var1,$var2));
                     metarep("aff1", temporary, NoCommentCopyTree(ident));
                     tree1 =  <IDENT,MakeString(ptCase)>;

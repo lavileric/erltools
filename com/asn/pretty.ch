@@ -33,7 +33,7 @@ void DecompAsn::ComputeSeq ( PTREE list, int *tabMax1, int *tabMax2, int realign
             if ( !realign && x0 > *tabMax1 && x0 <= MAX_REALIGN ) 
                 *tabMax1 =  x0 ;
             else if ( realign ) {
-                char    string [10];
+                char    string [12];
                 
                 // compute the diff between current tab and max
                 // x0 = (*tabMax1 - x0) / TAB_SPACE ;
@@ -70,7 +70,7 @@ void DecompAsn::ComputeSeqTy ( PTREE list, int *tabMax1, int *tabMax2, int reali
             if ( !realign && x0 > *tabMax1 && x0 <= MAX_REALIGN ) 
                 *tabMax1 =  x0 ;
             else if ( realign ) {
-                char    string [10];
+                char    string [12];
                 
                 // if pos is not good put good one
                 if ( *tabMax1 - x0 > 0 ) {
@@ -110,7 +110,7 @@ void DecompAsn::ComputeChoice ( PTREE list, int *tabMax1, int *tabMax2, int real
             if ( !realign && x0 > *tabMax1 && x0 <= MAX_REALIGN ) 
                 *tabMax1 =  x0 ;
             else if ( realign ) {
-                char    string [10];
+                char    string [12];
                 
                 // compute the diff between current tab and max
                 // x0 = (*tabMax1 - x0) / TAB_SPACE ;
@@ -147,7 +147,7 @@ void DecompAsn::ComputeChoiceTy ( PTREE list, int *tabMax1, int *tabMax2, int re
             if ( !realign && x0 > *tabMax1 && x0 <= MAX_REALIGN ) 
                 *tabMax1 =  x0 ;
             else if ( realign ) {
-                char    string [10];
+                char    string [12];
                 
                 // if pos is not good put good one
                 if ( *tabMax1 - x0 > 0 ) {

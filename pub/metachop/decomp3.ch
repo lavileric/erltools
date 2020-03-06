@@ -468,7 +468,7 @@ void GCManagerFunc ( PTREE tree )
     // if it's an ansi code or c++ code some parameters are directly
     // declared inside params
     while ( (son = nextl(param)) ) {
-        if ( son == <DECLARATOR,<TIDENT,<IDENT,"PTREE">>,(name = <IDENT>)> && !ListFind(list_name, name) ) {
+        if ( son == <DECLARATOR,<TIDENT,<IDENT,"PTREE">>,name> && name == <IDENT> && !ListFind(list_name, name) ) {
             somethingDone =  1 ;
             if ( !cplusGen ) {
                 addref =  parse (AddRef( $(copytree(name))));

@@ -1,13 +1,18 @@
 THE_LIB= ./chopb.a
 
-all : DOLIB chopb
+LIB_OBJECTS=chopb.o chopb0.o chopb1.o decomp.o
 
-LIB_OBJECTS=chopb.o chopb0.o chopb1.o decomp.o 
+library : $(LIB_OBJECTS)
+	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
+	$(MAKE) chopb
 
 libchopb.so : $(LIB_OBJECTS)
 	$(C_PLUS) -shared -o libchopb.so $(LIB_OBJECTS) 
-
-DOLIB : m_done $(THE_LIB)(chopb.o chopb0.o chopb1.o decomp.o) 
 
 OPT_FLAGS=-DDUMP_COORD  -Wno-empty-body
 

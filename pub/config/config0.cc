@@ -1,6 +1,6 @@
 /*************************************************************************/
 /*                                                                       */
-/*        Produced by MetaGen version 2.0  -    1989-1995                 */
+/*        Produced by MetaGen version 2.0  -    1989-2006                 */
 /*       Syntaxic Analyzer Meta Generator developped by                  */
 /*                  Eric Lavillonniere                                   */
 /*                                                                       */
@@ -51,7 +51,7 @@ int config::Lex ()
 #line 7 "config.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 7 "config.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 7 "config.met"
         ExtUnputBuf();
 #line 7 "config.met"

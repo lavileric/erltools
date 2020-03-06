@@ -48,7 +48,7 @@ PTREE   for_elem ;
 #line 7 "symb.ch"
 
 #line 7 "symb.ch"
-SymbolTable::SymbolTable ( SymbolTable &symbTab )
+SymbolTable::SymbolTable ( const SymbolTable &symbTab )
 #line 7 "symb.ch"
     : pvSize(0),  pvSizeMax(0),  pvTable(0)
 #line 7 "symb.ch"
@@ -91,10 +91,10 @@ SymbolTable::SymbolTable ( SymbolTable &symbTab )
                                                                                         while ( ((symbol=(listVar?listVar.Nextl():(PPTREE)0))) ) {
 #line 20 "symb.ch"
 #line 21 "symb.ch"
-AddVar(CopyTree(symbol));
+                                                                                                                                                      AddVar(CopyTree(symbol));
 #line 21 "symb.ch"
 #line 22 "symb.ch"
-
+                                                                                                                                                      
 #line 22 "symb.ch"
 #line 22 "symb.ch"
                                                                                                                                                       }
@@ -117,7 +117,7 @@ AddVar(CopyTree(symbol));
 #line 28 "symb.ch"
 
 #line 28 "symb.ch"
-const SymbolTable &SymbolTable::operator= ( SymbolTable &symbTab )
+const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
 #line 28 "symb.ch"
 {
 #line 28 "symb.ch"
@@ -162,10 +162,10 @@ const SymbolTable &SymbolTable::operator= ( SymbolTable &symbTab )
                                                                                         while ( ((symbol=(listVar?listVar.Nextl():(PPTREE)0))) ) {
 #line 44 "symb.ch"
 #line 45 "symb.ch"
-AddVar(CopyTree(symbol));
+                                                                                                                                                      AddVar(CopyTree(symbol));
 #line 45 "symb.ch"
 #line 46 "symb.ch"
-
+                                                                                                                                                      
 #line 46 "symb.ch"
 #line 46 "symb.ch"
                                                                                                                                                       }

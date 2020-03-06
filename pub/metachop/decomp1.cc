@@ -4290,226 +4290,226 @@ PTREE DecompMetachop::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                                 if ( !sontree(stat, 2) ) {
 #line 776 "decomp1.ch"
 #line 777 "decomp1.ch"
-(son=sontree(stat, 1));
+                                                                                                                             (son=sontree(stat, 1));
 #line 777 "decomp1.ch"
-
+                                                                                                                             
 #line 777 "decomp1.ch"
 #line 778 "decomp1.ch"
-switch ( NumberTree(son) ) {
+                                                                                                                             switch ( NumberTree(son) ) {
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::COMPOUND : 
+                                                                                                                             case metachop::COMPOUND : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case102 : 
+                                                                                                                             _Case102 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case103 ;
-        
+                                                                                                                             goto _Case103 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::CASE : 
+                                                                                                                             case metachop::CASE : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case103 : 
+                                                                                                                             _Case103 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case104 ;
-        
+                                                                                                                             goto _Case104 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::DEFAULT : 
+                                                                                                                             case metachop::DEFAULT : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case104 : 
+                                                                                                                             _Case104 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case105 ;
-        
+                                                                                                                             goto _Case105 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::IF : 
+                                                                                                                             case metachop::IF : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case105 : 
+                                                                                                                             _Case105 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case106 ;
-        
+                                                                                                                             goto _Case106 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::WHILE : 
+                                                                                                                             case metachop::WHILE : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case106 : 
+                                                                                                                             _Case106 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case107 ;
-        
+                                                                                                                             goto _Case107 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::FOR : 
+                                                                                                                             case metachop::FOR : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case107 : 
+                                                                                                                             _Case107 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case108 ;
-        
+                                                                                                                             goto _Case108 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::DO : 
+                                                                                                                             case metachop::DO : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case108 : 
+                                                                                                                             _Case108 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case109 ;
-        
+                                                                                                                             goto _Case109 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::SWITCH : 
+                                                                                                                             case metachop::SWITCH : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case109 : 
+                                                                                                                             _Case109 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case110 ;
-        
+                                                                                                                             goto _Case110 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::IF_DIR : 
+                                                                                                                             case metachop::IF_DIR : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case110 : 
+                                                                                                                             _Case110 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case111 ;
-        
+                                                                                                                             goto _Case111 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::IFDEF_DIR : 
+                                                                                                                             case metachop::IFDEF_DIR : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case111 : 
+                                                                                                                             _Case111 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case112 ;
-        
+                                                                                                                             goto _Case112 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::IFNDEF_DIR : 
+                                                                                                                             case metachop::IFNDEF_DIR : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case112 : 
+                                                                                                                             _Case112 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case113 ;
-        
+                                                                                                                             goto _Case113 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::NO_PRETTY : 
+                                                                                                                             case metachop::NO_PRETTY : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case113 : 
+                                                                                                                             _Case113 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case114 ;
-        
+                                                                                                                             goto _Case114 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    case metachop::ATTRIBUTS : 
+                                                                                                                             case metachop::ATTRIBUTS : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-    _Case114 : 
+                                                                                                                             _Case114 : 
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 778 "decomp1.ch"
 #line 778 "decomp1.ch"
-        goto _Case115 ;
-        
+                                                                                                                             goto _Case115 ;
+                                                                                                                             
 #line 778 "decomp1.ch"
 #line 793 "decomp1.ch"
-    case metachop::EXCEPTION : 
+                                                                                                                             case metachop::EXCEPTION : 
 #line 793 "decomp1.ch"
 #line 793 "decomp1.ch"
-    _Case115 : 
+                                                                                                                             _Case115 : 
 #line 793 "decomp1.ch"
 #line 793 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 793 "decomp1.ch"
 #line 793 "decomp1.ch"
-        oneInstruct = 0 ;
+                                                                                                                             oneInstruct = 0 ;
 #line 793 "decomp1.ch"
 #line 794 "decomp1.ch"
-        break ;
-        
+                                                                                                                             break ;
+                                                                                                                             
 #line 794 "decomp1.ch"
 #line 802 "decomp1.ch"
-    default : 
+                                                                                                                             default : 
 #line 802 "decomp1.ch"
 #line 802 "decomp1.ch"
-    _Case116 : 
+                                                                                                                             _Case116 : 
 #line 802 "decomp1.ch"
 #line 802 "decomp1.ch"
-        ;
+                                                                                                                             ;
 #line 802 "decomp1.ch"
 #line 802 "decomp1.ch"
-        if ( son && !IsComm(son, PRE) ) 
+                                                                                                                             if ( son && !IsComm(son, PRE) ) 
 #line 802 "decomp1.ch"
 #line 803 "decomp1.ch"
-            oneInstruct = 1 ;
+                                                                                                                             oneInstruct = 1 ;
 #line 803 "decomp1.ch"
-        else 
+                                                                                                                             else 
 #line 803 "decomp1.ch"
 #line 805 "decomp1.ch"
-            oneInstruct = 0 ;
+                                                                                                                             oneInstruct = 0 ;
 #line 805 "decomp1.ch"
-        
+                                                                                                                             
 #line 805 "decomp1.ch"
-}
+                                                                                                                             }
 #line 805 "decomp1.ch"
-
+                                                                                                                             
 #line 805 "decomp1.ch"
 #line 807 "decomp1.ch"
-
+                                                                                                                             
 #line 807 "decomp1.ch"
 #line 807 "decomp1.ch"
                                                                                                                              } else 
@@ -6565,117 +6565,117 @@ void FuncToAnsi ( PTREE tree )
                                                                                                         while ( listDecl ) {
 #line 1173 "decomp1.ch"
 #line 1174 "decomp1.ch"
-(Decl=(listDecl?listDecl.Nextl():(PPTREE)0));
+                                                                                                                            (Decl=(listDecl?listDecl.Nextl():(PPTREE)0));
 #line 1174 "decomp1.ch"
-
+                                                                                                                            
 #line 1174 "decomp1.ch"
 #line 1175 "decomp1.ch"
-(son=Decl);
+                                                                                                                            (son=Decl);
 #line 1175 "decomp1.ch"
-
+                                                                                                                            
 #line 1175 "decomp1.ch"
 #line 1176 "decomp1.ch"
-while ( son && !(((_inter = (PPTREE)son,1) && 
+                                                                                                                            while ( son && !(((_inter = (PPTREE)son,1) && 
 #line 1176 "decomp1.ch"
-                        (NumberTree(_inter) == metachop::IDENT) &&
+                                                                                                                                                (NumberTree(_inter) == metachop::IDENT) &&
 #line 1176 "decomp1.ch"
-                        1)) ) {
+                                                                                                                                                1)) ) {
 #line 1176 "decomp1.ch"
 #line 1177 "decomp1.ch"
-                                switch ( NumberTree(son) ) {
+                                                                                                                                                      switch ( NumberTree(son) ) {
 #line 1177 "decomp1.ch"
 #line 1178 "decomp1.ch"
-                                    case metachop::RANGE_MODIFIER : 
+                                                                                                                                                      case metachop::RANGE_MODIFIER : 
 #line 1178 "decomp1.ch"
 #line 1178 "decomp1.ch"
-                                    _Case146 : 
+                                                                                                                                                      _Case146 : 
 #line 1178 "decomp1.ch"
 #line 1178 "decomp1.ch"
-                                        ;
+                                                                                                                                                      ;
 #line 1178 "decomp1.ch"
 #line 1178 "decomp1.ch"
-                                        (son=sontree(son, 2));
+                                                                                                                                                      (son=sontree(son, 2));
 #line 1178 "decomp1.ch"
-                                        
+                                                                                                                                                      
 #line 1178 "decomp1.ch"
 #line 1178 "decomp1.ch"
-                                        goto _Case147 ;
-                                        
+                                                                                                                                                      goto _Case147 ;
+                                                                                                                                                      
 #line 1178 "decomp1.ch"
 #line 1179 "decomp1.ch"
-                                    default : 
+                                                                                                                                                      default : 
 #line 1179 "decomp1.ch"
 #line 1179 "decomp1.ch"
-                                    _Case147 : 
+                                                                                                                                                      _Case147 : 
 #line 1179 "decomp1.ch"
 #line 1179 "decomp1.ch"
-                                        ;
+                                                                                                                                                      ;
 #line 1179 "decomp1.ch"
 #line 1179 "decomp1.ch"
-                                        (son=sontree(son, 1));
+                                                                                                                                                      (son=sontree(son, 1));
 #line 1179 "decomp1.ch"
-                                        
+                                                                                                                                                      
 #line 1179 "decomp1.ch"
-                                }
+                                                                                                                                                      }
 #line 1179 "decomp1.ch"
-                                
+                                                                                                                                                      
 #line 1179 "decomp1.ch"
 #line 1181 "decomp1.ch"
-                                
+                                                                                                                                                      
 #line 1181 "decomp1.ch"
 #line 1181 "decomp1.ch"
-                              }
+                                                                                                                                                      }
 #line 1181 "decomp1.ch"
 #line 1182 "decomp1.ch"
-if ( son && !strcmp(BrainyValue(son), ident) ) {
+                                                                                                                            if ( son && !strcmp(BrainyValue(son), ident) ) {
 #line 1182 "decomp1.ch"
 #line 1183 "decomp1.ch"
-                                                        {
+                                                                                                                                                                                {
 #line 1183 "decomp1.ch"
-                                                            PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
+                                                                                                                                                                                PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
 #line 1183 "decomp1.ch"
-                                                            {
+                                                                                                                                                                                {
 #line 1183 "decomp1.ch"
-                                                                PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
+                                                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0,_ptRes1= (PPTREE) 0;
 #line 1183 "decomp1.ch"
-                                                                _ptRes1 = MakeTree(metachop::DECLARATOR, 2);
+                                                                                                                                                                                _ptRes1 = MakeTree(metachop::DECLARATOR, 2);
 #line 1183 "decomp1.ch"
-                                                                _ptTree1 = StoreRef(CopyTree(sontree(Declarator, 2)));
+                                                                                                                                                                                _ptTree1 = StoreRef(CopyTree(sontree(Declarator, 2)));
 #line 1183 "decomp1.ch"
-                                                                ReplaceTree(_ptRes1, 1, _ptTree1);
+                                                                                                                                                                                ReplaceTree(_ptRes1, 1, _ptTree1);
 #line 1183 "decomp1.ch"
-                                                                _ptTree1 = StoreRef(CopyTree(Decl));
+                                                                                                                                                                                _ptTree1 = StoreRef(CopyTree(Decl));
 #line 1183 "decomp1.ch"
-                                                                ReplaceTree(_ptRes1, 2, _ptTree1);
+                                                                                                                                                                                ReplaceTree(_ptRes1, 2, _ptTree1);
 #line 1183 "decomp1.ch"
-                                                                _ptTree0 = _ptRes1;
+                                                                                                                                                                                _ptTree0 = _ptRes1;
 #line 1183 "decomp1.ch"
-                                                            }
+                                                                                                                                                                                }
 #line 1183 "decomp1.ch"
-                                                            ReplaceTree(parameter, 1, _ptTree0);
+                                                                                                                                                                                ReplaceTree(parameter, 1, _ptTree0);
 #line 1183 "decomp1.ch"
-                                                        }
+                                                                                                                                                                                }
 #line 1183 "decomp1.ch"
-                                                        
+                                                                                                                                                                                
 #line 1183 "decomp1.ch"
 #line 1184 "decomp1.ch"
-                                                        listDecl = (PPTREE) 0 ;
+                                                                                                                                                                                listDecl = (PPTREE) 0 ;
 #line 1184 "decomp1.ch"
-                                                        
+                                                                                                                                                                                
 #line 1184 "decomp1.ch"
 #line 1185 "decomp1.ch"
-                                                        listDeclarator = (PPTREE) 0 ;
+                                                                                                                                                                                listDeclarator = (PPTREE) 0 ;
 #line 1185 "decomp1.ch"
-                                                        
+                                                                                                                                                                                
 #line 1185 "decomp1.ch"
 #line 1186 "decomp1.ch"
-                                                        
+                                                                                                                                                                                
 #line 1186 "decomp1.ch"
 #line 1186 "decomp1.ch"
-                                                    }
+                                                                                                                                                                                }
 #line 1186 "decomp1.ch"
 #line 1187 "decomp1.ch"
-
+                                                                                                                            
 #line 1187 "decomp1.ch"
 #line 1187 "decomp1.ch"
                                                                                                                             }

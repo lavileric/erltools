@@ -27,11 +27,12 @@
             
                 // Constructor
                 OptimGenetic ( Nursery<IndividualType> &nursery, unsigned int populationSize, unsigned int nbMutations, unsigned int nbMaxGenerations
-                    , unsigned int nbMaxSteadyGenerations, unsigned int maxSimulatedVectors, unsigned int maxSteadyVectors, unsigned int bestSlice )
+                    , unsigned int nbMaxSteadyGenerations, unsigned int maxSimulatedVectors, unsigned int maxSteadyVectors, unsigned int bestSlice
+                    , unsigned int maxSecNoProgress = 0 )
                     : pvPopulationSize(populationSize),  pvNbMutations(nbMutations * populationSize / 100),  pvNbMaxGenerations(nbMaxGenerations)
                         ,  pvNbMaxSteadyGenerations(nbMaxSteadyGenerations),  pvGenerationNumber(0),  pvSteadyGenerationNumber(0),  pvCloneFound(false)
                         ,  pvBestSlice(bestSlice),  OptimAlgo<IndividualType> (nursery),  pvVibrato(true),  pvWritten(0),  pvInteractive(false),  pvLastReset(0)
-                        ,  pvRec(false),  pvSuppressClone(false)
+                        ,  pvRec(false),  pvSuppressClone(false),  pvMaxSecNoProgress(maxSecNoProgress)
                 {
                     for ( unsigned int index = 0 ; index < pvPopulationSize ; index++ ) {
                         
@@ -148,6 +149,11 @@
                     return *this ;
                 }
                 
+                virtual bool VibrateWithSteady ( unsigned nbSteady )
+                {
+                    return nbSteady > 0 ;
+                }
+                
                 OptimGenetic &Interactive ( bool interactive )
                 {
                     pvInteractive =  interactive ;
@@ -214,6 +220,11 @@
                     FillRandomContents(pvCurrentPopulation, pvCurrentPopulation.size());
                 }
                 
+                void Recreate ()
+                {
+                    Recreate(pvCurrentPopulation, pvCurrentPopulation.size());
+                }
+                
                 bool Contains ( IndividualType &individual )
                 {
                     for ( auto iter = pvCurrentPopulation.begin() ; iter != pvCurrentPopulation.end() ; iter++ ) {
@@ -227,6 +238,7 @@
             
                 // Attributes
                 bool                                pvSuppressClone ;
+                timeval                             pvLoopStartTime ;
                 
                 // Configuration parameters
                 unsigned int                        pvNbMutations ;
@@ -234,6 +246,7 @@
                 unsigned int                        pvNbMaxGenerations ;
                 unsigned int                        pvNbMaxSteadyGenerations ;
                 unsigned int                        pvBestSlice ;
+                unsigned int                        pvMaxSecNoProgress ;
                 bool                                pvVibrato ;
                 
                 // Algorithm Information parameters
@@ -244,6 +257,7 @@
                 
                 // Methods
                 bool                                FillRandomContents (std::vector<IndividualType> &, unsigned int, unsigned int = 0) ;
+                bool                                Recreate (std::vector<IndividualType> &, unsigned int, unsigned int = 0) ;
                 void                                ComputeCost (std::vector<IndividualType> &, bool checkSteady = false) ;
                 bool                                Hybridation (std::vector<IndividualType> &, std::vector<IndividualType> &, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray) ;
                 void                                Mutation (std::vector<IndividualType> &, std::vector<IndividualType> &, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray) ;
@@ -396,12 +410,34 @@
             std::vector<SortUnit<typename IndividualType::TypeCost> >   sortArray ;
             
             pvNbLoops =  0 ;
+            
+            typename IndividualType::TypeCost   currentCost = this->pvBestCost ;
+            
+            if ( pvMaxSecNoProgress > 0 ) 
+                EGetUTime(pvLoopStartTime);
             while ( (pvSteadyGenerationNumber < pvNbMaxSteadyGenerations || pvSteadyGenerationNumber < pvGenerationNumber / 10)
                         && pvGenerationNumber < pvNbMaxGenerations
                         && !pvCloneFound
                         && this->CheckOn() ) {
                 Step(pvCurrentPopulation, pvNextPopulation, pvNewPopulation, sortArray, verbose);
                 Step(pvNewPopulation, pvNextPopulation, pvCurrentPopulation, sortArray, verbose);
+                
+                // check that we did not spend to much time without advance
+                if ( pvMaxSecNoProgress > 0 ) {
+
+                   this->pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
+                    
+                    typename IndividualType::TypeCost   newCost = this->pvBestCost ;
+                    timeval                             currentTime ;
+                    EGetUTime(currentTime);
+                    if ( newCost <= currentCost ) {
+                        if ( EGetDiffTime_ms(pvLoopStartTime, currentTime) > pvMaxSecNoProgress * 1000 ) 
+                            break ;
+                    } else {
+                        currentCost     =  newCost ;
+                        pvLoopStartTime =  currentTime ;
+                    }
+                }
                 
                 // check steady vectors
                 // ComputeCost(pvCurrentPopulation, true);
@@ -469,7 +505,7 @@
             EmptyWorkStack();
             nextPopulation.resize(refPopulation.size());
             Hybridation(refPopulation, nextPopulation, sortArray);
-            if ( pvSteadyGenerationNumber && Vibrato() ) {
+            if ( VibrateWithSteady(pvSteadyGenerationNumber) && Vibrato() ) {
                 bool    first = true ;
                 int     nbCreated = MTRandomValue<int> (0, pvBestSlice * pvPopulationSize / 100);
                 if ( nbCreated < 1 ) 
@@ -485,25 +521,30 @@
                     }
                 }
                 
-                // do vibrato
-                if ( Vibrato() && nbCreated-- ) 
-                    if ( Vibrato(refPopulation, nextPopulation, sortArray, true, true) ) 
-                        nbCreated =  0 ;
-                while ( nbCreated-- ) {
-                    if ( Vibrato() ) {
-#                       if 0
+                // do vibrato if we find some final element stop
+                if ( Vibrato() ) {
+                    if ( nbCreated-- ) {
+                        if ( Vibrato(refPopulation, nextPopulation, sortArray, true /* max */ , true /* best individual */ ) ) 
+                            nbCreated =  0 ;
+                        while ( nbCreated-- ) {
                             
-                            // small vibrato
-                            if ( Vibrato(refPopulation, nextPopulation, sortArray) ) 
+                            // check that we are not out of time
+                            if ( pvMaxSecNoProgress > 0 ) {
+                                timeval currentTime ;
+                                EGetUTime(currentTime);
+                                if ( EGetDiffTime_ms(pvLoopStartTime, currentTime) > pvMaxSecNoProgress * 1000 ) 
+                                    break ;
+                            }
+                            
+                            // vibrato with extreme value
+                            if ( Vibrato(refPopulation, nextPopulation, sortArray, true /* max */ ) ) 
                                 break ;
-#                       endif
-                        
-                        // vibrato with extreme value
-                        if ( Vibrato(refPopulation, nextPopulation, sortArray, true) ) 
-                            break ;
+                        }
                     }
                 }
             }
+            
+            // -- 
             Mutation(refPopulation, nextPopulation, sortArray);
             ComputeCost(nextPopulation);
             
@@ -723,6 +764,23 @@
         }
         
     //*****************************************************************************
+    // METHOD      : Recreate
+    // DESCRIPTION :
+    //
+    //*****************************************************************************
+    template <class IndividualType> 
+        bool OptimGenetic<IndividualType> ::Recreate ( std::vector<IndividualType> &population, unsigned int size, unsigned int start )
+        {
+            for ( unsigned int ind = start ; ind < size ; ind++ ) {
+                
+                // ELV 3/11/2017 no doe
+                IndividualType & doe =  population [ind];
+                doe.Affect(this->GetNursery().Create());
+            }
+            return true ;
+        }
+        
+    //*****************************************************************************
     // METHOD      : hybridation
     // DESCRIPTION :
     //
@@ -910,6 +968,7 @@
             , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool max, bool best )
         {
             unsigned int    refPop = refPopulation.size();
+            unsigned int    nbGenerated = 1 ;
             
             // empty do nothing
             if ( !nextPopulation.size() ) 
@@ -925,21 +984,42 @@
                 if ( lIndIndex < 0 ) 
                     lIndIndex =  0 ;
                 
+                // check that at least one element can be vibrated
+                bool            foundOne (false) ;
+                int             selectedIndex ;
+                unsigned int    minimumAcces = this->RankingSelect(lIndIndex * (lIndIndex + 1));
+                unsigned int    maximumAccess = this->RankingSelect(refPop * (refPop + 1) - 1);
+                for ( unsigned int index = minimumAcces ; index <= maximumAccess ; index++ ) {
+                    selectedIndex =  sortArray [index].index ;
+                    if ( refPopulation [selectedIndex].Self().Vibrato() && !refPopulation [selectedIndex].Self().Final() ) {
+                        foundOne =  true ;
+                        break ;
+                    }
+                }
+                if ( !foundOne ) 
+                    return false ;
+                
                 // For each param to be mutated
                 // ----------------------------
-                int             selectedIndex ;
                 IndividualType  newType ;
+                foundOne =  false ;
                 if ( best ) {
-                    newType.Affect(refPopulation [selectedIndex = sortArray [this->RankingSelect(refPop * (refPop + 1) - 1)].index].Self());
+                    selectedIndex =  sortArray [this->RankingSelect(refPop * (refPop + 1) - 1)].index ;
+                    
+                    // even the best must not be vibrated so surrender
+                    if ( !refPopulation [selectedIndex].Self().Vibrato() || refPopulation [selectedIndex].Self().Final() ) 
+                        return false ;
                 } else {
-                    newType.Affect(
-                        refPopulation [selectedIndex = sortArray [this->RankingSelect(MTRandomValue<int> (lIndIndex * (lIndIndex + 1), refPop * (refPop + 1)))].index
-                            ].Self());
+                    do {
+                        selectedIndex =  sortArray [this->RankingSelect(MTRandomValue<int> (lIndIndex * (lIndIndex + 1), refPop * (refPop + 1)))].index ;
+                        if ( refPopulation [selectedIndex].Self().Vibrato() && !refPopulation [selectedIndex].Self().Final() ) {
+                            foundOne =  true ;
+                        }
+                    } while ( !foundOne );
                 }
                 
-                // if useless to do vibrato on this individual skip
-                if ( !newType.Self().Vibrato() || newType.Final() ) 
-                    return false ;
+                // assign
+                newType.Affect(refPopulation [selectedIndex].Self());
                 
                 // --
                 typename IndividualType::TypeParam  oldFeature ;
@@ -952,9 +1032,8 @@
                 // --
                 IndividualType                      tempo ;
                 tempo.Affect(newType.Self());
-                bool            improved = true ;
-                bool            record = false ;
-                unsigned int    nbGenerated = 1 ;
+                bool    improved = true ;
+                bool    record = false ;
                 oldCost =  bestCost = currCost = ComputeCost(tempo);
                 
                 // --
@@ -1106,7 +1185,7 @@
                                         currCost1 =  ComputeCost(tempo);
                                         if ( currCost1 > oldCost ) {
                                             oldFeature  =  newFeature ;
-					    oldCost     =  currCost1 ;
+                                            oldCost     =  currCost1 ;
                                             backAllowed =  false ;
                                             improved    =  true ;
                                             record      =  true ;
@@ -1118,14 +1197,15 @@
                                             currCost2 =  ComputeCost(tempo);
                                             if ( currCost2 > oldCost ) {
                                                 oldFeature  =  newFeature ;
-						oldCost     =  currCost2 ;
+                                                oldCost     =  currCost2 ;
                                                 middleVal   =  -middleVal ;
                                                 backAllowed =  false ;
                                                 improved    =  true ;
                                                 record      =  true ;
                                                 sameDir     += middleVal > 0 ? middleVal : -middleVal ;
                                             } else {
-						// probably rounding pb
+                                                
+                                                // probably rounding pb
                                                 if ( currCost1 == currCost2 && currCost1 == oldCost ) 
                                                     break ;
                                                 maxVal    =  middleVal ;
@@ -1168,7 +1248,10 @@
                 
                 // delete [] tabFeature ;
             }
-            return false ;
+            if ( nbGenerated > 10 * MAX_GENERATED ) 
+                return true ;
+            else 
+                return false ;
         }
         
     //*****************************************************************************

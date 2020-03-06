@@ -3,7 +3,7 @@ include ../../../makefile.inc
 above :
 	(cd .. ;$(MAKE))
 
-test : above
+test : 
 	testdiff > restestdiff 2>&1 
 	diff restestdiff restestdiff.ref
 

@@ -217,6 +217,7 @@ int DecompCplus::IsTop ( PTREE tree, int internal )
         case <OR_AFF> : ;
         case <XOR_AFF> : ;
         case <COND_AFF> : 
+        case <EXP_BRA> : 
         case <EXP_LIST> : 
             treeOld = tree ;
             tree    = tree ^ ;
@@ -274,6 +275,7 @@ int DecompCplus::IsTop ( PTREE tree, int internal )
                     case <OR_AFF> : ;
                     case <XOR_AFF> : ;
                     case <COND_AFF> : 
+                    case <EXP_BRA> : 
                     case <EXP_LIST> : return -1 ;
                     default : 
                         treeOld = tree ;
@@ -412,6 +414,7 @@ int DecompCplus::TreatGeometrySpecific ( PTREE tree, int x0, int x )
             }
             break ;
         case <EXP_ARRAY,<>,tree2> : 
+        case <EXP_BRA,<>,tree2> : 
         case <EXP_LIST,<>,tree2> : 
             if ( tree2 == <EXP_SEQ> ) 
                 TraiterExpListParam(tree2, x0 + x);
@@ -498,7 +501,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                 if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
                     tabMax =  x ;
                 else if ( realign && x <= tabMax ) {
-		    char    string [20];
+                    char    string [20];
                     sprintf(string, "%d", tabMax);
                     att += <,MakeString(string)>;
                 } else if ( realign ) {
@@ -642,7 +645,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                 if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
                     tabMax =  x ;
                 else if ( realign && x <= tabMax ) {
-		    char    string [20];
+                    char    string [20];
                     sprintf(string, "%d", tabMax);
                     att += <,MakeString(string)>;
                 } else if ( realign ) {

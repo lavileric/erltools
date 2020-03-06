@@ -15,22 +15,30 @@
             // copy constructor
             // parameters :
             //              symbTab : copied symboltable
-            SymbolTable (SymbolTable &symbTab) ;
+            SymbolTable (const SymbolTable &symbTab) ;
             
             // destructor
             ~SymbolTable ()
             {
-                TabList **ptLevel = pvTable + pvSize - 1 ; // pointer on a level
                 
-                // free each level
-                for (; pvSize > 0 ; ptLevel--, pvSize-- ) {
-                    delete *ptLevel ;
-                }
+                // clear table
+                Clear();
                 
                 // free the table
                 if ( pvTable ) {
                     free(pvTable);
-                    pvTable = 0 ;
+                    pvTable =  0 ;
+                }
+            }
+            
+            // remove every symbol in the table
+            void Clear ()
+            {
+                if ( pvSize <= 0 ) 
+                    return ;
+                else {
+                    while ( pvSize > 0 ) 
+                        RemoveLevel();
                 }
             }
             
@@ -69,7 +77,7 @@
             }
             
             // GetList : get a list at a given level
-            TabList *GetTabList ( int level )
+            TabList *GetTabList ( int level ) const
             {
                 if ( level < pvSize && level >= 0 ) 
                     return pvTable [level];
@@ -94,7 +102,7 @@
             // operator = 
             // parameters :
             //              symbTable : the copied table
-            const SymbolTable   &operator= (SymbolTable &symbTable) ;
+            const SymbolTable   &operator= (const SymbolTable &symbTable) ;
         
         private :
         

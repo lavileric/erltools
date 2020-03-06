@@ -760,6 +760,7 @@ int DecompJava::IsTop ( PTREE tree, int internal )
             break ;
         default : return DecompCplus::IsTop(tree, internal);
     }
+    return -1 ;
 }
 
 /********************************************************************

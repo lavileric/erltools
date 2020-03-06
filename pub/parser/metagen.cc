@@ -235,7 +235,12 @@ int VerifyFileLine ( int doit, char *llanguageName )
         ptName = name + strlen(name);
         if ( ptName > name + 7 ) 
             ptName = name + 7 ;
-        *ptName++ = '0' + nbFile++ ;
+        unsigned int reminder(nbFile);
+        if (nbFile >= 10 ) {*ptName++ = '0' + nbFile / 10 ; reminder = nbFile %10; }
+
+        {
+        *ptName++ = '0' + reminder;nbFile ++;
+        }
         if ( cplusGen ) 
             strcpy(ptName, ".cpp");
         else 

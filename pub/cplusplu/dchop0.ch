@@ -176,6 +176,7 @@ void DecompCplus::control_stat1 ( PTREE paramTree ) /* on expression write ; <NL
         case <DECLARATION> : return ;
         case <EXTERNAL> : return ;
         case <NAMESPACE> : return ;
+        case <INLINE_NAMESPACE> : return ;
         case <NAMESPACE_ALIAS> : return ;
         case <USING> : return ;
         case <USING_NAMESPACE> : return ;
@@ -321,12 +322,12 @@ DecompCplus::DecompCplus ()
     copyPrinted        =  false ;
 }
 
-#define RIGHT_TO_LEFT 1
-#define LEFT_TO_RIGHT 2
 
-int DecompCplus::OpAssociativity ( PTREE tree )
+
+int DecompCplus::OpAssociativity ( PTREE & tree )
 {
     switch ( tree ) {
+        case <CAST> : 
         case <AFF> : 
         case <MUL_AFF> : 
         case <DIV_AFF> : 
@@ -356,7 +357,7 @@ int DecompCplus::OpAssociativity ( PTREE tree )
     }
 }
 
-bool IsAff ( PTREE tree )
+bool IsAff ( PTREE & tree )
 {
     switch ( tree ) {
         case <AFF> : 
@@ -374,7 +375,7 @@ bool IsAff ( PTREE tree )
     }
 }
 
-int DecompCplus::OpPriority ( PTREE tree )
+int DecompCplus::OpPriority ( PTREE  & tree )
 {
     PTREE   son ;
     
@@ -445,6 +446,7 @@ int DecompCplus::OpPriority ( PTREE tree )
         case <ARROW_MEMB> : 
             return 13 ;
             break ;
+        case <CAST> :
         case <NEG> : 
         case <POS> : 
         case <LNEG> : 
@@ -465,6 +467,7 @@ int DecompCplus::OpPriority ( PTREE tree )
         case <EXP> : 
             return 16 ;
             break ;
+        case <EXP_BRA,son> : 
         case <EXP_LIST,son> : 
             if ( value(son) && (strcmp(value(son), "WriteString") || strcmp(value(son), "PrintString")) ) 
                 return 17 ;
@@ -495,7 +498,7 @@ int DecompCplus::OpPriority ( PTREE tree )
     return -1 ;
 }
 
-int DecompCplus::IsTopInstr ( PTREE tree )
+int DecompCplus::IsTopInstr ( PTREE  & tree )
 {
     switch ( tree ) {
         case <DECLARATION> : return 100 ;

@@ -14,6 +14,8 @@
     void    AnalyzeComment (PPTREE) ;
     char    *DecToIdent (PTREE) ;
     void    ReadIncludeS (const char *, int) ;
+#   define RIGHT_TO_LEFT 1
+#   define LEFT_TO_RIGHT 2
     
     class QuickCplus : public cplus {
         
@@ -74,9 +76,9 @@
             virtual void    control_stat1 (PTREE) ;
             virtual int     commAtBeginning (PTREE) ;
             virtual int     comm (PTREE, int) ;
-            virtual int     OpAssociativity (PTREE) ;
-            virtual int     OpPriority (PTREE) ;
-            virtual int     IsTopInstr (PTREE) ;
+            virtual int     OpAssociativity (PTREE &) ;
+            virtual int     OpPriority (PTREE &) ;
+            virtual int     IsTopInstr (PTREE &) ;
             virtual void    clean_tree (PTREE) ;
             
             // functions from dchop1.ch
@@ -117,7 +119,7 @@
             int     statementf ;
             int     inhibateComment ;
             bool    flatFunct ;      // tells to put function on left margin
-            bool copyPrinted;
+            bool    copyPrinted ;
     };
     
     inline void decomp_cplus ( PTREE tree )

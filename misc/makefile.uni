@@ -3,7 +3,14 @@ tobe_done : all
 include ../makefile.inc
 
 all :
+	$(MAKE) -j $(NUMBER_PROC) all_make
+
+all_make : erlms_make erlmsch_make
+
+erlms_make :
 	( cd erlms; $(MAKE) -f makefile.uni all)
+
+erlmsch_make :
 	( cd erlmsch; $(MAKE) -f makefile.uni all)
 
 clean :

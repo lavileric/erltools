@@ -1,6 +1,6 @@
 /*************************************************************************/
 /*                                                                       */
-/*        Produced by MetaGen version 2.0  -    1989-1995                 */
+/*        Produced by MetaGen version 2.0  -    1989-2006                 */
 /*       Syntaxic Analyzer Meta Generator developped by                  */
 /*                  Eric Lavillonniere                                   */
 /*                                                                       */

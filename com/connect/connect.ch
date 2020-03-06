@@ -40,8 +40,8 @@ MetaConnection &Connection::Open ( const EString &name, const char *locAddr, con
     char        *messageContent ;     // content of message
     int         lengthEncoded ;       // encoded length
     PTREE       grammar ;             // grammar used for speaking with dispatcher
-    osockinet   *pOsin ;              // output socket
-    isockinet   *pIsin ;              // input socket
+    osockinet   *pOsin = 0 ;          // output socket
+    isockinet   *pIsin = 0 ;          // input socket
     int         keepPort = port ;     // keep port
     int         keepMaxTry = maxTry ; // keep max try
     
@@ -150,8 +150,14 @@ MetaConnection &Connection::Open ( const EString &name, const char *locAddr, con
                 
                 // find the content
                 if ( message != <NAMED_VALUE,<IDENT,"test-pco">> ) {
-                    delete pIsin ;
-                    delete pOsin ;
+                    if ( pIsin ) {
+                        delete pIsin ;
+                        pIsin =  0 ;
+                    }
+                    if ( pOsin ) {
+                        delete pOsin ;
+                        pOsin =  0 ;
+                    }
                     port   =  keepPort ;
                     maxTry =  keepMaxTry ;
                     goto start ;

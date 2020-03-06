@@ -24,7 +24,8 @@ testu : $(OBJECTS) testu.cc lib
 testu1 : $(OBJECTS) testu1.cc lib
 	$(C_PLUS)  $(MACHFLAGS) $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testu1 testu1.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
 
-
+testus : $(OBJECTS) testus.cc lib
+	$(C_PLUS)  $(MACHFLAGS) $(INCLUDE_DIR) $(OPTIM_FLAGS) -Wno-unused-result -o testus testus.cc $(OBJECTS) ../pub/library/meta.a -lm -lpthread
 
 
 

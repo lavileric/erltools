@@ -103,8 +103,11 @@
                     if ( basicSize >= 30 ) {
                         Malloc(1);
                         char    *pValue = ItoaQuick(value, pvString, basicSize);
-                        pvStart  =  pValue - pvString ;
-                        pvLength =  basicSize - pvStart - 1 ;
+                        pvStart =  pValue - pvString ;
+                        if ( pvStart != 0 ) 
+                            pvLength =  basicSize - pvStart - 1 ;
+                        else 
+                            pvLength =  strlen(pvString);
                     } else {
                         char    *pValue = CompactItoa(value);
                         Malloc((pvLength = strlen(pValue)) + 1);
@@ -118,8 +121,11 @@
                     if ( basicSize >= 30 ) {
                         Malloc(1);
                         char    *pValue = LtoaQuick(value, pvString, basicSize);
-                        pvStart  =  pValue - pvString ;
-                        pvLength =  basicSize - pvStart - 1 ;
+                        pvStart =  pValue - pvString ;
+                        if ( pvStart != 0 ) 
+                            pvLength =  basicSize - pvStart - 1 ;
+                        else 
+                            pvLength =  strlen(pvString);
                     } else {
                         char    *pValue = CompactLtoa(value);
                         Malloc((pvLength = strlen(pValue)) + 1);
@@ -144,7 +150,7 @@
                         
                         std::ostringstream  stm ;
                         
-                        stm << std::setprecision(std::numeric_limits<float> ::digits10) << value ;
+                        stm << std::setprecision(std::numeric_limits<float> ::digits10 + 5) << value ;
                         std::string pValue = stm.str();
 #                   else 
                         std::string pValue = std::to_string(value);
@@ -161,7 +167,7 @@
                         
                         std::ostringstream  stm ;
                         
-                        stm << std::setprecision(std::numeric_limits<double> ::digits10) << value ;
+                        stm << std::setprecision(std::numeric_limits<double> ::digits10 + 5) << value ;
                         std::string pValue = stm.str();
 #                   else 
                         std::string pValue = std::to_string(value);
@@ -178,7 +184,7 @@
                         
                         std::ostringstream  stm ;
                         
-                        stm << std::setprecision(std::numeric_limits<long double> ::digits10) << value ;
+                        stm << std::setprecision(std::numeric_limits<long double> ::digits10 + 5) << value ;
                         std::string pValue = stm.str();
 #                   else 
                         std::string pValue = std::to_string(value);
@@ -188,12 +194,12 @@
                     *(pvString + pvLength) =  0 ;
                 }
                 
-                ~EStringRoot ()
+                virtual ~EStringRoot ()
                 {
                     Free();
                 }
                 
-                EStringRoot &operator= ( const EStringRoot &stlString )
+                virtual EStringRoot &operator= ( const EStringRoot &stlString )
                 {
                     if ( this == &stlString ) 
                         return *this ;
@@ -319,7 +325,7 @@
                 
                 virtual EStringRoot &prepend ( const unsigned char *val, unsigned int length )
                 {
-                    return prepend((const unsigned char *)val, length);
+                    return prepend((const char *)val, length);
                 }
                 
                 virtual EStringRoot &prepend ( const EStringRoot &val )
@@ -1063,7 +1069,7 @@
                 pvStart =  pvSize = 0 ;
             }
             
-            ~VString () {}
+            virtual ~VString () {}
             
 #           if 1
                 virtual EString &operator= ( const VString &str )

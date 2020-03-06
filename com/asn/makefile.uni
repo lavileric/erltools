@@ -4,16 +4,24 @@ ASN_DIR = ./asn.a
 
 ASN_DIR_TINY= ./asntiny.a
 
-OBJECTS=asn.o asn0.o asn1.o asn2.o asn3.o\
-	compile.o pretty.o dchop.o \
-	verify.o memorize.o coding.o decomp.o asnsymbol.o
+OBJECTS_TINY=asn.o asn0.o asn1.o asn2.o asn3.o asnsymbol.o
+
+OBJECTS=$(OBJECTS_TINY) compile.o pretty.o dchop.o \
+	verify.o memorize.o coding.o decomp.o
 
 OPT_FLAGS= -Wno-empty-body
 
-do_lib :  $(OBJECTS) $(ASN_DIR)($(OBJECTS))
+library : $(OBJECTS)
+	for i in $(OBJECTS) ; do ar $(ARFLAGS) $(ASN_DIR) $$i ; done
 
-all : m_done do_lib asn dasn $(ASN_DIR_TINY)(asn.o asn0.o asn1.o \
-		asn2.o asn3.o asnsymbol.o)
+libraryTiny : $(OBJECTS_TINY)
+	for i in $(OBJECTS_TINY) ; do ar $(ARFLAGS) $(ASN_DIR_TINY) $$i ; done
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library libraryTiny
+
+all : DOLIB
+	$(MAKE) -j $(NUMBER_PROC) asn dasn
 
 libasn.so : m_done $(OBJECTS)
 	$(C_PLUS) -shared -o libasn.so $(OBJECTS)

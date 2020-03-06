@@ -1,4 +1,7 @@
-all : m_done metagen metachopdo chop
+all : m_done
+	$(MAKE) -j $(NUMBER_PROC) metagen ;
+	$(MAKE) -j $(NUMBER_PROC) metachopdo ;
+	$(MAKE) -j $(NUMBER_PROC) chop
 
 OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
 

@@ -1,7 +1,7 @@
 #ifndef CONFIG_PARSER
 #define CONFIG_PARSER
 
-extern char * theLanguage;
+ extern char * theLanguage;
 
 
 #ifdef __cplusplus

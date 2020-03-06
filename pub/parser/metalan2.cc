@@ -463,7 +463,7 @@ int metalang::Lex ()
 #line 159 "metalang.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 159 "metalang.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 159 "metalang.met"
         ExtUnputBuf();
 #line 159 "metalang.met"
@@ -1026,7 +1026,7 @@ int metalang::LexAsitContent ()
 #line 51 "metalang.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 51 "metalang.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 51 "metalang.met"
         ExtUnputBuf();
 #line 51 "metalang.met"
@@ -1163,7 +1163,7 @@ int metalang::LexComment ()
 #line 68 "metalang.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 68 "metalang.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 68 "metalang.met"
         ExtUnputBuf();
 #line 68 "metalang.met"
@@ -1393,7 +1393,7 @@ int metalang::LexEndLine ()
 #line 43 "metalang.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 43 "metalang.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 43 "metalang.met"
         ExtUnputBuf();
 #line 43 "metalang.met"
@@ -1479,7 +1479,7 @@ int metalang::LexMeta ()
 #line 112 "metalang.met"
     lastContextPos = (PFILE_POSITION)0 ;
 #line 112 "metalang.met"
-    if ( tokenAhead)
+    if ( tokenAhead && tokenAhead != -1)
 #line 112 "metalang.met"
         ExtUnputBuf();
 #line 112 "metalang.met"

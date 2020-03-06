@@ -2,8 +2,8 @@
 #define METALANG_PARSER
 
         extern int hasGotErrorMeta;
-                  extern char * theFileName; 
-                     PPTREE ReadInclude(PPTREE,int,bool); 
+                  extern char * theFileName;
+                     PPTREE ReadInclude(PPTREE,int,bool);
                    #ifdef IN
                    #undef IN
                    #endif

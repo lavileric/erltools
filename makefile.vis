@@ -4,39 +4,31 @@ all : all_to_do
 
 all_to_do :
 	@- mkdir $(INSTALL_DIR_SKIMMED) 
-	cd optim 
-	$(MAKE) -f makefile.vis all
-	cd ..
 	cd pub 
 	$(MAKE) -f makefile.vis all
 	cd ..
-#	cd regex
-#	$(MAKE) -f makefile.bor all
-#	cd ..
+	cd regex
+	$(MAKE) -f makefile.bor all
+	cd ..
 	cd misc
 	$(MAKE) -f makefile.vis all
 	cd ..
 	cd com
 	$(MAKE) -f makefile.vis all
 	cd ..
-	cd optim 
-	$(MAKE) -f makefile.vis all
-	cd ..
+
 
 clean : clean_inc
 	cd pub
 	$(MAKE) -f makefile.vis clean
 	cd ..
-# 	cd regex
-#	$(MAKE) -f makefile.bor clean
-#	cd ..
+	cd regex
+	$(MAKE) -f makefile.bor clean
+	cd ..
 	cd misc 
 	$(MAKE) -f makefile.vis clean
 	cd ..
 	cd com 
-	$(MAKE) -f makefile.vis clean
-	cd ..
-	cd optim 
 	$(MAKE) -f makefile.vis clean
 	cd ..
 
@@ -49,15 +41,6 @@ install :
 	$(MAKE) -f makefile.vis install
 	cd ..
 
-
-optimonly :
-	- mkdir $(INSTALL_DIR)
-	cd pub 
-	$(MAKE) -f makefile.vis basic
-	cd ..
-	cd optim 
-	$(MAKE) -f makefile.vis all
-	cd ..
 
 prettyprinter :
 	- mkdir $(INSTALL_DIR)

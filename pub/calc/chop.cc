@@ -26,55 +26,23 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
    
    */
-#include <stdio.h>
-#include <stdlib.h>
 #include "token.h"
 
-#ifndef SUN
-#include "..\metachop\metachop.h"
-#else 
 #include "../metachop/metachop.h"
-#endif
 
 #include <fcntl.h>
 #include "calc.h"
 
-metachop    *parser_metachop ;
-calc    *parser_calc ;
 char    *theFileName ;
 int     compiledLine = 0 ;
 DecompMetachop  *DecompMetachop::ptDecomp = 0 ;
 DecompChopb *DecompChopb::ptDecomp = 0 ;
 
-extern "C" {
-    PTREE bri_parse_entry_calc ( int error_free )
-    {
-        return parser_calc -> parse_entry(error_free);
-    }
-    
-    PPTREE bri_parse_entry_chopb ( int error_free )
-    {
-        
-        //    return metachop().parse_entry(error_free);
-        return (PTREE) - 1 ;
-    }
-    
-    PPTREE bri_parse_entry_metachop ( int error_free )
-    {
-        return metachop().parse_entry(error_free);
-    }
-    
-    PPTREE parse_metachop ( int error_free )
-    {
-        return parser_metachop -> prog(error_free);
-    }
-    
     /**************************************************************
                main
        ***************************************************************/
     extern int  cplusGen ;  /* c++ generation */ 
     int metaQuick ;         /* quick version */ 
-    extern PPTREE   (*the_parse_entry_pt)(int) ;
     static char name [80], *ptName ;
     char    *parseLanguage = (char *)0 ;
     
@@ -82,7 +50,6 @@ extern "C" {
     {
         return (PTREE)0 ;
     }
-}
 
 void ChopTree ( PTREE tree )
 {
@@ -92,7 +59,7 @@ void ChopTree ( PTREE tree )
     NewLine();
 }
 
-main ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
     PTREE   tree ;
     char    name [50];
@@ -100,12 +67,12 @@ main ( int argc, char **argv )
     DecompMetachop  decomp ;
     
     MetaInit();
-    parser_metachop = new metachop ;
-    parser_calc = new calc ;
+    metachop () . AsLanguage ();
+    calc () . AsLanguage ();
     DecompMetachop::ptDecomp = &decomp ;
     DecompChopb::ptDecomp = (DecompChopb *)(&decomp);
     DecompCplus::ptDecomp = (DecompCplus *)(&decomp);
-    SwitchLang("metachop");
+    metachop () . AsLanguage ();
     ReadIncludeS("c.set", 1);
     cplusGen = metaQuick = 0 ;
 follow : 
@@ -126,10 +93,9 @@ follow :
         exit(0);
     } else {
         theFileName = ptName = *(argv + 1);
-        input = open(ptName, O_RDONLY | O_BINARY);
     }
-    the_parse_entry_pt = parse_metachop ;
-    tree = ReadInFile(0);
+    emacsCompatibleError = true ;
+    tree = metachop () . ReadFile ( theFileName);
     AddRef(tree);
     ChopTree(tree);
     MetaEnd();

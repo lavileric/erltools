@@ -451,7 +451,7 @@ lexdefine Lex;
                                 takel in ['L','l'] :
                                     begin
                                     case
-                                        takel in ['u','U'] :return !ULLHEXA                       
+                                        takel in ['u','U'] : return !ULLHEXA
                                         default : return !LLHEXA
                                     end;
                                     end
@@ -462,7 +462,7 @@ lexdefine Lex;
                                 takel in ['l','L'] :
                                     begin
                                     case
-                                        takel in ['L','l'] :return !ULLHEXA                       
+                                        takel in ['L','l'] : return !ULLHEXA
                                         default : return !ULHEXA
                                     end;
                                     end
@@ -481,7 +481,7 @@ lexdefine Lex;
                                 takel in ['L','l'] :
                                     begin
                                     case
-                                        takel in ['u','U'] :return !ULLOCTAL                      
+                                        takel in ['u','U'] : return !ULLOCTAL
                                         default : return !LLOCTAL
                                     end;
                                     end
@@ -493,7 +493,7 @@ lexdefine Lex;
                                 takel in ['l','L'] :
                                     begin
                                     case
-                                        takel in ['L','l'] :return !ULLOCTAL                      
+                                        takel in ['L','l'] : return !ULLOCTAL
                                         default : return !ULOCTAL
                                     end;
                                     end
@@ -678,9 +678,7 @@ end;
 
 lexdefine LexPragmaSmall;
     skip ' ','\t';
-    while seel 
-            and seel in ['a'..'z','A'..'Z','_','0'..'9']
-            and not seel in ['\n','\r'] do
+    while seel and seel in ['a'..'z','A'..'Z','_','0'..'9'] and not seel in ['\n','\r'] do
         storel takel ;
     return !SMALL_PRAGMA_CONTENT;
 end;
@@ -834,156 +832,115 @@ define quick_prog_elem;
                     case
                         take !PRAGMA_TAB :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(TAB_VALUE,take !INTEGER));
+                            retTree = maketree(CONFIG,maketree(TAB_VALUE,take !INTEGER));
                             AnalyzeTab(retTree);
                             return retTree;
                             end
                         take !PRAGMA_MODE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(MODE_VALUE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(MODE_VALUE,take !IDENT));
                             AnalyzeMode(retTree);
                             return retTree;
                             end
                         take !PRAGMA_ENUM_VERT :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(ENUM_VERT_VALUE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(ENUM_VERT_VALUE,take !IDENT));
                             AnalyzeEnumVert(retTree);
                             return retTree;
                             end
                         take !PRAGMA_PARAMETERS_UNDER :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(ENUM_PARAMETERS_UNDER
-                                        ,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(ENUM_PARAMETERS_UNDER,take !IDENT));
                             AnalyzeParameterFunctUnd(retTree);
                             return retTree;
                             end
                         take !PRAGMA_TAB_DIRECTIVE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(TAB_DIRECTIVE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(TAB_DIRECTIVE,take !IDENT));
                             AnalyzeTabDirective(retTree);
                             return retTree;
                             end
                         take !PRAGMA_SPACE_ARROW :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(SPACE_ARROW,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(SPACE_ARROW,take !IDENT));
                             AnalyzeSpaceArrow(retTree);
                             return retTree;
                             end
                         take !PRAGMA_BRACE_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(BRACE_ALIGN_VALUE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(BRACE_ALIGN_VALUE,take !IDENT));
                             AnalyzeBraceAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_SIMPLIFY :
                             begin
-                            retTree
-                                = maketree(SIMPLIFY
-                                    ,maketree(SIMPLIFY_VALUE,take !IDENT));
+                            retTree = maketree(SIMPLIFY,maketree(SIMPLIFY_VALUE,take !IDENT));
                             AnalyzeSimplify(retTree);
                             return retTree;
                             end
                         take !PRAGMA_SINGLE_SWITCH_INDENT :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(SINGLE_SWITCH_INDENT_VALUE
-                                        ,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(SINGLE_SWITCH_INDENT_VALUE,take !IDENT));
                             AnalyzeSingleSwitchIndent(retTree);
                             return retTree;
                             end
                         take !PRAGMA_ASSIGN_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(ASSIGN_ALIGN,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(ASSIGN_ALIGN,take !IDENT));
                             AnalyzeAssignAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_DECL_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(DECL_ALIGN,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(DECL_ALIGN,take !IDENT));
                             AnalyzeDeclAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_MARGIN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(MARGIN_VALUE,take !INTEGER));
+                            retTree = maketree(CONFIG,maketree(MARGIN_VALUE,take !INTEGER));
                             AnalyzeMargin(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_START :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_START,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_START,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_MIDDLE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_MIDDLE,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_MIDDLE,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_END :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_END,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_END,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_PLUS :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_PLUS,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_PLUS,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_INDENT_FUNCTION_TYPE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(INDENT_FUNCTION_TYPE
-                                        ,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(INDENT_FUNCTION_TYPE,take !IDENT));
                             AnalyzeIndentFunctionType(retTree);
                             return retTree;
                             end
                         take !PRAGMA_FUNC_HEADER :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(FUNC_HEADER,take !STRING));
+                            retTree = maketree(CONFIG,maketree(FUNC_HEADER,take !STRING));
                             AnalyzeFuncHeader(retTree);
                             return retTree;
                             end
                         take !PRAGMA_PARAMETERS :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(PARAMETERS,take !STRING));
+                            retTree = maketree(CONFIG,maketree(PARAMETERS,take !STRING));
                             AnalyzeParameters(retTree);
                             return retTree;
                             end
@@ -1009,11 +966,7 @@ end;
 
 define stat_all;
     declare stat;
-    if stat = take statement
-        or stat = take data_declaration
-        or stat = take stat_dir
-        or stat = take exception
-        or stat = take ext_data_declaration then
+    if stat = take statement or stat = take data_declaration or stat = take stat_dir or stat = take exception or stat = take ext_data_declaration then
         return stat
     else
         return take statement;
@@ -1051,18 +1004,14 @@ define ext_all_no_linkage;
         take "<";
         repeat
             case
-                take #"class" : addlist(listTemp
-                    ,maketree(CLASS_PARAM,take arg_declarator_type))
+                take #"class" : addlist(listTemp,maketree(CLASS_PARAM,take arg_declarator_type))
                 default : addlist(listTemp,take arg_declarator_type)
             end;
         until not take ",";
         take ">";
         return maketree(TEMPLATE_DECL,listTemp,take ext_all_no_linkage);
         end;
-    if decl = take ext_data_declaration
-        or decl = take func_declaration
-        or decl = take ext_decl_dir
-        or decl = take asm_declaration then
+    if decl = take ext_data_declaration or decl = take func_declaration or decl = take ext_decl_dir or decl = take asm_declaration then
         return decl
     else
         return take func_declaration;
@@ -1292,8 +1241,7 @@ define directive;
             begin
             with context keepCarriage do
                 begin
-                retTree
-                    = maketree(LINE_REFERENCE_DIR,take expression,(),());
+                retTree = maketree(LINE_REFERENCE_DIR,take expression,(),());
                 if interTree = take !STRING then
                     replacetree(retTree,2,maketree(STRING,interTree));
                 while exp = take expression do
@@ -1347,123 +1295,91 @@ define directive;
                     case
                         take !PRAGMA_TAB :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(TAB_VALUE,take !INTEGER));
+                            retTree = maketree(CONFIG,maketree(TAB_VALUE,take !INTEGER));
                             AnalyzeTab(retTree);
                             return retTree;
                             end
                         take !PRAGMA_MODE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(MODE_VALUE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(MODE_VALUE,take !IDENT));
                             AnalyzeMode(retTree);
                             return retTree;
                             end
                         take !PRAGMA_SIMPLIFY :
                             begin
-                            retTree
-                                = maketree(SIMPLIFY
-                                    ,maketree(SIMPLIFY_VALUE,take !IDENT));
+                            retTree = maketree(SIMPLIFY,maketree(SIMPLIFY_VALUE,take !IDENT));
                             AnalyzeSimplify(retTree);
                             return retTree;
                             end
                         take !PRAGMA_SINGLE_SWITCH_INDENT :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(SINGLE_SWITCH_INDENT_VALUE
-                                        ,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(SINGLE_SWITCH_INDENT_VALUE,take !IDENT));
                             AnalyzeSingleSwitchIndent(retTree);
                             return retTree;
                             end
                         take !PRAGMA_ASSIGN_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(ASSIGN_ALIGN,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(ASSIGN_ALIGN,take !IDENT));
                             AnalyzeAssignAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_DECL_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(DECL_ALIGN,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(DECL_ALIGN,take !IDENT));
                             AnalyzeDeclAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_BRACE_ALIGN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(BRACE_ALIGN_VALUE,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(BRACE_ALIGN_VALUE,take !IDENT));
                             AnalyzeBraceAlign(retTree);
                             return retTree;
                             end
                         take !PRAGMA_MARGIN :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(MARGIN_VALUE,take !INTEGER));
+                            retTree = maketree(CONFIG,maketree(MARGIN_VALUE,take !INTEGER));
                             AnalyzeMargin(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_START :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_START,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_START,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_MIDDLE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_MIDDLE,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_MIDDLE,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_END :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_END,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_END,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_COMMENT_PLUS :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(COMMENT_PLUS,take !STRING));
+                            retTree = maketree(CONFIG,maketree(COMMENT_PLUS,take !STRING));
                             AnalyzeComment(retTree);
                             return retTree;
                             end
                         take !PRAGMA_INDENT_FUNCTION_TYPE :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(INDENT_FUNCTION_TYPE
-                                        ,take !IDENT));
+                            retTree = maketree(CONFIG,maketree(INDENT_FUNCTION_TYPE,take !IDENT));
                             AnalyzeIndentFunctionType(retTree);
                             return retTree;
                             end
                         take !PRAGMA_FUNC_HEADER :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(FUNC_HEADER,take !STRING));
+                            retTree = maketree(CONFIG,maketree(FUNC_HEADER,take !STRING));
                             AnalyzeFuncHeader(retTree);
                             return retTree;
                             end
                         take !PRAGMA_PARAMETERS :
                             begin
-                            retTree
-                                = maketree(CONFIG
-                                    ,maketree(PARAMETERS,take !STRING));
+                            retTree = maketree(CONFIG,maketree(PARAMETERS,take !STRING));
                             AnalyzeParameters(retTree);
                             return retTree;
                             end
@@ -1513,8 +1429,7 @@ define include_dir;
         see !INCLUDE_LOCAL :
             begin
             {{ /* ReadInclude(stringlex,1)*/;}};
-            return maketree(INCLUDE_DIR
-                ,maketree(STRING,take !INCLUDE_LOCAL));
+            return maketree(INCLUDE_DIR,maketree(STRING,take !INCLUDE_LOCAL));
             end
     end;
 end;
@@ -1538,6 +1453,11 @@ define declarator_value;
             begin
             valTree = maketree(TYP_AFF_CALL,valTree,take expression);
             take ")";
+            end
+        take "{" :
+            begin
+            valTree = maketree(TYP_AFF_BRA,valTree,take expression);
+            take "}";
             end
         default : 
     end;
@@ -1590,7 +1510,7 @@ end;
 
 define ext_data_decl_simp;
     declare retTree;
-    if not retTree = take data_declaration then
+    if not retTree = take data_declaration and not retTree = take inline_namespace then
         retTree = take ext_data_decl_sc_ty;
     return retTree;
 end;
@@ -1599,6 +1519,11 @@ define typedef_and_declarator;
     declare retTree;
     retTree = maketree(TYPEDEF,take type_specifier,());
     return replacetree(retTree,2,take declarator_list);
+end;
+
+define inline_namespace;
+    take #"inline";
+    return maketree(INLINE_NAMESPACE,take name_space);
 end;
 
 /* data declaration outside functions either a typedef
@@ -1616,6 +1541,7 @@ define ext_data_declaration;
         see #"namespace" : return take name_space
         see #"using" : return take name_space
         take ";" : return maketree(STAT_VOID)
+        take "__extension__" : return maketree(EXTENSION,take ext_data_decl_simp)
         default : return take ext_data_decl_simp
     end;
 end;
@@ -1750,10 +1676,7 @@ end;
 
 define inside_declaration;
     declare retTree;
-    if not retTree = take inside_declaration_extension
-        and not retTree = take ext_all
-        and not retTree = take inside_declaration1
-        and not retTree = take inside_declaration2 then
+    if not retTree = take inside_declaration_extension and not retTree = take ext_all and not retTree = take inside_declaration1 and not retTree = take inside_declaration2 then
         break;
     return retTree;
 end;
@@ -1769,12 +1692,20 @@ define enum_val;
 end;
 
 define enum_declarator;
-    declare retTree,valTree,list;
+    declare retTree,valTree,list,classMarker;
     take #"enum";
+    if take #"class" then
+        begin
+        classMarker = maketree(ENUM_CLASS);
+        end;
     if see !IDENT then
-        retTree = maketree(ENUM,maketree(IDENT,take !IDENT),())
+        retTree = maketree(ENUM,maketree(IDENT,take !IDENT),(),classMarker,())
     else
-        retTree = maketree(ENUM,(),());
+        retTree = maketree(ENUM,(),(),classMarker,());
+    if take ":" then
+        begin
+        replacetree(retTree,4,take simple_type);
+        end;
     if take "{" then
         begin
         repeat
@@ -1881,14 +1812,10 @@ end;
 define base_specifier_elem;
     declare ret;
     case
-        take #"private" : return maketree(PROTECT,"private"
-            ,take base_specifier_elem)
-        take #"protected" : return maketree(PROTECT,"protected"
-            ,take base_specifier_elem)
-        take #"public" : return maketree(PROTECT,"public"
-            ,take base_specifier_elem)
-        take #"virtual" : return maketree(PROTECT,"virtual"
-            ,take base_specifier_elem)
+        take #"private" : return maketree(PROTECT,"private",take base_specifier_elem)
+        take #"protected" : return maketree(PROTECT,"protected",take base_specifier_elem)
+        take #"public" : return maketree(PROTECT,"public",take base_specifier_elem)
+        take #"virtual" : return maketree(PROTECT,"virtual",take base_specifier_elem)
         default : 
     end;
     ret = take complete_class_name;
@@ -1921,16 +1848,11 @@ define macro;
     case
         take !DECLARE_SERIAL : retTree = maketree(IDENT,"DECLARE_SERIAL")
         take !DECLARE_DYNAMIC : retTree = maketree(IDENT,"DECLARE_DYNAMIC")
-        take !DECLARE_MESSAGE_MAP : retTree
-            = maketree(IDENT,"DECLARE_MESSAGE_MAP")
-        take !IMPLEMENT_DYNAMIC : retTree
-            = maketree(IDENT,"IMPLEMENT_DYNAMIC")
-        take !IMPLEMENT_DYNCREATE : retTree
-            = maketree(IDENT,"IMPLEMENT_DYNCREATE")
-        take !IMPLEMENT_SERIAL : retTree
-            = maketree(IDENT,"IMPLEMENT_SERIAL")
-        take !BEGIN_MESSAGE_MAP : retTree
-            = maketree(IDENT,"BEGIN_MESSAGE_MAP")
+        take !DECLARE_MESSAGE_MAP : retTree = maketree(IDENT,"DECLARE_MESSAGE_MAP")
+        take !IMPLEMENT_DYNAMIC : retTree = maketree(IDENT,"IMPLEMENT_DYNAMIC")
+        take !IMPLEMENT_DYNCREATE : retTree = maketree(IDENT,"IMPLEMENT_DYNCREATE")
+        take !IMPLEMENT_SERIAL : retTree = maketree(IDENT,"IMPLEMENT_SERIAL")
+        take !BEGIN_MESSAGE_MAP : retTree = maketree(IDENT,"BEGIN_MESSAGE_MAP")
         take !END_MESSAGE_MAP : retTree = maketree(IDENT,"END_MESSAGE_MAP")
         take !CATCH_UPPER : retTree = maketree(IDENT,"CATCH")
         take !CATCH_ALL : retTree = maketree(IDENT,"CATCH_ALL")
@@ -1951,15 +1873,11 @@ define macro_extended;
     declare retTree,valTree;
     case
         take !DECLARE_SERIAL : retTree = maketree(IDENT,"DECLARE_SERIAL")
-        take !IMPLEMENT_DYNAMIC : retTree
-            = maketree(IDENT,"IMPLEMENT_DYNAMIC")
-        take !IMPLEMENT_DYNCREATE : retTree
-            = maketree(IDENT,"IMPLEMENT_DYNCREATE")
-        take !IMPLEMENT_SERIAL : retTree
-            = maketree(IDENT,"IMPLEMENT_SERIAL")
+        take !IMPLEMENT_DYNAMIC : retTree = maketree(IDENT,"IMPLEMENT_DYNAMIC")
+        take !IMPLEMENT_DYNCREATE : retTree = maketree(IDENT,"IMPLEMENT_DYNCREATE")
+        take !IMPLEMENT_SERIAL : retTree = maketree(IDENT,"IMPLEMENT_SERIAL")
         take !DECLARE_DYNAMIC : retTree = maketree(IDENT,"DECLARE_DYNAMIC")
-        take !BEGIN_MESSAGE_MAP : retTree
-            = maketree(IDENT,"BEGIN_MESSAGE_MAP")
+        take !BEGIN_MESSAGE_MAP : retTree = maketree(IDENT,"BEGIN_MESSAGE_MAP")
         take !CATCH_UPPER : retTree = maketree(IDENT,"CATCH")
         take !CATCH_ALL : retTree = maketree(IDENT,"CATCH_ALL")
         take !AND_CATCH : retTree = maketree(IDENT,"AND_CATCH")
@@ -1990,12 +1908,9 @@ end;
 
 define catch_unit;
     case
-        see !CATCH_UPPER : return maketree(CATCH,take macro
-            ,take compound_statement)
-        see !CATCH_ALL : return maketree(CATCH,take macro
-            ,take compound_statement)
-        see !AND_CATCH : return maketree(CATCH,take macro
-            ,take compound_statement)
+        see !CATCH_UPPER : return maketree(CATCH,take macro,take compound_statement)
+        see !CATCH_ALL : return maketree(CATCH,take macro,take compound_statement)
+        see !AND_CATCH : return maketree(CATCH,take macro,take compound_statement)
     end;
 end;
 
@@ -2080,8 +1995,14 @@ end;
 define simple_type;
     declare valTree;
     case
-        take #"typename" : return maketree(TYPENAME
-            ,maketree(TIDENT,take complete_class_name))
+        take #"typename" : return maketree(TYPENAME,maketree(TIDENT,take complete_class_name))
+        take #"decltype" :
+            begin
+            take "(";
+            valTree = maketree(DECL_TYPE,take postfix_expression);
+            take ")";
+            return valTree;
+            end
         take #"auto" : return maketree(AUTO)
         take #"double" : return maketree(TDOUBLE)
         take #"int" : return maketree(TINT)
@@ -2095,15 +2016,22 @@ define simple_type;
                 take #"float" : return maketree(TLONG,maketree(TFLOAT))
                 take #"double" : return maketree(TLONG,maketree(TDOUBLE))
                 take #"int" : return maketree(TLONG,maketree(TINT))
+                take #"signed" :
+                    begin
+                    if valTree = take long_short_int_char then
+                        return maketree(TSIGNED,maketree(TLONG,valTree));
+                    end
+                take #"unsigned" :
+                    begin
+                    if valTree = take long_short_int_char then
+                        return maketree(TUNSIGNED,maketree(TLONG,valTree));
+                    end
                 take #"long" :
                     begin
                     case
-                        take #"float" : return maketree(TLONG
-                            ,maketree(TLONG,maketree(TFLOAT)))
-                        take #"double" : return maketree(TLONG
-                            ,maketree(TLONG,maketree(TDOUBLE)))
-                        take #"int" : return maketree(TLONG
-                            ,maketree(TLONG,maketree(TINT)))
+                        take #"float" : return maketree(TLONG,maketree(TLONG,maketree(TFLOAT)))
+                        take #"double" : return maketree(TLONG,maketree(TLONG,maketree(TDOUBLE)))
+                        take #"int" : return maketree(TLONG,maketree(TLONG,maketree(TINT)))
                         take #"long" : 
                         default : return maketree(TLONG,maketree(TLONG,()))
                     end;
@@ -2153,8 +2081,7 @@ end;
 define const_or_volatile;
     case
         see #"const" : return maketree(RANGE_MODIFIER,take #"const",())
-        see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile"
-            ,())
+        see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile",())
     end;
 end;
 
@@ -2164,16 +2091,42 @@ define range_modifier_function;
         see #"virtual" : return maketree(RANGE_MODIFIER,take #"virtual",())
         see #"friend" : return maketree(RANGE_MODIFIER,take #"friend",())
         see #"const" : return maketree(RANGE_MODIFIER,take #"const",())
+        see #"constexpr" : return maketree(RANGE_MODIFIER,take #"constexpr",())
     end;
 end;
 
+define attribute_call;
+    declare retTree;
+    take #"__attribute__";
+    take "(";
+    retTree = maketree(ATTRIBUTE_CALL,take expression);
+    take ")";
+    return retTree;
+end;
+
+define asm_call;
+    declare retTree;
+    take #"__asm__";
+    take "(";
+    retTree = maketree(ASM_CALL,take expression);
+    take ")";
+    return retTree;
+end;
+
 define range_modifier;
+    declare retTree;
     case
         see !IDENT : return maketree(RANGE_MODIFIER,take range_in_liste,())
-        see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile"
-            ,())
-        see #"register" : return maketree(RANGE_MODIFIER,take #"register"
-            ,())
+        see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile",())
+        see #"register" : return maketree(RANGE_MODIFIER,take #"register",())
+        see #"__attribute__" :
+            begin
+            return maketree(RANGE_MODIFIER,take attribute_call,());
+            end
+        see #"__asm__" :
+            begin
+            return maketree(RANGE_MODIFIER,take asm_call,());
+            end
         default : return take range_modifier_function
     end;
 end;
@@ -2218,13 +2171,15 @@ define ptr_operator;
 end;
 
 define arg_typ_declarator;
-    declare retTree,expList;
+    declare retTree,expList,except;
     take "(";
     if expList = take arg_typ_list then
-        retTree = maketree(TYP_LIST,(),expList,())
+        retTree = maketree(TYP_LIST,(),expList,(),())
     else
-        retTree = maketree(TYP_LIST,(),(),());
+        retTree = maketree(TYP_LIST,(),(),(),());
     take ")";
+    if except = take exception_list then
+        replacetree(retTree,4,except);
     return retTree;
 end;
 
@@ -2295,8 +2250,7 @@ define declarator;
                 begin
                 retTree = take qualified_name;
                 if take "::" and take "*" then
-                    return maketree(MEMBER_DECLARATOR,retTree
-                        ,take declarator);
+                    return maketree(MEMBER_DECLARATOR,retTree,take declarator);
                 if valTree = take declarator_follow then
                     {{
                         { PPTREE theTree ;
@@ -2590,8 +2544,7 @@ define assignment_end;
     case
         take "=" : return maketree(AFF,(),take assignment_expression)
         take "*=" : return maketree(MUL_AFF,(),take assignment_expression)
-        take !SLASEGAL : return maketree(DIV_AFF,()
-            ,take assignment_expression)
+        take !SLASEGAL : return maketree(DIV_AFF,(),take assignment_expression)
         take "%=" : return maketree(REM_AFF,(),take assignment_expression)
         take "+=" : return maketree(PLU_AFF,(),take assignment_expression)
         take "-=" : return maketree(MIN_AFF,(),take assignment_expression)
@@ -2687,10 +2640,8 @@ define relational_expression;
     expTree = take shift_expression;
     while see "<=" or see ">=" or (see ">") or see "<" do
         case
-            take "<=" : expTree
-                = maketree(LEQU,expTree,take shift_expression)
-            take ">=" : expTree
-                = maketree(GEQU,expTree,take shift_expression)
+            take "<=" : expTree = maketree(LEQU,expTree,take shift_expression)
+            take ">=" : expTree = maketree(GEQU,expTree,take shift_expression)
             take ">" : expTree = maketree(GT,expTree,take shift_expression)
             take "<" : expTree = maketree(LT,expTree,take shift_expression)
         end;
@@ -2702,10 +2653,8 @@ define shift_expression;
     expTree = take additive_expression;
     while see "<<" or see ">>" do
         case
-            take "<<" : expTree
-                = maketree(LSHI,expTree,take additive_expression)
-            take ">>" : expTree
-                = maketree(RSHI,expTree,take additive_expression)
+            take "<<" : expTree = maketree(LSHI,expTree,take additive_expression)
+            take ">>" : expTree = maketree(RSHI,expTree,take additive_expression)
         end;
     return expTree;
 end;
@@ -2715,10 +2664,8 @@ define additive_expression;
     expTree = take multiplicative_expression;
     while see "+" or see "-" do
         case
-            take "+" : expTree
-                = maketree(PLUS,expTree,take multiplicative_expression)
-            take "-" : expTree
-                = maketree(MINUS,expTree,take multiplicative_expression)
+            take "+" : expTree = maketree(PLUS,expTree,take multiplicative_expression)
+            take "-" : expTree = maketree(MINUS,expTree,take multiplicative_expression)
         end;
     return expTree;
 end;
@@ -2740,10 +2687,8 @@ define pm_expression;
     expTree = take cast_expression;
     while see ".*" or see "->*" do
         case
-            take ".*" : expTree
-                = maketree(DOT_MEMB,expTree,take cast_expression)
-            take "->*" : expTree
-                = maketree(ARROW_MEMB,expTree,take cast_expression)
+            take ".*" : expTree = maketree(DOT_MEMB,expTree,take cast_expression)
+            take "->*" : expTree = maketree(ARROW_MEMB,expTree,take cast_expression)
         end;
     return expTree;
 end;
@@ -2913,12 +2858,7 @@ define postfix_expression;
         if not see "(" then
             break;
         end;
-    while see "("
-            or see "["
-            or see !POINT
-            or see "->"
-            or see "++"
-            or see "--" do
+    while see "(" or see "[" or see !POINT or see "->" or see "++" or see "--" or see "{" do
         case
             take "(" :
                 begin
@@ -2928,6 +2868,14 @@ define postfix_expression;
                     expTree = maketree(EXP_LIST,expTree,());
                 take ")";
                 end
+            take "{" :
+                begin
+                if expList = take expression then
+                    expTree = maketree(EXP_BRA,expTree,expList)
+                else
+                    expTree = maketree(EXP_BRA,expTree,());
+                take "}";
+                end
             take "[" :
                 begin
                 if expList = take expression then
@@ -2936,10 +2884,8 @@ define postfix_expression;
                     expTree = maketree(EXP_ARRAY,expTree,());
                 take "]";
                 end
-            take !POINT : expTree
-                = maketree(REF,expTree,take primary_expression)
-            take "->" : expTree
-                = maketree(ARROW,expTree,take primary_expression)
+            take !POINT : expTree = maketree(REF,expTree,take primary_expression)
+            take "->" : expTree = maketree(ARROW,expTree,take primary_expression)
             take "++" : expTree = maketree(AINCR,expTree)
             take "--" : expTree = maketree(ADECR,expTree)
         end;
@@ -3071,38 +3017,23 @@ end;
 define constan;
     case
         see !INTEGER : return maketree(INTEGER,take !INTEGER)
-        see !LINTEGER : return maketree(ILONG
-            ,maketree(INTEGER,take !LINTEGER))
-        see !LLINTEGER : return maketree(ILONGLONG
-            ,maketree(INTEGER,take !LINTEGER))
-        see !UINTEGER : return maketree(IUN
-            ,maketree(INTEGER,take !UINTEGER))
-        see !ULINTEGER : return maketree(IUNLONG
-            ,maketree(INTEGER,take !ULINTEGER))
-        see !ULLINTEGER : return maketree(IUNLONGLONG
-            ,maketree(INTEGER,take !ULINTEGER))
+        see !LINTEGER : return maketree(ILONG,maketree(INTEGER,take !LINTEGER))
+        see !LLINTEGER : return maketree(ILONGLONG,maketree(INTEGER,take !LINTEGER))
+        see !UINTEGER : return maketree(IUN,maketree(INTEGER,take !UINTEGER))
+        see !ULINTEGER : return maketree(IUNLONG,maketree(INTEGER,take !ULINTEGER))
+        see !ULLINTEGER : return maketree(IUNLONGLONG,maketree(INTEGER,take !ULINTEGER))
         see !HEXA : return maketree(HEXA,maketree(INTEGER,take !HEXA))
-        see !LHEXA : return maketree(LONG
-            ,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
-        see !LLHEXA : return maketree(LONGLONG
-            ,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
-        see !UHEXA : return maketree(IUN
-            ,maketree(HEXA,maketree(INTEGER,take !UHEXA)))
-        see !ULHEXA : return maketree(IUNLONG
-            ,maketree(HEXA,maketree(INTEGER,take !ULHEXA)))
-        see !ULLHEXA : return maketree(IUNLONGLONG
-            ,maketree(HEXA,maketree(INTEGER,take !ULHEXA)))
+        see !LHEXA : return maketree(LONG,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
+        see !LLHEXA : return maketree(LONGLONG,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
+        see !UHEXA : return maketree(IUN,maketree(HEXA,maketree(INTEGER,take !UHEXA)))
+        see !ULHEXA : return maketree(IUNLONG,maketree(HEXA,maketree(INTEGER,take !ULHEXA)))
+        see !ULLHEXA : return maketree(IUNLONGLONG,maketree(HEXA,maketree(INTEGER,take !ULHEXA)))
         see !OCTAL : return maketree(OCTAL,maketree(INTEGER,take !OCTAL))
-        see !LOCTAL : return maketree(ILONG
-            ,maketree(OCTAL,maketree(INTEGER,take !LOCTAL)))
-        see !LLOCTAL : return maketree(ILONGLONG
-            ,maketree(OCTAL,maketree(INTEGER,take !LOCTAL)))
-        see !UOCTAL : return maketree(IUN
-            ,maketree(OCTAL,maketree(INTEGER,take !UOCTAL)))
-        see !ULOCTAL : return maketree(IUNLONG
-            ,maketree(OCTAL,maketree(INTEGER,take !ULOCTAL)))
-        see !ULLOCTAL : return maketree(IUNLONGLONG
-            ,maketree(OCTAL,maketree(INTEGER,take !ULOCTAL)))
+        see !LOCTAL : return maketree(ILONG,maketree(OCTAL,maketree(INTEGER,take !LOCTAL)))
+        see !LLOCTAL : return maketree(ILONGLONG,maketree(OCTAL,maketree(INTEGER,take !LOCTAL)))
+        see !UOCTAL : return maketree(IUN,maketree(OCTAL,maketree(INTEGER,take !UOCTAL)))
+        see !ULOCTAL : return maketree(IUNLONG,maketree(OCTAL,maketree(INTEGER,take !ULOCTAL)))
+        see !ULLOCTAL : return maketree(IUNLONGLONG,maketree(OCTAL,maketree(INTEGER,take !ULOCTAL)))
         see !FLOATVAL : return maketree(FLOAT,take !FLOATVAL)
         see !CHARACT : return maketree(CHAR,take !CHARACT)
     end;
@@ -3212,7 +3143,7 @@ end;
 
 define type_and_declarator;
     declare funcTree;
-    funcTree = maketree(FUNC,take sc_specifier,(),(),(),(),(),(),(),());
+    funcTree = maketree(FUNC,take sc_specifier,(),(),(),(),(),(),(),(),(),());
     replacetree(funcTree,2,take type_specifier);
     replacetree(funcTree,3,take func_declarator);
     return funcTree;
@@ -3223,11 +3154,24 @@ define ctor_initializer;
     if take ":" then
         begin
         repeat
-            retTree = maketree(CTOR_INIT,take complete_class_name,());
-            take "(";
-            if val = take expression then
-                replacetree(retTree,2,val);
-            take ")";
+            retTree = maketree(CTOR_INIT,take complete_class_name,(),());
+            case
+                see "(" :
+                    begin
+                    take "(";
+                    if val = take expression then
+                        replacetree(retTree,2,val);
+                    take ")";
+                    end
+                default :
+                    begin
+                    take "{";
+                    if val = take expression then
+                        replacetree(retTree,2,val);
+                    take "}";
+                    replacetree(retTree,3,maketree(BRACE_MARKER));
+                    end
+            end;
             addlist(list,retTree);
         until not take ",";
         return maketree(CTOR_INITIALIZER,list);
@@ -3239,9 +3183,10 @@ define exception_list;
     take #"throw";
     if take "(" then
         begin
-        repeat
-            addlist(exceptionList,take qualified_name);
-        until not take ",";
+        if not see ")" then
+            repeat
+                addlist(exceptionList,take qualified_name);
+            until not take ",";
         take ")";
         end
     else
@@ -3256,7 +3201,7 @@ define func_declaration;
       le nom de la fonction et un type */
     if not funcTree = take type_and_declarator then
         begin
-        funcTree = maketree(FUNC,take sc_specifier,(),(),(),(),(),(),(),());
+        funcTree = maketree(FUNC,take sc_specifier,(),(),(),(),(),(),(),(),(),());
         replacetree(funcTree,3,take func_declarator);
         end;
     replacetree(funcTree,4,take parameter_list_extended);
@@ -3264,11 +3209,20 @@ define func_declaration;
         replacetree(funcTree,5,range);
     if exception = take exception_list then
         replacetree(funcTree,9,exception);
-    while opt = take data_declaration do
-        addlist(decList,opt);
-    replacetree(funcTree,6,decList);
-    replacetree(funcTree,7,take ctor_initializer);
-    return replacetree(funcTree,8,take compound_statement);
+    if take "=" then
+        begin
+        take #"delete";
+        take ";";
+        return replacetree(funcTree,10,maketree(DELETE_FUNCTION));
+        end
+    else
+        begin
+        while opt = take data_declaration do
+            addlist(decList,opt);
+        replacetree(funcTree,6,decList);
+        replacetree(funcTree,7,take ctor_initializer);
+        return replacetree(funcTree,8,take compound_statement);
+        end;
 end;
 
 define none_statement;
@@ -3281,11 +3235,7 @@ define compound_statement;
     {{ debut :}};
     
     /* we put ext_data_declaration after everything : a ; is a statement */
-    while stat = take statement
-            or stat = take data_declaration
-            or stat = take stat_dir
-            or stat = take exception
-            or stat = take ext_data_declaration do
+    while stat = take statement or stat = take data_declaration or stat = take stat_dir or stat = take exception or stat = take ext_data_declaration do
         addlist(statList,stat);
     addlist(statList,take none_statement);
     if not take "}" then
@@ -3473,9 +3423,7 @@ define statement;
             case
                 see !FUNC_SPEC :
                     begin
-                    statTree
-                        = maketree(FUNC_SPEC
-                            ,maketree(IDENT,take !FUNC_SPEC),());
+                    statTree = maketree(FUNC_SPEC,maketree(IDENT,take !FUNC_SPEC),());
                     take "(";
                     replacetree(statTree,2,take expression);
                     take ")";
@@ -3483,9 +3431,7 @@ define statement;
                 default :
                     if see label_beg then
                         begin
-                        statTree
-                            = maketree(LABEL,maketree(IDENT,take !IDENT)
-                                ,());
+                        statTree = maketree(LABEL,maketree(IDENT,take !IDENT),());
                         take ":";
                         without context switchContext do
                             replacetree(statTree,2,take statement);
@@ -3564,7 +3510,7 @@ end;
 
 /* el 21/02/00 add name spaces */
 define name_space;
-    declare list,retTree,ident;
+    declare list,retTree,ident,attrib;
     case
         take #"namespace" :
             begin
@@ -3572,12 +3518,14 @@ define name_space;
             /* take name of name space */
             if ident = take !IDENT then
                 ident = maketree(IDENT,ident);
+            if attrib = take attribute_call then
+                ;
             
             /* takes its content */
             case
                 take "{" :
                     begin
-                    retTree = maketree(NAMESPACE,ident,());
+                    retTree = maketree(NAMESPACE,ident,(),attrib);
                     while not take "}" do
                         begin
                         addlist(list,take ext_all);
@@ -3589,17 +3537,18 @@ define name_space;
                     begin
                     if {{(ident == (PPTREE) 0 )}} then
                         break;
-                    retTree
-                        = maketree(NAMESPACE_ALIAS,ident
-                            ,take complete_class_name);
+                    retTree = maketree(NAMESPACE_ALIAS,ident,take complete_class_name);
                     end
             end;
             end
         take #"using" :
             begin
             if take #"namespace" then
-                retTree
-                    = maketree(USING_NAMESPACE,take complete_class_name)
+                begin
+                if attrib = take attribute_call then
+                    ;
+                retTree = maketree(USING_NAMESPACE,take complete_class_name,attrib);
+                end
             else
                 retTree = maketree(USING,take complete_class_name);
             take ";";
@@ -3616,12 +3565,7 @@ end;
 
 define parse_entry;
     declare retValue;
-    if retValue = take func_declaration
-        or retValue = take statement
-        or retValue = take data_declaration
-        or retValue = take switch_list
-        or retValue = take switch_elem
-        or retValue = take expression then
+    if retValue = take func_declaration or retValue = take statement or retValue = take data_declaration or retValue = take switch_list or retValue = take switch_elem or retValue = take expression then
         return retValue
     else
         take statement;

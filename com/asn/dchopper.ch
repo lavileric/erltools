@@ -35,10 +35,10 @@ void        CloseTspFile () ;
 int main ( int argc, char **argv )
 {
     
-    PTREE   tree ;      // tree resulting from parsing
-    char    name [50];  // character array for holding intermediate
-                        // strings
-    char    *ptName ;   // argument, string pointer
+    PTREE   tree ;        // tree resulting from parsing
+    char    name [50];    // character array for holding intermediate
+                          // strings
+    char    *ptName = 0 ; // argument, string pointer
     
     // initialization    
     MetaInit();
@@ -56,7 +56,8 @@ int main ( int argc, char **argv )
     // parsing the tree
     asn *pAsn = new asn ;
     
-    tree        =  pAsn->ReadFile(ptName);
+    if ( ptName ) 
+        tree =  pAsn->ReadFile(ptName);
     listInclude =  pAsn->Includes();
     delete pAsn ;
     AddRef(tree);

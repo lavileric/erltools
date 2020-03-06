@@ -702,6 +702,8 @@
     void    replace (PTREE, PTREE, PTREE) ;              /* replace occurence of first parameter
                                                             in second parameter with third */ 
     void    DumpTree (PPTREE) ;
+    void    CLDumpTree (PPTREE) ;
+
     void    DumpNode (PPTREE) ;
     void    InLang (char *, PTREE) ;
     char    *MakeTreeGenDir (PTREE paramTree, char *name, int level = 0) ;

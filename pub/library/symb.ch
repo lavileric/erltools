@@ -5,7 +5,7 @@ language sgt;
 // copy constructor
 // parameters :
 //              symbTab :copied symboltable
-SymbolTable::SymbolTable ( SymbolTable &symbTab )
+SymbolTable::SymbolTable ( const  SymbolTable &symbTab )
     : pvSize(0),  pvSizeMax(0),  pvTable(0)
 {
     
@@ -26,7 +26,7 @@ SymbolTable::SymbolTable ( SymbolTable &symbTab )
 // copy constructor
 // parameters :
 //              symbTab : copied symboltable
-const SymbolTable &SymbolTable::operator= ( SymbolTable &symbTab )
+const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
 {
     
     PTREE   listVar ; // list of var at a level

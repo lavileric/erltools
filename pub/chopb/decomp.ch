@@ -299,6 +299,7 @@ int DecompChopb::Sequence ( PTREE tree1, PTREE tree2 )
                 return 0 ;
         default : return DecompCplus::Sequence(tree1, tree2);
     }
+    return 0 ;
 }
 
 void DecompChopb::control_stat1 ( PTREE paramTree ) /* on expression write ; <NL> */ 
@@ -386,6 +387,7 @@ int DecompChopb::IsTop ( PTREE tree, int internal )
             break ;
         default : return DecompCplus::IsTop(tree, internal);
     }
+    return 0 ;
 }
 
 /********************************************************************

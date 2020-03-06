@@ -195,6 +195,10 @@ lexdefine PrintInstr;
     end;
 end;
 
+define main_entry;
+    return take program;
+end;
+
 define program;
     declare list;
     while not take "." do

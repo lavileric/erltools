@@ -3,16 +3,22 @@ all : checkpath
 	if [ ! -f makefile ] ; then \
 		chmod 770 outils/updatelinks ;\
 		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
-	if [ -d ./optim ] ; then \
-               (cd optim ; $(MAKE) -f makefile.uni all) ; fi
 	( cd pub ; $(MAKE) -f makefile.uni all)
-	if [ -d ./misc ] ; then \
-               (cd misc ; $(MAKE) -f makefile.uni all) ; fi
+	$(MAKE) -j $(NUMBER_PROC) optim_misc
 	if [ -d ./com ] ; then \
-               ($(MAKE) -f makefile.uni install ; cd com ; $(MAKE) -f makefile.uni all) ; fi
+	       ($(MAKE) -f makefile.uni install ; cd com ; $(MAKE) -f makefile.uni all) ; fi
 	if [ -d ./private ] ; then \
                (cd private ; $(MAKE) -f makefile.uni all) ; fi
 
+optim_misc : optim_make misc_make
+
+optim_make :
+	if [ -d ./optim ] ; then \
+	       (cd optim ; $(MAKE) -f makefile.uni all) ; fi
+
+misc_make :
+	if [ -d ./misc ] ; then \
+	       (cd misc ; $(MAKE) -f makefile.uni all) ; fi
 shared :
 	@- mkdir $(INSTALL_DIR) 2>/dev/null
 	if [ ! -f makefile ] ; then \

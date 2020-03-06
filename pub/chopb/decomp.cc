@@ -1825,1405 +1825,1413 @@ int DecompChopb::Sequence ( PTREE tree1, PTREE tree2 )
     
 #line 300 "decomp.ch"
 #line 302 "decomp.ch"
+    return 0 ;
     
 #line 302 "decomp.ch"
-#line 302 "decomp.ch"
+#line 303 "decomp.ch"
+    
+#line 303 "decomp.ch"
+#line 303 "decomp.ch"
 }
-#line 302 "decomp.ch"
+#line 303 "decomp.ch"
 
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
 
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
 void DecompChopb::control_stat1 ( PTREE paramTree )
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
 {
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
     register PPTREE _inter ;
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
 
-#line 304 "decomp.ch"
-#line 304 "decomp.ch"
+#line 305 "decomp.ch"
+#line 305 "decomp.ch"
     int _nextVal ;
     
-#line 304 "decomp.ch"
-#line 306 "decomp.ch"
+#line 305 "decomp.ch"
+#line 307 "decomp.ch"
     PTREE   exp1 ;
-#line 306 "decomp.ch"
+#line 307 "decomp.ch"
     
-#line 306 "decomp.ch"
-#line 308 "decomp.ch"
+#line 307 "decomp.ch"
+#line 309 "decomp.ch"
     switch ( NumberTree(paramTree) ) {
-#line 308 "decomp.ch"
-#line 310 "decomp.ch"
-        case chopb::TAB : 
-#line 310 "decomp.ch"
-#line 310 "decomp.ch"
-        _Case110 : 
-#line 310 "decomp.ch"
-#line 310 "decomp.ch"
-            ;
-#line 310 "decomp.ch"
-#line 310 "decomp.ch"
-            comm(paramTree, POST);
-#line 310 "decomp.ch"
+#line 309 "decomp.ch"
 #line 311 "decomp.ch"
+        case chopb::TAB : 
+#line 311 "decomp.ch"
+#line 311 "decomp.ch"
+        _Case110 : 
+#line 311 "decomp.ch"
+#line 311 "decomp.ch"
+            ;
+#line 311 "decomp.ch"
+#line 311 "decomp.ch"
+            comm(paramTree, POST);
+#line 311 "decomp.ch"
+#line 312 "decomp.ch"
             return ;
             
-#line 311 "decomp.ch"
-#line 311 "decomp.ch"
+#line 312 "decomp.ch"
+#line 312 "decomp.ch"
             goto _Case111 ;
             
-#line 311 "decomp.ch"
-#line 313 "decomp.ch"
-        case chopb::NEWLINE : 
-#line 313 "decomp.ch"
-#line 313 "decomp.ch"
-        _Case111 : 
-#line 313 "decomp.ch"
-#line 313 "decomp.ch"
-            ;
-#line 313 "decomp.ch"
-#line 313 "decomp.ch"
-            comm(paramTree, POST);
-#line 313 "decomp.ch"
+#line 312 "decomp.ch"
 #line 314 "decomp.ch"
+        case chopb::NEWLINE : 
+#line 314 "decomp.ch"
+#line 314 "decomp.ch"
+        _Case111 : 
+#line 314 "decomp.ch"
+#line 314 "decomp.ch"
+            ;
+#line 314 "decomp.ch"
+#line 314 "decomp.ch"
+            comm(paramTree, POST);
+#line 314 "decomp.ch"
+#line 315 "decomp.ch"
             return ;
             
-#line 314 "decomp.ch"
-#line 314 "decomp.ch"
+#line 315 "decomp.ch"
+#line 315 "decomp.ch"
             goto _Case112 ;
             
-#line 314 "decomp.ch"
 #line 315 "decomp.ch"
+#line 316 "decomp.ch"
         case chopb::ARRO : 
-#line 315 "decomp.ch"
-#line 315 "decomp.ch"
+#line 316 "decomp.ch"
+#line 316 "decomp.ch"
         _Case112 : 
-#line 315 "decomp.ch"
-#line 315 "decomp.ch"
+#line 316 "decomp.ch"
+#line 316 "decomp.ch"
             ;
-#line 315 "decomp.ch"
-#line 315 "decomp.ch"
+#line 316 "decomp.ch"
+#line 316 "decomp.ch"
             goto terminal ;
             
-#line 315 "decomp.ch"
-#line 315 "decomp.ch"
+#line 316 "decomp.ch"
+#line 316 "decomp.ch"
             goto _Case113 ;
             
-#line 315 "decomp.ch"
 #line 316 "decomp.ch"
+#line 317 "decomp.ch"
         case chopb::VALUE : 
-#line 316 "decomp.ch"
-#line 316 "decomp.ch"
+#line 317 "decomp.ch"
+#line 317 "decomp.ch"
         _Case113 : 
-#line 316 "decomp.ch"
-#line 316 "decomp.ch"
+#line 317 "decomp.ch"
+#line 317 "decomp.ch"
             ;
-#line 316 "decomp.ch"
-#line 316 "decomp.ch"
+#line 317 "decomp.ch"
+#line 317 "decomp.ch"
             goto terminal ;
             
-#line 316 "decomp.ch"
-#line 316 "decomp.ch"
+#line 317 "decomp.ch"
+#line 317 "decomp.ch"
             goto _Case114 ;
             
-#line 316 "decomp.ch"
 #line 317 "decomp.ch"
+#line 318 "decomp.ch"
         case chopb::NEXT : 
-#line 317 "decomp.ch"
-#line 317 "decomp.ch"
+#line 318 "decomp.ch"
+#line 318 "decomp.ch"
         _Case114 : 
-#line 317 "decomp.ch"
-#line 317 "decomp.ch"
+#line 318 "decomp.ch"
+#line 318 "decomp.ch"
             ;
-#line 317 "decomp.ch"
-#line 317 "decomp.ch"
+#line 318 "decomp.ch"
+#line 318 "decomp.ch"
             goto terminal ;
             
-#line 317 "decomp.ch"
-#line 317 "decomp.ch"
+#line 318 "decomp.ch"
+#line 318 "decomp.ch"
             goto _Case115 ;
             
-#line 317 "decomp.ch"
 #line 318 "decomp.ch"
+#line 319 "decomp.ch"
         case chopb::FOREACH : 
-#line 318 "decomp.ch"
-#line 318 "decomp.ch"
+#line 319 "decomp.ch"
+#line 319 "decomp.ch"
         _Case115 : 
-#line 318 "decomp.ch"
-#line 318 "decomp.ch"
+#line 319 "decomp.ch"
+#line 319 "decomp.ch"
             ;
-#line 318 "decomp.ch"
-#line 318 "decomp.ch"
+#line 319 "decomp.ch"
+#line 319 "decomp.ch"
             goto terminal ;
             
-#line 318 "decomp.ch"
-#line 318 "decomp.ch"
+#line 319 "decomp.ch"
+#line 319 "decomp.ch"
             goto _Case116 ;
             
-#line 318 "decomp.ch"
 #line 319 "decomp.ch"
+#line 320 "decomp.ch"
         case chopb::FORALLSONS : 
-#line 319 "decomp.ch"
-#line 319 "decomp.ch"
+#line 320 "decomp.ch"
+#line 320 "decomp.ch"
         _Case116 : 
-#line 319 "decomp.ch"
-#line 319 "decomp.ch"
+#line 320 "decomp.ch"
+#line 320 "decomp.ch"
             ;
-#line 319 "decomp.ch"
-#line 319 "decomp.ch"
+#line 320 "decomp.ch"
+#line 320 "decomp.ch"
             goto terminal ;
             
-#line 319 "decomp.ch"
-#line 319 "decomp.ch"
+#line 320 "decomp.ch"
+#line 320 "decomp.ch"
             goto _Case117 ;
             
-#line 319 "decomp.ch"
 #line 320 "decomp.ch"
+#line 321 "decomp.ch"
         case chopb::IN_LANG : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
         _Case117 : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             ;
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             return ;
             
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             goto _Case118 ;
             
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
         case chopb::SPACE : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
         _Case118 : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             ;
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             goto _Case119 ;
             
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
         case chopb::ALINEA : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
         _Case119 : 
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             ;
-#line 320 "decomp.ch"
-#line 320 "decomp.ch"
+#line 321 "decomp.ch"
+#line 321 "decomp.ch"
             goto _Case120 ;
             
-#line 320 "decomp.ch"
-#line 323 "decomp.ch"
+#line 321 "decomp.ch"
+#line 324 "decomp.ch"
         case chopb::SEP_BEFORE : 
-#line 323 "decomp.ch"
-#line 323 "decomp.ch"
+#line 324 "decomp.ch"
+#line 324 "decomp.ch"
         _Case120 : 
-#line 323 "decomp.ch"
-#line 323 "decomp.ch"
+#line 324 "decomp.ch"
+#line 324 "decomp.ch"
             ;
-#line 323 "decomp.ch"
-#line 323 "decomp.ch"
+#line 324 "decomp.ch"
+#line 324 "decomp.ch"
             ;
-#line 323 "decomp.ch"
-#line 323 "decomp.ch"
+#line 324 "decomp.ch"
+#line 324 "decomp.ch"
             goto _Case121 ;
             
-#line 323 "decomp.ch"
 #line 324 "decomp.ch"
+#line 325 "decomp.ch"
         case chopb::SEP_AFTER : 
-#line 324 "decomp.ch"
-#line 324 "decomp.ch"
+#line 325 "decomp.ch"
+#line 325 "decomp.ch"
         _Case121 : 
-#line 324 "decomp.ch"
-#line 324 "decomp.ch"
+#line 325 "decomp.ch"
+#line 325 "decomp.ch"
             ;
-#line 324 "decomp.ch"
-#line 324 "decomp.ch"
+#line 325 "decomp.ch"
+#line 325 "decomp.ch"
             ;
-#line 324 "decomp.ch"
-#line 324 "decomp.ch"
+#line 325 "decomp.ch"
+#line 325 "decomp.ch"
             goto _Case122 ;
             
-#line 324 "decomp.ch"
 #line 325 "decomp.ch"
+#line 326 "decomp.ch"
         case chopb::SEP_OMIT : 
-#line 325 "decomp.ch"
-#line 325 "decomp.ch"
+#line 326 "decomp.ch"
+#line 326 "decomp.ch"
         _Case122 : 
-#line 325 "decomp.ch"
-#line 325 "decomp.ch"
+#line 326 "decomp.ch"
+#line 326 "decomp.ch"
             ;
-#line 325 "decomp.ch"
-#line 325 "decomp.ch"
+#line 326 "decomp.ch"
+#line 326 "decomp.ch"
             return ;
             
-#line 325 "decomp.ch"
-#line 325 "decomp.ch"
+#line 326 "decomp.ch"
+#line 326 "decomp.ch"
             goto _Case123 ;
             
-#line 325 "decomp.ch"
-#line 327 "decomp.ch"
-        default : 
-#line 327 "decomp.ch"
-#line 327 "decomp.ch"
-        _Case123 : 
-#line 327 "decomp.ch"
-#line 327 "decomp.ch"
-            ;
-#line 327 "decomp.ch"
-#line 327 "decomp.ch"
-            DecompCplus::control_stat1(paramTree);
-#line 327 "decomp.ch"
+#line 326 "decomp.ch"
 #line 328 "decomp.ch"
+        default : 
+#line 328 "decomp.ch"
+#line 328 "decomp.ch"
+        _Case123 : 
+#line 328 "decomp.ch"
+#line 328 "decomp.ch"
+            ;
+#line 328 "decomp.ch"
+#line 328 "decomp.ch"
+            DecompCplus::control_stat1(paramTree);
+#line 328 "decomp.ch"
+#line 329 "decomp.ch"
             return ;
             
-#line 328 "decomp.ch"
+#line 329 "decomp.ch"
     }
-#line 328 "decomp.ch"
+#line 329 "decomp.ch"
     
-#line 328 "decomp.ch"
-#line 330 "decomp.ch"
+#line 329 "decomp.ch"
+#line 331 "decomp.ch"
     SepBefore();
-#line 330 "decomp.ch"
+#line 331 "decomp.ch"
     
-#line 330 "decomp.ch"
-#line 330 "decomp.ch"
+#line 331 "decomp.ch"
+#line 331 "decomp.ch"
     PrintString(";");
-#line 330 "decomp.ch"
 #line 331 "decomp.ch"
+#line 332 "decomp.ch"
 terminal : 
-#line 331 "decomp.ch"
 #line 332 "decomp.ch"
+#line 333 "decomp.ch"
     comm(paramTree, POST);
-#line 332 "decomp.ch"
 #line 333 "decomp.ch"
+#line 334 "decomp.ch"
     
-#line 333 "decomp.ch"
-#line 333 "decomp.ch"
+#line 334 "decomp.ch"
+#line 334 "decomp.ch"
 }
-#line 333 "decomp.ch"
+#line 334 "decomp.ch"
 
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
 
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
 int DecompChopb::OpTypeAlign ( PTREE tree )
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
 {
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
     register PPTREE _inter ;
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
 
-#line 335 "decomp.ch"
-#line 335 "decomp.ch"
+#line 336 "decomp.ch"
+#line 336 "decomp.ch"
     int _nextVal ;
     
-#line 335 "decomp.ch"
-#line 337 "decomp.ch"
+#line 336 "decomp.ch"
+#line 338 "decomp.ch"
     PTREE   son ;
-#line 337 "decomp.ch"
+#line 338 "decomp.ch"
     
-#line 337 "decomp.ch"
-#line 339 "decomp.ch"
+#line 338 "decomp.ch"
+#line 340 "decomp.ch"
     switch ( NumberTree(tree) ) {
-#line 339 "decomp.ch"
-#line 339 "decomp.ch"
+#line 340 "decomp.ch"
+#line 340 "decomp.ch"
         case chopb::NODE_TREE : 
-#line 339 "decomp.ch"
-#line 339 "decomp.ch"
+#line 340 "decomp.ch"
+#line 340 "decomp.ch"
         _Case127 : 
-#line 339 "decomp.ch"
-#line 339 "decomp.ch"
+#line 340 "decomp.ch"
+#line 340 "decomp.ch"
             ;
-#line 339 "decomp.ch"
-#line 339 "decomp.ch"
+#line 340 "decomp.ch"
+#line 340 "decomp.ch"
             goto _Case128 ;
             
-#line 339 "decomp.ch"
-#line 342 "decomp.ch"
+#line 340 "decomp.ch"
+#line 343 "decomp.ch"
         case chopb::NODE_LIST : 
-#line 342 "decomp.ch"
-#line 342 "decomp.ch"
+#line 343 "decomp.ch"
+#line 343 "decomp.ch"
         _Case128 : 
-#line 342 "decomp.ch"
-#line 342 "decomp.ch"
+#line 343 "decomp.ch"
+#line 343 "decomp.ch"
             ;
-#line 342 "decomp.ch"
-#line 342 "decomp.ch"
+#line 343 "decomp.ch"
+#line 343 "decomp.ch"
             return LIST_ALIGN ;
             
-#line 342 "decomp.ch"
 #line 343 "decomp.ch"
+#line 344 "decomp.ch"
             break ;
             
-#line 343 "decomp.ch"
 #line 344 "decomp.ch"
+#line 345 "decomp.ch"
         default : 
-#line 344 "decomp.ch"
-#line 344 "decomp.ch"
+#line 345 "decomp.ch"
+#line 345 "decomp.ch"
         _Case129 : 
-#line 344 "decomp.ch"
-#line 344 "decomp.ch"
+#line 345 "decomp.ch"
+#line 345 "decomp.ch"
             ;
-#line 344 "decomp.ch"
-#line 344 "decomp.ch"
+#line 345 "decomp.ch"
+#line 345 "decomp.ch"
             return DecompCplus::OpTypeAlign(tree);
             
-#line 344 "decomp.ch"
+#line 345 "decomp.ch"
     }
-#line 344 "decomp.ch"
+#line 345 "decomp.ch"
     
-#line 344 "decomp.ch"
-#line 346 "decomp.ch"
+#line 345 "decomp.ch"
+#line 347 "decomp.ch"
     
-#line 346 "decomp.ch"
-#line 346 "decomp.ch"
+#line 347 "decomp.ch"
+#line 347 "decomp.ch"
 }
-#line 346 "decomp.ch"
+#line 347 "decomp.ch"
 
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
 
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
 int DecompChopb::OpType ( PTREE tree )
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
 {
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
     register PPTREE _inter ;
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
 
-#line 348 "decomp.ch"
-#line 348 "decomp.ch"
+#line 349 "decomp.ch"
+#line 349 "decomp.ch"
     int _nextVal ;
     
-#line 348 "decomp.ch"
-#line 350 "decomp.ch"
+#line 349 "decomp.ch"
+#line 351 "decomp.ch"
     PTREE   son ;
-#line 350 "decomp.ch"
+#line 351 "decomp.ch"
     
-#line 350 "decomp.ch"
-#line 352 "decomp.ch"
+#line 351 "decomp.ch"
+#line 353 "decomp.ch"
     switch ( NumberTree(tree) ) {
-#line 352 "decomp.ch"
-#line 352 "decomp.ch"
+#line 353 "decomp.ch"
+#line 353 "decomp.ch"
         case chopb::NODE_TREE : 
-#line 352 "decomp.ch"
-#line 352 "decomp.ch"
+#line 353 "decomp.ch"
+#line 353 "decomp.ch"
         _Case133 : 
-#line 352 "decomp.ch"
-#line 352 "decomp.ch"
+#line 353 "decomp.ch"
+#line 353 "decomp.ch"
             ;
-#line 352 "decomp.ch"
-#line 352 "decomp.ch"
+#line 353 "decomp.ch"
+#line 353 "decomp.ch"
             goto _Case134 ;
             
-#line 352 "decomp.ch"
-#line 354 "decomp.ch"
+#line 353 "decomp.ch"
+#line 355 "decomp.ch"
         case chopb::NODE_LIST : 
-#line 354 "decomp.ch"
-#line 354 "decomp.ch"
+#line 355 "decomp.ch"
+#line 355 "decomp.ch"
         _Case134 : 
-#line 354 "decomp.ch"
-#line 354 "decomp.ch"
+#line 355 "decomp.ch"
+#line 355 "decomp.ch"
             ;
-#line 354 "decomp.ch"
-#line 354 "decomp.ch"
+#line 355 "decomp.ch"
+#line 355 "decomp.ch"
             return 0 ;
             
-#line 354 "decomp.ch"
-#line 354 "decomp.ch"
+#line 355 "decomp.ch"
+#line 355 "decomp.ch"
             goto _Case135 ;
             
-#line 354 "decomp.ch"
 #line 355 "decomp.ch"
+#line 356 "decomp.ch"
         default : 
-#line 355 "decomp.ch"
-#line 355 "decomp.ch"
+#line 356 "decomp.ch"
+#line 356 "decomp.ch"
         _Case135 : 
-#line 355 "decomp.ch"
-#line 355 "decomp.ch"
+#line 356 "decomp.ch"
+#line 356 "decomp.ch"
             ;
-#line 355 "decomp.ch"
-#line 355 "decomp.ch"
+#line 356 "decomp.ch"
+#line 356 "decomp.ch"
             return DecompCplus::OpType(tree);
             
-#line 355 "decomp.ch"
+#line 356 "decomp.ch"
     }
-#line 355 "decomp.ch"
+#line 356 "decomp.ch"
     
-#line 355 "decomp.ch"
-#line 357 "decomp.ch"
+#line 356 "decomp.ch"
+#line 358 "decomp.ch"
     
-#line 357 "decomp.ch"
-#line 357 "decomp.ch"
+#line 358 "decomp.ch"
+#line 358 "decomp.ch"
 }
-#line 357 "decomp.ch"
+#line 358 "decomp.ch"
 
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
 
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
 int DecompChopb::IsTop ( PTREE tree, int internal )
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
 {
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
     register PPTREE _inter ;
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
 
-#line 359 "decomp.ch"
-#line 359 "decomp.ch"
+#line 360 "decomp.ch"
+#line 360 "decomp.ch"
     int _nextVal ;
     
-#line 359 "decomp.ch"
-#line 361 "decomp.ch"
+#line 360 "decomp.ch"
+#line 362 "decomp.ch"
     PTREE   father, prec, son ;
-#line 361 "decomp.ch"
+#line 362 "decomp.ch"
     
-#line 361 "decomp.ch"
-#line 363 "decomp.ch"
+#line 362 "decomp.ch"
+#line 364 "decomp.ch"
     switch ( NumberTree(tree) ) {
-#line 363 "decomp.ch"
-#line 365 "decomp.ch"
-        case chopb::EXP_LIST : 
-#line 365 "decomp.ch"
-#line 365 "decomp.ch"
-            (son=SonTree(tree, 1));
-#line 365 "decomp.ch"
-            
-#line 365 "decomp.ch"
-#line 365 "decomp.ch"
-        _Case147 : 
-#line 365 "decomp.ch"
-#line 365 "decomp.ch"
-            ;
-#line 365 "decomp.ch"
-#line 365 "decomp.ch"
-            if ( strcmp(BrainyValue(son), "WriteString") && strcmp(BrainyValue(son), "PrintString") ) 
-#line 365 "decomp.ch"
+#line 364 "decomp.ch"
 #line 366 "decomp.ch"
+        case chopb::EXP_LIST : 
+#line 366 "decomp.ch"
+#line 366 "decomp.ch"
+            (son=SonTree(tree, 1));
+#line 366 "decomp.ch"
+            
+#line 366 "decomp.ch"
+#line 366 "decomp.ch"
+        _Case147 : 
+#line 366 "decomp.ch"
+#line 366 "decomp.ch"
+            ;
+#line 366 "decomp.ch"
+#line 366 "decomp.ch"
+            if ( strcmp(BrainyValue(son), "WriteString") && strcmp(BrainyValue(son), "PrintString") ) 
+#line 366 "decomp.ch"
+#line 367 "decomp.ch"
                 return DecompCplus::IsTop(tree, internal);
             
-#line 366 "decomp.ch"
-#line 366 "decomp.ch"
+#line 367 "decomp.ch"
+#line 367 "decomp.ch"
             goto _Case148 ;
             
-#line 366 "decomp.ch"
 #line 367 "decomp.ch"
+#line 368 "decomp.ch"
         case chopb::STRING_LIST : 
-#line 367 "decomp.ch"
-#line 367 "decomp.ch"
+#line 368 "decomp.ch"
+#line 368 "decomp.ch"
         _Case148 : 
-#line 367 "decomp.ch"
-#line 367 "decomp.ch"
+#line 368 "decomp.ch"
+#line 368 "decomp.ch"
             ;
-#line 367 "decomp.ch"
-#line 367 "decomp.ch"
+#line 368 "decomp.ch"
+#line 368 "decomp.ch"
             ;
-#line 367 "decomp.ch"
-#line 367 "decomp.ch"
+#line 368 "decomp.ch"
+#line 368 "decomp.ch"
             goto _Case149 ;
             
-#line 367 "decomp.ch"
-#line 369 "decomp.ch"
-        case chopb::STRING : 
-#line 369 "decomp.ch"
-#line 369 "decomp.ch"
-        _Case149 : 
-#line 369 "decomp.ch"
-#line 369 "decomp.ch"
-            ;
-#line 369 "decomp.ch"
-#line 369 "decomp.ch"
-            if ( DecompCplus::IsTop(tree, internal) == -1 ) 
-#line 369 "decomp.ch"
+#line 368 "decomp.ch"
 #line 370 "decomp.ch"
+        case chopb::STRING : 
+#line 370 "decomp.ch"
+#line 370 "decomp.ch"
+        _Case149 : 
+#line 370 "decomp.ch"
+#line 370 "decomp.ch"
+            ;
+#line 370 "decomp.ch"
+#line 370 "decomp.ch"
+            if ( DecompCplus::IsTop(tree, internal) == -1 ) 
+#line 370 "decomp.ch"
+#line 371 "decomp.ch"
                 return -1 ;
             
-#line 370 "decomp.ch"
-#line 370 "decomp.ch"
+#line 371 "decomp.ch"
+#line 371 "decomp.ch"
             goto _Case150 ;
             
-#line 370 "decomp.ch"
 #line 371 "decomp.ch"
+#line 372 "decomp.ch"
         case chopb::ARRO : 
-#line 371 "decomp.ch"
-#line 371 "decomp.ch"
+#line 372 "decomp.ch"
+#line 372 "decomp.ch"
         _Case150 : 
-#line 371 "decomp.ch"
-#line 371 "decomp.ch"
+#line 372 "decomp.ch"
+#line 372 "decomp.ch"
             ;
-#line 371 "decomp.ch"
-#line 371 "decomp.ch"
+#line 372 "decomp.ch"
+#line 372 "decomp.ch"
             ;
-#line 371 "decomp.ch"
-#line 371 "decomp.ch"
+#line 372 "decomp.ch"
+#line 372 "decomp.ch"
             goto _Case151 ;
             
-#line 371 "decomp.ch"
 #line 372 "decomp.ch"
+#line 373 "decomp.ch"
         case chopb::VALUE : 
-#line 372 "decomp.ch"
-#line 372 "decomp.ch"
+#line 373 "decomp.ch"
+#line 373 "decomp.ch"
         _Case151 : 
-#line 372 "decomp.ch"
-#line 372 "decomp.ch"
+#line 373 "decomp.ch"
+#line 373 "decomp.ch"
             ;
-#line 372 "decomp.ch"
-#line 372 "decomp.ch"
+#line 373 "decomp.ch"
+#line 373 "decomp.ch"
             ;
-#line 372 "decomp.ch"
-#line 372 "decomp.ch"
+#line 373 "decomp.ch"
+#line 373 "decomp.ch"
             goto _Case152 ;
             
-#line 372 "decomp.ch"
 #line 373 "decomp.ch"
+#line 374 "decomp.ch"
         case chopb::SPACE : 
-#line 373 "decomp.ch"
-#line 373 "decomp.ch"
+#line 374 "decomp.ch"
+#line 374 "decomp.ch"
         _Case152 : 
-#line 373 "decomp.ch"
-#line 373 "decomp.ch"
+#line 374 "decomp.ch"
+#line 374 "decomp.ch"
             ;
-#line 373 "decomp.ch"
-#line 373 "decomp.ch"
+#line 374 "decomp.ch"
+#line 374 "decomp.ch"
             ;
-#line 373 "decomp.ch"
-#line 373 "decomp.ch"
+#line 374 "decomp.ch"
+#line 374 "decomp.ch"
             goto _Case153 ;
             
-#line 373 "decomp.ch"
 #line 374 "decomp.ch"
+#line 375 "decomp.ch"
         case chopb::SEP_BEFORE : 
-#line 374 "decomp.ch"
-#line 374 "decomp.ch"
+#line 375 "decomp.ch"
+#line 375 "decomp.ch"
         _Case153 : 
-#line 374 "decomp.ch"
-#line 374 "decomp.ch"
+#line 375 "decomp.ch"
+#line 375 "decomp.ch"
             ;
-#line 374 "decomp.ch"
-#line 374 "decomp.ch"
+#line 375 "decomp.ch"
+#line 375 "decomp.ch"
             ;
-#line 374 "decomp.ch"
-#line 374 "decomp.ch"
+#line 375 "decomp.ch"
+#line 375 "decomp.ch"
             goto _Case154 ;
             
-#line 374 "decomp.ch"
 #line 375 "decomp.ch"
+#line 376 "decomp.ch"
         case chopb::SEP_AFTER : 
-#line 375 "decomp.ch"
-#line 375 "decomp.ch"
+#line 376 "decomp.ch"
+#line 376 "decomp.ch"
         _Case154 : 
-#line 375 "decomp.ch"
-#line 375 "decomp.ch"
+#line 376 "decomp.ch"
+#line 376 "decomp.ch"
             ;
-#line 375 "decomp.ch"
-#line 375 "decomp.ch"
+#line 376 "decomp.ch"
+#line 376 "decomp.ch"
             ;
-#line 375 "decomp.ch"
-#line 375 "decomp.ch"
+#line 376 "decomp.ch"
+#line 376 "decomp.ch"
             goto _Case155 ;
             
-#line 375 "decomp.ch"
 #line 376 "decomp.ch"
+#line 377 "decomp.ch"
         case chopb::SEP_OMIT : 
-#line 376 "decomp.ch"
-#line 376 "decomp.ch"
+#line 377 "decomp.ch"
+#line 377 "decomp.ch"
         _Case155 : 
-#line 376 "decomp.ch"
-#line 376 "decomp.ch"
+#line 377 "decomp.ch"
+#line 377 "decomp.ch"
             ;
-#line 376 "decomp.ch"
-#line 376 "decomp.ch"
+#line 377 "decomp.ch"
+#line 377 "decomp.ch"
             ;
-#line 376 "decomp.ch"
-#line 376 "decomp.ch"
+#line 377 "decomp.ch"
+#line 377 "decomp.ch"
             goto _Case156 ;
             
-#line 376 "decomp.ch"
-#line 378 "decomp.ch"
+#line 377 "decomp.ch"
+#line 379 "decomp.ch"
         case chopb::TAB : 
-#line 378 "decomp.ch"
-#line 378 "decomp.ch"
+#line 379 "decomp.ch"
+#line 379 "decomp.ch"
         _Case156 : 
-#line 378 "decomp.ch"
-#line 378 "decomp.ch"
+#line 379 "decomp.ch"
+#line 379 "decomp.ch"
             ;
-#line 378 "decomp.ch"
-#line 378 "decomp.ch"
+#line 379 "decomp.ch"
+#line 379 "decomp.ch"
             (father=FatherTree(tree));
-#line 378 "decomp.ch"
+#line 379 "decomp.ch"
             
-#line 378 "decomp.ch"
-#line 379 "decomp.ch"
-            if ( ((_inter = (PPTREE)father,1) && 
-#line 379 "decomp.ch"
-                    (NumberTree(_inter) == LIST) &&
-#line 379 "decomp.ch"
-                    ((prec=SonTree(_inter,1)),1) &&
-#line 379 "decomp.ch"
-                    1) ) {
 #line 379 "decomp.ch"
 #line 380 "decomp.ch"
-                            if ( Sequence(prec, tree) ) 
+            if ( ((_inter = (PPTREE)father,1) && 
+#line 380 "decomp.ch"
+                    (NumberTree(_inter) == LIST) &&
+#line 380 "decomp.ch"
+                    ((prec=SonTree(_inter,1)),1) &&
+#line 380 "decomp.ch"
+                    1) ) {
 #line 380 "decomp.ch"
 #line 381 "decomp.ch"
+                            if ( Sequence(prec, tree) ) 
+#line 381 "decomp.ch"
+#line 382 "decomp.ch"
                                 return -1 ;
                             
-#line 381 "decomp.ch"
+#line 382 "decomp.ch"
                             else 
-#line 381 "decomp.ch"
-#line 383 "decomp.ch"
+#line 382 "decomp.ch"
+#line 384 "decomp.ch"
                                 return 300 ;
                                 
-#line 383 "decomp.ch"
-                            
-#line 383 "decomp.ch"
 #line 384 "decomp.ch"
                             
-#line 384 "decomp.ch"
-#line 384 "decomp.ch"
-                         } else 
 #line 384 "decomp.ch"
 #line 385 "decomp.ch"
+                            
+#line 385 "decomp.ch"
+#line 385 "decomp.ch"
+                         } else 
+#line 385 "decomp.ch"
+#line 386 "decomp.ch"
                 return 300 ;
                 
-#line 385 "decomp.ch"
-            
-#line 385 "decomp.ch"
 #line 386 "decomp.ch"
+            
+#line 386 "decomp.ch"
+#line 387 "decomp.ch"
             break ;
             
-#line 386 "decomp.ch"
 #line 387 "decomp.ch"
+#line 388 "decomp.ch"
         default : 
-#line 387 "decomp.ch"
-#line 387 "decomp.ch"
+#line 388 "decomp.ch"
+#line 388 "decomp.ch"
         _Case157 : 
-#line 387 "decomp.ch"
-#line 387 "decomp.ch"
+#line 388 "decomp.ch"
+#line 388 "decomp.ch"
             ;
-#line 387 "decomp.ch"
-#line 387 "decomp.ch"
+#line 388 "decomp.ch"
+#line 388 "decomp.ch"
             return DecompCplus::IsTop(tree, internal);
             
-#line 387 "decomp.ch"
+#line 388 "decomp.ch"
     }
-#line 387 "decomp.ch"
+#line 388 "decomp.ch"
     
-#line 387 "decomp.ch"
-#line 389 "decomp.ch"
+#line 388 "decomp.ch"
+#line 390 "decomp.ch"
+    return 0 ;
     
-#line 389 "decomp.ch"
-#line 389 "decomp.ch"
+#line 390 "decomp.ch"
+#line 391 "decomp.ch"
+    
+#line 391 "decomp.ch"
+#line 391 "decomp.ch"
 }
-#line 389 "decomp.ch"
+#line 391 "decomp.ch"
 
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
 
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
 void DecompChopb::TraiterSequence ( PTREE tree )
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
 {
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
     register PPTREE _inter ;
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
 
-#line 394 "decomp.ch"
-#line 394 "decomp.ch"
+#line 396 "decomp.ch"
+#line 396 "decomp.ch"
     int _nextVal ;
     
-#line 394 "decomp.ch"
-#line 397 "decomp.ch"
+#line 396 "decomp.ch"
+#line 399 "decomp.ch"
     PTREE   list, son, father, list1, list2 ;
-#line 397 "decomp.ch"
+#line 399 "decomp.ch"
     
-#line 397 "decomp.ch"
-#line 398 "decomp.ch"
+#line 399 "decomp.ch"
+#line 400 "decomp.ch"
     int x0, y0, x, y, dx, dy ;
     
-#line 398 "decomp.ch"
-#line 399 "decomp.ch"
+#line 400 "decomp.ch"
+#line 401 "decomp.ch"
     int delta = 0 ;
     
-#line 399 "decomp.ch"
-#line 400 "decomp.ch"
-    PTREE   sonOld ;
-#line 400 "decomp.ch"
-    
-#line 400 "decomp.ch"
 #line 401 "decomp.ch"
+#line 402 "decomp.ch"
+    PTREE   sonOld ;
+#line 402 "decomp.ch"
+    
+#line 402 "decomp.ch"
+#line 403 "decomp.ch"
     ItPtree it (tree) ;
     
-#line 401 "decomp.ch"
-#line 402 "decomp.ch"
+#line 403 "decomp.ch"
+#line 404 "decomp.ch"
     PPTREE  _for_elem ;
     
-#line 402 "decomp.ch"
 #line 404 "decomp.ch"
+#line 406 "decomp.ch"
     while ( (for_elem = it++) ) {
-#line 404 "decomp.ch"
-#line 405 "decomp.ch"
+#line 406 "decomp.ch"
+#line 407 "decomp.ch"
                                     switch ( NumberTree(for_elem) ) {
-#line 405 "decomp.ch"
 #line 407 "decomp.ch"
+#line 409 "decomp.ch"
                                         case chopb::DECLARATION : 
-#line 407 "decomp.ch"
-#line 407 "decomp.ch"
+#line 409 "decomp.ch"
+#line 409 "decomp.ch"
                                         _Case162 : 
-#line 407 "decomp.ch"
-#line 407 "decomp.ch"
+#line 409 "decomp.ch"
+#line 409 "decomp.ch"
                                             ;
-#line 407 "decomp.ch"
-#line 407 "decomp.ch"
+#line 409 "decomp.ch"
+#line 409 "decomp.ch"
                                             it.SkipSon(1);
-#line 407 "decomp.ch"
-#line 408 "decomp.ch"
+#line 409 "decomp.ch"
+#line 410 "decomp.ch"
                                             continue ;
                                             
-#line 408 "decomp.ch"
-#line 408 "decomp.ch"
+#line 410 "decomp.ch"
+#line 410 "decomp.ch"
                                             goto _Case163 ;
                                             
-#line 408 "decomp.ch"
-#line 408 "decomp.ch"
+#line 410 "decomp.ch"
+#line 410 "decomp.ch"
                                         case chopb::COMPOUND : 
-#line 408 "decomp.ch"
-#line 408 "decomp.ch"
+#line 410 "decomp.ch"
+#line 410 "decomp.ch"
                                         _Case163 : 
-#line 408 "decomp.ch"
-#line 408 "decomp.ch"
+#line 410 "decomp.ch"
+#line 410 "decomp.ch"
                                             ;
-#line 408 "decomp.ch"
-#line 408 "decomp.ch"
+#line 410 "decomp.ch"
+#line 410 "decomp.ch"
                                             goto _Case164 ;
                                             
-#line 408 "decomp.ch"
-#line 411 "decomp.ch"
+#line 410 "decomp.ch"
+#line 413 "decomp.ch"
                                         case chopb::ALINEA : 
-#line 411 "decomp.ch"
-#line 411 "decomp.ch"
+#line 413 "decomp.ch"
+#line 413 "decomp.ch"
                                         _Case164 : 
-#line 411 "decomp.ch"
-#line 411 "decomp.ch"
+#line 413 "decomp.ch"
+#line 413 "decomp.ch"
                                             ;
-#line 411 "decomp.ch"
-#line 411 "decomp.ch"
+#line 413 "decomp.ch"
+#line 413 "decomp.ch"
                                             {
-#line 411 "decomp.ch"
-#line 411 "decomp.ch"
+#line 413 "decomp.ch"
+#line 413 "decomp.ch"
                                                 PTREE   _Baum0 ;
-#line 411 "decomp.ch"
+#line 413 "decomp.ch"
                                                 
-#line 411 "decomp.ch"
-#line 412 "decomp.ch"
+#line 413 "decomp.ch"
+#line 414 "decomp.ch"
                                                 int oldX = 0 ;
                                                 
-#line 412 "decomp.ch"
-#line 413 "decomp.ch"
+#line 414 "decomp.ch"
+#line 415 "decomp.ch"
                                                 delta = 0 ;
-#line 413 "decomp.ch"
-#line 416 "decomp.ch"
+#line 415 "decomp.ch"
+#line 418 "decomp.ch"
                                                 _Baum0 = (PPTREE) 0 ;
-#line 416 "decomp.ch"
+#line 418 "decomp.ch"
                                                 
-#line 416 "decomp.ch"
-#line 416 "decomp.ch"
+#line 418 "decomp.ch"
+#line 418 "decomp.ch"
                                                 GetCoordAbs(for_elem, _Baum0, &x0, &y0);
-#line 416 "decomp.ch"
-#line 417 "decomp.ch"
+#line 418 "decomp.ch"
+#line 419 "decomp.ch"
                                                 MarkCoordTree(for_elem, x0, 0);
-#line 417 "decomp.ch"
-#line 420 "decomp.ch"
+#line 419 "decomp.ch"
+#line 422 "decomp.ch"
                                                 ((_inter = (PPTREE)for_elem,1) && 
-#line 420 "decomp.ch"
+#line 422 "decomp.ch"
                                                     ((list=SonTree(_inter,1)),1) &&
-#line 420 "decomp.ch"
+#line 422 "decomp.ch"
                                                     1);
-#line 420 "decomp.ch"
+#line 422 "decomp.ch"
                                                 ;
-#line 420 "decomp.ch"
-#line 421 "decomp.ch"
+#line 422 "decomp.ch"
+#line 423 "decomp.ch"
                                                 sonOld = (PPTREE) 0 ;
-#line 421 "decomp.ch"
+#line 423 "decomp.ch"
                                                 
-#line 421 "decomp.ch"
-#line 422 "decomp.ch"
+#line 423 "decomp.ch"
+#line 424 "decomp.ch"
                                                 while ( list ) {
-#line 422 "decomp.ch"
-#line 422 "decomp.ch"
+#line 424 "decomp.ch"
+#line 424 "decomp.ch"
                                                                     PTREE   _Baum1 ;
-#line 422 "decomp.ch"
+#line 424 "decomp.ch"
                                                                     
-#line 422 "decomp.ch"
-#line 423 "decomp.ch"
+#line 424 "decomp.ch"
+#line 425 "decomp.ch"
                                                                     (son=(list?list.Nextl():(PPTREE)0));
-#line 423 "decomp.ch"
+#line 425 "decomp.ch"
                                                                     
-#line 423 "decomp.ch"
-#line 424 "decomp.ch"
+#line 425 "decomp.ch"
+#line 426 "decomp.ch"
                                                                     _Baum1 = (PPTREE) 0 ;
-#line 424 "decomp.ch"
+#line 426 "decomp.ch"
                                                                     
-#line 424 "decomp.ch"
-#line 424 "decomp.ch"
+#line 426 "decomp.ch"
+#line 426 "decomp.ch"
                                                                     GetCoordAbs(son, _Baum1, &x0, &y0);
-#line 424 "decomp.ch"
-#line 425 "decomp.ch"
+#line 426 "decomp.ch"
+#line 427 "decomp.ch"
                                                                     GetCoord(son, &x, &y, &dx, &dy);
-#line 425 "decomp.ch"
-#line 428 "decomp.ch"
+#line 427 "decomp.ch"
+#line 430 "decomp.ch"
                                                                     if ( x0 <= oldX ) {
-#line 428 "decomp.ch"
-#line 429 "decomp.ch"
+#line 430 "decomp.ch"
+#line 431 "decomp.ch"
                                                                                             delta = 0 ;
-#line 429 "decomp.ch"
-#line 430 "decomp.ch"
+#line 431 "decomp.ch"
+#line 432 "decomp.ch"
                                                                                             
-#line 430 "decomp.ch"
-#line 430 "decomp.ch"
+#line 432 "decomp.ch"
+#line 432 "decomp.ch"
                                                                                         }
-#line 430 "decomp.ch"
-#line 431 "decomp.ch"
+#line 432 "decomp.ch"
+#line 433 "decomp.ch"
                                                                     oldX = x0 ;
-#line 431 "decomp.ch"
-#line 434 "decomp.ch"
+#line 433 "decomp.ch"
+#line 436 "decomp.ch"
                                                                     if ( x0 + dx + delta > rightMargin ) {
-#line 434 "decomp.ch"
-#line 435 "decomp.ch"
+#line 436 "decomp.ch"
+#line 437 "decomp.ch"
                                                                                                                 if ( Sequence(sonOld, son) ) {
-#line 435 "decomp.ch"
-#line 436 "decomp.ch"
-{
-#line 436 "decomp.ch"
-    PPTREE _ptTree0=(PPTREE) 0;
-#line 436 "decomp.ch"
-    _ptTree0 = (PPTREE) 0;
-#line 436 "decomp.ch"
-    {
-#line 436 "decomp.ch"
-        PPTREE _ptTree1= (PPTREE) 0 ;
-#line 436 "decomp.ch"
-        {
-#line 436 "decomp.ch"
-            PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 436 "decomp.ch"
-            _ptRes2 = MakeTree(chopb::NEWLINE, 1);
-#line 436 "decomp.ch"
-            _ptTree2 = MakeString("1") ;
-#line 436 "decomp.ch"
-            ReplaceTree(_ptRes2, 1, _ptTree2);
-#line 436 "decomp.ch"
-            _ptTree1 = _ptRes2;
-#line 436 "decomp.ch"
-        }
-#line 436 "decomp.ch"
-        _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 436 "decomp.ch"
-    }
-#line 436 "decomp.ch"
-    {
-#line 436 "decomp.ch"
-        PPTREE _ptTree1= (PPTREE) 0 ;
-#line 436 "decomp.ch"
-        {
-#line 436 "decomp.ch"
-            PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 436 "decomp.ch"
-            _ptRes2 = MakeTree(chopb::TAB, 1);
-#line 436 "decomp.ch"
-            _ptTree2 = MakeString("1") ;
-#line 436 "decomp.ch"
-            ReplaceTree(_ptRes2, 1, _ptTree2);
-#line 436 "decomp.ch"
-            _ptTree1 = _ptRes2;
-#line 436 "decomp.ch"
-        }
-#line 436 "decomp.ch"
-        _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 436 "decomp.ch"
-    }
-#line 436 "decomp.ch"
-    list2 = _ptTree0;
-#line 436 "decomp.ch"
-    ;
-#line 436 "decomp.ch"
-}
-#line 436 "decomp.ch"
-
-#line 436 "decomp.ch"
-#line 437 "decomp.ch"
-PutAttr(son, list2, PRE_ATTR, PUT_BEG);
 #line 437 "decomp.ch"
 #line 438 "decomp.ch"
-delta = -x0 + TAB_VALUE(dy, 1);
+                                                                                                                                                {
 #line 438 "decomp.ch"
-#line 439 "decomp.ch"
-
-#line 439 "decomp.ch"
-#line 439 "decomp.ch"
+                                                                                                                                                PPTREE _ptTree0=(PPTREE) 0;
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree0 = (PPTREE) 0;
+#line 438 "decomp.ch"
+                                                                                                                                                {
+#line 438 "decomp.ch"
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
+#line 438 "decomp.ch"
+                                                                                                                                                {
+#line 438 "decomp.ch"
+                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+#line 438 "decomp.ch"
+                                                                                                                                                _ptRes2 = MakeTree(chopb::NEWLINE, 1);
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree2 = MakeString("1") ;
+#line 438 "decomp.ch"
+                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree1 = _ptRes2;
+#line 438 "decomp.ch"
                                                                                                                                                 }
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree0 = AddList( _ptTree0,_ptTree1);
+#line 438 "decomp.ch"
+                                                                                                                                                }
+#line 438 "decomp.ch"
+                                                                                                                                                {
+#line 438 "decomp.ch"
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
+#line 438 "decomp.ch"
+                                                                                                                                                {
+#line 438 "decomp.ch"
+                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+#line 438 "decomp.ch"
+                                                                                                                                                _ptRes2 = MakeTree(chopb::TAB, 1);
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree2 = MakeString("1") ;
+#line 438 "decomp.ch"
+                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree1 = _ptRes2;
+#line 438 "decomp.ch"
+                                                                                                                                                }
+#line 438 "decomp.ch"
+                                                                                                                                                _ptTree0 = AddList( _ptTree0,_ptTree1);
+#line 438 "decomp.ch"
+                                                                                                                                                }
+#line 438 "decomp.ch"
+                                                                                                                                                list2 = _ptTree0;
+#line 438 "decomp.ch"
+                                                                                                                                                ;
+#line 438 "decomp.ch"
+                                                                                                                                                }
+#line 438 "decomp.ch"
+                                                                                                                                                
+#line 438 "decomp.ch"
+#line 439 "decomp.ch"
+                                                                                                                                                PutAttr(son, list2, PRE_ATTR, PUT_BEG);
 #line 439 "decomp.ch"
 #line 440 "decomp.ch"
+                                                                                                                                                delta = -x0 + TAB_VALUE(dy, 1);
+#line 440 "decomp.ch"
+#line 441 "decomp.ch"
+                                                                                                                                                
+#line 441 "decomp.ch"
+#line 441 "decomp.ch"
+                                                                                                                                                }
+#line 441 "decomp.ch"
+#line 442 "decomp.ch"
                                                                                                                 
-#line 440 "decomp.ch"
-#line 440 "decomp.ch"
+#line 442 "decomp.ch"
+#line 442 "decomp.ch"
                                                                                                              }
-#line 440 "decomp.ch"
-#line 441 "decomp.ch"
+#line 442 "decomp.ch"
+#line 443 "decomp.ch"
                                                                     PutCoord(son, x + delta, y, dx, dy);
-#line 441 "decomp.ch"
-#line 442 "decomp.ch"
+#line 443 "decomp.ch"
+#line 444 "decomp.ch"
                                                                     (sonOld=son);
-#line 442 "decomp.ch"
+#line 444 "decomp.ch"
                                                                     
-#line 442 "decomp.ch"
-#line 443 "decomp.ch"
+#line 444 "decomp.ch"
+#line 445 "decomp.ch"
                                                                     
-#line 443 "decomp.ch"
-#line 443 "decomp.ch"
+#line 445 "decomp.ch"
+#line 445 "decomp.ch"
                                                                 }
-#line 443 "decomp.ch"
-#line 446 "decomp.ch"
+#line 445 "decomp.ch"
+#line 448 "decomp.ch"
                                                 UnMarkCoordTree(for_elem);
-#line 446 "decomp.ch"
-#line 447 "decomp.ch"
+#line 448 "decomp.ch"
+#line 449 "decomp.ch"
                                                 
-#line 447 "decomp.ch"
-#line 447 "decomp.ch"
+#line 449 "decomp.ch"
+#line 449 "decomp.ch"
                                             }
                                             
-#line 447 "decomp.ch"
-#line 448 "decomp.ch"
+#line 449 "decomp.ch"
+#line 450 "decomp.ch"
                                             break ;
                                             
-#line 448 "decomp.ch"
 #line 450 "decomp.ch"
+#line 452 "decomp.ch"
                                         case chopb::PARSE : 
-#line 450 "decomp.ch"
-#line 450 "decomp.ch"
+#line 452 "decomp.ch"
+#line 452 "decomp.ch"
                                             (list=SonTree(for_elem, 1));
-#line 450 "decomp.ch"
+#line 452 "decomp.ch"
                                             
-#line 450 "decomp.ch"
-#line 450 "decomp.ch"
+#line 452 "decomp.ch"
+#line 452 "decomp.ch"
                                         _Case165 : 
-#line 450 "decomp.ch"
-#line 450 "decomp.ch"
+#line 452 "decomp.ch"
+#line 452 "decomp.ch"
                                             ;
-#line 450 "decomp.ch"
-#line 450 "decomp.ch"
+#line 452 "decomp.ch"
+#line 452 "decomp.ch"
                                             {
-#line 450 "decomp.ch"
-#line 451 "decomp.ch"
+#line 452 "decomp.ch"
+#line 453 "decomp.ch"
                                                 int overlap = 0 ;
                                                 
-#line 451 "decomp.ch"
-#line 452 "decomp.ch"
+#line 453 "decomp.ch"
+#line 454 "decomp.ch"
                                                 while ( list ) {
-#line 452 "decomp.ch"
-#line 452 "decomp.ch"
+#line 454 "decomp.ch"
+#line 454 "decomp.ch"
                                                                     PTREE   _Baum2 ;
-#line 452 "decomp.ch"
-                                                                    
-#line 452 "decomp.ch"
-#line 453 "decomp.ch"
-                                                                    (son=(list?list.Nextl():(PPTREE)0));
-#line 453 "decomp.ch"
-                                                                    
-#line 453 "decomp.ch"
-#line 454 "decomp.ch"
-                                                                    _Baum2 = (PPTREE) 0 ;
 #line 454 "decomp.ch"
                                                                     
-#line 454 "decomp.ch"
-#line 454 "decomp.ch"
-                                                                    GetCoordAbs(son, _Baum2, &x0, &y0);
 #line 454 "decomp.ch"
 #line 455 "decomp.ch"
-                                                                    GetCoord(son, &x, &y, &dx, &dy);
+                                                                    (son=(list?list.Nextl():(PPTREE)0));
+#line 455 "decomp.ch"
+                                                                    
 #line 455 "decomp.ch"
 #line 456 "decomp.ch"
-                                                                    if ( x0 + dx > rightMargin ) {
+                                                                    _Baum2 = (PPTREE) 0 ;
+#line 456 "decomp.ch"
+                                                                    
+#line 456 "decomp.ch"
+#line 456 "decomp.ch"
+                                                                    GetCoordAbs(son, _Baum2, &x0, &y0);
 #line 456 "decomp.ch"
 #line 457 "decomp.ch"
-                                                                                                        overlap = 1 ;
+                                                                    GetCoord(son, &x, &y, &dx, &dy);
 #line 457 "decomp.ch"
 #line 458 "decomp.ch"
+                                                                    if ( x0 + dx > rightMargin ) {
+#line 458 "decomp.ch"
+#line 459 "decomp.ch"
+                                                                                                        overlap = 1 ;
+#line 459 "decomp.ch"
+#line 460 "decomp.ch"
                                                                                                         break ;
                                                                                                         
-#line 458 "decomp.ch"
-#line 459 "decomp.ch"
+#line 460 "decomp.ch"
+#line 461 "decomp.ch"
                                                                                                         
-#line 459 "decomp.ch"
-#line 459 "decomp.ch"
+#line 461 "decomp.ch"
+#line 461 "decomp.ch"
                                                                                                     }
-#line 459 "decomp.ch"
-#line 460 "decomp.ch"
+#line 461 "decomp.ch"
+#line 462 "decomp.ch"
                                                                     
-#line 460 "decomp.ch"
-#line 460 "decomp.ch"
+#line 462 "decomp.ch"
+#line 462 "decomp.ch"
                                                                 }
-#line 460 "decomp.ch"
-#line 466 "decomp.ch"
+#line 462 "decomp.ch"
+#line 468 "decomp.ch"
                                                 if ( overlap ) {
-#line 466 "decomp.ch"
-#line 467 "decomp.ch"
+#line 468 "decomp.ch"
+#line 469 "decomp.ch"
                                                                     ((_inter = (PPTREE)for_elem,1) && 
-#line 467 "decomp.ch"
+#line 469 "decomp.ch"
                                                                         ((list=SonTree(_inter,1)),1) &&
-#line 467 "decomp.ch"
+#line 469 "decomp.ch"
                                                                         1);
-#line 467 "decomp.ch"
+#line 469 "decomp.ch"
                                                                     ;
-#line 467 "decomp.ch"
-#line 468 "decomp.ch"
+#line 469 "decomp.ch"
+#line 470 "decomp.ch"
                                                                     {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         PPTREE _ptTree0=(PPTREE) 0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         _ptTree0 = (PPTREE) 0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             PPTREE _ptTree1= (PPTREE) 0 ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptRes2 = MakeTree(chopb::NEWLINE, 1);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptTree2 = MakeString("1") ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 ReplaceTree(_ptRes2, 1, _ptTree2);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptTree1 = _ptRes2;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             PPTREE _ptTree1= (PPTREE) 0 ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptRes2 = MakeTree(chopb::GOTO, 1);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptTree2 = MakeString("0") ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 ReplaceTree(_ptRes2, 1, _ptTree2);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptTree1 = _ptRes2;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             PPTREE _ptTree1= (PPTREE) 0 ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             {
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptRes2 = MakeTree(chopb::MARK, 0);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                                 _ptTree1 = _ptRes2;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                             _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         list1 = _ptTree0;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                         ;
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                     }
-#line 468 "decomp.ch"
+#line 470 "decomp.ch"
                                                                     
-#line 468 "decomp.ch"
-#line 469 "decomp.ch"
+#line 470 "decomp.ch"
+#line 471 "decomp.ch"
                                                                     {
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         PPTREE _ptTree0=(PPTREE) 0;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         _ptTree0 = (PPTREE) 0;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         {
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                             PPTREE _ptTree1= (PPTREE) 0 ;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                             {
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                                 PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                                 _ptRes2 = MakeTree(chopb::UNMARK, 0);
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                                 _ptTree1 = _ptRes2;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                             }
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                             _ptTree0 = AddList( _ptTree0,_ptTree1);
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         }
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         list2 = _ptTree0;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                         ;
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                     }
-#line 469 "decomp.ch"
+#line 471 "decomp.ch"
                                                                     
-#line 469 "decomp.ch"
-#line 470 "decomp.ch"
+#line 471 "decomp.ch"
+#line 472 "decomp.ch"
                                                                     if ( !sontree(list, 2) ) {
-#line 470 "decomp.ch"
-#line 470 "decomp.ch"
+#line 472 "decomp.ch"
+#line 472 "decomp.ch"
                                                                                                     PTREE   _Baum3 ;
-#line 470 "decomp.ch"
+#line 472 "decomp.ch"
                                                                                                     
-#line 470 "decomp.ch"
-#line 471 "decomp.ch"
+#line 472 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                     {
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         _ptRes0 = MakeTree(chopb::ATTRIBUTS, 3);
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         _ptTree0 = StoreRef(sontree(list, 1));
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         ReplaceTree(_ptRes0, 2, list1);
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         ReplaceTree(_ptRes0, 3, list2);
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                         _Baum3 = _ptRes0;
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                     }
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                     
-#line 471 "decomp.ch"
-#line 471 "decomp.ch"
+#line 473 "decomp.ch"
+#line 473 "decomp.ch"
                                                                                                     replacetree(list, 1, _Baum3);
-#line 471 "decomp.ch"
-#line 472 "decomp.ch"
+#line 473 "decomp.ch"
+#line 474 "decomp.ch"
                                                                                                     
-#line 472 "decomp.ch"
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
+#line 474 "decomp.ch"
                                                                                                  } else 
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
                                                                     {
-#line 472 "decomp.ch"
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
+#line 474 "decomp.ch"
                                                                         PTREE   _Baum5 ;
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
                                                                         
-#line 472 "decomp.ch"
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
+#line 474 "decomp.ch"
                                                                         PTREE   _Baum4 ;
-#line 472 "decomp.ch"
+#line 474 "decomp.ch"
                                                                         
-#line 472 "decomp.ch"
-#line 473 "decomp.ch"
+#line 474 "decomp.ch"
+#line 475 "decomp.ch"
                                                                         {
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             _ptRes0 = MakeTree(chopb::ATTRIBUTS, 3);
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             _ptTree0 = StoreRef(sontree(list, 1));
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             ReplaceTree(_ptRes0, 2, list1);
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                             _Baum4 = _ptRes0;
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                         }
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
                                                                         
-#line 473 "decomp.ch"
-#line 473 "decomp.ch"
+#line 475 "decomp.ch"
+#line 475 "decomp.ch"
                                                                         replacetree(list, 1, _Baum4);
-#line 473 "decomp.ch"
-#line 474 "decomp.ch"
+#line 475 "decomp.ch"
+#line 476 "decomp.ch"
                                                                         while ( sontree(list, 2) ) 
-#line 474 "decomp.ch"
-#line 475 "decomp.ch"
+#line 476 "decomp.ch"
+#line 477 "decomp.ch"
                                                                             (list?list.Nextl():(PPTREE)0);
-#line 475 "decomp.ch"
-#line 476 "decomp.ch"
+#line 477 "decomp.ch"
+#line 478 "decomp.ch"
                                                                         {
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             _ptRes0 = MakeTree(chopb::ATTRIBUTS, 3);
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             _ptTree0 = StoreRef(sontree(list, 1));
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             ReplaceTree(_ptRes0, 3, list2);
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                             _Baum5 = _ptRes0;
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                         }
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
                                                                         
-#line 476 "decomp.ch"
-#line 476 "decomp.ch"
+#line 478 "decomp.ch"
+#line 478 "decomp.ch"
                                                                         replacetree(list, 1, _Baum5);
-#line 476 "decomp.ch"
-#line 477 "decomp.ch"
+#line 478 "decomp.ch"
+#line 479 "decomp.ch"
                                                                         
-#line 477 "decomp.ch"
-#line 477 "decomp.ch"
+#line 479 "decomp.ch"
+#line 479 "decomp.ch"
                                                                     }
                                                                     
-#line 477 "decomp.ch"
-#line 478 "decomp.ch"
+#line 479 "decomp.ch"
+#line 480 "decomp.ch"
                                                                     
-#line 478 "decomp.ch"
-#line 478 "decomp.ch"
+#line 480 "decomp.ch"
+#line 480 "decomp.ch"
                                                                 }
-#line 478 "decomp.ch"
-#line 479 "decomp.ch"
+#line 480 "decomp.ch"
+#line 481 "decomp.ch"
                                                 
-#line 479 "decomp.ch"
-#line 479 "decomp.ch"
+#line 481 "decomp.ch"
+#line 481 "decomp.ch"
                                             }
                                             
-#line 479 "decomp.ch"
+#line 481 "decomp.ch"
                                     }
-#line 479 "decomp.ch"
-                                    
-#line 479 "decomp.ch"
 #line 481 "decomp.ch"
                                     
 #line 481 "decomp.ch"
-#line 481 "decomp.ch"
+#line 483 "decomp.ch"
+                                    
+#line 483 "decomp.ch"
+#line 483 "decomp.ch"
                                    }
-#line 481 "decomp.ch"
-#line 482 "decomp.ch"
+#line 483 "decomp.ch"
+#line 484 "decomp.ch"
     
-#line 482 "decomp.ch"
-#line 482 "decomp.ch"
+#line 484 "decomp.ch"
+#line 484 "decomp.ch"
 }
-#line 482 "decomp.ch"
+#line 484 "decomp.ch"
 
-#line 486 "decomp.ch"
+#line 488 "decomp.ch"
 
-#line 486 "decomp.ch"
+#line 488 "decomp.ch"
 void DecompChopb::ChopTree ( PTREE tree, int funcAlone )
-#line 486 "decomp.ch"
+#line 488 "decomp.ch"
 {
-#line 486 "decomp.ch"
-#line 486 "decomp.ch"
+#line 488 "decomp.ch"
+#line 488 "decomp.ch"
     int _nextVal ;
     
-#line 486 "decomp.ch"
-#line 489 "decomp.ch"
+#line 488 "decomp.ch"
+#line 491 "decomp.ch"
     copy();
-#line 489 "decomp.ch"
-#line 490 "decomp.ch"
+#line 491 "decomp.ch"
+#line 492 "decomp.ch"
     SwitchLang("chopb");
-#line 490 "decomp.ch"
-#line 491 "decomp.ch"
+#line 492 "decomp.ch"
+#line 493 "decomp.ch"
     if ( simplifyExpression ) 
-#line 491 "decomp.ch"
-#line 492 "decomp.ch"
+#line 493 "decomp.ch"
+#line 494 "decomp.ch"
         clean_tree(tree);
-#line 492 "decomp.ch"
-#line 493 "decomp.ch"
+#line 494 "decomp.ch"
+#line 495 "decomp.ch"
     Treat(tree);
-#line 493 "decomp.ch"
-#line 494 "decomp.ch"
+#line 495 "decomp.ch"
+#line 496 "decomp.ch"
     Decomp(tree, funcAlone);
-#line 494 "decomp.ch"
-#line 495 "decomp.ch"
+#line 496 "decomp.ch"
+#line 497 "decomp.ch"
     AddRef(tree);
-#line 495 "decomp.ch"
-#line 496 "decomp.ch"
+#line 497 "decomp.ch"
+#line 498 "decomp.ch"
     
-#line 496 "decomp.ch"
-#line 496 "decomp.ch"
+#line 498 "decomp.ch"
+#line 498 "decomp.ch"
 }
-#line 496 "decomp.ch"
+#line 498 "decomp.ch"
 
-#line 500 "decomp.ch"
+#line 502 "decomp.ch"
 
-#line 500 "decomp.ch"
+#line 502 "decomp.ch"
 void DecompChopb::copy ()
-#line 500 "decomp.ch"
+#line 502 "decomp.ch"
 {
-#line 500 "decomp.ch"
-#line 500 "decomp.ch"
+#line 502 "decomp.ch"
+#line 502 "decomp.ch"
     int _nextVal ;
     
-#line 500 "decomp.ch"
-#line 503 "decomp.ch"
+#line 502 "decomp.ch"
+#line 505 "decomp.ch"
     const char  *str ;
     
-#line 503 "decomp.ch"
 #line 505 "decomp.ch"
+#line 507 "decomp.ch"
     str = "\n\r Metachop prettyPrinter version 3.0, CopyRight(C) 1995-2018 Eric Lavillonniere \n\r";
-#line 505 "decomp.ch"
-#line 506 "decomp.ch"
-    _write(2, str, strlen(str));
-#line 506 "decomp.ch"
 #line 507 "decomp.ch"
+#line 508 "decomp.ch"
+    _write(2, str, strlen(str));
+#line 508 "decomp.ch"
+#line 509 "decomp.ch"
     str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
-#line 507 "decomp.ch"
-#line 508 "decomp.ch"
-    _write(2, str, strlen(str));
-#line 508 "decomp.ch"
 #line 509 "decomp.ch"
+#line 510 "decomp.ch"
+    _write(2, str, strlen(str));
+#line 510 "decomp.ch"
+#line 511 "decomp.ch"
     str = " This is free software, and you are welcome to redistribute it \n\r";
-#line 509 "decomp.ch"
-#line 510 "decomp.ch"
-    _write(2, str, strlen(str));
-#line 510 "decomp.ch"
 #line 511 "decomp.ch"
+#line 512 "decomp.ch"
+    _write(2, str, strlen(str));
+#line 512 "decomp.ch"
+#line 513 "decomp.ch"
     str = " under certain conditions.\n\r";
-#line 511 "decomp.ch"
-#line 512 "decomp.ch"
-    _write(2, str, strlen(str));
-#line 512 "decomp.ch"
 #line 513 "decomp.ch"
+#line 514 "decomp.ch"
+    _write(2, str, strlen(str));
+#line 514 "decomp.ch"
+#line 515 "decomp.ch"
     str = " For details see file COPYING in C++ prettyPrinter directory.\n\r\n\r";
-#line 513 "decomp.ch"
-#line 514 "decomp.ch"
+#line 515 "decomp.ch"
+#line 516 "decomp.ch"
     _write(2, str, strlen(str));
-#line 514 "decomp.ch"
-#line 515 "decomp.ch"
+#line 516 "decomp.ch"
+#line 517 "decomp.ch"
     
-#line 515 "decomp.ch"
-#line 515 "decomp.ch"
+#line 517 "decomp.ch"
+#line 517 "decomp.ch"
 }
-#line 515 "decomp.ch"
+#line 517 "decomp.ch"
 
-#line 515 "decomp.ch"
-#line 515 "decomp.ch"
+#line 517 "decomp.ch"
+#line 517 "decomp.ch"
 static void decomp_Anchor () { int i = 1;} 
-#line 515 "decomp.ch"
+#line 517 "decomp.ch"
 /*Well done my boy */ 
-#line 515 "decomp.ch"
+#line 517 "decomp.ch"
 

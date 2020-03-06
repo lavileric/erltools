@@ -167,6 +167,8 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     
     PTREE   oldPostComment = (PTREE)0 ;
     
+    PTREE   att ;
+    
     (oldPostComment=postComment);
     
     if ( (!paramTree) ) 
@@ -186,42 +188,47 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     ;
     switch ( NumberTree(exp) ) {
         case cplus::ATTRIBUTS : 
-        _Case41 : 
-            ;
-            goto _Case42 ;
-            
-        case cplus::FUNC : 
         _Case42 : 
             ;
             goto _Case43 ;
             
-        case cplus::DECLARATION : 
+        case cplus::FUNC : 
         _Case43 : 
             ;
             goto _Case44 ;
             
-        case cplus::MESSAGE_MAP : 
+        case cplus::DECLARATION : 
         _Case44 : 
             ;
             goto _Case45 ;
             
-        case cplus::NAMESPACE : 
+        case cplus::MESSAGE_MAP : 
         _Case45 : 
             ;
             goto _Case46 ;
             
-        case cplus::NAMESPACE_ALIAS : 
+        case cplus::NAMESPACE : 
         _Case46 : 
             ;
             goto _Case47 ;
             
-        case cplus::USING : 
+        case cplus::NAMESPACE_ALIAS : 
         _Case47 : 
             ;
             goto _Case48 ;
             
-        case cplus::USING_NAMESPACE : 
+        case cplus::INLINE_NAMESPACE : 
         _Case48 : 
+            ;
+            goto _Case49 ;
+            
+        case cplus::USING : 
+        _Case49 : 
+            ;
+            goto _Case50 ;
+            
+        case cplus::USING_NAMESPACE : 
+        _Case50 : 
             ;
             if ( ( _inter = 
                     FatherTree(exp),((_inter = (PPTREE)_inter,1) && 
@@ -270,12 +277,14 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                                                 1) || ((_inter = (PPTREE)exp,1) && 
                                                             (NumberTree(_inter) == cplus::NAMESPACE) &&
                                                             1) || ((_inter = (PPTREE)exp,1) && 
-                                                                        (NumberTree(_inter) == cplus::NAMESPACE_ALIAS) &&
+                                                                        (NumberTree(_inter) == cplus::INLINE_NAMESPACE) &&
                                                                         1) || ((_inter = (PPTREE)exp,1) && 
-                                                                                    (NumberTree(_inter) == cplus::USING) &&
+                                                                                    (NumberTree(_inter) == cplus::NAMESPACE_ALIAS) &&
                                                                                     1) || ((_inter = (PPTREE)exp,1) && 
-                                                                                                (NumberTree(_inter) == cplus::USING_NAMESPACE) &&
-                                                                                                1) ) 
+                                                                                                (NumberTree(_inter) == cplus::USING) &&
+                                                                                                1) || ((_inter = (PPTREE)exp,1) && 
+                                                                                                            (NumberTree(_inter) == cplus::USING_NAMESPACE) &&
+                                                                                                            1) ) 
                                             LNewLine(2);
                                         
                                         if ( ((_inter = (PPTREE)exp,1) && 
@@ -298,7 +307,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
             break ;
             
         default : 
-        _Case49 : 
+        _Case51 : 
             ;
             break ;
             
@@ -372,11 +381,17 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
     
     int oneInstruct ;
     
+    PTREE   except ;
+    
+    PTREE   implementation ;
+    
+    PTREE   deleteFunc ;
+    
     (oldPostComment=postComment);
     
     switch ( NumberTree(paramTree) ) {
         case LIST : 
-        _Case240 : 
+        _Case249 : 
             ;
             (list=paramTree);
             
@@ -392,7 +407,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::LANGUAGE : 
             (name=SonTree(paramTree, 1));
             
-        _Case241 : 
+        _Case250 : 
             ;
             {
                 inClass = 0 ;
@@ -411,7 +426,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case242 : 
+        _Case251 : 
             ;
             if ( ((_inter = (PPTREE)type,1) && 
                     (NumberTree(_inter) == cplus::CLASS) &&
@@ -505,12 +520,16 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exceptionList=SonTree(paramTree, 9));
             
-        _Case243 : 
+            (deleteFunc=SonTree(paramTree, 10));
+            
+        _Case252 : 
             ;
             {
                 bool    withNewLine = false ;
                 
                 bool    parameterUnder = IsVerticalDecl(param);
+                
+                bool    hasExceptionList = false ;
                 
                 (exp2=ctor);
                 
@@ -519,15 +538,19 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         ((ctor=SonTree(_inter,1)),1) &&
                         1);
                     ;
-                if ( exceptionList ) 
-                    ((_inter = (PPTREE)exceptionList,1) && 
-                        ((exceptionList=SonTree(_inter,1)),1) &&
+                if ( exceptionList ) {
+                                        ((_inter = (PPTREE)exceptionList,1) && 
+                                            ((exceptionList=SonTree(_inter,1)),1) &&
+                                            1);
+                                        ;
+                                        hasExceptionList = true ;
+                                        
+                                      }
+                if ( !((!stat)) ) 
+                    ((_inter = (PPTREE)stat,1) && 
+                        ((stat1=SonTree(_inter,1)),1) &&
                         1);
                     ;
-                ((_inter = (PPTREE)stat,1) && 
-                    ((stat1=SonTree(_inter,1)),1) &&
-                    1);
-                ;
                 {
                     (exp1=FatherTree(paramTree));
                     
@@ -543,8 +566,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                 if ( !inClass || !((!stat1)) ) {
                                                                                                     if ( ( _inter = 
                                                                                                             FatherTree(exp1),((_inter = (PPTREE)_inter,1) && 
-(NumberTree(_inter) == cplus::TEMPLATE_DECL) &&
-1)                                                                                                       ) ) 
+                                                                                                                               (NumberTree(_inter) == cplus::TEMPLATE_DECL) &&
+                                                                                                                               1)) ) 
                                                                                                         LNewLine(2);
                                                                                                     
                                                                                                     else 
@@ -649,9 +672,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                                                 if ( ((_inter = (PPTREE)attr,1) && 
                                                                                                                         (NumberTree(_inter) == cplus::NEWLINE) &&
                                                                                                                         1) ) {
-commDisp = true ;
-comm(son, POST);
-
+                                                                                                                             commDisp = true ;
+                                                                                                                             comm(son, POST);
+                                                                                                                             
                                                                                                                              }
                                                                                                                 TraitAttribut(attr);
                                                                                                                 
@@ -685,21 +708,25 @@ comm(son, POST);
                     decomp(range);
                 
                 comm(exp2, PRE);
-                if ( !((!exceptionList)) ) {
-                                                LNewLine(1);
-                                                
-                                                Tab();
-                                                
-                                                Mark();
-                                                PrintString("throw");
-                                                Space(1);
-                                                
-                                                PrintString("(");
+                if ( hasExceptionList ) {
+                                            LNewLine(1);
+                                            
+                                            Tab();
+                                            
+                                            Mark();
+                                            PrintString("throw");
+                                            Space(1);
+                                            
+                                            PrintString("(");
+                                            if ( !((!exceptionList)) ) 
                                                 DecompList(exceptionList, ",", ")", 0);
-                                                UnMark();
-                                                
-                                                
-                                             }
+                                            else 
+                                                PrintString(")");
+                                            
+                                            UnMark();
+                                            
+                                            
+                                         }
                 if ( !((!ctor)) ) {
                                         LNewLine(1);
                                         
@@ -736,20 +763,31 @@ comm(son, POST);
                 
                 decomp(param_decl);
                 
-                statementf = 0 ;
-                if ( withNewLine ) {
-                                        LNewLine(1);
-                                        
-                                        
-                                    }
-                ((_inter = (PPTREE)stat,1) && 
-                    ((stat1=SonTree(_inter,1)),1) &&
-                    1);
-                ;
-                if ( !((!stat1)) || !((!param_decl)) ) 
-                    LNewLine(1);
-                
-                decomp(stat);
+                if ( !((!deleteFunc)) ) {
+                                            PrintString("=");
+                                            SepAfter();
+                                            
+                                            PrintString("delete;");
+                                            
+                                          } else 
+                {
+                    statementf = 0 ;
+                    if ( withNewLine ) {
+                                            LNewLine(1);
+                                            
+                                            
+                                        }
+                    ((_inter = (PPTREE)stat,1) && 
+                        ((stat1=SonTree(_inter,1)),1) &&
+                        1);
+                    ;
+                    if ( !((!stat1)) || !((!param_decl)) ) 
+                        LNewLine(1);
+                    
+                    decomp(stat);
+                    
+                    
+                }
                 
                 if ( funcAlone ) 
                     LNewLine(1);
@@ -758,9 +796,9 @@ comm(son, POST);
                 if ( !LastInList(paramTree) ) {
                                                     if ( !inClass || !((!stat)) ) {
                                                                                         if ( !LastInList(paramTree) ) {
-LNewLine(2);
-
-
+                                                                                                                         LNewLine(2);
+                                                                                                                         
+                                                                                                                         
                                                                                                                          }
                                                                                         
                                                                                       } else 
@@ -787,7 +825,7 @@ LNewLine(2);
             
             (exp=SonTree(paramTree, 2));
             
-        _Case244 : 
+        _Case253 : 
             ;
             statementf = 0 ;
             decomp(declarator);
@@ -807,7 +845,7 @@ LNewLine(2);
         case cplus::CLASS_PARAM : 
             (son=SonTree(paramTree, 1));
             
-        _Case245 : 
+        _Case254 : 
             ;
             PrintString("class");
             decomp(son);
@@ -819,13 +857,14 @@ LNewLine(2);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case246 : 
+        _Case255 : 
             ;
             PrintString("template");
             Space(1);
             
             PrintString("<");
-            DecompList(exp1, ",", (char *)0, 0);
+            if ( exp1 ) 
+                DecompList(exp1, ",", (char *)0, 0);
             PrintString(">");
             Space(1);
             
@@ -845,7 +884,7 @@ LNewLine(2);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case247 : 
+        _Case256 : 
             ;
             decomp(exp1);
             
@@ -875,9 +914,9 @@ LNewLine(2);
             
             (list_decl=SonTree(paramTree, 3));
             
-        _Case248 : 
+        _Case257 : 
             ;
-            goto _Case249 ;
+            goto _Case258 ;
             
         case cplus::DECLARATION : 
             (sc=SonTree(paramTree, 1));
@@ -886,7 +925,7 @@ LNewLine(2);
             
             (list_decl=SonTree(paramTree, 3));
             
-        _Case249 : 
+        _Case258 : 
             ;
             {
                 int hasPutMark = 0 ;
@@ -976,11 +1015,19 @@ LNewLine(2);
             
             (list_decl=SonTree(paramTree, 2));
             
-        _Case250 : 
+            (type=SonTree(paramTree, 3));
+            
+            (implementation=SonTree(paramTree, 4));
+            
+        _Case259 : 
             ;
             {
                 IsVerticalDecl(list_decl);
                 PrintString("enum");
+                if ( !((!type)) ) {
+                                        PrintString("class");
+                                        
+                                    }
                 if ( !((!ident)) ) {
                                         DumpBrainyValue(ident);
                                         
@@ -988,6 +1035,18 @@ LNewLine(2);
                                         
                                         
                                      }
+                if ( !((!implementation)) ) {
+                                                Space(1);
+                                                
+                                                PrintString(":");
+                                                Space(1);
+                                                
+                                                decomp(implementation);
+                                                
+                                                Space(1);
+                                                
+                                                
+                                              }
                 bool    alignVert = false ;
                 
                 if ( enumVert ) 
@@ -1067,17 +1126,17 @@ LNewLine(2);
                                                                                                                 bool    commDisp = false ;
                                                                                                                 
                                                                                                                 while ( !((!list1)) ) {
-(attr=(list1?list1.Nextl():(PPTREE)0));
-
-if ( ((_inter = (PPTREE)attr,1) && 
-        (NumberTree(_inter) == cplus::NEWLINE) &&
-        1) ) {
-                commDisp = true ;
-                comm(son, POST);
-                
-             }
-TraitAttribut(attr);
-
+                                                                                                                                        (attr=(list1?list1.Nextl():(PPTREE)0));
+                                                                                                                                        
+                                                                                                                                        if ( ((_inter = (PPTREE)attr,1) && 
+                                                                                                                                               (NumberTree(_inter) == cplus::NEWLINE) &&
+                                                                                                                                               1) ) {
+                                                                                                                                                    commDisp = true ;
+                                                                                                                                                    comm(son, POST);
+                                                                                                                                                    
+                                                                                                                                                    }
+                                                                                                                                        TraitAttribut(attr);
+                                                                                                                                        
                                                                                                                                         }
                                                                                                                 if ( !commDisp ) 
                                                                                                                     comm(son, POST);
@@ -1112,37 +1171,37 @@ TraitAttribut(attr);
             break ;
             
         case cplus::TDOUBLE : 
-        _Case251 : 
+        _Case260 : 
             ;
             PrintString("double");
             break ;
             
         case cplus::TSHORT : 
-        _Case252 : 
+        _Case261 : 
             ;
             PrintString("short");
             break ;
             
         case cplus::TINT : 
-        _Case253 : 
+        _Case262 : 
             ;
             PrintString("int");
             break ;
             
         case cplus::TCHAR : 
-        _Case254 : 
+        _Case263 : 
             ;
             PrintString("char");
             break ;
             
         case cplus::TFLOAT : 
-        _Case255 : 
+        _Case264 : 
             ;
             PrintString("float");
             break ;
             
         case cplus::VOID : 
-        _Case256 : 
+        _Case265 : 
             ;
             PrintString("void");
             break ;
@@ -1150,7 +1209,7 @@ TraitAttribut(attr);
         case cplus::TLONG : 
             (type=SonTree(paramTree, 1));
             
-        _Case257 : 
+        _Case266 : 
             ;
             PrintString("long");
             decomp(type);
@@ -1160,7 +1219,7 @@ TraitAttribut(attr);
         case cplus::TSIGNED : 
             (type=SonTree(paramTree, 1));
             
-        _Case258 : 
+        _Case267 : 
             ;
             PrintString("signed");
             decomp(type);
@@ -1170,7 +1229,7 @@ TraitAttribut(attr);
         case cplus::TUNSIGNED : 
             (type=SonTree(paramTree, 1));
             
-        _Case259 : 
+        _Case268 : 
             ;
             PrintString("unsigned");
             decomp(type);
@@ -1182,19 +1241,95 @@ TraitAttribut(attr);
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case260 : 
+        _Case269 : 
             ;
-            DumpBrainyValue(val);
+            if ( ((_inter = (PPTREE)val,1) && 
+                    (NumberTree(_inter) == cplus::ATTRIBUTE_CALL) &&
+                    1) || ((_inter = (PPTREE)val,1) && 
+                                (NumberTree(_inter) == cplus::ASM_CALL) &&
+                                1) ) 
+                decomp(val);
+            
+            else 
+                DumpBrainyValue(val);
+                
             
             if ( declarator ) 
                 decomp(declarator);
             
             break ;
             
+        case cplus::ATTRIBUTE_CALL : 
+            (val=SonTree(paramTree, 1));
+            
+        _Case270 : 
+            ;
+            while ( ((_inter = (PPTREE)val,1) && 
+                        (NumberTree(_inter) == cplus::EXP) &&
+                        ((val=SonTree(_inter,1)),1) &&
+                        1) ) 
+                ;
+            PrintString("__attribute__((");
+            decomp(val);
+            
+            PrintString("))");
+            break ;
+            
+        case cplus::ASM_CALL : 
+            (val=SonTree(paramTree, 1));
+            
+        _Case271 : 
+            ;
+            {
+                PrintString("__asm__(");
+                ((_inter = (PPTREE)val,1) && 
+                    (NumberTree(_inter) == cplus::STRING_LIST) &&
+                    ((val=SonTree(_inter,1)),1) &&
+                    1);
+                ;
+                if ( ((_inter = (PPTREE)val,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                while ( !((!val)) ) {
+                                                        (son=(val?val.Nextl():(PPTREE)0));
+                                                        
+                                                        decomp(son);
+                                                        
+                                                        if ( !((!val)) ) {
+                                                                            PrintString(",");
+                                                                            SepAfter();
+                                                                            
+                                                                            
+                                                                           }
+                                                        
+                                                      }
+                                
+                             } else 
+                    decomp(val);
+                    
+                
+                PrintString(")");
+                
+            }
+            
+            break ;
+            
+        case cplus::EXTENSION : 
+            (val=SonTree(paramTree, 1));
+            
+        _Case272 : 
+            ;
+            PrintString("__extension__");
+            SepAfter();
+            
+            decomp(val);
+            
+            break ;
+            
         case cplus::TYP_ADDR : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case261 : 
+        _Case273 : 
             ;
             SepBefore();
             
@@ -1206,7 +1341,7 @@ TraitAttribut(attr);
         case cplus::TYP : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case262 : 
+        _Case274 : 
             ;
             PrintString("(");
             decomp(declarator);
@@ -1217,15 +1352,15 @@ TraitAttribut(attr);
         case META : 
             (ident=SonTree(paramTree, 1));
             
-        _Case263 : 
+        _Case275 : 
             ;
             PrintString("$");
-            goto _Case264 ;
+            goto _Case276 ;
             
         case cplus::IDENT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case264 : 
+        _Case276 : 
             ;
             if ( indentFuncFlag ) {
                                     LNewLine(1);
@@ -1242,7 +1377,7 @@ TraitAttribut(attr);
             
             (exp_list=SonTree(paramTree, 2));
             
-        _Case265 : 
+        _Case277 : 
             ;
             decomp(declarator);
             
@@ -1262,7 +1397,9 @@ TraitAttribut(attr);
             
             (range=SonTree(paramTree, 3));
             
-        _Case266 : 
+            (except=SonTree(paramTree, 4));
+            
+        _Case278 : 
             ;
             decomp(declarator);
             
@@ -1288,6 +1425,24 @@ TraitAttribut(attr);
             PrintString(")");
             SepAfter();
             
+            if ( !((!except)) ) {
+                                    PrintString("throw");
+                                    Space(1);
+                                    
+                                    PrintString("(");
+                                    ((_inter = (PPTREE)except,1) && 
+                                        ((except=SonTree(_inter,1)),1) &&
+                                        1);
+                                    ;
+                                    if ( !((!except)) ) 
+                                        DecompList(except, ",", ")", 0);
+                                    else 
+                                        PrintString(")");
+                                    
+                                    
+                                  }
+            SepAfter();
+            
             decomp(range);
             
             break ;
@@ -1295,7 +1450,7 @@ TraitAttribut(attr);
         case cplus::INITIALIZER : 
             (init=SonTree(paramTree, 1));
             
-        _Case267 : 
+        _Case279 : 
             ;
             if ( ((_inter = (PPTREE)init,1) && 
                     (NumberTree(_inter) == LIST) &&
@@ -1331,7 +1486,7 @@ TraitAttribut(attr);
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case268 : 
+        _Case280 : 
             ;
             decomp(type);
             
@@ -1344,7 +1499,7 @@ TraitAttribut(attr);
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case269 : 
+        _Case281 : 
             ;
             decomp(type);
             
@@ -1357,7 +1512,7 @@ TraitAttribut(attr);
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case270 : 
+        _Case282 : 
             ;
             decomp(type);
             
@@ -1370,7 +1525,7 @@ TraitAttribut(attr);
             
             (exp=SonTree(paramTree, 2));
             
-        _Case271 : 
+        _Case283 : 
             ;
             decomp(ident);
             
@@ -1386,7 +1541,7 @@ TraitAttribut(attr);
         case cplus::EXP_SEQ : 
             (list=SonTree(paramTree, 1));
             
-        _Case272 : 
+        _Case284 : 
             ;
             statementf = 0 ;
             while ( !((!list)) ) {
@@ -1409,7 +1564,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case273 : 
+        _Case285 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1439,7 +1594,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case274 : 
+        _Case286 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1464,7 +1619,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case275 : 
+        _Case287 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1489,7 +1644,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case276 : 
+        _Case288 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1514,7 +1669,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case277 : 
+        _Case289 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1539,7 +1694,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case278 : 
+        _Case290 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1564,7 +1719,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case279 : 
+        _Case291 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1589,7 +1744,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case280 : 
+        _Case292 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1614,7 +1769,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case281 : 
+        _Case293 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1639,7 +1794,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case282 : 
+        _Case294 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1664,7 +1819,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case283 : 
+        _Case295 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1691,7 +1846,7 @@ TraitAttribut(attr);
             
             (exp3=SonTree(paramTree, 3));
             
-        _Case284 : 
+        _Case296 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1723,7 +1878,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case285 : 
+        _Case297 : 
             ;
             decomp(exp1);
             
@@ -1741,7 +1896,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case286 : 
+        _Case298 : 
             ;
             decomp(exp1);
             
@@ -1759,7 +1914,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case287 : 
+        _Case299 : 
             ;
             decomp(exp1);
             
@@ -1777,7 +1932,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case288 : 
+        _Case300 : 
             ;
             decomp(exp1);
             
@@ -1795,7 +1950,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case289 : 
+        _Case301 : 
             ;
             decomp(exp1);
             
@@ -1813,7 +1968,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case290 : 
+        _Case302 : 
             ;
             decomp(exp1);
             
@@ -1831,7 +1986,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case291 : 
+        _Case303 : 
             ;
             decomp(exp1);
             
@@ -1849,7 +2004,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case292 : 
+        _Case304 : 
             ;
             decomp(exp1);
             
@@ -1867,7 +2022,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case293 : 
+        _Case305 : 
             ;
             decomp(exp1);
             
@@ -1885,7 +2040,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case294 : 
+        _Case306 : 
             ;
             decomp(exp1);
             
@@ -1903,7 +2058,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case295 : 
+        _Case307 : 
             ;
             decomp(exp1);
             
@@ -1921,7 +2076,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case296 : 
+        _Case308 : 
             ;
             decomp(exp1);
             
@@ -1939,7 +2094,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case297 : 
+        _Case309 : 
             ;
             decomp(exp1);
             
@@ -1957,7 +2112,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case298 : 
+        _Case310 : 
             ;
             decomp(exp1);
             
@@ -1975,7 +2130,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case299 : 
+        _Case311 : 
             ;
             decomp(exp1);
             
@@ -1993,7 +2148,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case300 : 
+        _Case312 : 
             ;
             decomp(exp1);
             
@@ -2011,7 +2166,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case301 : 
+        _Case313 : 
             ;
             decomp(exp1);
             
@@ -2029,7 +2184,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case302 : 
+        _Case314 : 
             ;
             decomp(exp1);
             
@@ -2045,7 +2200,7 @@ TraitAttribut(attr);
         case cplus::NEG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case303 : 
+        _Case315 : 
             ;
             Space(1);
             
@@ -2057,7 +2212,7 @@ TraitAttribut(attr);
         case cplus::POS : 
             (exp=SonTree(paramTree, 1));
             
-        _Case304 : 
+        _Case316 : 
             ;
             Space(1);
             
@@ -2071,7 +2226,7 @@ TraitAttribut(attr);
         case cplus::LNEG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case305 : 
+        _Case317 : 
             ;
             SepBefore();
             
@@ -2083,7 +2238,7 @@ TraitAttribut(attr);
         case cplus::NOT : 
             (exp=SonTree(paramTree, 1));
             
-        _Case306 : 
+        _Case318 : 
             ;
             SepBefore();
             
@@ -2095,7 +2250,7 @@ TraitAttribut(attr);
         case cplus::POINT : 
             (exp=SonTree(paramTree, 1));
             
-        _Case307 : 
+        _Case319 : 
             ;
             SepBefore();
             
@@ -2107,7 +2262,7 @@ TraitAttribut(attr);
         case cplus::ADDR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case308 : 
+        _Case320 : 
             ;
             SepBefore();
             
@@ -2119,7 +2274,7 @@ TraitAttribut(attr);
         case cplus::BINCR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case309 : 
+        _Case321 : 
             ;
             SepBefore();
             
@@ -2131,7 +2286,7 @@ TraitAttribut(attr);
         case cplus::BDECR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case310 : 
+        _Case322 : 
             ;
             SepBefore();
             
@@ -2143,7 +2298,7 @@ TraitAttribut(attr);
         case cplus::AINCR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case311 : 
+        _Case323 : 
             ;
             decomp(exp);
             
@@ -2155,7 +2310,7 @@ TraitAttribut(attr);
         case cplus::ADECR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case312 : 
+        _Case324 : 
             ;
             decomp(exp);
             
@@ -2167,7 +2322,7 @@ TraitAttribut(attr);
         case cplus::EXP : 
             (exp=SonTree(paramTree, 1));
             
-        _Case313 : 
+        _Case325 : 
             ;
             statementf = 0 ;
             PrintString("(");
@@ -2181,7 +2336,7 @@ TraitAttribut(attr);
             
             (list=SonTree(paramTree, 2));
             
-        _Case314 : 
+        _Case326 : 
             ;
             statementf = 0 ;
             decomp(exp);
@@ -2197,7 +2352,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case315 : 
+        _Case327 : 
             ;
             statementf = 0 ;
             PrintString("va_arg(");
@@ -2214,7 +2369,7 @@ TraitAttribut(attr);
             
             (list=SonTree(paramTree, 2));
             
-        _Case316 : 
+        _Case328 : 
             ;
             statementf = 0 ;
             decomp(exp);
@@ -2230,7 +2385,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case317 : 
+        _Case329 : 
             ;
             statementf = 0 ;
             PrintString("forallsons");
@@ -2250,7 +2405,7 @@ TraitAttribut(attr);
             
             (list=SonTree(paramTree, 2));
             
-        _Case318 : 
+        _Case330 : 
             ;
             decomp(exp);
             
@@ -2262,12 +2417,29 @@ TraitAttribut(attr);
             PrintString("]");
             break ;
             
+        case cplus::EXP_BRA : 
+            (exp=SonTree(paramTree, 1));
+            
+            (list=SonTree(paramTree, 2));
+            
+        _Case331 : 
+            ;
+            decomp(exp);
+            
+            SepBefore();
+            
+            PrintString("{");
+            decomp(list);
+            
+            PrintString("}");
+            break ;
+            
         case cplus::REF : 
             (exp1=SonTree(paramTree, 1));
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case319 : 
+        _Case332 : 
             ;
             decomp(exp1);
             
@@ -2281,7 +2453,7 @@ TraitAttribut(attr);
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case320 : 
+        _Case333 : 
             ;
             decomp(exp1);
             
@@ -2303,7 +2475,7 @@ TraitAttribut(attr);
         case cplus::STRING_LIST : 
             (list=SonTree(paramTree, 1));
             
-        _Case321 : 
+        _Case334 : 
             ;
             while ( !((!list)) ) {
                                     (son=(list?list.Nextl():(PPTREE)0));
@@ -2320,7 +2492,7 @@ TraitAttribut(attr);
         case cplus::STRING : 
             (val=SonTree(paramTree, 1));
             
-        _Case322 : 
+        _Case335 : 
             ;
             PrintString("\"");
             DumpBrainyValue(val);
@@ -2331,7 +2503,7 @@ TraitAttribut(attr);
         case cplus::INTEGER : 
             (val=SonTree(paramTree, 1));
             
-        _Case323 : 
+        _Case336 : 
             ;
             DumpBrainyValue(val);
             
@@ -2340,7 +2512,7 @@ TraitAttribut(attr);
         case cplus::HEXA : 
             (val=SonTree(paramTree, 1));
             
-        _Case324 : 
+        _Case337 : 
             ;
             PrintString("0x");
             NoSep();
@@ -2352,7 +2524,7 @@ TraitAttribut(attr);
         case cplus::LONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case325 : 
+        _Case338 : 
             ;
             decomp(val);
             
@@ -2364,7 +2536,7 @@ TraitAttribut(attr);
         case cplus::LONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case326 : 
+        _Case339 : 
             ;
             decomp(val);
             
@@ -2376,7 +2548,7 @@ TraitAttribut(attr);
         case cplus::OCTAL : 
             (val=SonTree(paramTree, 1));
             
-        _Case327 : 
+        _Case340 : 
             ;
             PrintString("0");
             NoSep();
@@ -2388,7 +2560,7 @@ TraitAttribut(attr);
         case cplus::IUN : 
             (val=SonTree(paramTree, 1));
             
-        _Case328 : 
+        _Case341 : 
             ;
             decomp(val);
             
@@ -2400,7 +2572,7 @@ TraitAttribut(attr);
         case cplus::IUNLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case329 : 
+        _Case342 : 
             ;
             decomp(val);
             
@@ -2412,7 +2584,7 @@ TraitAttribut(attr);
         case cplus::IUNLONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case330 : 
+        _Case343 : 
             ;
             decomp(val);
             
@@ -2424,7 +2596,7 @@ TraitAttribut(attr);
         case cplus::ILONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case331 : 
+        _Case344 : 
             ;
             decomp(val);
             
@@ -2436,7 +2608,7 @@ TraitAttribut(attr);
         case cplus::ILONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case332 : 
+        _Case345 : 
             ;
             decomp(val);
             
@@ -2448,7 +2620,7 @@ TraitAttribut(attr);
         case cplus::FLOAT : 
             (val=SonTree(paramTree, 1));
             
-        _Case333 : 
+        _Case346 : 
             ;
             DumpBrainyValue(val);
             
@@ -2457,7 +2629,7 @@ TraitAttribut(attr);
         case cplus::CHAR : 
             (val=SonTree(paramTree, 1));
             
-        _Case334 : 
+        _Case347 : 
             ;
             PrintString("'");
             DumpBrainyValue(val);
@@ -2466,12 +2638,12 @@ TraitAttribut(attr);
             break ;
             
         case cplus::EXCEPT_ANSI_ALL : 
-        _Case335 : 
+        _Case348 : 
             ;
-            goto _Case336 ;
+            goto _Case349 ;
             
         case cplus::VAR_LIST : 
-        _Case336 : 
+        _Case349 : 
             ;
             PrintString("...");
             break ;
@@ -2479,7 +2651,7 @@ TraitAttribut(attr);
         case cplus::COMPOUND : 
             (list=SonTree(paramTree, 1));
             
-        _Case337 : 
+        _Case350 : 
             ;
             if ( (!list) ) {
                                 SepBefore();
@@ -2519,12 +2691,12 @@ TraitAttribut(attr);
                 if ( ansiMode && braceAlign ) {
                                                     if ( !inFunc || braceAlignTabFunc || braceAlignNoFunc ) {
                                                                                                                     if ( !(((_inter = (PPTREE)exp,1) && 
-(NumberTree(_inter) == LIST) &&
-1)                                                                                                                       ) ) {
-Tab();
-
-
-                                                                                                                             }
+                                                                                                                             (NumberTree(_inter) == LIST) &&
+                                                                                                                             1)) ) {
+                                                                                                                                   Tab();
+                                                                                                                                   
+                                                                                                                                   
+                                                                                                                                   }
                                                                                                                     
                                                                                                                 }
                                                     
@@ -2586,7 +2758,7 @@ Tab();
             break ;
             
         case cplus::BREAK : 
-        _Case338 : 
+        _Case351 : 
             ;
             PrintString("break ;");
             (oldPostComment=paramTree);
@@ -2597,7 +2769,7 @@ Tab();
             break ;
             
         case cplus::CONTINUE : 
-        _Case339 : 
+        _Case352 : 
             ;
             PrintString("continue ;");
             (oldPostComment=paramTree);
@@ -2612,7 +2784,7 @@ Tab();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case340 : 
+        _Case353 : 
             ;
             PrintString("do");
             if ( !(((_inter = (PPTREE)stat,1) && 
@@ -2686,7 +2858,7 @@ Tab();
             
             (stat=SonTree(paramTree, 4));
             
-        _Case341 : 
+        _Case354 : 
             ;
             statementf = 0 ;
             if ( !(((_inter = (PPTREE)exp1,1) && 
@@ -2811,7 +2983,7 @@ Tab();
         case cplus::GOTO : 
             (ident=SonTree(paramTree, 1));
             
-        _Case342 : 
+        _Case355 : 
             ;
             PrintString("goto");
             DumpBrainyValue(ident);
@@ -2827,7 +2999,7 @@ Tab();
             break ;
             
         case cplus::NONE : 
-        _Case343 : 
+        _Case356 : 
             ;
             (oldPostComment=paramTree);
             
@@ -2841,7 +3013,7 @@ Tab();
             
             (stat=SonTree(paramTree, 2));
             
-        _Case344 : 
+        _Case357 : 
             ;
             (postComment=stat);
             
@@ -2882,7 +3054,7 @@ Tab();
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case345 : 
+        _Case358 : 
             ;
             statementf = 0 ;
             PrintString("if (");
@@ -2951,8 +3123,8 @@ Tab();
                                     if ( ansiMode && !(((_inter = (PPTREE)stat2,1) && 
                                                             (NumberTree(_inter) == cplus::IF) &&
                                                             1)) || IsComm(stat1, PRE) && (IsComm(stat2, PRE) || !(((_inter = (PPTREE)stat2,1) && 
-(NumberTree(_inter) == cplus::IF) &&
-1)                                                                                                                     )) || IsComm(stat2, PRE) ) 
+                                                                                                                           (NumberTree(_inter) == cplus::IF) &&
+                                                                                                                           1))) || IsComm(stat2, PRE) ) 
                                         LNewLine(1);
                                     
                                     if ( !(((_inter = (PPTREE)stat2,1) && 
@@ -3008,7 +3180,7 @@ Tab();
             break ;
             
         case cplus::STAT_VOID : 
-        _Case346 : 
+        _Case359 : 
             ;
             {
                 SepBefore();
@@ -3025,7 +3197,7 @@ Tab();
         case cplus::RETURN : 
             (exp=SonTree(paramTree, 1));
             
-        _Case347 : 
+        _Case360 : 
             ;
             statementf = 0 ;
             PrintString("return");
@@ -3048,12 +3220,12 @@ Tab();
             break ;
             
         case cplus::DEFAULT : 
-        _Case348 : 
+        _Case361 : 
             ;
-            goto _Case349 ;
+            goto _Case362 ;
             
         case cplus::CASE : 
-        _Case349 : 
+        _Case362 : 
             ;
             {
                 (son=paramTree);
@@ -3097,93 +3269,93 @@ Tab();
                                             if ( !sontree(stat, 2) && singleSwitchIndent ) {
                                                                                                     switch ( NumberTree(son) ) {
                                                                                                         case cplus::COMPOUND : 
-                                                                                                        _Case381 : 
-                                                                                                            ;
-                                                                                                            goto _Case382 ;
-                                                                                                            
-                                                                                                        case cplus::CASE : 
-                                                                                                        _Case382 : 
-                                                                                                            ;
-                                                                                                            goto _Case383 ;
-                                                                                                            
-                                                                                                        case cplus::DEFAULT : 
-                                                                                                        _Case383 : 
-                                                                                                            ;
-                                                                                                            goto _Case384 ;
-                                                                                                            
-                                                                                                        case cplus::IF : 
-                                                                                                        _Case384 : 
-                                                                                                            ;
-                                                                                                            goto _Case385 ;
-                                                                                                            
-                                                                                                        case cplus::WHILE : 
-                                                                                                        _Case385 : 
-                                                                                                            ;
-                                                                                                            goto _Case386 ;
-                                                                                                            
-                                                                                                        case cplus::FOR : 
-                                                                                                        _Case386 : 
-                                                                                                            ;
-                                                                                                            goto _Case387 ;
-                                                                                                            
-                                                                                                        case cplus::DO : 
-                                                                                                        _Case387 : 
-                                                                                                            ;
-                                                                                                            goto _Case388 ;
-                                                                                                            
-                                                                                                        case cplus::SWITCH : 
-                                                                                                        _Case388 : 
-                                                                                                            ;
-                                                                                                            goto _Case389 ;
-                                                                                                            
-                                                                                                        case cplus::IF_DIR : 
-                                                                                                        _Case389 : 
-                                                                                                            ;
-                                                                                                            goto _Case390 ;
-                                                                                                            
-                                                                                                        case cplus::IFDEF_DIR : 
-                                                                                                        _Case390 : 
-                                                                                                            ;
-                                                                                                            goto _Case391 ;
-                                                                                                            
-                                                                                                        case cplus::IFNDEF_DIR : 
-                                                                                                        _Case391 : 
-                                                                                                            ;
-                                                                                                            goto _Case392 ;
-                                                                                                            
-                                                                                                        case cplus::NOT_MANAGED : 
-                                                                                                        _Case392 : 
-                                                                                                            ;
-                                                                                                            goto _Case393 ;
-                                                                                                            
-                                                                                                        case cplus::NO_PRETTY : 
-                                                                                                        _Case393 : 
-                                                                                                            ;
-                                                                                                            goto _Case394 ;
-                                                                                                            
-                                                                                                        case cplus::ATTRIBUTS : 
-                                                                                                        _Case394 : 
-                                                                                                            ;
-                                                                                                            goto _Case395 ;
-                                                                                                            
-                                                                                                        case cplus::EXCEPTION : 
                                                                                                         _Case395 : 
                                                                                                             ;
                                                                                                             goto _Case396 ;
                                                                                                             
-                                                                                                        case cplus::EXCEPTION_ANSI : 
+                                                                                                        case cplus::CASE : 
                                                                                                         _Case396 : 
                                                                                                             ;
                                                                                                             goto _Case397 ;
                                                                                                             
-                                                                                                        case cplus::CATCH_ANSI : 
+                                                                                                        case cplus::DEFAULT : 
                                                                                                         _Case397 : 
+                                                                                                            ;
+                                                                                                            goto _Case398 ;
+                                                                                                            
+                                                                                                        case cplus::IF : 
+                                                                                                        _Case398 : 
+                                                                                                            ;
+                                                                                                            goto _Case399 ;
+                                                                                                            
+                                                                                                        case cplus::WHILE : 
+                                                                                                        _Case399 : 
+                                                                                                            ;
+                                                                                                            goto _Case400 ;
+                                                                                                            
+                                                                                                        case cplus::FOR : 
+                                                                                                        _Case400 : 
+                                                                                                            ;
+                                                                                                            goto _Case401 ;
+                                                                                                            
+                                                                                                        case cplus::DO : 
+                                                                                                        _Case401 : 
+                                                                                                            ;
+                                                                                                            goto _Case402 ;
+                                                                                                            
+                                                                                                        case cplus::SWITCH : 
+                                                                                                        _Case402 : 
+                                                                                                            ;
+                                                                                                            goto _Case403 ;
+                                                                                                            
+                                                                                                        case cplus::IF_DIR : 
+                                                                                                        _Case403 : 
+                                                                                                            ;
+                                                                                                            goto _Case404 ;
+                                                                                                            
+                                                                                                        case cplus::IFDEF_DIR : 
+                                                                                                        _Case404 : 
+                                                                                                            ;
+                                                                                                            goto _Case405 ;
+                                                                                                            
+                                                                                                        case cplus::IFNDEF_DIR : 
+                                                                                                        _Case405 : 
+                                                                                                            ;
+                                                                                                            goto _Case406 ;
+                                                                                                            
+                                                                                                        case cplus::NOT_MANAGED : 
+                                                                                                        _Case406 : 
+                                                                                                            ;
+                                                                                                            goto _Case407 ;
+                                                                                                            
+                                                                                                        case cplus::NO_PRETTY : 
+                                                                                                        _Case407 : 
+                                                                                                            ;
+                                                                                                            goto _Case408 ;
+                                                                                                            
+                                                                                                        case cplus::ATTRIBUTS : 
+                                                                                                        _Case408 : 
+                                                                                                            ;
+                                                                                                            goto _Case409 ;
+                                                                                                            
+                                                                                                        case cplus::EXCEPTION : 
+                                                                                                        _Case409 : 
+                                                                                                            ;
+                                                                                                            goto _Case410 ;
+                                                                                                            
+                                                                                                        case cplus::EXCEPTION_ANSI : 
+                                                                                                        _Case410 : 
+                                                                                                            ;
+                                                                                                            goto _Case411 ;
+                                                                                                            
+                                                                                                        case cplus::CATCH_ANSI : 
+                                                                                                        _Case411 : 
                                                                                                             ;
                                                                                                             oneInstruct = 0 ;
                                                                                                             break ;
                                                                                                             
                                                                                                         default : 
-                                                                                                        _Case398 : 
+                                                                                                        _Case412 : 
                                                                                                             ;
                                                                                                             if ( son && !IsComm(son, PRE) ) 
                                                                                                                 oneInstruct = 1 ;
@@ -3242,7 +3414,7 @@ Tab();
             
             (list=SonTree(paramTree, 2));
             
-        _Case350 : 
+        _Case363 : 
             ;
             (param=paramTree);
             
@@ -3308,7 +3480,7 @@ Tab();
             
             (stat=SonTree(paramTree, 2));
             
-        _Case351 : 
+        _Case364 : 
             ;
             statementf = 0 ;
             PrintString("while (");
@@ -3364,7 +3536,7 @@ Tab();
             
             (list=SonTree(paramTree, 2));
             
-        _Case352 : 
+        _Case365 : 
             ;
             {
                 PrintString("try");
@@ -3420,7 +3592,7 @@ Tab();
             
             (stat=SonTree(paramTree, 2));
             
-        _Case353 : 
+        _Case366 : 
             ;
             statementf = 0 ;
             PrintString("catch (");
@@ -3474,7 +3646,7 @@ Tab();
         case cplus::THROW_ANSI : 
             (exp=SonTree(paramTree, 1));
             
-        _Case354 : 
+        _Case367 : 
             ;
             statementf = 0 ;
             PrintString("throw");
@@ -3499,7 +3671,7 @@ Tab();
         case cplus::TIDENT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case355 : 
+        _Case368 : 
             ;
             decomp(ident);
             
@@ -3508,15 +3680,26 @@ Tab();
         case cplus::TYPENAME : 
             (ident=SonTree(paramTree, 1));
             
-        _Case356 : 
+        _Case369 : 
             ;
             PrintString("typename");
             decomp(ident);
             
             break ;
             
+        case cplus::DECL_TYPE : 
+            (exp=SonTree(paramTree, 1));
+            
+        _Case370 : 
+            ;
+            PrintString("decltype(");
+            decomp(exp);
+            
+            PrintString(")");
+            break ;
+            
         case cplus::AUTO : 
-        _Case357 : 
+        _Case371 : 
             ;
             PrintString("auto");
             break ;
@@ -3524,7 +3707,7 @@ Tab();
         case cplus::INCLUDE_DIR : 
             (param=SonTree(paramTree, 1));
             
-        _Case358 : 
+        _Case372 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3567,7 +3750,7 @@ Tab();
             
             (val=SonTree(paramTree, 3));
             
-        _Case359 : 
+        _Case373 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3647,7 +3830,7 @@ Tab();
         case cplus::UNDEF : 
             (exp=SonTree(paramTree, 1));
             
-        _Case360 : 
+        _Case374 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3667,7 +3850,7 @@ Tab();
         case cplus::PRAGMA : 
             (exp=SonTree(paramTree, 1));
             
-        _Case361 : 
+        _Case375 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3689,7 +3872,7 @@ Tab();
             
             (exp1=SonTree(paramTree, 2));
             
-        _Case362 : 
+        _Case376 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3716,7 +3899,7 @@ Tab();
             
             (exp2=SonTree(paramTree, 3));
             
-        _Case363 : 
+        _Case377 : 
             ;
             {
                 PTREE   elem ;
@@ -3754,7 +3937,7 @@ Tab();
         case cplus::CONFIG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case364 : 
+        _Case378 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3774,7 +3957,7 @@ Tab();
         case cplus::SIMPLIFY : 
             (exp=SonTree(paramTree, 1));
             
-        _Case365 : 
+        _Case379 : 
             ;
             gotocol(0);
             PrintString("#pragma simplify ");
@@ -3785,7 +3968,7 @@ Tab();
         case cplus::TAB_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case366 : 
+        _Case380 : 
             ;
             PrintString("tab ");
             DumpBrainyValue(exp);
@@ -3795,7 +3978,7 @@ Tab();
         case cplus::MODE_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case367 : 
+        _Case381 : 
             ;
             PrintString("mode ");
             DumpBrainyValue(exp);
@@ -3805,7 +3988,7 @@ Tab();
         case cplus::BRACE_ALIGN_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case368 : 
+        _Case382 : 
             ;
             PrintString("brace_align ");
             DumpBrainyValue(exp);
@@ -3815,7 +3998,7 @@ Tab();
         case cplus::SINGLE_SWITCH_INDENT_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case369 : 
+        _Case383 : 
             ;
             PrintString("single_switch_indent ");
             DumpBrainyValue(exp);
@@ -3825,7 +4008,7 @@ Tab();
         case cplus::MARGIN_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case370 : 
+        _Case384 : 
             ;
             PrintString("margin ");
             DumpBrainyValue(exp);
@@ -3835,7 +4018,7 @@ Tab();
         case cplus::ERROR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case371 : 
+        _Case385 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3853,7 +4036,7 @@ Tab();
             break ;
             
         case cplus::ALINE : 
-        _Case372 : 
+        _Case386 : 
             ;
             {
                 DumpBrainyValue(paramTree);
@@ -3866,7 +4049,7 @@ Tab();
         case cplus::NO_PRETTY : 
             (list=SonTree(paramTree, 1));
             
-        _Case373 : 
+        _Case387 : 
             ;
             GotoCol(0);
             Mark();
@@ -3895,7 +4078,7 @@ Tab();
         case cplus::NOT_MANAGED : 
             (list=SonTree(paramTree, 1));
             
-        _Case374 : 
+        _Case388 : 
             ;
             GotoCol(0);
             Mark();
@@ -3928,9 +4111,9 @@ Tab();
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case375 : 
+        _Case389 : 
             ;
-            goto _Case376 ;
+            goto _Case390 ;
             
         case cplus::IFNDEF_DIR : 
             (exp=SonTree(paramTree, 1));
@@ -3939,9 +4122,9 @@ Tab();
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case376 : 
+        _Case390 : 
             ;
-            goto _Case377 ;
+            goto _Case391 ;
             
         case cplus::IF_DIR : 
             (exp=SonTree(paramTree, 1));
@@ -3950,7 +4133,7 @@ Tab();
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case377 : 
+        _Case391 : 
             ;
             {
                 if ( tabDirective ) 
@@ -3964,19 +4147,19 @@ Tab();
             
             switch ( NumberTree(paramTree) ) {
                 case cplus::IFDEF_DIR : 
-                _Case399 : 
+                _Case413 : 
                     ;
                     PrintString("ifdef ");
                     break ;
                     
                 case cplus::IFNDEF_DIR : 
-                _Case400 : 
+                _Case414 : 
                     ;
                     PrintString("ifndef ");
                     break ;
                     
                 case cplus::IF_DIR : 
-                _Case401 : 
+                _Case415 : 
                     ;
                     PrintString("if ");
                     break ;
@@ -4026,7 +4209,7 @@ Tab();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case378 : 
+        _Case392 : 
             ;
             PrintString("(");
             decomp(type);
@@ -4043,7 +4226,7 @@ Tab();
             
             (list1=SonTree(paramTree, 3));
             
-        _Case379 : 
+        _Case393 : 
             ;
             while ( !((!list)) ) {
                                     (son=(list?list.Nextl():(PPTREE)0));
@@ -4070,11 +4253,13 @@ Tab();
             break ;
             
         default : 
-        _Case380 : 
+        _Case394 : 
             ;
             break ;
             
     }
+    
+    PTREE   att ;
     
     switch ( NumberTree(paramTree) ) {
         case cplus::EXTERNAL : 
@@ -4082,7 +4267,7 @@ Tab();
             
             (stat1=SonTree(paramTree, 2));
             
-        _Case402 : 
+        _Case416 : 
             ;
             PrintString("extern ");
             decomp(exp1);
@@ -4096,7 +4281,7 @@ Tab();
         case cplus::ASM : 
             (exp1=SonTree(paramTree, 1));
             
-        _Case403 : 
+        _Case417 : 
             ;
             PrintString("asm(");
             decomp(exp1);
@@ -4109,7 +4294,7 @@ Tab();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case404 : 
+        _Case418 : 
             ;
             statementf = 0 ;
             decomp(declarator);
@@ -4120,10 +4305,26 @@ Tab();
             PrintString(")");
             break ;
             
+        case cplus::TYP_AFF_BRA : 
+            (declarator=SonTree(paramTree, 1));
+            
+            (exp=SonTree(paramTree, 2));
+            
+        _Case419 : 
+            ;
+            statementf = 0 ;
+            decomp(declarator);
+            
+            PrintString(" {");
+            decomp(exp);
+            
+            PrintString("}");
+            break ;
+            
         case cplus::DESTRUCT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case405 : 
+        _Case420 : 
             ;
             SepBefore();
             
@@ -4137,7 +4338,7 @@ Tab();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case406 : 
+        _Case421 : 
             ;
             if ( !((!ident)) ) {
                                     decomp(ident);
@@ -4160,7 +4361,7 @@ Tab();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case407 : 
+        _Case422 : 
             ;
             DumpBrainyValue(name);
             
@@ -4173,7 +4374,7 @@ Tab();
             
             (list=SonTree(paramTree, 2));
             
-        _Case408 : 
+        _Case423 : 
             ;
             {
                 LNewLine(2);
@@ -4215,12 +4416,12 @@ Tab();
                 
             }
             
-            goto _Case409 ;
+            goto _Case424 ;
             
         case cplus::COMPOUND_EXT : 
             (list=SonTree(paramTree, 1));
             
-        _Case409 : 
+        _Case424 : 
             ;
             if ( ansiMode ) 
                 LNewLine(1);
@@ -4242,7 +4443,7 @@ Tab();
         case cplus::BASE_LIST : 
             (list=SonTree(paramTree, 1));
             
-        _Case410 : 
+        _Case425 : 
             ;
             if ( !((!list)) ) {
                                     Space(1);
@@ -4270,7 +4471,7 @@ Tab();
         case cplus::CLASS_DECL : 
             (stat1=SonTree(paramTree, 1));
             
-        _Case411 : 
+        _Case426 : 
             ;
             if ( ansiMode ) 
                 LNewLine(1);
@@ -4281,12 +4482,12 @@ Tab();
             LNewLine(1);
             
             if ( EString("struct") != Value(FatherTree(paramTree)) && EString("enum") != Value(FatherTree(paramTree)) && FlatFunct() ) {
-gotocol(0);
-Mark();
-DecompilerListeExternSimp(stat1);
-UnMark();
-
-
+                                                                                                                                                  gotocol(0);
+                                                                                                                                                  Mark();
+                                                                                                                                                  DecompilerListeExternSimp(stat1);
+                                                                                                                                                  UnMark();
+                                                                                                                                                  
+                                                                                                                                                  
                                                                                                                                                   } else 
                 DecompilerListeExtern(stat1);
             
@@ -4304,7 +4505,7 @@ UnMark();
             
             (stat1=SonTree(paramTree, 4));
             
-        _Case412 : 
+        _Case427 : 
             ;
             inClass = 1 ;
             DumpBrainyValue(name);
@@ -4332,7 +4533,7 @@ UnMark();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case413 : 
+        _Case428 : 
             ;
             decomp(name);
             
@@ -4346,7 +4547,7 @@ UnMark();
         case cplus::TYP_REF : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case414 : 
+        _Case429 : 
             ;
             SepBefore();
             
@@ -4360,7 +4561,7 @@ UnMark();
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case415 : 
+        _Case430 : 
             ;
             decomp(exp1);
             
@@ -4384,7 +4585,7 @@ UnMark();
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case416 : 
+        _Case431 : 
             ;
             decomp(exp1);
             
@@ -4410,7 +4611,7 @@ UnMark();
             
             (init=SonTree(paramTree, 3));
             
-        _Case417 : 
+        _Case432 : 
             ;
             if ( init ) 
                 ((_inter = (PPTREE)init,1) && 
@@ -4470,7 +4671,7 @@ UnMark();
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case418 : 
+        _Case433 : 
             ;
             PrintString("delete");
             if ( !((!exp1)) ) {
@@ -4495,7 +4696,7 @@ UnMark();
         case cplus::OPERATOR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case419 : 
+        _Case434 : 
             ;
             PrintString("operator");
             if ( !(((_inter = (PPTREE)exp,1) && 
@@ -4520,14 +4721,27 @@ UnMark();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case420 : 
+            (type=SonTree(paramTree, 3));
+            
+        _Case435 : 
             ;
             decomp(ident);
             
-            PrintString("(");
-            decomp(exp);
+            if ( !((!type)) ) {
+                                    PrintString("{");
+                                    decomp(exp);
+                                    
+                                    PrintString("}");
+                                    
+                                } else 
+            {
+                PrintString("(");
+                decomp(exp);
+                
+                PrintString(")");
+                
+            }
             
-            PrintString(")");
             break ;
             
         case cplus::MACRO : 
@@ -4535,7 +4749,7 @@ UnMark();
             
             (list=SonTree(paramTree, 2));
             
-        _Case421 : 
+        _Case436 : 
             ;
             decomp(ident);
             
@@ -4554,7 +4768,7 @@ UnMark();
         case cplus::MESSAGE_MAP : 
             (list=SonTree(paramTree, 1));
             
-        _Case422 : 
+        _Case437 : 
             ;
             (son=(list?list.Nextl():(PPTREE)0));
             
@@ -4585,7 +4799,7 @@ UnMark();
             
             (stat=SonTree(paramTree, 2));
             
-        _Case423 : 
+        _Case438 : 
             ;
             decomp(exp);
             
@@ -4605,7 +4819,7 @@ UnMark();
             
             (list=SonTree(paramTree, 2));
             
-        _Case424 : 
+        _Case439 : 
             ;
             {
                 if ( !IsComm(paramTree, PRE) ) 
@@ -4640,12 +4854,30 @@ UnMark();
             
             break ;
             
+        case cplus::INLINE_NAMESPACE : 
+            (val=SonTree(paramTree, 1));
+            
+        _Case440 : 
+            ;
+            {
+                PrintString("inline");
+                Space(1);
+                
+                decomp(val);
+                
+                
+            }
+            
+            break ;
+            
         case cplus::NAMESPACE : 
             (ident=SonTree(paramTree, 1));
             
             (exp=SonTree(paramTree, 2));
             
-        _Case425 : 
+            (att=SonTree(paramTree, 3));
+            
+        _Case441 : 
             ;
             {
                 PrintString("namespace");
@@ -4653,6 +4885,13 @@ UnMark();
                 
                 Space(1);
                 
+                if ( !((!att)) ) {
+                                    decomp(att);
+                                    
+                                    Space(1);
+                                    
+                                    
+                                   }
                 decomp(exp);
                 
                 LNewLine(2);
@@ -4667,7 +4906,7 @@ UnMark();
             
             (exp=SonTree(paramTree, 2));
             
-        _Case426 : 
+        _Case442 : 
             ;
             {
                 PrintString("namespace");
@@ -4691,7 +4930,7 @@ UnMark();
         case cplus::USING : 
             (ident=SonTree(paramTree, 1));
             
-        _Case427 : 
+        _Case443 : 
             ;
             {
                 PrintString("using");
@@ -4708,10 +4947,19 @@ UnMark();
         case cplus::USING_NAMESPACE : 
             (ident=SonTree(paramTree, 1));
             
-        _Case428 : 
+            (att=SonTree(paramTree, 2));
+            
+        _Case444 : 
             ;
             {
                 PrintString("using namespace");
+                if ( !((!att)) ) {
+                                    decomp(att);
+                                    
+                                    Space(1);
+                                    
+                                    
+                                   }
                 decomp(ident);
                 
                 Space(1);
@@ -4723,7 +4971,7 @@ UnMark();
             break ;
             
         default : 
-        _Case429 : 
+        _Case445 : 
             ;
             break ;
             

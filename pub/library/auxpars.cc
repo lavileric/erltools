@@ -199,10 +199,12 @@ debut :
         *ptOutPut =  '\0';
         flush     =  1 ;
     } else {
-        more      =  0 ; /* string doesn't fit in buf */ 
-        *ptOutPut =  '\0';
-        flush     =  1 ;
         
+        /* more      =  0 ;*/
+        /* string doesn't fit in buf */
+        *ptOutPut =  '\0';
+        
+        /* flush     =  1 ;*/
         /* << EL 06/09/97 */
         if ( output > 0 ) 
             _write(output, string, strlen(string));
@@ -1219,8 +1221,12 @@ PPTREE _fastcall AddList ( PPTREE list, PPTREE elem )
     } else if ( !list ) 
         list =  ListElem(elem);
     else {
+        PPTREE          father = FatherTree(list);
+        unsigned int    rank = ranktree(list);
         list =  ListElem(list);
         ReplaceTree(list, 2, elem);
+        if ( father != (PPTREE)0 ) 
+            ReplaceTree(father, rank, list);
     }
     return (list);
 }
@@ -3350,12 +3356,13 @@ void CorrectLang ( int i )
 void ResetLang ( char *name )
 {
     STRINGELEM  *oldListConst = listConst ;
-    int         i ;
     
-    listConst    =  listConstLang = (STRINGELEM *)0 ;
-    nameLang     =  name ;
-    i            =  numbConstLang += 6 ; /* node which are always here LIST ... */ 
-    tabArityLang =  (int *)malloc(numbConstLang * sizeof(int));
+    /* int         i ;*/
+    listConst     =  listConstLang = (STRINGELEM *)0 ;
+    nameLang      =  name ;
+    /*i            = */
+    numbConstLang += 6 ; /* node which are always here LIST ... */ 
+    tabArityLang  =  (int *)malloc(numbConstLang * sizeof(int));
     AddConstVal("LIST", 0);
     AddConstVal("PRE", 1);
     AddConstVal("POST", 2);
@@ -3365,7 +3372,7 @@ void ResetLang ( char *name )
     tabArityLang [1] =  tabArityLang [2] = tabArityLang [3] = tabArityLang [4] = 1 ;
     tabArityLang [0] =  tabArityLang [5] = 2 ;
     offsetLang       =  6 ;
-    for ( i = 0 ; i < numbConstLang ; i++ ) 
+    for ( int i = 0 ; i < numbConstLang ; i++ ) 
         tabArityLang [i] =  -1 ;
     listConstLang =  listConst ;
     listConst     =  oldListConst ;

@@ -1,9 +1,9 @@
 META_DIR=$(ERLTOOLS_DIR)
 INSTALL_DIR_SKIMMED=$(INSTALL_DIR)
 
-.SUFFIXES: .ch .cc .C .c .h .o .cpp .d
+.SUFFIXES: .ch .cc .C .c .h .o .cpp .d .cce
 
-INCLUDE_DIR= $(CROSS_INC_DIR) -I$(META_DIR)$(SEP)pub$(SEP)library \
+INCLUDE_DIR = $(CROSS_INC_DIR) -I$(META_DIR)$(SEP)pub$(SEP)library \
 		-I$(META_DIR)$(SEP)pub$(SEP)parser \
 		-I$(META_DIR)$(SEP)pub$(SEP)cplusplu \
 		-I$(META_DIR)$(SEP)pub$(SEP)chopb \
@@ -12,7 +12,7 @@ INCLUDE_DIR= $(CROSS_INC_DIR) -I$(META_DIR)$(SEP)pub$(SEP)library \
 
 LIBRARY = $(META_DIR)$(SEP)pub$(SEP)library$(SEP)meta.$(LIB_SUF) $(LIB_SYS) $(LIB_PRIVATE_SYS)
 
-STL_INC=-I$(META_DIR)$(SEP)stl2
+STL_INC = -I$(META_DIR)$(SEP)stl2
 
 ARFLAGS=rvU
 
@@ -39,6 +39,9 @@ CCFLAGS= $(MACHFLAGS) $(OPTIM_FLAGS) $(MISC_C_FLAGS) $(C_WARNING) $(INCLUDE_DIR)
 
 .cc.d :  
 	gcc -g -E -MMD $(MACHFLAGS) $(LIBC2FLAGS) $(MISC_C_FLAGS) $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(OPT_FLAGS1) $(OPT_FLAGS_SYS) $*.cc > /dev/null
+
+.cc.cce :
+	gcc -g -E -MMD $(MACHFLAGS) $(LIBC2FLAGS) $(MISC_C_FLAGS) $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(OPT_FLAGS1) $(OPT_FLAGS_SYS) $*.cc >  $*.cce
 
 # mettre -DI386 pour interactive
 

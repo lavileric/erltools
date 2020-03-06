@@ -2,13 +2,17 @@ THE_LIB= ./meta.a
 
 OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
 
-all : m_done $(THE_LIB)(auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o \
-				 tabsort.o clpretty.o pretty.o pretty0.o symb.o ethread.o)
+all : DOLIB
 
 include ../../makefile.inc
 
 LIB_OBJECTS=auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o tabsort.o clpretty.o pretty.o pretty0.o symb.o ethread.o
 
+library : $(LIB_OBJECTS)
+	ar $(ARFLAGS) $(THE_LIB) $(LIB_OBJECTS)
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library
 
 shared : $(LIB_OBJECTS)
 	$(C_PLUS) -shared -o libmeta.so $(LIB_OBJECTS)

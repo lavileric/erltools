@@ -2,8 +2,17 @@ THE_LIB= ./connect.a
 
 INCLUDE_DIR_LOC= -I ../asn -I ../asnext -I ../asnquick -I ../connect
 
-all : $(THE_LIB)(connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o ) qconnectlib chop \
-           dispatcher spy killapp tdispatcher
+OBJECTS=connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
+
+library : $(OBJECTS)
+	for i in $(OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB :
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
+	cd ../asnquick ;$(MAKE) all; cd ../connect
+	$(MAKE) -j $(NUMBER_PROC) chop dispatcher spy killapp tdispatcher
 
 libconnect.so : connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
 	$(C_PLUS) -shared -o libconnect.so connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
@@ -11,9 +20,6 @@ libconnect.so : connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
 shared : libconnect.so all
 
 test : tdispatcher app1 app2 testdos
-
-qconnectlib :
-	cd ../asnquick ;$(MAKE) -f makefile.uni 
 
 clean : clean_inc_appli
 	- $(RM) $(THE_LIB) connect.cc inetutil.cc metaconnect.cc metainetutil.cc chop dispatcher ddispatcher tdispatcher qtdispatcher tdispatcher.cc

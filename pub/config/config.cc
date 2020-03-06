@@ -1,6 +1,6 @@
 /*************************************************************************/
 /*                                                                       */
-/*        Produced by MetaGen version 2.0  -    1989-1995                 */
+/*        Produced by MetaGen version 2.0  -    1989-2006                 */
 /*       Syntaxic Analyzer Meta Generator developped by                  */
 /*                  Eric Lavillonniere                                   */
 /*                                                                       */
@@ -44,7 +44,7 @@ PPTREE config::langage ( int error_free)
                 CommTerm();
 #line 25 "config.met"
 #line 25 "config.met"
-                write(1,theLanguage,strlen(theLanguage));
+                 write(1,theLanguage,strlen(theLanguage));
 #line 25 "config.met"
                 break;
 #line 25 "config.met"
@@ -55,29 +55,29 @@ PPTREE config::langage ( int error_free)
 #line 26 "config.met"
                 CommTerm();
 #line 26 "config.met"
-#line 27 "config.met"
-                 {
-#line 27 "config.met"
-                					char string [80];
-#line 27 "config.met"
-                					char *point = string ;
-#line 27 "config.met"
-                					strcpy(string,theLanguage);
-#line 27 "config.met"
-                					while ( *point) {
-#line 27 "config.met"
-                						*point = toupper (*point);
-#line 27 "config.met"
-                						point++;
-#line 27 "config.met"
-                					}
-#line 27 "config.met"
-                					write(1,string,strlen(string)); }
-#line 27 "config.met"
-                				
-#line 27 "config.met"
+#line 26 "config.met"
+                                                {
+#line 26 "config.met"
+                                                				char string [80];
+#line 26 "config.met"
+                                                				char *point = string ;
+#line 26 "config.met"
+                                                				strcpy(string,theLanguage);
+#line 26 "config.met"
+                                                				while ( *point) {
+#line 26 "config.met"
+                                                					*point = toupper (*point);
+#line 26 "config.met"
+                                                					point++;
+#line 26 "config.met"
+                                                				}
+#line 26 "config.met"
+                                                				write(1,string,strlen(string)); }
+#line 26 "config.met"
+                                            
+#line 26 "config.met"
                 break;
-#line 27 "config.met"
+#line 26 "config.met"
 #line 37 "config.met"
             case CHARACTER : 
 #line 37 "config.met"
@@ -86,7 +86,7 @@ PPTREE config::langage ( int error_free)
                 CommTerm();
 #line 37 "config.met"
 #line 37 "config.met"
-                write(1,lexEl.string(),1);
+                 write(1,lexEl.string(),1);
 #line 37 "config.met"
                 break;
 #line 37 "config.met"

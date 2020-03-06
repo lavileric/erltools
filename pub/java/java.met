@@ -633,9 +633,9 @@ define enum_declarator;
     declare retTree;
     take #"enum";
     if see !IDENT then
-        retTree = maketree(ENUM,maketree(IDENT,take !IDENT),())
+        retTree = maketree(ENUM,maketree(IDENT,take !IDENT),(),(),())
     else
-        retTree = maketree(ENUM,(),());
+        retTree = maketree(ENUM,(),(),(),());
     with context enumContext do
         replacetree(retTree,2,take class_declaration_inner);
     return retTree;

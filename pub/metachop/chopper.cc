@@ -14,18 +14,22 @@
 #line 24 "chopper.ch"
 /*************************************************************************/
 #line 24 "chopper.ch"
+
 #line 24 "chopper.ch"
 #include "token.h"
 #line 24 "chopper.ch"
 #define decomp decomp_metachop
 #line 24 "chopper.ch"
+
 #line 24 "chopper.ch"
 #ifndef for_elem
 #line 24 "chopper.ch"
 #line 24 "chopper.ch"
 #define for_elem _for_elem
+
 #line 24 "chopper.ch"
 #line 24 "chopper.ch"
+
 #line 24 "chopper.ch"
 #endif
 #ifdef INCONNU
@@ -33,8 +37,10 @@
 #line 24 "chopper.ch"
 PTREE   for_elem ;
 #line 24 "chopper.ch"
+
 #line 24 "chopper.ch"
 #line 24 "chopper.ch"
+
 #line 24 "chopper.ch"
 #endif
 #include "decmetac.h"
@@ -50,6 +56,7 @@ int compiledLine = 0 ;
 char    *theFileName = (char *)0 ;
 
 #line 39 "chopper.ch"
+
 #line 39 "chopper.ch"
 int main ( int argc, char **argv )
 #line 39 "chopper.ch"
@@ -57,18 +64,23 @@ int main ( int argc, char **argv )
 #line 39 "chopper.ch"
 #line 39 "chopper.ch"
     int _nextVal ;
+    
 #line 39 "chopper.ch"
 #line 41 "chopper.ch"
     PPTREE  tree ;
+    
 #line 41 "chopper.ch"
 #line 42 "chopper.ch"
     char    name [50];
+    
 #line 42 "chopper.ch"
 #line 43 "chopper.ch"
     char    *ptName ;
+    
 #line 43 "chopper.ch"
 #line 44 "chopper.ch"
     DecompMetachop  decomp ;
+    
 #line 44 "chopper.ch"
 #line 46 "chopper.ch"
     dumpCoord = 1 ;
@@ -114,8 +126,10 @@ follow :
 #line 59 "chopper.ch"
 #line 60 "chopper.ch"
                                                 goto follow ;
+                                                
 #line 60 "chopper.ch"
 #line 61 "chopper.ch"
+                                                
 #line 61 "chopper.ch"
 #line 61 "chopper.ch"
                                                } else 
@@ -133,8 +147,10 @@ follow :
 #line 64 "chopper.ch"
 #line 65 "chopper.ch"
                                                 goto follow ;
+                                                
 #line 65 "chopper.ch"
 #line 66 "chopper.ch"
+                                                
 #line 66 "chopper.ch"
 #line 66 "chopper.ch"
                                              }
@@ -152,6 +168,7 @@ follow :
                         exit(0);
 #line 70 "chopper.ch"
 #line 71 "chopper.ch"
+                        
 #line 71 "chopper.ch"
 #line 71 "chopper.ch"
                       } else 
@@ -162,9 +179,11 @@ follow :
         theFileName = ptName = *(argv + 1);
 #line 72 "chopper.ch"
 #line 73 "chopper.ch"
+        
 #line 73 "chopper.ch"
 #line 73 "chopper.ch"
     }
+    
 #line 73 "chopper.ch"
 #line 74 "chopper.ch"
     emacsCompatibleError = true ;
@@ -189,17 +208,22 @@ follow :
 #line 84 "chopper.ch"
 #line 85 "chopper.ch"
         return 1 ;
+    
 #line 85 "chopper.ch"
     else 
 #line 85 "chopper.ch"
 #line 87 "chopper.ch"
         return 0 ;
+        
 #line 87 "chopper.ch"
+    
 #line 87 "chopper.ch"
 #line 88 "chopper.ch"
     return 0 ;
+    
 #line 88 "chopper.ch"
 #line 89 "chopper.ch"
+    
 #line 89 "chopper.ch"
 #line 89 "chopper.ch"
 }

@@ -17,63 +17,51 @@
     extern void             AddWaitingIndividuals (DelayedEvaluator *pIndividual) ;
     extern unsigned int     GetWaitingIndividuals () ;
     extern std::mt19937_64  randGen ;
-#   if 0
-        inline long long MTRandomValue ( long long min, long long max )
-        {
-            return RandomValue(min, max);
-        }
-#   else 
-        
-        // [ min , max [
-        template <class TypeFeature> 
-            inline TypeFeature MTRandomValue ( TypeFeature minVal, TypeFeature maxVal, bool full = false )
-            {
-                TypeFeature         ret ;
-                long double         maxValFloat = maxVal ;
-                long double         minValFloat = minVal ;
-                static long double  maxForRand = std::numeric_limits<std::mt19937_64::result_type> ::max();
-                static long double  minForRand = std::numeric_limits<std::mt19937_64::result_type> ::lowest();
-                
-                if ( minVal == maxVal ) 
-                    return minVal ;
-                if ( isnan(minValFloat) ) 
-                    minValFloat =  std::numeric_limits<TypeFeature> ::lowest();
-                if ( isnan(maxValFloat) || maxValFloat <= minValFloat ) 
-                    maxValFloat =  std::numeric_limits<TypeFeature> ::max();
-                if ( maxValFloat <= minValFloat + 1 && !full ) 
-                    return minVal ;
-#               if defined(INDIV_FRAME_FEATURE)
-                    if ( maxVal == minVal + 2 && !full ) 
-                        return randGen() & 0x1 + minVal ;
-#               endif
-                
-                std::mt19937_64::result_type    randValue = randGen();
-                
-                if ( randValue == maxForRand ) 
-                    return full ? maxVal : maxVal - 1 ;
-                else {
-#                   if 0
-                        ret =  (TypeFeature)(1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
-                            * ((long double)randValue / maxForRand - minScaledForRand) * maxForRand);
-#                   else 
-                        long double factor = ((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand);
-                        long double excursion = (long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand);
-                        long double offset = excursion * factor ;
-                        long double res = minVal / (1.0 * maxForRand) + offset ;
-                        ret =  res * maxForRand ;
-                        
-                        // ret =  (TypeFeature)(1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
-                        //    * (((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand)) * maxForRand);
-#                   endif
-#                   if defined(INDIV_FRAME_FEATURE)
-                        ret =  floor(ret);
-#                   endif
-                    //ret += minVal ;
-                    return ret ;
-                }
-            }
-#   endif
     
+    // [ min , max [
+    template <class TypeFeature> 
+        inline TypeFeature MTRandomValue ( TypeFeature minVal, TypeFeature maxVal, bool full = false )
+        {
+            TypeFeature         ret ;
+            long double         maxValFloat = maxVal ;
+            long double         minValFloat = minVal ;
+            static long double  maxForRand = std::numeric_limits<std::mt19937_64::result_type> ::max();
+            static long double  minForRand = std::numeric_limits<std::mt19937_64::result_type> ::lowest();
+            
+            if ( minVal == maxVal ) 
+                return minVal ;
+            if ( isnan(minValFloat) ) 
+                minValFloat =  std::numeric_limits<TypeFeature> ::lowest();
+            if ( isnan(maxValFloat) || maxValFloat <= minValFloat ) 
+                maxValFloat =  std::numeric_limits<TypeFeature> ::max();
+            if ( maxValFloat <= minValFloat + 1 && !full ) 
+                return minVal ;
+#           if defined(INDIV_FRAME_FEATURE)
+                if ( maxVal == minVal + 2 && !full ) 
+                    return randGen() & 0x1 + minVal ;
+#           endif
+            
+            std::mt19937_64::result_type    randValue = randGen();
+            
+            if ( randValue == maxForRand ) 
+                return full ? maxVal : maxVal - 1 ;
+            else {
+                long double factor = ((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand);
+                long double excursion = (long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand);
+                long double offset = excursion * factor ;
+                long double res = minVal / (1.0 * maxForRand) + offset ;
+                ret =  res * maxForRand ;
+                
+                // ret =  (TypeFeature)(1.0 * ((long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand))
+                //    * (((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand)) * maxForRand);
+#               if defined(INDIV_FRAME_FEATURE)
+                    ret =  floor(ret);
+#               endif
+                //ret += minVal ;
+                return ret ;
+            }
+        }
+        
     inline EString ToString ( double val )
     {
         return EString(val);
@@ -142,6 +130,8 @@
                 void Frame ( TypeFeature &val ) const
                 {
                     if ( val > pvMax || val < pvMin ) {
+                        
+                        // if limits and value are integer some specific treatment
                         if ( pvMax <= ((TypeFeature)std::numeric_limits<intmax_t> ::max())
                                 && pvMin >= ((TypeFeature)std::numeric_limits<intmax_t> ::min())
                                 && val <= ((TypeFeature)std::numeric_limits<intmax_t> ::max())
@@ -382,6 +372,216 @@
                 TypeFeature                 pvNull ;
         };
     
+    template <class TypeFeature> 
+        
+        class MinMax {
+            
+            public :
+            
+                MinMax ( TypeFeature _min, TypeFeature _max )
+                    : min(_min),  max(_max)
+                {}
+                
+                TypeFeature min ;
+                TypeFeature max ;
+        };
+    
+    template <class TypeFeature> 
+        
+        class MultipleFeatureLimit {
+            
+            public :
+            
+                typedef TypeFeature TypeLimit ;
+                
+                MultipleFeatureLimit () {}
+                
+#               if 0
+                    MultipleFeatureLimit ( std::vector<TypeFeature> &featureSet )
+                        : pvSetFeature(featureSet),  pvSorted(false),  pvNull(0)
+                    {}
+#               endif
+                
+                virtual ~MultipleFeatureLimit () {}
+                
+                // Frame : Frame a value inside limits
+                void Frame ( TypeFeature &val ) const {}
+                
+                // Random : set a random value
+                virtual TypeFeature Random () const
+                {
+#                   if 0
+                        {
+                            unsigned int    index = MTRandomValue<int> (0, pvSetFeature.size());
+                            if ( !pvSetFeature.empty() ) {
+                                if ( pvSetFeature [index].min == pvSetFeature [index].max ) 
+                                    return pvSetFeature [index].min ;
+                                else {
+                                }
+                            } else 
+                                return *&pvNull ;
+                        }
+#                   endif
+                    return 0 ;
+                }
+                
+                // get min
+                const TypeFeature &Min ()
+                {
+#                   if 0
+                        if ( !pvSetFeature.empty() ) {
+                            if ( !pvSorted ) {
+                                std::sort(pvSetFeature.begin(), pvSetFeature.end());
+                                pvSorted =  true ;
+                            }
+                            return pvSetFeature [0];
+                        } else 
+                            return *&pvNull ;
+#                   endif
+                    return 0 ;
+                }
+                
+                // get min
+                const TypeFeature &Max ()
+                {
+#                   if 0
+                        if ( !pvSetFeature.empty() ) {
+                            if ( !pvSorted ) {
+                                std::sort(pvSetFeature.begin(), pvSetFeature.end());
+                                pvSorted =  true ;
+                            }
+                            return pvSetFeature [pvSetFeature.size() - 1];
+                        } else 
+                            return *&pvNull ;
+#                   endif
+                    return 0 ;
+                }
+                
+                // Random : set a random value
+                virtual TypeFeature Vibrato ( TypeFeature &val )
+                {
+                    TypeFeature typeFeature = 0 ;
+                    
+                    return typeFeature ;
+                }
+                
+                // Random : set a random value
+                virtual TypeFeature Vibrato ( TypeFeature &val, TypeFeature applied )
+                {
+                    TypeFeature typeFeature = 0 ;
+                    
+                    return typeFeature ;
+                }
+                
+                TypeFeature VibratoValue () const
+                {
+                    TypeFeature typeFeature = 0 ;
+                    
+                    return typeFeature ;
+                }
+                
+                // Content
+                virtual EString Content () const
+                {
+                    EString         content ;
+                    bool            first = true ;
+                    unsigned int    index ;
+                    
+                    content << "(";
+                    for ( index = 0 ; index < pvSetFeature.size() ; index++ ) {
+                        if ( !first ) 
+                            content << ", ";
+                        else 
+                            first =  false ;
+                        if ( pvSetFeature [index].min == pvSetFeature [index].max ) 
+                            content << pvSetFeature [index].min ;
+                        else 
+                            content << "[" << pvSetFeature [index].min << ".." << pvSetFeature [index].max << "]";
+                    }
+                    content << ")";
+                    return content ;
+                }
+                
+                virtual void Display ( int file ) const
+                {
+                    EString content(Content());
+                    
+                    content << "\n";
+                    _write(file, content.c_str(), content.length());
+                }
+            
+            protected :
+            
+                std::vector<MinMax<TypeFeature> >   pvSetFeature ;
+                bool                                pvSorted ;
+                TypeFeature                         pvNull ;
+        };
+    template <class SimpleType,class SearchType> 
+        SimpleType MinimumVisible ( SimpleType pvLastApplied, SimpleType currVal )
+        {
+            
+            // get a number big enough so that when added to currVal it does not disappear
+            SimpleType  oldOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+            SimpleType  keepOffset = pvLastApplied ;
+            SearchType  rCurrVal = currVal ;
+            
+            // start from a reasonable value
+            if ( pvLastApplied < std::numeric_limits<SearchType> ::epsilon() ) 
+                pvLastApplied =  std::numeric_limits<SearchType> ::epsilon();
+            
+            // than investigate more
+            while ( true ) {
+                SearchType  addVal = rCurrVal + pvLastApplied ;
+                if ( addVal != rCurrVal ) 
+                    break ;
+                pvLastApplied *= 2 ;
+                SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                if ( newOffset < oldOffset || isnan(pvLastApplied) || isnan(currVal + pvLastApplied) ) {
+                    pvLastApplied =  keepOffset ;
+                    break ;
+                }
+                oldOffset  =  newOffset ;
+                keepOffset =  pvLastApplied ;
+            }
+            
+            // for floats should be also different at log level
+            if ( std::is_floating_point<SimpleType> ::value ) {
+                SearchType  absVal = currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                SearchType  logVal = log(absVal);
+                SearchType  newLogVal ;
+                SearchType  oldAbsVal = absVal ;
+                oldOffset =  pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                while ( (newLogVal = log(absVal)) == logVal ) {
+                    pvLastApplied *= 2 ;
+                    SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                    absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                    if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
+                        pvLastApplied =  keepOffset ;
+                        break ;
+                    }
+                    oldOffset  =  newOffset ;
+                    logVal     =  newLogVal ;
+                    keepOffset =  pvLastApplied ;
+                    oldAbsVal  =  absVal ;
+                }
+                
+                // for small values multiply by 10 because of log
+                if ( pvLastApplied < 1 && pvLastApplied > -1 ) {
+                    pvLastApplied *= 10 ;
+                    SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
+                    absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
+                    if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
+                        pvLastApplied =  keepOffset ;
+                    }
+                }
+                if ( isnan(newLogVal) ) 
+                    pvLastApplied =  keepOffset ;
+            }
+            
+            // return val
+            return pvLastApplied ;
+        }
+        
     template <class SimpleType> 
         
         class SimpleLimit : public FeatureLimit<SimpleType, SimpleType> {
@@ -430,67 +630,27 @@
                 // Random : get a random value
                 virtual SimpleType Vibrato ( SimpleType &currVal )
                 {
-                    SimpleType  step = 0 ;
-                    int         typeStep = MTRandomValue<int> (0, 2);
+                    char    step = 0 ;
+                    int     typeStep = MTRandomValue<int> (0, 2);
                     
-                    while ( step == 0 ) 
-                        step =  MTRandomValue<int> ( -1, 2);
+                    step =  MTRandomValue<char> (0, 2);
+                    if ( step == 0 ) 
+                        step =  -1 ;
                     pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this->Step()) /*this->Step()*/ ;
                     if ( pvLastApplied == 0 ) 
                         pvLastApplied =  this->Step();
                     if ( isnan(currVal + pvLastApplied) ) 
                         pvLastApplied =  -pvLastApplied ;
                     
-                    // get a number big enough so that when added to currVal it does not disappear
-                    SimpleType  oldOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
-                    SimpleType  keepOffset = pvLastApplied ;
+                    // search a minimum value with visible effect
+                    // double is too small for float and float is too big for double
+                    step =  MTRandomValue<char> (0, 2);
+                    if ( /* step == 1 ||*/ currVal >= std::numeric_limits<float> ::max() || currVal <= std::numeric_limits<float> ::lowest() ) 
+                        pvLastApplied =  MinimumVisible<SimpleType, double> (pvLastApplied, currVal);
+                    else 
+                        pvLastApplied =  MinimumVisible<SimpleType, float> (pvLastApplied, currVal);
                     
-                    while ( currVal + pvLastApplied == currVal ) {
-                        pvLastApplied *= 2 ;
-                        SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
-                        if ( newOffset < oldOffset || isnan(pvLastApplied) || isnan(currVal + pvLastApplied) ) {
-                            pvLastApplied =  keepOffset ;
-                            break ;
-                        }
-                        oldOffset  =  newOffset ;
-                        keepOffset =  pvLastApplied ;
-                    }
-                    
-                    // for floats should be also different at log level
-                    if ( (float)std::numeric_limits<SimpleType> ::max() >= std::numeric_limits<float> ::max() ) {
-                        SimpleType  absVal = currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
-                        double      logVal = log(absVal);
-                        double      newLogVal ;
-                        double      oldAbsVal = absVal ;
-                        oldOffset =  pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
-                        while ( (newLogVal = log(absVal)) == logVal ) {
-                            pvLastApplied *= 2 ;
-                            SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
-                            absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
-                            if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
-                                pvLastApplied =  keepOffset ;
-                                break ;
-                            }
-                            oldOffset  =  newOffset ;
-                            logVal     =  newLogVal ;
-                            keepOffset =  pvLastApplied ;
-                            oldAbsVal  =  absVal ;
-                        }
-#                       if 1
-                            
-                            // for small values multiply by 10 because of log
-                            if ( pvLastApplied < 1 ) {
-                                pvLastApplied *= 10 ;
-                                SimpleType  newOffset = pvLastApplied > 0 ? pvLastApplied : -pvLastApplied ;
-                                absVal =  currVal + pvLastApplied > 0 ? currVal + pvLastApplied : -(currVal + pvLastApplied);
-                                if ( newOffset < oldOffset || isnan(currVal + pvLastApplied) || absVal == oldAbsVal ) {
-                                    pvLastApplied =  keepOffset ;
-                                }
-                            }
-#                       endif
-                        if ( isnan(newLogVal) ) 
-                            pvLastApplied =  keepOffset ;
-                    }
+                    // return it with bounds
                     return Vibrato(currVal, pvLastApplied);
                 }
                 

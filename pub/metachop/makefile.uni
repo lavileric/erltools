@@ -2,17 +2,21 @@ THE_LIB= ./metachop.a
 
 LIB_OBJECTS=metachop.o metacho0.o decomp0.o decomp1.o decomp2.o decomp3.o auxunpar.o  
 
-all : DOLIB metachop
-
-libmetachop.so : $(LIB_OBJECTS)
-	$(C_PLUS) -shared -o libmetachop.so $(LIB_OBJECTS) 
-
-
-DOLIB : m_done $(THE_LIB)(metachop.o metacho0.o decomp0.o decomp1.o decomp2.o decomp3.o auxunpar.o) 
-
 OPT_FLAGS=-DDUMP_COORD  -Wno-empty-body
 
 include ../../makefile.inc
+
+library : $(LIB_OBJECTS)
+	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
+	$(MAKE) metachop
+
+libmetachop.so : $(LIB_OBJECTS)
+	$(C_PLUS) -shared -o libmetachop.so $(LIB_OBJECTS)
 
 clean : clean_inc
 	- rm -f metachop

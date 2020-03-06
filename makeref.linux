@@ -6,12 +6,12 @@ OUT_O=-o
 #compiler choice
 #MACHFLAGS=-march=athlon-xp  -pipe 
 # MACHFLAGS=-march=core2  -pipe
-MACHFLAGS=  -pipe -std=c++17
+MACHFLAGS ?=  -pipe -std=c++17 
 # MACHFLAGS=  -pipe
 LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
 C_PLUS ?= g++
 C_PLUS_LNK ?= g++
-C_PLUS_OPTIM ?= -g
+C_PLUS_OPTIM ?= -g 
 # C_PLUS_OPTIM ?= -O2 -g
 # C_PLUS_OPTIM ?= -O3
 # C_PLUS_OPTIM ?= -O3 -g

@@ -78,10 +78,10 @@ void copy ()
 int main ( int argc, char **argv )
 {
     
-    PTREE   tree ;      // tree resulting from parsing
-    char    name [50];  // character array for holding intermediate
-                        // strings
-    char    *ptName ;   // argument, string pointer
+    PTREE   tree ;        // tree resulting from parsing
+    char    name [50];    // character array for holding intermediate
+                          // strings
+    char    *ptName = 0 ; // argument, string pointer
     
     // initialization    
     MetaInit();
@@ -103,7 +103,8 @@ int main ( int argc, char **argv )
     // parsing the tree
     ParserAsnExt    *pAsnExt = new ParserAsnExt ;
     
-    tree        =  pAsnExt->ReadFile(ptName);
+    if ( ptName ) 
+        tree =  pAsnExt->ReadFile(ptName);
     listInclude =  pAsnExt->Includes();
     delete pAsnExt ;
     AddRef(tree);

@@ -87,6 +87,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     int     begCurrCol = currCol, begCurrLine = currLine ;
     int     theMark = GetMark();
     PTREE   oldPostComment = postComment ;
+    PTREE   att ;
     
     if ( paramTree == () ) 
         return ;
@@ -106,6 +107,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         case <MESSAGE_MAP> : 
         case <NAMESPACE> : 
         case <NAMESPACE_ALIAS> : 
+        case <INLINE_NAMESPACE> : 
         case <USING> : 
         case <USING_NAMESPACE> : 
             if ( (exp ^ ) == <TEMPLATE_DECL> ) 
@@ -129,7 +131,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                             <NL,1>
                     } else 
                         <NL,1>
-                if ( exp == <MESSAGE_MAP> || exp == <NAMESPACE> || exp == <NAMESPACE_ALIAS> || exp == <USING> || exp == <USING_NAMESPACE> ) 
+                if ( exp == <MESSAGE_MAP> || exp == <NAMESPACE> || exp == <INLINE_NAMESPACE> || exp == <NAMESPACE_ALIAS> || exp == <USING> || exp == <USING_NAMESPACE> ) 
                     <NL,2>
                 if ( exp == <DECLARATION,<>,<CLASS,name,<>,<>,stat>> ) 
                     if ( !strcmp(value(name), "class") ) 
@@ -198,7 +200,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
     PTREE   oldPostComment = postComment ;
     int     oldStatement = statementf ;
     int     oldInClass = inClass ;
-    int     oneInstruct ; // one instruction in a case   
+    int     oneInstruct ; // one instruction in a case  
+    PTREE   except ;
+    PTREE   implementation ;
+    PTREE   deleteFunc ;
     
     // the decompilation itself   
     switch ( paramTree ) {
@@ -252,18 +257,22 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     <NL>
             }
             break ;
-        case <FUNC,sc,type,declarator,param,range,param_decl,ctor,stat,exceptionList> : 
+        case <FUNC,sc,type,declarator,param,range,param_decl,ctor,stat,exceptionList,deleteFunc> : 
             {
                 bool    withNewLine = false ;
                 bool    parameterUnder = IsVerticalDecl(param);
+                bool    hasExceptionList = false ;
                 
                 // do the job
                 exp2 =  ctor ;
                 if ( ctor ) 
                     ctor == <,ctor>;
-                if ( exceptionList ) 
+                if ( exceptionList ) {
                     exceptionList == <,exceptionList>;
-                stat == <,stat1>;
+                    hasExceptionList =  true ;
+                }
+                if ( stat != () ) 
+                    stat == <,stat1>;
                 {
                     
                     // on se protege dans le cas d'un extern sans compound   
@@ -359,11 +368,14 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     if ( range ) 
                         @range 
                     comm(exp2, PRE);
-                    if ( exceptionList != () ) {
+                    if ( hasExceptionList ) {
                         <NL,1>
                             <T> {{
                                     "throw" <S> "(";
-                                    DecompList(exceptionList, ",", ")", 0);
+                                    if ( exceptionList != () ) 
+                                        DecompList(exceptionList, ",", ")", 0);
+                                    else 
+                                        ")" 
                                 }}
                     }
                     if ( ctor != () ) {
@@ -384,16 +396,20 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     if ( param_decl != () ) 
                         <NL,1>
                     @param_decl
-                    statementf =  0 ;
-                    if ( withNewLine ) {
-                        <NL>
+                    if ( deleteFunc != () ) {
+                        "=" <SEPA> "delete;";
+                    } else {
+                        statementf =  0 ;
+                        if ( withNewLine ) {
+                            <NL>
+                        }
+                        
+                        // si on est pas dans le cas {} on met un newline       
+                        stat == <,stat1>;
+                        if ( stat1 != () || param_decl != () ) 
+                            <NL,1>
+                        @stat
                     }
-                    
-                    // si on est pas dans le cas {} on met un newline       
-                    stat == <,stat1>;
-                    if ( stat1 != () || param_decl != () ) 
-                        <NL,1>
-                    @stat
                     
                     // sauf dans class passe une ligne blanche   
                     if ( funcAlone ) 
@@ -424,7 +440,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <TEMPLATE_DECL,exp1,exp2> : 
             "template" <S> "<";
-            DecompList(exp1, ",", (char *)0, 0);
+            if ( exp1 ) 
+                DecompList(exp1, ",", (char *)0, 0);
             ">" <S> <NL>
                 <T> {{
                         @exp2
@@ -494,12 +511,18 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     }
             }
             break ;
-        case <ENUM,ident,list_decl> : 
+        case <ENUM,ident,list_decl,type,implementation> : 
             {
                 IsVerticalDecl(list_decl);
                 "enum";
+                if ( type != () ) {
+                    "class";
+                }
                 if ( ident != () ) {
                     value(ident) <S>
+                }
+                if ( implementation != () ) {
+                    <S> ":" <S> @implementation <S>
                 }
                 bool    alignVert = false ;
                 if ( enumVert ) 
@@ -602,9 +625,37 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             "unsigned" @type
             break ;
         case <RANGE_MODIFIER,val,declarator> : 
-            value(val)
+            if ( val == <ATTRIBUTE_CALL> || val == <ASM_CALL> ) 
+                @val 
+            else 
+                value(val) 
             if ( declarator ) 
                 @declarator 
+            break ;
+        case <ATTRIBUTE_CALL,val> : 
+            while ( val == <EXP,val> ) 
+                ;
+            "__attribute__((" @val "))";
+            break ;
+        case <ASM_CALL,val> : 
+            {
+                "__asm__(";
+                val == <STRING_LIST,val>;
+                if ( val == <LIST> ) {
+                    while ( val != () ) {
+                        son =  nextl(val);
+                        @son
+                        if ( val != () ) {
+                            "," <SEPA>
+                        }
+                    }
+                } else 
+                    @val 
+                ")";
+            }
+            break ;
+        case <EXTENSION,val> : 
+            "__extension__" <SEPA> @val
             break ;
         case <TYP_ADDR,declarator> : 
             <SEPB> "*" @declarator
@@ -629,7 +680,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 @exp_list 
             "]";
             break ;
-        case <TYP_LIST,declarator,exp_list,range> : 
+        case <TYP_LIST,declarator,exp_list,range,except> : 
             @declarator <SEPB> "(";
             list = exp_list ;
             if ( 1 /* typ_list_ok */ ) 
@@ -640,7 +691,16 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         "," <S>
                     }
                 }
-            ")" <SEPA> @range
+            ")" <SEPA>
+            if ( except != () ) {
+                "throw" <S> "(";
+                except == <,except>;
+                if ( except != () ) 
+                    DecompList(except, ",", ")", 0);
+                else 
+                    ")" 
+            }
+            <SEPA> @range
             break ;
         case <INITIALIZER,init> : 
             if ( init == <LIST> ) {
@@ -873,6 +933,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <EXP_ARRAY,exp,list> : 
             @exp <SEPB> "[" @list "]";
+            break ;
+        case <EXP_BRA,exp,list> : 
+            @exp <SEPB> "{" @list "}";
             break ;
         case <REF,exp1,exp2> : 
             @exp1 "." @exp2
@@ -1374,6 +1437,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <TYPENAME,ident> : 
             "typename" @ident
             break ;
+        case <DECL_TYPE,exp> : 
+            "decltype(" @exp ")";
+            break ;
         case <AUTO> : 
             "auto";
             break ;
@@ -1488,13 +1554,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( tabDirective ) 
                     UnMark();
                 " " @exp " " @exp1
-#if 0
-                if ( exp2 == <LIST> ) {
-                    " ";
-                    while ( (elem = nextl(exp2)) ) 
-                        @exp2 
-                }
-#endif
+#               if 0
+                    if ( exp2 == <LIST> ) {
+                        " ";
+                        while ( (elem = nextl(exp2)) ) 
+                            @exp2 
+                    }
+#               endif
             }
             break ;
         case <CONFIG,exp> : 
@@ -1635,7 +1701,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         default : break ;
     }
     
-    // extensions pour le c++        
+    // extensions pour le c++    
+    PTREE   att ;
+    
     switch ( paramTree ) {
         case <EXTERNAL,exp1,stat1> : 
             "extern " @exp1 <S> @stat1
@@ -1646,6 +1714,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <TYP_AFF_CALL,declarator,exp> : 
             statementf = 0 ;
             @declarator "(" @exp ")";
+            break ;
+        case <TYP_AFF_BRA,declarator,exp> : 
+            statementf = 0 ;
+            @declarator " {" @exp "}";
             break ;
         case <DESTRUCT,ident> : 
             <SEPB> "~" @ident
@@ -1800,8 +1872,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 @exp
             }
             break ;
-        case <CTOR_INIT,ident,exp> : 
-            @ident "(" @exp ")";
+        case <CTOR_INIT,ident,exp,type> : 
+            @ident
+            if ( type != () ) {
+                "{" @exp "}";
+            } else {
+                "(" @exp ")";
+            }
             break ;
         case <MACRO,ident,list> : 
             @ident "(";
@@ -1851,9 +1928,18 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     <NL,2>
             }
             break ;
-        case <NAMESPACE,ident,exp> : 
+        case <INLINE_NAMESPACE,val> : 
             {
-                "namespace" @ident <S> @exp <NL,2>
+                "inline" <S> @val
+            }
+            break ;
+        case <NAMESPACE,ident,exp,att> : 
+            {
+                "namespace" @ident <S>
+                if ( att != () ) {
+                    @att <S>
+                }
+                @exp <NL,2>
             }
             break ;
         case <NAMESPACE_ALIAS,ident,exp> : 
@@ -1866,9 +1952,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 "using" @ident <S> ";";
             }
             break ;
-        case <USING_NAMESPACE,ident> : 
+        case <USING_NAMESPACE,ident,att> : 
             {
-                "using namespace" @ident <S> ";";
+                "using namespace";
+                if ( att != () ) {
+                    @att <S>
+                }
+                @ident <S> ";";
             }
             break ;
         default : break ;

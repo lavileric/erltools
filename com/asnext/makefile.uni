@@ -1,7 +1,20 @@
 
 INCLUDE_DIR_LOC= -I ../asn -I ../asnext
 
-all : m_done asnext dasnext asnext.a(asnext.o asnext0.o asnext1.o dchopext.o )
+DOLIB : asnext.a(asnext.o asnext0.o asnext1.o dchopext.o )
+
+OBJECTS_ASN = asnext.o asnext0.o asnext1.o 
+OBJECTS = $(OBJECTS_ASN) dchopext.o
+THE_LIB = ./asnext.a
+
+library : $(OBJECTS_ASN)
+	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
+	$(MAKE) -j $(NUMBER_PROC) asnext dasnext
 
 shared : all 
 
@@ -49,18 +62,16 @@ chopper.cc : dchopper.ch chop
 
 dchopext.cc : dchopext.ch chop
 
-chopper.o : chopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
+chopper.o : chop chopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
 
-dchopper.o : dchopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
+dchopper.o : chop dchopper.cc asnext.h $(META_DIR)/pub/library/token.h decasnext.h
 
-dchopext.o : dchopext.cc asnext.h decasnext.h
+dchopext.o : chop dchopext.cc asnext.h decasnext.h
 
 decasnext.h : ../asn/decasn.h
 	touch decasnext.h
 
 ASN_OBJECTS =../asn/asn.a
-
-OBJECTS = asnext.o asnext0.o asnext1.o dchopext.o
 
 asnext : $(OBJECTS) chopper.o $(ASN_OBJECTS) $(LIBRARY)
 	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \

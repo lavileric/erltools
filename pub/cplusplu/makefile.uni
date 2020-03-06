@@ -1,17 +1,22 @@
 THE_LIB= ./cplus.a
 
-all : DOLIB cplus
-
-LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o
+LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o cplus10.o
 
 libcplus.so : $(LIB_OBJECTS)
 	$(C_PLUS) -shared -o libcplus.so $(LIB_OBJECTS) ; 
 
-DOLIB : m_done $(THE_LIB)(chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o\
-					 dchop.o dchop1.o dchop0.o cplus8.o cplus9.o ) 
 OPT_FLAGS=-DDUMP_COORD -Wno-empty-body
 
 include ../../makefile.inc
+
+library : $(LIB_OBJECTS)
+	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB : m_done
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
+	$(MAKE) -j $(NUMBER_PROC) cplus
 
 clean : clean_inc
 	- rm -f cplus error
@@ -39,6 +44,8 @@ cplus8.o : cplus8.cc cplus.h ../library/token.h
 
 cplus9.o : cplus9.cc cplus.h ../library/token.h
 
+cplus10.o : cplus10.cc cplus.h ../library/token.h
+
 m_done : cplus.met
 	-@ mkdir compile.dir
 	@cp cplus.met compile.dir
@@ -56,6 +63,7 @@ m_done : cplus.met
 		  unify cplus6.cpp ../cplus6.cc;\
 		  unify cplus8.cpp ../cplus8.cc;\
 		  unify cplus9.cpp ../cplus9.cc;\
+		    unify cplus10.cpp ../cplus10.cc;\
 		  unify cplus7.cpp ../cplus7.cc)
 	@echo "ok" > m_done
 

@@ -1,6 +1,6 @@
 /*************************************************************************/
 /*                                                                       */
-/*        Produced by MetaGen version 2.0  -    1989-1995                 */
+/*        Produced by MetaGen version 2.0  -    1989-2006                 */
 /*       Syntaxic Analyzer Meta Generator developped by                  */
 /*                  Eric Lavillonniere                                   */
 /*                                                                       */
@@ -186,7 +186,7 @@ PPTREE chunk::chunk_piece ( int error_free)
     }
 #line 149 "chunk.met"
 #line 154 "chunk.met"
-    if (! (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(quick_compound), 130, chunk))){
+    if (! (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(quick_compound), 152, chunk))){
 #line 154 "chunk.met"
 #line 155 "chunk.met"
 #line 156 "chunk.met"
@@ -367,7 +367,7 @@ PPTREE chunk::find_func ( int error_free)
 #line 218 "chunk.met"
             while (((tokenAhead && tokenAhead != -1)|| (c != EOF)) && 
 #line 218 "chunk.met"
-                  (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(chunk_piece), 126, chunk))) { 
+                  (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(chunk_piece), 148, chunk))) { 
 #line 218 "chunk.met"
 #line 219 "chunk.met"
 #line 220 "chunk.met"
@@ -401,7 +401,7 @@ PPTREE chunk::find_func ( int error_free)
 #line 227 "chunk.met"
             _ptRes1= MakeTree(TOP, 1);
 #line 227 "chunk.met"
-            if ( (_ptTree1=NQUICK_CALL(_Tak(func_declaration)(error_free), 60, chunk))== (PPTREE) -1 ) {
+            if ( (_ptTree1=NQUICK_CALL(_Tak(func_declaration)(error_free), 75, chunk))== (PPTREE) -1 ) {
 #line 227 "chunk.met"
                 MulFreeTree(4,_ptRes1,_ptTree1,_ptTree0,retTree);
                 PROG_EXIT(find_func_exit,"find_func")
@@ -491,7 +491,7 @@ PPTREE chunk::main_entry ( int error_free)
 #line 210 "chunk.met"
         PPTREE _ptTree0=0;
 #line 210 "chunk.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(find_func)(error_free), 128, chunk))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(find_func)(error_free), 150, chunk))== (PPTREE) -1 ) {
 #line 210 "chunk.met"
             MulFreeTree(1,_ptTree0);
             PROG_EXIT(main_entry_exit,"main_entry")

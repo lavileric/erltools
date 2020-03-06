@@ -14,11 +14,21 @@ all :
 	cp ./parser/unify $(INSTALL_DIR)
 	chmod u+rwx $(INSTALL_DIR)/unify
 	- cp ./cplusplu/c.set $(INSTALL_DIR)
-	( cd java ; $(MAKE) -f makefile.uni all)
-	( cd config ; $(MAKE) -f makefile.uni all)
-	( cd metab; $(MAKE) -f makefile.uni all)
+	$(MAKE) -j $(NUMBER_PROC) other_make
+
 ##	( cd chunkc; $(MAKE) -f makefile.uni all)
 ##	( cd chunkch; $(MAKE) -f makefile.uni all)
+
+other_make : java_make config_make metab_make
+
+java_make :
+	( cd java ; $(MAKE) -f makefile.uni all)
+
+config_make :
+	( cd config ; $(MAKE) -f makefile.uni all)
+
+metab_make :
+	( cd metab; $(MAKE) -f makefile.uni all)
 
 syndex_make : 
 	(cd syndex ; $(MAKE) -f makefile.uni all)
@@ -109,6 +119,9 @@ clean :
 	( cd pythonpars; $(MAKE) -f makefile.uni clean)
 	if [ -d ./syndex ] ; then \
                (cd syndex ; $(MAKE) -f makefile.uni clean) ; fi
+	if [ -d ./calc ] ; then \
+               (cd calc ; $(MAKE) -f makefile.uni clean) ; fi
+
 
 install : 
 	- mv ./parser/metagen $(INSTALL_DIR)

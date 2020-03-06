@@ -1,8 +1,20 @@
-all : chop quickcode  qconnect.a(level2.o quickasn.o quickinetutil.o \
-		quickconnect.o)
- 
+# all : chop quickcode  qconnect.a(level2.o quickasn.o quickinetutil.o \
+# 		quickconnect.o)
+
+OBJECTS=level2.o quickasn.o quickinetutil.o quickconnect.o
+
+THE_LIB = ./qconnect.a
+
 libqconnect.so : level2.o quickasn.o quickinetutil.o quickconnect.o
 	$(C_PLUS) -shared -o libqconnect.so level2.o quickasn.o quickinetutil.o quickconnect.o
+
+library : $(OBJECTS)
+	for i in $(OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+
+DOLIB : level2.cc
+	$(MAKE) -j $(NUMBER_PROC) library
+
+all : DOLIB
 
 shared : libqconnect.so all
 
@@ -58,7 +70,7 @@ level2.cc : level2.asn   quickcode
 	cpb level2.cc
 	cpb level2.h
 
-level2.o : level2.cc level2.h  quickasn.h
+level2.o : level2.cc quickasn.h
 
 #### quickspy #####
 
@@ -70,11 +82,11 @@ quickspy : quickspy.o  $(OBJECTS_QUICK) $(ASN_OBJECTS) $(LIBRARY) ihm.o
 
 #### others #####
 
-quickasn.cc : quickasn.ch
+quickasn.cc : quickasn.ch chop
 
-quickinetutil.cc : quickinetutil.ch
+quickinetutil.cc : quickinetutil.ch chop
 
-quickconnect.cc : quickconnect.ch
+quickconnect.cc : quickconnect.ch chop
 
 chop :
 	- cp  $(ERLTOOLS_DIR)/com/asnext/chop .

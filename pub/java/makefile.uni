@@ -1,5 +1,6 @@
 
-all : m_done pjava
+all : m_done
+	$(MAKE) -j $(NUMBER_PROC) pjava
 
 include ../../makefile.inc
 
