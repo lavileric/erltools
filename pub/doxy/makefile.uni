@@ -1,0 +1,55 @@
+
+all : m_done doxy chop
+
+META_DIR=../..
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm doxy.h doxy.cc doxy0.cc chopper.cc
+	-rm doxy chop 
+	-rm -r compile.dir
+
+test : all_test
+
+#if your grammar becomes too big you will have to doxy1 ...
+m_done : doxy.met ../cplusplu/cplus.met ../chopb/chopb.met ../metachop/metachop.met
+	-@ mkdir compile.dir
+	@cp doxy.met compile.dir
+	@echo "metagen -c++ doxy.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../cplusplu:../../chopb:../../library:../../metachop $(METAOPT) doxy.met ;\
+	  unify doxy.h ../doxy.h;\
+	  unify doxy.cpp ../doxy.cc;\
+	  unify doxy0.cpp ../doxy0.cc;)
+	@echo "ok" > m_done
+
+doxy.o : doxy.cc doxy.h
+
+doxy0.o : doxy0.cc doxy.h
+
+chopper.cc : chopper.ch chop
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
+
+OBJECTS = doxy.o doxy0.o chopper.o 
+
+CPLUS=../cplusplu/cplus.a
+CHOPB=../chopb/chopb.a
+METACHOP=../metachop/metachop.a
+METAGEN= ../parser/verif.o 
+
+
+doxy : $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o doxy $(OBJECTS) $(METACHOP) $(CHOPB) $(CPLUS) $(METAGEN)  $(LIBRARY)
+
+chop : 
+	make -f makefile.cho
+
+
+
+
+
+
+
+

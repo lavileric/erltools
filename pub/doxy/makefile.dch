@@ -1,0 +1,31 @@
+
+all : chop.exe
+
+include ../../makefile.inc
+
+chop.o : chop.cc $(ERLTOOLS_DIR)/pub/library/token.h
+
+CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
+
+CHOPB=$(META_DIR)/pub/chopb/chopb.a
+
+METACHOP=$(META_DIR)/pub/metachop/metachop.a
+
+CHOPCORE=$(ERLTOOLS_DIR)/pub/parser/verif.o 
+
+chop.exe : chop.o doxy.o doxy0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS) -o chop doxy.o doxy0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+	stubify chop
+	del chop
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@ void DecompChopb::FrameContent ( PTREE list )
     PTREE   inter = list, line ;
     char    *ptLine ;
     
-    while ( inter ) {
+    while ( inter == <LIST>) {
         ptLine =  value(inter);
         nb     =  0 ;
         while ( *ptLine && (*ptLine == ' ' || *ptLine == '\t') ) {
@@ -33,7 +33,7 @@ void DecompChopb::FrameContent ( PTREE list )
     }
     if ( min != 32000 && min ) {
         inter =  list ;
-        while ( inter ) {
+        while ( inter == <LIST> ) {
             ptLine =  value(inter);
             if ( (nb = strlen(ptLine)) >= min ) {
                 memmove(ptLine, ptLine + min, nb - min + 1);
@@ -44,7 +44,7 @@ void DecompChopb::FrameContent ( PTREE list )
     
     // suppress the space and tab at the end of the lines       
     inter =  list ;
-    while ( inter ) {
+    while ( inter == <LIST> ) {
         char    *string = Value(inter);
         ptLine =  string + strlen(string) - 1 ;
         while ( ptLine >= string && (*ptLine == ' ' || *ptLine == '\t') ) 
@@ -55,7 +55,7 @@ void DecompChopb::FrameContent ( PTREE list )
     
     // suppress empty lines       
     inter =  list ;
-    while ( inter ) {
+    while ( inter == <LIST> ) {
         if ( !strlen(Value(inter)) ) {
             PTREE   old = inter ;
             nextl(inter);
@@ -451,7 +451,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
             case <PARSE,list> : 
                 {
                     int overlap = 0 ;
-                    while ( list ) {
+                    while ( list == <LIST> ) {
                         son =  nextl(list);
                         GetCoordAbs(son, (), &x0, &y0);
                         GetCoord(son, &x, &y, &dx, &dy);
@@ -488,7 +488,12 @@ void DecompChopb::TraiterSequence ( PTREE tree )
 /*************************************************************************/
 void DecompChopb::ChopTree ( PTREE tree, int funcAlone )
 {
-    copy();
+    static bool first = true ;
+    
+    if ( first ) {
+        copy();
+        first =  false ;
+    }
     SwitchLang("chopb");
     if ( simplifyExpression ) 
         clean_tree(tree);

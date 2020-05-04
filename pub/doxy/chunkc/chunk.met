@@ -1,0 +1,235 @@
+language chunk;
+
+global begin
+  {{ extern int firstLine,lastLine,refLine,find_parenthesis,nb_parenthesis,comment_start,yErr,lexcommentCallLex,oldLastLine;}}
+end;
+
+use "cplus.met";
+
+lexdefine LexComment;
+    
+    /* dont skip \n for ifdef */
+    if not in context keepCarriage and not in context keepAll
+        or in context takeCarriageComment then
+        begin
+        skip '\t',' ','\r','\n';
+        end
+    else
+        if not in context keepAll then
+            begin
+            skip '\t',' ';
+            end
+        else
+            forgetl;
+    case
+        takel in ['/'] :
+            
+            /* definition of comment */
+            case
+                seel in ['/'] :
+                    begin
+                    
+                    /* take into account this comment only if not on
+                      same line than the last } */
+                    {{
+                        if(!lexcommentCallLex && line > oldLastLine)
+                                                     comment_start=line;
+                    }};
+                    begin_comment();
+                    storel takel ;
+                    while seel do
+                        case
+                            seel in ['\r','\n'] :
+                                begin
+                                store_comment_line();
+  {{
+    if (comment_start)
+                                               lexcommentCallLex = 1;
+  }}                            ;
+                                return take LexComment;
+                                end
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    end
+                takel in ['*'] :
+                    begin
+                    {{ {int level = 0; }};
+                    
+                    /* take into account this comment only if not on
+                      same line than the last } */
+                    {{
+                        if(!lexcommentCallLex && line > oldLastLine)
+                                                     comment_start=line;
+                    }};
+                    begin_comment();
+                    while seel do
+                        case
+                            takel "/*" :
+                                begin
+                                {{ level ++; }};
+                                storel "/*";
+                                end
+                            takel "*/" :
+                                begin
+                                if {{!level }} then
+                                    begin
+                                    store_comment_line();
+  {{
+    if (comment_start)
+                                               lexcommentCallLex = 1;
+  }}                                ;
+                                    return take LexComment;
+                                    end
+                                else
+                                    begin
+                                    {{ level --;}};
+                                    storel "*/";
+                                    end;
+                                end
+                            takel in ['\n'] : store_comment_line()
+                            takel in ['\r'] : 
+                            default :
+                                begin
+                                storel takel ;
+                                end
+                        end;
+                    {{} }};
+                    end
+                default :
+                    begin
+                    recoverl;
+                    end
+            end
+    end;
+end;
+
+define chunk_piece;
+    declare retTree;
+    {{
+        if ( comment_start && comment_start < line)
+                           firstLine=comment_start ; else firstLine = line ;
+    }};
+    without context takeCarriageComment do
+        begin
+        while seel and {{ ( !find_parenthesis || nb_parenthesis > 0) }} do
+            begin
+            if takel in ['\\'] then
+                ;
+            case
+                take "(" :
+                    begin
+                    {{ find_parenthesis = 1; nb_parenthesis += 1;}};
+                    end
+                take ")" :
+                    begin
+                    {{ nb_parenthesis -= 1;}};
+                    end
+                see !CARRIAGE_RETURN :
+                    begin
+                    {{ comment_start = 0;}};
+                    
+                    /* don't take more than one CR here : wait until
+                      we get out of the out of context takeCarriageComment */
+                    take !CARRIAGE_RETURN;
+                    
+                    /* a little patch */
+                    {{ takeCarriageComment=1;}};
+                    if not find_parenthesis then
+                        begin
+                        {{ lexcommentCallLex=0;}};
+                        return maketree(IDENT,());
+                        end;
+                    end
+                default :
+                    begin
+                    takel ;
+                    forgetl;
+                    end
+            end;
+            end;
+        end;
+    if not retTree = take quick_compound then
+        begin
+        {{ comment_start = 0;}};
+        take !END_LINE;
+        {{ lexcommentCallLex=0;}};
+        return maketree(IDENT,());
+        end
+    else
+        begin
+        {{ FreeTree(retTree);_lastTree = (PTREE) 0;}};
+        end;
+    
+    /* we have found what we are looking for so abort 
+      and parse it again in a well behaved way */
+    if {{
+        line >= refLine
+                     && (!comment_start || comment_start > refLine)
+       }} then
+        begin
+        break;
+        end;
+    return maketree(IDENT,());
+end;
+
+define quick_compound;
+    
+    /* we suppose that we are in ansi c or c++ */
+    while take !CARRIAGE_RETURN do
+        ;
+    take "{";
+    {{ nb_parenthesis = 1;comment_start=0;}};
+    while seel and {{ ( nb_parenthesis > 0) }} do
+        begin
+        if takel in ['\\'] then
+            ;
+        case
+            take "{" :
+                begin
+                {{ nb_parenthesis += 1;}};
+                end
+            take "}" :
+                begin
+                {{ oldLastLine = lastLine = line ; nb_parenthesis -= 1;}};
+                end
+            default :
+                begin
+                takel ;
+                forgetl;
+                end
+        end;
+        end;
+    {{ lexcommentCallLex=0;}};
+    return maketree(IDENT,());
+end;
+
+define main_entry;
+    return take find_func;
+end;
+
+define find_func;
+    declare retTree;
+    {{ comment_start=0;oldLastLine = -1;}};
+    with context takeCarriageComment do
+        with context keepCarriage do
+            while seel and retTree = take chunk_piece do
+                begin
+                {{ FreeTree(retTree);_lastTree = (PTREE) 0;}};
+                {{ find_parenthesis = 0; nb_parenthesis=0;}};
+                end;
+    
+    /* enable errors */
+    {{ yErr = 0;}};
+    
+    /* don't want to take comment at the begining of prog*/
+    return maketree(TOP,take func_declaration);
+end;
+
+define nothing;
+    declare node;
+    return node;
+end.
+

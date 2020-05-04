@@ -1313,9 +1313,11 @@ int _fastcall ListLength ( PPTREE list )
     
     if ( !list ) 
         return 0 ;
-    if ( list ) 
+    if ( list && NumberTree(list) == LIST ) 
         while ( (list = (PPTREE)SON_READ(list, 2)) ) 
             i++ ;
+    else 
+        return 0 ;
     return (i);
 }
 
@@ -1330,13 +1332,14 @@ PPTREE ListFind ( PPTREE list, PPTREE name )
     if ( !name || !list ) 
         return (PPTREE)0 ;
     theName =  AllocString(Value(name));
-    while ( list ) {
-        if ( !strcmp(Value(list), theName) ) {
-            free(theName);
-            return sontree(list, 1);
+    if ( NumberTree(list) == LIST ) 
+        while ( list ) {
+            if ( !strcmp(Value(list), theName) ) {
+                free(theName);
+                return sontree(list, 1);
+            }
+            list =  SonTree(list, 2);
         }
-        list =  SonTree(list, 2);
-    }
     free(theName);
     return (PPTREE)0 ;
 }
@@ -1650,6 +1653,7 @@ void MetaEnd ()
 
 extern char     c ;
 extern int      input ;
+
 /**************************************************************
       SavePos : save position before a backtrack
    ***************/
@@ -3252,7 +3256,7 @@ char *NameConst ( int numb )
             return point->string ;
         point =  point->next ;
     }
-    return ((char *)0);
+    return (char *)0 ;
 }
 
 static PLANG    lang = (PLANG)0 ;

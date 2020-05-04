@@ -1,0 +1,37 @@
+
+all : m_done chunkc.exe
+
+!include ..\..\makefile.inc
+
+clean : clean_inc_appli
+	- $(RM) chunk.h
+	- $(RM) chunkc
+    	- $(RM) chopper.cc
+    	- deltree /y compile.dir
+
+
+m_done : chunk.met ..\cplusplu\cplus.met
+	-@ mkdir compile.dir
+	@copy chunk.met compile.dir
+	@echo "metagen -c++ chunk.met"
+	@cd compile.dir
+	- metagen -c++ -path ..\..\cplusplu\;..\..\library $(METAOPT) chunk.met
+	@- unify chunk.h ..\chunk.h
+	@- unify chunk.cpp ..\chunk.cc
+	@- unify chunk0.cpp ..\chunk0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+chunk.obj : chunk.cc chunk.h
+
+chunk0.obj : chunk0.cc chunk.h
+
+chopper.cc : chopper.ch
+
+chopper.obj : chopper.cc ..\library\token.h
+
+CPLUS=..\cplusplu\chopper.obj ..\cplusplu\cplus.obj ..\cplusplu\cplus0.obj ..\cplusplu\cplus1.obj ..\cplusplu\cplus2.obj ..\cplusplu\cplus3.obj ..\cplusplu\cplus4.obj ..\cplusplu\cplus5.obj ..\cplusplu\cplus6.obj ..\cplusplu\cplus7.obj ..\cplusplu\dchop.obj ..\cplusplu\dchop1.obj ..\cplusplu\dchop0.obj ..\cplusplu\cplus8.obj
+OBJECTS = chunk.obj chunk0.obj chopper.obj
+
+chunkc.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(LNK_FLAGS) /out:chunkc.exe $(OBJECTS) $(CPLUS) $(LIBRARY)

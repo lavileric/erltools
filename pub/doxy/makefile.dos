@@ -1,0 +1,43 @@
+
+all : m_done doxy.exe chop.exe
+
+clean : clean_inc_appli
+	-del doxy.h 
+	-del doxy*.cc 
+	-del chopper.cc
+	-del doxy.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+include ../../makefile.der
+
+#if your grammar becomes too big you will have to doxy1 ...
+m_done : doxy.met
+	-@ mkdir compile.dir
+	-@copy doxy.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ $(METAOPT) doxy.met 
+	@-@unify doxy.h ..\\doxy.h
+	@-@unify doxy.cpp ..\\doxy.cc
+	@-@unify doxy0.cpp ..\\doxy0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+doxy.o : doxy.cc doxy.h
+
+doxy0.o : doxy0.cc doxy.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.o : chopper.cc ../library/token.h 
+
+OBJECTS = doxy.o doxy0.o chopper.o 
+
+doxy.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) -o doxy $(OBJECTS) $(LIBRARY)
+	stubify doxy
+	del doxy
+
+chop.exe : 
+	make -f makefile.dch
+

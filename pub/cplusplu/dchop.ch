@@ -121,6 +121,9 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                 // if we are on an attribute go down   
                 exp == <TEMPLATE_DECL,<>,exp>;
                 exp == <ATTRIBUTS,exp>;
+                if ( exp == <DECLARATION> && IsComm(exp, PRE) ) {
+                    <NL,2>
+                }
                 
                 // if necessary put newlines   
                 if ( exp == <FUNC,<>,<>,<>,<>,<>,<>,<>,<,stat>> ) 
@@ -140,7 +143,13 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                         }
             }
             break ;
-        default : break ;
+        default : 
+            {
+                if ( exp == <TYPEDEF> && IsComm(exp, PRE) ) {
+                    <NL,2>
+                }
+            }
+            break ;
     }
     
     // if funcAlone prevent the display of empty line

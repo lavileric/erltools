@@ -250,6 +250,13 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                                             1);
                                         ;
                                         if ( ((_inter = (PPTREE)exp,1) && 
+                                                (NumberTree(_inter) == cplus::DECLARATION) &&
+                                                1) && IsComm(exp, PRE) ) {
+                                                                                LNewLine(2);
+                                                                                
+                                                                                
+                                                                            }
+                                        if ( ((_inter = (PPTREE)exp,1) && 
                                                 (NumberTree(_inter) == cplus::FUNC) &&
                                                 (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,8),1) &&
                                                     ((stat=SonTree(_inter,1)),1) &&
@@ -309,6 +316,17 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         default : 
         _Case51 : 
             ;
+            {
+                if ( ((_inter = (PPTREE)exp,1) && 
+                        (NumberTree(_inter) == cplus::TYPEDEF) &&
+                        1) && IsComm(exp, PRE) ) {
+                                                        LNewLine(2);
+                                                        
+                                                        
+                                                    }
+                
+            }
+            
             break ;
             
     }

@@ -1,0 +1,27 @@
+language doxy;
+
+global begin
+    {{
+        extern char * parseLanguage;
+        #include "decmetac.h"
+    }}
+end;
+
+use "chopb.met";
+
+define foo;
+    declare retTree;
+    retTree = maketree(DUO,(),());
+    retTree = maketree(UNO,());
+    retTree = maketree(OBSOLETE,());
+end;
+
+define main_entry;
+    declare ret;
+    if not ret = take chopb::prog then
+        begin
+        ret = take cplus::program;
+        end;
+    return ret;
+end.
+

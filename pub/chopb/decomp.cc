@@ -64,11 +64,16 @@ void DecompChopb::FrameContent ( PTREE list )
 #line 16 "decomp.ch"
 {
 #line 16 "decomp.ch"
+    register PPTREE _inter ;
+#line 16 "decomp.ch"
+
+#line 16 "decomp.ch"
 #line 16 "decomp.ch"
     int _nextVal ;
     
 #line 16 "decomp.ch"
 #line 19 "decomp.ch"
+    
     int nb, min = 32000 ;
     
 #line 19 "decomp.ch"
@@ -87,7 +92,11 @@ void DecompChopb::FrameContent ( PTREE list )
     
 #line 20 "decomp.ch"
 #line 23 "decomp.ch"
-    while ( inter ) {
+    while ( ((_inter = (PPTREE)inter,1) && 
+#line 23 "decomp.ch"
+                (NumberTree(_inter) == LIST) &&
+#line 23 "decomp.ch"
+                1) ) {
 #line 23 "decomp.ch"
 #line 24 "decomp.ch"
                         ptLine = BrainyValue(inter);
@@ -134,7 +143,11 @@ void DecompChopb::FrameContent ( PTREE list )
                                     
 #line 35 "decomp.ch"
 #line 36 "decomp.ch"
-                                    while ( inter ) {
+                                    while ( ((_inter = (PPTREE)inter,1) && 
+#line 36 "decomp.ch"
+                                                (NumberTree(_inter) == LIST) &&
+#line 36 "decomp.ch"
+                                                1) ) {
 #line 36 "decomp.ch"
 #line 37 "decomp.ch"
                                                         ptLine = BrainyValue(inter);
@@ -172,7 +185,11 @@ void DecompChopb::FrameContent ( PTREE list )
     
 #line 46 "decomp.ch"
 #line 47 "decomp.ch"
-    while ( inter ) {
+    while ( ((_inter = (PPTREE)inter,1) && 
+#line 47 "decomp.ch"
+                (NumberTree(_inter) == LIST) &&
+#line 47 "decomp.ch"
+                1) ) {
 #line 47 "decomp.ch"
 #line 48 "decomp.ch"
                         char    *string = Value(inter);
@@ -205,7 +222,11 @@ void DecompChopb::FrameContent ( PTREE list )
     
 #line 57 "decomp.ch"
 #line 58 "decomp.ch"
-    while ( inter ) {
+    while ( ((_inter = (PPTREE)inter,1) && 
+#line 58 "decomp.ch"
+                (NumberTree(_inter) == LIST) &&
+#line 58 "decomp.ch"
+                1) ) {
 #line 58 "decomp.ch"
 #line 59 "decomp.ch"
                         if ( !strlen(Value(inter)) ) {
@@ -280,6 +301,7 @@ PTREE DecompChopb::IntDecomp ( const PTREE &paramTree, int funcAlone )
     
 #line 70 "decomp.ch"
 #line 73 "decomp.ch"
+    
     PTREE   ident, tree, list, son, exp1, exp2, exp, stat, param ;
 #line 73 "decomp.ch"
     
@@ -1372,6 +1394,7 @@ int DecompChopb::Sequence ( PTREE tree1, PTREE tree2 )
     
 #line 249 "decomp.ch"
 #line 251 "decomp.ch"
+    
     PTREE   son ;
 #line 251 "decomp.ch"
     
@@ -1851,6 +1874,7 @@ void DecompChopb::control_stat1 ( PTREE paramTree )
     
 #line 305 "decomp.ch"
 #line 307 "decomp.ch"
+    
     PTREE   exp1 ;
 #line 307 "decomp.ch"
     
@@ -2132,6 +2156,7 @@ int DecompChopb::OpTypeAlign ( PTREE tree )
     
 #line 336 "decomp.ch"
 #line 338 "decomp.ch"
+    
     PTREE   son ;
 #line 338 "decomp.ch"
     
@@ -2209,6 +2234,7 @@ int DecompChopb::OpType ( PTREE tree )
     
 #line 349 "decomp.ch"
 #line 351 "decomp.ch"
+    
     PTREE   son ;
 #line 351 "decomp.ch"
     
@@ -2286,6 +2312,7 @@ int DecompChopb::IsTop ( PTREE tree, int internal )
     
 #line 360 "decomp.ch"
 #line 362 "decomp.ch"
+    
     PTREE   father, prec, son ;
 #line 362 "decomp.ch"
     
@@ -2548,6 +2575,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
     
 #line 396 "decomp.ch"
 #line 399 "decomp.ch"
+    
     PTREE   list, son, father, list1, list2 ;
 #line 399 "decomp.ch"
     
@@ -2630,6 +2658,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                 
 #line 413 "decomp.ch"
 #line 414 "decomp.ch"
+                                                
                                                 int oldX = 0 ;
                                                 
 #line 414 "decomp.ch"
@@ -2833,7 +2862,11 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                 
 #line 453 "decomp.ch"
 #line 454 "decomp.ch"
-                                                while ( list ) {
+                                                while ( ((_inter = (PPTREE)list,1) && 
+#line 454 "decomp.ch"
+                                                            (NumberTree(_inter) == LIST) &&
+#line 454 "decomp.ch"
+                                                            1) ) {
 #line 454 "decomp.ch"
 #line 454 "decomp.ch"
                                                                     PTREE   _Baum2 ;
@@ -2876,7 +2909,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                                     
 #line 462 "decomp.ch"
 #line 462 "decomp.ch"
-                                                                }
+                                                                 }
 #line 462 "decomp.ch"
 #line 468 "decomp.ch"
                                                 if ( overlap ) {
@@ -3149,89 +3182,107 @@ void DecompChopb::ChopTree ( PTREE tree, int funcAlone )
     
 #line 488 "decomp.ch"
 #line 491 "decomp.ch"
-    copy();
-#line 491 "decomp.ch"
-#line 492 "decomp.ch"
-    SwitchLang("chopb");
-#line 492 "decomp.ch"
-#line 493 "decomp.ch"
-    if ( simplifyExpression ) 
-#line 493 "decomp.ch"
-#line 494 "decomp.ch"
-        clean_tree(tree);
-#line 494 "decomp.ch"
-#line 495 "decomp.ch"
-    Treat(tree);
-#line 495 "decomp.ch"
-#line 496 "decomp.ch"
-    Decomp(tree, funcAlone);
-#line 496 "decomp.ch"
-#line 497 "decomp.ch"
-    AddRef(tree);
-#line 497 "decomp.ch"
-#line 498 "decomp.ch"
     
+    static bool first = true ;
+    
+#line 491 "decomp.ch"
+#line 493 "decomp.ch"
+    if ( first ) {
+#line 493 "decomp.ch"
+#line 494 "decomp.ch"
+                    copy();
+#line 494 "decomp.ch"
+#line 495 "decomp.ch"
+                    first = false ;
+#line 495 "decomp.ch"
+#line 496 "decomp.ch"
+                    
+#line 496 "decomp.ch"
+#line 496 "decomp.ch"
+                  }
+#line 496 "decomp.ch"
+#line 497 "decomp.ch"
+    SwitchLang("chopb");
+#line 497 "decomp.ch"
 #line 498 "decomp.ch"
+    if ( simplifyExpression ) 
 #line 498 "decomp.ch"
+#line 499 "decomp.ch"
+        clean_tree(tree);
+#line 499 "decomp.ch"
+#line 500 "decomp.ch"
+    Treat(tree);
+#line 500 "decomp.ch"
+#line 501 "decomp.ch"
+    Decomp(tree, funcAlone);
+#line 501 "decomp.ch"
+#line 502 "decomp.ch"
+    AddRef(tree);
+#line 502 "decomp.ch"
+#line 503 "decomp.ch"
+    
+#line 503 "decomp.ch"
+#line 503 "decomp.ch"
 }
-#line 498 "decomp.ch"
+#line 503 "decomp.ch"
 
-#line 502 "decomp.ch"
+#line 507 "decomp.ch"
 
-#line 502 "decomp.ch"
+#line 507 "decomp.ch"
 void DecompChopb::copy ()
-#line 502 "decomp.ch"
+#line 507 "decomp.ch"
 {
-#line 502 "decomp.ch"
-#line 502 "decomp.ch"
+#line 507 "decomp.ch"
+#line 507 "decomp.ch"
     int _nextVal ;
     
-#line 502 "decomp.ch"
-#line 505 "decomp.ch"
+#line 507 "decomp.ch"
+#line 510 "decomp.ch"
+    
     const char  *str ;
     
-#line 505 "decomp.ch"
-#line 507 "decomp.ch"
+#line 510 "decomp.ch"
+#line 512 "decomp.ch"
     str = "\n\r Metachop prettyPrinter version 3.0, CopyRight(C) 1995-2018 Eric Lavillonniere \n\r";
-#line 507 "decomp.ch"
-#line 508 "decomp.ch"
+#line 512 "decomp.ch"
+#line 513 "decomp.ch"
     _write(2, str, strlen(str));
-#line 508 "decomp.ch"
-#line 509 "decomp.ch"
+#line 513 "decomp.ch"
+#line 514 "decomp.ch"
     str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
-#line 509 "decomp.ch"
-#line 510 "decomp.ch"
+#line 514 "decomp.ch"
+#line 515 "decomp.ch"
     _write(2, str, strlen(str));
-#line 510 "decomp.ch"
-#line 511 "decomp.ch"
+#line 515 "decomp.ch"
+#line 516 "decomp.ch"
     str = " This is free software, and you are welcome to redistribute it \n\r";
-#line 511 "decomp.ch"
-#line 512 "decomp.ch"
+#line 516 "decomp.ch"
+#line 517 "decomp.ch"
     _write(2, str, strlen(str));
-#line 512 "decomp.ch"
-#line 513 "decomp.ch"
+#line 517 "decomp.ch"
+#line 518 "decomp.ch"
     str = " under certain conditions.\n\r";
-#line 513 "decomp.ch"
-#line 514 "decomp.ch"
+#line 518 "decomp.ch"
+#line 519 "decomp.ch"
     _write(2, str, strlen(str));
-#line 514 "decomp.ch"
-#line 515 "decomp.ch"
+#line 519 "decomp.ch"
+#line 520 "decomp.ch"
     str = " For details see file COPYING in C++ prettyPrinter directory.\n\r\n\r";
-#line 515 "decomp.ch"
-#line 516 "decomp.ch"
+#line 520 "decomp.ch"
+#line 521 "decomp.ch"
     _write(2, str, strlen(str));
-#line 516 "decomp.ch"
-#line 517 "decomp.ch"
+#line 521 "decomp.ch"
+#line 522 "decomp.ch"
     
-#line 517 "decomp.ch"
-#line 517 "decomp.ch"
+#line 522 "decomp.ch"
+#line 522 "decomp.ch"
 }
-#line 517 "decomp.ch"
+#line 522 "decomp.ch"
 
-#line 517 "decomp.ch"
-#line 517 "decomp.ch"
+#line 522 "decomp.ch"
+#line 522 "decomp.ch"
 static void decomp_Anchor () { int i = 1;} 
-#line 517 "decomp.ch"
+#line 522 "decomp.ch"
 /*Well done my boy */ 
-#line 517 "decomp.ch"
+#line 522 "decomp.ch"
 

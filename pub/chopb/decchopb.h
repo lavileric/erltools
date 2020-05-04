@@ -27,5 +27,5 @@ inline void decomp_chopb ( PTREE tree )
     
     // call cplus since the commentaries treatment is only done 
     // there 
-    DecompChopb::ptDecomp -> DecompCplus::Decomp(tree);
+    DecompChopb::ptDecomp->DecompCplus::Decomp(tree);
 }

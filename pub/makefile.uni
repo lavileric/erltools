@@ -8,6 +8,7 @@ all :
 	( cd cplusplu ; $(MAKE) -f makefile.uni all)
 	( cd chopb ; $(MAKE) -f makefile.uni all)
 	( cd metachop ; $(MAKE) -f makefile.uni all)
+	- ( cd doxy ; $(MAKE) -f makefile.uni all)
 	($(MAKE) -f makefile.uni metageninstall)
 	($(MAKE) -f makefile.uni metachopinstall)
 	-@ chmod u+rwx $(INSTALL_DIR)/unify
@@ -157,6 +158,8 @@ install :
 	- chmod 550 $(INSTALL_DIR)/cpbq
 	- cp ./parser/unify $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/unify
+	- cp ./doxy/doxy $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/doxy
 	if [ -f library/libmeta.so ] ; then\
 		(cp library/libmeta.so $(INSTALL_DIR));\
 	fi

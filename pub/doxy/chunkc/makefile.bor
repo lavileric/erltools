@@ -1,0 +1,10 @@
+
+!include ./makefile.win
+
+chunkc.exe : $(OBJECTS)
+	$(C_PLUS_LNK) $(OBJECTS) $(CPLUS) $(LIBRARY)
+    -del chunkc.exe
+    -ren chunk.exe chunkc.exe
+
+
+
