@@ -14,6 +14,8 @@ define foo;
     retTree = maketree(DUO,(),());
     retTree = maketree(UNO,());
     retTree = maketree(OBSOLETE,());
+    retTree = maketree(H,());
+    retTree = maketree(C,());
 end;
 
 define main_entry;

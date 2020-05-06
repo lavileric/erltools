@@ -6,7 +6,7 @@ all : DOLIB
 
 include ../../makefile.inc
 
-LIB_OBJECTS=auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o tabsort.o clpretty.o pretty.o pretty0.o symb.o ethread.o
+LIB_OBJECTS=auxpars.o itptree.o outil.o ptree.o compleme.o tablist.o tabsort.o clpretty.o pretty.o pretty0.o symb.o TreeIdentifier.o ethread.o 
 
 library : $(LIB_OBJECTS)
 	ar $(ARFLAGS) $(THE_LIB) $(LIB_OBJECTS)
@@ -57,6 +57,8 @@ symb.o : symb.cc tablist.h token.h symb.h
 
 semaph.o : semaph.cc token.h 
 
+TreeIdentifier.o : TreeIdentifier.cc token.h
+
 clpretty.o : clpretty.cc clpretty.h token.h 
 	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) $(OPT_FLAGS_SYS) clpretty.cc
 
@@ -71,6 +73,8 @@ ptree.cc : ptree.ch
 clpretty.cc : clpretty.ch
 
 itptree.cc : itptree.ch
+
+TreeIdentifier.cc : TreeIdentifier.cc
 
 salloc.cc : salloc.ch salloc.h
 
