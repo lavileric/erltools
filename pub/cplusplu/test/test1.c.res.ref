@@ -267,7 +267,7 @@ Lex_c ()
                                 *_ptString = '\0';
                                 firstOnLine = 0 ;
                                 tokenAhead = 1 ;
-                                return 1 ;
+                                return (1);
                             } else {
                                 UnputChar(1);
                                 goto _exitDumpToken3 ;
@@ -283,7 +283,7 @@ Lex_c ()
                                         *_ptString = '\0';
                                         firstOnLine = 0 ;
                                         tokenAhead = 1 ;
-                                        return 1 ;
+                                        return (1);
                                     } else {
                                         UnputChar(1);
                                         goto _exitDumpToken5 ;
@@ -296,7 +296,7 @@ Lex_c ()
                                         *_ptString = '\0';
                                         firstOnLine = 0 ;
                                         tokenAhead = 1 ;
-                                        return 1 ;
+                                        return (1);
                                     } else {
                                         UnputChar(1);
                                         goto _exitDumpToken5 ;
@@ -326,7 +326,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken2 ;
@@ -345,7 +345,7 @@ Lex_c ()
                                         *_ptString = '\0';
                                         firstOnLine = 0 ;
                                         tokenAhead = 1 ;
-                                        return 1 ;
+                                        return (1);
                                     } else {
                                         UnputChar(1);
                                         goto _exitDumpToken10 ;
@@ -358,7 +358,7 @@ Lex_c ()
                                         *_ptString = '\0';
                                         firstOnLine = 0 ;
                                         tokenAhead = 1 ;
-                                        return 1 ;
+                                        return (1);
                                     } else {
                                         UnputChar(1);
                                         goto _exitDumpToken10 ;
@@ -378,7 +378,7 @@ Lex_c ()
                                 *_ptString = '\0';
                                 firstOnLine = 0 ;
                                 tokenAhead = 1 ;
-                                return 1 ;
+                                return (1);
                             } else {
                                 UnputChar(1);
                                 goto _exitDumpToken9 ;
@@ -398,7 +398,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken2 ;
@@ -411,7 +411,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken2 ;
@@ -424,7 +424,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken2 ;
@@ -511,7 +511,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken23 ;
@@ -864,7 +864,7 @@ Lex_c ()
                         *_ptString = '\0';
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
-                        return 1 ;
+                        return (1);
                     } else {
                         UnputChar(1);
                         goto _exitDumpToken60 ;
@@ -980,7 +980,7 @@ Lex_c ()
                                 firstOnLine = 0 ;
                                 tokenAhead = 1 ;
                                 lexEl.Value = STRING_c ;
-                                return 1 ;
+                                return (1);
                             }
                         }
                         break ;
@@ -1023,7 +1023,7 @@ Lex_c ()
                         firstOnLine = 0 ;
                         tokenAhead = 1 ;
                         lexEl.Value = CHARACT_c ;
-                        return 1 ;
+                        return (1);
                     }
                 } else if ( c != EOF ) {
                     {
@@ -1144,7 +1144,7 @@ Lex_c ()
                             firstOnLine = 0 ;
                             tokenAhead = 1 ;
                             lexEl.Value = INTEGER_c ;
-                            return 1 ;
+                            return (1);
                         }
                     }
                     break ;
@@ -1221,7 +1221,7 @@ Lex_c ()
                             firstOnLine = 0 ;
                             tokenAhead = 1 ;
                             lexEl.Value = INTEGER_c ;
-                            return 1 ;
+                            return (1);
                         }
                     }
                     break ;
@@ -1263,7 +1263,7 @@ Lex_c ()
                                 firstOnLine = 0 ;
                                 tokenAhead = 1 ;
                                 lexEl.Value = META_c ;
-                                return 1 ;
+                                return (1);
                             }
                             break ;
                         case ')' : 
@@ -1278,7 +1278,7 @@ Lex_c ()
                                     firstOnLine = 0 ;
                                     tokenAhead = 1 ;
                                     lexEl.Value = META_c ;
-                                    return 1 ;
+                                    return (1);
                                 }
                             } else {
                                 {
@@ -1388,7 +1388,7 @@ Lex_c ()
                             firstOnLine = 0 ;
                             tokenAhead = 1 ;
                             lexEl.Value = SLAS_c ;
-                            return 1 ;
+                            return (1);
                         }
                     }
                     break ;

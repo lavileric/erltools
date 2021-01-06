@@ -2005,67 +2005,86 @@ define simple_type;
             end
         take #"auto" : return maketree(AUTO)
         take #"double" : return maketree(TDOUBLE)
-        take #"int" : return maketree(TINT)
-        take #"char" : return maketree(TCHAR)
         take #"float" : return maketree(TFLOAT)
         take #"void" : return maketree(VOID)
         see "::" : return maketree(TIDENT,take complete_class_name)
         see !IDENT : return maketree(TIDENT,take complete_class_name)
-        take #"long" :
-            case
-                take #"float" : return maketree(TLONG,maketree(TFLOAT))
-                take #"double" : return maketree(TLONG,maketree(TDOUBLE))
-                take #"int" : return maketree(TLONG,maketree(TINT))
-                take #"signed" :
-                    begin
-                    if valTree = take long_short_int_char then
-                        return maketree(TSIGNED,maketree(TLONG,valTree));
-                    end
-                take #"unsigned" :
-                    begin
-                    if valTree = take long_short_int_char then
-                        return maketree(TUNSIGNED,maketree(TLONG,valTree));
-                    end
-                take #"long" :
-                    begin
-                    case
-                        take #"float" : return maketree(TLONG,maketree(TLONG,maketree(TFLOAT)))
-                        take #"double" : return maketree(TLONG,maketree(TLONG,maketree(TDOUBLE)))
-                        take #"int" : return maketree(TLONG,maketree(TLONG,maketree(TINT)))
-                        take #"long" : 
-                        default : return maketree(TLONG,maketree(TLONG,()))
-                    end;
-                    end
-                default : return maketree(TLONG,())
-            end
-        take #"signed" :
-            if valTree = take long_short_int_char then
-                return maketree(TSIGNED,valTree)
-            else
-                return maketree(TSIGNED,())
-        take #"unsigned" :
-            if valTree = take long_short_int_char then
-                return maketree(TUNSIGNED,valTree)
-            else
-                return maketree(TUNSIGNED,())
-        default : return take long_short_int_char
+        default : return take short_long_int_char
     end;
 end;
 
-define long_short_int_char;
+define short_long_int_char;
     case
         take #"int" : return maketree(TINT)
-        take #"long" :
-            case
-                take #"int" : return maketree(TLONG,maketree(TINT))
-                default : return maketree(TLONG,())
-            end
-        take #"short" :
-            case
-                take #"int" : return maketree(TSHORT,maketree(TINT))
-                default : return maketree(TSHORT,())
-            end
         take #"char" : return maketree(TCHAR)
+        see #"long" : return take long_type
+        take #"short" :
+            if in context inside_long then
+                break
+            else
+                begin
+                case
+                    take #"int" : return maketree(TSHORT,maketree(TINT))
+                    default : return maketree(TSHORT,())
+                end;
+                end
+        see #"signed" : return take signed_type
+        see #"unsigned" : return take unsigned_type
+    end;
+end;
+
+define signed_type;
+    declare retTree;
+    take #"signed";
+    with context inside_signed do
+        begin
+        if retTree = take short_long_int_char then
+            return maketree(TSIGNED,retTree)
+        else
+            return maketree(TSIGNED,());
+        end;
+end;
+
+define unsigned_type;
+    declare retTree;
+    take #"unsigned";
+    with context inside_signed do
+        begin
+        if retTree = take short_long_int_char then
+            return maketree(TUNSIGNED,retTree)
+        else
+            return maketree(TUNSIGNED,());
+        end;
+end;
+
+define long_type;
+    declare retTree;
+    take #"long";
+    case
+        take #"float" :
+            begin
+            if in context inside_long or in context inside_signed then
+                break
+            else
+                return maketree(TLONG,maketree(TFLOAT));
+            end
+        take #"double" :
+            begin
+            if in context inside_long or in context inside_signed then
+                break
+            else
+                return maketree(TLONG,maketree(TDOUBLE));
+            end
+        default :
+            begin
+            with context inside_long do
+                begin
+                if retTree = take short_long_int_char then
+                    return maketree(TLONG,retTree)
+                else
+                    return maketree(TLONG,());
+                end;
+            end
     end;
 end;
 

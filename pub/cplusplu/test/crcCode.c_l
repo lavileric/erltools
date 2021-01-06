@@ -33,8 +33,12 @@
 /*  by Avram Perez, Byte-wise CRC Calculations, IEEE Micro 3, 40 (1983).*/
 
 #define POLYNOMIAL 0x04c11db7L
+typedef unsigned int dummyType;
 
+static unsigned dummy1;
 static unsigned long crc_table[256];
+static unsigned long long dummy;
+
 
 void gen_crc_table()
  /* generate the table of CRC remainders for all possible bytes */

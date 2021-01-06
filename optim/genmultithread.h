@@ -1,5 +1,5 @@
 #ifndef GEN_MULTI_MULTITHREAD
-#   define GEN_MULTI_THREAD 
+#   define GEN_MULTI_MULTITHREAD 
 #   include "erlstring.h"
 #   include "optimgenetic.h"
     const unsigned int                      NB_TO_GET = 100 ; // in multithread the chunk of jobs to take

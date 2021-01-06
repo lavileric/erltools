@@ -36,7 +36,9 @@ struct timeb {
     short           timezone;
     short           dstflag;
 };
+#ifndef REPLACE_FTIME
 extern int  ftime(struct timeb*  timebuf);
+#endif
 __END_DECLS
 #pragma pretty
 #endif /* _SYS_TIMEB_H */ 

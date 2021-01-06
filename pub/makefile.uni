@@ -118,6 +118,7 @@ clean :
 	( cd java; $(MAKE) -f makefile.uni clean)
 	( cd vhdl; $(MAKE) -f makefile.uni clean)
 	( cd pythonpars; $(MAKE) -f makefile.uni clean)
+	- ( cd doxy ; $(MAKE) -f makefile.uni clean )
 	if [ -d ./syndex ] ; then \
                (cd syndex ; $(MAKE) -f makefile.uni clean) ; fi
 	if [ -d ./calc ] ; then \
@@ -159,7 +160,7 @@ install :
 	- cp ./parser/unify $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/unify
 	- cp ./doxy/doxy $(INSTALL_DIR)
-	- chmod 550 $(INSTALL_DIR)/doxy
+	- cp ./doxy/doxyfy $(INSTALL_DIR)
 	if [ -f library/libmeta.so ] ; then\
 		(cp library/libmeta.so $(INSTALL_DIR));\
 	fi

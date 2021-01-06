@@ -186,6 +186,8 @@
 #       define HAS_IPC_FUNCT 1
 #       define HAS_SIGNAL 1
 #       define HAS_RUSAGE 1
+#       define REPLACE_FTIME 1
+#       define LOC_TIMEB 1
 #   elif defined(LINUX_GLIBC2GCC3) // SUN LINUX GLIBC2 GCC3
 #       define HAS_GETADDRINFO 1
 #       define INCLUDE_STD_ARG 1
@@ -211,6 +213,8 @@
 #       define HAS_SIGNAL 1
 #       define MOST_RECENT_STL 1
 #       define HAS_RUSAGE 1
+#       define REPLACE_FTIME 1
+#       define LOC_TIMEB 1
 #   elif defined(LINUX) // SUN LINUX
 #       define HAS_GETADDRINFO 1
 #       define INCLUDE_VARARGS 1
@@ -229,6 +233,8 @@
 #       define RANDOM_3 1
 #       define ITOA 1
 #       define HAS_RUSAGE 1
+#       define REPLACE_FTIME 1
+#       define LOC_TIMEB 1
 #   elif defined(INTERACTIVE) // SUN I386
 #       define DEFINE_LOWER_UPPER 1
 #       define INCLUDE_VARARGS 1
@@ -394,6 +400,7 @@
     unsigned int    TreeSize (PPTREE) ;
     char            *_fastcall Value (PPTREE) ;
     int             _fastcall PosTree (PPTREE) ;
+    
     //void            MetaInit () ;
     void            MetaEnd () ;
     void            MetaInit (const char *val = 0) ;
@@ -401,11 +408,13 @@
     PPTREE          StoreRef (PPTREE) ;
     void            FreeString (char *string, int length) ;
     char            *MallocString (int size) ;
+    
     /******************************************************************
         PutExtraInfo : put extra info on node
        ***********/
     /**********************************************************/
     void            PutExtraInfo (PPTREE tree, int extraInfo) ;
+    
     /******************************************************************
         GetExtraInfo : get extra info on node
        ***********/
@@ -446,8 +455,8 @@
     PPTREE  ReadInString (char *) ;
     void    SwitchLang (const char *) ;
     void    EqualTree (const char *, const char *, int, PPTREE, int) ;
-    PPTREE  _fastcall CopyTree (PPTREE) ;
-    PPTREE  _fastcall NoCommentCopyTree (PPTREE) ;
+    PPTREE  _fastcall CopyTree (const PPTREE) ;
+    PPTREE  _fastcall NoCommentCopyTree (const PPTREE) ;
     void    LDumpTree (PPTREE treeParam) ;
     void    DumpTree (PPTREE) ;
     void    CLDumpTree (PPTREE) ;
@@ -523,7 +532,14 @@
         
         inline void EGetTime ( struct timeval &timeVal )
         {
-#           if defined(UNDERSCORE_FTIME)
+#           if defined(REPLACE_FTIME)
+                {
+                    struct timeval tstruct ;
+                    gettimeofday(&tstruct, NULL);
+                    timeVal.tv_sec  =  tstruct.tv_sec ;
+                    timeVal.tv_usec =  tstruct.tv_usec ;
+                }
+#           elif defined(UNDERSCORE_FTIME)
                 {
                     struct _timeb tstruct ;
                     _ftime(&tstruct);

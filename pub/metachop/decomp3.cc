@@ -49,6 +49,7 @@ PTREE   for_elem ;
 
 extern char *currentLanguage ;
 extern int  cplusGen ;
+
 extern int  line ;
 
 #line 43 "decomp3.ch"
@@ -70,14 +71,15 @@ static  void DestroyComments ( PTREE tree )
         
 #line 45 "decomp3.ch"
 #line 45 "decomp3.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 45 "decomp3.ch"
         
 #line 45 "decomp3.ch"
 #line 45 "decomp3.ch"
         _iterator1.AllSearch(1);
 #line 45 "decomp3.ch"
 #line 45 "decomp3.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 45 "decomp3.ch"
 #line 45 "decomp3.ch"
             {
@@ -171,6 +173,7 @@ PTREE LookMeta ( PTREE tree, char *nameVar )
     
 #line 51 "decomp3.ch"
 #line 54 "decomp3.ch"
+    
     char    *theValue ;
     
 #line 54 "decomp3.ch"
@@ -185,6 +188,7 @@ PTREE LookMeta ( PTREE tree, char *nameVar )
     
 #line 56 "decomp3.ch"
 #line 58 "decomp3.ch"
+    
     char    name [20];
     
 #line 58 "decomp3.ch"
@@ -773,6 +777,7 @@ void englob ( PTREE tree )
     
 #line 153 "decomp3.ch"
 #line 156 "decomp3.ch"
+    
     PTREE   father, temporary ;
 #line 156 "decomp3.ch"
     
@@ -863,6 +868,7 @@ void GenTree ( PTREE tree )
     
 #line 172 "decomp3.ch"
 #line 175 "decomp3.ch"
+    
     PTREE   ptTree, temporary, list, theList ;
 #line 175 "decomp3.ch"
     
@@ -885,10 +891,12 @@ void GenTree ( PTREE tree )
     
 #line 179 "decomp3.ch"
 #line 185 "decomp3.ch"
+    
     int massageIt ;
     
 #line 185 "decomp3.ch"
 #line 188 "decomp3.ch"
+    
     int varNumber = 0 ;
     
 #line 188 "decomp3.ch"
@@ -1497,6 +1505,7 @@ PTREE CreateGCClass ( char *name )
     
 #line 290 "decomp3.ch"
 #line 293 "decomp3.ch"
+    
     char    *nName = (char *)malloc(strlen(name) + 3);
     
 #line 293 "decomp3.ch"
@@ -1689,6 +1698,7 @@ PTREE FullCreateGCClass ( PTREE list )
     
 #line 319 "decomp3.ch"
 #line 322 "decomp3.ch"
+    
     PTREE   pattern, temporary, father ;
 #line 322 "decomp3.ch"
     
@@ -1836,6 +1846,7 @@ void GCManager ( PTREE tree )
     
 #line 333 "decomp3.ch"
 #line 336 "decomp3.ch"
+    
     PTREE   list, pt_list, list_decl, son, son_decl, pattern, temporary, list_init, listClassInit ;
 #line 336 "decomp3.ch"
     
@@ -2620,6 +2631,7 @@ void GCManagerFunc ( PTREE tree )
     
 #line 426 "decomp3.ch"
 #line 429 "decomp3.ch"
+    
     PTREE   list, pt_list, son, son_decl, old, temporary, inter1, addref, list_decl, type, list_insert, param, list_name, name ;
 #line 429 "decomp3.ch"
     
@@ -3335,6 +3347,7 @@ void GCManagerRetBeg ( PTREE tree )
     
 #line 507 "decomp3.ch"
 #line 510 "decomp3.ch"
+    
     PTREE   list, construct ;
 #line 510 "decomp3.ch"
     
@@ -3388,14 +3401,15 @@ void GCManagerRetBeg ( PTREE tree )
                             
 #line 514 "decomp3.ch"
 #line 514 "decomp3.ch"
-                            PPTREE  _for_elem ;
+                            PTREE   _for_elem ;
+#line 514 "decomp3.ch"
                             
 #line 514 "decomp3.ch"
 #line 514 "decomp3.ch"
                             _iterator1.AllSearch(1);
 #line 514 "decomp3.ch"
 #line 514 "decomp3.ch"
-                            while ( _for_elem = _iterator1++ ) {
+                            while ( (_for_elem=_iterator1++) ) {
 #line 514 "decomp3.ch"
 #line 514 "decomp3.ch"
                                 {
@@ -3574,6 +3588,7 @@ void GCManagerRetEnd ( PTREE tree, int retTree )
     
 #line 530 "decomp3.ch"
 #line 532 "decomp3.ch"
+    
     PTREE   sonde, list, construct, son, temporary, ptFather, ptStat, ptListDecl, ptDecl, list_name ;
 #line 532 "decomp3.ch"
     
@@ -3759,6 +3774,7 @@ void GCManagerRetEnd ( PTREE tree, int retTree )
                                                         
 #line 558 "decomp3.ch"
 #line 558 "decomp3.ch"
+                                                        
                                                         ItPtree it(tree, _Baum0);
                                                         
 #line 558 "decomp3.ch"
@@ -4203,6 +4219,7 @@ void GCManagerRetEnd ( PTREE tree, int retTree )
                             
 #line 619 "decomp3.ch"
 #line 619 "decomp3.ch"
+                            
                             ItPtree it(tree, _Baum1);
                             
 #line 619 "decomp3.ch"

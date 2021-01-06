@@ -196,7 +196,7 @@ PPTREE chopb::cast_expression_value ( int error_free)
         inMakeTree = 0 ;
 #line 390 "chopb.met"
 #line 391 "chopb.met"
-        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 144, chopb))== (PPTREE) -1 ) {
+        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 146, chopb))== (PPTREE) -1 ) {
 #line 391 "chopb.met"
             MulFreeTree(1,ret);
             PROG_EXIT(cast_expression_value_exit,"cast_expression_value")
@@ -595,7 +595,7 @@ PPTREE chopb::main_entry ( int error_free)
 #line 257 "chopb.met"
         PPTREE _ptTree0=0;
 #line 257 "chopb.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 161, chopb))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 164, chopb))== (PPTREE) -1 ) {
 #line 257 "chopb.met"
             MulFreeTree(1,_ptTree0);
             PROG_EXIT(main_entry_exit,"main_entry")
@@ -951,7 +951,7 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 333 "chopb.met"
 #line 334 "chopb.met"
 #line 335 "chopb.met"
-        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 129, chopb))== (PPTREE) -1 ) {
+        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 131, chopb))== (PPTREE) -1 ) {
 #line 335 "chopb.met"
             MulFreeTree(2,expList,expTree);
             PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1377,7 +1377,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 411 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 411 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 162, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 165, chopb))== (PPTREE) -1 ) {
 #line 411 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1404,7 +1404,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 412 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 412 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 163, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 166, chopb))== (PPTREE) -1 ) {
 #line 412 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1848,7 +1848,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 449 "chopb.met"
                     PPTREE _ptTree1=0;
 #line 449 "chopb.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 136, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 138, chopb))== (PPTREE) -1 ) {
 #line 449 "chopb.met"
                         MulFreeTree(7,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2235,7 +2235,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 484 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 484 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 138, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 140, chopb))== (PPTREE) -1 ) {
 #line 484 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2311,7 +2311,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 490 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 490 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 144, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 146, chopb))== (PPTREE) -1 ) {
 #line 490 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")

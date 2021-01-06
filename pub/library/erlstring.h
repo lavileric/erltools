@@ -75,7 +75,19 @@
                     : pvStart(0)
                 {
                     Malloc((pvLength = str.length()) + 1);
-                    memcpy(pvString, str.c_str(), pvLength);
+                    if ( pvLength ) 
+                        memcpy(pvString, str.c_str(), pvLength);
+                    
+                    // VString are not 0 terminated
+                    *(pvString + pvLength) =  '\0';
+                }
+                
+                EStringRoot ( std::string str )
+                    : pvStart(0)
+                {
+                    Malloc((pvLength = str.length()) + 1);
+                    if ( pvLength ) 
+                        memcpy(pvString, str.c_str(), pvLength);
                     
                     // VString are not 0 terminated
                     *(pvString + pvLength) =  '\0';
@@ -139,7 +151,8 @@
                     std::string pValue = std::to_string(value);
                     
                     Malloc((pvLength = pValue.length()) + 1);
-                    memcpy(pvString, pValue.c_str(), pvLength);
+                    if ( pvLength ) 
+                        memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
@@ -156,7 +169,8 @@
                         std::string pValue = std::to_string(value);
 #                   endif
                     Malloc((pvLength = pValue.length()) + 1);
-                    memcpy(pvString, pValue.c_str(), pvLength);
+                    if ( pvLength ) 
+                        memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
@@ -173,7 +187,8 @@
                         std::string pValue = std::to_string(value);
 #                   endif
                     Malloc((pvLength = pValue.length()) + 1);
-                    memcpy(pvString, pValue.c_str(), pvLength);
+                    if ( pvLength ) 
+                        memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
@@ -190,7 +205,8 @@
                         std::string pValue = std::to_string(value);
 #                   endif
                     Malloc((pvLength = pValue.length()) + 1);
-                    memcpy(pvString, pValue.c_str(), pvLength);
+                    if ( pvLength ) 
+                        memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
@@ -214,8 +230,10 @@
                         // limit growth of string
                         Realloc(6 * STRING_QUANT, 0, 0);
                     }
-                    pvStart =  0 ;
-                    memcpy((char *)c_str(), stlString.c_str(), (pvLength = stlString.length()));
+                    pvStart  =  0 ;
+                    pvLength =  stlString.length();
+                    if ( pvLength ) 
+                        memcpy((char *)c_str(), stlString.c_str(), pvLength);
                     
                     // VString are not 0 terminated
                     *((char *)c_str() + pvLength) =  '\0';
@@ -241,7 +259,7 @@
                     if ( pvLength ) 
                         memcpy((char *)c_str(), str, pvLength + 1);
                     else 
-                        *((char *)(c_str())) =  '\0';
+                        *(char *)(c_str()) =  '\0';
                     return *this ;
                 }
                 
@@ -256,7 +274,7 @@
                         Realloc(6 * STRING_QUANT, 0, 0);
                     }
                     pvStart                =  0 ;
-                    *((char *)c_str())     =  c ;
+                    *(char *)c_str()       =  c ;
                     *((char *)c_str() + 1) =  '\0';
                     return *this ;
                 }
@@ -280,7 +298,7 @@
                     // copy data
                     pvStart                       -= length ;
                     pvLength                      += length ;
-                    *((char *)c_str())            =  val ;
+                    *(char *)c_str()              =  val ;
                     *((char *)c_str() + pvLength) =  '\0';
                     return *this ;
                 }
@@ -318,7 +336,8 @@
                     // copy data
                     pvStart  -= length ;
                     pvLength += length ;
-                    memcpy((char *)c_str(), val, length);
+                    if ( length ) 
+                        memcpy((char *)c_str(), val, length);
                     *((char *)c_str() + pvLength) =  '\0';
                     return *this ;
                 }
@@ -550,6 +569,14 @@
                         return c_str();
                 }
                 
+                operator std::string () const
+                {
+                    if ( !pvString ) 
+                        return std::string("");
+                    else 
+                        return std::string(c_str());
+                }
+                
                 unsigned int length () const
                 {
                     return pvLength ;
@@ -590,8 +617,8 @@
                 // Realloc : realloc the string
                 //           size : new size
                 //           paramNewString : string to be copied inside 
-                //           lght : store it starting from end if not 0
-                virtual void Realloc ( int size, const char *paramNewString, int lght )
+                //           lgth : store it starting from end if not 0
+                virtual void Realloc ( int size, const char *paramNewString, int lgth )
                 {
                     
                     char    *newString ;   // new string
@@ -603,16 +630,16 @@
                         bigOffset =  300 * STRING_QUANT ;
                     }
                     
-                    // create a copy of stlString if lght > 0 copy
+                    // create a copy of stlString if lgth > 0 copy
                     // at beginning otherwise at end
                     newString =  MallocString(size + STRING_QUANT + bigOffset);
                     if ( paramNewString ) {
-                        if ( lght > 0 ) {
-                            memcpy(newString, paramNewString, lght);
+                        if ( lgth > 0 ) {
+                            memcpy(newString, paramNewString, lgth);
                             pvStart =  0 ;
-                        } else if ( lght < 0 ) {
-                            memcpy(newString + STRING_QUANT + size + bigOffset + lght, paramNewString, -lght);
-                            pvStart =  STRING_QUANT + size + bigOffset + lght ;
+                        } else if ( lgth < 0 ) {
+                            memcpy(newString + STRING_QUANT + size + bigOffset + lgth, paramNewString, -lgth);
+                            pvStart =  STRING_QUANT + size + bigOffset + lgth ;
                         }
                     }
                     

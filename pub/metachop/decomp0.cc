@@ -70,6 +70,7 @@ char *Switcher ( PTREE paramTree, char *name, int level )
     
 #line 45 "decomp0.ch"
 #line 48 "decomp0.ch"
+    
     PTREE   ident, exp1, exp2, son ;
 #line 48 "decomp0.ch"
     
@@ -1328,6 +1329,7 @@ void MakeTreeGen ( PTREE paramTree, char *name, int level )
     
 #line 222 "decomp0.ch"
 #line 225 "decomp0.ch"
+    
     int nbParam, currParam, gennode ;
     
 #line 225 "decomp0.ch"
@@ -1653,6 +1655,7 @@ void ReplaceTreeGen ( PTREE paramTree, char *name, char *mod_name, int level )
     
 #line 282 "decomp0.ch"
 #line 285 "decomp0.ch"
+    
     int nbParam, currParam, gennode ;
     
 #line 285 "decomp0.ch"
@@ -2055,6 +2058,7 @@ void AddListGen ( PTREE paramTree, char *name, char *name_mod, int level )
     
 #line 348 "decomp0.ch"
 #line 351 "decomp0.ch"
+    
     char    string [20];
     
 #line 351 "decomp0.ch"
@@ -2164,6 +2168,7 @@ void AddListGen1 ( PTREE paramTree, char *name, char *name_mod, int level )
     
 #line 371 "decomp0.ch"
 #line 374 "decomp0.ch"
+    
     char    string [5];
     
 #line 374 "decomp0.ch"
@@ -2334,6 +2339,7 @@ void SwitcherTop ( PTREE paramTree, char *name, int level )
     
 #line 400 "decomp0.ch"
 #line 403 "decomp0.ch"
+    
     PTREE   exp1 ;
 #line 403 "decomp0.ch"
     

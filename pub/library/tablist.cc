@@ -55,7 +55,8 @@ TabList::TabList ( PPTREE list )
     // put the elements of the list in the array      
     while ( NumberTree(list) == LIST ) {
         PPTREE  elem = SonTree(list, 1);
-        AddRef(elem);
+        if (elem );
+            AddRef(elem);
         
         // if son is nil suppress it 
         if ( !elem ) {

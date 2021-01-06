@@ -987,7 +987,7 @@ int RecIncChar ( char *string )
             return (1);
         }
     }
-    return (0);
+    return 0 ;
 }
 
 int IncrChar ( char *charBeg, char *charEnd )
@@ -1386,33 +1386,53 @@ void _fastcall Comp ( PPTREE tree )
             NewLine();
             break ;
         case WITH_CONTEXT_metalang : 
-            WriteString("{");
-            NewLine();
-            Tab();
-            Mark();
-            WriteString(Value(tree));
-            WriteString(" = 1 ;");
-            NewLine();
-            son = SonTree(tree, 2);
-            WRITE_START_LINE(son);
-            Comp(son);
-            WriteString(Value(tree));
-            WriteString(" = ");
-            WriteString(" _old");
-            NoSep();
-            WriteString(Value(tree));
-            WriteString(";");
-            NewLine();
-            UnMark();
-            WriteString("}");
-            NewLine();
+            {
+                
+                // added
+#               if 0
+                    output =  1 ;
+                    PTREE   dup = NoCommentCopyTree(tree);
+                    DumpTree(dup);
+                    NewLine();
+#               endif
+                WriteString("{");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString(Value(tree));
+                WriteString(" = 1 ;");
+                NewLine();
+                son =  SonTree(tree, 2);
+                WRITE_START_LINE(son);
+                Comp(son);
+                WriteString(Value(tree));
+                WriteString(" = ");
+                WriteString(" _old");
+                NoSep();
+                WriteString(Value(tree));
+                WriteString(";");
+                NewLine();
+                UnMark();
+                WriteString("}");
+                NewLine();
+            }
             break ;
         case BEGIN_metalang : 
-            son = SonTree(tree, 1);
-            while ( son ) {
-                WRITE_START_LINE(SonTree(son, 1));
-                Comp(SonTree(son, 1));
-                son =  SonTree(son, 2);
+            
+            // added
+            {
+#               if 0
+                    output =  1 ;
+                    PTREE   dup = NoCommentCopyTree(tree);
+                    DumpTree(dup);
+                    NewLine();
+#               endif
+                son =  SonTree(tree, 1);
+                while ( son ) {
+                    WRITE_START_LINE(SonTree(son, 1));
+                    Comp(SonTree(son, 1));
+                    son =  SonTree(son, 2);
+                }
             }
             break ;
         case CASE_metalang : 

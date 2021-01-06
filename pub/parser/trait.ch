@@ -76,13 +76,19 @@ PTREE   tree ;
         traitement_while(for_elem);
         goto for_continue ;
     })
-    if ( nb_addlist ) {
+    if ( nb_addlist ) { 
         position =  ();
         for ( i = 1 ; i <= nb_addlist ; i++ ) {
             sprintf(name, "%s%d", "_addlist", i);
             position *= <IDENT,MakeString(name)>;
         }
         declaration =  parse (declare $(position));
+
+        // elv 2020 a list level has been added suppress it
+        PTREE father = position ^;
+        if (father == <LIST>) father += position;
+
+        // --
         tree == <,<>,elem>;
         tree += <,<>,declaration * elem>;
     }

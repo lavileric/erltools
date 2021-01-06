@@ -84,6 +84,7 @@ PTREE switch_el ( PTREE paramTree, int last )
     
 #line 41 "decomp2.ch"
 #line 44 "decomp2.ch"
+    
     PTREE   lstat, cond, list, ident, output, list_output, temporary, tree, tree1, son ;
 #line 44 "decomp2.ch"
     
@@ -1236,6 +1237,7 @@ PTREE switch_body ( PTREE paramTree )
     
 #line 176 "decomp2.ch"
 #line 178 "decomp2.ch"
+    
     PTREE   son, temporary, current, ident, tree ;
 #line 178 "decomp2.ch"
     
@@ -1488,6 +1490,7 @@ int classify_case ( PTREE paramTree )
     
 #line 221 "decomp2.ch"
 #line 223 "decomp2.ch"
+    
     PTREE   list, cond, list1, temporary ;
 #line 223 "decomp2.ch"
     

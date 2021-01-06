@@ -246,7 +246,7 @@
                 unsigned int                        pvNbMaxGenerations ;
                 unsigned int                        pvNbMaxSteadyGenerations ;
                 unsigned int                        pvBestSlice ;
-                unsigned int                        pvMaxSecNoProgress ;
+                time_t                              pvMaxSecNoProgress ;
                 bool                                pvVibrato ;
                 
                 // Algorithm Information parameters
@@ -424,9 +424,7 @@
                 
                 // check that we did not spend to much time without advance
                 if ( pvMaxSecNoProgress > 0 ) {
-
-                   this->pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
-                    
+                    this->pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
                     typename IndividualType::TypeCost   newCost = this->pvBestCost ;
                     timeval                             currentTime ;
                     EGetUTime(currentTime);

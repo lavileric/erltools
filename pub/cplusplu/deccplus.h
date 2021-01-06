@@ -79,7 +79,7 @@
             virtual int     OpAssociativity (PTREE &) ;
             virtual int     OpPriority (PTREE &) ;
             virtual int     IsTopInstr (PTREE &) ;
-            virtual void    clean_tree (PTREE) ;
+            virtual bool    clean_tree (PTREE, bool ignoreAff = true) ;
             
             // functions from dchop1.ch
             virtual int     OpType (PTREE) ;

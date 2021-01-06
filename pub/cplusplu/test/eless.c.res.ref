@@ -21,6 +21,7 @@ extern char         *theLanguageName ;
 /* void _fastcall Comp PARAM((PTREE)); */
 void                _fastcall Comp () ;
 extern int          writeLine ;
+
 /**************************************************************
            main
    ***************************************************************/

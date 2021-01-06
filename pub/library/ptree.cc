@@ -102,6 +102,7 @@ void PTREE::EncodeClass ( const PTREE &tree, EString &string )
     
 #line 23 "ptree.ch"
 #line 26 "ptree.ch"
+    
     char    *thePt ;
     
 #line 26 "ptree.ch"
@@ -140,6 +141,7 @@ void PTREE::CoarseEncode ( PTREE tree, EString &string )
     
 #line 35 "ptree.ch"
 #line 37 "ptree.ch"
+    
     std::vector<EString>  vect ;
     
 #line 37 "ptree.ch"
@@ -180,6 +182,7 @@ void PTREE::CoarseEncode ( PTREE tree, std::vector<EString> &vect )
     
 #line 45 "ptree.ch"
 #line 47 "ptree.ch"
+    
     EString string ;
     
 #line 47 "ptree.ch"
@@ -219,14 +222,17 @@ void PTREE::InternalCoarseEncode ( PTREE tree, EString &string, std::vector<EStr
     
 #line 61 "ptree.ch"
 #line 64 "ptree.ch"
+    
     int arity ;
     
 #line 64 "ptree.ch"
 #line 65 "ptree.ch"
+    
     int nbNode ;
     
 #line 65 "ptree.ch"
 #line 66 "ptree.ch"
+    
     char    *thePt ;
     
 #line 66 "ptree.ch"
@@ -405,6 +411,7 @@ start :
                 InternalCoarseEncode(tree [0], string, vect);
 #line 123 "ptree.ch"
 #line 126 "ptree.ch"
+                
                 int indexSon ;
                 
 #line 126 "ptree.ch"
@@ -462,20 +469,24 @@ PTREE PTREE::DecodeClass ( char *&string )
     
 #line 139 "ptree.ch"
 #line 143 "ptree.ch"
+    
     PTREE   myTree ;
 #line 143 "ptree.ch"
     
 #line 143 "ptree.ch"
 #line 144 "ptree.ch"
+    
     PTREE   topTree ;
 #line 144 "ptree.ch"
     
 #line 144 "ptree.ch"
 #line 145 "ptree.ch"
+    
     int nbNode ;
     
 #line 145 "ptree.ch"
 #line 146 "ptree.ch"
+    
     int length ;
     
 #line 146 "ptree.ch"
@@ -524,6 +535,7 @@ PTREE PTREE::CoarseDecode ( std::vector<EString> &vect )
     
 #line 160 "ptree.ch"
 #line 163 "ptree.ch"
+    
     EString buffer ;
     
 #line 163 "ptree.ch"
@@ -572,6 +584,7 @@ PTREE PTREE::CoarseDecode ( char *&string )
     
 #line 174 "ptree.ch"
 #line 176 "ptree.ch"
+    
     VString buffer (string) ;
     
 #line 176 "ptree.ch"
@@ -614,6 +627,7 @@ PTREE PTREE::InternalCoarseDecode ( char *&string, EString &buffer, std::vector<
     
 #line 187 "ptree.ch"
 #line 189 "ptree.ch"
+    
     char    arity ;
     
 #line 189 "ptree.ch"
@@ -687,13 +701,13 @@ PTREE PTREE::InternalCoarseDecode ( char *&string, EString &buffer, std::vector<
                                                                                                 if ( string != internal ) {
 #line 209 "ptree.ch"
 #line 210 "ptree.ch"
-buffer.CutFront(string - internal);
+                                                                                                                            buffer.CutFront(string - internal);
 #line 210 "ptree.ch"
 #line 211 "ptree.ch"
-internal = string = (char *)(const char *)buffer ;
+                                                                                                                            internal = string = (char *)(const char *)buffer ;
 #line 211 "ptree.ch"
 #line 212 "ptree.ch"
-
+                                                                                                                            
 #line 212 "ptree.ch"
 #line 212 "ptree.ch"
                                                                                                                             }

@@ -70,6 +70,7 @@ void DecompCplus::lstat_dec ( PTREE paramTree )
     
 #line 34 "dchop0.ch"
 #line 36 "dchop0.ch"
+    
     PTREE   son ;
 #line 36 "dchop0.ch"
     
@@ -153,6 +154,7 @@ void DecompCplus::follow_if_dir ( PTREE paramTree, PTREE reference )
     
 #line 51 "dchop0.ch"
 #line 53 "dchop0.ch"
+    
     PTREE   stat1, stat2, son, my_exp ;
 #line 53 "dchop0.ch"
     
@@ -594,6 +596,7 @@ void DecompCplus::control_stat1 ( PTREE paramTree )
     
 #line 143 "dchop0.ch"
 #line 145 "dchop0.ch"
+    
     PTREE   exp1 ;
 #line 145 "dchop0.ch"
     
@@ -1509,6 +1512,7 @@ int DecompCplus::commAtBeginning ( PTREE tree )
     
 #line 218 "dchop0.ch"
 #line 221 "dchop0.ch"
+    
     PTREE   father ;
 #line 221 "dchop0.ch"
     
@@ -1605,6 +1609,7 @@ int DecompCplus::comm ( PTREE paramTree, int type )
     
 #line 238 "dchop0.ch"
 #line 240 "dchop0.ch"
+    
     char    *comment ;
     
 #line 240 "dchop0.ch"
@@ -1947,2410 +1952,2411 @@ DecompCplus::DecompCplus ()
 }
 #line 323 "dchop0.ch"
 
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
 
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
 int DecompCplus::OpAssociativity ( PTREE &tree )
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
 {
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
     register PPTREE _inter ;
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
 
-#line 327 "dchop0.ch"
-#line 327 "dchop0.ch"
+#line 325 "dchop0.ch"
+#line 325 "dchop0.ch"
     int _nextVal ;
     
+#line 325 "dchop0.ch"
 #line 327 "dchop0.ch"
-#line 329 "dchop0.ch"
     switch ( NumberTree(tree) ) {
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::CAST : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case139 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case140 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case140 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case141 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::MUL_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case141 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case142 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::DIV_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case142 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case143 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::REM_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case143 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case144 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::MIN_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case144 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case145 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::PLU_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case145 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case146 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::LSH_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case146 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case147 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::RSH_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case147 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case148 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::AND_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case148 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case149 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::OR_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case149 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case150 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::XOR_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case150 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case151 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::COND_AFF : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case151 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case152 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::NEG : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case152 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case153 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::POS : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case153 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case154 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::LNEG : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case154 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case155 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::NOT : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case155 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case156 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::POINT : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case156 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case157 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::ARROW_MEMB : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case157 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case158 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::DOT_MEMB : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case158 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case159 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::ADDR : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case159 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case160 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::EXP : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case160 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case161 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::AINCR : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case161 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case162 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::ADECR : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case162 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case163 ;
             
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         case cplus::BINCR : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
         _Case163 : 
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             ;
-#line 329 "dchop0.ch"
-#line 329 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 327 "dchop0.ch"
             goto _Case164 ;
             
-#line 329 "dchop0.ch"
-#line 355 "dchop0.ch"
+#line 327 "dchop0.ch"
+#line 353 "dchop0.ch"
         case cplus::BDECR : 
-#line 355 "dchop0.ch"
-#line 355 "dchop0.ch"
+#line 353 "dchop0.ch"
+#line 353 "dchop0.ch"
         _Case164 : 
-#line 355 "dchop0.ch"
-#line 355 "dchop0.ch"
+#line 353 "dchop0.ch"
+#line 353 "dchop0.ch"
             ;
-#line 355 "dchop0.ch"
-#line 355 "dchop0.ch"
+#line 353 "dchop0.ch"
+#line 353 "dchop0.ch"
             return RIGHT_TO_LEFT ;
             
-#line 355 "dchop0.ch"
-#line 355 "dchop0.ch"
+#line 353 "dchop0.ch"
+#line 353 "dchop0.ch"
             goto _Case165 ;
             
-#line 355 "dchop0.ch"
-#line 356 "dchop0.ch"
+#line 353 "dchop0.ch"
+#line 354 "dchop0.ch"
         default : 
-#line 356 "dchop0.ch"
-#line 356 "dchop0.ch"
+#line 354 "dchop0.ch"
+#line 354 "dchop0.ch"
         _Case165 : 
-#line 356 "dchop0.ch"
-#line 356 "dchop0.ch"
+#line 354 "dchop0.ch"
+#line 354 "dchop0.ch"
             ;
-#line 356 "dchop0.ch"
-#line 356 "dchop0.ch"
+#line 354 "dchop0.ch"
+#line 354 "dchop0.ch"
             return LEFT_TO_RIGHT ;
             
-#line 356 "dchop0.ch"
+#line 354 "dchop0.ch"
     }
+#line 354 "dchop0.ch"
+    
+#line 354 "dchop0.ch"
 #line 356 "dchop0.ch"
     
 #line 356 "dchop0.ch"
-#line 358 "dchop0.ch"
-    
-#line 358 "dchop0.ch"
-#line 358 "dchop0.ch"
+#line 356 "dchop0.ch"
 }
+#line 356 "dchop0.ch"
+
 #line 358 "dchop0.ch"
 
-#line 360 "dchop0.ch"
-
-#line 360 "dchop0.ch"
+#line 358 "dchop0.ch"
 bool IsAff ( PTREE &tree )
-#line 360 "dchop0.ch"
+#line 358 "dchop0.ch"
 {
-#line 360 "dchop0.ch"
+#line 358 "dchop0.ch"
     register PPTREE _inter ;
-#line 360 "dchop0.ch"
+#line 358 "dchop0.ch"
 
-#line 360 "dchop0.ch"
-#line 360 "dchop0.ch"
+#line 358 "dchop0.ch"
+#line 358 "dchop0.ch"
     int _nextVal ;
     
+#line 358 "dchop0.ch"
 #line 360 "dchop0.ch"
-#line 362 "dchop0.ch"
     switch ( NumberTree(tree) ) {
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case178 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case179 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::MUL_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case179 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case180 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::DIV_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case180 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case181 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::REM_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case181 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case182 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::MIN_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case182 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case183 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::PLU_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case183 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case184 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::LSH_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case184 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case185 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::RSH_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case185 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case186 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::AND_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case186 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case187 ;
             
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         case cplus::OR_AFF : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
         _Case187 : 
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             ;
-#line 362 "dchop0.ch"
-#line 362 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 360 "dchop0.ch"
             goto _Case188 ;
             
-#line 362 "dchop0.ch"
-#line 373 "dchop0.ch"
+#line 360 "dchop0.ch"
+#line 371 "dchop0.ch"
         case cplus::XOR_AFF : 
-#line 373 "dchop0.ch"
-#line 373 "dchop0.ch"
+#line 371 "dchop0.ch"
+#line 371 "dchop0.ch"
         _Case188 : 
-#line 373 "dchop0.ch"
-#line 373 "dchop0.ch"
+#line 371 "dchop0.ch"
+#line 371 "dchop0.ch"
             ;
-#line 373 "dchop0.ch"
-#line 373 "dchop0.ch"
+#line 371 "dchop0.ch"
+#line 371 "dchop0.ch"
             return true ;
             
-#line 373 "dchop0.ch"
-#line 373 "dchop0.ch"
+#line 371 "dchop0.ch"
+#line 371 "dchop0.ch"
             goto _Case189 ;
             
-#line 373 "dchop0.ch"
-#line 374 "dchop0.ch"
+#line 371 "dchop0.ch"
+#line 372 "dchop0.ch"
         default : 
-#line 374 "dchop0.ch"
-#line 374 "dchop0.ch"
+#line 372 "dchop0.ch"
+#line 372 "dchop0.ch"
         _Case189 : 
-#line 374 "dchop0.ch"
-#line 374 "dchop0.ch"
+#line 372 "dchop0.ch"
+#line 372 "dchop0.ch"
             ;
-#line 374 "dchop0.ch"
-#line 374 "dchop0.ch"
+#line 372 "dchop0.ch"
+#line 372 "dchop0.ch"
             return false ;
             
-#line 374 "dchop0.ch"
+#line 372 "dchop0.ch"
     }
+#line 372 "dchop0.ch"
+    
+#line 372 "dchop0.ch"
 #line 374 "dchop0.ch"
     
 #line 374 "dchop0.ch"
-#line 376 "dchop0.ch"
-    
-#line 376 "dchop0.ch"
-#line 376 "dchop0.ch"
+#line 374 "dchop0.ch"
 }
+#line 374 "dchop0.ch"
+
 #line 376 "dchop0.ch"
 
-#line 378 "dchop0.ch"
-
-#line 378 "dchop0.ch"
+#line 376 "dchop0.ch"
 int DecompCplus::OpPriority ( PTREE &tree )
-#line 378 "dchop0.ch"
+#line 376 "dchop0.ch"
 {
-#line 378 "dchop0.ch"
+#line 376 "dchop0.ch"
     register PPTREE _inter ;
-#line 378 "dchop0.ch"
+#line 376 "dchop0.ch"
 
-#line 378 "dchop0.ch"
-#line 378 "dchop0.ch"
+#line 376 "dchop0.ch"
+#line 376 "dchop0.ch"
     int _nextVal ;
     
+#line 376 "dchop0.ch"
+#line 378 "dchop0.ch"
+    
+    PTREE   son ;
+#line 378 "dchop0.ch"
+    
 #line 378 "dchop0.ch"
 #line 380 "dchop0.ch"
-    PTREE   son ;
-#line 380 "dchop0.ch"
-    
-#line 380 "dchop0.ch"
-#line 382 "dchop0.ch"
     switch ( NumberTree(tree) ) {
-#line 382 "dchop0.ch"
-#line 382 "dchop0.ch"
+#line 380 "dchop0.ch"
+#line 380 "dchop0.ch"
         case cplus::EXP_SEQ : 
-#line 382 "dchop0.ch"
-#line 382 "dchop0.ch"
+#line 380 "dchop0.ch"
+#line 380 "dchop0.ch"
         _Case260 : 
-#line 382 "dchop0.ch"
-#line 382 "dchop0.ch"
+#line 380 "dchop0.ch"
+#line 380 "dchop0.ch"
             ;
-#line 382 "dchop0.ch"
-#line 382 "dchop0.ch"
+#line 380 "dchop0.ch"
+#line 380 "dchop0.ch"
             goto _Case261 ;
             
-#line 382 "dchop0.ch"
-#line 385 "dchop0.ch"
+#line 380 "dchop0.ch"
+#line 383 "dchop0.ch"
         case cplus::INITIALIZER : 
-#line 385 "dchop0.ch"
-#line 385 "dchop0.ch"
+#line 383 "dchop0.ch"
+#line 383 "dchop0.ch"
         _Case261 : 
-#line 385 "dchop0.ch"
-#line 385 "dchop0.ch"
+#line 383 "dchop0.ch"
+#line 383 "dchop0.ch"
             ;
-#line 385 "dchop0.ch"
-#line 385 "dchop0.ch"
+#line 383 "dchop0.ch"
+#line 383 "dchop0.ch"
             return 0 ;
             
-#line 385 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 383 "dchop0.ch"
+#line 384 "dchop0.ch"
             break ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case262 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case263 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::MUL_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case263 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case264 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::DIV_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case264 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case265 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::REM_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case265 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case266 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::MIN_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case266 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case267 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::PLU_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case267 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case268 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::LSH_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case268 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case269 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::RSH_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case269 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case270 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::AND_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case270 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case271 ;
             
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         case cplus::OR_AFF : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
         _Case271 : 
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             ;
-#line 386 "dchop0.ch"
-#line 386 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 384 "dchop0.ch"
             goto _Case272 ;
             
-#line 386 "dchop0.ch"
-#line 398 "dchop0.ch"
+#line 384 "dchop0.ch"
+#line 396 "dchop0.ch"
         case cplus::XOR_AFF : 
-#line 398 "dchop0.ch"
-#line 398 "dchop0.ch"
+#line 396 "dchop0.ch"
+#line 396 "dchop0.ch"
         _Case272 : 
-#line 398 "dchop0.ch"
-#line 398 "dchop0.ch"
+#line 396 "dchop0.ch"
+#line 396 "dchop0.ch"
             ;
-#line 398 "dchop0.ch"
-#line 398 "dchop0.ch"
+#line 396 "dchop0.ch"
+#line 396 "dchop0.ch"
             return 1 ;
             
-#line 398 "dchop0.ch"
-#line 399 "dchop0.ch"
+#line 396 "dchop0.ch"
+#line 397 "dchop0.ch"
             break ;
             
+#line 397 "dchop0.ch"
 #line 399 "dchop0.ch"
-#line 401 "dchop0.ch"
         case cplus::COND_AFF : 
-#line 401 "dchop0.ch"
-#line 401 "dchop0.ch"
+#line 399 "dchop0.ch"
+#line 399 "dchop0.ch"
         _Case273 : 
-#line 401 "dchop0.ch"
-#line 401 "dchop0.ch"
+#line 399 "dchop0.ch"
+#line 399 "dchop0.ch"
             ;
-#line 401 "dchop0.ch"
-#line 401 "dchop0.ch"
+#line 399 "dchop0.ch"
+#line 399 "dchop0.ch"
             return 2 ;
             
-#line 401 "dchop0.ch"
-#line 402 "dchop0.ch"
+#line 399 "dchop0.ch"
+#line 400 "dchop0.ch"
             break ;
             
+#line 400 "dchop0.ch"
 #line 402 "dchop0.ch"
-#line 404 "dchop0.ch"
         case cplus::OR : 
-#line 404 "dchop0.ch"
-#line 404 "dchop0.ch"
+#line 402 "dchop0.ch"
+#line 402 "dchop0.ch"
         _Case274 : 
-#line 404 "dchop0.ch"
-#line 404 "dchop0.ch"
+#line 402 "dchop0.ch"
+#line 402 "dchop0.ch"
             ;
-#line 404 "dchop0.ch"
-#line 404 "dchop0.ch"
+#line 402 "dchop0.ch"
+#line 402 "dchop0.ch"
             return 3 ;
             
-#line 404 "dchop0.ch"
-#line 405 "dchop0.ch"
+#line 402 "dchop0.ch"
+#line 403 "dchop0.ch"
             break ;
             
+#line 403 "dchop0.ch"
 #line 405 "dchop0.ch"
-#line 407 "dchop0.ch"
         case cplus::AND : 
-#line 407 "dchop0.ch"
-#line 407 "dchop0.ch"
+#line 405 "dchop0.ch"
+#line 405 "dchop0.ch"
         _Case275 : 
-#line 407 "dchop0.ch"
-#line 407 "dchop0.ch"
+#line 405 "dchop0.ch"
+#line 405 "dchop0.ch"
             ;
-#line 407 "dchop0.ch"
-#line 407 "dchop0.ch"
+#line 405 "dchop0.ch"
+#line 405 "dchop0.ch"
             return 4 ;
             
-#line 407 "dchop0.ch"
-#line 408 "dchop0.ch"
+#line 405 "dchop0.ch"
+#line 406 "dchop0.ch"
             break ;
             
+#line 406 "dchop0.ch"
 #line 408 "dchop0.ch"
-#line 410 "dchop0.ch"
         case cplus::LOR : 
-#line 410 "dchop0.ch"
-#line 410 "dchop0.ch"
+#line 408 "dchop0.ch"
+#line 408 "dchop0.ch"
         _Case276 : 
-#line 410 "dchop0.ch"
-#line 410 "dchop0.ch"
+#line 408 "dchop0.ch"
+#line 408 "dchop0.ch"
             ;
-#line 410 "dchop0.ch"
-#line 410 "dchop0.ch"
+#line 408 "dchop0.ch"
+#line 408 "dchop0.ch"
             return 5 ;
             
-#line 410 "dchop0.ch"
-#line 411 "dchop0.ch"
+#line 408 "dchop0.ch"
+#line 409 "dchop0.ch"
             break ;
             
+#line 409 "dchop0.ch"
 #line 411 "dchop0.ch"
-#line 413 "dchop0.ch"
         case cplus::LXOR : 
-#line 413 "dchop0.ch"
-#line 413 "dchop0.ch"
+#line 411 "dchop0.ch"
+#line 411 "dchop0.ch"
         _Case277 : 
-#line 413 "dchop0.ch"
-#line 413 "dchop0.ch"
+#line 411 "dchop0.ch"
+#line 411 "dchop0.ch"
             ;
-#line 413 "dchop0.ch"
-#line 413 "dchop0.ch"
+#line 411 "dchop0.ch"
+#line 411 "dchop0.ch"
             return 6 ;
             
-#line 413 "dchop0.ch"
-#line 414 "dchop0.ch"
+#line 411 "dchop0.ch"
+#line 412 "dchop0.ch"
             break ;
             
+#line 412 "dchop0.ch"
 #line 414 "dchop0.ch"
-#line 416 "dchop0.ch"
         case cplus::LAND : 
-#line 416 "dchop0.ch"
-#line 416 "dchop0.ch"
+#line 414 "dchop0.ch"
+#line 414 "dchop0.ch"
         _Case278 : 
-#line 416 "dchop0.ch"
-#line 416 "dchop0.ch"
+#line 414 "dchop0.ch"
+#line 414 "dchop0.ch"
             ;
-#line 416 "dchop0.ch"
-#line 416 "dchop0.ch"
+#line 414 "dchop0.ch"
+#line 414 "dchop0.ch"
             return 7 ;
             
-#line 416 "dchop0.ch"
-#line 417 "dchop0.ch"
+#line 414 "dchop0.ch"
+#line 415 "dchop0.ch"
             break ;
             
-#line 417 "dchop0.ch"
-#line 417 "dchop0.ch"
+#line 415 "dchop0.ch"
+#line 415 "dchop0.ch"
         case cplus::EQU : 
-#line 417 "dchop0.ch"
-#line 417 "dchop0.ch"
+#line 415 "dchop0.ch"
+#line 415 "dchop0.ch"
         _Case279 : 
-#line 417 "dchop0.ch"
-#line 417 "dchop0.ch"
+#line 415 "dchop0.ch"
+#line 415 "dchop0.ch"
             ;
-#line 417 "dchop0.ch"
-#line 417 "dchop0.ch"
+#line 415 "dchop0.ch"
+#line 415 "dchop0.ch"
             goto _Case280 ;
             
-#line 417 "dchop0.ch"
-#line 420 "dchop0.ch"
+#line 415 "dchop0.ch"
+#line 418 "dchop0.ch"
         case cplus::NEQU : 
-#line 420 "dchop0.ch"
-#line 420 "dchop0.ch"
+#line 418 "dchop0.ch"
+#line 418 "dchop0.ch"
         _Case280 : 
-#line 420 "dchop0.ch"
-#line 420 "dchop0.ch"
+#line 418 "dchop0.ch"
+#line 418 "dchop0.ch"
             ;
-#line 420 "dchop0.ch"
-#line 420 "dchop0.ch"
+#line 418 "dchop0.ch"
+#line 418 "dchop0.ch"
             return 8 ;
             
-#line 420 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 418 "dchop0.ch"
+#line 419 "dchop0.ch"
             break ;
             
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         case cplus::LEQU : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         _Case281 : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             ;
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             goto _Case282 ;
             
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         case cplus::GEQU : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         _Case282 : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             ;
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             goto _Case283 ;
             
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         case cplus::GT : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
         _Case283 : 
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             ;
-#line 421 "dchop0.ch"
-#line 421 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 419 "dchop0.ch"
             goto _Case284 ;
             
-#line 421 "dchop0.ch"
-#line 426 "dchop0.ch"
+#line 419 "dchop0.ch"
+#line 424 "dchop0.ch"
         case cplus::LT : 
-#line 426 "dchop0.ch"
-#line 426 "dchop0.ch"
+#line 424 "dchop0.ch"
+#line 424 "dchop0.ch"
         _Case284 : 
-#line 426 "dchop0.ch"
-#line 426 "dchop0.ch"
+#line 424 "dchop0.ch"
+#line 424 "dchop0.ch"
             ;
-#line 426 "dchop0.ch"
-#line 426 "dchop0.ch"
+#line 424 "dchop0.ch"
+#line 424 "dchop0.ch"
             return 9 ;
             
-#line 426 "dchop0.ch"
-#line 427 "dchop0.ch"
+#line 424 "dchop0.ch"
+#line 425 "dchop0.ch"
             break ;
             
-#line 427 "dchop0.ch"
-#line 427 "dchop0.ch"
+#line 425 "dchop0.ch"
+#line 425 "dchop0.ch"
         case cplus::LSHI : 
-#line 427 "dchop0.ch"
-#line 427 "dchop0.ch"
+#line 425 "dchop0.ch"
+#line 425 "dchop0.ch"
         _Case285 : 
-#line 427 "dchop0.ch"
-#line 427 "dchop0.ch"
+#line 425 "dchop0.ch"
+#line 425 "dchop0.ch"
             ;
-#line 427 "dchop0.ch"
-#line 427 "dchop0.ch"
+#line 425 "dchop0.ch"
+#line 425 "dchop0.ch"
             goto _Case286 ;
             
-#line 427 "dchop0.ch"
-#line 430 "dchop0.ch"
+#line 425 "dchop0.ch"
+#line 428 "dchop0.ch"
         case cplus::RSHI : 
-#line 430 "dchop0.ch"
-#line 430 "dchop0.ch"
+#line 428 "dchop0.ch"
+#line 428 "dchop0.ch"
         _Case286 : 
-#line 430 "dchop0.ch"
-#line 430 "dchop0.ch"
+#line 428 "dchop0.ch"
+#line 428 "dchop0.ch"
             ;
-#line 430 "dchop0.ch"
-#line 430 "dchop0.ch"
+#line 428 "dchop0.ch"
+#line 428 "dchop0.ch"
             return 10 ;
             
-#line 430 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 428 "dchop0.ch"
+#line 429 "dchop0.ch"
             break ;
             
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
         case cplus::MINUS : 
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
         _Case287 : 
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
             ;
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
             goto _Case288 ;
             
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
         case cplus::PLUS : 
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
         _Case288 : 
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
             ;
-#line 431 "dchop0.ch"
-#line 431 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 429 "dchop0.ch"
             goto _Case289 ;
             
-#line 431 "dchop0.ch"
-#line 438 "dchop0.ch"
+#line 429 "dchop0.ch"
+#line 436 "dchop0.ch"
         case cplus::TYP_AFF : 
-#line 438 "dchop0.ch"
-#line 438 "dchop0.ch"
+#line 436 "dchop0.ch"
+#line 436 "dchop0.ch"
         _Case289 : 
-#line 438 "dchop0.ch"
-#line 438 "dchop0.ch"
+#line 436 "dchop0.ch"
+#line 436 "dchop0.ch"
             ;
-#line 438 "dchop0.ch"
-#line 438 "dchop0.ch"
+#line 436 "dchop0.ch"
+#line 436 "dchop0.ch"
             return 11 ;
             
-#line 438 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 436 "dchop0.ch"
+#line 437 "dchop0.ch"
             break ;
             
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
         case cplus::MUL : 
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
         _Case290 : 
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
             ;
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
             goto _Case291 ;
             
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
         case cplus::DIV : 
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
         _Case291 : 
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
             ;
-#line 439 "dchop0.ch"
-#line 439 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 437 "dchop0.ch"
             goto _Case292 ;
             
-#line 439 "dchop0.ch"
-#line 443 "dchop0.ch"
+#line 437 "dchop0.ch"
+#line 441 "dchop0.ch"
         case cplus::REM : 
-#line 443 "dchop0.ch"
-#line 443 "dchop0.ch"
+#line 441 "dchop0.ch"
+#line 441 "dchop0.ch"
         _Case292 : 
-#line 443 "dchop0.ch"
-#line 443 "dchop0.ch"
+#line 441 "dchop0.ch"
+#line 441 "dchop0.ch"
             ;
-#line 443 "dchop0.ch"
-#line 443 "dchop0.ch"
+#line 441 "dchop0.ch"
+#line 441 "dchop0.ch"
             return 12 ;
             
-#line 443 "dchop0.ch"
-#line 444 "dchop0.ch"
+#line 441 "dchop0.ch"
+#line 442 "dchop0.ch"
             break ;
             
-#line 444 "dchop0.ch"
-#line 444 "dchop0.ch"
+#line 442 "dchop0.ch"
+#line 442 "dchop0.ch"
         case cplus::DOT_MEMB : 
-#line 444 "dchop0.ch"
-#line 444 "dchop0.ch"
+#line 442 "dchop0.ch"
+#line 442 "dchop0.ch"
         _Case293 : 
-#line 444 "dchop0.ch"
-#line 444 "dchop0.ch"
+#line 442 "dchop0.ch"
+#line 442 "dchop0.ch"
             ;
-#line 444 "dchop0.ch"
-#line 444 "dchop0.ch"
+#line 442 "dchop0.ch"
+#line 442 "dchop0.ch"
             goto _Case294 ;
             
-#line 444 "dchop0.ch"
-#line 447 "dchop0.ch"
+#line 442 "dchop0.ch"
+#line 445 "dchop0.ch"
         case cplus::ARROW_MEMB : 
-#line 447 "dchop0.ch"
-#line 447 "dchop0.ch"
+#line 445 "dchop0.ch"
+#line 445 "dchop0.ch"
         _Case294 : 
-#line 447 "dchop0.ch"
-#line 447 "dchop0.ch"
+#line 445 "dchop0.ch"
+#line 445 "dchop0.ch"
             ;
-#line 447 "dchop0.ch"
-#line 447 "dchop0.ch"
+#line 445 "dchop0.ch"
+#line 445 "dchop0.ch"
             return 13 ;
             
-#line 447 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 445 "dchop0.ch"
+#line 446 "dchop0.ch"
             break ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::CAST : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case295 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case296 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::NEG : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case296 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case297 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::POS : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case297 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case298 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::LNEG : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case298 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case299 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::NOT : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case299 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case300 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::POINT : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case300 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case301 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::ADDR : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case301 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case302 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::AINCR : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case302 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case303 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::ADECR : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case303 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case304 ;
             
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         case cplus::BINCR : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
         _Case304 : 
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             ;
-#line 448 "dchop0.ch"
-#line 448 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 446 "dchop0.ch"
             goto _Case305 ;
             
-#line 448 "dchop0.ch"
-#line 460 "dchop0.ch"
+#line 446 "dchop0.ch"
+#line 458 "dchop0.ch"
         case cplus::BDECR : 
-#line 460 "dchop0.ch"
-#line 460 "dchop0.ch"
+#line 458 "dchop0.ch"
+#line 458 "dchop0.ch"
         _Case305 : 
-#line 460 "dchop0.ch"
-#line 460 "dchop0.ch"
+#line 458 "dchop0.ch"
+#line 458 "dchop0.ch"
             ;
-#line 460 "dchop0.ch"
-#line 460 "dchop0.ch"
+#line 458 "dchop0.ch"
+#line 458 "dchop0.ch"
             return 14 ;
             
-#line 460 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 458 "dchop0.ch"
+#line 459 "dchop0.ch"
             break ;
             
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
         case cplus::EXP_ARRAY : 
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
         _Case306 : 
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
             ;
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
             goto _Case307 ;
             
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
         case cplus::REF : 
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
         _Case307 : 
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
             ;
-#line 461 "dchop0.ch"
-#line 461 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 459 "dchop0.ch"
             goto _Case308 ;
             
-#line 461 "dchop0.ch"
-#line 465 "dchop0.ch"
+#line 459 "dchop0.ch"
+#line 463 "dchop0.ch"
         case cplus::ARROW : 
-#line 465 "dchop0.ch"
-#line 465 "dchop0.ch"
+#line 463 "dchop0.ch"
+#line 463 "dchop0.ch"
         _Case308 : 
-#line 465 "dchop0.ch"
-#line 465 "dchop0.ch"
+#line 463 "dchop0.ch"
+#line 463 "dchop0.ch"
             ;
-#line 465 "dchop0.ch"
-#line 465 "dchop0.ch"
+#line 463 "dchop0.ch"
+#line 463 "dchop0.ch"
             return 15 ;
             
-#line 465 "dchop0.ch"
-#line 466 "dchop0.ch"
+#line 463 "dchop0.ch"
+#line 464 "dchop0.ch"
             break ;
             
+#line 464 "dchop0.ch"
 #line 466 "dchop0.ch"
-#line 468 "dchop0.ch"
         case cplus::EXP : 
-#line 468 "dchop0.ch"
-#line 468 "dchop0.ch"
+#line 466 "dchop0.ch"
+#line 466 "dchop0.ch"
         _Case309 : 
-#line 468 "dchop0.ch"
-#line 468 "dchop0.ch"
+#line 466 "dchop0.ch"
+#line 466 "dchop0.ch"
             ;
-#line 468 "dchop0.ch"
-#line 468 "dchop0.ch"
+#line 466 "dchop0.ch"
+#line 466 "dchop0.ch"
             return 16 ;
             
-#line 468 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 466 "dchop0.ch"
+#line 467 "dchop0.ch"
             break ;
             
-#line 469 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 467 "dchop0.ch"
         case cplus::EXP_BRA : 
-#line 469 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 467 "dchop0.ch"
             (son=SonTree(tree, 1));
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
             
-#line 469 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 467 "dchop0.ch"
         _Case310 : 
-#line 469 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 467 "dchop0.ch"
             ;
-#line 469 "dchop0.ch"
-#line 469 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 467 "dchop0.ch"
             goto _Case311 ;
             
-#line 469 "dchop0.ch"
-#line 472 "dchop0.ch"
+#line 467 "dchop0.ch"
+#line 470 "dchop0.ch"
         case cplus::EXP_LIST : 
-#line 472 "dchop0.ch"
-#line 472 "dchop0.ch"
+#line 470 "dchop0.ch"
+#line 470 "dchop0.ch"
             (son=SonTree(tree, 1));
-#line 472 "dchop0.ch"
+#line 470 "dchop0.ch"
             
-#line 472 "dchop0.ch"
-#line 472 "dchop0.ch"
+#line 470 "dchop0.ch"
+#line 470 "dchop0.ch"
         _Case311 : 
-#line 472 "dchop0.ch"
-#line 472 "dchop0.ch"
+#line 470 "dchop0.ch"
+#line 470 "dchop0.ch"
             ;
-#line 472 "dchop0.ch"
-#line 472 "dchop0.ch"
+#line 470 "dchop0.ch"
+#line 470 "dchop0.ch"
             if ( BrainyValue(son) && (strcmp(BrainyValue(son), "WriteString") || strcmp(BrainyValue(son), "PrintString")) ) 
-#line 472 "dchop0.ch"
-#line 473 "dchop0.ch"
+#line 470 "dchop0.ch"
+#line 471 "dchop0.ch"
                 return 17 ;
             
-#line 473 "dchop0.ch"
+#line 471 "dchop0.ch"
             else 
+#line 471 "dchop0.ch"
 #line 473 "dchop0.ch"
-#line 475 "dchop0.ch"
                 return -1 ;
                 
-#line 475 "dchop0.ch"
+#line 473 "dchop0.ch"
             
-#line 475 "dchop0.ch"
-#line 476 "dchop0.ch"
+#line 473 "dchop0.ch"
+#line 474 "dchop0.ch"
             break ;
             
-#line 476 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 474 "dchop0.ch"
+#line 475 "dchop0.ch"
         case cplus::VA_ARG : 
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
         _Case312 : 
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
             ;
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
             return -1 ;
             
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
             goto _Case313 ;
             
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
         case cplus::BASE_LIST : 
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
         _Case313 : 
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
             ;
-#line 477 "dchop0.ch"
-#line 477 "dchop0.ch"
+#line 475 "dchop0.ch"
+#line 475 "dchop0.ch"
             goto _Case314 ;
             
+#line 475 "dchop0.ch"
 #line 477 "dchop0.ch"
-#line 479 "dchop0.ch"
         case cplus::NEW : 
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
         _Case314 : 
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
             ;
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
             return 12 ;
             
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
             goto _Case315 ;
             
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
         case cplus::ENUM : 
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
         _Case315 : 
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
             ;
-#line 479 "dchop0.ch"
-#line 479 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 477 "dchop0.ch"
             goto _Case316 ;
             
-#line 479 "dchop0.ch"
-#line 482 "dchop0.ch"
+#line 477 "dchop0.ch"
+#line 480 "dchop0.ch"
         case cplus::TYP_LIST : 
-#line 482 "dchop0.ch"
-#line 482 "dchop0.ch"
+#line 480 "dchop0.ch"
+#line 480 "dchop0.ch"
         _Case316 : 
-#line 482 "dchop0.ch"
-#line 482 "dchop0.ch"
+#line 480 "dchop0.ch"
+#line 480 "dchop0.ch"
             ;
-#line 482 "dchop0.ch"
-#line 482 "dchop0.ch"
+#line 480 "dchop0.ch"
+#line 480 "dchop0.ch"
             return 17 ;
             
-#line 482 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 480 "dchop0.ch"
+#line 481 "dchop0.ch"
             break ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::ILONGLONG : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case317 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case318 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::IUN : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case318 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case319 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::IUNLONG : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case319 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case320 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::IUNLONGLONG : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case320 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case321 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::ILONG : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case321 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case322 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::LONG : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case322 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case323 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::FLOAT : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case323 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case324 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::INTEGER : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case324 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case325 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::HEXA : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case325 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case326 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::OCTAL : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case326 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case327 ;
             
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         case cplus::STRING : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
         _Case327 : 
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             ;
-#line 483 "dchop0.ch"
-#line 483 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 481 "dchop0.ch"
             goto _Case328 ;
             
-#line 483 "dchop0.ch"
-#line 495 "dchop0.ch"
+#line 481 "dchop0.ch"
+#line 493 "dchop0.ch"
         case cplus::CHAR : 
-#line 495 "dchop0.ch"
-#line 495 "dchop0.ch"
+#line 493 "dchop0.ch"
+#line 493 "dchop0.ch"
         _Case328 : 
-#line 495 "dchop0.ch"
-#line 495 "dchop0.ch"
+#line 493 "dchop0.ch"
+#line 493 "dchop0.ch"
             ;
-#line 495 "dchop0.ch"
-#line 495 "dchop0.ch"
+#line 493 "dchop0.ch"
+#line 493 "dchop0.ch"
             return 18 ;
             
-#line 495 "dchop0.ch"
-#line 495 "dchop0.ch"
+#line 493 "dchop0.ch"
+#line 493 "dchop0.ch"
             goto _Case329 ;
             
-#line 495 "dchop0.ch"
-#line 496 "dchop0.ch"
+#line 493 "dchop0.ch"
+#line 494 "dchop0.ch"
         default : 
-#line 496 "dchop0.ch"
-#line 496 "dchop0.ch"
+#line 494 "dchop0.ch"
+#line 494 "dchop0.ch"
         _Case329 : 
-#line 496 "dchop0.ch"
-#line 496 "dchop0.ch"
+#line 494 "dchop0.ch"
+#line 494 "dchop0.ch"
             ;
-#line 496 "dchop0.ch"
-#line 496 "dchop0.ch"
+#line 494 "dchop0.ch"
+#line 494 "dchop0.ch"
             return -1 ;
             
-#line 496 "dchop0.ch"
+#line 494 "dchop0.ch"
     }
-#line 496 "dchop0.ch"
+#line 494 "dchop0.ch"
     
+#line 494 "dchop0.ch"
 #line 496 "dchop0.ch"
-#line 498 "dchop0.ch"
     return -1 ;
     
-#line 498 "dchop0.ch"
-#line 499 "dchop0.ch"
+#line 496 "dchop0.ch"
+#line 497 "dchop0.ch"
     
-#line 499 "dchop0.ch"
-#line 499 "dchop0.ch"
+#line 497 "dchop0.ch"
+#line 497 "dchop0.ch"
 }
+#line 497 "dchop0.ch"
+
 #line 499 "dchop0.ch"
 
-#line 501 "dchop0.ch"
-
-#line 501 "dchop0.ch"
+#line 499 "dchop0.ch"
 int DecompCplus::IsTopInstr ( PTREE &tree )
-#line 501 "dchop0.ch"
+#line 499 "dchop0.ch"
 {
-#line 501 "dchop0.ch"
+#line 499 "dchop0.ch"
     register PPTREE _inter ;
-#line 501 "dchop0.ch"
+#line 499 "dchop0.ch"
 
-#line 501 "dchop0.ch"
-#line 501 "dchop0.ch"
+#line 499 "dchop0.ch"
+#line 499 "dchop0.ch"
     int _nextVal ;
     
+#line 499 "dchop0.ch"
 #line 501 "dchop0.ch"
-#line 503 "dchop0.ch"
     switch ( NumberTree(tree) ) {
-#line 503 "dchop0.ch"
-#line 504 "dchop0.ch"
+#line 501 "dchop0.ch"
+#line 502 "dchop0.ch"
         case cplus::DECLARATION : 
-#line 504 "dchop0.ch"
-#line 504 "dchop0.ch"
+#line 502 "dchop0.ch"
+#line 502 "dchop0.ch"
         _Case367 : 
-#line 504 "dchop0.ch"
-#line 504 "dchop0.ch"
+#line 502 "dchop0.ch"
+#line 502 "dchop0.ch"
             ;
-#line 504 "dchop0.ch"
-#line 504 "dchop0.ch"
+#line 502 "dchop0.ch"
+#line 502 "dchop0.ch"
             return 100 ;
             
-#line 504 "dchop0.ch"
-#line 504 "dchop0.ch"
+#line 502 "dchop0.ch"
+#line 502 "dchop0.ch"
             goto _Case368 ;
             
-#line 504 "dchop0.ch"
-#line 505 "dchop0.ch"
+#line 502 "dchop0.ch"
+#line 503 "dchop0.ch"
         case cplus::TYPEDEF : 
-#line 505 "dchop0.ch"
-#line 505 "dchop0.ch"
+#line 503 "dchop0.ch"
+#line 503 "dchop0.ch"
         _Case368 : 
-#line 505 "dchop0.ch"
-#line 505 "dchop0.ch"
+#line 503 "dchop0.ch"
+#line 503 "dchop0.ch"
             ;
-#line 505 "dchop0.ch"
-#line 505 "dchop0.ch"
+#line 503 "dchop0.ch"
+#line 503 "dchop0.ch"
             return 101 ;
             
-#line 505 "dchop0.ch"
-#line 505 "dchop0.ch"
+#line 503 "dchop0.ch"
+#line 503 "dchop0.ch"
             goto _Case369 ;
             
-#line 505 "dchop0.ch"
-#line 506 "dchop0.ch"
+#line 503 "dchop0.ch"
+#line 504 "dchop0.ch"
         case cplus::IF : 
-#line 506 "dchop0.ch"
-#line 506 "dchop0.ch"
+#line 504 "dchop0.ch"
+#line 504 "dchop0.ch"
         _Case369 : 
-#line 506 "dchop0.ch"
-#line 506 "dchop0.ch"
+#line 504 "dchop0.ch"
+#line 504 "dchop0.ch"
             ;
-#line 506 "dchop0.ch"
-#line 506 "dchop0.ch"
+#line 504 "dchop0.ch"
+#line 504 "dchop0.ch"
             return 1 ;
             
-#line 506 "dchop0.ch"
-#line 506 "dchop0.ch"
+#line 504 "dchop0.ch"
+#line 504 "dchop0.ch"
             goto _Case370 ;
             
-#line 506 "dchop0.ch"
-#line 507 "dchop0.ch"
+#line 504 "dchop0.ch"
+#line 505 "dchop0.ch"
         case cplus::WHILE : 
-#line 507 "dchop0.ch"
-#line 507 "dchop0.ch"
+#line 505 "dchop0.ch"
+#line 505 "dchop0.ch"
         _Case370 : 
-#line 507 "dchop0.ch"
-#line 507 "dchop0.ch"
+#line 505 "dchop0.ch"
+#line 505 "dchop0.ch"
             ;
-#line 507 "dchop0.ch"
-#line 507 "dchop0.ch"
+#line 505 "dchop0.ch"
+#line 505 "dchop0.ch"
             return 2 ;
             
-#line 507 "dchop0.ch"
-#line 507 "dchop0.ch"
+#line 505 "dchop0.ch"
+#line 505 "dchop0.ch"
             goto _Case371 ;
             
-#line 507 "dchop0.ch"
-#line 508 "dchop0.ch"
+#line 505 "dchop0.ch"
+#line 506 "dchop0.ch"
         case cplus::FOR : 
-#line 508 "dchop0.ch"
-#line 508 "dchop0.ch"
+#line 506 "dchop0.ch"
+#line 506 "dchop0.ch"
         _Case371 : 
-#line 508 "dchop0.ch"
-#line 508 "dchop0.ch"
+#line 506 "dchop0.ch"
+#line 506 "dchop0.ch"
             ;
-#line 508 "dchop0.ch"
-#line 508 "dchop0.ch"
+#line 506 "dchop0.ch"
+#line 506 "dchop0.ch"
             return 3 ;
             
-#line 508 "dchop0.ch"
-#line 508 "dchop0.ch"
+#line 506 "dchop0.ch"
+#line 506 "dchop0.ch"
             goto _Case372 ;
             
-#line 508 "dchop0.ch"
-#line 509 "dchop0.ch"
+#line 506 "dchop0.ch"
+#line 507 "dchop0.ch"
         case cplus::DO : 
-#line 509 "dchop0.ch"
-#line 509 "dchop0.ch"
+#line 507 "dchop0.ch"
+#line 507 "dchop0.ch"
         _Case372 : 
-#line 509 "dchop0.ch"
-#line 509 "dchop0.ch"
+#line 507 "dchop0.ch"
+#line 507 "dchop0.ch"
             ;
-#line 509 "dchop0.ch"
-#line 509 "dchop0.ch"
+#line 507 "dchop0.ch"
+#line 507 "dchop0.ch"
             return 4 ;
             
-#line 509 "dchop0.ch"
-#line 509 "dchop0.ch"
+#line 507 "dchop0.ch"
+#line 507 "dchop0.ch"
             goto _Case373 ;
             
-#line 509 "dchop0.ch"
-#line 510 "dchop0.ch"
+#line 507 "dchop0.ch"
+#line 508 "dchop0.ch"
         case cplus::BREAK : 
-#line 510 "dchop0.ch"
-#line 510 "dchop0.ch"
+#line 508 "dchop0.ch"
+#line 508 "dchop0.ch"
         _Case373 : 
-#line 510 "dchop0.ch"
-#line 510 "dchop0.ch"
+#line 508 "dchop0.ch"
+#line 508 "dchop0.ch"
             ;
-#line 510 "dchop0.ch"
-#line 510 "dchop0.ch"
+#line 508 "dchop0.ch"
+#line 508 "dchop0.ch"
             return 5 ;
             
-#line 510 "dchop0.ch"
-#line 510 "dchop0.ch"
+#line 508 "dchop0.ch"
+#line 508 "dchop0.ch"
             goto _Case374 ;
             
-#line 510 "dchop0.ch"
-#line 511 "dchop0.ch"
+#line 508 "dchop0.ch"
+#line 509 "dchop0.ch"
         case cplus::CONTINUE : 
-#line 511 "dchop0.ch"
-#line 511 "dchop0.ch"
+#line 509 "dchop0.ch"
+#line 509 "dchop0.ch"
         _Case374 : 
-#line 511 "dchop0.ch"
-#line 511 "dchop0.ch"
+#line 509 "dchop0.ch"
+#line 509 "dchop0.ch"
             ;
-#line 511 "dchop0.ch"
-#line 511 "dchop0.ch"
+#line 509 "dchop0.ch"
+#line 509 "dchop0.ch"
             return 6 ;
             
-#line 511 "dchop0.ch"
-#line 511 "dchop0.ch"
+#line 509 "dchop0.ch"
+#line 509 "dchop0.ch"
             goto _Case375 ;
             
-#line 511 "dchop0.ch"
-#line 512 "dchop0.ch"
+#line 509 "dchop0.ch"
+#line 510 "dchop0.ch"
         case cplus::COMPOUND : 
-#line 512 "dchop0.ch"
-#line 512 "dchop0.ch"
+#line 510 "dchop0.ch"
+#line 510 "dchop0.ch"
         _Case375 : 
-#line 512 "dchop0.ch"
-#line 512 "dchop0.ch"
+#line 510 "dchop0.ch"
+#line 510 "dchop0.ch"
             ;
-#line 512 "dchop0.ch"
-#line 512 "dchop0.ch"
+#line 510 "dchop0.ch"
+#line 510 "dchop0.ch"
             return 7 ;
             
-#line 512 "dchop0.ch"
-#line 512 "dchop0.ch"
+#line 510 "dchop0.ch"
+#line 510 "dchop0.ch"
             goto _Case376 ;
             
-#line 512 "dchop0.ch"
-#line 513 "dchop0.ch"
+#line 510 "dchop0.ch"
+#line 511 "dchop0.ch"
         case cplus::GOTO : 
-#line 513 "dchop0.ch"
-#line 513 "dchop0.ch"
+#line 511 "dchop0.ch"
+#line 511 "dchop0.ch"
         _Case376 : 
-#line 513 "dchop0.ch"
-#line 513 "dchop0.ch"
+#line 511 "dchop0.ch"
+#line 511 "dchop0.ch"
             ;
-#line 513 "dchop0.ch"
-#line 513 "dchop0.ch"
+#line 511 "dchop0.ch"
+#line 511 "dchop0.ch"
             return 8 ;
             
-#line 513 "dchop0.ch"
-#line 513 "dchop0.ch"
+#line 511 "dchop0.ch"
+#line 511 "dchop0.ch"
             goto _Case377 ;
             
-#line 513 "dchop0.ch"
-#line 514 "dchop0.ch"
+#line 511 "dchop0.ch"
+#line 512 "dchop0.ch"
         case cplus::STAT_VOID : 
-#line 514 "dchop0.ch"
-#line 514 "dchop0.ch"
+#line 512 "dchop0.ch"
+#line 512 "dchop0.ch"
         _Case377 : 
-#line 514 "dchop0.ch"
-#line 514 "dchop0.ch"
+#line 512 "dchop0.ch"
+#line 512 "dchop0.ch"
             ;
-#line 514 "dchop0.ch"
-#line 514 "dchop0.ch"
+#line 512 "dchop0.ch"
+#line 512 "dchop0.ch"
             return 9 ;
             
-#line 514 "dchop0.ch"
-#line 514 "dchop0.ch"
+#line 512 "dchop0.ch"
+#line 512 "dchop0.ch"
             goto _Case378 ;
             
-#line 514 "dchop0.ch"
-#line 515 "dchop0.ch"
+#line 512 "dchop0.ch"
+#line 513 "dchop0.ch"
         case cplus::LABEL : 
-#line 515 "dchop0.ch"
-#line 515 "dchop0.ch"
+#line 513 "dchop0.ch"
+#line 513 "dchop0.ch"
         _Case378 : 
-#line 515 "dchop0.ch"
-#line 515 "dchop0.ch"
+#line 513 "dchop0.ch"
+#line 513 "dchop0.ch"
             ;
-#line 515 "dchop0.ch"
-#line 515 "dchop0.ch"
+#line 513 "dchop0.ch"
+#line 513 "dchop0.ch"
             return 10 ;
             
-#line 515 "dchop0.ch"
-#line 515 "dchop0.ch"
+#line 513 "dchop0.ch"
+#line 513 "dchop0.ch"
             goto _Case379 ;
             
-#line 515 "dchop0.ch"
-#line 516 "dchop0.ch"
+#line 513 "dchop0.ch"
+#line 514 "dchop0.ch"
         case cplus::RETURN : 
-#line 516 "dchop0.ch"
-#line 516 "dchop0.ch"
+#line 514 "dchop0.ch"
+#line 514 "dchop0.ch"
         _Case379 : 
-#line 516 "dchop0.ch"
-#line 516 "dchop0.ch"
+#line 514 "dchop0.ch"
+#line 514 "dchop0.ch"
             ;
-#line 516 "dchop0.ch"
-#line 516 "dchop0.ch"
+#line 514 "dchop0.ch"
+#line 514 "dchop0.ch"
             return 11 ;
             
-#line 516 "dchop0.ch"
-#line 516 "dchop0.ch"
+#line 514 "dchop0.ch"
+#line 514 "dchop0.ch"
             goto _Case380 ;
             
-#line 516 "dchop0.ch"
-#line 517 "dchop0.ch"
+#line 514 "dchop0.ch"
+#line 515 "dchop0.ch"
         case cplus::SWITCH : 
-#line 517 "dchop0.ch"
-#line 517 "dchop0.ch"
+#line 515 "dchop0.ch"
+#line 515 "dchop0.ch"
         _Case380 : 
-#line 517 "dchop0.ch"
-#line 517 "dchop0.ch"
+#line 515 "dchop0.ch"
+#line 515 "dchop0.ch"
             ;
-#line 517 "dchop0.ch"
-#line 517 "dchop0.ch"
+#line 515 "dchop0.ch"
+#line 515 "dchop0.ch"
             return 12 ;
             
-#line 517 "dchop0.ch"
-#line 517 "dchop0.ch"
+#line 515 "dchop0.ch"
+#line 515 "dchop0.ch"
             goto _Case381 ;
             
-#line 517 "dchop0.ch"
-#line 518 "dchop0.ch"
+#line 515 "dchop0.ch"
+#line 516 "dchop0.ch"
         case cplus::INCLUDE_DIR : 
-#line 518 "dchop0.ch"
-#line 518 "dchop0.ch"
+#line 516 "dchop0.ch"
+#line 516 "dchop0.ch"
         _Case381 : 
-#line 518 "dchop0.ch"
-#line 518 "dchop0.ch"
+#line 516 "dchop0.ch"
+#line 516 "dchop0.ch"
             ;
-#line 518 "dchop0.ch"
-#line 518 "dchop0.ch"
+#line 516 "dchop0.ch"
+#line 516 "dchop0.ch"
             return 14 ;
             
-#line 518 "dchop0.ch"
-#line 518 "dchop0.ch"
+#line 516 "dchop0.ch"
+#line 516 "dchop0.ch"
             goto _Case382 ;
             
-#line 518 "dchop0.ch"
-#line 519 "dchop0.ch"
+#line 516 "dchop0.ch"
+#line 517 "dchop0.ch"
         case cplus::IF_DIR : 
-#line 519 "dchop0.ch"
-#line 519 "dchop0.ch"
+#line 517 "dchop0.ch"
+#line 517 "dchop0.ch"
         _Case382 : 
-#line 519 "dchop0.ch"
-#line 519 "dchop0.ch"
+#line 517 "dchop0.ch"
+#line 517 "dchop0.ch"
             ;
-#line 519 "dchop0.ch"
-#line 519 "dchop0.ch"
+#line 517 "dchop0.ch"
+#line 517 "dchop0.ch"
             return 15 ;
             
-#line 519 "dchop0.ch"
-#line 519 "dchop0.ch"
+#line 517 "dchop0.ch"
+#line 517 "dchop0.ch"
             goto _Case383 ;
             
-#line 519 "dchop0.ch"
-#line 520 "dchop0.ch"
+#line 517 "dchop0.ch"
+#line 518 "dchop0.ch"
         case cplus::IFDEF_DIR : 
-#line 520 "dchop0.ch"
-#line 520 "dchop0.ch"
+#line 518 "dchop0.ch"
+#line 518 "dchop0.ch"
         _Case383 : 
-#line 520 "dchop0.ch"
-#line 520 "dchop0.ch"
+#line 518 "dchop0.ch"
+#line 518 "dchop0.ch"
             ;
-#line 520 "dchop0.ch"
-#line 520 "dchop0.ch"
+#line 518 "dchop0.ch"
+#line 518 "dchop0.ch"
             return 16 ;
             
-#line 520 "dchop0.ch"
-#line 520 "dchop0.ch"
+#line 518 "dchop0.ch"
+#line 518 "dchop0.ch"
             goto _Case384 ;
             
-#line 520 "dchop0.ch"
-#line 521 "dchop0.ch"
+#line 518 "dchop0.ch"
+#line 519 "dchop0.ch"
         case cplus::IFNDEF_DIR : 
-#line 521 "dchop0.ch"
-#line 521 "dchop0.ch"
+#line 519 "dchop0.ch"
+#line 519 "dchop0.ch"
         _Case384 : 
-#line 521 "dchop0.ch"
-#line 521 "dchop0.ch"
+#line 519 "dchop0.ch"
+#line 519 "dchop0.ch"
             ;
-#line 521 "dchop0.ch"
-#line 521 "dchop0.ch"
+#line 519 "dchop0.ch"
+#line 519 "dchop0.ch"
             return 17 ;
             
-#line 521 "dchop0.ch"
-#line 521 "dchop0.ch"
+#line 519 "dchop0.ch"
+#line 519 "dchop0.ch"
             goto _Case385 ;
             
-#line 521 "dchop0.ch"
-#line 522 "dchop0.ch"
+#line 519 "dchop0.ch"
+#line 520 "dchop0.ch"
         case cplus::NOT_MANAGED : 
-#line 522 "dchop0.ch"
-#line 522 "dchop0.ch"
+#line 520 "dchop0.ch"
+#line 520 "dchop0.ch"
         _Case385 : 
-#line 522 "dchop0.ch"
-#line 522 "dchop0.ch"
+#line 520 "dchop0.ch"
+#line 520 "dchop0.ch"
             ;
-#line 522 "dchop0.ch"
-#line 522 "dchop0.ch"
+#line 520 "dchop0.ch"
+#line 520 "dchop0.ch"
             return 17 ;
             
-#line 522 "dchop0.ch"
-#line 522 "dchop0.ch"
+#line 520 "dchop0.ch"
+#line 520 "dchop0.ch"
             goto _Case386 ;
             
-#line 522 "dchop0.ch"
-#line 523 "dchop0.ch"
+#line 520 "dchop0.ch"
+#line 521 "dchop0.ch"
         case cplus::NO_PRETTY : 
-#line 523 "dchop0.ch"
-#line 523 "dchop0.ch"
+#line 521 "dchop0.ch"
+#line 521 "dchop0.ch"
         _Case386 : 
-#line 523 "dchop0.ch"
-#line 523 "dchop0.ch"
+#line 521 "dchop0.ch"
+#line 521 "dchop0.ch"
             ;
-#line 523 "dchop0.ch"
-#line 523 "dchop0.ch"
+#line 521 "dchop0.ch"
+#line 521 "dchop0.ch"
             return 17 ;
             
-#line 523 "dchop0.ch"
-#line 523 "dchop0.ch"
+#line 521 "dchop0.ch"
+#line 521 "dchop0.ch"
             goto _Case387 ;
             
-#line 523 "dchop0.ch"
-#line 524 "dchop0.ch"
+#line 521 "dchop0.ch"
+#line 522 "dchop0.ch"
         case cplus::AFF : 
-#line 524 "dchop0.ch"
-#line 524 "dchop0.ch"
+#line 522 "dchop0.ch"
+#line 522 "dchop0.ch"
         _Case387 : 
-#line 524 "dchop0.ch"
-#line 524 "dchop0.ch"
+#line 522 "dchop0.ch"
+#line 522 "dchop0.ch"
             ;
-#line 524 "dchop0.ch"
-#line 524 "dchop0.ch"
+#line 522 "dchop0.ch"
+#line 522 "dchop0.ch"
             return 19 ;
             
-#line 524 "dchop0.ch"
-#line 524 "dchop0.ch"
+#line 522 "dchop0.ch"
+#line 522 "dchop0.ch"
             goto _Case388 ;
             
-#line 524 "dchop0.ch"
-#line 525 "dchop0.ch"
+#line 522 "dchop0.ch"
+#line 523 "dchop0.ch"
         case cplus::MUL_AFF : 
-#line 525 "dchop0.ch"
-#line 525 "dchop0.ch"
+#line 523 "dchop0.ch"
+#line 523 "dchop0.ch"
         _Case388 : 
-#line 525 "dchop0.ch"
-#line 525 "dchop0.ch"
+#line 523 "dchop0.ch"
+#line 523 "dchop0.ch"
             ;
-#line 525 "dchop0.ch"
-#line 525 "dchop0.ch"
+#line 523 "dchop0.ch"
+#line 523 "dchop0.ch"
             return 20 ;
             
-#line 525 "dchop0.ch"
-#line 525 "dchop0.ch"
+#line 523 "dchop0.ch"
+#line 523 "dchop0.ch"
             goto _Case389 ;
             
-#line 525 "dchop0.ch"
-#line 526 "dchop0.ch"
+#line 523 "dchop0.ch"
+#line 524 "dchop0.ch"
         case cplus::DIV_AFF : 
-#line 526 "dchop0.ch"
-#line 526 "dchop0.ch"
+#line 524 "dchop0.ch"
+#line 524 "dchop0.ch"
         _Case389 : 
-#line 526 "dchop0.ch"
-#line 526 "dchop0.ch"
+#line 524 "dchop0.ch"
+#line 524 "dchop0.ch"
             ;
-#line 526 "dchop0.ch"
-#line 526 "dchop0.ch"
+#line 524 "dchop0.ch"
+#line 524 "dchop0.ch"
             return 21 ;
             
-#line 526 "dchop0.ch"
-#line 526 "dchop0.ch"
+#line 524 "dchop0.ch"
+#line 524 "dchop0.ch"
             goto _Case390 ;
             
-#line 526 "dchop0.ch"
-#line 527 "dchop0.ch"
+#line 524 "dchop0.ch"
+#line 525 "dchop0.ch"
         case cplus::REM_AFF : 
-#line 527 "dchop0.ch"
-#line 527 "dchop0.ch"
+#line 525 "dchop0.ch"
+#line 525 "dchop0.ch"
         _Case390 : 
-#line 527 "dchop0.ch"
-#line 527 "dchop0.ch"
+#line 525 "dchop0.ch"
+#line 525 "dchop0.ch"
             ;
-#line 527 "dchop0.ch"
-#line 527 "dchop0.ch"
+#line 525 "dchop0.ch"
+#line 525 "dchop0.ch"
             return 22 ;
             
-#line 527 "dchop0.ch"
-#line 527 "dchop0.ch"
+#line 525 "dchop0.ch"
+#line 525 "dchop0.ch"
             goto _Case391 ;
             
-#line 527 "dchop0.ch"
-#line 528 "dchop0.ch"
+#line 525 "dchop0.ch"
+#line 526 "dchop0.ch"
         case cplus::PLU_AFF : 
-#line 528 "dchop0.ch"
-#line 528 "dchop0.ch"
+#line 526 "dchop0.ch"
+#line 526 "dchop0.ch"
         _Case391 : 
-#line 528 "dchop0.ch"
-#line 528 "dchop0.ch"
+#line 526 "dchop0.ch"
+#line 526 "dchop0.ch"
             ;
-#line 528 "dchop0.ch"
-#line 528 "dchop0.ch"
+#line 526 "dchop0.ch"
+#line 526 "dchop0.ch"
             return 23 ;
             
-#line 528 "dchop0.ch"
-#line 528 "dchop0.ch"
+#line 526 "dchop0.ch"
+#line 526 "dchop0.ch"
             goto _Case392 ;
             
-#line 528 "dchop0.ch"
-#line 529 "dchop0.ch"
+#line 526 "dchop0.ch"
+#line 527 "dchop0.ch"
         case cplus::MIN_AFF : 
-#line 529 "dchop0.ch"
-#line 529 "dchop0.ch"
+#line 527 "dchop0.ch"
+#line 527 "dchop0.ch"
         _Case392 : 
-#line 529 "dchop0.ch"
-#line 529 "dchop0.ch"
+#line 527 "dchop0.ch"
+#line 527 "dchop0.ch"
             ;
-#line 529 "dchop0.ch"
-#line 529 "dchop0.ch"
+#line 527 "dchop0.ch"
+#line 527 "dchop0.ch"
             return 24 ;
             
-#line 529 "dchop0.ch"
-#line 529 "dchop0.ch"
+#line 527 "dchop0.ch"
+#line 527 "dchop0.ch"
             goto _Case393 ;
             
-#line 529 "dchop0.ch"
-#line 530 "dchop0.ch"
+#line 527 "dchop0.ch"
+#line 528 "dchop0.ch"
         case cplus::LSH_AFF : 
-#line 530 "dchop0.ch"
-#line 530 "dchop0.ch"
+#line 528 "dchop0.ch"
+#line 528 "dchop0.ch"
         _Case393 : 
-#line 530 "dchop0.ch"
-#line 530 "dchop0.ch"
+#line 528 "dchop0.ch"
+#line 528 "dchop0.ch"
             ;
-#line 530 "dchop0.ch"
-#line 530 "dchop0.ch"
+#line 528 "dchop0.ch"
+#line 528 "dchop0.ch"
             return 25 ;
             
-#line 530 "dchop0.ch"
-#line 530 "dchop0.ch"
+#line 528 "dchop0.ch"
+#line 528 "dchop0.ch"
             goto _Case394 ;
             
-#line 530 "dchop0.ch"
-#line 531 "dchop0.ch"
+#line 528 "dchop0.ch"
+#line 529 "dchop0.ch"
         case cplus::RSH_AFF : 
-#line 531 "dchop0.ch"
-#line 531 "dchop0.ch"
+#line 529 "dchop0.ch"
+#line 529 "dchop0.ch"
         _Case394 : 
-#line 531 "dchop0.ch"
-#line 531 "dchop0.ch"
+#line 529 "dchop0.ch"
+#line 529 "dchop0.ch"
             ;
-#line 531 "dchop0.ch"
-#line 531 "dchop0.ch"
+#line 529 "dchop0.ch"
+#line 529 "dchop0.ch"
             return 26 ;
             
-#line 531 "dchop0.ch"
-#line 531 "dchop0.ch"
+#line 529 "dchop0.ch"
+#line 529 "dchop0.ch"
             goto _Case395 ;
             
-#line 531 "dchop0.ch"
-#line 532 "dchop0.ch"
+#line 529 "dchop0.ch"
+#line 530 "dchop0.ch"
         case cplus::AND_AFF : 
-#line 532 "dchop0.ch"
-#line 532 "dchop0.ch"
+#line 530 "dchop0.ch"
+#line 530 "dchop0.ch"
         _Case395 : 
-#line 532 "dchop0.ch"
-#line 532 "dchop0.ch"
+#line 530 "dchop0.ch"
+#line 530 "dchop0.ch"
             ;
-#line 532 "dchop0.ch"
-#line 532 "dchop0.ch"
+#line 530 "dchop0.ch"
+#line 530 "dchop0.ch"
             return 27 ;
             
-#line 532 "dchop0.ch"
-#line 532 "dchop0.ch"
+#line 530 "dchop0.ch"
+#line 530 "dchop0.ch"
             goto _Case396 ;
             
-#line 532 "dchop0.ch"
-#line 533 "dchop0.ch"
+#line 530 "dchop0.ch"
+#line 531 "dchop0.ch"
         case cplus::OR_AFF : 
-#line 533 "dchop0.ch"
-#line 533 "dchop0.ch"
+#line 531 "dchop0.ch"
+#line 531 "dchop0.ch"
         _Case396 : 
-#line 533 "dchop0.ch"
-#line 533 "dchop0.ch"
+#line 531 "dchop0.ch"
+#line 531 "dchop0.ch"
             ;
-#line 533 "dchop0.ch"
-#line 533 "dchop0.ch"
+#line 531 "dchop0.ch"
+#line 531 "dchop0.ch"
             return 28 ;
             
-#line 533 "dchop0.ch"
-#line 533 "dchop0.ch"
+#line 531 "dchop0.ch"
+#line 531 "dchop0.ch"
             goto _Case397 ;
             
-#line 533 "dchop0.ch"
-#line 534 "dchop0.ch"
+#line 531 "dchop0.ch"
+#line 532 "dchop0.ch"
         case cplus::XOR_AFF : 
-#line 534 "dchop0.ch"
-#line 534 "dchop0.ch"
+#line 532 "dchop0.ch"
+#line 532 "dchop0.ch"
         _Case397 : 
-#line 534 "dchop0.ch"
-#line 534 "dchop0.ch"
+#line 532 "dchop0.ch"
+#line 532 "dchop0.ch"
             ;
-#line 534 "dchop0.ch"
-#line 534 "dchop0.ch"
+#line 532 "dchop0.ch"
+#line 532 "dchop0.ch"
             return 29 ;
             
-#line 534 "dchop0.ch"
-#line 534 "dchop0.ch"
+#line 532 "dchop0.ch"
+#line 532 "dchop0.ch"
             goto _Case398 ;
             
-#line 534 "dchop0.ch"
-#line 535 "dchop0.ch"
+#line 532 "dchop0.ch"
+#line 533 "dchop0.ch"
         case cplus::COND_AFF : 
-#line 535 "dchop0.ch"
-#line 535 "dchop0.ch"
+#line 533 "dchop0.ch"
+#line 533 "dchop0.ch"
         _Case398 : 
-#line 535 "dchop0.ch"
-#line 535 "dchop0.ch"
+#line 533 "dchop0.ch"
+#line 533 "dchop0.ch"
             ;
-#line 535 "dchop0.ch"
-#line 535 "dchop0.ch"
+#line 533 "dchop0.ch"
+#line 533 "dchop0.ch"
             return 30 ;
             
-#line 535 "dchop0.ch"
-#line 535 "dchop0.ch"
+#line 533 "dchop0.ch"
+#line 533 "dchop0.ch"
             goto _Case399 ;
             
-#line 535 "dchop0.ch"
-#line 536 "dchop0.ch"
+#line 533 "dchop0.ch"
+#line 534 "dchop0.ch"
         case cplus::EXCEPTION_ANSI : 
-#line 536 "dchop0.ch"
-#line 536 "dchop0.ch"
+#line 534 "dchop0.ch"
+#line 534 "dchop0.ch"
         _Case399 : 
-#line 536 "dchop0.ch"
-#line 536 "dchop0.ch"
+#line 534 "dchop0.ch"
+#line 534 "dchop0.ch"
             ;
-#line 536 "dchop0.ch"
-#line 536 "dchop0.ch"
+#line 534 "dchop0.ch"
+#line 534 "dchop0.ch"
             return 31 ;
             
-#line 536 "dchop0.ch"
-#line 536 "dchop0.ch"
+#line 534 "dchop0.ch"
+#line 534 "dchop0.ch"
             goto _Case400 ;
             
-#line 536 "dchop0.ch"
-#line 537 "dchop0.ch"
+#line 534 "dchop0.ch"
+#line 535 "dchop0.ch"
         case cplus::THROW_ANSI : 
-#line 537 "dchop0.ch"
-#line 537 "dchop0.ch"
+#line 535 "dchop0.ch"
+#line 535 "dchop0.ch"
         _Case400 : 
-#line 537 "dchop0.ch"
-#line 537 "dchop0.ch"
+#line 535 "dchop0.ch"
+#line 535 "dchop0.ch"
             ;
-#line 537 "dchop0.ch"
-#line 537 "dchop0.ch"
+#line 535 "dchop0.ch"
+#line 535 "dchop0.ch"
             return 32 ;
             
-#line 537 "dchop0.ch"
-#line 537 "dchop0.ch"
+#line 535 "dchop0.ch"
+#line 535 "dchop0.ch"
             goto _Case401 ;
             
-#line 537 "dchop0.ch"
-#line 538 "dchop0.ch"
+#line 535 "dchop0.ch"
+#line 536 "dchop0.ch"
         case cplus::CATCH_ANSI : 
-#line 538 "dchop0.ch"
-#line 538 "dchop0.ch"
+#line 536 "dchop0.ch"
+#line 536 "dchop0.ch"
         _Case401 : 
-#line 538 "dchop0.ch"
-#line 538 "dchop0.ch"
+#line 536 "dchop0.ch"
+#line 536 "dchop0.ch"
             ;
-#line 538 "dchop0.ch"
-#line 538 "dchop0.ch"
+#line 536 "dchop0.ch"
+#line 536 "dchop0.ch"
             return 33 ;
             
-#line 538 "dchop0.ch"
-#line 538 "dchop0.ch"
+#line 536 "dchop0.ch"
+#line 536 "dchop0.ch"
             goto _Case402 ;
             
-#line 538 "dchop0.ch"
-#line 539 "dchop0.ch"
+#line 536 "dchop0.ch"
+#line 537 "dchop0.ch"
         case cplus::NONE : 
-#line 539 "dchop0.ch"
-#line 539 "dchop0.ch"
+#line 537 "dchop0.ch"
+#line 537 "dchop0.ch"
         _Case402 : 
-#line 539 "dchop0.ch"
-#line 539 "dchop0.ch"
+#line 537 "dchop0.ch"
+#line 537 "dchop0.ch"
             ;
-#line 539 "dchop0.ch"
-#line 539 "dchop0.ch"
+#line 537 "dchop0.ch"
+#line 537 "dchop0.ch"
             return 34 ;
             
-#line 539 "dchop0.ch"
-#line 539 "dchop0.ch"
+#line 537 "dchop0.ch"
+#line 537 "dchop0.ch"
             goto _Case403 ;
             
-#line 539 "dchop0.ch"
-#line 543 "dchop0.ch"
+#line 537 "dchop0.ch"
+#line 541 "dchop0.ch"
         default : 
-#line 543 "dchop0.ch"
-#line 543 "dchop0.ch"
+#line 541 "dchop0.ch"
+#line 541 "dchop0.ch"
         _Case403 : 
-#line 543 "dchop0.ch"
-#line 543 "dchop0.ch"
+#line 541 "dchop0.ch"
+#line 541 "dchop0.ch"
             ;
-#line 543 "dchop0.ch"
-#line 543 "dchop0.ch"
+#line 541 "dchop0.ch"
+#line 541 "dchop0.ch"
             return -1 ;
             
-#line 543 "dchop0.ch"
+#line 541 "dchop0.ch"
     }
-#line 543 "dchop0.ch"
+#line 541 "dchop0.ch"
     
+#line 541 "dchop0.ch"
 #line 543 "dchop0.ch"
-#line 545 "dchop0.ch"
     SepBefore();
-#line 545 "dchop0.ch"
+#line 543 "dchop0.ch"
     
-#line 545 "dchop0.ch"
-#line 545 "dchop0.ch"
+#line 543 "dchop0.ch"
+#line 543 "dchop0.ch"
     PrintString(";");
+#line 543 "dchop0.ch"
+#line 544 "dchop0.ch"
+terminal : 
+#line 544 "dchop0.ch"
+#line 545 "dchop0.ch"
+    LNewLine(1);
+#line 545 "dchop0.ch"
+    
 #line 545 "dchop0.ch"
 #line 546 "dchop0.ch"
-terminal : 
+    
 #line 546 "dchop0.ch"
-#line 547 "dchop0.ch"
-    LNewLine(1);
-#line 547 "dchop0.ch"
-    
-#line 547 "dchop0.ch"
-#line 548 "dchop0.ch"
-    
-#line 548 "dchop0.ch"
-#line 548 "dchop0.ch"
+#line 546 "dchop0.ch"
 }
+#line 546 "dchop0.ch"
+
 #line 548 "dchop0.ch"
 
-#line 550 "dchop0.ch"
-
-#line 550 "dchop0.ch"
-void DecompCplus::clean_tree ( PTREE tree )
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
+bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
+#line 548 "dchop0.ch"
 {
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
     register PPTREE _inter ;
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
 
-#line 550 "dchop0.ch"
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
+#line 548 "dchop0.ch"
     int _retVal [2];
     
-#line 550 "dchop0.ch"
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
+#line 548 "dchop0.ch"
     PPTREE  _storeVal [2];
     
-#line 550 "dchop0.ch"
-#line 550 "dchop0.ch"
+#line 548 "dchop0.ch"
+#line 548 "dchop0.ch"
     int _nextVal ;
     
+#line 548 "dchop0.ch"
 #line 550 "dchop0.ch"
-#line 552 "dchop0.ch"
-    PTREE   father ;
-#line 552 "dchop0.ch"
     
-#line 552 "dchop0.ch"
-#line 553 "dchop0.ch"
+    PTREE   father ;
+#line 550 "dchop0.ch"
+    
+#line 550 "dchop0.ch"
+#line 551 "dchop0.ch"
     PPTREE  _for_elem ;
     
-#line 553 "dchop0.ch"
-#line 554 "dchop0.ch"
+#line 551 "dchop0.ch"
+#line 552 "dchop0.ch"
     ItPtree it (tree) ;
     
+#line 552 "dchop0.ch"
+#line 553 "dchop0.ch"
+    PTREE   cond, cond1, cond2 ;
+#line 553 "dchop0.ch"
+    
+#line 553 "dchop0.ch"
+#line 554 "dchop0.ch"
+    PTREE   stat1, stat2 ;
+#line 554 "dchop0.ch"
+    
 #line 554 "dchop0.ch"
 #line 555 "dchop0.ch"
-    PTREE   cond ;
-#line 555 "dchop0.ch"
+    bool    modified (false) ;
     
 #line 555 "dchop0.ch"
-#line 556 "dchop0.ch"
-    PTREE   stat1 ;
-#line 556 "dchop0.ch"
-    
-#line 556 "dchop0.ch"
 #line 557 "dchop0.ch"
-    PTREE   stat2 ;
-#line 557 "dchop0.ch"
-    
-#line 557 "dchop0.ch"
-#line 559 "dchop0.ch"
     while ( (_for_elem = it++) ) {
-#line 559 "dchop0.ch"
-#line 560 "dchop0.ch"
+#line 557 "dchop0.ch"
+#line 558 "dchop0.ch"
                                         switch ( NumberTree(for_elem) ) {
+#line 558 "dchop0.ch"
 #line 560 "dchop0.ch"
-#line 562 "dchop0.ch"
                                             case cplus::STAT_VOID : 
-#line 562 "dchop0.ch"
-#line 562 "dchop0.ch"
+#line 560 "dchop0.ch"
+#line 560 "dchop0.ch"
                                             _Case424 : 
-#line 562 "dchop0.ch"
-#line 562 "dchop0.ch"
+#line 560 "dchop0.ch"
+#line 560 "dchop0.ch"
                                                 ;
-#line 562 "dchop0.ch"
-#line 562 "dchop0.ch"
+#line 560 "dchop0.ch"
+#line 560 "dchop0.ch"
                                                 {
-#line 562 "dchop0.ch"
-#line 563 "dchop0.ch"
+#line 560 "dchop0.ch"
+#line 561 "dchop0.ch"
                                                     PTREE   father = (PTREE)0 ;
-#line 563 "dchop0.ch"
+#line 561 "dchop0.ch"
                                                     
-#line 563 "dchop0.ch"
-#line 564 "dchop0.ch"
+#line 561 "dchop0.ch"
+#line 562 "dchop0.ch"
                                                     PTREE   son ;
-#line 564 "dchop0.ch"
+#line 562 "dchop0.ch"
                                                     
-#line 564 "dchop0.ch"
-#line 563 "dchop0.ch"
+#line 562 "dchop0.ch"
+#line 561 "dchop0.ch"
                                                     (father=FatherTree(for_elem));
-#line 563 "dchop0.ch"
+#line 561 "dchop0.ch"
                                                     
+#line 561 "dchop0.ch"
 #line 563 "dchop0.ch"
-#line 565 "dchop0.ch"
                                                     if ( ((_inter = (PPTREE)father,1) && 
-#line 565 "dchop0.ch"
+#line 563 "dchop0.ch"
                                                             (NumberTree(_inter) == LIST) &&
-#line 565 "dchop0.ch"
+#line 563 "dchop0.ch"
                                                             1) ) {
+#line 563 "dchop0.ch"
+#line 564 "dchop0.ch"
+                                                                    (son=sontree(father, 2));
+#line 564 "dchop0.ch"
+                                                                    
+#line 564 "dchop0.ch"
+#line 565 "dchop0.ch"
+                                                                    if ( (!son) ) {
 #line 565 "dchop0.ch"
 #line 566 "dchop0.ch"
-                                                                    (son=sontree(father, 2));
-#line 566 "dchop0.ch"
-                                                                    
-#line 566 "dchop0.ch"
-#line 567 "dchop0.ch"
-                                                                    if ( (!son) ) {
-#line 567 "dchop0.ch"
-#line 568 "dchop0.ch"
                                                                                         (father=FatherTree(father));
-#line 568 "dchop0.ch"
+#line 566 "dchop0.ch"
                                                                                         
-#line 568 "dchop0.ch"
+#line 566 "dchop0.ch"
 #line 569 "dchop0.ch"
                                                                                         if ( ((_inter = (PPTREE)father,1) && 
 #line 569 "dchop0.ch"
@@ -4375,924 +4381,1074 @@ void DecompCplus::clean_tree ( PTREE tree )
                                                                                                         it.Current(father);
 #line 571 "dchop0.ch"
 #line 572 "dchop0.ch"
+                                                                                                        modified = true ;
+#line 572 "dchop0.ch"
+#line 573 "dchop0.ch"
                                                                                                         
-#line 572 "dchop0.ch"
-#line 572 "dchop0.ch"
+#line 573 "dchop0.ch"
+#line 573 "dchop0.ch"
                                                                                                      }
-#line 572 "dchop0.ch"
 #line 573 "dchop0.ch"
+#line 574 "dchop0.ch"
                                                                                         
-#line 573 "dchop0.ch"
-#line 573 "dchop0.ch"
+#line 574 "dchop0.ch"
+#line 574 "dchop0.ch"
                                                                                     } else 
-#line 573 "dchop0.ch"
-                                                                    {
-#line 573 "dchop0.ch"
 #line 574 "dchop0.ch"
-                                                                        {
+                                                                    if ( ((_inter = (PPTREE)son,1) && 
 #line 574 "dchop0.ch"
-                                                                            PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
+                                                                            (NumberTree(_inter) == LIST) &&
 #line 574 "dchop0.ch"
-                                                                            _ptTree0 = StoreRef(sontree(son, 1));
+                                                                            1) ) {
 #line 574 "dchop0.ch"
-                                                                            ReplaceTree(father, 1, _ptTree0);
-#line 574 "dchop0.ch"
-                                                                            _ptTree0 = StoreRef(sontree(son, 2));
-#line 574 "dchop0.ch"
-                                                                            ReplaceTree(father, 2, _ptTree0);
-#line 574 "dchop0.ch"
-                                                                        }
-#line 574 "dchop0.ch"
-                                                                        
-#line 574 "dchop0.ch"
-#line 575 "dchop0.ch"
-                                                                        it.Current(father);
-#line 575 "dchop0.ch"
-#line 576 "dchop0.ch"
-                                                                        
-#line 576 "dchop0.ch"
-#line 576 "dchop0.ch"
-                                                                    }
-                                                                    
-#line 576 "dchop0.ch"
 #line 577 "dchop0.ch"
-                                                                    
+                                                                                    {
 #line 577 "dchop0.ch"
+                                                                                        PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
 #line 577 "dchop0.ch"
-                                                                 }
+                                                                                        _ptTree0 = StoreRef(sontree(son, 1));
+#line 577 "dchop0.ch"
+                                                                                        ReplaceTree(father, 1, _ptTree0);
+#line 577 "dchop0.ch"
+                                                                                        _ptTree0 = StoreRef(sontree(son, 2));
+#line 577 "dchop0.ch"
+                                                                                        ReplaceTree(father, 2, _ptTree0);
+#line 577 "dchop0.ch"
+                                                                                    }
+#line 577 "dchop0.ch"
+                                                                                    
 #line 577 "dchop0.ch"
 #line 578 "dchop0.ch"
+                                                                                    it.Current(father);
+#line 578 "dchop0.ch"
+#line 579 "dchop0.ch"
+                                                                                    modified = true ;
+#line 579 "dchop0.ch"
+#line 580 "dchop0.ch"
+                                                                                    
+#line 580 "dchop0.ch"
+#line 580 "dchop0.ch"
+                                                                                 }
+#line 580 "dchop0.ch"
+#line 581 "dchop0.ch"
+                                                                    
+#line 581 "dchop0.ch"
+#line 581 "dchop0.ch"
+                                                                 }
+#line 581 "dchop0.ch"
+#line 582 "dchop0.ch"
                                                     break ;
                                                     
-#line 578 "dchop0.ch"
-#line 579 "dchop0.ch"
+#line 582 "dchop0.ch"
+#line 583 "dchop0.ch"
                                                     
-#line 579 "dchop0.ch"
-#line 579 "dchop0.ch"
+#line 583 "dchop0.ch"
+#line 583 "dchop0.ch"
                                                 }
                                                 
-#line 579 "dchop0.ch"
-#line 579 "dchop0.ch"
+#line 583 "dchop0.ch"
+#line 583 "dchop0.ch"
                                                 goto _Case425 ;
                                                 
-#line 579 "dchop0.ch"
-#line 581 "dchop0.ch"
-                                            case cplus::AND : 
-#line 581 "dchop0.ch"
-#line 581 "dchop0.ch"
-                                            _Case425 : 
-#line 581 "dchop0.ch"
-#line 581 "dchop0.ch"
-                                                ;
-#line 581 "dchop0.ch"
-#line 581 "dchop0.ch"
-                                                {
-#line 581 "dchop0.ch"
-#line 582 "dchop0.ch"
-                                                    PTREE   father = (PTREE)0 ;
-#line 582 "dchop0.ch"
-                                                    
-#line 582 "dchop0.ch"
 #line 583 "dchop0.ch"
+#line 585 "dchop0.ch"
+                                            case cplus::AND : 
+#line 585 "dchop0.ch"
+#line 585 "dchop0.ch"
+                                            _Case425 : 
+#line 585 "dchop0.ch"
+#line 585 "dchop0.ch"
+                                                ;
+#line 585 "dchop0.ch"
+#line 585 "dchop0.ch"
+                                                {
+#line 585 "dchop0.ch"
+#line 586 "dchop0.ch"
+                                                    PTREE   father = (PTREE)0 ;
+#line 586 "dchop0.ch"
+                                                    
+#line 586 "dchop0.ch"
+#line 587 "dchop0.ch"
                                                     int rank ;
                                                     
-#line 583 "dchop0.ch"
-#line 584 "dchop0.ch"
+#line 587 "dchop0.ch"
+#line 588 "dchop0.ch"
                                                     PTREE   x, y ;
-#line 584 "dchop0.ch"
+#line 588 "dchop0.ch"
                                                     
-#line 584 "dchop0.ch"
-#line 585 "dchop0.ch"
-                                                    int modified = 0 ;
+#line 588 "dchop0.ch"
+#line 589 "dchop0.ch"
+                                                    bool    locModified (false) ;
                                                     
-#line 585 "dchop0.ch"
-#line 582 "dchop0.ch"
+#line 589 "dchop0.ch"
+#line 586 "dchop0.ch"
                                                     (father=FatherTree(for_elem));
-#line 582 "dchop0.ch"
+#line 586 "dchop0.ch"
                                                     
-#line 582 "dchop0.ch"
 #line 586 "dchop0.ch"
-                                                    if ( ((_inter = (PPTREE)for_elem,1) && 
-#line 586 "dchop0.ch"
-                                                            (NumberTree(_inter) == cplus::AND) &&
-#line 586 "dchop0.ch"
-                                                            (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
-#line 586 "dchop0.ch"
-                                                                (NumberTree(_inter) == cplus::INTEGER) &&
-#line 586 "dchop0.ch"
-                                                                ((x=SonTree(_inter,1)),1) &&
-#line 586 "dchop0.ch"
-                                                                1),
-#line 586 "dchop0.ch"
-                                                                (_inter=_storeVal[1],1),_retVal[1]) &&
-#line 586 "dchop0.ch"
-                                                            1) || ((_inter = (PPTREE)for_elem,1) && 
-#line 586 "dchop0.ch"
-                                                                        (NumberTree(_inter) == cplus::AND) &&
-#line 586 "dchop0.ch"
-                                                                        (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
-#line 586 "dchop0.ch"
+#line 590 "dchop0.ch"
+                                                    if ( father ) {
+#line 590 "dchop0.ch"
+#line 591 "dchop0.ch"
+                                                                    ((_inter = (PPTREE)for_elem,1) && 
+#line 591 "dchop0.ch"
+                                                                        (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
+#line 591 "dchop0.ch"
                                                                             (NumberTree(_inter) == cplus::INTEGER) &&
-#line 586 "dchop0.ch"
-                                                                            ((y=SonTree(_inter,1)),1) &&
-#line 586 "dchop0.ch"
+#line 591 "dchop0.ch"
+                                                                            ((x=SonTree(_inter,1)),1) &&
+#line 591 "dchop0.ch"
                                                                             1),
-#line 586 "dchop0.ch"
+#line 591 "dchop0.ch"
                                                                             (_inter=_storeVal[1],1),_retVal[1]) &&
-#line 586 "dchop0.ch"
-                                                                        1) ) {
-#line 586 "dchop0.ch"
-#line 587 "dchop0.ch"
-                                                                                rank = ranktree(for_elem);
-#line 587 "dchop0.ch"
-#line 588 "dchop0.ch"
-                                                                                if ( x && !strcmp(BrainyValue(x), "1") ) {
-#line 588 "dchop0.ch"
-#line 589 "dchop0.ch"
-                                                                                                                              replacetree(father, rank, sontree(for_elem, 2));
-#line 589 "dchop0.ch"
-#line 590 "dchop0.ch"
-                                                                                                                              modified = 1 ;
-#line 590 "dchop0.ch"
 #line 591 "dchop0.ch"
-                                                                                                                              
+                                                                        1);
 #line 591 "dchop0.ch"
-#line 591 "dchop0.ch"
-                                                                                                                              }
+                                                                    ;
 #line 591 "dchop0.ch"
 #line 592 "dchop0.ch"
-                                                                                if ( y && !strcmp(BrainyValue(y), "1") ) {
+                                                                    ((_inter = (PPTREE)for_elem,1) && 
+#line 592 "dchop0.ch"
+                                                                        (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
+#line 592 "dchop0.ch"
+                                                                            (NumberTree(_inter) == cplus::INTEGER) &&
+#line 592 "dchop0.ch"
+                                                                            ((y=SonTree(_inter,1)),1) &&
+#line 592 "dchop0.ch"
+                                                                            1),
+#line 592 "dchop0.ch"
+                                                                            (_inter=_storeVal[1],1),_retVal[1]) &&
+#line 592 "dchop0.ch"
+                                                                        1);
+#line 592 "dchop0.ch"
+                                                                    ;
 #line 592 "dchop0.ch"
 #line 593 "dchop0.ch"
-                                                                                                                              replacetree(father, rank, sontree(for_elem, 1));
+                                                                    rank = ranktree(for_elem);
 #line 593 "dchop0.ch"
 #line 594 "dchop0.ch"
-                                                                                                                              modified = 1 ;
+                                                                    if ( x && !strcmp(BrainyValue(x), "1") ) {
 #line 594 "dchop0.ch"
 #line 595 "dchop0.ch"
-                                                                                                                              
-#line 595 "dchop0.ch"
-#line 595 "dchop0.ch"
-                                                                                                                              }
+                                                                                                                    replacetree(father, rank, sontree(for_elem, 2));
 #line 595 "dchop0.ch"
 #line 596 "dchop0.ch"
-                                                                                if ( modified ) 
+                                                                                                                    modified = true ;
 #line 596 "dchop0.ch"
 #line 597 "dchop0.ch"
-                                                                                    it.Current(father);
+                                                                                                                    locModified = true ;
 #line 597 "dchop0.ch"
 #line 598 "dchop0.ch"
-                                                                                
+                                                                                                                    
 #line 598 "dchop0.ch"
 #line 598 "dchop0.ch"
-                                                                             }
+                                                                                                                  } else 
+#line 598 "dchop0.ch"
+                                                                    if ( y && !strcmp(BrainyValue(y), "1") ) {
 #line 598 "dchop0.ch"
 #line 599 "dchop0.ch"
+                                                                                                                    replacetree(father, rank, sontree(for_elem, 1));
+#line 599 "dchop0.ch"
+#line 600 "dchop0.ch"
+                                                                                                                    modified = true ;
+#line 600 "dchop0.ch"
+#line 601 "dchop0.ch"
+                                                                                                                    locModified = true ;
+#line 601 "dchop0.ch"
+#line 602 "dchop0.ch"
+                                                                                                                    
+#line 602 "dchop0.ch"
+#line 602 "dchop0.ch"
+                                                                                                                  }
+#line 602 "dchop0.ch"
+#line 603 "dchop0.ch"
+                                                                    if ( locModified ) 
+#line 603 "dchop0.ch"
+#line 604 "dchop0.ch"
+                                                                        it.Current(father);
+#line 604 "dchop0.ch"
+#line 605 "dchop0.ch"
+                                                                    
+#line 605 "dchop0.ch"
+#line 605 "dchop0.ch"
+                                                                   }
+#line 605 "dchop0.ch"
+#line 606 "dchop0.ch"
                                                     break ;
                                                     
-#line 599 "dchop0.ch"
-#line 600 "dchop0.ch"
+#line 606 "dchop0.ch"
+#line 607 "dchop0.ch"
                                                     
-#line 600 "dchop0.ch"
-#line 600 "dchop0.ch"
+#line 607 "dchop0.ch"
+#line 607 "dchop0.ch"
                                                 }
                                                 
-#line 600 "dchop0.ch"
-#line 600 "dchop0.ch"
+#line 607 "dchop0.ch"
+#line 607 "dchop0.ch"
                                                 goto _Case426 ;
                                                 
-#line 600 "dchop0.ch"
-#line 602 "dchop0.ch"
-                                            case cplus::NOT : 
-#line 602 "dchop0.ch"
-#line 602 "dchop0.ch"
+#line 607 "dchop0.ch"
+#line 609 "dchop0.ch"
+                                            case cplus::OR : 
+#line 609 "dchop0.ch"
+#line 609 "dchop0.ch"
                                             _Case426 : 
-#line 602 "dchop0.ch"
-#line 602 "dchop0.ch"
+#line 609 "dchop0.ch"
+#line 609 "dchop0.ch"
                                                 ;
-#line 602 "dchop0.ch"
-#line 602 "dchop0.ch"
+#line 609 "dchop0.ch"
+#line 609 "dchop0.ch"
                                                 {
-#line 602 "dchop0.ch"
-#line 603 "dchop0.ch"
+#line 609 "dchop0.ch"
+#line 610 "dchop0.ch"
                                                     PTREE   father = (PTREE)0 ;
-#line 603 "dchop0.ch"
-                                                    
-#line 603 "dchop0.ch"
-#line 604 "dchop0.ch"
-                                                    PTREE   exp ;
-#line 604 "dchop0.ch"
-                                                    
-#line 604 "dchop0.ch"
-#line 603 "dchop0.ch"
-                                                    (father=FatherTree(for_elem));
-#line 603 "dchop0.ch"
-                                                    
-#line 603 "dchop0.ch"
-#line 605 "dchop0.ch"
-                                                    if ( ((_inter = (PPTREE)for_elem,1) && 
-#line 605 "dchop0.ch"
-                                                            (NumberTree(_inter) == cplus::NOT) &&
-#line 605 "dchop0.ch"
-                                                            (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
-#line 605 "dchop0.ch"
-                                                                (NumberTree(_inter) == cplus::NOT) &&
-#line 605 "dchop0.ch"
-                                                                ((exp=SonTree(_inter,1)),1) &&
-#line 605 "dchop0.ch"
-                                                                1),
-#line 605 "dchop0.ch"
-                                                                (_inter=_storeVal[1],1),_retVal[1]) &&
-#line 605 "dchop0.ch"
-                                                            1) ) {
-#line 605 "dchop0.ch"
-#line 606 "dchop0.ch"
-                                                                    {
-#line 606 "dchop0.ch"
-                                                                        PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
-#line 606 "dchop0.ch"
-                                                                        if (_ptTree0= fathertree(for_elem)) {
-#line 606 "dchop0.ch"
-                                                                            int rank = ranktree(for_elem);
-#line 606 "dchop0.ch"
-                                                                            ReplaceTree(_ptTree0,rank,exp);
-#line 606 "dchop0.ch"
-                                                                        }
-#line 606 "dchop0.ch"
-                                                                    }
-#line 606 "dchop0.ch"
-                                                                    
-#line 606 "dchop0.ch"
-#line 607 "dchop0.ch"
-                                                                    if ( father ) 
-#line 607 "dchop0.ch"
-#line 608 "dchop0.ch"
-                                                                        it.Current(father);
-#line 608 "dchop0.ch"
-                                                                    else 
-#line 608 "dchop0.ch"
 #line 610 "dchop0.ch"
-                                                                        it.Current(exp);
-#line 610 "dchop0.ch"
-                                                                    
+                                                    
 #line 610 "dchop0.ch"
 #line 611 "dchop0.ch"
-                                                                    
-#line 611 "dchop0.ch"
-#line 611 "dchop0.ch"
-                                                                 }
+                                                    int rank ;
+                                                    
 #line 611 "dchop0.ch"
 #line 612 "dchop0.ch"
+                                                    PTREE   x, y ;
+#line 612 "dchop0.ch"
+                                                    
+#line 612 "dchop0.ch"
+#line 613 "dchop0.ch"
+                                                    bool    locModified (false) ;
+                                                    
+#line 613 "dchop0.ch"
+#line 610 "dchop0.ch"
+                                                    (father=FatherTree(for_elem));
+#line 610 "dchop0.ch"
+                                                    
+#line 610 "dchop0.ch"
+#line 614 "dchop0.ch"
+                                                    if ( father ) {
+#line 614 "dchop0.ch"
+#line 615 "dchop0.ch"
+                                                                    ((_inter = (PPTREE)for_elem,1) && 
+#line 615 "dchop0.ch"
+                                                                        (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
+#line 615 "dchop0.ch"
+                                                                            (NumberTree(_inter) == cplus::INTEGER) &&
+#line 615 "dchop0.ch"
+                                                                            ((x=SonTree(_inter,1)),1) &&
+#line 615 "dchop0.ch"
+                                                                            1),
+#line 615 "dchop0.ch"
+                                                                            (_inter=_storeVal[1],1),_retVal[1]) &&
+#line 615 "dchop0.ch"
+                                                                        1);
+#line 615 "dchop0.ch"
+                                                                    ;
+#line 615 "dchop0.ch"
+#line 616 "dchop0.ch"
+                                                                    ((_inter = (PPTREE)for_elem,1) && 
+#line 616 "dchop0.ch"
+                                                                        (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,2),1) &&
+#line 616 "dchop0.ch"
+                                                                            (NumberTree(_inter) == cplus::INTEGER) &&
+#line 616 "dchop0.ch"
+                                                                            ((y=SonTree(_inter,1)),1) &&
+#line 616 "dchop0.ch"
+                                                                            1),
+#line 616 "dchop0.ch"
+                                                                            (_inter=_storeVal[1],1),_retVal[1]) &&
+#line 616 "dchop0.ch"
+                                                                        1);
+#line 616 "dchop0.ch"
+                                                                    ;
+#line 616 "dchop0.ch"
+#line 617 "dchop0.ch"
+                                                                    rank = ranktree(for_elem);
+#line 617 "dchop0.ch"
+#line 618 "dchop0.ch"
+                                                                    if ( x && !strcmp(BrainyValue(x), "0") ) {
+#line 618 "dchop0.ch"
+#line 619 "dchop0.ch"
+                                                                                                                    replacetree(father, rank, sontree(for_elem, 2));
+#line 619 "dchop0.ch"
+#line 620 "dchop0.ch"
+                                                                                                                    modified = true ;
+#line 620 "dchop0.ch"
+#line 621 "dchop0.ch"
+                                                                                                                    locModified = true ;
+#line 621 "dchop0.ch"
+#line 622 "dchop0.ch"
+                                                                                                                    
+#line 622 "dchop0.ch"
+#line 622 "dchop0.ch"
+                                                                                                                  } else 
+#line 622 "dchop0.ch"
+                                                                    if ( y && !strcmp(BrainyValue(y), "0") ) {
+#line 622 "dchop0.ch"
+#line 623 "dchop0.ch"
+                                                                                                                    replacetree(father, rank, sontree(for_elem, 1));
+#line 623 "dchop0.ch"
+#line 624 "dchop0.ch"
+                                                                                                                    modified = true ;
+#line 624 "dchop0.ch"
+#line 625 "dchop0.ch"
+                                                                                                                    locModified = true ;
+#line 625 "dchop0.ch"
+#line 626 "dchop0.ch"
+                                                                                                                    
+#line 626 "dchop0.ch"
+#line 626 "dchop0.ch"
+                                                                                                                  }
+#line 626 "dchop0.ch"
+#line 627 "dchop0.ch"
+                                                                    if ( locModified ) 
+#line 627 "dchop0.ch"
+#line 628 "dchop0.ch"
+                                                                        it.Current(father);
+#line 628 "dchop0.ch"
+#line 629 "dchop0.ch"
+                                                                    
+#line 629 "dchop0.ch"
+#line 629 "dchop0.ch"
+                                                                   }
+#line 629 "dchop0.ch"
+#line 630 "dchop0.ch"
                                                     break ;
                                                     
-#line 612 "dchop0.ch"
-#line 613 "dchop0.ch"
+#line 630 "dchop0.ch"
+#line 631 "dchop0.ch"
                                                     
-#line 613 "dchop0.ch"
-#line 613 "dchop0.ch"
+#line 631 "dchop0.ch"
+#line 631 "dchop0.ch"
                                                 }
                                                 
-#line 613 "dchop0.ch"
-#line 613 "dchop0.ch"
+#line 631 "dchop0.ch"
+#line 631 "dchop0.ch"
                                                 goto _Case427 ;
                                                 
-#line 613 "dchop0.ch"
-#line 615 "dchop0.ch"
-                                            case cplus::EXP : 
-#line 615 "dchop0.ch"
-#line 615 "dchop0.ch"
+#line 631 "dchop0.ch"
+#line 633 "dchop0.ch"
+                                            case cplus::NOT : 
+#line 633 "dchop0.ch"
+#line 633 "dchop0.ch"
                                             _Case427 : 
-#line 615 "dchop0.ch"
-#line 615 "dchop0.ch"
+#line 633 "dchop0.ch"
+#line 633 "dchop0.ch"
                                                 ;
-#line 615 "dchop0.ch"
-#line 615 "dchop0.ch"
+#line 633 "dchop0.ch"
+#line 633 "dchop0.ch"
                                                 {
-#line 615 "dchop0.ch"
-#line 616 "dchop0.ch"
+#line 633 "dchop0.ch"
+#line 634 "dchop0.ch"
                                                     PTREE   father = (PTREE)0 ;
-#line 616 "dchop0.ch"
+#line 634 "dchop0.ch"
                                                     
-#line 616 "dchop0.ch"
-#line 616 "dchop0.ch"
+#line 634 "dchop0.ch"
+#line 635 "dchop0.ch"
+                                                    PTREE   exp ;
+#line 635 "dchop0.ch"
+                                                    
+#line 635 "dchop0.ch"
+#line 634 "dchop0.ch"
                                                     (father=FatherTree(for_elem));
-#line 616 "dchop0.ch"
-                                                    
-#line 616 "dchop0.ch"
-#line 617 "dchop0.ch"
-                                                    if ( ((_inter = (PPTREE)father,1) && 
-#line 617 "dchop0.ch"
-                                                            (NumberTree(_inter) == cplus::CAST) &&
-#line 617 "dchop0.ch"
-                                                            1) || ( _inter = 
-#line 617 "dchop0.ch"
-                                                                    FatherTree(father),((_inter = (PPTREE)_inter,1) && 
-#line 617 "dchop0.ch"
-                                                                                            (NumberTree(_inter) == cplus::PARAM_TYPE) &&
-#line 617 "dchop0.ch"
-                                                                                            1)) || ((_inter = (PPTREE)father,1) && 
-#line 617 "dchop0.ch"
-                                                                                                        (NumberTree(_inter) == LIST) &&
-#line 617 "dchop0.ch"
-                                                                                                        1) ) 
-#line 617 "dchop0.ch"
-#line 618 "dchop0.ch"
-                                                        break ;
-                                                    
-#line 618 "dchop0.ch"
-#line 619 "dchop0.ch"
-                                                    PTREE   son = (PTREE)0 ;
-#line 619 "dchop0.ch"
-                                                    
-#line 619 "dchop0.ch"
-#line 619 "dchop0.ch"
-                                                    (son=for_elem);
-#line 619 "dchop0.ch"
-                                                    
-#line 619 "dchop0.ch"
-#line 620 "dchop0.ch"
-                                                    (son=son [1]);
-#line 620 "dchop0.ch"
-                                                    
-#line 620 "dchop0.ch"
-#line 621 "dchop0.ch"
-                                                    if ( IsAff(son) ) 
-#line 621 "dchop0.ch"
-#line 622 "dchop0.ch"
-                                                        break ;
-                                                    
-#line 622 "dchop0.ch"
-#line 623 "dchop0.ch"
-                                                    if ( OpPriority(father) < OpPriority(son) ) {
-#line 623 "dchop0.ch"
-#line 624 "dchop0.ch"
-                                                                                                        PTREE   keep = (PTREE)0 ;
-#line 624 "dchop0.ch"
-                                                                                                        
-#line 624 "dchop0.ch"
-#line 624 "dchop0.ch"
-                                                                                                        (keep=father);
-#line 624 "dchop0.ch"
-                                                                                                        
-#line 624 "dchop0.ch"
-#line 625 "dchop0.ch"
-                                                                                                        replacetree(father, ranktree(for_elem), son);
-#line 625 "dchop0.ch"
-#line 626 "dchop0.ch"
-                                                                                                        it.Current(keep);
-#line 626 "dchop0.ch"
-#line 627 "dchop0.ch"
-                                                                                                        
-#line 627 "dchop0.ch"
-#line 627 "dchop0.ch"
-                                                                                                    } else 
-#line 627 "dchop0.ch"
-                                                    if ( OpPriority(father) == OpPriority(son) ) {
-#line 627 "dchop0.ch"
-#line 628 "dchop0.ch"
-                                                                                                        PTREE   keep = (PTREE)0 ;
-#line 628 "dchop0.ch"
-                                                                                                        
-#line 628 "dchop0.ch"
-#line 628 "dchop0.ch"
-                                                                                                        (keep=father);
-#line 628 "dchop0.ch"
-                                                                                                        
-#line 628 "dchop0.ch"
-#line 629 "dchop0.ch"
-                                                                                                        switch ( treearity(keep) ) {
-#line 629 "dchop0.ch"
-#line 630 "dchop0.ch"
-                                                                                                            case 2 : 
-#line 630 "dchop0.ch"
-#line 631 "dchop0.ch"
-                                                                                                                if ( ranktree(for_elem) == 1 && OpAssociativity(keep) == LEFT_TO_RIGHT || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
-#line 631 "dchop0.ch"
-#line 633 "dchop0.ch"
-                                                                                                                                                                                                                                                                          replacetree(keep, ranktree(for_elem), sontree(for_elem, 1));
-#line 633 "dchop0.ch"
 #line 634 "dchop0.ch"
-                                                                                                                                                                                                                                                                          it.Current(keep);
+                                                    
 #line 634 "dchop0.ch"
-#line 635 "dchop0.ch"
-                                                                                                                                                                                                                                                                          
-#line 635 "dchop0.ch"
-#line 635 "dchop0.ch"
-                                                                                                                                                                                                                                                                          }
-#line 635 "dchop0.ch"
 #line 636 "dchop0.ch"
-                                                                                                                break ;
-                                                                                                                
+                                                    if ( father ) {
 #line 636 "dchop0.ch"
 #line 637 "dchop0.ch"
-                                                                                                            case 1 : 
+                                                                    if ( ((_inter = (PPTREE)for_elem,1) && 
+#line 637 "dchop0.ch"
+                                                                            (NumberTree(_inter) == cplus::NOT) &&
+#line 637 "dchop0.ch"
+                                                                            (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
+#line 637 "dchop0.ch"
+                                                                                (NumberTree(_inter) == cplus::NOT) &&
+#line 637 "dchop0.ch"
+                                                                                ((exp=SonTree(_inter,1)),1) &&
+#line 637 "dchop0.ch"
+                                                                                1),
+#line 637 "dchop0.ch"
+                                                                                (_inter=_storeVal[1],1),_retVal[1]) &&
+#line 637 "dchop0.ch"
+                                                                            1) ) {
 #line 637 "dchop0.ch"
 #line 638 "dchop0.ch"
-                                                                                                                if ( OpAssociativity(keep) == RIGHT_TO_LEFT ) {
+                                                                                    {
+#line 638 "dchop0.ch"
+                                                                                        PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
+#line 638 "dchop0.ch"
+                                                                                        if (_ptTree0= fathertree(for_elem)) {
+#line 638 "dchop0.ch"
+                                                                                            int rank = ranktree(for_elem);
+#line 638 "dchop0.ch"
+                                                                                            ReplaceTree(_ptTree0,rank,exp);
+#line 638 "dchop0.ch"
+                                                                                        }
+#line 638 "dchop0.ch"
+                                                                                    }
+#line 638 "dchop0.ch"
+                                                                                    
 #line 638 "dchop0.ch"
 #line 639 "dchop0.ch"
-                                                                                                                                                                 if ( !(((_inter = (PPTREE)keep,1) && 
-#line 639 "dchop0.ch"
-                                                                                                                                                                          (NumberTree(_inter) == cplus::AINCR) &&
-#line 639 "dchop0.ch"
-                                                                                                                                                                          1)) && !(((_inter = (PPTREE)keep,1) && 
-#line 639 "dchop0.ch"
-                                                                                                                                                                                     (NumberTree(_inter) == cplus::ADECR) &&
-#line 639 "dchop0.ch"
-                                                                                                                                                                                     1)) ) {
+                                                                                    it.Current(father);
 #line 639 "dchop0.ch"
 #line 640 "dchop0.ch"
-                                                                                                                                                                                           replacetree(keep, 1, sontree(for_elem, 1));
+                                                                                    modified = true ;
 #line 640 "dchop0.ch"
 #line 641 "dchop0.ch"
-                                                                                                                                                                                           it.Current(keep);
+                                                                                    
+#line 641 "dchop0.ch"
+#line 641 "dchop0.ch"
+                                                                                 }
 #line 641 "dchop0.ch"
 #line 642 "dchop0.ch"
-                                                                                                                                                                                           
+                                                                    
 #line 642 "dchop0.ch"
 #line 642 "dchop0.ch"
-                                                                                                                                                                                           }
+                                                                   }
 #line 642 "dchop0.ch"
 #line 643 "dchop0.ch"
-                                                                                                                                                                 
-#line 643 "dchop0.ch"
-#line 643 "dchop0.ch"
-                                                                                                                                                                 }
-#line 643 "dchop0.ch"
-#line 644 "dchop0.ch"
-                                                                                                                break ;
-                                                                                                                
-#line 644 "dchop0.ch"
-#line 645 "dchop0.ch"
-                                                                                                            default : 
-#line 645 "dchop0.ch"
-#line 645 "dchop0.ch"
-                                                                                                                break ;
-                                                                                                                
-#line 645 "dchop0.ch"
-                                                                                                        }
-#line 645 "dchop0.ch"
-                                                                                                        
-#line 645 "dchop0.ch"
-#line 647 "dchop0.ch"
-                                                                                                        
-#line 647 "dchop0.ch"
-#line 647 "dchop0.ch"
-                                                                                                     }
-#line 647 "dchop0.ch"
-#line 648 "dchop0.ch"
                                                     break ;
                                                     
-#line 648 "dchop0.ch"
-#line 649 "dchop0.ch"
+#line 643 "dchop0.ch"
+#line 644 "dchop0.ch"
                                                     
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
+#line 644 "dchop0.ch"
+#line 644 "dchop0.ch"
                                                 }
                                                 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
+#line 644 "dchop0.ch"
+#line 644 "dchop0.ch"
                                                 goto _Case428 ;
                                                 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
+#line 644 "dchop0.ch"
+#line 646 "dchop0.ch"
+                                            case cplus::EXP : 
+#line 646 "dchop0.ch"
+#line 646 "dchop0.ch"
                                             _Case428 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
+#line 646 "dchop0.ch"
+#line 646 "dchop0.ch"
                                                 ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case429 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::MUL_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case429 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case430 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::DIV_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case430 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case431 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::REM_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case431 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case432 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::MIN_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case432 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case433 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::PLU_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case433 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case434 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::LSH_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case434 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case435 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::RSH_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case435 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case436 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::AND_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case436 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case437 ;
-                                                
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            case cplus::OR_AFF : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                            _Case437 : 
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                ;
-#line 649 "dchop0.ch"
-#line 649 "dchop0.ch"
-                                                goto _Case438 ;
-                                                
-#line 649 "dchop0.ch"
-#line 661 "dchop0.ch"
-                                            case cplus::XOR_AFF : 
-#line 661 "dchop0.ch"
-#line 661 "dchop0.ch"
-                                            _Case438 : 
-#line 661 "dchop0.ch"
-#line 661 "dchop0.ch"
-                                                ;
-#line 661 "dchop0.ch"
-#line 661 "dchop0.ch"
+#line 646 "dchop0.ch"
+#line 646 "dchop0.ch"
                                                 {
-#line 661 "dchop0.ch"
-#line 662 "dchop0.ch"
-                                                    PTREE   elem = (PTREE)0 ;
-#line 662 "dchop0.ch"
-                                                    
-#line 662 "dchop0.ch"
-#line 663 "dchop0.ch"
+#line 646 "dchop0.ch"
+#line 647 "dchop0.ch"
                                                     PTREE   father = (PTREE)0 ;
-#line 663 "dchop0.ch"
+#line 647 "dchop0.ch"
                                                     
-#line 663 "dchop0.ch"
-#line 664 "dchop0.ch"
-                                                    unsigned int   rank ;
+#line 647 "dchop0.ch"
+#line 647 "dchop0.ch"
+                                                    (father=FatherTree(for_elem));
+#line 647 "dchop0.ch"
                                                     
-#line 664 "dchop0.ch"
-#line 662 "dchop0.ch"
-                                                    (elem=for_elem);
-#line 662 "dchop0.ch"
-                                                    
-#line 662 "dchop0.ch"
-#line 663 "dchop0.ch"
-                                                    (father=for_elem);
-#line 663 "dchop0.ch"
-                                                    
-#line 663 "dchop0.ch"
-#line 665 "dchop0.ch"
-                                                    rank = ranktree(elem);
-#line 665 "dchop0.ch"
-#line 666 "dchop0.ch"
-                                                    (father=FatherTree(elem));
-#line 666 "dchop0.ch"
-                                                    
-#line 666 "dchop0.ch"
-#line 667 "dchop0.ch"
+#line 647 "dchop0.ch"
+#line 648 "dchop0.ch"
                                                     if ( ((_inter = (PPTREE)father,1) && 
-#line 667 "dchop0.ch"
-                                                            (NumberTree(_inter) == cplus::EXP) &&
-#line 667 "dchop0.ch"
-                                                            1) ) 
-#line 667 "dchop0.ch"
-#line 668 "dchop0.ch"
+#line 648 "dchop0.ch"
+                                                            (NumberTree(_inter) == cplus::CAST) &&
+#line 648 "dchop0.ch"
+                                                            1) || ( _inter = 
+#line 648 "dchop0.ch"
+                                                                    FatherTree(father),((_inter = (PPTREE)_inter,1) && 
+#line 648 "dchop0.ch"
+                                                                                            (NumberTree(_inter) == cplus::PARAM_TYPE) &&
+#line 648 "dchop0.ch"
+                                                                                            1)) || ((_inter = (PPTREE)father,1) && 
+#line 648 "dchop0.ch"
+                                                                                                        (NumberTree(_inter) == LIST) &&
+#line 648 "dchop0.ch"
+                                                                                                        1) || (!father) ) 
+#line 648 "dchop0.ch"
+#line 649 "dchop0.ch"
                                                         break ;
                                                     
+#line 649 "dchop0.ch"
+#line 650 "dchop0.ch"
+                                                    PTREE   son = (PTREE)0 ;
+#line 650 "dchop0.ch"
+                                                    
+#line 650 "dchop0.ch"
+#line 650 "dchop0.ch"
+                                                    (son=for_elem);
+#line 650 "dchop0.ch"
+                                                    
+#line 650 "dchop0.ch"
+#line 651 "dchop0.ch"
+                                                    (son=son [1]);
+#line 651 "dchop0.ch"
+                                                    
+#line 651 "dchop0.ch"
+#line 652 "dchop0.ch"
+                                                    if ( IsAff(son) ) 
+#line 652 "dchop0.ch"
+#line 653 "dchop0.ch"
+                                                        break ;
+                                                    
+#line 653 "dchop0.ch"
+#line 654 "dchop0.ch"
+                                                    if ( OpPriority(father) < OpPriority(son) ) {
+#line 654 "dchop0.ch"
+#line 655 "dchop0.ch"
+                                                                                                        PTREE   keep = (PTREE)0 ;
+#line 655 "dchop0.ch"
+                                                                                                        
+#line 655 "dchop0.ch"
+#line 655 "dchop0.ch"
+                                                                                                        (keep=father);
+#line 655 "dchop0.ch"
+                                                                                                        
+#line 655 "dchop0.ch"
+#line 656 "dchop0.ch"
+                                                                                                        replacetree(father, ranktree(for_elem), son);
+#line 656 "dchop0.ch"
+#line 657 "dchop0.ch"
+                                                                                                        it.Current(keep);
+#line 657 "dchop0.ch"
+#line 658 "dchop0.ch"
+                                                                                                        modified = true ;
+#line 658 "dchop0.ch"
+#line 659 "dchop0.ch"
+                                                                                                        
+#line 659 "dchop0.ch"
+#line 659 "dchop0.ch"
+                                                                                                    } else 
+#line 659 "dchop0.ch"
+                                                    if ( OpPriority(father) == OpPriority(son) ) {
+#line 659 "dchop0.ch"
+#line 660 "dchop0.ch"
+                                                                                                        PTREE   keep = (PTREE)0 ;
+#line 660 "dchop0.ch"
+                                                                                                        
+#line 660 "dchop0.ch"
+#line 660 "dchop0.ch"
+                                                                                                        (keep=father);
+#line 660 "dchop0.ch"
+                                                                                                        
+#line 660 "dchop0.ch"
+#line 661 "dchop0.ch"
+                                                                                                        switch ( treearity(keep) ) {
+#line 661 "dchop0.ch"
+#line 662 "dchop0.ch"
+                                                                                                            case 2 : 
+#line 662 "dchop0.ch"
+#line 663 "dchop0.ch"
+                                                                                                                if ( ranktree(for_elem) == 1 && OpAssociativity(keep) == LEFT_TO_RIGHT || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
+#line 663 "dchop0.ch"
+#line 665 "dchop0.ch"
+                                                                                                                                                                                                                                                                          replacetree(keep, ranktree(for_elem), sontree(for_elem, 1));
+#line 665 "dchop0.ch"
+#line 666 "dchop0.ch"
+                                                                                                                                                                                                                                                                          it.Current(keep);
+#line 666 "dchop0.ch"
+#line 667 "dchop0.ch"
+                                                                                                                                                                                                                                                                          modified = true ;
+#line 667 "dchop0.ch"
+#line 668 "dchop0.ch"
+                                                                                                                                                                                                                                                                          
+#line 668 "dchop0.ch"
+#line 668 "dchop0.ch"
+                                                                                                                                                                                                                                                                          }
 #line 668 "dchop0.ch"
 #line 669 "dchop0.ch"
-                                                    do {
+                                                                                                                break ;
+                                                                                                                
 #line 669 "dchop0.ch"
 #line 670 "dchop0.ch"
-                                                        bool    tested = false ;
-                                                        
+                                                                                                            case 1 : 
 #line 670 "dchop0.ch"
 #line 671 "dchop0.ch"
-                                                        switch ( NumberTree(father) ) {
+                                                                                                                if ( OpAssociativity(keep) == RIGHT_TO_LEFT ) {
 #line 671 "dchop0.ch"
-#line 671 "dchop0.ch"
-                                                            case cplus::WHILE : 
-#line 671 "dchop0.ch"
-#line 671 "dchop0.ch"
-                                                            _Case439 : 
-#line 671 "dchop0.ch"
-#line 671 "dchop0.ch"
-                                                                ;
-#line 671 "dchop0.ch"
-#line 671 "dchop0.ch"
-                                                                goto _Case440 ;
-                                                                
-#line 671 "dchop0.ch"
+#line 672 "dchop0.ch"
+                                                                                                                                                                 if ( !(((_inter = (PPTREE)keep,1) && 
+#line 672 "dchop0.ch"
+                                                                                                                                                                          (NumberTree(_inter) == cplus::AINCR) &&
+#line 672 "dchop0.ch"
+                                                                                                                                                                          1)) && !(((_inter = (PPTREE)keep,1) && 
+#line 672 "dchop0.ch"
+                                                                                                                                                                                     (NumberTree(_inter) == cplus::ADECR) &&
+#line 672 "dchop0.ch"
+                                                                                                                                                                                     1)) ) {
+#line 672 "dchop0.ch"
+#line 673 "dchop0.ch"
+                                                                                                                                                                                           replacetree(keep, 1, sontree(for_elem, 1));
+#line 673 "dchop0.ch"
 #line 674 "dchop0.ch"
-                                                            case cplus::IF : 
-#line 674 "dchop0.ch"
-#line 674 "dchop0.ch"
-                                                            _Case440 : 
-#line 674 "dchop0.ch"
-#line 674 "dchop0.ch"
-                                                                ;
-#line 674 "dchop0.ch"
-#line 674 "dchop0.ch"
-                                                                {
+                                                                                                                                                                                           it.Current(keep);
 #line 674 "dchop0.ch"
 #line 675 "dchop0.ch"
-                                                                    if ( rank != 1 ) {
+                                                                                                                                                                                           modified = true ;
 #line 675 "dchop0.ch"
 #line 676 "dchop0.ch"
-                                                                                        father = (PPTREE) 0 ;
+                                                                                                                                                                                           
 #line 676 "dchop0.ch"
-                                                                                        
+#line 676 "dchop0.ch"
+                                                                                                                                                                                           }
 #line 676 "dchop0.ch"
 #line 677 "dchop0.ch"
-                                                                                        break ;
-                                                                                        
+                                                                                                                                                                 
+#line 677 "dchop0.ch"
+#line 677 "dchop0.ch"
+                                                                                                                                                                 }
 #line 677 "dchop0.ch"
 #line 678 "dchop0.ch"
-                                                                                        
-#line 678 "dchop0.ch"
-#line 678 "dchop0.ch"
-                                                                                       }
+                                                                                                                break ;
+                                                                                                                
 #line 678 "dchop0.ch"
 #line 679 "dchop0.ch"
-                                                                    tested = true ;
+                                                                                                            default : 
 #line 679 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                                    
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                                }
-                                                                
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                                goto _Case441 ;
-                                                                
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                            case cplus::DO : 
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                            _Case441 : 
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                                ;
-#line 680 "dchop0.ch"
-#line 680 "dchop0.ch"
-                                                                goto _Case442 ;
-                                                                
-#line 680 "dchop0.ch"
-#line 683 "dchop0.ch"
-                                                            case cplus::FOR : 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
-                                                            _Case442 : 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
-                                                                ;
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
-                                                                {
-#line 683 "dchop0.ch"
-#line 684 "dchop0.ch"
-                                                                    if ( !tested && rank != 2 ) {
-#line 684 "dchop0.ch"
-#line 685 "dchop0.ch"
-                                                                                                        father = (PPTREE) 0 ;
-#line 685 "dchop0.ch"
+#line 679 "dchop0.ch"
+                                                                                                                break ;
+                                                                                                                
+#line 679 "dchop0.ch"
+                                                                                                        }
+#line 679 "dchop0.ch"
                                                                                                         
-#line 685 "dchop0.ch"
-#line 686 "dchop0.ch"
-                                                                                                        break ;
+#line 679 "dchop0.ch"
+#line 681 "dchop0.ch"
                                                                                                         
-#line 686 "dchop0.ch"
-#line 687 "dchop0.ch"
-                                                                                                        
-#line 687 "dchop0.ch"
-#line 687 "dchop0.ch"
-                                                                                                    }
-#line 687 "dchop0.ch"
-#line 688 "dchop0.ch"
-                                                                    
-#line 688 "dchop0.ch"
-#line 688 "dchop0.ch"
-                                                                }
-                                                                
-#line 688 "dchop0.ch"
-#line 690 "dchop0.ch"
-                                                                {
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
-                                                                    rank = ranktree(elem);
-#line 690 "dchop0.ch"
-#line 691 "dchop0.ch"
-                                                                    PTREE   rep ;
-#line 691 "dchop0.ch"
-                                                                    
-#line 691 "dchop0.ch"
-#line 692 "dchop0.ch"
-                                                                    (father=FatherTree(elem));
-#line 692 "dchop0.ch"
-                                                                    
-#line 692 "dchop0.ch"
-#line 693 "dchop0.ch"
-                                                                    {
-#line 693 "dchop0.ch"
-                                                                        PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
-#line 693 "dchop0.ch"
-                                                                        _ptRes0 = MakeTree(cplus::EXP, 1);
-#line 693 "dchop0.ch"
-                                                                        _ptTree0 = StoreRef(copytree(elem));
-#line 693 "dchop0.ch"
-                                                                        ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 693 "dchop0.ch"
-                                                                        rep = _ptRes0;
-#line 693 "dchop0.ch"
-                                                                    }
-#line 693 "dchop0.ch"
-                                                                    
-#line 693 "dchop0.ch"
-#line 694 "dchop0.ch"
-                                                                    replacetree(father, rank, rep);
-#line 694 "dchop0.ch"
-#line 695 "dchop0.ch"
-                                                                    it.Current(rep);
-#line 695 "dchop0.ch"
-#line 696 "dchop0.ch"
-                                                                    father = (PPTREE) 0 ;
-#line 696 "dchop0.ch"
-                                                                    
-#line 696 "dchop0.ch"
-#line 697 "dchop0.ch"
-                                                                    
-#line 697 "dchop0.ch"
-#line 697 "dchop0.ch"
-                                                                }
-                                                                
-#line 697 "dchop0.ch"
-#line 698 "dchop0.ch"
-                                                                break ;
-                                                                
-#line 698 "dchop0.ch"
-#line 700 "dchop0.ch"
-                                                            case cplus::COMPOUND : 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
-                                                            _Case443 : 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
-                                                                ;
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
-                                                                father = (PPTREE) 0 ;
-#line 700 "dchop0.ch"
-                                                                
-#line 700 "dchop0.ch"
-#line 701 "dchop0.ch"
-                                                                break ;
-                                                                
-#line 701 "dchop0.ch"
-                                                        }
-#line 701 "dchop0.ch"
-                                                        
-#line 701 "dchop0.ch"
-#line 703 "dchop0.ch"
-                                                        if ( !((!father)) ) {
-#line 703 "dchop0.ch"
-#line 704 "dchop0.ch"
-                                                                                rank = ranktree(father);
-#line 704 "dchop0.ch"
-#line 705 "dchop0.ch"
-                                                                                (father=FatherTree(father));
-#line 705 "dchop0.ch"
-                                                                                
-#line 705 "dchop0.ch"
-#line 706 "dchop0.ch"
-                                                                                
-#line 706 "dchop0.ch"
-#line 706 "dchop0.ch"
-                                                                              }
-#line 706 "dchop0.ch"
-#line 707 "dchop0.ch"
-                                                        
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
-                                                       } 
-#line 707 "dchop0.ch"
-                                                    while ( !((!father)) );
-#line 707 "dchop0.ch"
+#line 681 "dchop0.ch"
+#line 681 "dchop0.ch"
+                                                                                                     }
+#line 681 "dchop0.ch"
+#line 682 "dchop0.ch"
+                                                    break ;
                                                     
-#line 707 "dchop0.ch"
-#line 708 "dchop0.ch"
+#line 682 "dchop0.ch"
+#line 683 "dchop0.ch"
                                                     
-#line 708 "dchop0.ch"
-#line 708 "dchop0.ch"
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
                                                 }
                                                 
-#line 708 "dchop0.ch"
-#line 709 "dchop0.ch"
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                goto _Case429 ;
+                                                
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                            case cplus::WHILE : 
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                (cond=SonTree(for_elem, 1));
+#line 683 "dchop0.ch"
+                                                
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                (stat1=SonTree(for_elem, 2));
+#line 683 "dchop0.ch"
+                                                
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                            _Case429 : 
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                ;
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                goto _Case430 ;
+                                                
+#line 683 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                            case cplus::DO : 
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                (stat1=SonTree(for_elem, 1));
+#line 686 "dchop0.ch"
+                                                
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                (cond=SonTree(for_elem, 2));
+#line 686 "dchop0.ch"
+                                                
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                            _Case430 : 
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                ;
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                {
+#line 686 "dchop0.ch"
+#line 687 "dchop0.ch"
+                                                    stat2 = (PPTREE) 0 ;
+#line 687 "dchop0.ch"
+                                                    
+#line 687 "dchop0.ch"
+#line 688 "dchop0.ch"
+                                                    
+#line 688 "dchop0.ch"
+#line 688 "dchop0.ch"
+                                                }
+                                                
+#line 688 "dchop0.ch"
+#line 688 "dchop0.ch"
+                                                goto _Case431 ;
+                                                
+#line 688 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                            case cplus::IF : 
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                                (cond=SonTree(for_elem, 1));
+#line 690 "dchop0.ch"
+                                                
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                                (stat1=SonTree(for_elem, 2));
+#line 690 "dchop0.ch"
+                                                
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                                (stat2=SonTree(for_elem, 3));
+#line 690 "dchop0.ch"
+                                                
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                            _Case431 : 
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                                ;
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
+                                                {
+#line 690 "dchop0.ch"
+#line 691 "dchop0.ch"
+                                                    modified = modified || clean_tree(cond, false);
+#line 691 "dchop0.ch"
+#line 692 "dchop0.ch"
+                                                    modified == modified || clean_tree(stat1, true);
+#line 692 "dchop0.ch"
+#line 693 "dchop0.ch"
+                                                    if ( !((!stat2)) ) {
+#line 693 "dchop0.ch"
+#line 694 "dchop0.ch"
+                                                                            modified = modified || clean_tree(stat2, true);
+#line 694 "dchop0.ch"
+#line 695 "dchop0.ch"
+                                                                            
+#line 695 "dchop0.ch"
+#line 695 "dchop0.ch"
+                                                                         }
+#line 695 "dchop0.ch"
+#line 696 "dchop0.ch"
+                                                    it.SkipSon(1);
+#line 696 "dchop0.ch"
+#line 697 "dchop0.ch"
+                                                    
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
+                                                }
+                                                
+#line 697 "dchop0.ch"
+#line 698 "dchop0.ch"
                                                 break ;
                                                 
-#line 709 "dchop0.ch"
+#line 698 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                            case cplus::FOR : 
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                (cond1=SonTree(for_elem, 1));
+#line 700 "dchop0.ch"
+                                                
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                (cond=SonTree(for_elem, 2));
+#line 700 "dchop0.ch"
+                                                
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                (cond2=SonTree(for_elem, 3));
+#line 700 "dchop0.ch"
+                                                
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                (stat1=SonTree(for_elem, 4));
+#line 700 "dchop0.ch"
+                                                
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                            _Case432 : 
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                ;
+#line 700 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                {
+#line 700 "dchop0.ch"
+#line 701 "dchop0.ch"
+                                                    modified = modified || clean_tree(cond, false);
+#line 701 "dchop0.ch"
+#line 702 "dchop0.ch"
+                                                    modified = modified || clean_tree(cond1, true);
+#line 702 "dchop0.ch"
+#line 703 "dchop0.ch"
+                                                    modified = modified || clean_tree(cond2, true);
+#line 703 "dchop0.ch"
+#line 704 "dchop0.ch"
+                                                    modified = modified || clean_tree(stat1, true);
+#line 704 "dchop0.ch"
+#line 705 "dchop0.ch"
+                                                    it.SkipSon(1);
+#line 705 "dchop0.ch"
+#line 706 "dchop0.ch"
+                                                    
+#line 706 "dchop0.ch"
+#line 706 "dchop0.ch"
+                                                }
+                                                
+#line 706 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                break ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case433 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case434 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::MUL_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case434 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case435 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::DIV_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case435 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case436 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::REM_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case436 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case437 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::MIN_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case437 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case438 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::PLU_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case438 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case439 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::LSH_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case439 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case440 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::RSH_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case440 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case441 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::AND_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case441 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case442 ;
+                                                
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            case cplus::OR_AFF : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                            _Case442 : 
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                ;
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
+                                                goto _Case443 ;
+                                                
+#line 707 "dchop0.ch"
+#line 719 "dchop0.ch"
+                                            case cplus::XOR_AFF : 
+#line 719 "dchop0.ch"
+#line 719 "dchop0.ch"
+                                            _Case443 : 
+#line 719 "dchop0.ch"
+#line 719 "dchop0.ch"
+                                                ;
+#line 719 "dchop0.ch"
+#line 719 "dchop0.ch"
+                                                if ( !ignoreAff ) {
+#line 719 "dchop0.ch"
+#line 720 "dchop0.ch"
+                                                                        PTREE   elem (for_elem) ;
+#line 720 "dchop0.ch"
+                                                                        
+#line 720 "dchop0.ch"
+#line 721 "dchop0.ch"
+                                                                        PTREE   father ;
+#line 721 "dchop0.ch"
+                                                                        
+#line 721 "dchop0.ch"
+#line 722 "dchop0.ch"
+                                                                        (father=FatherTree(elem));
+#line 722 "dchop0.ch"
+                                                                        
+#line 722 "dchop0.ch"
+#line 725 "dchop0.ch"
+                                                                        if ( ((_inter = (PPTREE)father,1) && 
+#line 725 "dchop0.ch"
+                                                                                (NumberTree(_inter) == cplus::EXP) &&
+#line 725 "dchop0.ch"
+                                                                                1) ) 
+#line 725 "dchop0.ch"
+#line 726 "dchop0.ch"
+                                                                            break ;
+                                                                        
+#line 726 "dchop0.ch"
+#line 729 "dchop0.ch"
+                                                                        if ( !((!father)) ) {
+#line 729 "dchop0.ch"
+#line 730 "dchop0.ch"
+                                                                                                unsigned int   rank = elem.RankTree();
+                                                                                                
+#line 730 "dchop0.ch"
+#line 731 "dchop0.ch"
+                                                                                                PTREE   rep = (PTREE)0 ;
+#line 731 "dchop0.ch"
+                                                                                                
+#line 731 "dchop0.ch"
+#line 731 "dchop0.ch"
+                                                                                                {
+#line 731 "dchop0.ch"
+                                                                                                    PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
+#line 731 "dchop0.ch"
+                                                                                                    _ptRes0 = MakeTree(cplus::EXP, 1);
+#line 731 "dchop0.ch"
+                                                                                                    ReplaceTree(_ptRes0, 1, elem);
+#line 731 "dchop0.ch"
+                                                                                                    rep = _ptRes0;
+#line 731 "dchop0.ch"
+                                                                                                }
+#line 731 "dchop0.ch"
+                                                                                                
+#line 731 "dchop0.ch"
+#line 732 "dchop0.ch"
+                                                                                                replacetree(father, rank, rep);
+#line 732 "dchop0.ch"
+#line 733 "dchop0.ch"
+                                                                                                modified = true ;
+#line 733 "dchop0.ch"
+#line 734 "dchop0.ch"
+                                                                                                
+#line 734 "dchop0.ch"
+#line 734 "dchop0.ch"
+                                                                                              }
+#line 734 "dchop0.ch"
+#line 735 "dchop0.ch"
+                                                                        
+#line 735 "dchop0.ch"
+#line 735 "dchop0.ch"
+                                                                    }
+#line 735 "dchop0.ch"
+#line 736 "dchop0.ch"
+                                                break ;
+                                                
+#line 736 "dchop0.ch"
                                         }
-#line 709 "dchop0.ch"
+#line 736 "dchop0.ch"
                                         
-#line 709 "dchop0.ch"
-#line 711 "dchop0.ch"
+#line 736 "dchop0.ch"
+#line 738 "dchop0.ch"
                                         
-#line 711 "dchop0.ch"
-#line 711 "dchop0.ch"
+#line 738 "dchop0.ch"
+#line 738 "dchop0.ch"
                                     }
-#line 711 "dchop0.ch"
-#line 712 "dchop0.ch"
+#line 738 "dchop0.ch"
+#line 739 "dchop0.ch"
+    return modified ;
     
-#line 712 "dchop0.ch"
-#line 712 "dchop0.ch"
+#line 739 "dchop0.ch"
+#line 740 "dchop0.ch"
+    
+#line 740 "dchop0.ch"
+#line 740 "dchop0.ch"
 }
-#line 712 "dchop0.ch"
+#line 740 "dchop0.ch"
 
-#line 712 "dchop0.ch"
-#line 712 "dchop0.ch"
+#line 740 "dchop0.ch"
+#line 740 "dchop0.ch"
 static void dchop0_Anchor () { int i = 1;} 
-#line 712 "dchop0.ch"
+#line 740 "dchop0.ch"
 /*Well done my boy */ 
-#line 712 "dchop0.ch"
+#line 740 "dchop0.ch"
 

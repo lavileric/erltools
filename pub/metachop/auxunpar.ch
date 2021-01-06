@@ -341,7 +341,7 @@ void DumpForeach ( PTREE paramTree, int level )
     statement =  parse (
         {
             ItPtree $(iterator)($(stated),$(searched));
-            PPTREE _for_elem;
+            PTREE _for_elem;
             $(iterator).AllSearch(1);
             while ( _for_elem = ($(iterator))++) {
                 $(treatment);

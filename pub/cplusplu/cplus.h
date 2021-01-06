@@ -33,6 +33,8 @@ class cplus: public pretty,public virtual Parser {
         InitConst ();
         keepCarriage = 0 ;
         keepAll = 0 ;
+        inside_signed = 0 ;
+        inside_long = 0 ;
         switchContext = 0 ;
         noString = 0 ;
         
@@ -145,7 +147,7 @@ class cplus: public pretty,public virtual Parser {
     virtual PPTREE linkage_specification ( int error_free) ;
     virtual PPTREE logical_and_expression ( int error_free) ;
     virtual PPTREE logical_or_expression ( int error_free) ;
-    virtual PPTREE long_short_int_char ( int error_free) ;
+    virtual PPTREE long_type ( int error_free) ;
     virtual PPTREE macro ( int error_free) ;
     virtual PPTREE macro_extended ( int error_free) ;
     virtual PPTREE main_entry ( int error_free) ;
@@ -181,6 +183,8 @@ class cplus: public pretty,public virtual Parser {
     virtual PPTREE relational_expression ( int error_free) ;
     virtual PPTREE sc_specifier ( int error_free) ;
     virtual PPTREE shift_expression ( int error_free) ;
+    virtual PPTREE short_long_int_char ( int error_free) ;
+    virtual PPTREE signed_type ( int error_free) ;
     virtual PPTREE simple_type ( int error_free) ;
     virtual PPTREE simple_type_name ( int error_free) ;
     virtual PPTREE sizeof_type ( int error_free) ;
@@ -204,82 +208,85 @@ class cplus: public pretty,public virtual Parser {
     virtual PPTREE type_specifier_without_param ( int error_free) ;
     virtual PPTREE typedef_and_declarator ( int error_free) ;
     virtual PPTREE unary_expression ( int error_free) ;
+    virtual PPTREE unsigned_type ( int error_free) ;
     
     
     int keepCarriage;
     int keepAll;
+    int inside_signed;
+    int inside_long;
     int switchContext;
     int noString;
-    static signed char * _tokenArray [149];
-    static int (cplus::*(_tokenFuncArray [149])) ();
-    static int _tokenNbFuncArray [149];
+    static signed char * _tokenArray [152];
+    static int (cplus::*(_tokenFuncArray [152])) ();
+    static int _tokenNbFuncArray [152];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 
     virtual void InitConst ();
     
     enum constants {
-        BDECR =     356 ,
-        BINCR =     355 ,
-        ADDR =  354 ,
-        NOT =   353 ,
-        LNEG =  352 ,
-        POS =   351 ,
-        NEG =   350 ,
-        PARAM_TYPE =    349 ,
-        STRING_LIST =   348 ,
-        LABEL =     347 ,
-        THROW_ANSI =    346 ,
-        ELSE =  345 ,
-        TUNSIGNED =     344 ,
-        TSIGNED =   343 ,
-        TFLOAT =    342 ,
-        TDOUBLE =   341 ,
-        DECL_TYPE =     340 ,
-        TIDENT =    339 ,
-        RSHI =  338 ,
-        LSHI =  337 ,
-        LT =    336 ,
-        GT =    335 ,
-        GEQU =  334 ,
-        LEQU =  333 ,
-        SPACE_ARROW =   332 ,
-        TAB_DIRECTIVE =     331 ,
-        ENUM_PARAMETERS_UNDER =     330 ,
-        ENUM_VERT_VALUE =   329 ,
-        PROTECT_MEMB =  328 ,
-        LANGUAGE =  327 ,
-        EXP =   326 ,
-        ADECR =     325 ,
-        AINCR =     324 ,
-        ARROW =     323 ,
-        REF =   322 ,
-        EXP_ARRAY =     321 ,
-        EXP_BRA =   320 ,
-        EXP_LIST =  319 ,
-        ARROW_MEMB =    318 ,
-        DOT_MEMB =  317 ,
-        POINETOI =  316 ,
-        TIRESUPEETOI =  315 ,
-        TIRESUPE =  314 ,
-        SUPESUPE =  313 ,
-        INFEINFE =  312 ,
-        SUPEEGAL =  311 ,
-        INFEEGAL =  310 ,
-        NONE =  309 ,
-        NEW_DECLARATOR =    308 ,
-        USING_NAMESPACE =   307 ,
-        NAMESPACE_ALIAS =   306 ,
-        REM =   305 ,
-        DIV =   304 ,
-        MUL =   303 ,
-        POURC =     302 ,
-        MESSAGE_MAP =   301 ,
-        MACRO =     300 ,
-        TCHAR =     299 ,
-        TSHORT =    298 ,
-        TLONG =     297 ,
-        TINT =  296 ,
+        TUNSIGNED =     356 ,
+        BDECR =     355 ,
+        BINCR =     354 ,
+        ADDR =  353 ,
+        NOT =   352 ,
+        LNEG =  351 ,
+        POS =   350 ,
+        NEG =   349 ,
+        PARAM_TYPE =    348 ,
+        STRING_LIST =   347 ,
+        LABEL =     346 ,
+        THROW_ANSI =    345 ,
+        ELSE =  344 ,
+        DECL_TYPE =     343 ,
+        TIDENT =    342 ,
+        TSIGNED =   341 ,
+        TSHORT =    340 ,
+        TCHAR =     339 ,
+        TINT =  338 ,
+        RSHI =  337 ,
+        LSHI =  336 ,
+        LT =    335 ,
+        GT =    334 ,
+        GEQU =  333 ,
+        LEQU =  332 ,
+        SPACE_ARROW =   331 ,
+        TAB_DIRECTIVE =     330 ,
+        ENUM_PARAMETERS_UNDER =     329 ,
+        ENUM_VERT_VALUE =   328 ,
+        PROTECT_MEMB =  327 ,
+        LANGUAGE =  326 ,
+        EXP =   325 ,
+        ADECR =     324 ,
+        AINCR =     323 ,
+        ARROW =     322 ,
+        REF =   321 ,
+        EXP_ARRAY =     320 ,
+        EXP_BRA =   319 ,
+        EXP_LIST =  318 ,
+        ARROW_MEMB =    317 ,
+        DOT_MEMB =  316 ,
+        POINETOI =  315 ,
+        TIRESUPEETOI =  314 ,
+        TIRESUPE =  313 ,
+        SUPESUPE =  312 ,
+        INFEINFE =  311 ,
+        SUPEEGAL =  310 ,
+        INFEEGAL =  309 ,
+        NONE =  308 ,
+        NEW_DECLARATOR =    307 ,
+        USING_NAMESPACE =   306 ,
+        NAMESPACE_ALIAS =   305 ,
+        REM =   304 ,
+        DIV =   303 ,
+        MUL =   302 ,
+        POURC =     301 ,
+        MESSAGE_MAP =   300 ,
+        MACRO =     299 ,
+        TDOUBLE =   298 ,
+        TFLOAT =    297 ,
+        TLONG =     296 ,
         OR =    295 ,
         VBARVBAR =  294 ,
         AND =   293 ,
@@ -441,15 +448,15 @@ class cplus: public pretty,public virtual Parser {
         TILD =  137 ,
         ETCO =  136 ,
         ETOI =  135 ,
-        SHORT =     134 ,
-        UNSIGNED =  133 ,
-        SIGNED =    132 ,
+        UNSIGNED =  134 ,
+        SIGNED =    133 ,
+        SHORT =     132 ,
         LONG =  131 ,
-        DPOIDPOI =  130 ,
-        VOID =  129 ,
-        FLOAT =     128 ,
-        CHAR =  127 ,
-        INT =   126 ,
+        CHAR =  130 ,
+        INT =   129 ,
+        DPOIDPOI =  128 ,
+        VOID =  127 ,
+        FLOAT =     126 ,
         DOUBLE =    125 ,
         DECLTYPE =  124 ,
         TYPENAME =  123 ,
@@ -577,67 +584,67 @@ class cplus: public pretty,public virtual Parser {
 extern cplus * parser_cplus;
 
 #endif
-#define BDECR_cplus     356
-#define BINCR_cplus     355
-#define ADDR_cplus  354
-#define NOT_cplus   353
-#define LNEG_cplus  352
-#define POS_cplus   351
-#define NEG_cplus   350
-#define PARAM_TYPE_cplus    349
-#define STRING_LIST_cplus   348
-#define LABEL_cplus     347
-#define THROW_ANSI_cplus    346
-#define ELSE_cplus  345
-#define TUNSIGNED_cplus     344
-#define TSIGNED_cplus   343
-#define TFLOAT_cplus    342
-#define TDOUBLE_cplus   341
-#define DECL_TYPE_cplus     340
-#define TIDENT_cplus    339
-#define RSHI_cplus  338
-#define LSHI_cplus  337
-#define LT_cplus    336
-#define GT_cplus    335
-#define GEQU_cplus  334
-#define LEQU_cplus  333
-#define SPACE_ARROW_cplus   332
-#define TAB_DIRECTIVE_cplus     331
-#define ENUM_PARAMETERS_UNDER_cplus     330
-#define ENUM_VERT_VALUE_cplus   329
-#define PROTECT_MEMB_cplus  328
-#define LANGUAGE_cplus  327
-#define EXP_cplus   326
-#define ADECR_cplus     325
-#define AINCR_cplus     324
-#define ARROW_cplus     323
-#define REF_cplus   322
-#define EXP_ARRAY_cplus     321
-#define EXP_BRA_cplus   320
-#define EXP_LIST_cplus  319
-#define ARROW_MEMB_cplus    318
-#define DOT_MEMB_cplus  317
-#define POINETOI_cplus  316
-#define TIRESUPEETOI_cplus  315
-#define TIRESUPE_cplus  314
-#define SUPESUPE_cplus  313
-#define INFEINFE_cplus  312
-#define SUPEEGAL_cplus  311
-#define INFEEGAL_cplus  310
-#define NONE_cplus  309
-#define NEW_DECLARATOR_cplus    308
-#define USING_NAMESPACE_cplus   307
-#define NAMESPACE_ALIAS_cplus   306
-#define REM_cplus   305
-#define DIV_cplus   304
-#define MUL_cplus   303
-#define POURC_cplus     302
-#define MESSAGE_MAP_cplus   301
-#define MACRO_cplus     300
-#define TCHAR_cplus     299
-#define TSHORT_cplus    298
-#define TLONG_cplus     297
-#define TINT_cplus  296
+#define TUNSIGNED_cplus     356
+#define BDECR_cplus     355
+#define BINCR_cplus     354
+#define ADDR_cplus  353
+#define NOT_cplus   352
+#define LNEG_cplus  351
+#define POS_cplus   350
+#define NEG_cplus   349
+#define PARAM_TYPE_cplus    348
+#define STRING_LIST_cplus   347
+#define LABEL_cplus     346
+#define THROW_ANSI_cplus    345
+#define ELSE_cplus  344
+#define DECL_TYPE_cplus     343
+#define TIDENT_cplus    342
+#define TSIGNED_cplus   341
+#define TSHORT_cplus    340
+#define TCHAR_cplus     339
+#define TINT_cplus  338
+#define RSHI_cplus  337
+#define LSHI_cplus  336
+#define LT_cplus    335
+#define GT_cplus    334
+#define GEQU_cplus  333
+#define LEQU_cplus  332
+#define SPACE_ARROW_cplus   331
+#define TAB_DIRECTIVE_cplus     330
+#define ENUM_PARAMETERS_UNDER_cplus     329
+#define ENUM_VERT_VALUE_cplus   328
+#define PROTECT_MEMB_cplus  327
+#define LANGUAGE_cplus  326
+#define EXP_cplus   325
+#define ADECR_cplus     324
+#define AINCR_cplus     323
+#define ARROW_cplus     322
+#define REF_cplus   321
+#define EXP_ARRAY_cplus     320
+#define EXP_BRA_cplus   319
+#define EXP_LIST_cplus  318
+#define ARROW_MEMB_cplus    317
+#define DOT_MEMB_cplus  316
+#define POINETOI_cplus  315
+#define TIRESUPEETOI_cplus  314
+#define TIRESUPE_cplus  313
+#define SUPESUPE_cplus  312
+#define INFEINFE_cplus  311
+#define SUPEEGAL_cplus  310
+#define INFEEGAL_cplus  309
+#define NONE_cplus  308
+#define NEW_DECLARATOR_cplus    307
+#define USING_NAMESPACE_cplus   306
+#define NAMESPACE_ALIAS_cplus   305
+#define REM_cplus   304
+#define DIV_cplus   303
+#define MUL_cplus   302
+#define POURC_cplus     301
+#define MESSAGE_MAP_cplus   300
+#define MACRO_cplus     299
+#define TDOUBLE_cplus   298
+#define TFLOAT_cplus    297
+#define TLONG_cplus     296
 #define OR_cplus    295
 #define VBARVBAR_cplus  294
 #define AND_cplus   293
@@ -799,15 +806,15 @@ extern cplus * parser_cplus;
 #define TILD_cplus  137
 #define ETCO_cplus  136
 #define ETOI_cplus  135
-#define SHORT_cplus     134
-#define UNSIGNED_cplus  133
-#define SIGNED_cplus    132
+#define UNSIGNED_cplus  134
+#define SIGNED_cplus    133
+#define SHORT_cplus     132
 #define LONG_cplus  131
-#define DPOIDPOI_cplus  130
-#define VOID_cplus  129
-#define FLOAT_cplus     128
-#define CHAR_cplus  127
-#define INT_cplus   126
+#define CHAR_cplus  130
+#define INT_cplus   129
+#define DPOIDPOI_cplus  128
+#define VOID_cplus  127
+#define FLOAT_cplus     126
 #define DOUBLE_cplus    125
 #define DECLTYPE_cplus  124
 #define TYPENAME_cplus  123

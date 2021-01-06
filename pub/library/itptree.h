@@ -63,7 +63,7 @@ class ItPtree {
             justStarted = itPtree.justStarted ;
         }
         
-        PPTREE operator++ ( int )
+        PTREE operator++ ( int )
         {
             if ( !justStarted ) 
                 if ( skipSon ) {
@@ -118,9 +118,9 @@ class ItPtree {
     
     private :
     
-        PPTREE  searched ; // searched tree
-        PPTREE  end ;      // end tree
-        PPTREE  current ;  // current tree
+        PTREE  searched ; // searched tree
+        PTREE  end ;      // end tree
+        PTREE  current ;  // current tree
         int     skipSon ;
         int     allSearch ;
         int     justStarted ;

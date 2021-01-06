@@ -25,6 +25,7 @@
 language pretty;
 
 #include "clpretty.h"
+#include "Protector.h"
 
 /********************************************************************
        PutAttr : put attributes on a node
@@ -76,6 +77,48 @@ void clpretty::PutAttr ( PTREE tree, PTREE listAttr, int attr, int pos )
     }
 }
 
+class POS_TREE {
+    
+    public :
+    
+        int     rank ;
+        PTREE   tree ;
+        int     currMark ;
+};
+
+template <class STACKED> 
+    inline void PushValue ( std::vector<STACKED> &stack, int &pos, STACKED stacked )
+    {
+        pos++ ;
+        if ( pos >= (int)stack.size() ) 
+            stack.push_back(stacked);
+        else 
+            stack [pos] =  stacked ;
+    }
+    
+inline bool SetMark ( PTREE &currTree, int &currMark )
+{
+    
+    int x ;              // relative x coordinate
+    int y ;              // relative y coordinate
+    int dx ;             // width
+    int posMark ;        // pos   
+    int withCoordinate ; // indicates if tree has coordinates
+    
+    if ( currTree == () ) 
+        return false ;
+    
+    // get current currmark
+    withCoordinate =  GetCoord(currTree, &x, &y, &dx, &posMark);
+    
+    // if there are coordinate store mark
+    if ( withCoordinate ) {
+        currMark =  posMark ;
+        return true ;
+    }
+    return false ;
+}
+
 /********************************************************************
            CompleteCoordinates : put coordinates on nodes where there
                                  are none for example most of the lists
@@ -83,14 +126,196 @@ void clpretty::PutAttr ( PTREE tree, PTREE listAttr, int attr, int pos )
 void clpretty::CompleteCoordinates ( PTREE currTree )
 {
     
-    int     x ;                      // relative x coordinate
-    int     y ;                      // relative y coordinate
-    int     dx ;                     // width
-    int     maxDx = 0 ;              // max width
-    int     posMark ;                // position of mark
-    int     oldCurrMark = currMark ; // old position of mark
-    int     withCoordinate ;         // indicates if tree has coordinates
-    PTREE   inter ;                  // intermediate tree
+    int                     x ;                    // relative x coordinate
+    int                     y ;                    // relative y coordinate
+    int                     dx ;                   // width
+    int                     maxDx = 0 ;            // max width
+    int                     posMark ;              // position of mark
+    Protector<int>          protector (currMark) ; // old position of mark
+    int                     withCoordinate ;       // indicates if tree has coordinates
+    PTREE                   inter ;                // intermediate tree
+    PTREE                   topTree (currTree) ;
+    std::vector<POS_TREE>   posStack ;
+    int                     readStack = -1 ;
+    
+    if ( currTree == () ) 
+        return ;
+    
+    // {
+    //     " ================================= > " <NL>
+    //     Protector<int>  protector(output, 1);
+    //     DumpTree(topTree);
+    //     NewLine();
+    // }
+    // set starting position
+    {
+        POS_TREE    curPos = { -1, currTree, currMark };
+        PushValue<POS_TREE> (posStack, readStack, curPos);
+    }
+    
+    // first go down 
+    while ( currTree != () && currTree.TreeArity() >= 1 ) {
+        
+        // when only a son  <TERM_TREE> nothing will be done
+        if ( currTree.TreeArity() == 1 && (currTree == <,<TERM_TREE>> || currTree == <,()>) ) 
+            break ;
+        
+        // get down
+        PTREE   newTree (currTree [1]) ;
+        
+        // get current currmark
+        SetMark(newTree, currMark);
+        
+        // set new position
+        {
+            POS_TREE    newPos = { 1, currTree, currMark };
+            PushValue<POS_TREE> (posStack, readStack, newPos);
+        }
+        
+        // go next
+        currTree =  newTree ;
+    }
+    
+    // --
+    while ( true ) {
+        
+        // get on tree
+        if ( posStack [readStack].rank == -1 ) {
+            currTree =  posStack [readStack].tree ;
+        } else {
+            currTree =  posStack [readStack].tree [posStack [readStack].rank];
+        }
+        currMark =  posStack [readStack].currMark ;
+        
+        // --
+        // special treatment for ATTRIBUTS
+        if ( currTree == <ATTRIBUTS,inter> ) {
+            GetCoord(inter, &x, &y, &dx, &posMark);
+            PutCoord(currTree, x, y, dx, posMark);
+        } else if ( currTree != <TERM_TREE> && currTree != () ) {
+            withCoordinate =  GetCoord(currTree, &x, &y, &dx, &posMark);
+            
+            // if tree has not got coordinates treat it 
+            if ( !withCoordinate ) {
+                int multiLine = 0 ;
+                int newLine = 0 ;
+                maxDx =  0 ;
+                
+                // compute width of tree
+                {
+                    
+                    // compute max of width for all sons
+                    forallsons (currTree,{
+                        GetCoord(for_elem, &x, &y, &dx, &posMark);
+                        multiLine |= y & 0x2 ;
+                        newLine   |= y & 0x4 ;
+                        if ( !dx ) {
+                            if ( for_elem == <TERM_TREE> ) 
+                                dx =  strlen(Value(for_elem));
+                        }
+                        if ( x + dx > maxDx ) 
+                            maxDx =  x + dx ;
+                    })
+                }
+                
+                // put coords on tree
+                if ( newLine ) 
+                    multiLine =  0x2 ;
+                PutCoord(currTree, 0, newLine | multiLine, maxDx, currMark);
+            }
+        }
+        
+        // topTree , get out
+        if ( posStack [readStack].rank == -1 ) 
+            break ;
+        
+        // otherwise go on 
+        {
+            bool    found = false ;
+            
+            // look if brothers
+            {
+                int     rank(posStack [readStack].rank);
+                PTREE   father(posStack [readStack].tree);
+                while ( !found ) {
+                    if ( rank < father.TreeArity() ) {
+                        rank     =  ++(posStack [readStack].rank);
+                        currTree =  father [rank];
+                        if ( currTree != () ) {
+                            found =  true ;
+                            
+                            // we change position so have to recompute the mark
+                            {
+                                if ( !SetMark(currTree, currMark) ) {
+                                    if ( readStack > 0 ) {
+                                        
+                                        // no mark get the one of the father 
+                                        currMark =  posStack [readStack - 1].currMark ;
+                                    } else {
+                                        int i = 1 ;
+                                    }
+                                }
+                                posStack [readStack].currMark =  currMark ;
+                            }
+                            
+                            // go down 
+                            while ( currTree != () && currTree.TreeArity() >= 1 ) {
+                                
+                                // when only a son  <TERM_TREE> nothing will be done
+                                if ( currTree.TreeArity() == 1 && (currTree == <,<TERM_TREE>> || currTree == <,()>) ) 
+                                    break ;
+                                
+                                // get down
+                                PTREE   newTree (currTree [1]) ;
+                                
+                                // get current currmark
+                                SetMark(newTree, currMark);
+                                
+                                // set new position
+                                {
+                                    POS_TREE    newPos = { 1, currTree, currMark };
+                                    PushValue<POS_TREE> (posStack, readStack, newPos);
+                                }
+                                
+                                // go next
+                                currTree =  newTree ;
+                            }
+                        }
+                    } else 
+                        break ;
+                }
+            }
+            
+            // if did not find brothers go up
+            if ( !found ) {
+                readStack-- ;
+            }
+        }
+    }
+    
+    // {
+    //     " ================================= >> " <NL>
+    //     Protector<int>  protector(output, 1);
+    //     DumpTree(topTree);
+    //     NewLine();
+    // }
+}
+
+/********************************************************************
+           CompleteCoordinates : put coordinates on nodes where there
+                                 are none for example most of the lists
+   *******************************************************************/
+void clpretty::CompleteCoordinatesInt ( PTREE currTree )
+{
+    
+    int             x ;                    // relative x coordinate
+    int             y ;                    // relative y coordinate
+    int             dx ;                   // width
+    int             maxDx = 0 ;            // max width
+    int             posMark ;              // position of mark
+    Protector<int>  protector (currMark) ; // old position of mark
+    int             withCoordinate ;       // indicates if tree has coordinates
+    PTREE           inter ;                // intermediate tree
     
     // special treatment for ATTRIBUTS
     if ( currTree == <ATTRIBUTS,inter> ) {
@@ -108,7 +333,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
     
     // treat all sons of tree
     forallsons (currTree,
-        CompleteCoordinates(for_elem)
+        CompleteCoordinatesInt(for_elem)
     )
     
     // if tree has not got coordinates treat it 
@@ -138,9 +363,19 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
             multiLine =  0x2 ;
         PutCoord(currTree, 0, newLine | multiLine, maxDx, currMark);
     }
+}
+
+void clpretty::CompleteCoordinatesOld ( PTREE currTree )
+{
+    Protector<int>  protector(output, 1);
     
-    // restore mark
-    currMark =  oldCurrMark ;
+    " ================================= > " <NL>
+    DumpTree(currTree);
+    NewLine();
+    CompleteCoordinatesInt(currTree);
+    " ================================= >> " <NL>
+    DumpTree(currTree);
+    NewLine();
 }
 
 /********************************************************************
@@ -285,7 +520,7 @@ void clpretty::TraiterForDeclaration ( PTREE tree, int x0 )
     }
     
     // second son 
-    if (son2 != ()) {
+    if ( son2 != () ) {
         GetCoord(son2, &x, &y, &dx, &colRef);
         colRef =  TAB_VALUE(colRef, 1);
         if ( x0 + x + dx >= rightMargin && (delta = colRef - x0 - x) < 0 || aTreatment ) {

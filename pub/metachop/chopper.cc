@@ -67,6 +67,7 @@ int main ( int argc, char **argv )
     
 #line 39 "chopper.ch"
 #line 41 "chopper.ch"
+    
     PPTREE  tree ;
     
 #line 41 "chopper.ch"

@@ -926,14 +926,23 @@ PPTREE _fastcall MakeTree ( int NameNumber, int arity )
 /*********************************************/
 char *_fastcall AllocString ( const char *string )
 {
-    register int    i = strlen(string);
     register char   *myString ;
     
-    if ( (myString = (char *)malloc(i + 1)) ) {
-        memcpy(myString, string, i + 1);
-        return (myString);
+    if ( !string ) {
+        if ( myString = (char *)malloc(1) ) {
+            *myString =  '\0';
+            return myString ;
+        } else {
+            MetaExit(3, "String Allocation Error\n");
+        }
     } else {
-        MetaExit(3, "String Allocation Error\n");
+        register int    i = strlen(string);
+        if ( (myString = (char *)malloc(i + 1)) ) {
+            memcpy(myString, string, i + 1);
+            return (myString);
+        } else {
+            MetaExit(3, "String Allocation Error\n");
+        }
     }
     return 0 ;
 }
@@ -1345,6 +1354,20 @@ PPTREE ListFind ( PPTREE list, PPTREE name )
 }
 
 /**************************************************************
+    ListToVector : stack a list in a vector
+   ****************/
+/*************************************************/
+void ListToVector ( std::vector<PTREE> &vect, PTREE list )
+{
+    vect.clear();
+    while ( list.NumberTree() == LIST ) {
+        PTREE   elem = list [1];
+        list =  list [2];
+        vect.push_back(elem);
+    }
+}
+
+/**************************************************************
     PrintError : print the first error
    ******************/
 /***********************************************/
@@ -1719,7 +1742,7 @@ PFILE_POSITION _fastcall SavePos ()
     if ( ptOldBuf != -1 ) {
         if ( ptOldBuf < MAXLENGTH ) 
             oldBuf [ptOldBuf + 1] =  '\0';
-        else 
+        else if ( ptOldBuf >= 0 && ptOldBuf < MAXLENGTH ) 
             oldBuf [ptOldBuf] =  '\0';
         myPosition->string =  (char *)AllocString(oldBuf);
     }
@@ -2079,7 +2102,7 @@ debut :
       CopyTree : copy a tree
    ***********************************/
 /******************************/
-PPTREE _fastcall CopyTree ( PPTREE tree )
+PPTREE _fastcall CopyTree ( const PPTREE tree )
 {
     int     arity ;
     PPTREE  myTree ;
@@ -2169,7 +2192,7 @@ unsigned int TreeSize ( PPTREE tree )
     }
 }
 
-PPTREE _fastcall NoCommentCopyTree ( PPTREE tree )
+PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
 {
     int     arity ;
     PPTREE  myTree ;
@@ -3048,7 +3071,10 @@ char *ItoaQuick ( int nb, char *string, int length )
     int     rest ;
     bool    neg = false ;
     
-    *--ptInter =  '\0';
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
     if ( nb < 0 ) {
         nb =  -nb ;
         
@@ -3061,14 +3087,14 @@ char *ItoaQuick ( int nb, char *string, int length )
         }
     }
     if ( nb > 0 ) 
-        while ( nb ) {
+        while ( nb && ptInter > string ) {
             rest       =  nb % 10 ;
             *--ptInter =  '0' + rest ;
             nb         =  nb / 10 ;
         }
-    else 
+    else if ( ptInter > string ) 
         *--ptInter =  '0';
-    if ( neg ) {
+    if ( neg && ptInter > string ) {
         *--ptInter =  '-';
     }
     return ptInter ;
@@ -3080,7 +3106,10 @@ char *LtoaQuick ( long nb, char *string, int length )
     long    rest ;
     bool    neg = false ;
     
-    *--ptInter =  '\0';
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
     if ( nb < 0 ) {
         nb =  -nb ;
         
@@ -3093,14 +3122,14 @@ char *LtoaQuick ( long nb, char *string, int length )
         }
     }
     if ( nb > 0 ) 
-        while ( nb ) {
+        while ( nb && ptInter > string ) {
             rest       =  nb % 10 ;
             *--ptInter =  '0' + rest ;
             nb         =  nb / 10 ;
         }
-    else 
+    else if ( ptInter > string ) 
         *--ptInter =  '0';
-    if ( neg ) {
+    if ( neg && ptInter > string ) {
         *--ptInter =  '-';
     }
     return ptInter ;
@@ -5124,19 +5153,30 @@ int GetExtraInfo ( PPTREE tree )
 #               elif defined(HAS_POSIX_SEMAPHORE)
                     LeaveCriticalSection(&jumpCritical);
 #               endif
-#               if defined(UNDERSCORE_FTIME)
-                    struct _timeb tstruct ;
+#               if defined(REPLACE_FTIME)
                     {
-                        _ftime(&tstruct);
+                        struct timeval tstruct ;
+                        gettimeofday(&tstruct, NULL);
+                        startSec =  tstruct.tv_sec ;
+                        startMil =  tstruct.tv_usec / 1000 ;
                     }
 #               else 
-                    struct timeb tstruct ;
                     {
-                        ::ftime(&tstruct);
+#                       if defined(UNDERSCORE_FTIME)
+                            struct _timeb tstruct ;
+                            {
+                                _ftime(&tstruct);
+                            }
+#                       else 
+                            struct timeb tstruct ;
+                            {
+                                ::ftime(&tstruct);
+                            }
+#                       endif
+                        startSec =  tstruct.time ;
+                        startMil =  tstruct.millitm ;
                     }
 #               endif
-                startSec =  tstruct.time ;
-                startMil =  tstruct.millitm ;
             }
             if ( semop(handle, (sembuf *)&sops, 1) ) {
                 if ( errno == EINTR ) {
@@ -5145,18 +5185,26 @@ int GetExtraInfo ( PPTREE tree )
                         
                         // look if time is ok
                         {
-#                           if defined(UNDERSCORE_FTIME)
-                                struct _timeb tstruct ;
+#                           if defined(REPLACE_FTIME)
                                 {
-                                    _ftime(&tstruct);
+                                    struct timeval tstruct ;
+                                    gettimeofday(&tstruct, NULL);
+                                    diffTime =  (tstruct.tv_sec - startSec) * 1000 + (tstruct.tv_usec / 1000 - startMil);
                                 }
 #                           else 
-                                struct timeb tstruct ;
-                                {
-                                    ::ftime(&tstruct);
-                                }
+#                               if defined(UNDERSCORE_FTIME)
+                                    struct _timeb tstruct ;
+                                    {
+                                        _ftime(&tstruct);
+                                    }
+#                               else 
+                                    struct timeb tstruct ;
+                                    {
+                                        ::ftime(&tstruct);
+                                    }
+#                               endif
+                                diffTime =  (tstruct.time - startSec) * 1000 + (tstruct.millitm - startMil);
 #                           endif
-                            diffTime =  (tstruct.time - startSec) * 1000 + (tstruct.millitm - startMil);
                         }
 #                       if 0
                             

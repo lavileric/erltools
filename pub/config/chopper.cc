@@ -68,6 +68,7 @@ int main ( int argc, char **argv )
     
 #line 21 "chopper.ch"
 #line 23 "chopper.ch"
+    
     PTREE   tree ;
 #line 23 "chopper.ch"
     
@@ -169,53 +170,53 @@ void ChopTree ( PTREE tree )
     int _nextVal ;
     
 #line 56 "chopper.ch"
-#line 59 "chopper.ch"
+#line 60 "chopper.ch"
     
-#line 59 "chopper.ch"
-#line 59 "chopper.ch"
+#line 60 "chopper.ch"
+#line 60 "chopper.ch"
 }
-#line 59 "chopper.ch"
+#line 60 "chopper.ch"
 
-#line 63 "chopper.ch"
+#line 64 "chopper.ch"
 
-#line 63 "chopper.ch"
+#line 64 "chopper.ch"
 void SqueezeMeta ( PTREE tree )
-#line 63 "chopper.ch"
+#line 64 "chopper.ch"
 {
-#line 63 "chopper.ch"
-#line 63 "chopper.ch"
+#line 64 "chopper.ch"
+#line 64 "chopper.ch"
     int _nextVal ;
     
-#line 63 "chopper.ch"
-#line 66 "chopper.ch"
+#line 64 "chopper.ch"
+#line 68 "chopper.ch"
     
-#line 66 "chopper.ch"
-#line 66 "chopper.ch"
+#line 68 "chopper.ch"
+#line 68 "chopper.ch"
 }
-#line 66 "chopper.ch"
-
 #line 68 "chopper.ch"
 
-#line 68 "chopper.ch"
+#line 70 "chopper.ch"
+
+#line 70 "chopper.ch"
 void PullComment ( PTREE tree )
-#line 68 "chopper.ch"
+#line 70 "chopper.ch"
 {
-#line 68 "chopper.ch"
-#line 68 "chopper.ch"
+#line 70 "chopper.ch"
+#line 70 "chopper.ch"
     int _nextVal ;
     
-#line 68 "chopper.ch"
 #line 70 "chopper.ch"
+#line 73 "chopper.ch"
     
-#line 70 "chopper.ch"
-#line 70 "chopper.ch"
+#line 73 "chopper.ch"
+#line 73 "chopper.ch"
 }
-#line 70 "chopper.ch"
+#line 73 "chopper.ch"
 
-#line 70 "chopper.ch"
-#line 70 "chopper.ch"
+#line 73 "chopper.ch"
+#line 73 "chopper.ch"
 static void chopper_Anchor () { int i = 1;} 
-#line 70 "chopper.ch"
+#line 73 "chopper.ch"
 /*Well done my boy */ 
-#line 70 "chopper.ch"
+#line 73 "chopper.ch"
 

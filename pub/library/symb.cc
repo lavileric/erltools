@@ -61,16 +61,19 @@ SymbolTable::SymbolTable ( const SymbolTable &symbTab )
     
 #line 7 "symb.ch"
 #line 12 "symb.ch"
+    
     PTREE   listVar ;
 #line 12 "symb.ch"
     
 #line 12 "symb.ch"
 #line 13 "symb.ch"
+    
     PTREE   symbol ;
 #line 13 "symb.ch"
     
 #line 13 "symb.ch"
 #line 14 "symb.ch"
+    
     PTREE   type ;
 #line 14 "symb.ch"
     
@@ -126,16 +129,19 @@ const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
     
 #line 28 "symb.ch"
 #line 32 "symb.ch"
+    
     PTREE   listVar ;
 #line 32 "symb.ch"
     
 #line 32 "symb.ch"
 #line 33 "symb.ch"
+    
     PTREE   symbol ;
 #line 33 "symb.ch"
     
 #line 33 "symb.ch"
 #line 34 "symb.ch"
+    
     PTREE   type ;
 #line 34 "symb.ch"
     
@@ -351,6 +357,7 @@ PTREE SymbolTable::GetVar ( const char *var, int startLevel )
     
 #line 116 "symb.ch"
 #line 119 "symb.ch"
+    
     TabList **ptLevel ;
     
 #line 119 "symb.ch"

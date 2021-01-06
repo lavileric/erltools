@@ -55,8 +55,8 @@ fonction ()
     // comment
     int toto ; // comm 
     
-    if ( (i = 5) ) {}
-    if ( (i = 5) ) {
+    if ( i = 5 ) {}
+    if ( i = 5 ) {
     } else {
     }
     for ( i = 0 ; 

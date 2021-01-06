@@ -119,13 +119,13 @@ net : mv-files
 	- rm -r ../erltools.net/erltools/com
 	mv ../erltools.net/erltools/makefile.bor.net ../erltools.net/erltools/makefile.bor
 	mv ../erltools.net/erltools/makefile.vis.net ../erltools.net/erltools/makefile.vis
-	(cd ../erltools.net ; tar cvzf erltools.tgz erltools)
+	(cd ../erltools.net ; tar cvf - ./erltools | xz -9e -c -T0 > erltools.txz )
 	(cd ../erltools.net ; zip -r erltools erltools)
 
 net-com : mv-files
 	- mv ../erltools.net/erltools/makefile.bor.com.net ../erltools.net/erltools/makefile.bor
 	- mv ../erltools.net/erltools/makefile.vis.com.net ../erltools.net/erltools/makefile.vis
-	(cd ../erltools.net ; tar cvzf erltools.tgz erltools)
+	(cd ../erltools.net ; tar cvf - ./erltools | xz -9e -c -T0 > erltools.txz )
 	(cd ../erltools.net ; zip -r erltools erltools)
 
 checkpath : 

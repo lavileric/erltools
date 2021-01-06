@@ -322,9 +322,7 @@ DecompCplus::DecompCplus ()
     copyPrinted        =  false ;
 }
 
-
-
-int DecompCplus::OpAssociativity ( PTREE & tree )
+int DecompCplus::OpAssociativity ( PTREE &tree )
 {
     switch ( tree ) {
         case <CAST> : 
@@ -357,7 +355,7 @@ int DecompCplus::OpAssociativity ( PTREE & tree )
     }
 }
 
-bool IsAff ( PTREE & tree )
+bool IsAff ( PTREE &tree )
 {
     switch ( tree ) {
         case <AFF> : 
@@ -375,7 +373,7 @@ bool IsAff ( PTREE & tree )
     }
 }
 
-int DecompCplus::OpPriority ( PTREE  & tree )
+int DecompCplus::OpPriority ( PTREE &tree )
 {
     PTREE   son ;
     
@@ -446,7 +444,7 @@ int DecompCplus::OpPriority ( PTREE  & tree )
         case <ARROW_MEMB> : 
             return 13 ;
             break ;
-        case <CAST> :
+        case <CAST> : 
         case <NEG> : 
         case <POS> : 
         case <LNEG> : 
@@ -498,7 +496,7 @@ int DecompCplus::OpPriority ( PTREE  & tree )
     return -1 ;
 }
 
-int DecompCplus::IsTopInstr ( PTREE  & tree )
+int DecompCplus::IsTopInstr ( PTREE &tree )
 {
     switch ( tree ) {
         case <DECLARATION> : return 100 ;
@@ -547,14 +545,14 @@ terminal :
     <NL>
 }
 
-void DecompCplus::clean_tree ( PTREE tree )
+bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
 {
     PTREE   father ;
     PPTREE  _for_elem ;
     ItPtree it (tree) ;
-    PTREE   cond ;
-    PTREE   stat1 ;
-    PTREE   stat2 ;
+    PTREE   cond, cond1, cond2 ;
+    PTREE   stat1, stat2 ;
+    bool    modified (false) ;
     
     while ( (_for_elem = it++) ) {
         switch ( for_elem ) {
@@ -566,13 +564,19 @@ void DecompCplus::clean_tree ( PTREE tree )
                         son =  sontree(father, 2);
                         if ( son == () ) {
                             father =  father ^ ;
+                            
+                            // no stat after shorten list
                             if ( father == <LIST> ) {
                                 father += <,<>,()>;
                                 it.Current(father);
+                                modified =  true ;
                             }
-                        } else {
+                        } else if ( son == <LIST> ) {
+                            
+                            // list after suppress one maillon
                             father += <,sontree(son, 1),sontree(son, 2)>;
                             it.Current(father);
+                            modified =  true ;
                         }
                     }
                     break ;
@@ -582,18 +586,45 @@ void DecompCplus::clean_tree ( PTREE tree )
                     PTREE   father = for_elem ^ ;
                     int     rank ;
                     PTREE   x, y ;
-                    int     modified = 0 ;
-                    if ( for_elem == <AND,<INTEGER,x>> || for_elem == <AND,<>,<INTEGER,y>> ) {
+                    bool    locModified (false) ;
+                    if ( father ) {
+                        for_elem == <,<INTEGER,x>>;
+                        for_elem == <,<>,<INTEGER,y>>;
                         rank =  ranktree(for_elem);
                         if ( x && !strcmp(value(x), "1") ) {
                             replacetree(father, rank, sontree(for_elem, 2));
-                            modified =  1 ;
-                        }
-                        if ( y && !strcmp(value(y), "1") ) {
+                            modified    =  true ;
+                            locModified =  true ;
+                        } else if ( y && !strcmp(value(y), "1") ) {
                             replacetree(father, rank, sontree(for_elem, 1));
-                            modified =  1 ;
+                            modified    =  true ;
+                            locModified =  true ;
                         }
-                        if ( modified ) 
+                        if ( locModified ) 
+                            it.Current(father);
+                    }
+                    break ;
+                }
+            case <OR> : 
+                {
+                    PTREE   father = for_elem ^ ;
+                    int     rank ;
+                    PTREE   x, y ;
+                    bool    locModified (false) ;
+                    if ( father ) {
+                        for_elem == <,<INTEGER,x>>;
+                        for_elem == <,<>,<INTEGER,y>>;
+                        rank =  ranktree(for_elem);
+                        if ( x && !strcmp(value(x), "0") ) {
+                            replacetree(father, rank, sontree(for_elem, 2));
+                            modified    =  true ;
+                            locModified =  true ;
+                        } else if ( y && !strcmp(value(y), "0") ) {
+                            replacetree(father, rank, sontree(for_elem, 1));
+                            modified    =  true ;
+                            locModified =  true ;
+                        }
+                        if ( locModified ) 
                             it.Current(father);
                     }
                     break ;
@@ -602,19 +633,19 @@ void DecompCplus::clean_tree ( PTREE tree )
                 {
                     PTREE   father = for_elem ^ ;
                     PTREE   exp ;
-                    if ( for_elem == <NOT,<NOT,exp>> ) {
-                        for_elem += exp ;
-                        if ( father ) 
+                    if ( father ) {
+                        if ( for_elem == <NOT,<NOT,exp>> ) {
+                            for_elem += exp ;
                             it.Current(father);
-                        else 
-                            it.Current(exp);
+                            modified =  true ;
+                        }
                     }
                     break ;
                 }
             case <EXP> : 
                 {
                     PTREE   father = for_elem ^ ;
-                    if ( father == <CAST> || (father ^ ) == <PARAM_TYPE> || father == <LIST> ) 
+                    if ( father == <CAST> || (father ^ ) == <PARAM_TYPE> || father == <LIST> || father == () ) 
                         break ;
                     PTREE   son = for_elem ;
                     son =  son [1];
@@ -624,6 +655,7 @@ void DecompCplus::clean_tree ( PTREE tree )
                         PTREE   keep = father ;
                         replacetree(father, ranktree(for_elem), son);
                         it.Current(keep);
+                        modified =  true ;
                     } else if ( OpPriority(father) == OpPriority(son) ) {
                         PTREE   keep = father ;
                         switch ( treearity(keep) ) {
@@ -632,6 +664,7 @@ void DecompCplus::clean_tree ( PTREE tree )
                                         || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
                                     replacetree(keep, ranktree(for_elem), sontree(for_elem, 1));
                                     it.Current(keep);
+                                    modified =  true ;
                                 }
                                 break ;
                             case 1 : 
@@ -639,6 +672,7 @@ void DecompCplus::clean_tree ( PTREE tree )
                                     if ( keep != <AINCR> && keep != <ADECR> ) {
                                         replacetree(keep, 1, sontree(for_elem, 1));
                                         it.Current(keep);
+                                        modified =  true ;
                                     }
                                 }
                                 break ;
@@ -647,6 +681,30 @@ void DecompCplus::clean_tree ( PTREE tree )
                     }
                     break ;
                 }
+            case <WHILE,cond,stat1> : 
+            case <DO,stat1,cond> : 
+                {
+                    stat2 =  ();
+                }
+            case <IF,cond,stat1,stat2> : 
+                {
+                    modified =  modified || clean_tree(cond, false /* ignore aff */ );
+                    modified == modified || clean_tree(stat1, true /* ignore aff */ );
+                    if ( stat2 != () ) {
+                        modified =  modified || clean_tree(stat2, true /* ignore aff */ );
+                    }
+                    it.SkipSon(1);
+                }
+                break ;
+            case <FOR,cond1,cond,cond2,stat1> : 
+                {
+                    modified =  modified || clean_tree(cond, false /* ignore aff */ );
+                    modified =  modified || clean_tree(cond1, true /* ignore aff */ );
+                    modified =  modified || clean_tree(cond2, true /* ignore aff */ );
+                    modified =  modified || clean_tree(stat1, true /* ignore aff */ );
+                    it.SkipSon(1);
+                }
+                break ;
             case <AFF> : 
             case <MUL_AFF> : 
             case <DIV_AFF> : 
@@ -658,57 +716,27 @@ void DecompCplus::clean_tree ( PTREE tree )
             case <AND_AFF> : 
             case <OR_AFF> : 
             case <XOR_AFF> : 
-                {
-                    PTREE           elem = for_elem ;
-                    PTREE           father = for_elem ;
-                    unsigned int    rank ;
-                    rank   =  ranktree(elem);
+                if ( !ignoreAff ) {
+                    PTREE   elem (for_elem) ;
+                    PTREE   father ;
                     father =  elem ^ ;
+
+                    // exp is already there nothing to be done
                     if ( father == <EXP> ) 
                         break ;
-                    do {
-                        bool    tested = false ;
-                        switch ( father ) {
-                            case <WHILE> : 
-                            case <IF> : 
-                                {
-                                    if ( rank != 1 ) {
-                                        father =  ();
-                                        break ;
-                                    }
-                                    tested =  true ;
-                                }
-                            case <DO> : 
-                            case <FOR> : 
-                                {
-                                    if ( !tested && rank != 2 ) {
-                                        father =  ();
-                                        break ;
-                                    }
-                                }
-                                {
-                                    rank =  ranktree(elem);
-                                    PTREE   rep ;
-                                    father =  elem ^ ;
-                                    rep    =  <EXP,copytree(elem)>;
-                                    replacetree(father, rank, rep);
-                                    it.Current(rep);
-                                    father =  ();
-                                }
-                                break ;
-                            case <COMPOUND> : 
-                                father = ();
-                                break ;
-                        }
-                        if ( father != () ) {
-                            rank   =  ranktree(father);
-                            father =  father ^ ;
-                        }
-                    } while ( father != () );
+                    
+                    // no parenthesis in cond for aff so put one
+                    if ( father != () ) {
+                        unsigned int    rank = elem.RankTree();
+                        PTREE           rep = <EXP,elem>;
+                        replacetree(father, rank, rep);
+                        modified =  true ;
+                    }
                 }
                 break ;
         }
     }
+    return modified ;
 }
 
 

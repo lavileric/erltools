@@ -37,6 +37,7 @@ int DecompCplus::TypeOfBlock ( PTREE tree )
 
     int _nextVal ;
     
+    
     PTREE   son ;
     
     int typeBlock ;
@@ -154,6 +155,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     PPTREE  _storeVal [2];
     
     int _nextVal ;
+    
     
     PTREE   exp, stat, name ;
     
@@ -383,6 +385,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
 
     int _nextVal ;
     
+    
     PTREE   list, list1, son, sc, type, declarator, param, param_decl, stat, decl, list_decl, ctor ;
     
     PTREE   val, exp_list, init, exp1, exp2, exp3, exp, ident, stat1, stat2, name1, name2, range ;
@@ -398,6 +401,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
     int oldInClass = inClass ;
     
     int oneInstruct ;
+    
     
     PTREE   except ;
     
@@ -4277,6 +4281,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
     }
     
+    
     PTREE   att ;
     
     switch ( NumberTree(paramTree) ) {
@@ -5009,6 +5014,7 @@ int DecompCplus::middleInList ( PTREE exp )
 
     int _nextVal ;
     
+    
     PTREE   exp1 ;
     
     (exp1=SFatherTree(FatherTree(exp),LIST));
@@ -5039,6 +5045,7 @@ int DecompCplus::LastInList ( PTREE exp )
 
     int _nextVal ;
     
+    
     PTREE   exp1 ;
     
     (exp1=SFatherTree(FatherTree(exp),LIST));
@@ -5060,6 +5067,7 @@ int DecompCplus::LastInTopList ( PTREE exp )
     register PPTREE _inter ;
 
     int _nextVal ;
+    
     
     PTREE   exp1 ;
     
@@ -5092,6 +5100,7 @@ void DecompCplus::DecompilerListeExternSimp ( PTREE list )
     register PPTREE _inter ;
 
     int _nextVal ;
+    
     
     PTREE   son, father ;
     
@@ -5137,8 +5146,6 @@ void DecompCplus::DecompilerListeExtern ( PTREE list )
     
 }
 
-extern void copy () ;
-
 
 void DecompCplus::ChopTree ( PTREE tree, int funcAlone )
 {
@@ -5157,6 +5164,7 @@ void DecompCplus::ChopTree ( PTREE tree, int funcAlone )
 void DecompCplus::copy ()
 {
     int _nextVal ;
+    
     
     const char  *str ;
     

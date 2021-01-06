@@ -2044,8 +2044,6 @@ void DecompCplus::DecompilerListeExtern ( PTREE list )
 /*************************************************************************/
 /*   ChopTree : chop the tree : here call decomp                         */
 /*************************************************************************/
-extern void copy () ;
-
 void DecompCplus::ChopTree ( PTREE tree, int funcAlone )
 {
     copy();

@@ -82,6 +82,7 @@ void EqualTree ( const char *ident, const char *dest, int level, PTREE tree, int
     
 #line 50 "auxunpar.ch"
 #line 53 "auxunpar.ch"
+    
     PTREE   ptTree ;
 #line 53 "auxunpar.ch"
     
@@ -949,6 +950,7 @@ PFUNC_ELEM AllocFuncElem ()
     
 #line 245 "auxunpar.ch"
 #line 248 "auxunpar.ch"
+    
     PFUNC_ELEM  ptFunc ;
     
 #line 248 "auxunpar.ch"
@@ -995,6 +997,7 @@ void StackFunction ( char *name, PTREE tree )
     
 #line 260 "auxunpar.ch"
 #line 263 "auxunpar.ch"
+    
     PFUNC_ELEM  pFuncElem = AllocFuncElem();
     
 #line 263 "auxunpar.ch"
@@ -1032,6 +1035,7 @@ void FreeHeadFunc ()
     
 #line 274 "auxunpar.ch"
 #line 277 "auxunpar.ch"
+    
     PFUNC_ELEM  funcElem = listFunc ;
     
 #line 277 "auxunpar.ch"
@@ -1069,6 +1073,7 @@ void LookForEach ( PTREE paramTree, int level )
     
 #line 289 "auxunpar.ch"
 #line 291 "auxunpar.ch"
+    
     PTREE   tree ;
 #line 291 "auxunpar.ch"
     
@@ -1216,6 +1221,7 @@ void DumpForeach ( PTREE paramTree, int level )
     
 #line 311 "auxunpar.ch"
 #line 313 "auxunpar.ch"
+    
     PTREE   son, statement, inter1, inter2 ;
 #line 313 "auxunpar.ch"
     
@@ -1377,7 +1383,7 @@ void DumpForeach ( PTREE paramTree, int level )
                 ]
                 [ metachop::DECLARATION
                     [ NIL ] 
-                    [ metachop::TIDENT [ metachop::IDENT "PPTREE"]]
+                    [ metachop::TIDENT [ metachop::IDENT "PTREE"]]
                     [ LIST 
                         [ metachop::IDENT "_for_elem"]
                     ]
@@ -1441,7 +1447,7 @@ void DumpForeach ( PTREE paramTree, int level )
 #line 341 "auxunpar.ch"
             TheConstructor(stackTree,ptStackTree,-4,-2,MakeString("ItPtree"),metachop::IDENT,1,metachop::TIDENT,1,
                 -2,MakeString("iterator"),META,1,-2,MakeString("stated"),META,1,metachop::TIDENT,1,-4,metachop::ABST_DECLARATOR,2,
-                -2,MakeString("searched"),META,1,metachop::TIDENT,1,-4,metachop::ABST_DECLARATOR,2,-4,LIST,2,LIST,2,-4,-4,metachop::TYP_LIST,4,-4,LIST,2,metachop::DECLARATION,3,-4,-2,MakeString("PPTREE"),metachop::IDENT,1,metachop::TIDENT,1,-2,MakeString("_for_elem"),metachop::IDENT,1,-4,LIST,2,metachop::DECLARATION,3,
+                -2,MakeString("searched"),META,1,metachop::TIDENT,1,-4,metachop::ABST_DECLARATOR,2,-4,LIST,2,LIST,2,-4,-4,metachop::TYP_LIST,4,-4,LIST,2,metachop::DECLARATION,3,-4,-2,MakeString("PTREE"),metachop::IDENT,1,metachop::TIDENT,1,-2,MakeString("_for_elem"),metachop::IDENT,1,-4,LIST,2,metachop::DECLARATION,3,
                 -2,MakeString("iterator"),META,1,-2,MakeString("AllSearch"),metachop::IDENT,1,metachop::REF,2,-2,MakeString("1"),metachop::INTEGER,1,metachop::EXP_LIST,2,
                 -2,MakeString("_for_elem"),metachop::IDENT,1,-2,MakeString("iterator"),META,1,metachop::AINCR,1,metachop::AFF,2,-2,MakeString("treatment"),META,1,
                 -3);
@@ -1754,6 +1760,7 @@ void DumpFunction ()
     
 #line 387 "auxunpar.ch"
 #line 390 "auxunpar.ch"
+    
     char    *name ;
     
 #line 390 "auxunpar.ch"

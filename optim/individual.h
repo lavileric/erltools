@@ -46,7 +46,7 @@
             if ( randValue == maxForRand ) 
                 return full ? maxVal : maxVal - 1 ;
             else {
-                long double factor = ((long double)randValue - minForRand) / (((long double)maxForRand) - minForRand);
+                long double factor = ((long double)randValue - minForRand) / ((long double)maxForRand - minForRand);
                 long double excursion = (long double)maxValFloat / (1.0 * maxForRand) - (long double)minValFloat / (1.0 * maxForRand);
                 long double offset = excursion * factor ;
                 long double res = minVal / (1.0 * maxForRand) + offset ;
@@ -240,7 +240,7 @@
                 {
                     EString content ;
                     
-                    content << "(" << ((intmax_t)Min()) << "," << (intmax_t)Max() << "," << (intmax_t)Step() << ")";
+                    content << "(" << (intmax_t)Min() << "," << (intmax_t)Max() << "," << (intmax_t)Step() << ")";
                     return content ;
                 }
                 
@@ -315,6 +315,12 @@
                         return *&pvNull ;
                 }
                 
+                // get step
+                const TypeFeature &Step () const
+                {
+                    return *&pvStep ;
+                }
+                
                 // Random : set a random value
                 virtual TypeFeature Vibrato ( TypeFeature &val )
                 {
@@ -370,6 +376,7 @@
                 std::vector<TypeFeature>    pvSetFeature ;
                 bool                        pvSorted ;
                 TypeFeature                 pvNull ;
+                TypeFeature                 pvStep = 1 ;
         };
     
     template <class TypeFeature> 
@@ -1086,6 +1093,7 @@
                     
                     if ( !size ) 
                         return ;
+                    
                     /*while ( index-- )
                        vectorg.push_back(1);*/
                     std::vector<unsigned int>   vectorg(size, 1);

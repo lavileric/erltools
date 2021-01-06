@@ -1,3 +1,8 @@
+/// 
+/// @file kern.ch
+/// 
+/// @brief kern.ch
+/// 
 /*************************************************************************/
 /*                                                                       */
 /*        kern.ch   - Built by Eric Lavillonniere on Tandon 386 - 95     */
@@ -28,9 +33,20 @@ language cplus;
 #include <stdlib.h>
 #include "deccplus.h"
 #include <fcntl.h>
+#include "Protector.h"
 
 PPTREE  parse_cplus (int) ;
 
+/// 
+/// @fn int main (int argc, char **argv) 
+/// 
+/// @brief main
+/// 
+/// @param [in]     argc 
+/// @param [in,out] argv 
+/// 
+/// @returns  int
+/// 
 // void    ReadIncludeS (char *, int) ;
 int main ( int argc, char **argv )
 {
@@ -39,6 +55,7 @@ int main ( int argc, char **argv )
     char        *ptName ;
     DecompCplus decompObj ;
     bool        dumpTree = false ;
+    bool        counter = false ;
     
     dumpCoord             =  0 ;
     DecompCplus::ptDecomp =  &decompObj ;
@@ -81,6 +98,8 @@ int main ( int argc, char **argv )
                 setFile =  *(argv + 1 + ++offset);
             } else if ( EString("-dump") == ptName ) {
                 dumpTree =  true ;
+            } else if ( EString("-count") == ptName ) {
+                counter =  true ;
             } else if ( EString("-rightMargin") == ptName ) {
                 if ( argc - offset >= 3 ) {
                     theMargin =  atoi(ptName + 1);
@@ -125,6 +144,58 @@ int main ( int argc, char **argv )
     if ( dumpTree ) {
         DumpTree(tree);
         <NL>
+    } else if ( counter ) {
+        
+        // count number of functions
+        unsigned int    counterFunct = 0 ;
+        EString         fileName (ptName) ;
+        {
+            foreach (<FUNC>,tree,
+                counterFunct++
+            )
+            PrintString(fileName) ":  Number of Func : " PrintString(EString((int)counterFunct)) <NL>
+        }
+        
+        // count number of non  commented lines
+        unsigned int    nbLine = 0 ;
+        {
+            Protector<int>  protector(output, -1);
+            StartOutputString();
+            decompObj.ChopTree(tree);
+            EString dString = EndOutputString();
+            char    *pt = (char *)dString.c_str();
+            bool    start = false ;
+            for (; *pt ; pt++ ) {
+                if ( *pt != ' ' && *pt != '\t' && *pt != '\n' ) 
+                    start =  false ;
+                if ( !start && *pt == '\n' ) {
+                    nbLine++ ;
+                    start =  true ;
+                }
+            }
+        }
+        PrintString(fileName) ":  Number of lines : " PrintString(EString((int)nbLine)) <NL>
+        
+        // count number of non  commented lines
+        nbLine =  0 ;
+        {
+            PTREE           nocTree = NoCommentCopyTree(tree);
+            Protector<int>  protector(output, -1);
+            StartOutputString();
+            decompObj.ChopTree(nocTree);
+            EString dString = EndOutputString();
+            char    *pt = (char *)dString.c_str();
+            bool    start = false ;
+            for (; *pt ; pt++ ) {
+                if ( *pt != ' ' && *pt != '\t' && *pt != '\n' ) 
+                    start =  false ;
+                if ( !start && *pt == '\n' ) {
+                    nbLine++ ;
+                    start =  true ;
+                }
+            }
+        }
+        PrintString(fileName) ":  Number of non commented lines : " PrintString(EString((int)nbLine)) <NL>
     } else 
         decompObj.ChopTree(tree);
     MetaEnd();

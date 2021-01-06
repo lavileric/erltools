@@ -135,6 +135,7 @@ void AllocTypDef ( char *name )
     
 #line 62 "chopper.ch"
 #line 65 "chopper.ch"
+    
     PTYP_DEF    point = (PTYP_DEF)malloc(sizeof(TYP_DEF));
     
 #line 65 "chopper.ch"
@@ -166,6 +167,7 @@ int IsTypDef ( char *name )
     
 #line 74 "chopper.ch"
 #line 77 "chopper.ch"
+    
     register PTYP_DEF   point = listTypDef ;
     
 #line 77 "chopper.ch"
@@ -215,6 +217,7 @@ void TypDef ( PTREE tree )
     
 #line 89 "chopper.ch"
 #line 92 "chopper.ch"
+    
     PTREE   list = (PTREE)0 ;
 #line 92 "chopper.ch"
     
@@ -303,6 +306,7 @@ static  void AllocRange ( char *name )
     
 #line 114 "chopper.ch"
 #line 117 "chopper.ch"
+    
     PRANGE_MODIF    point = (PRANGE_MODIF)malloc(sizeof(RANGE_MODIF));
     
 #line 117 "chopper.ch"
@@ -334,6 +338,7 @@ int IsRange ( char *name )
     
 #line 126 "chopper.ch"
 #line 129 "chopper.ch"
+    
     register PRANGE_MODIF   point = listRangeModifier ;
     
 #line 129 "chopper.ch"
@@ -421,6 +426,7 @@ void AnalyzeTab ( PPTREE tree )
     
 #line 157 "chopper.ch"
 #line 160 "chopper.ch"
+    
     int i ;
     
 #line 160 "chopper.ch"
@@ -449,6 +455,7 @@ void AnalyzeMargin ( PPTREE tree )
     
 #line 168 "chopper.ch"
 #line 171 "chopper.ch"
+    
     int i ;
     
 #line 171 "chopper.ch"
@@ -502,6 +509,7 @@ void AnalyzeEnumVert ( PPTREE tree )
     
 #line 192 "chopper.ch"
 #line 194 "chopper.ch"
+    
     EString mode = EString(Value(tree)).ToUpper();
     
 #line 194 "chopper.ch"
@@ -529,6 +537,7 @@ void AnalyzeParameterFunctUnd ( PPTREE tree )
     
 #line 204 "chopper.ch"
 #line 206 "chopper.ch"
+    
     EString mode = EString(Value(tree)).ToUpper();
     
 #line 206 "chopper.ch"
@@ -556,6 +565,7 @@ void AnalyzeTabDirective ( PPTREE tree )
     
 #line 216 "chopper.ch"
 #line 218 "chopper.ch"
+    
     EString mode = EString(Value(tree)).ToUpper();
     
 #line 218 "chopper.ch"
@@ -583,6 +593,7 @@ void AnalyzeSpaceArrow ( PPTREE tree )
     
 #line 228 "chopper.ch"
 #line 230 "chopper.ch"
+    
     EString mode = EString(Value(tree)).ToUpper();
     
 #line 230 "chopper.ch"

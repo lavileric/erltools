@@ -1,3 +1,8 @@
+/// 
+/// @file chopper.ch
+/// 
+/// @brief chopper.ch
+/// 
 /*************************************************************************/
 /*                                                                       */
 /*        Chopper.c - Built by Eric Lavillonniere on Tandon 386 - 93     */
@@ -27,12 +32,23 @@ language chopb;
 #include "token.h"
 #include "decchopb.h"
 #include <fcntl.h>
+#include "Protector.h"
 
-DecompChopb *DecompChopb::ptDecomp = 0 ;
+DecompChopb *DecompChopb::ptDecomp = 0 ; ///< DecompChopb
 
 // void        ReadIncludeS (char *, int) ;
-int         nb_par_parse ;
+int         nb_par_parse ;               ///< nb_par_parse
 
+/// 
+/// @fn int main (int argc, char **argv) 
+/// 
+/// @brief main
+/// 
+/// @param [in]     argc 
+/// @param [in,out] argv 
+/// 
+/// @returns  int
+/// 
 int main ( int argc, char **argv )
 {
     PTREE       tree ;
@@ -40,6 +56,7 @@ int main ( int argc, char **argv )
     char        *ptName ;
     DecompChopb decomp ;
     bool        dumpTree = false ;
+    bool        counter = false ;
     
     dumpCoord             =  0 ;
     DecompChopb::ptDecomp =  &decomp ;
@@ -76,6 +93,8 @@ int main ( int argc, char **argv )
                 setFile =  *(argv + 1 + ++offset);
             } else if ( EString("-dump") == ptName ) {
                 dumpTree =  true ;
+            } else if ( EString("-count") == ptName ) {
+                counter =  true ;
             } else 
                 break ;
             offset += 1 ;
@@ -106,6 +125,58 @@ int main ( int argc, char **argv )
     if ( dumpTree ) {
         DumpTree(tree);
         <NL>
+    } else if ( counter ) {
+        
+        // count number of functions
+        unsigned int    counterFunct = 0 ;
+        EString         fileName (ptName) ;
+        {
+            foreach (<FUNC>,tree,
+                counterFunct++
+            )
+            PrintString(fileName) ":  Number of Func : " PrintString(EString((int)counterFunct)) <NL>
+        }
+        
+        // count number of non  commented lines
+        unsigned int    nbLine = 0 ;
+        {
+            Protector<int>  protector(output, -1);
+            StartOutputString();
+            decomp.ChopTree(tree);
+            EString dString = EndOutputString();
+            char    *pt = (char *)dString.c_str();
+            bool    start = false ;
+            for (; *pt ; pt++ ) {
+                if ( *pt != ' ' && *pt != '\t' && *pt != '\n' ) 
+                    start =  false ;
+                if ( !start && *pt == '\n' ) {
+                    nbLine++ ;
+                    start =  true ;
+                }
+            }
+        }
+        PrintString(fileName) ":  Number of lines : " PrintString(EString((int)nbLine)) <NL>
+        
+        // count number of non  commented lines
+        nbLine =  0 ;
+        {
+            PTREE           nocTree = NoCommentCopyTree(tree);
+            Protector<int>  protector(output, -1);
+            StartOutputString();
+            decomp.ChopTree(nocTree);
+            EString dString = EndOutputString();
+            char    *pt = (char *)dString.c_str();
+            bool    start = false ;
+            for (; *pt ; pt++ ) {
+                if ( *pt != ' ' && *pt != '\t' && *pt != '\n' ) 
+                    start =  false ;
+                if ( !start && *pt == '\n' ) {
+                    nbLine++ ;
+                    start =  true ;
+                }
+            }
+        }
+        PrintString(fileName) ":  Number of non commented lines : " PrintString(EString((int)nbLine)) <NL>
     } else 
         decomp.ChopTree(tree);
     MetaEnd();

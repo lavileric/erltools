@@ -2,6 +2,9 @@
 # system1
 RM_UNIX="rm -f *.*~ *~ \#*\#"
 OUT_O=-o 
+CXX ?= g++
+CXXFLAGS ?= 
+LDFLAGS  ?= 
 
 #compiler choice
 #MACHFLAGS=-march=athlon-xp  -pipe 
@@ -9,15 +12,18 @@ OUT_O=-o
 MACHFLAGS ?=  -pipe -std=c++17 
 # MACHFLAGS=  -pipe
 LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
-C_PLUS ?= g++
-C_PLUS_LNK ?= g++
+# C_PLUS ?= clang
+C_PLUS ?= $(CXX) $(CXXFLAGS)
+C_PLUS_LNK ?= $(CXX) $(CXXFLAGS) $(LDFLAGS)
 C_PLUS_OPTIM ?= -g 
 # C_PLUS_OPTIM ?= -O2 -g
 # C_PLUS_OPTIM ?= -O3
 # C_PLUS_OPTIM ?= -O3 -g
 # C_PLUS_OPTIM ?= -s
 # -static-libgcc -Wl,-O1  -Wl,-dynamic-linker=/usr/newlocal/lib/ld-linux.so.2
-C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wcast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough
+C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wno-cast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough -Wno-logical-op-parentheses -Wno-stringop-overflow
+# -Wno-unsequenced -Wno-unused-value 
+# -Wno-bitwise-op-parentheses -Wno-parentheses-equality -Wno-parentheses -Wno-unused-parameter
 # -Wno-deprecated
 
 # OPTIM_FLAGS ?=$(C_PLUS_OPTIM) $(LIBC2FLAGS) -fomit-frame-pointer

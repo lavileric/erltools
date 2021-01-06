@@ -50,7 +50,9 @@ PTREE   for_elem ;
 extern int  houtput, coutput ;
 static PTREE    listFuncNoStop = (PTREE)0 ;
 #line 28 "speed.ch"
+
 static TabList  *listFuncToken = 0 ;
+
 static PTREE    rootTree = (PTREE)0 ;
 #line 28 "speed.ch"
 
@@ -94,6 +96,7 @@ int StopFind ( PTREE tree, PTREE list )
     
 #line 78 "speed.ch"
 #line 81 "speed.ch"
+    
     PTREE   elem ;
 #line 81 "speed.ch"
     
@@ -1206,6 +1209,7 @@ PTREE FunctionContent ( PTREE function, TabList *allFunction, PTREE stacked )
     
 #line 216 "speed.ch"
 #line 221 "speed.ch"
+    
     PTREE   elem ;
 #line 221 "speed.ch"
     
@@ -1426,6 +1430,7 @@ void FunctionExpand ( PTREE function, TabList *allFunction, PTREE stacked )
     
 #line 265 "speed.ch"
 #line 271 "speed.ch"
+    
     PTREE   elem ;
 #line 271 "speed.ch"
     
@@ -1446,6 +1451,7 @@ void FunctionExpand ( PTREE function, TabList *allFunction, PTREE stacked )
     
 #line 274 "speed.ch"
 #line 275 "speed.ch"
+    
     int recomputeFunction ;
     
 #line 275 "speed.ch"
@@ -1830,11 +1836,13 @@ void FunctionSort ( PTREE function )
     
 #line 356 "speed.ch"
 #line 361 "speed.ch"
+    
     PTREE   compare ;
 #line 361 "speed.ch"
     
 #line 361 "speed.ch"
 #line 362 "speed.ch"
+    
     PTREE   current ;
 #line 362 "speed.ch"
     
@@ -1994,6 +2002,7 @@ PTREE GetTokensFunctionName ( PTREE func )
     
 #line 402 "speed.ch"
 #line 406 "speed.ch"
+    
     PTREE   tree = (PTREE)0 ;
 #line 406 "speed.ch"
     
@@ -2207,6 +2216,7 @@ PTREE GetTokensFunction ( PTREE func )
     
 #line 428 "speed.ch"
 #line 432 "speed.ch"
+    
     PTREE   list = (PTREE)0 ;
 #line 432 "speed.ch"
     
@@ -2392,6 +2402,7 @@ void TreeTokenAnalyze ( const PTREE &tree )
     
 #line 463 "speed.ch"
 #line 465 "speed.ch"
+    
     PTREE   name, list, listFunc, elem, function, newList ;
 #line 465 "speed.ch"
     
@@ -2889,6 +2900,7 @@ void FreeArrayEntry ()
     
 #line 562 "speed.ch"
 #line 565 "speed.ch"
+    
     PARRAY_ENTRY    pt = listArrayEntry ;
     
 #line 565 "speed.ch"
@@ -2929,6 +2941,7 @@ PARRAY_ENTRY AllocArrayEntryUnit ()
     
 #line 575 "speed.ch"
 #line 577 "speed.ch"
+    
     PARRAY_ENTRY    pt ;
     
 #line 577 "speed.ch"
@@ -3009,16 +3022,19 @@ PTREE FuncAccelerator ( PTREE funcName )
     
 #line 594 "speed.ch"
 #line 598 "speed.ch"
+    
     PTREE   funcElem ;
 #line 598 "speed.ch"
     
 #line 598 "speed.ch"
 #line 600 "speed.ch"
+    
     PTREE   tokenElem ;
 #line 600 "speed.ch"
     
 #line 600 "speed.ch"
 #line 601 "speed.ch"
+    
     int lexEntry = -1 ;
     
 #line 601 "speed.ch"
@@ -3216,6 +3232,7 @@ PTREE FuncAccelerator ( PTREE funcName )
                                                                                                         
 #line 656 "speed.ch"
 #line 657 "speed.ch"
+                                                                                                        
                                                                                                         int oldOutput = output ;
                                                                                                         
 #line 657 "speed.ch"
@@ -3514,6 +3531,7 @@ PTREE FuncAccelerator ( PTREE funcName )
                                                                                                                                                                                             
 #line 723 "speed.ch"
 #line 726 "speed.ch"
+                                                                                                                                                                                            
                                                                                                                                                                                             PDESCRIPT_ELEM ptDescriptMeta = FindStringDescript("META", (PTREE)0);
                                                                                                                                                                                             
 #line 726 "speed.ch"
@@ -4136,6 +4154,7 @@ char *ConvertToOctal ( int numb )
     
 #line 849 "speed.ch"
 #line 852 "speed.ch"
+    
     int nb1, nb2, nb3 ;
     
 #line 852 "speed.ch"
@@ -4197,6 +4216,7 @@ void DumpTokenArray ()
     
 #line 870 "speed.ch"
 #line 872 "speed.ch"
+    
     PARRAY_ENTRY    ptArray = listArrayEntry ;
     
 #line 872 "speed.ch"
@@ -5234,6 +5254,7 @@ PTREE GetWithContext ( PTREE tree )
     
 #line 1062 "speed.ch"
 #line 1065 "speed.ch"
+    
     PTREE   name, list ;
 #line 1065 "speed.ch"
     
@@ -5383,6 +5404,7 @@ void ReleasePosComment ( PTREE tree )
     
 #line 1084 "speed.ch"
 #line 1087 "speed.ch"
+    
     PTREE   list, elem, son1, son2 ;
 #line 1087 "speed.ch"
     

@@ -33,9 +33,9 @@ class metachop: public chopb,public virtual Parser {
     virtual PPTREE prog ( int error_free) ;
     
     
-    static signed char * _tokenArray [168];
-    static int (metachop::*(_tokenFuncArray [168])) ();
-    static int _tokenNbFuncArray [168];
+    static signed char * _tokenArray [171];
+    static int (metachop::*(_tokenFuncArray [171])) ();
+    static int _tokenNbFuncArray [171];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 
@@ -78,67 +78,67 @@ class metachop: public chopb,public virtual Parser {
         PARSE_ELEM =    359 ,
         SIMP_ETOI =     358 ,
         ETOI_ETOI =     357 ,
-        BDECR =     356 ,
-        BINCR =     355 ,
-        ADDR =  354 ,
-        NOT =   353 ,
-        LNEG =  352 ,
-        POS =   351 ,
-        NEG =   350 ,
-        PARAM_TYPE =    349 ,
-        STRING_LIST =   348 ,
-        LABEL =     347 ,
-        THROW_ANSI =    346 ,
-        ELSE =  345 ,
-        TUNSIGNED =     344 ,
-        TSIGNED =   343 ,
-        TFLOAT =    342 ,
-        TDOUBLE =   341 ,
-        DECL_TYPE =     340 ,
-        TIDENT =    339 ,
-        RSHI =  338 ,
-        LSHI =  337 ,
-        LT =    336 ,
-        GT =    335 ,
-        GEQU =  334 ,
-        LEQU =  333 ,
-        SPACE_ARROW =   332 ,
-        TAB_DIRECTIVE =     331 ,
-        ENUM_PARAMETERS_UNDER =     330 ,
-        ENUM_VERT_VALUE =   329 ,
-        PROTECT_MEMB =  328 ,
-        LANGUAGE =  327 ,
-        EXP =   326 ,
-        ADECR =     325 ,
-        AINCR =     324 ,
-        ARROW =     323 ,
-        REF =   322 ,
-        EXP_ARRAY =     321 ,
-        EXP_BRA =   320 ,
-        EXP_LIST =  319 ,
-        ARROW_MEMB =    318 ,
-        DOT_MEMB =  317 ,
-        POINETOI =  316 ,
-        TIRESUPEETOI =  315 ,
-        TIRESUPE =  314 ,
-        SUPESUPE =  313 ,
-        INFEINFE =  312 ,
-        SUPEEGAL =  311 ,
-        INFEEGAL =  310 ,
-        NONE =  309 ,
-        NEW_DECLARATOR =    308 ,
-        USING_NAMESPACE =   307 ,
-        NAMESPACE_ALIAS =   306 ,
-        REM =   305 ,
-        DIV =   304 ,
-        MUL =   303 ,
-        POURC =     302 ,
-        MESSAGE_MAP =   301 ,
-        MACRO =     300 ,
-        TCHAR =     299 ,
-        TSHORT =    298 ,
-        TLONG =     297 ,
-        TINT =  296 ,
+        TUNSIGNED =     356 ,
+        BDECR =     355 ,
+        BINCR =     354 ,
+        ADDR =  353 ,
+        NOT =   352 ,
+        LNEG =  351 ,
+        POS =   350 ,
+        NEG =   349 ,
+        PARAM_TYPE =    348 ,
+        STRING_LIST =   347 ,
+        LABEL =     346 ,
+        THROW_ANSI =    345 ,
+        ELSE =  344 ,
+        DECL_TYPE =     343 ,
+        TIDENT =    342 ,
+        TSIGNED =   341 ,
+        TSHORT =    340 ,
+        TCHAR =     339 ,
+        TINT =  338 ,
+        RSHI =  337 ,
+        LSHI =  336 ,
+        LT =    335 ,
+        GT =    334 ,
+        GEQU =  333 ,
+        LEQU =  332 ,
+        SPACE_ARROW =   331 ,
+        TAB_DIRECTIVE =     330 ,
+        ENUM_PARAMETERS_UNDER =     329 ,
+        ENUM_VERT_VALUE =   328 ,
+        PROTECT_MEMB =  327 ,
+        LANGUAGE =  326 ,
+        EXP =   325 ,
+        ADECR =     324 ,
+        AINCR =     323 ,
+        ARROW =     322 ,
+        REF =   321 ,
+        EXP_ARRAY =     320 ,
+        EXP_BRA =   319 ,
+        EXP_LIST =  318 ,
+        ARROW_MEMB =    317 ,
+        DOT_MEMB =  316 ,
+        POINETOI =  315 ,
+        TIRESUPEETOI =  314 ,
+        TIRESUPE =  313 ,
+        SUPESUPE =  312 ,
+        INFEINFE =  311 ,
+        SUPEEGAL =  310 ,
+        INFEEGAL =  309 ,
+        NONE =  308 ,
+        NEW_DECLARATOR =    307 ,
+        USING_NAMESPACE =   306 ,
+        NAMESPACE_ALIAS =   305 ,
+        REM =   304 ,
+        DIV =   303 ,
+        MUL =   302 ,
+        POURC =     301 ,
+        MESSAGE_MAP =   300 ,
+        MACRO =     299 ,
+        TDOUBLE =   298 ,
+        TFLOAT =    297 ,
+        TLONG =     296 ,
         OR =    295 ,
         VBARVBAR =  294 ,
         AND =   293 ,
@@ -300,15 +300,15 @@ class metachop: public chopb,public virtual Parser {
         TILD =  137 ,
         ETCO =  136 ,
         ETOI =  135 ,
-        SHORT =     134 ,
-        UNSIGNED =  133 ,
-        SIGNED =    132 ,
+        UNSIGNED =  134 ,
+        SIGNED =    133 ,
+        SHORT =     132 ,
         LONG =  131 ,
-        DPOIDPOI =  130 ,
-        VOID =  129 ,
-        FLOAT =     128 ,
-        CHAR =  127 ,
-        INT =   126 ,
+        CHAR =  130 ,
+        INT =   129 ,
+        DPOIDPOI =  128 ,
+        VOID =  127 ,
+        FLOAT =     126 ,
         DOUBLE =    125 ,
         DECLTYPE =  124 ,
         TYPENAME =  123 ,
@@ -472,67 +472,67 @@ extern metachop * parser_metachop;
 #define PARSE_ELEM_metachop     359
 #define SIMP_ETOI_metachop  358
 #define ETOI_ETOI_metachop  357
-#define BDECR_metachop  356
-#define BINCR_metachop  355
-#define ADDR_metachop   354
-#define NOT_metachop    353
-#define LNEG_metachop   352
-#define POS_metachop    351
-#define NEG_metachop    350
-#define PARAM_TYPE_metachop     349
-#define STRING_LIST_metachop    348
-#define LABEL_metachop  347
-#define THROW_ANSI_metachop     346
-#define ELSE_metachop   345
-#define TUNSIGNED_metachop  344
-#define TSIGNED_metachop    343
-#define TFLOAT_metachop     342
-#define TDOUBLE_metachop    341
-#define DECL_TYPE_metachop  340
-#define TIDENT_metachop     339
-#define RSHI_metachop   338
-#define LSHI_metachop   337
-#define LT_metachop     336
-#define GT_metachop     335
-#define GEQU_metachop   334
-#define LEQU_metachop   333
-#define SPACE_ARROW_metachop    332
-#define TAB_DIRECTIVE_metachop  331
-#define ENUM_PARAMETERS_UNDER_metachop  330
-#define ENUM_VERT_VALUE_metachop    329
-#define PROTECT_MEMB_metachop   328
-#define LANGUAGE_metachop   327
-#define EXP_metachop    326
-#define ADECR_metachop  325
-#define AINCR_metachop  324
-#define ARROW_metachop  323
-#define REF_metachop    322
-#define EXP_ARRAY_metachop  321
-#define EXP_BRA_metachop    320
-#define EXP_LIST_metachop   319
-#define ARROW_MEMB_metachop     318
-#define DOT_MEMB_metachop   317
-#define POINETOI_metachop   316
-#define TIRESUPEETOI_metachop   315
-#define TIRESUPE_metachop   314
-#define SUPESUPE_metachop   313
-#define INFEINFE_metachop   312
-#define SUPEEGAL_metachop   311
-#define INFEEGAL_metachop   310
-#define NONE_metachop   309
-#define NEW_DECLARATOR_metachop     308
-#define USING_NAMESPACE_metachop    307
-#define NAMESPACE_ALIAS_metachop    306
-#define REM_metachop    305
-#define DIV_metachop    304
-#define MUL_metachop    303
-#define POURC_metachop  302
-#define MESSAGE_MAP_metachop    301
-#define MACRO_metachop  300
-#define TCHAR_metachop  299
-#define TSHORT_metachop     298
-#define TLONG_metachop  297
-#define TINT_metachop   296
+#define TUNSIGNED_metachop  356
+#define BDECR_metachop  355
+#define BINCR_metachop  354
+#define ADDR_metachop   353
+#define NOT_metachop    352
+#define LNEG_metachop   351
+#define POS_metachop    350
+#define NEG_metachop    349
+#define PARAM_TYPE_metachop     348
+#define STRING_LIST_metachop    347
+#define LABEL_metachop  346
+#define THROW_ANSI_metachop     345
+#define ELSE_metachop   344
+#define DECL_TYPE_metachop  343
+#define TIDENT_metachop     342
+#define TSIGNED_metachop    341
+#define TSHORT_metachop     340
+#define TCHAR_metachop  339
+#define TINT_metachop   338
+#define RSHI_metachop   337
+#define LSHI_metachop   336
+#define LT_metachop     335
+#define GT_metachop     334
+#define GEQU_metachop   333
+#define LEQU_metachop   332
+#define SPACE_ARROW_metachop    331
+#define TAB_DIRECTIVE_metachop  330
+#define ENUM_PARAMETERS_UNDER_metachop  329
+#define ENUM_VERT_VALUE_metachop    328
+#define PROTECT_MEMB_metachop   327
+#define LANGUAGE_metachop   326
+#define EXP_metachop    325
+#define ADECR_metachop  324
+#define AINCR_metachop  323
+#define ARROW_metachop  322
+#define REF_metachop    321
+#define EXP_ARRAY_metachop  320
+#define EXP_BRA_metachop    319
+#define EXP_LIST_metachop   318
+#define ARROW_MEMB_metachop     317
+#define DOT_MEMB_metachop   316
+#define POINETOI_metachop   315
+#define TIRESUPEETOI_metachop   314
+#define TIRESUPE_metachop   313
+#define SUPESUPE_metachop   312
+#define INFEINFE_metachop   311
+#define SUPEEGAL_metachop   310
+#define INFEEGAL_metachop   309
+#define NONE_metachop   308
+#define NEW_DECLARATOR_metachop     307
+#define USING_NAMESPACE_metachop    306
+#define NAMESPACE_ALIAS_metachop    305
+#define REM_metachop    304
+#define DIV_metachop    303
+#define MUL_metachop    302
+#define POURC_metachop  301
+#define MESSAGE_MAP_metachop    300
+#define MACRO_metachop  299
+#define TDOUBLE_metachop    298
+#define TFLOAT_metachop     297
+#define TLONG_metachop  296
 #define OR_metachop     295
 #define VBARVBAR_metachop   294
 #define AND_metachop    293
@@ -694,15 +694,15 @@ extern metachop * parser_metachop;
 #define TILD_metachop   137
 #define ETCO_metachop   136
 #define ETOI_metachop   135
-#define SHORT_metachop  134
-#define UNSIGNED_metachop   133
-#define SIGNED_metachop     132
+#define UNSIGNED_metachop   134
+#define SIGNED_metachop     133
+#define SHORT_metachop  132
 #define LONG_metachop   131
-#define DPOIDPOI_metachop   130
-#define VOID_metachop   129
-#define FLOAT_metachop  128
-#define CHAR_metachop   127
-#define INT_metachop    126
+#define CHAR_metachop   130
+#define INT_metachop    129
+#define DPOIDPOI_metachop   128
+#define VOID_metachop   127
+#define FLOAT_metachop  126
 #define DOUBLE_metachop     125
 #define DECLTYPE_metachop   124
 #define TYPENAME_metachop   123

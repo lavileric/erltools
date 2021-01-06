@@ -101,7 +101,7 @@ PPTREE chopb::statement ( int error_free)
 #line 509 "chopb.met"
 #line 508 "chopb.met"
 #line 509 "chopb.met"
-            if ( (inter=NQUICK_CALL(_Tak(statement)(error_free), 136, chopb))== (PPTREE) -1 ) {
+            if ( (inter=NQUICK_CALL(_Tak(statement)(error_free), 138, chopb))== (PPTREE) -1 ) {
 #line 509 "chopb.met"
                 MulFreeTree(4,_addlist1,inter,list,statTree);
                 PROG_EXIT(statement_exit,"statement")
@@ -138,7 +138,7 @@ PPTREE chopb::statement ( int error_free)
 #line 512 "chopb.met"
 #line 512 "chopb.met"
 #line 514 "chopb.met"
-            } while ( !(! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 136, chopb)))) ;
+            } while ( !(! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 138, chopb)))) ;
 #line 514 "chopb.met"
 #line 515 "chopb.met"
             {
@@ -671,7 +671,7 @@ PPTREE chopb::statement ( int error_free)
             }
 #line 568 "chopb.met"
 #line 572 "chopb.met"
-            if (! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 136, chopb))){
+            if (! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 138, chopb))){
 #line 572 "chopb.met"
 #line 574 "chopb.met"
                 if ( (inter=NQUICK_CALL(_Tak(expression)(error_free), 62, chopb))== (PPTREE) -1 ) {
@@ -777,7 +777,7 @@ PPTREE chopb::statement ( int error_free)
 #line 586 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 586 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 136, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 138, chopb))== (PPTREE) -1 ) {
 #line 586 "chopb.met"
                     MulFreeTree(5,_ptTree0,_addlist1,inter,list,statTree);
                     PROG_EXIT(statement_exit,"statement")
@@ -815,7 +815,7 @@ PPTREE chopb::statement ( int error_free)
         default : 
 #line 592 "chopb.met"
 #line 592 "chopb.met"
-            if (NPUSH_CALL_AFF_VERIF(statTree = ,_Tak(cplus::statement), 159, chopb)){
+            if (NPUSH_CALL_AFF_VERIF(statTree = ,_Tak(cplus::statement), 162, chopb)){
 #line 592 "chopb.met"
 #line 593 "chopb.met"
                 {
@@ -1010,7 +1010,7 @@ PPTREE chopb::take_follow ( int error_free)
 #line 659 "chopb.met"
                     PPTREE _ptTree0=0;
 #line 659 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 164, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 167, chopb))== (PPTREE) -1 ) {
 #line 659 "chopb.met"
                         MulFreeTree(5,_ptTree0,_addlist1,list,name,statTree);
                         PROG_EXIT(take_follow_exit,"take_follow")
@@ -1160,7 +1160,7 @@ PPTREE chopb::take_follow_list ( int error_free)
         }
 #line 633 "chopb.met"
 #line 634 "chopb.met"
-        if (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(take_follow_super), 164, chopb)){
+        if (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(take_follow_super), 167, chopb)){
 #line 634 "chopb.met"
 #line 635 "chopb.met"
 #line 636 "chopb.met"
@@ -1178,7 +1178,7 @@ PPTREE chopb::take_follow_list ( int error_free)
 #line 638 "chopb.met"
                     PPTREE _ptTree0=0;
 #line 638 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 164, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 167, chopb))== (PPTREE) -1 ) {
 #line 638 "chopb.met"
                         MulFreeTree(5,_ptTree0,_addlist1,inter,list,statTree);
                         PROG_EXIT(take_follow_list_exit,"take_follow_list")
@@ -1309,7 +1309,7 @@ PPTREE chopb::take_follow_super ( int error_free)
 #line 615 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 615 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 163, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 166, chopb))== (PPTREE) -1 ) {
 #line 615 "chopb.met"
                     MulFreeTree(2,_ptTree0,identTree);
                     PROG_EXIT(take_follow_super_exit,"take_follow_super")

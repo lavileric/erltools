@@ -60,11 +60,15 @@ char    *DecToIdent (PTREE) ;
 char    tabLabel [100], *ptTab, *nameDefine ;
 char    stringNumb [200];
 int inFunction = 0 ;
+
 int inParam = 0 ;
+
 int nbLabel, nb_par_parse ;
+
 char    *theLanguage ;
 void    lstat_dec1 (PTREE) ;
 void    DecompStat (PTREE, int) ;
+
 int storeValMax ;
 int retValMax ;
 int stackTreeMax ;
@@ -184,6 +188,7 @@ static  inline void WRITE_START_LINE ( PTREE tree )
     
 #line 62 "decomp1.ch"
 #line 64 "decomp1.ch"
+    
     int line = compiledLine, col ;
     
 #line 64 "decomp1.ch"
@@ -278,6 +283,7 @@ static  inline void WRITE_STOP_LINE ( PTREE tree )
     
 #line 86 "decomp1.ch"
 #line 88 "decomp1.ch"
+    
     int line = compiledLine, col ;
     
 #line 88 "decomp1.ch"
@@ -357,6 +363,7 @@ static  inline void CNewLine ()
     
 #line 107 "decomp1.ch"
 #line 109 "decomp1.ch"
+    
     char    string [10];
     
 #line 109 "decomp1.ch"
@@ -419,6 +426,7 @@ static  inline void CLNewLine ( int i )
     
 #line 121 "decomp1.ch"
 #line 123 "decomp1.ch"
+    
     char    string [10];
     
 #line 123 "decomp1.ch"
@@ -496,6 +504,7 @@ PTREE DecompMetachop::DecompFunction ( PTREE paramTree, int funcAlone )
     
 #line 139 "decomp1.ch"
 #line 141 "decomp1.ch"
+    
     PTREE   sc, type, declarator, param, range, param_decl, ctor, stat, exp ;
 #line 141 "decomp1.ch"
     
@@ -953,6 +962,7 @@ static  void DisplayAnchor ()
     
 #line 244 "decomp1.ch"
 #line 246 "decomp1.ch"
+    
     EString workName = theFileName ;
     
 #line 246 "decomp1.ch"
@@ -1027,6 +1037,7 @@ PTREE DecompMetachop::IntDecomp ( const PTREE &paramTree, int funcAlone )
     
 #line 255 "decomp1.ch"
 #line 257 "decomp1.ch"
+    
     PTREE   ident, tree, list, son, exp1, exp2, exp, stat, param ;
 #line 257 "decomp1.ch"
     
@@ -1248,6 +1259,7 @@ PTREE DecompMetachop::IntDecomp ( const PTREE &paramTree, int funcAlone )
                             
 #line 299 "decomp1.ch"
 #line 301 "decomp1.ch"
+                            
                             int isExtern = 0 ;
                             
 #line 301 "decomp1.ch"
@@ -1706,6 +1718,7 @@ PTREE DecompMetachop::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                     ;
 #line 397 "decomp1.ch"
 #line 400 "decomp1.ch"
+                                    
                                     PTREE   decl ;
 #line 400 "decomp1.ch"
                                     
@@ -5992,6 +6005,7 @@ void dec_function ( PTREE paramTree, PTREE sc, PTREE type, PTREE declarator, PTR
     
 #line 1043 "decomp1.ch"
 #line 1045 "decomp1.ch"
+    
     PTREE   son, val, list ;
 #line 1045 "decomp1.ch"
     
@@ -6118,6 +6132,7 @@ void dec_function ( PTREE paramTree, PTREE sc, PTREE type, PTREE declarator, PTR
         
 #line 1075 "decomp1.ch"
 #line 1075 "decomp1.ch"
+        
         ItPtree it((PPTREE)paramTree, _Baum0);
         
 #line 1075 "decomp1.ch"
@@ -6179,6 +6194,7 @@ void dec_function ( PTREE paramTree, PTREE sc, PTREE type, PTREE declarator, PTR
                                 
 #line 1082 "decomp1.ch"
 #line 1082 "decomp1.ch"
+                                
                                 ItPtree it((PPTREE)paramTree, _Baum1);
                                 
 #line 1082 "decomp1.ch"
@@ -6437,6 +6453,7 @@ void PtreeToClass ( PTREE tree )
     
 #line 1121 "decomp1.ch"
 #line 1124 "decomp1.ch"
+    
     PTREE   declarator ;
 #line 1124 "decomp1.ch"
     
@@ -6468,6 +6485,7 @@ void FuncToAnsi ( PTREE tree )
     
 #line 1147 "decomp1.ch"
 #line 1150 "decomp1.ch"
+    
     PTREE   parameter, declarator, son ;
 #line 1150 "decomp1.ch"
     
@@ -6751,6 +6769,7 @@ void DecompMetachop::lstat_dec1 ( PTREE paramTree )
     
 #line 1200 "decomp1.ch"
 #line 1202 "decomp1.ch"
+    
     PTREE   son ;
 #line 1202 "decomp1.ch"
     
@@ -6815,6 +6834,7 @@ void DecompMetachop::DecompStat ( PTREE stat, int withNewLine )
     
 #line 1213 "decomp1.ch"
 #line 1215 "decomp1.ch"
+    
     PTREE   son ;
 #line 1215 "decomp1.ch"
     
@@ -6933,6 +6953,7 @@ void DecompMetachop::copy ()
     
 #line 1239 "decomp1.ch"
 #line 1242 "decomp1.ch"
+    
     const char  *str ;
     
 #line 1242 "decomp1.ch"
@@ -7030,6 +7051,7 @@ char *MakeTreeGenDir ( PTREE paramTree, char *name, int level )
     
 #line 1285 "decomp1.ch"
 #line 1288 "decomp1.ch"
+    
     PTREE   tree, inter ;
 #line 1288 "decomp1.ch"
     

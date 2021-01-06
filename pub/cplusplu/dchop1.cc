@@ -74,6 +74,7 @@ int DecompCplus::OpTypeAlign ( PTREE tree )
     
 #line 34 "dchop1.ch"
 #line 36 "dchop1.ch"
+    
     PTREE   son ;
 #line 36 "dchop1.ch"
     
@@ -661,6 +662,7 @@ int DecompCplus::OpType ( PTREE tree )
     
 #line 93 "dchop1.ch"
 #line 95 "dchop1.ch"
+    
     PTREE   son ;
 #line 95 "dchop1.ch"
     
@@ -1322,6 +1324,7 @@ int DecompCplus::IsTop ( PTREE tree, int internal )
     
 #line 179 "dchop1.ch"
 #line 181 "dchop1.ch"
+    
     PTREE   treeOld ;
 #line 181 "dchop1.ch"
     
@@ -2699,6 +2702,7 @@ void DecompCplus::Treat ( PTREE tree )
     
 #line 304 "dchop1.ch"
 #line 307 "dchop1.ch"
+    
     int oldNbTab = nbTab ;
     
 #line 307 "dchop1.ch"
@@ -2976,6 +2980,7 @@ void DecompCplus::Treat ( PTREE tree )
         
 #line 358 "dchop1.ch"
 #line 358 "dchop1.ch"
+        
         ItPtree it(tree, _Baum0);
         
 #line 358 "dchop1.ch"
@@ -3024,6 +3029,7 @@ void DecompCplus::Treat ( PTREE tree )
         
 #line 365 "dchop1.ch"
 #line 365 "dchop1.ch"
+        
         ItPtree it(tree, _Baum1);
         
 #line 365 "dchop1.ch"
@@ -3074,6 +3080,7 @@ void DecompCplus::Treat ( PTREE tree )
         
 #line 374 "dchop1.ch"
 #line 374 "dchop1.ch"
+        
         PTREE   elem, param, stat ;
 #line 374 "dchop1.ch"
         
@@ -3099,14 +3106,15 @@ void DecompCplus::Treat ( PTREE tree )
             
 #line 375 "dchop1.ch"
 #line 375 "dchop1.ch"
-            PPTREE  _for_elem ;
+            PTREE   _for_elem ;
+#line 375 "dchop1.ch"
             
 #line 375 "dchop1.ch"
 #line 375 "dchop1.ch"
             _iterator1.AllSearch(1);
 #line 375 "dchop1.ch"
 #line 375 "dchop1.ch"
-            while ( _for_elem = _iterator1++ ) {
+            while ( (_for_elem=_iterator1++) ) {
 #line 375 "dchop1.ch"
 #line 375 "dchop1.ch"
                 {
@@ -3213,6 +3221,7 @@ int DecompCplus::TreatGeometrySpecific ( PTREE tree, int x0, int x )
     
 #line 387 "dchop1.ch"
 #line 390 "dchop1.ch"
+    
     PTREE   tree1, tree2, cond ;
 #line 390 "dchop1.ch"
     
@@ -3580,6 +3589,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
     
 #line 453 "dchop1.ch"
 #line 456 "dchop1.ch"
+    
     PTREE   son, list1, type ;
 #line 456 "dchop1.ch"
     
@@ -3617,6 +3627,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                                             
 #line 465 "dchop1.ch"
 #line 466 "dchop1.ch"
+                                            
                                             PTREE   att ;
 #line 466 "dchop1.ch"
                                             
@@ -3664,6 +3675,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                                                         
 #line 476 "dchop1.ch"
 #line 477 "dchop1.ch"
+                                                        
                                                         int x ;
                                                         
 #line 477 "dchop1.ch"
@@ -3852,6 +3864,7 @@ void DecompCplus::TraiterDeclAlignEnum ( PTREE start )
     
 #line 519 "dchop1.ch"
 #line 522 "dchop1.ch"
+    
     PTREE   list, son ;
 #line 522 "dchop1.ch"
     
@@ -4131,6 +4144,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
     
 #line 587 "dchop1.ch"
 #line 590 "dchop1.ch"
+    
     PTREE   son, list1, type ;
 #line 590 "dchop1.ch"
     
@@ -4168,6 +4182,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                                             
 #line 599 "dchop1.ch"
 #line 600 "dchop1.ch"
+                                            
                                             PTREE   att ;
 #line 600 "dchop1.ch"
                                             
@@ -4215,6 +4230,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                                                         
 #line 610 "dchop1.ch"
 #line 611 "dchop1.ch"
+                                                        
                                                         int x ;
                                                         
 #line 611 "dchop1.ch"
@@ -4447,6 +4463,7 @@ void DecompCplus::TraiterDeclAlign ( PTREE start, PTREE end, bool declarator )
     
 #line 663 "dchop1.ch"
 #line 666 "dchop1.ch"
+    
     PTREE   list, son ;
 #line 666 "dchop1.ch"
     
@@ -5017,6 +5034,7 @@ void DecompCplus::TraiterListDeclaration ( PTREE tree )
     
 #line 751 "dchop1.ch"
 #line 754 "dchop1.ch"
+    
     PTREE   father = (PTREE)0, fatherOld ;
 #line 754 "dchop1.ch"
     
@@ -5157,6 +5175,7 @@ bool DecompCplus::IsVerticalDecl ( PTREE father )
     
 #line 789 "dchop1.ch"
 #line 792 "dchop1.ch"
+    
     bool    vertical = false ;
     
 #line 792 "dchop1.ch"
@@ -5437,6 +5456,7 @@ void DecompCplus::TraiterListDeclarator ( PTREE father )
     
 #line 847 "dchop1.ch"
 #line 850 "dchop1.ch"
+    
     PTREE   tree, fatherOld ;
 #line 850 "dchop1.ch"
     
@@ -5550,6 +5570,7 @@ int DecompCplus::ComputeStart ( PTREE start, PTREE end )
     
 #line 879 "dchop1.ch"
 #line 882 "dchop1.ch"
+    
     int x, y, dx, dy ;
     
 #line 882 "dchop1.ch"
@@ -5690,6 +5711,7 @@ void DecompCplus::SetStart ( PTREE start, PTREE end, int pos )
     
 #line 913 "dchop1.ch"
 #line 916 "dchop1.ch"
+    
     int x0, y0 ;
     
 #line 916 "dchop1.ch"
@@ -5918,6 +5940,7 @@ void DecompCplus::TraiterAlignTypeDecl ( PTREE tree )
     
 #line 961 "dchop1.ch"
 #line 964 "dchop1.ch"
+    
     PTREE   father = (PTREE)0, fatherOld ;
 #line 964 "dchop1.ch"
     
@@ -6061,6 +6084,7 @@ int DecompCplus::ComputeStartAff ( PTREE start, PTREE end )
     
 #line 1000 "dchop1.ch"
 #line 1003 "dchop1.ch"
+    
     int x, y, dx, dy ;
     
 #line 1003 "dchop1.ch"
@@ -6177,6 +6201,7 @@ void DecompCplus::SetStartAff ( PTREE start, PTREE end, int pos )
     
 #line 1032 "dchop1.ch"
 #line 1035 "dchop1.ch"
+    
     int x0, y0 ;
     
 #line 1035 "dchop1.ch"
@@ -6385,6 +6410,7 @@ void DecompCplus::TraiterAlignAff ( PTREE tree )
     
 #line 1079 "dchop1.ch"
 #line 1082 "dchop1.ch"
+    
     PTREE   father = (PTREE)0, fatherOld ;
 #line 1082 "dchop1.ch"
     
@@ -6612,6 +6638,7 @@ void DecompCplus::TraiterAlignAff ( PTREE tree )
                 MarkCoordTree(father, x0, 0);
 #line 1114 "dchop1.ch"
 #line 1117 "dchop1.ch"
+                
                 int stop = 0 ;
                 
 #line 1117 "dchop1.ch"
