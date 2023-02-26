@@ -20,6 +20,8 @@ Unix Interactive (with g++ 2.7.2).
 
    Put also . in your PATH variable
 
+Instead it is also possible to use outils/tmake after setting right values at the beginning instead of make outils/tmake -parallel use all processors
+
 2) Do a make -f makefile.uni all install
    (for a basic C++ prettyprinter installation you can use the command
      make -f makefile.uni prettyprinter
