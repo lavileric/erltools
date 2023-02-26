@@ -60,7 +60,7 @@ semaph.o : semaph.cc token.h
 TreeIdentifier.o : TreeIdentifier.cc token.h
 
 clpretty.o : clpretty.cc clpretty.h token.h 
-	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) $(OPT_FLAGS_SYS) clpretty.cc
+# 	$(C_PLUS) -c $(MACHFLAGS) -g $(C_WARNING) $(INCLUDE_DIR) $(OPT_FLAGS) $(LIBC2FLAGS) $(OPT_FLAGS_SYS) clpretty.cc
 
 itptree.o : itptree.cc itptree.h token.h
 
@@ -74,7 +74,7 @@ clpretty.cc : clpretty.ch
 
 itptree.cc : itptree.ch
 
-TreeIdentifier.cc : TreeIdentifier.cc
+TreeIdentifier.cc : TreeIdentifier.ch
 
 salloc.cc : salloc.ch salloc.h
 

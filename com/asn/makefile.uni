@@ -17,13 +17,16 @@ library : $(OBJECTS)
 libraryTiny : $(OBJECTS_TINY)
 	for i in $(OBJECTS_TINY) ; do ar $(ARFLAGS) $(ASN_DIR_TINY) $$i ; done
 
-DOLIB : m_done
-	$(MAKE) -j $(NUMBER_PROC) library libraryTiny
+objects :
+	$(MAKE) -j $(NUMBER_PROC) $(OBJECTS)
 
-all : DOLIB
+all : m_done
+	$(MAKE) objects
+	$(MAKE) library libraryTiny
 	$(MAKE) -j $(NUMBER_PROC) asn dasn
 
-libasn.so : m_done $(OBJECTS)
+libasn.so : m_done 
+	$(MAKE) objects
 	$(C_PLUS) -shared -o libasn.so $(OBJECTS)
 
 shared : libasn.so all

@@ -8,14 +8,14 @@ all :
 all_make : erlms_make erlmsch_make
 
 erlms_make :
-	( cd erlms; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C erlms -f makefile.uni all
 
 erlmsch_make :
-	( cd erlmsch; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C erlmsch -f makefile.uni all
 
 clean :
-	( cd erlms ; $(MAKE) -f makefile.uni clean)
-	( cd erlmsch ; $(MAKE) -f makefile.uni clean)
+	$(MAKE) -C erlms -f makefile.uni clean
+	$(MAKE) -C erlmsch makefile.uni clean
 
 install :
 	- mv ./erlms/erlms $(INSTALL_DIR)

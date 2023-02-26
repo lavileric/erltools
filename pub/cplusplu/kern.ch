@@ -87,7 +87,9 @@ int main ( int argc, char **argv )
                 goto help ;
             } else if ( EString("-help") == ptName ) {
                 goto help ;
-            } else if ( EString("-emacs") == ptName ) {
+            }  else if ( EString("-tableString") == ptName ) {
+                symbString = true ; ;
+            }else if ( EString("-emacs") == ptName ) {
                 emacsCompatibleError =  1 ;
             } else if ( EString("-set") == ptName ) {
                 if ( argc - offset < 3 ) {

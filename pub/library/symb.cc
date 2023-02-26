@@ -279,146 +279,432 @@ int SymbolTable::RemoveLevel ()
 #line 88 "symb.ch"
         pvCurrentLevel = *(pvTable + pvSize - 1);
 #line 88 "symb.ch"
-#line 91 "symb.ch"
+    else 
+#line 88 "symb.ch"
+#line 90 "symb.ch"
+        pvCurrentLevel = 0 ;
+#line 90 "symb.ch"
+    
+#line 90 "symb.ch"
+#line 93 "symb.ch"
     return pvSize ;
     
-#line 91 "symb.ch"
-#line 92 "symb.ch"
+#line 93 "symb.ch"
+#line 94 "symb.ch"
     
-#line 92 "symb.ch"
-#line 92 "symb.ch"
+#line 94 "symb.ch"
+#line 94 "symb.ch"
 }
-#line 92 "symb.ch"
-
 #line 94 "symb.ch"
 
-#line 94 "symb.ch"
-void SymbolTable::AddVar ( const PTREE &var )
-#line 94 "symb.ch"
+#line 96 "symb.ch"
+
+#line 96 "symb.ch"
+void SymbolTable::AddVar ( const PTREE &var, bool remove )
+#line 96 "symb.ch"
 {
-#line 94 "symb.ch"
-#line 94 "symb.ch"
+#line 96 "symb.ch"
+#line 96 "symb.ch"
     int _nextVal ;
     
-#line 94 "symb.ch"
-#line 99 "symb.ch"
+#line 96 "symb.ch"
+#line 101 "symb.ch"
     if ( pvSize == 0 ) 
-#line 99 "symb.ch"
-#line 100 "symb.ch"
+#line 101 "symb.ch"
+#line 102 "symb.ch"
         AddLevel();
-#line 100 "symb.ch"
-#line 101 "symb.ch"
-    pvCurrentLevel -> InsertRemove(var);
-#line 101 "symb.ch"
 #line 102 "symb.ch"
+#line 103 "symb.ch"
+    if ( remove ) 
+#line 103 "symb.ch"
+#line 104 "symb.ch"
+        pvCurrentLevel -> InsertRemove(var);
+#line 104 "symb.ch"
+    else 
+#line 104 "symb.ch"
+#line 106 "symb.ch"
+        pvCurrentLevel -> Insert(var);
+#line 106 "symb.ch"
     
-#line 102 "symb.ch"
-#line 102 "symb.ch"
+#line 106 "symb.ch"
+#line 107 "symb.ch"
+    
+#line 107 "symb.ch"
+#line 107 "symb.ch"
 }
-#line 102 "symb.ch"
+#line 107 "symb.ch"
 
-#line 104 "symb.ch"
+#line 109 "symb.ch"
 
-#line 104 "symb.ch"
+#line 109 "symb.ch"
 void SymbolTable::RemoveVar ( const PTREE &var )
-#line 104 "symb.ch"
+#line 109 "symb.ch"
 {
-#line 104 "symb.ch"
-#line 104 "symb.ch"
+#line 109 "symb.ch"
+#line 109 "symb.ch"
     int _nextVal ;
     
-#line 104 "symb.ch"
-#line 107 "symb.ch"
+#line 109 "symb.ch"
+#line 112 "symb.ch"
     if ( pvSize == 0 ) 
-#line 107 "symb.ch"
-#line 108 "symb.ch"
+#line 112 "symb.ch"
+#line 113 "symb.ch"
         return ;
     
-#line 108 "symb.ch"
-#line 109 "symb.ch"
+#line 113 "symb.ch"
+#line 114 "symb.ch"
     pvCurrentLevel -> Remove(var);
-#line 109 "symb.ch"
-#line 110 "symb.ch"
+#line 114 "symb.ch"
+#line 115 "symb.ch"
     
-#line 110 "symb.ch"
-#line 110 "symb.ch"
+#line 115 "symb.ch"
+#line 115 "symb.ch"
 }
-#line 110 "symb.ch"
+#line 115 "symb.ch"
 
-#line 116 "symb.ch"
+#line 117 "symb.ch"
 
-#line 116 "symb.ch"
-PTREE SymbolTable::GetVar ( const char *var, int startLevel )
-#line 116 "symb.ch"
+#line 117 "symb.ch"
+PTREE SymbolTable::GetVar ( int index, int level )
+#line 117 "symb.ch"
 {
-#line 116 "symb.ch"
-#line 116 "symb.ch"
+#line 117 "symb.ch"
+#line 117 "symb.ch"
     int _nextVal ;
     
-#line 116 "symb.ch"
-#line 119 "symb.ch"
+#line 117 "symb.ch"
+#line 121 "symb.ch"
+    if ( (int)level >= Size() || index < 0 || index >= (**(pvTable + level)).Size() ) 
+#line 121 "symb.ch"
+#line 122 "symb.ch"
+        return (PTREE)0 ;
+    
+#line 122 "symb.ch"
+#line 125 "symb.ch"
+    return (**(pvTable + level))[index];
+    
+#line 125 "symb.ch"
+#line 126 "symb.ch"
+    
+#line 126 "symb.ch"
+#line 126 "symb.ch"
+}
+#line 126 "symb.ch"
+
+#line 128 "symb.ch"
+
+#line 128 "symb.ch"
+void SymbolTable::RemoveVar ( int index, int level )
+#line 128 "symb.ch"
+{
+#line 128 "symb.ch"
+#line 128 "symb.ch"
+    int _nextVal ;
+    
+#line 128 "symb.ch"
+#line 132 "symb.ch"
+    if ( (int)level >= Size() ) 
+#line 132 "symb.ch"
+#line 133 "symb.ch"
+        return ;
+    
+#line 133 "symb.ch"
+#line 136 "symb.ch"
+    (**(pvTable + level)).Erase(index);
+#line 136 "symb.ch"
+#line 137 "symb.ch"
+    
+#line 137 "symb.ch"
+#line 137 "symb.ch"
+}
+#line 137 "symb.ch"
+
+#line 143 "symb.ch"
+
+#line 143 "symb.ch"
+PTREE SymbolTable::GetVar ( const char *var, int startLevel )
+#line 143 "symb.ch"
+{
+#line 143 "symb.ch"
+#line 143 "symb.ch"
+    int _nextVal ;
+    
+#line 143 "symb.ch"
+#line 146 "symb.ch"
+    
+    Index   result = GetIndex(var, startLevel);
+    
+#line 146 "symb.ch"
+#line 148 "symb.ch"
+    return GetVar(result.index, result.level);
+    
+#line 148 "symb.ch"
+#line 149 "symb.ch"
+    
+#line 149 "symb.ch"
+#line 149 "symb.ch"
+}
+#line 149 "symb.ch"
+
+#line 155 "symb.ch"
+
+#line 155 "symb.ch"
+SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
+#line 155 "symb.ch"
+{
+#line 155 "symb.ch"
+#line 155 "symb.ch"
+    int _nextVal ;
+    
+#line 155 "symb.ch"
+#line 158 "symb.ch"
     
     TabList **ptLevel ;
     
-#line 119 "symb.ch"
-#line 120 "symb.ch"
+#line 158 "symb.ch"
+#line 159 "symb.ch"
     PTREE   result ;
-#line 120 "symb.ch"
+#line 159 "symb.ch"
     
-#line 120 "symb.ch"
-#line 123 "symb.ch"
+#line 159 "symb.ch"
+#line 160 "symb.ch"
+    int resultIndex ;
+    
+#line 160 "symb.ch"
+#line 161 "symb.ch"
+    static const Index  noResult = { -10, -10 };
+    
+#line 161 "symb.ch"
+#line 163 "symb.ch"
+    if ( !var ) 
+#line 163 "symb.ch"
+#line 164 "symb.ch"
+        return noResult ;
+    
+#line 164 "symb.ch"
+#line 167 "symb.ch"
     if ( startLevel < 0 ) 
-#line 123 "symb.ch"
-#line 124 "symb.ch"
+#line 167 "symb.ch"
+#line 168 "symb.ch"
         startLevel = pvSize - 1 ;
-#line 124 "symb.ch"
-#line 127 "symb.ch"
-    if ( startLevel > pvSize - 1 || !pvSize ) 
-#line 127 "symb.ch"
-#line 128 "symb.ch"
-        return (PTREE)0 ;
+#line 168 "symb.ch"
+#line 171 "symb.ch"
+    if ( startLevel < 0 || startLevel > pvSize - 1 ) 
+#line 171 "symb.ch"
+#line 172 "symb.ch"
+        return noResult ;
     
-#line 128 "symb.ch"
-#line 131 "symb.ch"
+#line 172 "symb.ch"
+#line 175 "symb.ch"
     ptLevel = pvTable + startLevel ;
-#line 131 "symb.ch"
-#line 134 "symb.ch"
+#line 175 "symb.ch"
+#line 178 "symb.ch"
     pvLastLevel = startLevel ;
-#line 134 "symb.ch"
-#line 135 "symb.ch"
-#line 135 "symb.ch"
+#line 178 "symb.ch"
+#line 179 "symb.ch"
+#line 179 "symb.ch"
     for (; ptLevel >= pvTable ; ptLevel--, pvLastLevel-- ) {
-#line 135 "symb.ch"
-#line 136 "symb.ch"
-                                                                if ( ((result=(**ptLevel)[var])) ) 
-#line 136 "symb.ch"
-#line 137 "symb.ch"
-                                                                    return result ;
+#line 179 "symb.ch"
+#line 180 "symb.ch"
+                                                                if ( (resultIndex = (*ptLevel) -> GetIndex(var)) >= 0 ) {
+#line 180 "symb.ch"
+#line 181 "symb.ch"
+                                                                                                                                Index result = { pvLastLevel, resultIndex };
+                                                                                                                                
+#line 181 "symb.ch"
+#line 182 "symb.ch"
+                                                                                                                                return result ;
+                                                                                                                                
+#line 182 "symb.ch"
+#line 183 "symb.ch"
+                                                                                                                                
+#line 183 "symb.ch"
+#line 183 "symb.ch"
+                                                                                                                                }
+#line 183 "symb.ch"
+#line 184 "symb.ch"
                                                                 
-#line 137 "symb.ch"
-#line 138 "symb.ch"
-                                                                
-#line 138 "symb.ch"
-#line 138 "symb.ch"
+#line 184 "symb.ch"
+#line 184 "symb.ch"
                                                                }
-#line 138 "symb.ch"
+#line 184 "symb.ch"
     
-#line 138 "symb.ch"
-#line 141 "symb.ch"
-    return (PTREE)0 ;
+#line 184 "symb.ch"
+#line 187 "symb.ch"
+    return noResult ;
     
-#line 141 "symb.ch"
-#line 142 "symb.ch"
+#line 187 "symb.ch"
+#line 188 "symb.ch"
     
-#line 142 "symb.ch"
-#line 142 "symb.ch"
+#line 188 "symb.ch"
+#line 188 "symb.ch"
 }
-#line 142 "symb.ch"
+#line 188 "symb.ch"
 
-#line 142 "symb.ch"
-#line 142 "symb.ch"
+#line 194 "symb.ch"
+
+#line 194 "symb.ch"
+SymbolTable::Index SymbolTable::GetFirstIndex ( const char *var, int startLevel )
+#line 194 "symb.ch"
+{
+#line 194 "symb.ch"
+#line 194 "symb.ch"
+    int _nextVal ;
+    
+#line 194 "symb.ch"
+#line 197 "symb.ch"
+    
+    static const Index  noResult = { -10, -10 };
+    
+#line 197 "symb.ch"
+#line 200 "symb.ch"
+    
+    Index   result = GetIndex(var, startLevel);
+    
+#line 200 "symb.ch"
+#line 202 "symb.ch"
+    if ( result.index < 0 ) 
+#line 202 "symb.ch"
+#line 203 "symb.ch"
+        return noResult ;
+    
+#line 203 "symb.ch"
+#line 206 "symb.ch"
+    
+    int index = result.index ;
+    
+#line 206 "symb.ch"
+#line 207 "symb.ch"
+    int trailingIndex = index ;
+    
+#line 207 "symb.ch"
+#line 209 "symb.ch"
+    while ( index >= 0 ) {
+#line 209 "symb.ch"
+#line 210 "symb.ch"
+                            {
+#line 210 "symb.ch"
+#line 211 "symb.ch"
+                                if ( VString(Value((*GetTabList(result.level))[index])) == var ) {
+#line 211 "symb.ch"
+#line 212 "symb.ch"
+                                                                                                            trailingIndex = index ;
+#line 212 "symb.ch"
+#line 213 "symb.ch"
+                                                                                                            index = index - 1 ;
+#line 213 "symb.ch"
+#line 214 "symb.ch"
+                                                                                                            
+#line 214 "symb.ch"
+#line 214 "symb.ch"
+                                                                                                          } else 
+#line 214 "symb.ch"
+#line 215 "symb.ch"
+                                    break ;
+                                    
+#line 215 "symb.ch"
+                                
+#line 215 "symb.ch"
+#line 216 "symb.ch"
+                                
+#line 216 "symb.ch"
+#line 216 "symb.ch"
+                            }
+                            
+#line 216 "symb.ch"
+#line 217 "symb.ch"
+                            
+#line 217 "symb.ch"
+#line 217 "symb.ch"
+                           }
+#line 217 "symb.ch"
+#line 218 "symb.ch"
+    result.index = trailingIndex ;
+#line 218 "symb.ch"
+#line 219 "symb.ch"
+    return result ;
+    
+#line 219 "symb.ch"
+#line 220 "symb.ch"
+    
+#line 220 "symb.ch"
+#line 220 "symb.ch"
+}
+#line 220 "symb.ch"
+
+#line 226 "symb.ch"
+
+#line 226 "symb.ch"
+SymbolTable::Index SymbolTable::GetNextIndex ( const char *var, Index startIndex )
+#line 226 "symb.ch"
+{
+#line 226 "symb.ch"
+#line 226 "symb.ch"
+    int _nextVal ;
+    
+#line 226 "symb.ch"
+#line 229 "symb.ch"
+    
+    static const Index  noResult = { -10, -10 };
+    
+#line 229 "symb.ch"
+#line 231 "symb.ch"
+    if ( startIndex.level < 0 || startIndex.level >= Size() ) 
+#line 231 "symb.ch"
+#line 232 "symb.ch"
+        return noResult ;
+    
+#line 232 "symb.ch"
+#line 233 "symb.ch"
+    TabList & tabListFirst = *GetTabList(startIndex.level);
+#line 233 "symb.ch"
+#line 235 "symb.ch"
+    int index = startIndex.index + 1 ;
+    
+#line 235 "symb.ch"
+#line 238 "symb.ch"
+    if ( index >= 0 && index < tabListFirst.Size() && !strcmp(VString(Value(tabListFirst [index])), var) ) {
+#line 238 "symb.ch"
+#line 239 "symb.ch"
+                                                                                                                        startIndex.index = index ;
+#line 239 "symb.ch"
+#line 240 "symb.ch"
+                                                                                                                        return startIndex ;
+                                                                                                                        
+#line 240 "symb.ch"
+#line 241 "symb.ch"
+                                                                                                                        
+#line 241 "symb.ch"
+#line 241 "symb.ch"
+                                                                                                                       } else 
+#line 241 "symb.ch"
+    if ( startIndex.level > 0 ) {
+#line 241 "symb.ch"
+#line 242 "symb.ch"
+                                    return GetFirstIndex(var, startIndex.level - 1);
+                                    
+#line 242 "symb.ch"
+#line 243 "symb.ch"
+                                    
+#line 243 "symb.ch"
+#line 243 "symb.ch"
+                                   }
+#line 243 "symb.ch"
+#line 244 "symb.ch"
+    return noResult ;
+    
+#line 244 "symb.ch"
+#line 245 "symb.ch"
+    
+#line 245 "symb.ch"
+#line 245 "symb.ch"
+}
+#line 245 "symb.ch"
+
+#line 245 "symb.ch"
+#line 245 "symb.ch"
 static void symb_Anchor () { int i = 1;} 
-#line 142 "symb.ch"
+#line 245 "symb.ch"
 /*Well done my boy */ 
-#line 142 "symb.ch"
+#line 245 "symb.ch"
 

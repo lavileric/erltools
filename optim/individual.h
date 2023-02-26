@@ -602,7 +602,8 @@
                 SimpleLimit ( SimpleType min, SimpleType max )
                     : FeatureLimit<SimpleType, SimpleType> (min, max, min)
                 {
-                    this->pvStep =  1 ;
+                    this->pvStep  =  1 ;
+                    pvLastApplied =  (SimpleType)0 ;
                 }
                 
                 SimpleLimit ( SimpleType min, SimpleType max, SimpleType step )
@@ -610,6 +611,7 @@
                 {
                     
                     // this->pvStep =  1 ;
+                    pvLastApplied =  (SimpleType)0 ;
                 }
                 
                 virtual ~SimpleLimit () {}
@@ -752,8 +754,8 @@
                     if ( index < Size() ) {
                         return *&pvFeatures [index];
                     } else {
-                        EString error("Illegal access : ");
-                        error << (int)index ;
+                        EString error("Feature1: Individual Index Illegal access : ");
+                        error << (int)index << " " << (int) Size();
                         IndividualDisplayError(error);
                     }
                     return *&pvFeatures [0];
@@ -771,8 +773,8 @@
                             memcpy(dest, &pvFeatures [start], size * sizeof(TypeFeature));
 #                       endif
                     } else {
-                        EString error("Illegal access : ");
-                        error << (int)start << " " << (int)size ;
+                        EString error("FeatureCopy: Individual Index Illegal access : ");
+                        error << (int)start << " " << (int)size << (int)Size() << "\n" ;
                         IndividualDisplayError(error);
                     }
                     return *&pvFeatures [0];
@@ -842,8 +844,8 @@
                     if ( index < Size() ) {
                         return *&pvLimits [index];
                     } else {
-                        EString error("Illegal access : ");
-                        error << (int)index ;
+                        EString error("Limits: Individual Index Illegal access : ");
+                        error << (int)index  << " " << (int) Size()<< "\n" ;
                         IndividualDisplayError(error);
                     }
                     return *&pvLimits [0];
@@ -892,8 +894,8 @@
                     if ( index < Size() ) {
                         pvFeatures [index] =  framedFeature ;
                     } else {
-                        EString error("Illegal access : ");
-                        error << (int)index ;
+                        EString error("Feature0: Individual Index Illegal access : ");
+                        error << (int)index << " " << (int) Size()<< "\n" ;
                         IndividualDisplayError(error);
                     }
                     
@@ -1024,7 +1026,7 @@
                 EString Content ()
                 {
                     EString content ;
-                    int     param ;
+                    unsigned int     param ;
                     
                     for ( param = 0 ; param < Size() ; param++ ) {
                         content << (int)param << " = " << Feature(param) << Limits(param).Content() << " ";

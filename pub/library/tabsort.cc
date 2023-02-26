@@ -5,8 +5,8 @@ int TabSortRoot::GetIndex ( const char *string, int min, int max )
 {
     
     // if dummy max put right one  
-    if ( max == - 10 ) 
-        max = size - 1 ;
+    if ( max == -10 ) 
+        max =  size - 1 ;
     
     // if array is not sorted yet do it now      
     if ( !sorted ) {
@@ -22,24 +22,24 @@ debut :
             return pivot ;
         } else if ( result > 0 ) {
             if ( pivot > min ) 
-                max = pivot - 1 ;
+                max =  pivot - 1 ;
             else 
-                max = pivot ;
+                max =  pivot ;
             goto debut ;
         } else {
             if ( pivot < max ) 
-                min = pivot + 1 ;
+                min =  pivot + 1 ;
             else 
-                min = pivot ;
+                min =  pivot ;
             goto debut ;
         }
     } else if ( max == min ) {
         if ( !strcmp(GetElemName(*(array + min)), string) ) 
             return min ;
         else 
-            return - 1 ;
+            return -1 ;
     }
-    return - 1 ;
+    return -1 ;
 }
 
 // Sort : sort the array    
@@ -51,11 +51,11 @@ void TabSortRoot::Sort ( int min, int max )
     char    *refString ;
     
     // array will be sorted  
-    sorted = 1 ;
+    sorted =  1 ;
     
     // if dummy max put right one  
-    if ( max == - 10 ) 
-        maxOrg = max = size - 1 ;
+    if ( max == -10 ) 
+        maxOrg =  max = size - 1 ;
 debut : 
     
     // list of one element is allready sorted    
@@ -63,17 +63,15 @@ debut :
         return ;
     
     // compute pivot and ref  
-    pivot = (min + max) / 2 ;
-    refString = AllocString(GetElemName(*(array + pivot)));
+    pivot     =  (min + max) / 2 ;
+    refString =  AllocString(GetElemName(*(array + pivot)));
     
     // put the elements in two groups those which are less and those    
     // which are greater than the pivot    
     while ( min < max ) {
-        while ( strcmp(GetElemName(*(array + min)), refString) <= 0
-                    && min < max ) 
+        while ( strcmp(GetElemName(*(array + min)), refString) <= 0 && min < max ) 
             min++ ;
-        while ( strcmp(GetElemName(*(array + max)), refString) > 0
-                    && max >= min ) 
+        while ( strcmp(GetElemName(*(array + max)), refString) > 0 && max >= min ) 
             max-- ;
         
         // if min == max   
@@ -106,16 +104,16 @@ debut :
     if ( min == max ) {
         Exchange(pivot, max);
         if ( minOrg < maxOrg ) {
-            min = minOrg ;
-            max = --maxOrg ;
+            min =  minOrg ;
+            max =  --maxOrg ;
             goto debut ;
         }
     } else {
         if ( maxOrg > min ) 
             Sort(min, maxOrg);
         if ( minOrg < min - 1 ) {
-            maxOrg = max = min - 1 ;
-            min = minOrg ;
+            maxOrg =  max = min - 1 ;
+            min    =  minOrg ;
             goto debut ;
         }
     }
@@ -127,8 +125,8 @@ void TabSortRoot::InsertRemove ( void *elem, int min, int max )
     char    *string = AllocString(GetElemName(elem)); // name of inserted elem 
     
     // if dummy max put right one  
-    if ( max == - 10 ) 
-        max = size - 1 ;
+    if ( max == -10 ) 
+        max =  size - 1 ;
     
     // if array is empty put at 0
     if ( !size ) {
@@ -149,25 +147,25 @@ debut :
         int result = strcmp(GetElemName(*(array + pivot)), string);
         if ( !result ) {
             InsertAt(elem, pivot);
-            sorted = 1 ;
+            sorted =  1 ;
         } else if ( result > 0 ) {
             if ( pivot > min ) 
-                max = pivot - 1 ;
+                max =  pivot - 1 ;
             else 
-                max = pivot ;
+                max =  pivot ;
             goto debut ;
         } else {
             if ( pivot < max ) 
-                min = pivot + 1 ;
+                min =  pivot + 1 ;
             else 
-                min = pivot ;
+                min =  pivot ;
             goto debut ;
         }
     } else {
         int result = strcmp(GetElemName(*(array + min)), string);
         if ( !result ) {
             InsertAt(elem, min);
-            sorted = 1 ;
+            sorted =  1 ;
         } else if ( result < 0 ) 
             Put(elem, min + 1);
         else 
@@ -183,8 +181,8 @@ void TabSortRoot::Insert ( void *elem, int min, int max )
     char    *string = AllocString(GetElemName(elem)); // name of inserted elem 
     
     // if dummy max put right one  
-    if ( max == - 10 ) 
-        max = size - 1 ;
+    if ( max == -10 ) 
+        max =  size - 1 ;
     
     // if array is empty put at 0
     if ( !size ) {
@@ -207,15 +205,15 @@ debut :
             Put(elem, pivot);
         } else if ( result > 0 ) {
             if ( pivot > min ) 
-                max = pivot - 1 ;
+                max =  pivot - 1 ;
             else 
-                max = pivot ;
+                max =  pivot ;
             goto debut ;
         } else {
             if ( pivot < max ) 
-                min = pivot + 1 ;
+                min =  pivot + 1 ;
             else 
-                min = pivot ;
+                min =  pivot ;
             goto debut ;
         }
     } else {
@@ -233,8 +231,8 @@ void TabSortRoot::Put ( void *elem, int slot )
 {
     
     // if slot == -10 put at the end of array  
-    if ( slot == - 10 ) {
-        slot = size ;
+    if ( slot == -10 ) {
+        slot =  size ;
     }
     
     // if there is not enough space in the array resize it  
@@ -243,21 +241,20 @@ void TabSortRoot::Put ( void *elem, int slot )
     if ( size == sizeMax ) {
         sizeMax += 10 ;
         if ( oldSizeMax ) 
-            array = (void **)realloc(array, sizeMax * sizeof(void *));
+            array =  (void **)realloc(array, sizeMax * sizeof(void *));
         else 
-            array = (void **)malloc(sizeMax * sizeof(void *));
+            array =  (void **)malloc(sizeMax * sizeof(void *));
     }
     if ( size ) {
         
         // move all elements of array beginning at slot  
         // void    **ptArray = array + size ;
         if ( size > slot ) 
-            memmove(array + slot + 1, array + slot
-                , (size - slot) * sizeof(void *));
+            memmove(array + slot + 1, array + slot, (size - slot) * sizeof(void *));
     }
     
     // put elem in the array  
-    *(array + slot) = elem ;
+    *(array + slot) =  elem ;
     
     // increase size 
     size++ ;
@@ -269,8 +266,7 @@ void TabSortRoot::RemoveDup ( void )
     if ( !sorted ) 
         Sort();
     for ( int pos = 0 ; pos < size - 1 ; pos++ ) {
-        if ( !strcmp(GetElemName(*(array + pos))
-                , GetElemName(*(array + pos + 1))) ) {
+        if ( !strcmp(GetElemName(*(array + pos)), GetElemName(*(array + pos + 1))) ) {
             Erase(pos);
             pos-- ;
         }
@@ -284,8 +280,7 @@ void *TabSortRoot::FindDuplicate ( int pos )
         Sort();
     if ( pos >= 0 ) 
         for (; pos < size - 1 ; pos++ ) {
-            if ( !strcmp(GetElemName(*(array + pos))
-                    , GetElemName(*(array + pos + 1))) ) {
+            if ( !strcmp(GetElemName(*(array + pos)), GetElemName(*(array + pos + 1))) ) {
                 return *(array + pos);
             }
         }
@@ -324,19 +319,19 @@ void TabSortRoot::InsertAt ( void *elem, int posit )
     if ( size == sizeMax ) {
         sizeMax += 10 ;
         if ( oldSizeMax ) 
-            array = (void **)realloc(array, sizeMax * sizeof(void *));
+            array =  (void **)realloc(array, sizeMax * sizeof(void *));
         else 
-            array = (void **)malloc(sizeMax * sizeof(void *));
+            array =  (void **)malloc(sizeMax * sizeof(void *));
     }
     if ( posit == size ) 
         size++ ;
-    array [posit] = elem ;
-    sorted = 0 ;
+    array [posit] =  elem ;
+    sorted        =  0 ;
 }
 
 // erasing an element  
 void TabSortRoot::Erase ( int slot )
-{ 
+{
     
     // verify index  
     if ( slot < 0 || slot >= size ) 
@@ -345,8 +340,7 @@ void TabSortRoot::Erase ( int slot )
     // move all elements of array beginning at slot  
     // void    **ptArray = array + slot ;
     if ( slot < size - 1 ) 
-        memmove(array + slot, array + slot + 1
-            , (size - slot - 1) * sizeof(void *));
+        memmove(array + slot, array + slot + 1, (size - slot - 1) * sizeof(void *));
     
     // put new size of array  
     size-- ;

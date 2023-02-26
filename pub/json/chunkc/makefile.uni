@@ -1,0 +1,37 @@
+
+all : m_done chunkc
+
+include ../../makefile.inc
+
+clean : clean_inc_appli
+	- rm -f chunk.h chunkc
+
+m_done : chunk.met ../cplusplu/cplus.met
+	-@ mkdir compile.dir
+	@cp chunk.met compile.dir
+	@echo "metagen -c++ chunk.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../cplusplu:../../library $(METAOPT) chunk.met ;\
+		  unify chunk.h ../chunk.h;\
+		  unify chunk.cpp ../chunk.cc;\
+	  unify chunk0.cpp ../chunk0.cc;)
+	@echo "ok" > m_done
+
+chunk.o : chunk.cc chunk.h
+
+chunk0.o : chunk0.cc chunk.h
+
+chopper.cc : chopper.ch
+
+chopper.o : chopper.cc ../library/token.h 
+
+CPLUS=../cplusplu/chopper.o ../cplusplu/cplus.o ../cplusplu/cplus0.o ../cplusplu/cplus1.o ../cplusplu/cplus2.o ../cplusplu/cplus3.o ../cplusplu/cplus4.o ../cplusplu/cplus5.o ../cplusplu/cplus6.o ../cplusplu/cplus7.o ../cplusplu/dchop.o ../cplusplu/dchop1.o ../cplusplu/dchop0.o ../cplusplu/cplus8.o
+OBJECTS = chunk.o chunk0.o chopper.o
+
+chunkc : $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o chunkc $(OBJECTS) $(CPLUS) $(LIBRARY)
+
+
+
+
+

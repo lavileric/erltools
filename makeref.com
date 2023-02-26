@@ -8,6 +8,7 @@ INCLUDE_DIR = $(CROSS_INC_DIR) -I$(META_DIR)$(SEP)pub$(SEP)library \
 		-I$(META_DIR)$(SEP)pub$(SEP)cplusplu \
 		-I$(META_DIR)$(SEP)pub$(SEP)chopb \
 		-I$(META_DIR)$(SEP)pub$(SEP)metachop \
+		-I$(META_DIR)$(SEP)pub$(SEP)json \
 		$(STL_INC) $(INCLUDE_DIR_LOC) 
 
 LIBRARY = $(META_DIR)$(SEP)pub$(SEP)library$(SEP)meta.$(LIB_SUF) $(LIB_SYS) $(LIB_PRIVATE_SYS)

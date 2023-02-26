@@ -3,42 +3,47 @@ tobe_done : all
 include ../makefile.inc
 
 all :
-	( cd library; $(MAKE) -f makefile.uni all)
-	( cd parser; $(MAKE) -f makefile.uni all)
-	( cd cplusplu ; $(MAKE) -f makefile.uni all)
-	( cd chopb ; $(MAKE) -f makefile.uni all)
-	( cd metachop ; $(MAKE) -f makefile.uni all)
-	- ( cd doxy ; $(MAKE) -f makefile.uni all)
-	($(MAKE) -f makefile.uni metageninstall)
-	($(MAKE) -f makefile.uni metachopinstall)
+	$(MAKE) -C library -f makefile.uni all
+	$(MAKE) -C parser -f makefile.uni all
+	$(MAKE) -C cplusplu -f makefile.uni all
+	$(MAKE) -C chopb -f makefile.uni all
+	$(MAKE) -C metachop -f makefile.uni all
+	$(MAKE) -f makefile.uni metageninstall metachopinstall
 	-@ chmod u+rwx $(INSTALL_DIR)/unify
 	cp ./parser/unify $(INSTALL_DIR)
 	chmod u+rwx $(INSTALL_DIR)/unify
 	- cp ./cplusplu/c.set $(INSTALL_DIR)
 	$(MAKE) -j $(NUMBER_PROC) other_make
+	$(MAKE) -j $(NUMBER_PROC) json_make
 
 ##	( cd chunkc; $(MAKE) -f makefile.uni all)
 ##	( cd chunkch; $(MAKE) -f makefile.uni all)
 
-other_make : java_make config_make metab_make
+other_make : doxy_make java_make config_make metab_make
+
+doxy_make :
+	$(MAKE) -C doxy -f makefile.uni all
+
+json_make :
+	$(MAKE) -C json -f makefile.uni all
 
 java_make :
-	( cd java ; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C java -f makefile.uni all
 
 config_make :
-	( cd config ; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C config -f makefile.uni all
 
 metab_make :
-	( cd metab; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C metab -f makefile.uni all
 
 syndex_make : 
-	(cd syndex ; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C syndex -f makefile.uni all
 
 test : 
-	(cd cplusplu;$(MAKE) -f makefile.uni testall)
+	$(MAKE)-C cplusplu -f makefile.uni testall
 
 shared :
-	( cd library; $(MAKE) -f makefile.uni shared)
+	$(MAKE) -C library -f makefile.uni shared
 
 metageninstall :
 	cp ./parser/metagen $(INSTALL_DIR)
@@ -119,6 +124,7 @@ clean :
 	( cd vhdl; $(MAKE) -f makefile.uni clean)
 	( cd pythonpars; $(MAKE) -f makefile.uni clean)
 	- ( cd doxy ; $(MAKE) -f makefile.uni clean )
+	- ( cd json ; $(MAKE) -f makefile.uni clean )
 	if [ -d ./syndex ] ; then \
                (cd syndex ; $(MAKE) -f makefile.uni clean) ; fi
 	if [ -d ./calc ] ; then \

@@ -14,6 +14,7 @@
 #   include "optimalgo.h"
 #   include "smtoken.h"
 #   include "semaphop.h"
+#   include "token.h"
 #   define RECORD_FILE_NAME "bestpopulation.rec"
     
     //*****************************************************************************
@@ -30,22 +31,25 @@
                     , unsigned int nbMaxSteadyGenerations, unsigned int maxSimulatedVectors, unsigned int maxSteadyVectors, unsigned int bestSlice
                     , unsigned int maxSecNoProgress = 0 )
                     : pvPopulationSize(populationSize),  pvNbMutations(nbMutations * populationSize / 100),  pvNbMaxGenerations(nbMaxGenerations)
-                        ,  pvNbMaxSteadyGenerations(nbMaxSteadyGenerations),  pvGenerationNumber(0),  pvSteadyGenerationNumber(0),  pvCloneFound(false)
-                        ,  pvBestSlice(bestSlice),  OptimAlgo<IndividualType> (nursery),  pvVibrato(true),  pvWritten(0),  pvInteractive(false),  pvLastReset(0)
-                        ,  pvRec(false),  pvSuppressClone(false),  pvMaxSecNoProgress(maxSecNoProgress)
+                        ,  pvNbMaxSteadyGenerations(nbMaxSteadyGenerations),  pvGenerationNumber(0),  pvSteadyGenerationNumber(0),  pvCloneFound(false),  pvBestSlice(bestSlice)
+                        ,  OptimAlgo<IndividualType> (nursery),  pvVibrato(true),  pvWritten(0),  pvInteractive(false),  pvLastReset(0),  pvRec(false),  pvSuppressClone(false)
+                        ,  pvMaxSecNoProgress(maxSecNoProgress)
                 {
                     for ( unsigned int index = 0 ; index < pvPopulationSize ; index++ ) {
                         
                         // put a real individual otherwise sizes are bad
                         IndividualType  doe ;
-                        doe.Affect(this->GetNursery().Create());
+                        doe.Affect(this -> GetNursery().Create());
                         pvCurrentPopulation.push_back(doe);
                     }
                     
+                    // by default not thread
+                    pvSemaphop.On(false);
+                    
                     //                    FillRandomContents(pvCurrentPopulation);
-                    this->pvBestCost =  this->BestIndividual(pvCurrentPopulation).Cost();
-                    this->MaxSteadyVectors(maxSteadyVectors);
-                    this->MaxSimulatedVectors(maxSimulatedVectors);
+                    this -> pvBestCost =  this -> BestIndividual(pvCurrentPopulation).Cost();
+                    this -> MaxSteadyVectors(maxSteadyVectors);
+                    this -> MaxSimulatedVectors(maxSimulatedVectors);
                 }
                 
                 virtual EString Parameters ()
@@ -93,7 +97,7 @@
                         pvNextPopulation.clear();
                         unsigned int    index ;
                         for ( index = currentSize ; index < newSize ; index++ ) {
-                            pvNextPopulation.push_back(this->GetNursery().Create());
+                            pvNextPopulation.push_back(this -> GetNursery().Create());
                         }
                         FillRandomContents(pvNextPopulation, newSize - currentSize, 0);
                         for ( index = 0 ; index < currentSize ; index++ ) {
@@ -112,6 +116,15 @@
                     
                     // dummy init for new population
                     pvPopulationSize =  newSize ;
+                }
+                
+                virtual void Reset ()
+                {
+                    unsigned int    size = pvCurrentPopulation.size();
+                    
+                    for ( unsigned int pos = 0 ; pos < size ; pos++ ) {
+                        pvCurrentPopulation [pos].Evaluated(false);
+                    }
                 }
                 
                 bool SuppressClone () const
@@ -175,10 +188,14 @@
                     if ( index < PopulationSize() ) {
                         unsigned int    pos = 0 ;
                         for ( auto iter = params.begin() ; iter != params.end() ; iter++ ) {
-                            pvCurrentPopulation [index].Feature(pos++, *iter);
+                            if ( pos < pvCurrentPopulation [index].Size() ) {
+                                pvCurrentPopulation [index].Feature(pos++, *iter);
+                            } else {
+                                EString error ;
+                                error << "Upload Vector Size too big " << (int)pos++ << " " << (int)pvCurrentPopulation [index].Size() << "\n";
+                                PrintString(error);
+                            }
                         }
-                        
-                        //                        pvCurrentPopulation [index].Evaluated(false);
                     }
                 }
                 
@@ -205,7 +222,7 @@
                     unsigned int    stock ;
                     unsigned int    nbWaitingIndividuals ;
                     
-                    {
+                    if ( pvSemaphop.On() ) {
                         if ( (stock = pvSemaphop.GetStockInfo()) ) 
                             pvSemaphop.GetRessource(stock);
                         while ( (nbWaitingIndividuals = GetWaitingIndividuals()) ) 
@@ -314,7 +331,7 @@
                     if ( startInit ) {
                         pvCurrentPopulation.clear();
                         for ( index = 0 ; index < startInit ; index++ ) {
-                            pvCurrentPopulation.push_back(this->GetNursery().Create());
+                            pvCurrentPopulation.push_back(this -> GetNursery().Create());
                         }
                         for ( index = 0 ; index < startInit ; index++ ) {
                             pvCurrentPopulation [index].Read(file);
@@ -397,13 +414,13 @@
                 pvGenerationNumber       =  0 ;
                 
                 //                pvLastReset = 0 ;
-                this->SimulatedVectors(0);
-                this->SteadyVectors(0);
-                pvMeanLessSteady =  -1 ;
+                this -> SimulatedVectors(0);
+                this -> SteadyVectors(0);
+                pvMeanLessSteady   =  -1 ;
                 
                 // to have best individual computation will be done
                 // ComputeCost(pvCurrentPopulation);
-                this->pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
+                this -> pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
             }
             
             // do steps
@@ -411,21 +428,21 @@
             
             pvNbLoops =  0 ;
             
-            typename IndividualType::TypeCost   currentCost = this->pvBestCost ;
+            typename IndividualType::TypeCost   currentCost = this -> pvBestCost ;
             
             if ( pvMaxSecNoProgress > 0 ) 
                 EGetUTime(pvLoopStartTime);
             while ( (pvSteadyGenerationNumber < pvNbMaxSteadyGenerations || pvSteadyGenerationNumber < pvGenerationNumber / 10)
                         && pvGenerationNumber < pvNbMaxGenerations
                         && !pvCloneFound
-                        && this->CheckOn() ) {
+                        && this -> CheckOn() ) {
                 Step(pvCurrentPopulation, pvNextPopulation, pvNewPopulation, sortArray, verbose);
                 Step(pvNewPopulation, pvNextPopulation, pvCurrentPopulation, sortArray, verbose);
                 
                 // check that we did not spend to much time without advance
                 if ( pvMaxSecNoProgress > 0 ) {
-                    this->pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
-                    typename IndividualType::TypeCost   newCost = this->pvBestCost ;
+                    this -> pvBestCost =  BestIndividual(pvCurrentPopulation).Cost();
+                    typename IndividualType::TypeCost   newCost = this -> pvBestCost ;
                     timeval                             currentTime ;
                     EGetUTime(currentTime);
                     if ( newCost <= currentCost ) {
@@ -603,15 +620,15 @@
             if ( pvInteractive && verbose ) {
                 while ( pvWritten-- ) 
                     message << '\b';
-                message << ToString(this->pvBestCost) << "(" << (int)pvSteadyGenerationNumber << ")";
+                message << ToString(this -> pvBestCost) << "(" << (int)pvSteadyGenerationNumber << ")";
                 _write(2, message.c_str(), message.length());
             }
             pvWritten =  message.length() - bWritten ;
-            if ( this->pvBestCost < lBestCost ) {
-                this->pvBestCost =  lBestCost ;
+            if ( this -> pvBestCost < lBestCost ) {
+                this -> pvBestCost =  lBestCost ;
                 if ( !pvInteractive && verbose ) {
                     EString message ;
-                    message << ToString(this->pvBestCost) << "(" << (int)pvSteadyGenerationNumber << ")";
+                    message << ToString(this -> pvBestCost) << "(" << (int)pvSteadyGenerationNumber << ")";
                     _write(2, message.c_str(), message.length());
                 }
                 pvWritten                =  0 ;
@@ -650,10 +667,10 @@
     template <class IndividualType> 
         void OptimGenetic<IndividualType> ::Print ()
         {
-# if 0
-    std::cout << _optim.GENETIC_ALGORITHM << std::endl << "\tPopulationSize=" << _populationSize << "\tNbMutationsPerGeneration=" << _nbMutations << std::endl
-        << "\tMaxNbGenerations=" << _nbMaxGenerations << "\tMaxNbSteadyGenerations=" << _nbMaxSteadyGenerations ;
-# endif
+#           if 0
+                std::cout << _optim.GENETIC_ALGORITHM << std::endl << "\tPopulationSize=" << _populationSize << "\tNbMutationsPerGeneration=" << _nbMutations << std::endl
+                    << "\tMaxNbGenerations=" << _nbMaxGenerations << "\tMaxNbSteadyGenerations=" << _nbMaxSteadyGenerations ;
+#           endif
         }
         
     //*****************************************************************************
@@ -679,7 +696,7 @@
             for ( index = 0 ; index < popSize ; index++ ) {
                 if ( !population [index].Evaluated() ) {
                     population [index].EvaluateThread(&pvSemaphop);
-                    this->SimulatedVectors(this->SimulatedVectors() + 1);
+                    this -> SimulatedVectors(this -> SimulatedVectors() + 1);
                     nbEvaluated++ ;
                 }
             }
@@ -692,10 +709,10 @@
             if ( checkSteady ) {
                 for ( index = 0 ; index < population.size() ; index++ ) {
                     typename IndividualType::TypeCost   cost = population [index].Cost();
-                    if ( cost <= this->pvBestCost ) 
-                        this->SteadyVectors(this->SteadyVectors() + 1);
+                    if ( cost <= this -> pvBestCost ) 
+                        this -> SteadyVectors(this -> SteadyVectors() + 1);
                     else 
-                        this->SteadyVectors(0);
+                        this -> SteadyVectors(0);
                 }
             }
         }
@@ -716,7 +733,7 @@
             
             // start evaluation
             individual.EvaluateThread(&pvSemaphop);
-            this->SimulatedVectors(this->SimulatedVectors() + 1);
+            this -> SimulatedVectors(this -> SimulatedVectors() + 1);
             
             // wait for completion
             pvSemaphop.GetRessource(1);
@@ -742,7 +759,7 @@
                 
                 // ELV 3/11/2017 no doe
                 IndividualType & doe =  population [ind];
-                doe.Affect(this->GetNursery().Create());
+                doe.Affect(this -> GetNursery().Create());
                 
                 // population [ind].Affect(this->GetNursery().Create);
                 while ( isAClone && lCloneTestNumber < NB_MAX_TRY ) {
@@ -773,7 +790,7 @@
                 
                 // ELV 3/11/2017 no doe
                 IndividualType & doe =  population [ind];
-                doe.Affect(this->GetNursery().Create());
+                doe.Affect(this -> GetNursery().Create());
             }
             return true ;
         }
@@ -811,10 +828,10 @@
                     unsigned int    sum ;
                     unsigned int    lMother = 0 ;
                     unsigned int    lFather = 0 ;
-                    lFather =  sortArray [this->RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))))].index ;
+                    lFather =  sortArray [this -> RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))))].index ;
                     
                     // select mother
-                    index   =  this->RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))));
+                    index   =  this -> RankingSelect(MTRandomValue<int> (0, (refPop * (refPop + 1))));
                     {
                         lMother =  sortArray [index].index ;
                         if ( lMother == lFather ) {
@@ -861,8 +878,7 @@
     //
     //*****************************************************************************
     template <class IndividualType> 
-        void OptimGenetic<IndividualType> ::MutateElem ( int lFather, std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-            , unsigned int index )
+        void OptimGenetic<IndividualType> ::MutateElem ( int lFather, std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, unsigned int index )
         {
             const int       NB_MAX_TRY = maxInt(100, refPopulation.size());
             unsigned int    lIndIndex ;
@@ -944,7 +960,7 @@
                     
                     // Randomly choose the individual index
                     // ------------------------------------
-                    lFather =  sortArray [ /* refPop - 1 - */ this->RankingSelect(MTRandomValue<int> (0, (limitBest * (limitBest + 1))))].index ;
+                    lFather =  sortArray [ /* refPop - 1 - */ this -> RankingSelect(MTRandomValue<int> (0, (limitBest * (limitBest + 1))))].index ;
                     
                     // Mutate this elememnt
                     MutateElem(lFather, refPopulation, nextPopulation, initNext + index++);
@@ -985,8 +1001,8 @@
                 // check that at least one element can be vibrated
                 bool            foundOne (false) ;
                 int             selectedIndex ;
-                unsigned int    minimumAcces = this->RankingSelect(lIndIndex * (lIndIndex + 1));
-                unsigned int    maximumAccess = this->RankingSelect(refPop * (refPop + 1) - 1);
+                unsigned int    minimumAcces = this -> RankingSelect(lIndIndex * (lIndIndex + 1));
+                unsigned int    maximumAccess = this -> RankingSelect(refPop * (refPop + 1) - 1);
                 for ( unsigned int index = minimumAcces ; index <= maximumAccess ; index++ ) {
                     selectedIndex =  sortArray [index].index ;
                     if ( refPopulation [selectedIndex].Self().Vibrato() && !refPopulation [selectedIndex].Self().Final() ) {
@@ -1002,14 +1018,14 @@
                 IndividualType  newType ;
                 foundOne =  false ;
                 if ( best ) {
-                    selectedIndex =  sortArray [this->RankingSelect(refPop * (refPop + 1) - 1)].index ;
+                    selectedIndex =  sortArray [this -> RankingSelect(refPop * (refPop + 1) - 1)].index ;
                     
                     // even the best must not be vibrated so surrender
                     if ( !refPopulation [selectedIndex].Self().Vibrato() || refPopulation [selectedIndex].Self().Final() ) 
                         return false ;
                 } else {
                     do {
-                        selectedIndex =  sortArray [this->RankingSelect(MTRandomValue<int> (lIndIndex * (lIndIndex + 1), refPop * (refPop + 1)))].index ;
+                        selectedIndex =  sortArray [this -> RankingSelect(MTRandomValue<int> (lIndIndex * (lIndIndex + 1), refPop * (refPop + 1)))].index ;
                         if ( refPopulation [selectedIndex].Self().Vibrato() && !refPopulation [selectedIndex].Self().Final() ) {
                             foundOne =  true ;
                         }
@@ -1286,7 +1302,7 @@
                     unsigned int    index = 0 ;
                     long            sum = 0 ;
                     unsigned int    indexOrg ;
-                    index =  this->RankingSelect(MTRandomValue<int> (0, multiplier));
+                    index =  this -> RankingSelect(MTRandomValue<int> (0, multiplier));
                     if ( index >= nbIndividuals - firstSlice ) 
                         index =  nbIndividuals - firstSlice - 1 ;
                     indexOrg =  index ;
@@ -1341,8 +1357,7 @@
     //
     //*****************************************************************************
     template <class IndividualType> 
-        bool OptimGenetic<IndividualType> ::IsIndividualAClone ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-            , unsigned int rank )
+        bool OptimGenetic<IndividualType> ::IsIndividualAClone ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, unsigned int rank )
         {
             unsigned int    refPop = refPopulation.size();
             
@@ -1385,8 +1400,7 @@
     //
     //*****************************************************************************
     template <class IndividualType> 
-        bool OptimGenetic<IndividualType> ::IsIndividualACloneFull ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-            , unsigned int rank )
+        bool OptimGenetic<IndividualType> ::IsIndividualACloneFull ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, unsigned int rank )
         {
             unsigned int    refPop = refPopulation.size();
             unsigned int    nextPop = nextPopulation.size();
@@ -1422,8 +1436,7 @@
     //
     //*****************************************************************************
     template <class IndividualType> 
-        bool OptimGenetic<IndividualType> ::IsIndividualACloneFull ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-            , IndividualType &type )
+        bool OptimGenetic<IndividualType> ::IsIndividualACloneFull ( std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, IndividualType &type )
         {
             unsigned int    refPop = refPopulation.size();
             unsigned int    nextPop = nextPopulation.size();

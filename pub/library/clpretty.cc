@@ -1475,14 +1475,15 @@ void clpretty::TraitMark ( PTREE tree, int newMark )
         
 #line 412 "clpretty.ch"
 #line 412 "clpretty.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 412 "clpretty.ch"
         
 #line 412 "clpretty.ch"
 #line 412 "clpretty.ch"
         _iterator1.AllSearch(1);
 #line 412 "clpretty.ch"
 #line 412 "clpretty.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 412 "clpretty.ch"
 #line 412 "clpretty.ch"
             {
@@ -1579,7 +1580,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     
 #line 424 "clpretty.ch"
 #line 425 "clpretty.ch"
-    char    string [3];
+    char    string [25];
     
 #line 425 "clpretty.ch"
 #line 426 "clpretty.ch"
@@ -4525,14 +4526,15 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
         
 #line 1109 "clpretty.ch"
 #line 1109 "clpretty.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 1109 "clpretty.ch"
         
 #line 1109 "clpretty.ch"
 #line 1109 "clpretty.ch"
         _iterator1.AllSearch(1);
 #line 1109 "clpretty.ch"
 #line 1109 "clpretty.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 1109 "clpretty.ch"
 #line 1109 "clpretty.ch"
             {
@@ -4709,7 +4711,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                                                                                                                     {
 #line 1138 "clpretty.ch"
 #line 1139 "clpretty.ch"
-                                                                                                                                                    char string [3];
+                                                                                                                                                    char string [25];
                                                                                                                                                     
 #line 1139 "clpretty.ch"
 #line 1140 "clpretty.ch"
@@ -5423,14 +5425,15 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
         
 #line 1279 "clpretty.ch"
 #line 1279 "clpretty.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 1279 "clpretty.ch"
         
 #line 1279 "clpretty.ch"
 #line 1279 "clpretty.ch"
         _iterator1.AllSearch(1);
 #line 1279 "clpretty.ch"
 #line 1279 "clpretty.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 1279 "clpretty.ch"
 #line 1279 "clpretty.ch"
             {
@@ -5611,7 +5614,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                                                                 if ( !hasIndented ) {
 #line 1311 "clpretty.ch"
 #line 1312 "clpretty.ch"
-                                                                                                                                      char string [10];
+                                                                                                                                      char string [25];
                                                                                                                                       
 #line 1312 "clpretty.ch"
 #line 1313 "clpretty.ch"
@@ -7007,14 +7010,15 @@ void clpretty::CleanAttributs ( PTREE tree )
         
 #line 1655 "clpretty.ch"
 #line 1655 "clpretty.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 1655 "clpretty.ch"
         
 #line 1655 "clpretty.ch"
 #line 1655 "clpretty.ch"
         _iterator1.AllSearch(1);
 #line 1655 "clpretty.ch"
 #line 1655 "clpretty.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 1655 "clpretty.ch"
 #line 1655 "clpretty.ch"
             {

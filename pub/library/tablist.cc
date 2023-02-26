@@ -40,38 +40,38 @@ TabList::TabList ( PPTREE list )
     PPTREE  *ptElem ; // pointer on an element of array      
     
     // skip nil beginning the list
-    while ( list && !sontree(list, 1) ) 
-        list = sontree(list, 2);
+    while ( list && NumberTree(list) == LIST  && !sontree(list, 1) ) 
+        list =  sontree(list, 2);
     
     // compute length of list      
-    sizeMax = size = ListLength(list);
+    sizeMax =  size = ListLength(list);
     if ( size <= 0 ) 
-        sizeMax = 1 ;
+        sizeMax =  1 ;
     
     // allocate the array for it       
-    array = (void **)malloc(sizeMax * sizeof(PPTREE));
-    ptElem = (PPTREE *)array ;
+    array  =  (void **)malloc(sizeMax * sizeof(PPTREE));
+    ptElem =  (PPTREE *)array ;
     
     // put the elements of the list in the array      
-    while ( NumberTree(list) == LIST ) {
+    while ( list &&  NumberTree(list) == LIST ) {
         PPTREE  elem = SonTree(list, 1);
-        if (elem );
-            AddRef(elem);
+        if ( elem ) {}
+        AddRef(elem);
         
         // if son is nil suppress it 
         if ( !elem ) {
             PPTREE  nElem, dad, son1, son2 ;
             
             // suppress elem with nil son
-            nElem = SonTree(list, 2);
+            nElem =  SonTree(list, 2);
             if ( NumberTree(nElem) == LIST ) {
-                son1 = SonTree(nElem, 1);
-                son2 = SonTree(nElem, 2);
+                son1 =  SonTree(nElem, 1);
+                son2 =  SonTree(nElem, 2);
                 ReplaceTree(list, 1, son1);
                 ReplaceTree(list, 2, son2);
             } else {
-                dad = FatherTree(list);
-                list = PTREE(list)[2];
+                dad  =  FatherTree(list);
+                list =  PTREE(list)[2];
                 replacetree(dad, 2, list);
             }
             
@@ -84,20 +84,20 @@ TabList::TabList ( PPTREE list )
         }
         
         // store the element       
-        *ptElem++ = elem ;
+        *ptElem++ =  elem ;
         
         // iterate on the list      
-        list = SonTree(list, 2);
+        list      =  SonTree(list, 2);
     }
     
     // put a ref on the list
     if ( size ) 
-        father = fathertree((PPTREE)(*array));
+        father =  fathertree((PPTREE)(*array));
     else 
-        father = (PTREE)0 ;
+        father =  (PTREE)0 ;
     
     // indicates that the array is not sorted yet      
-    sorted = 0 ;
+    sorted =  0 ;
 }
 
 // Destructor for TabList      
@@ -125,7 +125,7 @@ TabList::~TabList ()
     }
     
     // free ref on list  
-    father = (PTREE)0 ;
+    father =  (PTREE)0 ;
 }
 
 // Debug  
@@ -136,7 +136,7 @@ void TabList::Debug ( void )
     while ( list ) {
         DumpBrainyValue(list);
         NewLine();
-        list = SonTree(list, 2);
+        list =  SonTree(list, 2);
     }
 }
 
@@ -147,22 +147,23 @@ void TabList::Put ( void *treeParam, int slot )
     TREE    *tree = (TREE *)treeParam ;
     
     // if slot == -10 put at the end of array  
-    if ( slot == - 10 ) {
-        slot = size ;
+    if ( slot == -10 ) {
+        slot =  size ;
     }
     
     // if there is not enough space in the array resize it  
     int oldSizeMax = sizeMax ;
+    
     if ( size == sizeMax ) {
         sizeMax += 10 ;
         if ( oldSizeMax ) 
-            array = (void **)realloc(array, sizeMax * sizeof(PPTREE));
+            array =  (void **)realloc(array, sizeMax * sizeof(PPTREE));
         else 
-            array = (void **)malloc(sizeMax * sizeof(PPTREE));
+            array =  (void **)malloc(sizeMax * sizeof(PPTREE));
     }
     
     // construct the list elem which contains the new elem  
-    listElem = MakeTree(LIST, 2);
+    listElem =  MakeTree(LIST, 2);
     replacetree(listElem, 1, tree);
     if ( size ) {
         
@@ -192,11 +193,11 @@ void TabList::Put ( void *treeParam, int slot )
     
     // put tree in the array  
     AddRef(tree);
-    *(array + slot) = tree ;
+    *(array + slot) =  tree ;
     
     // adjust reference if slot 0  
     if ( !slot ) {
-        father = fathertree((PPTREE)*array);
+        father =  fathertree((PPTREE)*array);
     }
     
     // increase size 
@@ -208,7 +209,7 @@ void TabList::Erase ( int slot )
 {
     
     // verify index  
-    if ( slot < 0 || slot >= size ) 
+    if ( slot < 0 || slot >= Size() ) 
         return ;
     
     // make changes in list  
@@ -218,7 +219,7 @@ void TabList::Erase ( int slot )
         PPTREE  nextTree = sontree(dad, 2);
         int     rank = ranktree(dad);
         if ( !slot ) {
-            father = father [2];
+            father =  father [2];
         }
         replacetree(gFather, rank, nextTree);
     }

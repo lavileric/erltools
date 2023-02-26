@@ -5,6 +5,7 @@ OUT_O=-o
 CXX ?= g++
 CXXFLAGS ?= 
 LDFLAGS  ?= 
+SHARED ?= 
 
 #compiler choice
 #MACHFLAGS=-march=athlon-xp  -pipe 
@@ -27,9 +28,9 @@ C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wu
 # -Wno-deprecated
 
 # OPTIM_FLAGS ?=$(C_PLUS_OPTIM) $(LIBC2FLAGS) -fomit-frame-pointer
-OPTIM_FLAGS ?= $(C_PLUS_OPTIM) $(LIBC2FLAGS)
+OPTIM_FLAGS ?= $(C_PLUS_OPTIM) $(LIBC2FLAGS) 
 
-C_FLAGS ?=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS)
+C_FLAGS ?=$(OPTIM_FLAGS) $(C_WARNING) $(MISC_C_FLAGS) 
 LIB_PRIVATE_SYS ?=-lpthread
 #LIB_PRIVATE_SYS=
 

@@ -930,7 +930,7 @@ void DecompCplus::SetStart ( PTREE start, PTREE end, int pos )
     pos++ ;
     
     // set x for all nodes
-    while ( start && start != end ) {
+    while ( start && start != end && start == <LIST> ) {
         son =  nextl(start);
         if ( son == <DECLARATION,<>,<>,<LIST,decl>> ) {
             GetCoord(decl, &x, &y, &dx, &dy);
@@ -967,31 +967,29 @@ void DecompCplus::TraiterAlignTypeDecl ( PTREE tree )
     
     // look if it is the last of a list of declaration            
     // in this case align comments of declarations            
-    if ( father != <LIST> ) 
-        return ;
-    nextl(father);
-    if ( father ) 
-        son =  nextl(father);
-    if ( son != <DECLARATION> ) {
-        
-        // mark tree coordinates
-        fatherOld =  father = tree ^ ;
-        GetCoordAbs(father, (), &x0, &y0);
-        MarkCoordTree(father, x0, 0);
-        
-        // search boudaries
-        while ( father && father == <LIST> ) {
-            if ( father != <,<DECLARATION>> ) 
-                break ;
-            fatherOld =  father ;
-            father    =  father ^ ;
+    if ( father == <LIST> ) {
+        nextl(father);
+        if ( father == () || father == <LIST,son,father> && son != <DECLARATION> ) {
+            
+            // mark tree coordinates
+            fatherOld =  father = tree ^ ;
+            GetCoordAbs(father, (), &x0, &y0);
+            MarkCoordTree(father, x0, 0);
+            
+            // search boudaries
+            while ( father && father == <LIST> ) {
+                if ( father != <,<DECLARATION>> ) 
+                    break ;
+                fatherOld =  father ;
+                father    =  father ^ ;
+            }
+            
+            // align declarations
+            SetStart(fatherOld, tree ^ , ComputeStart(fatherOld, tree ^ ));
+            
+            // unmark
+            UnMarkCoordTree(tree ^ );
         }
-        
-        // align declarations
-        SetStart(fatherOld, tree ^ , ComputeStart(fatherOld, tree ^ ));
-        
-        // unmark
-        UnMarkCoordTree(tree ^ );
     }
 }
 
@@ -1088,62 +1086,70 @@ void DecompCplus::TraiterAlignAff ( PTREE tree )
     
     // look if it is the last of a list of assignment           
     // in this case align comments of declarations            
-    if ( father != <LIST> ) 
-        return ;
-    nextl(father);
-    if ( father ) 
-        son =  nextl(father);
-    switch ( son ) {
-        case <AFF> : 
-        case <MUL_AFF> : 
-        case <DIV_AFF> : 
-        case <REM_AFF> : 
-        case <MIN_AFF> : 
-        case <PLU_AFF> : 
-        case <LSH_AFF> : 
-        case <RSH_AFF> : 
-        case <AND_AFF> : 
-        case <OR_AFF> : 
-        case <XOR_AFF> : break ;
-        default : 
-            {
-                
-                // mark tree coordinates
-                fatherOld =  father = tree ^ ;
-                GetCoordAbs(father, (), &x0, &y0);
-                MarkCoordTree(father, x0, 0);
-                
-                // search boudaries
-                int stop = 0 ;
-                while ( father && father == <LIST> && !stop ) {
-                    son =  sontree(father, 1);
-                    switch ( son ) {
-                        case <AFF> : 
-                        case <MUL_AFF> : 
-                        case <DIV_AFF> : 
-                        case <REM_AFF> : 
-                        case <MIN_AFF> : 
-                        case <PLU_AFF> : 
-                        case <LSH_AFF> : 
-                        case <RSH_AFF> : 
-                        case <AND_AFF> : 
-                        case <OR_AFF> : 
-                        case <XOR_AFF> : 
-                            fatherOld = father ;
-                            father    = father ^ ;
-                            break ;
-                        default : 
-                            stop = 1 ;
-                            break ;
-                    }
-                }
-                
-                // align declarations
-                SetStartAff(fatherOld, tree ^ , ComputeStartAff(fatherOld, tree ^ ));
-                
-                // unmark
-                UnMarkCoordTree(tree ^ );
+    if ( father == <LIST> ) {
+        bool    align = false ;
+        nextl(father);
+        
+        // last of list
+        if ( father == () ) 
+            align =  true ;
+        
+        // last assignment 
+        if ( father == <LIST,son> ) {
+            switch ( son ) {
+                case <AFF> : 
+                case <MUL_AFF> : 
+                case <DIV_AFF> : 
+                case <REM_AFF> : 
+                case <MIN_AFF> : 
+                case <PLU_AFF> : 
+                case <LSH_AFF> : 
+                case <RSH_AFF> : 
+                case <AND_AFF> : 
+                case <OR_AFF> : 
+                case <XOR_AFF> : break ;
+                default : align = true ;
             }
+        }
+        
+        // align case
+        if ( align ) {
+            
+            // mark tree coordinates
+            fatherOld =  father = tree ^ ;
+            GetCoordAbs(father, (), &x0, &y0);
+            MarkCoordTree(father, x0, 0);
+            
+            // search boudaries
+            int stop = 0 ;
+            while ( !stop && father && father == <LIST,son> ) {
+                switch ( son ) {
+                    case <AFF> : 
+                    case <MUL_AFF> : 
+                    case <DIV_AFF> : 
+                    case <REM_AFF> : 
+                    case <MIN_AFF> : 
+                    case <PLU_AFF> : 
+                    case <LSH_AFF> : 
+                    case <RSH_AFF> : 
+                    case <AND_AFF> : 
+                    case <OR_AFF> : 
+                    case <XOR_AFF> : 
+                        fatherOld = father ;
+                        father    = father ^ ;
+                        break ;
+                    default : 
+                        stop = 1 ;
+                        break ;
+                }
+            }
+            
+            // align declarations
+            SetStartAff(fatherOld, tree ^ , ComputeStartAff(fatherOld, tree ^ ));
+            
+            // unmark
+            UnMarkCoordTree(tree ^ );
+        }
     }
 }
 

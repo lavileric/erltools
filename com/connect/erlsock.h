@@ -105,7 +105,7 @@
         
             // << ADD Olivier Maffeis 98
             int     pvErrno ;                    // error number
-            char    pvAction [MAX_ACTION_SIZE];  // action source
+            char    pvAction [MAX_ACTION_SIZE+1];  // action source
     };
     
     class ErlSock {

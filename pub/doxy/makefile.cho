@@ -1,12 +1,15 @@
 META_DIR=../..
 
-all : chop
+all : 
+	$(MAKE) -j $(NUMBER_PROC) $(ALL_OBJECTS)
+	$(MAKE) -f makefile.cho chop
 
 include $(META_DIR)/makefile.der
 
 chop.o : chop.cc $(META_DIR)/pub/library/token.h
 
-CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
+CPLUS=$(META_DIR)/pub/cplusplu/cplus.a
+CPLUS_OBJ=$(META_DIR)/pub/cplusplu/chopper.o
 
 CHOPB=$(META_DIR)/pub/chopb/chopb.a
 
@@ -14,8 +17,10 @@ METACHOP=$(META_DIR)/pub/metachop/metachop.a
 
 CHOPCORE=$(META_DIR)/pub/parser/verif.o
 
-chop : chop.o doxy.o doxy0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
-	$(C_PLUS) -o chop doxy.o doxy0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+ALL_OBJECTS = chop.o doxy.o doxy0.o
+
+chop :  $(ALL_OBJECTS) $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
+	$(C_PLUS) -o chop doxy.o doxy0.o chop.o $(CHOPCORE) $(CPLUS_OBJ) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
 	strip chop
 
 

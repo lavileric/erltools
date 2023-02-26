@@ -361,6 +361,7 @@
 #   define LANG_BIT 6
 #   define REF_BIT 24
 #   define LIST 0
+#   define LIST_ERLTOOLS 0
 #   define TERM_TREE ( -2 & NODE_MASK )
 #   define GEO ( -3 & NODE_MASK )
 #   define REF_TREE (-4 & NODE_MASK)
@@ -529,6 +530,7 @@
             }
 #       endif
         extern int  metaDebug ;
+        extern int  preventMetaExitClearStore ;
         
         inline void EGetTime ( struct timeval &timeVal )
         {

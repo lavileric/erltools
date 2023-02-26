@@ -13,7 +13,7 @@ language asn;
 #endif
 
 #include "asn.h"
-#include <symb.h>
+#include "symb.h"
 
 extern int      printVal ;
 PTREE           expAssignment ;          // the assignment currently treated

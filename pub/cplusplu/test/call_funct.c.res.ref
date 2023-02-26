@@ -1,0 +1,4 @@
+void main ()
+{
+    if ( (variable = (TypeExtender(Sthing))((void *)f(x))) ) {}
+}

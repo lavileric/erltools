@@ -84,6 +84,8 @@ int main ( int argc, char **argv )
                 goto help ;
             } else if ( EString("-emacs") == ptName ) {
                 emacsCompatibleError =  1 ;
+            } else if ( EString("-tableString") == ptName ) {
+                symbString =  true ;
             } else if ( EString("-set") == ptName ) {
                 if ( argc - offset < 3 ) {
                     sprintf(name, "Bad name for your source file \n");

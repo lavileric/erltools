@@ -417,13 +417,15 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             ;
             (list=paramTree);
             
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(son);
-                                    
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(son);
+                                
+                                
+                             }
             break ;
             
         case cplus::LANGUAGE : 
@@ -463,26 +465,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             if ( ((_inter = (PPTREE)type,1) && 
                     (NumberTree(_inter) == cplus::CLASS) &&
                     1) ) {
-                            while ( !((!declarator)) ) {
-                                                            (son=(declarator?declarator.Nextl():(PPTREE)0));
-                                                            
-                                                            Tab();
-                                                            
-                                                            decomp(son);
-                                                            
-                                                            if ( !((!declarator)) ) {
-                                                                                        PrintString(",");
-                                                                                        Space(1);
-                                                                                        
-                                                                                        
-                                                                                      }
-                                                            
-                                                         }
-                            
-                         } else 
-            {
-                Mark();
-                while ( !((!declarator)) ) {
+                            while ( ((_inter = (PPTREE)declarator,1) && 
+                                        (NumberTree(_inter) == LIST) &&
+                                        1) ) {
                                                 (son=(declarator?declarator.Nextl():(PPTREE)0));
                                                 
                                                 Tab();
@@ -497,6 +482,27 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                           }
                                                 
                                              }
+                            
+                         } else 
+            {
+                Mark();
+                while ( ((_inter = (PPTREE)declarator,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (son=(declarator?declarator.Nextl():(PPTREE)0));
+                                    
+                                    Tab();
+                                    
+                                    decomp(son);
+                                    
+                                    if ( !((!declarator)) ) {
+                                                                PrintString(",");
+                                                                Space(1);
+                                                                
+                                                                
+                                                              }
+                                    
+                                 }
                 UnMark();
                 
                 
@@ -651,71 +657,75 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 (val=param);
                 
                 comm(val, PRE);
-                while ( !((!param)) ) {
-                                            (son=(param?param.Nextl():(PPTREE)0));
-                                            
-                                            if ( parameterUnder ) {
-                                                                    PTREE   elem = (PTREE)0 ;
-                                                                    
-                                                                    (elem=son);
-                                                                    
-                                                                    if ( ((_inter = (PPTREE)elem,1) && 
-                                                                            (NumberTree(_inter) == cplus::ATTRIBUTS) &&
-                                                                            ((elem=SonTree(_inter,1)),1) &&
-                                                                            1) ) 
-                                                                        comm(son, PRE);
-                                                                    DecompCommCtrl(elem, false, true);
-                                                                    
-                                                                   } else 
-                                            {
-                                                decomp(son);
-                                                
-                                                
-                                            }
-                                            
-                                            if ( !((!param)) ) {
-                                                                    PrintString(",");
-                                                                    
-                                                                 }
-                                            Space(1);
-                                            
-                                            if ( parameterUnder ) {
-                                                                    if ( ((_inter = (PPTREE)son,1) && 
-                                                                            (NumberTree(_inter) == cplus::ATTRIBUTS) &&
-                                                                            ((list1=SonTree(_inter,3)),1) &&
-                                                                            1) ) {
-                                                                                    PTREE   attr ;
-                                                                                    
-                                                                                    bool    commDisp = false ;
-                                                                                    
-                                                                                    while ( !((!list1)) ) {
-                                                                                                                (attr=(list1?list1.Nextl():(PPTREE)0));
+                while ( ((_inter = (PPTREE)param,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (son=(param?param.Nextl():(PPTREE)0));
+                                    
+                                    if ( parameterUnder ) {
+                                                            PTREE   elem = (PTREE)0 ;
+                                                            
+                                                            (elem=son);
+                                                            
+                                                            if ( ((_inter = (PPTREE)elem,1) && 
+                                                                    (NumberTree(_inter) == cplus::ATTRIBUTS) &&
+                                                                    ((elem=SonTree(_inter,1)),1) &&
+                                                                    1) ) 
+                                                                comm(son, PRE);
+                                                            DecompCommCtrl(elem, false, true);
+                                                            
+                                                           } else 
+                                    {
+                                        decomp(son);
+                                        
+                                        
+                                    }
+                                    
+                                    if ( !((!param)) ) {
+                                                            PrintString(",");
+                                                            
+                                                         }
+                                    Space(1);
+                                    
+                                    if ( parameterUnder ) {
+                                                            if ( ((_inter = (PPTREE)son,1) && 
+                                                                    (NumberTree(_inter) == cplus::ATTRIBUTS) &&
+                                                                    ((list1=SonTree(_inter,3)),1) &&
+                                                                    1) ) {
+                                                                            PTREE   attr ;
+                                                                            
+                                                                            bool    commDisp = false ;
+                                                                            
+                                                                            while ( ((_inter = (PPTREE)list1,1) && 
+                                                                                        (NumberTree(_inter) == LIST) &&
+                                                                                        1) ) {
+                                                                                                (attr=(list1?list1.Nextl():(PPTREE)0));
+                                                                                                
+                                                                                                if ( ((_inter = (PPTREE)attr,1) && 
+                                                                                                        (NumberTree(_inter) == cplus::NEWLINE) &&
+                                                                                                        1) ) {
+                                                                                                                commDisp = true ;
+                                                                                                                comm(son, POST);
                                                                                                                 
-                                                                                                                if ( ((_inter = (PPTREE)attr,1) && 
-                                                                                                                        (NumberTree(_inter) == cplus::NEWLINE) &&
-                                                                                                                        1) ) {
-                                                                                                                             commDisp = true ;
-                                                                                                                             comm(son, POST);
-                                                                                                                             
-                                                                                                                             }
-                                                                                                                TraitAttribut(attr);
-                                                                                                                
-                                                                                                            }
-                                                                                    if ( !commDisp ) 
-                                                                                        comm(son, POST);
-                                                                                    
-                                                                                 } else 
-                                                                    {
-                                                                        comm(son, POST);
-                                                                        LNewLine(1);
-                                                                        
-                                                                        
-                                                                    }
-                                                                    
-                                                                    
-                                                                   }
-                                            
-                                        }
+                                                                                                             }
+                                                                                                TraitAttribut(attr);
+                                                                                                
+                                                                                             }
+                                                                            if ( !commDisp ) 
+                                                                                comm(son, POST);
+                                                                            
+                                                                         } else 
+                                                            {
+                                                                comm(son, POST);
+                                                                LNewLine(1);
+                                                                
+                                                                
+                                                            }
+                                                            
+                                                            
+                                                           }
+                                    
+                                 }
                 if ( withNewLine ) {
                                         UnMark();
                                         LNewLine(1);
@@ -758,21 +768,23 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                         PrintString(":");
                                         Space(1);
                                         
-                                        while ( !((!ctor)) ) {
-                                                                (son=(ctor?ctor.Nextl():(PPTREE)0));
-                                                                
-                                                                decomp(son);
-                                                                
-                                                                if ( !((!ctor)) ) {
-                                                                                        PrintString(",");
-                                                                                        Space(1);
-                                                                                        
-                                                                                        SepAfter();
-                                                                                        
-                                                                                        
-                                                                                    }
-                                                                
-                                                               }
+                                        while ( ((_inter = (PPTREE)ctor,1) && 
+                                                    (NumberTree(_inter) == LIST) &&
+                                                    1) ) {
+                                                            (son=(ctor?ctor.Nextl():(PPTREE)0));
+                                                            
+                                                            decomp(son);
+                                                            
+                                                            if ( !((!ctor)) ) {
+                                                                                    PrintString(",");
+                                                                                    Space(1);
+                                                                                    
+                                                                                    SepAfter();
+                                                                                    
+                                                                                    
+                                                                                }
+                                                            
+                                                         }
                                         UnMark();
                                         
                                         comm(exp2, POST);
@@ -911,7 +923,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             decomp(exp1);
             
             PrintString("<");
-            while ( exp2 ) {
+            while ( ((_inter = (PPTREE)exp2,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
                                 (son=(exp2?exp2.Nextl():(PPTREE)0));
                                 
                                 decomp(son);
@@ -923,7 +937,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                 
                                              }
                                 
-                            }
+                             }
             PrintString(">");
             Space(1);
             
@@ -952,6 +966,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             {
                 int hasPutMark = 0 ;
                 
+                statementf = 0 ;
                 if ( ((_inter = (PPTREE)type,1) && 
                         (NumberTree(_inter) == cplus::CLASS) &&
                         ((exp=SonTree(_inter,4)),1) &&
@@ -985,19 +1000,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                         
                                         
                                     }
-                while ( !((!list_decl)) ) {
-                                                (decl=(list_decl?list_decl.Nextl():(PPTREE)0));
-                                                
-                                                decomp(decl);
-                                                
-                                                if ( !((!list_decl)) ) {
-                                                                            PrintString(",");
-                                                                            Space(1);
-                                                                            
-                                                                            
-                                                                         }
-                                                
-                                            }
+                while ( ((_inter = (PPTREE)list_decl,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (decl=(list_decl?list_decl.Nextl():(PPTREE)0));
+                                    
+                                    decomp(decl);
+                                    
+                                    if ( !((!list_decl)) ) {
+                                                                PrintString(",");
+                                                                Space(1);
+                                                                
+                                                                
+                                                             }
+                                    
+                                 }
                 if ( !(((_inter = (PPTREE)paramTree,1) && 
                             (NumberTree(_inter) == cplus::FOR_DECLARATION) &&
                             1)) && !(((_inter = (PPTREE)paramTree,1) && 
@@ -1077,18 +1094,20 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 {
                     (list=list_decl);
                     
-                    while ( !((!list)) ) {
-                                            (son=list [1]);
-                                            
-                                            if ( IsComm(son, POST) ) {
-                                                                            alignVert = true ;
-                                                                            break ;
-                                                                            
-                                                                            
-                                                                        }
-                                            (list?list.Nextl():(PPTREE)0);
-                                            
-                                           }
+                    while ( ((_inter = (PPTREE)list,1) && 
+                                (NumberTree(_inter) == LIST) &&
+                                1) ) {
+                                        (son=list [1]);
+                                        
+                                        if ( IsComm(son, POST) ) {
+                                                                        alignVert = true ;
+                                                                        break ;
+                                                                        
+                                                                        
+                                                                    }
+                                        (list?list.Nextl():(PPTREE)0);
+                                        
+                                     }
                     
                 }
                 
@@ -1110,71 +1129,75 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                 SepAfter();
                                                 
                                             
-                                            while ( !((!list_decl)) ) {
-                                                                            (son=(list_decl?list_decl.Nextl():(PPTREE)0));
-                                                                            
-                                                                            if ( alignVert ) {
-                                                                                                PTREE   elem = (PTREE)0 ;
-                                                                                                
-                                                                                                (elem=son);
-                                                                                                
-                                                                                                if ( ((_inter = (PPTREE)elem,1) && 
-                                                                                                        (NumberTree(_inter) == cplus::ATTRIBUTS) &&
-                                                                                                        ((elem=SonTree(_inter,1)),1) &&
-                                                                                                        1) ) 
-                                                                                                    comm(son, PRE);
-                                                                                                DecompCommCtrl(elem, false, true);
-                                                                                                
-                                                                                              } else 
-                                                                            {
-                                                                                decomp(son);
-                                                                                
-                                                                                
-                                                                            }
-                                                                            
-                                                                            if ( !((!list_decl)) ) {
-                                                                                                        PrintString(",");
-                                                                                                        Space(1);
-                                                                                                        
-                                                                                                        
-                                                                                                     }
-                                                                            if ( alignVert ) {
-                                                                                                if ( ((_inter = (PPTREE)son,1) && 
-                                                                                                        (NumberTree(_inter) == cplus::ATTRIBUTS) &&
-                                                                                                        ((list1=SonTree(_inter,3)),1) &&
-                                                                                                        1) ) {
-                                                                                                                PTREE   attr ;
-                                                                                                                
-                                                                                                                bool    commDisp = false ;
-                                                                                                                
-                                                                                                                while ( !((!list1)) ) {
-                                                                                                                                        (attr=(list1?list1.Nextl():(PPTREE)0));
-                                                                                                                                        
-                                                                                                                                        if ( ((_inter = (PPTREE)attr,1) && 
-                                                                                                                                               (NumberTree(_inter) == cplus::NEWLINE) &&
-                                                                                                                                               1) ) {
-                                                                                                                                                    commDisp = true ;
-                                                                                                                                                    comm(son, POST);
-                                                                                                                                                    
-                                                                                                                                                    }
-                                                                                                                                        TraitAttribut(attr);
-                                                                                                                                        
-                                                                                                                                        }
-                                                                                                                if ( !commDisp ) 
-                                                                                                                    comm(son, POST);
-                                                                                                                
-                                                                                                             } else 
-                                                                                                {
-                                                                                                    comm(son, POST);
-                                                                                                    LNewLine(1);
+                                            while ( ((_inter = (PPTREE)list_decl,1) && 
+                                                        (NumberTree(_inter) == LIST) &&
+                                                        1) ) {
+                                                                (son=(list_decl?list_decl.Nextl():(PPTREE)0));
+                                                                
+                                                                if ( alignVert ) {
+                                                                                    PTREE   elem = (PTREE)0 ;
+                                                                                    
+                                                                                    (elem=son);
+                                                                                    
+                                                                                    if ( ((_inter = (PPTREE)elem,1) && 
+                                                                                            (NumberTree(_inter) == cplus::ATTRIBUTS) &&
+                                                                                            ((elem=SonTree(_inter,1)),1) &&
+                                                                                            1) ) 
+                                                                                        comm(son, PRE);
+                                                                                    DecompCommCtrl(elem, false, true);
+                                                                                    
+                                                                                  } else 
+                                                                {
+                                                                    decomp(son);
+                                                                    
+                                                                    
+                                                                }
+                                                                
+                                                                if ( !((!list_decl)) ) {
+                                                                                            PrintString(",");
+                                                                                            Space(1);
+                                                                                            
+                                                                                            
+                                                                                         }
+                                                                if ( alignVert ) {
+                                                                                    if ( ((_inter = (PPTREE)son,1) && 
+                                                                                            (NumberTree(_inter) == cplus::ATTRIBUTS) &&
+                                                                                            ((list1=SonTree(_inter,3)),1) &&
+                                                                                            1) ) {
+                                                                                                    PTREE   attr ;
                                                                                                     
+                                                                                                    bool    commDisp = false ;
                                                                                                     
-                                                                                                }
-                                                                                                
-                                                                                                
-                                                                                              }
-                                                                            
-                                                                        }
+                                                                                                    while ( ((_inter = (PPTREE)list1,1) && 
+                                                                                                                (NumberTree(_inter) == LIST) &&
+                                                                                                                1) ) {
+                                                                                                                        (attr=(list1?list1.Nextl():(PPTREE)0));
+                                                                                                                        
+                                                                                                                        if ( ((_inter = (PPTREE)attr,1) && 
+                                                                                                                               (NumberTree(_inter) == cplus::NEWLINE) &&
+                                                                                                                               1) ) {
+                                                                                                                                    commDisp = true ;
+                                                                                                                                    comm(son, POST);
+                                                                                                                                    
+                                                                                                                                    }
+                                                                                                                        TraitAttribut(attr);
+                                                                                                                        
+                                                                                                                     }
+                                                                                                    if ( !commDisp ) 
+                                                                                                        comm(son, POST);
+                                                                                                    
+                                                                                                 } else 
+                                                                                    {
+                                                                                        comm(son, POST);
+                                                                                        LNewLine(1);
+                                                                                        
+                                                                                        
+                                                                                    }
+                                                                                    
+                                                                                    
+                                                                                  }
+                                                                
+                                                             }
                                             if ( alignVert ) {
                                                                 UnMark();
                                                                 LNewLine(1);
@@ -1312,19 +1335,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( ((_inter = (PPTREE)val,1) && 
                         (NumberTree(_inter) == LIST) &&
                         1) ) {
-                                while ( !((!val)) ) {
-                                                        (son=(val?val.Nextl():(PPTREE)0));
-                                                        
-                                                        decomp(son);
-                                                        
-                                                        if ( !((!val)) ) {
-                                                                            PrintString(",");
-                                                                            SepAfter();
-                                                                            
-                                                                            
-                                                                           }
-                                                        
-                                                      }
+                                while ( ((_inter = (PPTREE)val,1) && 
+                                            (NumberTree(_inter) == LIST) &&
+                                            1) ) {
+                                                    (son=(val?val.Nextl():(PPTREE)0));
+                                                    
+                                                    decomp(son);
+                                                    
+                                                    if ( !((!val)) ) {
+                                                                        PrintString(",");
+                                                                        SepAfter();
+                                                                        
+                                                                        
+                                                                       }
+                                                    
+                                                 }
                                 
                              } else 
                     decomp(val);
@@ -1431,19 +1456,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             (list=exp_list);
             
             if ( 1 ) 
-                while ( !((!exp_list)) ) {
-                                            (son=(exp_list?exp_list.Nextl():(PPTREE)0));
-                                            
-                                            decomp(son);
-                                            
-                                            if ( !((!exp_list)) ) {
-                                                                        PrintString(",");
-                                                                        Space(1);
-                                                                        
-                                                                        
-                                                                    }
-                                            
-                                           }
+                while ( ((_inter = (PPTREE)exp_list,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (son=(exp_list?exp_list.Nextl():(PPTREE)0));
+                                    
+                                    decomp(son);
+                                    
+                                    if ( !((!exp_list)) ) {
+                                                                PrintString(",");
+                                                                Space(1);
+                                                                
+                                                                
+                                                            }
+                                    
+                                 }
             PrintString(")");
             SepAfter();
             
@@ -1480,7 +1507,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                             PrintString("{");
                             SepAfter();
                             
-                            while ( init ) {
+                            while ( ((_inter = (PPTREE)init,1) && 
+                                        (NumberTree(_inter) == LIST) &&
+                                        1) ) {
                                                 (exp=(init?init.Nextl():(PPTREE)0));
                                                 
                                                 decomp(exp);
@@ -1492,7 +1521,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                         
                                                                     }
                                                 
-                                            }
+                                             }
                             SepBefore();
                             
                             PrintString("}");
@@ -1566,19 +1595,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         _Case284 : 
             ;
             statementf = 0 ;
-            while ( !((!list)) ) {
-                                    (exp=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(exp);
-                                    
-                                    if ( !((!list)) ) {
-                                                            PrintString(",");
-                                                            Space(1);
-                                                            
-                                                            
-                                                        }
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (exp=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(exp);
+                                
+                                if ( !((!list)) ) {
+                                                        PrintString(",");
+                                                        Space(1);
+                                                        
+                                                        
+                                                    }
+                                
+                             }
             break ;
             
         case cplus::AFF : 
@@ -2499,16 +2530,18 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
         _Case334 : 
             ;
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(son);
-                                    
-                                    if ( !((!list)) ) 
-                                        Space(1);
-                                    
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(son);
+                                
+                                if ( !((!list)) ) 
+                                    Space(1);
+                                
+                                
+                             }
             break ;
             
         case cplus::STRING : 
@@ -2734,32 +2767,34 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                         
                                                                                      }
                 statementf = 1 ;
-                while ( !((!list)) ) {
-                                        (son=(list?list.Nextl():(PPTREE)0));
+                while ( ((_inter = (PPTREE)list,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (son=(list?list.Nextl():(PPTREE)0));
+                                    
+                                    (postComment=son);
+                                    
+                                    ((_inter = (PPTREE)postComment,1) && 
+                                        (NumberTree(_inter) == cplus::ATTRIBUTS) &&
+                                        ((postComment=SonTree(_inter,1)),1) &&
+                                        1);
+                                    ;
+                                    decomp(son);
+                                    
+                                    if ( !Sequence(son, sontree(list, 1)) ) {
+                                                                                    control_stat1(son);
+                                                                                    LNewLine(1);
+                                                                                    
+                                                                                    
+                                                                                  } else 
+                                    {
+                                        Space(1);
                                         
-                                        (postComment=son);
                                         
-                                        ((_inter = (PPTREE)postComment,1) && 
-                                            (NumberTree(_inter) == cplus::ATTRIBUTS) &&
-                                            ((postComment=SonTree(_inter,1)),1) &&
-                                            1);
-                                        ;
-                                        decomp(son);
-                                        
-                                        if ( !Sequence(son, sontree(list, 1)) ) {
-                                                                                        control_stat1(son);
-                                                                                        LNewLine(1);
-                                                                                        
-                                                                                        
-                                                                                      } else 
-                                        {
-                                            Space(1);
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                       }
+                                    }
+                                    
+                                    
+                                 }
                 if ( ansiMode && braceAlign && !(braceAlignNoFunc && inFunc) ) {
                                                                                         PrintString("}");
                                                                                         SepAfter();
@@ -3401,27 +3436,29 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                     
                                                                   }
                                             Mark();
-                                            while ( !((!stat)) ) {
-                                                                    (son=(stat?stat.Nextl():(PPTREE)0));
+                                            while ( ((_inter = (PPTREE)stat,1) && 
+                                                        (NumberTree(_inter) == LIST) &&
+                                                        1) ) {
+                                                                (son=(stat?stat.Nextl():(PPTREE)0));
+                                                                
+                                                                (postComment=son);
+                                                                
+                                                                decomp(son);
+                                                                
+                                                                if ( !Sequence(son, sontree(stat, 1)) ) {
+                                                                                                                control_stat1(son);
+                                                                                                                LNewLine(1);
+                                                                                                                
+                                                                                                                
+                                                                                                              } else 
+                                                                {
+                                                                    Space(1);
                                                                     
-                                                                    (postComment=son);
                                                                     
-                                                                    decomp(son);
-                                                                    
-                                                                    if ( !Sequence(son, sontree(stat, 1)) ) {
-                                                                                                                    control_stat1(son);
-                                                                                                                    LNewLine(1);
-                                                                                                                    
-                                                                                                                    
-                                                                                                                  } else 
-                                                                    {
-                                                                        Space(1);
-                                                                        
-                                                                        
-                                                                    }
-                                                                    
-                                                                    
-                                                                   }
+                                                                }
+                                                                
+                                                                
+                                                             }
                                             UnMark();
                                             
                                             
@@ -3473,14 +3510,16 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                 
                                                 
                                             }
-            while ( !((!list)) ) {
-                                    (stat1=(son=(list?list.Nextl():(PPTREE)0)));
-                                    
-                                    comm(son, PRE);
-                                    IntDecomp(son, 0);
-                                    comm(stat1, POST);
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (stat1=(son=(list?list.Nextl():(PPTREE)0)));
+                                
+                                comm(son, PRE);
+                                IntDecomp(son, 0);
+                                comm(stat1, POST);
+                                
+                             }
             if ( ansiMode && braceAlign ) {
                                                 PrintString("}");
                                                 LNewLine(1);
@@ -3790,19 +3829,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             if ( !((!param)) ) {
                                     PrintString("(");
-                                    while ( !((!param)) ) {
-                                                                (son=(param?param.Nextl():(PPTREE)0));
-                                                                
-                                                                decomp(son);
-                                                                
-                                                                if ( !((!param)) ) {
-                                                                                        PrintString(",");
-                                                                                        Space(1);
-                                                                                        
-                                                                                        
-                                                                                     }
-                                                                
-                                                            }
+                                    while ( ((_inter = (PPTREE)param,1) && 
+                                                (NumberTree(_inter) == LIST) &&
+                                                1) ) {
+                                                        (son=(param?param.Nextl():(PPTREE)0));
+                                                        
+                                                        decomp(son);
+                                                        
+                                                        if ( !((!param)) ) {
+                                                                                PrintString(",");
+                                                                                Space(1);
+                                                                                
+                                                                                
+                                                                             }
+                                                        
+                                                     }
                                     PrintString(")");
                                     
                                  }
@@ -3820,20 +3861,22 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 
                               } else 
             {
-                while ( !((!val)) ) {
-                                        (son=(val?val.Nextl():(PPTREE)0));
-                                        
-                                        DumpBrainyValue(son);
-                                        
-                                        comm(son, POST);
-                                        if ( !((!val)) ) {
-                                                            LNewLine(1);
-                                                            
-                                                            PrintString("\b");
-                                                            
-                                                           }
-                                        
-                                      }
+                while ( ((_inter = (PPTREE)val,1) && 
+                            (NumberTree(_inter) == LIST) &&
+                            1) ) {
+                                    (son=(val?val.Nextl():(PPTREE)0));
+                                    
+                                    DumpBrainyValue(son);
+                                    
+                                    comm(son, POST);
+                                    if ( !((!val)) ) {
+                                                        LNewLine(1);
+                                                        
+                                                        PrintString("\b");
+                                                        
+                                                       }
+                                    
+                                 }
                 if ( !LastInTopList(paramTree) ) 
                     LNewLine(1);
                 
@@ -4078,15 +4121,17 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             PrintString("#pragma nopretty");
             LNewLine(1);
             
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(son);
-                                    
-                                    LNewLine(1);
-                                    
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(son);
+                                
+                                LNewLine(1);
+                                
+                                
+                             }
             LNewLine(1);
             
             PrintString("#pragma pretty");
@@ -4107,15 +4152,17 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             PrintString("#pragma notmanaged");
             LNewLine(1);
             
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(son);
-                                    
-                                    LNewLine(1);
-                                    
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(son);
+                                
+                                LNewLine(1);
+                                
+                                
+                             }
             LNewLine(1);
             
             PrintString("#pragma managed");
@@ -4198,27 +4245,29 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                     Mark();
                                     
                                  }
-            while ( !((!stat1)) ) {
-                                        (son=(stat1?stat1.Nextl():(PPTREE)0));
-                                        
-                                        (postComment=son);
-                                        
-                                        decomp(son);
-                                        
-                                        if ( !Sequence(son, sontree(stat1, 1)) ) {
-                                                                                        control_stat1(son);
-                                                                                        LNewLine(1);
-                                                                                        
-                                                                                        
-                                                                                       } else 
-                                        {
-                                            Space(1);
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                    }
+            while ( ((_inter = (PPTREE)stat1,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(stat1?stat1.Nextl():(PPTREE)0));
+                                
+                                (postComment=son);
+                                
+                                decomp(son);
+                                
+                                if ( !Sequence(son, sontree(stat1, 1)) ) {
+                                                                                control_stat1(son);
+                                                                                LNewLine(1);
+                                                                                
+                                                                                
+                                                                               } else 
+                                {
+                                    Space(1);
+                                    
+                                    
+                                }
+                                
+                                
+                             }
             if ( tabDirective ) {
                                     UnMark();
                                     
@@ -4250,28 +4299,32 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
         _Case393 : 
             ;
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    TraitAttribut(son);
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                TraitAttribut(son);
+                                
+                             }
             decomp(exp);
             
-            while ( !((!list1)) ) {
-                                        (son=(list1?list1.Nextl():(PPTREE)0));
-                                        
-                                        if ( ((_inter = (PPTREE)son,1) && 
-                                                (NumberTree(_inter) == cplus::NEWLINE) &&
-                                                1) ) {
-                                                        comm(paramTree, POST);
-                                                        (oldPostComment=paramTree);
-                                                        
-                                                        
-                                                     }
-                                        TraitAttribut(son);
-                                        
-                                    }
+            while ( ((_inter = (PPTREE)list1,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list1?list1.Nextl():(PPTREE)0));
+                                
+                                if ( ((_inter = (PPTREE)son,1) && 
+                                        (NumberTree(_inter) == cplus::NEWLINE) &&
+                                        1) ) {
+                                                comm(paramTree, POST);
+                                                (oldPostComment=paramTree);
+                                                
+                                                
+                                             }
+                                TraitAttribut(son);
+                                
+                             }
             break ;
             
         default : 
@@ -4474,19 +4527,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                     PrintString(":");
                                     Space(1);
                                     
-                                    while ( !((!list)) ) {
-                                                            (son=(list?list.Nextl():(PPTREE)0));
-                                                            
-                                                            decomp(son);
-                                                            
-                                                            if ( !((!list)) ) {
-                                                                                    PrintString(",");
-                                                                                    SepAfter();
-                                                                                    
-                                                                                    
-                                                                                }
-                                                            
-                                                           }
+                                    while ( ((_inter = (PPTREE)list,1) && 
+                                                (NumberTree(_inter) == LIST) &&
+                                                1) ) {
+                                                        (son=(list?list.Nextl():(PPTREE)0));
+                                                        
+                                                        decomp(son);
+                                                        
+                                                        if ( !((!list)) ) {
+                                                                                PrintString(",");
+                                                                                SepAfter();
+                                                                                
+                                                                                
+                                                                            }
+                                                        
+                                                     }
                                     
                                 }
             break ;
@@ -4671,19 +4726,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             if ( !((!init)) ) {
                                     PrintString("(");
-                                    while ( !((!init)) ) {
-                                                            (son=(init?init.Nextl():(PPTREE)0));
-                                                            
-                                                            decomp(son);
-                                                            
-                                                            if ( !((!init)) ) {
-                                                                                    PrintString(",");
-                                                                                    Space(1);
-                                                                                    
-                                                                                    
-                                                                                }
-                                                            
-                                                           }
+                                    while ( ((_inter = (PPTREE)init,1) && 
+                                                (NumberTree(_inter) == LIST) &&
+                                                1) ) {
+                                                        (son=(init?init.Nextl():(PPTREE)0));
+                                                        
+                                                        decomp(son);
+                                                        
+                                                        if ( !((!init)) ) {
+                                                                                PrintString(",");
+                                                                                Space(1);
+                                                                                
+                                                                                
+                                                                            }
+                                                        
+                                                     }
                                     PrintString(")");
                                     
                                 }
@@ -4800,13 +4857,15 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             Tab();
             
             Mark();
-            while ( !((!list)) ) {
-                                    (son=(list?list.Nextl():(PPTREE)0));
-                                    
-                                    decomp(son);
-                                    
-                                    
-                                   }
+            while ( ((_inter = (PPTREE)list,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                (son=(list?list.Nextl():(PPTREE)0));
+                                
+                                decomp(son);
+                                
+                                
+                             }
             UnMark();
             
             PrintString("END_MESSAGE_MAP()");
@@ -5106,29 +5165,31 @@ void DecompCplus::DecompilerListeExternSimp ( PTREE list )
     
     int typeBlock = -1, oldTypeBlock = -1 ;
     
-    while ( !((!list)) ) {
-                            (father=FatherTree(list));
-                            
-                            (son=(list?list.Nextl():(PPTREE)0));
-                            
-                            typeBlock = TypeOfBlock(son);
-                            if ( typeBlock != oldTypeBlock && oldTypeBlock != -1 ) {
-                                                                                            LNewLine(2);
-                                                                                            
-                                                                                            
-                                                                                        } else 
-                            if ( !(((_inter = (PPTREE)father,1) && 
-                                        (NumberTree(_inter) == cplus::LANGUAGE) &&
-                                        1)) ) {
-                                                LNewLine(1);
-                                                
-                                                
-                                              }
-                            oldTypeBlock = typeBlock ;
-                            decomp(son);
-                            
-                            
-                           }
+    while ( ((_inter = (PPTREE)list,1) && 
+                (NumberTree(_inter) == LIST) &&
+                1) ) {
+                        (father=FatherTree(list));
+                        
+                        (son=(list?list.Nextl():(PPTREE)0));
+                        
+                        typeBlock = TypeOfBlock(son);
+                        if ( typeBlock != oldTypeBlock && oldTypeBlock != -1 ) {
+                                                                                        LNewLine(2);
+                                                                                        
+                                                                                        
+                                                                                    } else 
+                        if ( !(((_inter = (PPTREE)father,1) && 
+                                    (NumberTree(_inter) == cplus::LANGUAGE) &&
+                                    1)) ) {
+                                            LNewLine(1);
+                                            
+                                            
+                                          }
+                        oldTypeBlock = typeBlock ;
+                        decomp(son);
+                        
+                        
+                     }
     
 }
 

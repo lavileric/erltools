@@ -7,6 +7,11 @@
         
         public :
         
+            typedef struct {
+                int level ;
+                int index ;
+            }   Index ;
+            
             //constructor
             SymbolTable ()
                 : pvSize(0),  pvSizeMax(0),  pvTable(0)
@@ -52,7 +57,7 @@
             int     RemoveLevel () ;
             
             // insert a var at the current level
-            void    AddVar (const PTREE &) ;
+            void    AddVar (const PTREE &, bool remove = true) ;
             
             // remove a var at the current level
             void    RemoveVar (const PTREE &) ;
@@ -70,16 +75,23 @@
             
             // get a var definition by its name
             PTREE   GetVar (const char *name, int startLevel = -1) ;
+            PTREE   GetVar (int index, int level) ;
+            void    RemoveVar (int index, int level) ;
+            
+            // get a var definition by its name
+            Index   GetIndex (const char *name, int startLevel = -1) ;
+            Index   GetFirstIndex (const char *name, int startLevel = -1) ;
+            Index   GetNextIndex (const char *name, Index index) ;
             
             PTREE operator[] ( const char *name )
             {
-                return GetVar(name, pvSize - 1);
+                return GetVar(name, Size() - 1);
             }
             
             // GetList : get a list at a given level
             TabList *GetTabList ( int level ) const
             {
-                if ( level < pvSize && level >= 0 ) 
+                if ( level < Size() && level >= 0 ) 
                     return pvTable [level];
                 else 
                     return (TabList *)0 ;

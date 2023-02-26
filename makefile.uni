@@ -1,35 +1,37 @@
+
+
 all : checkpath
 	@- mkdir $(INSTALL_DIR) 2>/dev/null
 	if [ ! -f makefile ] ; then \
 		chmod 770 outils/updatelinks ;\
 		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
-	( cd pub ; $(MAKE) -f makefile.uni all)
+	$(MAKE) -C pub -f makefile.uni all
 	$(MAKE) -j $(NUMBER_PROC) optim_misc
 	if [ -d ./com ] ; then \
-	       ($(MAKE) -f makefile.uni install ; cd com ; $(MAKE) -f makefile.uni all) ; fi
-	if [ -d ./private ] ; then \
-               (cd private ; $(MAKE) -f makefile.uni all) ; fi
+	       $(MAKE) -f makefile.uni install ; $(MAKE) -C com -f makefile.uni all ; fi
+	if [ -d ./private ] ; then $(MAKE) -C private -f makefile.uni all ; fi
 
 optim_misc : optim_make misc_make
 
 optim_make :
 	if [ -d ./optim ] ; then \
-	       (cd optim ; $(MAKE) -f makefile.uni all) ; fi
+	       $(MAKE) -C optim -f makefile.uni all ; fi
 
 misc_make :
 	if [ -d ./misc ] ; then \
-	       (cd misc ; $(MAKE) -f makefile.uni all) ; fi
+	       $(MAKE) -C misc -f makefile.uni all ; fi
+
 shared :
 	@- mkdir $(INSTALL_DIR) 2>/dev/null
 	if [ ! -f makefile ] ; then \
 		chmod 770 outils/updatelinks ;\
 		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
 	if [ -d ./optim ] ; then \
-               (cd optim ; $(MAKE) -f makefile.uni all) ; fi
-	( cd pub ; $(MAKE) -f makefile.uni shared all)
+               $(MAKE) -C optim -f makefile.uni all ; fi
+	$(MAKE) -C pub -f makefile.uni shared all
 	if [ -d ./com ] ; then \
-               ($(MAKE) -f makefile.uni install ; cd com ;\
-				$(MAKE) -f makefile.uni shared) ; fi
+                $(MAKE) -f makefile.uni install ;\
+				$(MAKE) -C com -f makefile.uni shared ; fi
 	-cp com/asn/libasn.so $(INSTALL_DIR)
 	-cp com/asnquick/libqconnect.so $(INSTALL_DIR)
 	-cp com/connect/libconnect.so $(INSTALL_DIR)

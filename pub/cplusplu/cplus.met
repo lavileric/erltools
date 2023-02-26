@@ -374,6 +374,10 @@ lexdefine Lex;
             begin
             while seel in ['0'..'9'] do
                 storel takel ;
+            if not seel then
+                begin
+                return !INTEGER;
+                end;
             case
                 takel in ['l','L'] :
                     case
@@ -439,6 +443,11 @@ lexdefine Lex;
             end
         takel in ['0'] :
             begin
+            if not seel then
+                begin
+                storel "0";
+                return !INTEGER;
+                end;
             case
                 takel in ['x','X'] :
                     begin
@@ -524,22 +533,25 @@ lexdefine Lex;
                     end;
                     return !FLOATVAL;
                     end
-                seel :
+                default :
                     begin
-                    storel "0";
-                    case
-                        takel in ['l','L'] :
-                            case
-                                takel in ['u','U'] : return !ULINTEGER
-                                default : return !LINTEGER
-                            end
-                        takel in ['u','U'] :
-                            case
-                                takel in ['l','L'] : return !ULINTEGER
-                                default : return !UINTEGER
-                            end
-                        default : return !INTEGER
-                    end;
+                    if seel then
+                        begin
+                        storel "0";
+                        case
+                            takel in ['l','L'] :
+                                case
+                                    takel in ['u','U'] : return !ULINTEGER
+                                    default : return !LINTEGER
+                                end
+                            takel in ['u','U'] :
+                                case
+                                    takel in ['l','L'] : return !ULINTEGER
+                                    default : return !UINTEGER
+                                end
+                            default : return !INTEGER
+                        end;
+                        end;
                     end
             end;
             end
@@ -561,6 +573,10 @@ lexdefine Lex;
                 takel "define" : return !DEFINE_DIR
                 takel "undef" : return !UNDEF_DIR
                 seel in ['0'..'9'] : return !LINE_REFERENCE_DIR
+                default :
+                    begin
+                    return !SHARP_VAL;
+                    end
             end;
             end
         takel in ['\r','\n'] : return !CARRIAGE_RETURN
@@ -1721,7 +1737,7 @@ define enum_declarator;
 end;
 
 define type_specifier_without_param;
-    declare retTree,valTree,list,valTreeR[2];
+    declare valTreeR[2];
     if valTreeR = take range_modifier then
         return replacetree(valTreeR,2,take type_specifier);
     case
@@ -1752,7 +1768,7 @@ define qualified_name_elem;
     take "::";
     case
         take "~" : return maketree(DESTRUCT,maketree(IDENT,take !IDENT))
-        see !IDENT : return maketree(IDENT,take !IDENT)
+        see !IDENT : return take simple_ident
         see #"operator" : return take operator_function_name
     end;
 end;
@@ -1770,12 +1786,16 @@ define template_type;
     return maketree(PARAM_TYPE,(),listParam);
 end;
 
+define simple_ident;
+    return maketree(IDENT,take !IDENT);
+end;
+
 define qualified_name;
     declare retTree,inter,val,templateVal[2];
     if take "~" then
         retTree = maketree(DESTRUCT,maketree(IDENT,take !IDENT))
     else
-        retTree = maketree(IDENT,take !IDENT);
+        retTree = take simple_ident;
     if see "::" then
         begin
         retTree = maketree(QUALIFIED,retTree,());
@@ -2133,7 +2153,6 @@ define asm_call;
 end;
 
 define range_modifier;
-    declare retTree;
     case
         see !IDENT : return maketree(RANGE_MODIFIER,take range_in_liste,())
         see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile",())
@@ -2535,7 +2554,7 @@ define new_type_name;
 end;
 
 define bit_field_decl;
-    declare retTree,ident;
+    declare retTree;
     
     /* retTree = maketree(TYP_BIT,maketree(IDENT,take !IDENT),());*/
     retTree = maketree(TYP_BIT,(),());
@@ -2869,8 +2888,18 @@ define simple_type_name;
         break;
 end;
 
+define array_expression_follow;
+    declare expTree;
+    if expTree = take expression then
+        expTree = maketree(EXP_ARRAY,(),expTree)
+    else
+        expTree = maketree(EXP_ARRAY,(),());
+    take "]";
+    return expTree;
+end;
+
 define postfix_expression;
-    declare expTree,expList;
+    declare expTree,expList,expArray[2];
     if not expTree = take primary_expression then
         begin
         expTree = take simple_type_name;
@@ -2897,11 +2926,9 @@ define postfix_expression;
                 end
             take "[" :
                 begin
-                if expList = take expression then
-                    expTree = maketree(EXP_ARRAY,expTree,expList)
-                else
-                    expTree = maketree(EXP_ARRAY,expTree,());
-                take "]";
+                expArray = take array_expression_follow;
+                replacetree(expArray,1,expTree);
+                expTree = expArray;
                 end
             take !POINT : expTree = maketree(REF,expTree,take primary_expression)
             take "->" : expTree = maketree(ARROW,expTree,take primary_expression)
@@ -3290,7 +3317,7 @@ define expression_for;
 end;
 
 define for_statement;
-    declare statTree,opt,stat;
+    declare statTree,opt;
     take "(";
     statTree = maketree(FOR,(),(),(),());
     if opt = take expression_for then

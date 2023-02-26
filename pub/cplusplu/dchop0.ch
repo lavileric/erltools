@@ -647,9 +647,16 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                     PTREE   father = for_elem ^ ;
                     if ( father == <CAST> || (father ^ ) == <PARAM_TYPE> || father == <LIST> || father == () ) 
                         break ;
+
+                    // protect parenthesis for a cast
+                    if ( father == <EXP_LIST> && ranktree(for_elem)==1)
+                       break;
                     PTREE   son = for_elem ;
                     son =  son [1];
-                    if ( IsAff(son) ) 
+
+                    // keep parenthesis around = since norm
+                    // keep parenthesis around cast, since it could be something else (a) & x for example for logical and
+                    if ( IsAff(son) || son == <CAST> ) 
                         break ;
                     if ( OpPriority(father) < OpPriority(son) ) {
                         PTREE   keep = father ;
@@ -688,20 +695,28 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                 }
             case <IF,cond,stat1,stat2> : 
                 {
-                    modified =  modified || clean_tree(cond, false /* ignore aff */ );
-                    modified == modified || clean_tree(stat1, true /* ignore aff */ );
+                    if ( clean_tree(cond, false /* ignore aff */ ) ) 
+                        modified =  true ;
+                    if ( clean_tree(stat1, true /* ignore aff */ ) ) 
+                        modified =  true ;
                     if ( stat2 != () ) {
-                        modified =  modified || clean_tree(stat2, true /* ignore aff */ );
+                        if ( clean_tree(stat2, true /* ignore aff */ ) ) 
+                            modified =  true ;
                     }
                     it.SkipSon(1);
                 }
                 break ;
             case <FOR,cond1,cond,cond2,stat1> : 
                 {
-                    modified =  modified || clean_tree(cond, false /* ignore aff */ );
-                    modified =  modified || clean_tree(cond1, true /* ignore aff */ );
-                    modified =  modified || clean_tree(cond2, true /* ignore aff */ );
-                    modified =  modified || clean_tree(stat1, true /* ignore aff */ );
+                    bool    modified1 ;
+                    if ( clean_tree(cond, false /* ignore aff */ ) ) 
+                        modified =  true ;
+                    if ( clean_tree(cond1, true /* ignore aff */ ) ) 
+                        modified =  true ;
+                    if ( clean_tree(cond2, true /* ignore aff */ ) ) 
+                        modified =  true ;
+                    if ( clean_tree(stat1, true /* ignore aff */ ) ) 
+                        modified =  true ;
                     it.SkipSon(1);
                 }
                 break ;
@@ -720,7 +735,7 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                     PTREE   elem (for_elem) ;
                     PTREE   father ;
                     father =  elem ^ ;
-
+                    
                     // exp is already there nothing to be done
                     if ( father == <EXP> ) 
                         break ;

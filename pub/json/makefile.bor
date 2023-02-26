@@ -1,0 +1,41 @@
+
+all : m_done json.exe chop.exe
+
+clean : clean_inc_appli
+	-del json.h 
+	-del json*.cc 
+	-del chopper.cc
+	-del json.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+!include ..\..\makefile.der
+
+#if your grammar becomes too big you will have to json1 ...
+m_done : json.met
+	-@ mkdir compile.dir
+	-@copy json.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ $(METAOPT) json.met 
+	@-unify json.h ..\json.h
+	@-unify json.cpp ..\json.cc
+	@-unify json0.cpp ..\json0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+json.obj : json.cc json.h
+
+json0.obj : json0.cc json.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.obj : chopper.cc $(ERLTOOLS_DIR)\pub\library\token.h
+
+OBJECTS = json.obj json0.obj chopper.obj
+
+json.exe : $(OBJECTS) 
+	$(C_PLUS_LNK) $(OBJECTS) $(LIBRARY)
+
+chop.exe : 
+	make -f makefile.bch
+

@@ -1,6 +1,7 @@
 
 all : m_done
-	$(MAKE) -j $(NUMBER_PROC) erlms
+	$(MAKE) -j $(NUMBER_PROC) $(OBJECTS)
+	$(MAKE) erlms
 
 OPT_FLAGS=-Wno-empty-body
 

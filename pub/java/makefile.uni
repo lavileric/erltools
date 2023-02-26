@@ -38,7 +38,8 @@ decomp.o : decomp.cc decjava.h $(META_DIR)/pub/library/token.h   java.h
 
 CPLUS_DIR=$(META_DIR)/pub/cplusplu
 
-CPLUS=$(CPLUS_DIR)/chopper.o $(CPLUS_DIR)/cplus.a
+CPLUS=$(CPLUS_DIR)/cplus.a
+CPLUS_OBJ=$(CPLUS_DIR)/chopper.o 
 
 OBJECTS = java.o java0.o java1.o java2.o chopper.o decomp.o 
 
@@ -46,9 +47,9 @@ SO_LIB = -L ../cplusplu -lcplus -L ../library -lmeta
 
 pjava : $(OBJECTS) $(LIBRARY)
 	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
-		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS_DIR)/chopper.o $(SO_LIB);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS_OBJ) $(SO_LIB);\
 	else\
-		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS) $(LIBRARY);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o pjava $(OBJECTS) $(CPLUS_OBJ) $(CPLUS) $(LIBRARY);\
 	fi
 
 

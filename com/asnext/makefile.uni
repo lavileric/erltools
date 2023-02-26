@@ -1,20 +1,23 @@
 
 INCLUDE_DIR_LOC= -I ../asn -I ../asnext
 
-DOLIB : asnext.a(asnext.o asnext0.o asnext1.o dchopext.o )
+library : asnext.a(asnext.o asnext0.o asnext1.o dchopext.o )
 
 OBJECTS_ASN = asnext.o asnext0.o asnext1.o 
 OBJECTS = $(OBJECTS_ASN) dchopext.o
+ALL_OBJECTS=$(OBJECTS) chopper.o dchopper.o
 THE_LIB = ./asnext.a
 
-library : $(OBJECTS_ASN)
-	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
+# library : $(OBJECTS_ASN)
+#	for i in $(LIB_OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
 
-DOLIB : m_done
-	$(MAKE) -j $(NUMBER_PROC) library
+objects : 
+	$(MAKE) -j $(NUMBER_PROC) $(ALL_OBJECTS)
 
-all : DOLIB
-	$(MAKE) -j $(NUMBER_PROC) asnext dasnext
+all : m_done 
+	$(MAKE) chop
+	$(MAKE) objects
+	$(MAKE) asnext dasnext library
 
 shared : all 
 
@@ -87,7 +90,7 @@ dasnext : $(OBJECTS) dchopper.o $(ASN_OBJECTS) $(LIBRARY)
 		$(C_PLUS_LNK) -o dasnext dchopper.o $(OBJECTS) $(ASN_OBJECTS) $(LIBRARY);\
 	fi
 
-chop :	chop.cc m_done
+chop :	 
 	$(MAKE) -f makefile.cho
 
 

@@ -1,35 +1,41 @@
 #!/bin/sh
-
-# look if emacs error
+#find suffix of name
 emacs=""
-if [ "$1" = "-emacs" ]
-then
-    emacs="-emacs"
-    shift
-fi
-
-#look if there is a set indication
-name=$1
-SET_ORDER=""
-if [ $name = "-set" ] ; then
-    shift
-    SET_ORDER="-set $1"
-    shift;
-fi
-
-#look if there is a width indication
-name=$1
+flat=""
+tableString=""
 WIDTH_INDICATION=""
-if [ $name = "-rightMargin" ] ; then
-    shift
-    WIDTH_INDICATION="-rightMargin $1"
-    shift;
-fi
+analyzeArg=1
+
+SET_ORDER="" 
+# -set ${HOME}/c.set"
+while [ $analyzeArg -eq 1 ] ; do
+    name=$1
+    if [ $name = "-flat" ] ; then
+        flat="-flat";
+        shift;
+    elif [ $name = "-tableString" ] ; then
+        tableString="-tableString";
+        shift ;
+    elif [ $name = "-set" ] ; then
+        shift
+        SET_ORDER="-set $1"
+        shift;
+    elif [ $name = "-rightMargin" ] ; then
+        shift
+        WIDTH_INDICATION="-rightMargin $1"
+        shift;
+    elif [ $name = "-emacs" ] ; then
+        emacs="-emacs";
+        shift;
+    else
+        analyzeArg=0
+    fi;
+done
 
 #give help if no arguments are given
 if [ "$1" = "" ]
 then
-    echo "usage: $0 [-set set] [-rightMargin righMargin] filename(s)"
+    echo "usage: $0 filename(s)"
     exit
 fi
 
@@ -37,14 +43,12 @@ fi
 for i in $*
 do
     echo "Processing file $i:"
-    name=`basename $i`
-    suffix=`echo $name | sed 's/.*\.//'`
 
-    #suppress tabulations in file
+    # suppress tabulations in file
     # deltab $i
 
     #pretty file
-    cpbem $emacs $SET_ORDER $WIDTH_INDICATION $i $$_res.cpb > $$_error 2>&1
+    cpbem $emacs $SET_ORDER $WIDTH_INDICATION $tableString $flat $i $$_res.cpb > $$_error 2>&1
     echo "done"
     cat $$_error
 
@@ -69,7 +73,7 @@ do
         rm -f $$_res.cpb
         exit $?
     else
-        mv $$_res.cpb $i
+        mv $$_res.cpb `realpath $i`
     fi
 done
 

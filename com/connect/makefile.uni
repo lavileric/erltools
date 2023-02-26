@@ -7,17 +7,22 @@ OBJECTS=connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
 library : $(OBJECTS)
 	for i in $(OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
 
-DOLIB :
-	$(MAKE) -j $(NUMBER_PROC) library
+libconnect.so : $(OBJECTS)
+	$(C_PLUS) -shared -o libconnect.so $(OBJECTS)
 
-all : DOLIB
-	cd ../asnquick ;$(MAKE) all; cd ../connect
+objects : 
+	$(MAKE) -j $(NUMBER_PROC) $(OBJECTS)
+
+all : objects
+	$(MAKE) library
+	$(MAKE) -C ../asnquick all 
 	$(MAKE) -j $(NUMBER_PROC) chop dispatcher spy killapp tdispatcher
 
-libconnect.so : connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
-	$(C_PLUS) -shared -o libconnect.so connect.o metaconnect.o inetutil.o erlsock.o metainetutil.o
 
-shared : libconnect.so all
+
+shared : objects
+	$(MAKE) libconnect.so
+	$(MAKE) all
 
 test : tdispatcher app1 app2 testdos
 

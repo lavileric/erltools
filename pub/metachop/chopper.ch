@@ -53,16 +53,18 @@ int main ( int argc, char **argv )
     ReadIncludeS("c.set", 1);
     cplusGen =  metaQuick = 0 ;
 follow : 
-    if ( !strcmp(*(argv + 1), "-c++") ) {
-        cplusGen =  1 ;
-        argc-- ;
-        argv++ ;
-        goto follow ;
-    } else if ( !strcmp(*(argv + 1), "-f") ) {
-        metaQuick =  1 ;
-        argc-- ;
-        argv++ ;
-        goto follow ;
+    if ( argc >= 2 ) {
+        if ( !strcmp(*(argv + 1), "-c++") ) {
+            cplusGen =  1 ;
+            argc-- ;
+            argv++ ;
+            goto follow ;
+        } else if ( !strcmp(*(argv + 1), "-f") ) {
+            metaQuick =  1 ;
+            argc-- ;
+            argv++ ;
+            goto follow ;
+        }
     }
     if ( argc < 2 ) {
         sprintf(name, "Bad name for your source file \n");

@@ -41,7 +41,7 @@
        ***************************************************************/
     inline int CacheRead ( void *position )
     {
-        return *((int *)position);
+        return *(int *)position ;
     }
     
     /**************************************************************
@@ -72,7 +72,7 @@
        ***************************************************************/
     inline void *LCacheRead ( void *position )
     {
-        return *((void **)position);
+        return *(void **)position ;
     }
     
     /**************************************************************
@@ -98,13 +98,26 @@
        ***************************************************************/
     extern void MetaExit (int, const char *) ;
     
+    typedef struct {
+        long            start ;
+        unsigned int    size ;
+        long            count ;
+    }   MAP_POSITION ;
+    
+    void    InsertMap (long pos, unsigned int size) ;
+    void    RemoveMap (long pos) ;
+    
     inline long CacheMalloc ( int size )
     {
         long    ret ;
         
-        if ( (ret = (long)malloc(size)) ) 
+        if ( size <= 0 ) {
+            MetaExit(3, "String Allocation Error\n");
+        }
+        if ( (ret = (long)malloc(size)) ) {
+            InsertMap(ret, size);
             return ret ;
-        else {
+        } else {
             MetaExit(3, "Allocation Error\n");
         }
         return 0 ;
@@ -113,8 +126,13 @@
     /**************************************************************
            CacheFree : free of a data with cache manager
        ***************************************************************/
+    extern bool blockFreeTree ;
+    
     inline void CacheFree ( void *position )
     {
+        if ( blockFreeTree ) 
+            return ;
+        RemoveMap((long)position);
         free((char *)position);
     }
     

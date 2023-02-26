@@ -1,6 +1,6 @@
 #ifndef SUPERVISOR_FILE
 #   define SUPERVISOR_FILE 1
-#   include <tabsort.h>
+#   include "tabsort.h"
 #   define QUEUE_MAX 5000
 #   include "erlsock.h"
 #   include "decasn.h"

@@ -4865,590 +4865,630 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                                                         break ;
                                                     
 #line 649 "dchop0.ch"
-#line 650 "dchop0.ch"
-                                                    PTREE   son = (PTREE)0 ;
-#line 650 "dchop0.ch"
-                                                    
-#line 650 "dchop0.ch"
-#line 650 "dchop0.ch"
-                                                    (son=for_elem);
-#line 650 "dchop0.ch"
-                                                    
-#line 650 "dchop0.ch"
-#line 651 "dchop0.ch"
-                                                    (son=son [1]);
-#line 651 "dchop0.ch"
-                                                    
-#line 651 "dchop0.ch"
 #line 652 "dchop0.ch"
-                                                    if ( IsAff(son) ) 
+                                                    if ( ((_inter = (PPTREE)father,1) && 
+#line 652 "dchop0.ch"
+                                                            (NumberTree(_inter) == cplus::EXP_LIST) &&
+#line 652 "dchop0.ch"
+                                                            1) && ranktree(for_elem) == 1 ) 
 #line 652 "dchop0.ch"
 #line 653 "dchop0.ch"
                                                         break ;
                                                     
 #line 653 "dchop0.ch"
 #line 654 "dchop0.ch"
-                                                    if ( OpPriority(father) < OpPriority(son) ) {
+                                                    PTREE   son = (PTREE)0 ;
+#line 654 "dchop0.ch"
+                                                    
+#line 654 "dchop0.ch"
+#line 654 "dchop0.ch"
+                                                    (son=for_elem);
+#line 654 "dchop0.ch"
+                                                    
 #line 654 "dchop0.ch"
 #line 655 "dchop0.ch"
+                                                    (son=son [1]);
+#line 655 "dchop0.ch"
+                                                    
+#line 655 "dchop0.ch"
+#line 659 "dchop0.ch"
+                                                    if ( IsAff(son) || ((_inter = (PPTREE)son,1) && 
+#line 659 "dchop0.ch"
+                                                                            (NumberTree(_inter) == cplus::CAST) &&
+#line 659 "dchop0.ch"
+                                                                            1) ) 
+#line 659 "dchop0.ch"
+#line 660 "dchop0.ch"
+                                                        break ;
+                                                    
+#line 660 "dchop0.ch"
+#line 661 "dchop0.ch"
+                                                    if ( OpPriority(father) < OpPriority(son) ) {
+#line 661 "dchop0.ch"
+#line 662 "dchop0.ch"
                                                                                                         PTREE   keep = (PTREE)0 ;
-#line 655 "dchop0.ch"
+#line 662 "dchop0.ch"
                                                                                                         
-#line 655 "dchop0.ch"
-#line 655 "dchop0.ch"
+#line 662 "dchop0.ch"
+#line 662 "dchop0.ch"
                                                                                                         (keep=father);
-#line 655 "dchop0.ch"
+#line 662 "dchop0.ch"
                                                                                                         
-#line 655 "dchop0.ch"
-#line 656 "dchop0.ch"
+#line 662 "dchop0.ch"
+#line 663 "dchop0.ch"
                                                                                                         replacetree(father, ranktree(for_elem), son);
-#line 656 "dchop0.ch"
-#line 657 "dchop0.ch"
+#line 663 "dchop0.ch"
+#line 664 "dchop0.ch"
                                                                                                         it.Current(keep);
-#line 657 "dchop0.ch"
-#line 658 "dchop0.ch"
+#line 664 "dchop0.ch"
+#line 665 "dchop0.ch"
                                                                                                         modified = true ;
-#line 658 "dchop0.ch"
-#line 659 "dchop0.ch"
+#line 665 "dchop0.ch"
+#line 666 "dchop0.ch"
                                                                                                         
-#line 659 "dchop0.ch"
-#line 659 "dchop0.ch"
+#line 666 "dchop0.ch"
+#line 666 "dchop0.ch"
                                                                                                     } else 
-#line 659 "dchop0.ch"
+#line 666 "dchop0.ch"
                                                     if ( OpPriority(father) == OpPriority(son) ) {
-#line 659 "dchop0.ch"
-#line 660 "dchop0.ch"
+#line 666 "dchop0.ch"
+#line 667 "dchop0.ch"
                                                                                                         PTREE   keep = (PTREE)0 ;
-#line 660 "dchop0.ch"
+#line 667 "dchop0.ch"
                                                                                                         
-#line 660 "dchop0.ch"
-#line 660 "dchop0.ch"
+#line 667 "dchop0.ch"
+#line 667 "dchop0.ch"
                                                                                                         (keep=father);
-#line 660 "dchop0.ch"
+#line 667 "dchop0.ch"
                                                                                                         
-#line 660 "dchop0.ch"
-#line 661 "dchop0.ch"
+#line 667 "dchop0.ch"
+#line 668 "dchop0.ch"
                                                                                                         switch ( treearity(keep) ) {
-#line 661 "dchop0.ch"
-#line 662 "dchop0.ch"
+#line 668 "dchop0.ch"
+#line 669 "dchop0.ch"
                                                                                                             case 2 : 
-#line 662 "dchop0.ch"
-#line 663 "dchop0.ch"
+#line 669 "dchop0.ch"
+#line 670 "dchop0.ch"
                                                                                                                 if ( ranktree(for_elem) == 1 && OpAssociativity(keep) == LEFT_TO_RIGHT || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
-#line 663 "dchop0.ch"
-#line 665 "dchop0.ch"
+#line 670 "dchop0.ch"
+#line 672 "dchop0.ch"
                                                                                                                                                                                                                                                                           replacetree(keep, ranktree(for_elem), sontree(for_elem, 1));
-#line 665 "dchop0.ch"
-#line 666 "dchop0.ch"
+#line 672 "dchop0.ch"
+#line 673 "dchop0.ch"
                                                                                                                                                                                                                                                                           it.Current(keep);
-#line 666 "dchop0.ch"
-#line 667 "dchop0.ch"
+#line 673 "dchop0.ch"
+#line 674 "dchop0.ch"
                                                                                                                                                                                                                                                                           modified = true ;
-#line 667 "dchop0.ch"
-#line 668 "dchop0.ch"
+#line 674 "dchop0.ch"
+#line 675 "dchop0.ch"
                                                                                                                                                                                                                                                                           
-#line 668 "dchop0.ch"
-#line 668 "dchop0.ch"
+#line 675 "dchop0.ch"
+#line 675 "dchop0.ch"
                                                                                                                                                                                                                                                                           }
-#line 668 "dchop0.ch"
-#line 669 "dchop0.ch"
+#line 675 "dchop0.ch"
+#line 676 "dchop0.ch"
                                                                                                                 break ;
                                                                                                                 
-#line 669 "dchop0.ch"
-#line 670 "dchop0.ch"
+#line 676 "dchop0.ch"
+#line 677 "dchop0.ch"
                                                                                                             case 1 : 
-#line 670 "dchop0.ch"
-#line 671 "dchop0.ch"
+#line 677 "dchop0.ch"
+#line 678 "dchop0.ch"
                                                                                                                 if ( OpAssociativity(keep) == RIGHT_TO_LEFT ) {
-#line 671 "dchop0.ch"
-#line 672 "dchop0.ch"
+#line 678 "dchop0.ch"
+#line 679 "dchop0.ch"
                                                                                                                                                                  if ( !(((_inter = (PPTREE)keep,1) && 
-#line 672 "dchop0.ch"
+#line 679 "dchop0.ch"
                                                                                                                                                                           (NumberTree(_inter) == cplus::AINCR) &&
-#line 672 "dchop0.ch"
+#line 679 "dchop0.ch"
                                                                                                                                                                           1)) && !(((_inter = (PPTREE)keep,1) && 
-#line 672 "dchop0.ch"
+#line 679 "dchop0.ch"
                                                                                                                                                                                      (NumberTree(_inter) == cplus::ADECR) &&
-#line 672 "dchop0.ch"
+#line 679 "dchop0.ch"
                                                                                                                                                                                      1)) ) {
-#line 672 "dchop0.ch"
-#line 673 "dchop0.ch"
+#line 679 "dchop0.ch"
+#line 680 "dchop0.ch"
                                                                                                                                                                                            replacetree(keep, 1, sontree(for_elem, 1));
-#line 673 "dchop0.ch"
-#line 674 "dchop0.ch"
+#line 680 "dchop0.ch"
+#line 681 "dchop0.ch"
                                                                                                                                                                                            it.Current(keep);
-#line 674 "dchop0.ch"
-#line 675 "dchop0.ch"
-                                                                                                                                                                                           modified = true ;
-#line 675 "dchop0.ch"
-#line 676 "dchop0.ch"
-                                                                                                                                                                                           
-#line 676 "dchop0.ch"
-#line 676 "dchop0.ch"
-                                                                                                                                                                                           }
-#line 676 "dchop0.ch"
-#line 677 "dchop0.ch"
-                                                                                                                                                                 
-#line 677 "dchop0.ch"
-#line 677 "dchop0.ch"
-                                                                                                                                                                 }
-#line 677 "dchop0.ch"
-#line 678 "dchop0.ch"
-                                                                                                                break ;
-                                                                                                                
-#line 678 "dchop0.ch"
-#line 679 "dchop0.ch"
-                                                                                                            default : 
-#line 679 "dchop0.ch"
-#line 679 "dchop0.ch"
-                                                                                                                break ;
-                                                                                                                
-#line 679 "dchop0.ch"
-                                                                                                        }
-#line 679 "dchop0.ch"
-                                                                                                        
-#line 679 "dchop0.ch"
-#line 681 "dchop0.ch"
-                                                                                                        
-#line 681 "dchop0.ch"
-#line 681 "dchop0.ch"
-                                                                                                     }
 #line 681 "dchop0.ch"
 #line 682 "dchop0.ch"
+                                                                                                                                                                                           modified = true ;
+#line 682 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                                                                                                                                                           
+#line 683 "dchop0.ch"
+#line 683 "dchop0.ch"
+                                                                                                                                                                                           }
+#line 683 "dchop0.ch"
+#line 684 "dchop0.ch"
+                                                                                                                                                                 
+#line 684 "dchop0.ch"
+#line 684 "dchop0.ch"
+                                                                                                                                                                 }
+#line 684 "dchop0.ch"
+#line 685 "dchop0.ch"
+                                                                                                                break ;
+                                                                                                                
+#line 685 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                                                                            default : 
+#line 686 "dchop0.ch"
+#line 686 "dchop0.ch"
+                                                                                                                break ;
+                                                                                                                
+#line 686 "dchop0.ch"
+                                                                                                        }
+#line 686 "dchop0.ch"
+                                                                                                        
+#line 686 "dchop0.ch"
+#line 688 "dchop0.ch"
+                                                                                                        
+#line 688 "dchop0.ch"
+#line 688 "dchop0.ch"
+                                                                                                     }
+#line 688 "dchop0.ch"
+#line 689 "dchop0.ch"
                                                     break ;
                                                     
-#line 682 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 689 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                     
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 }
                                                 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 goto _Case429 ;
                                                 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                             case cplus::WHILE : 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 (cond=SonTree(for_elem, 1));
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 (stat1=SonTree(for_elem, 2));
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                             _Case429 : 
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 ;
-#line 683 "dchop0.ch"
-#line 683 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 690 "dchop0.ch"
                                                 goto _Case430 ;
                                                 
-#line 683 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 690 "dchop0.ch"
+#line 693 "dchop0.ch"
                                             case cplus::DO : 
-#line 686 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 (stat1=SonTree(for_elem, 1));
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 
-#line 686 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 (cond=SonTree(for_elem, 2));
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 
-#line 686 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 693 "dchop0.ch"
                                             _Case430 : 
-#line 686 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 ;
-#line 686 "dchop0.ch"
-#line 686 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 693 "dchop0.ch"
                                                 {
-#line 686 "dchop0.ch"
-#line 687 "dchop0.ch"
+#line 693 "dchop0.ch"
+#line 694 "dchop0.ch"
                                                     stat2 = (PPTREE) 0 ;
-#line 687 "dchop0.ch"
+#line 694 "dchop0.ch"
                                                     
-#line 687 "dchop0.ch"
-#line 688 "dchop0.ch"
+#line 694 "dchop0.ch"
+#line 695 "dchop0.ch"
                                                     
-#line 688 "dchop0.ch"
-#line 688 "dchop0.ch"
+#line 695 "dchop0.ch"
+#line 695 "dchop0.ch"
                                                 }
                                                 
-#line 688 "dchop0.ch"
-#line 688 "dchop0.ch"
+#line 695 "dchop0.ch"
+#line 695 "dchop0.ch"
                                                 goto _Case431 ;
                                                 
-#line 688 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 695 "dchop0.ch"
+#line 697 "dchop0.ch"
                                             case cplus::IF : 
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 (cond=SonTree(for_elem, 1));
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 (stat1=SonTree(for_elem, 2));
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 (stat2=SonTree(for_elem, 3));
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                             _Case431 : 
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 ;
-#line 690 "dchop0.ch"
-#line 690 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 697 "dchop0.ch"
                                                 {
-#line 690 "dchop0.ch"
-#line 691 "dchop0.ch"
-                                                    modified = modified || clean_tree(cond, false);
-#line 691 "dchop0.ch"
-#line 692 "dchop0.ch"
-                                                    modified == modified || clean_tree(stat1, true);
-#line 692 "dchop0.ch"
-#line 693 "dchop0.ch"
+#line 697 "dchop0.ch"
+#line 698 "dchop0.ch"
+                                                    if ( clean_tree(cond, false) ) 
+#line 698 "dchop0.ch"
+#line 699 "dchop0.ch"
+                                                        modified = true ;
+#line 699 "dchop0.ch"
+#line 700 "dchop0.ch"
+                                                    if ( clean_tree(stat1, true) ) 
+#line 700 "dchop0.ch"
+#line 701 "dchop0.ch"
+                                                        modified = true ;
+#line 701 "dchop0.ch"
+#line 702 "dchop0.ch"
                                                     if ( !((!stat2)) ) {
-#line 693 "dchop0.ch"
-#line 694 "dchop0.ch"
-                                                                            modified = modified || clean_tree(stat2, true);
-#line 694 "dchop0.ch"
-#line 695 "dchop0.ch"
+#line 702 "dchop0.ch"
+#line 703 "dchop0.ch"
+                                                                            if ( clean_tree(stat2, true) ) 
+#line 703 "dchop0.ch"
+#line 704 "dchop0.ch"
+                                                                                modified = true ;
+#line 704 "dchop0.ch"
+#line 705 "dchop0.ch"
                                                                             
-#line 695 "dchop0.ch"
-#line 695 "dchop0.ch"
+#line 705 "dchop0.ch"
+#line 705 "dchop0.ch"
                                                                          }
-#line 695 "dchop0.ch"
-#line 696 "dchop0.ch"
+#line 705 "dchop0.ch"
+#line 706 "dchop0.ch"
                                                     it.SkipSon(1);
-#line 696 "dchop0.ch"
-#line 697 "dchop0.ch"
+#line 706 "dchop0.ch"
+#line 707 "dchop0.ch"
                                                     
-#line 697 "dchop0.ch"
-#line 697 "dchop0.ch"
+#line 707 "dchop0.ch"
+#line 707 "dchop0.ch"
                                                 }
                                                 
-#line 697 "dchop0.ch"
-#line 698 "dchop0.ch"
+#line 707 "dchop0.ch"
+#line 708 "dchop0.ch"
                                                 break ;
                                                 
-#line 698 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 708 "dchop0.ch"
+#line 710 "dchop0.ch"
                                             case cplus::FOR : 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 (cond1=SonTree(for_elem, 1));
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 (cond=SonTree(for_elem, 2));
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 (cond2=SonTree(for_elem, 3));
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 (stat1=SonTree(for_elem, 4));
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                             _Case432 : 
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 ;
-#line 700 "dchop0.ch"
-#line 700 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 710 "dchop0.ch"
                                                 {
-#line 700 "dchop0.ch"
-#line 701 "dchop0.ch"
-                                                    modified = modified || clean_tree(cond, false);
-#line 701 "dchop0.ch"
-#line 702 "dchop0.ch"
-                                                    modified = modified || clean_tree(cond1, true);
-#line 702 "dchop0.ch"
-#line 703 "dchop0.ch"
-                                                    modified = modified || clean_tree(cond2, true);
-#line 703 "dchop0.ch"
-#line 704 "dchop0.ch"
-                                                    modified = modified || clean_tree(stat1, true);
-#line 704 "dchop0.ch"
-#line 705 "dchop0.ch"
-                                                    it.SkipSon(1);
-#line 705 "dchop0.ch"
-#line 706 "dchop0.ch"
+#line 710 "dchop0.ch"
+#line 711 "dchop0.ch"
+                                                    bool    modified1 ;
                                                     
-#line 706 "dchop0.ch"
-#line 706 "dchop0.ch"
+#line 711 "dchop0.ch"
+#line 712 "dchop0.ch"
+                                                    if ( clean_tree(cond, false) ) 
+#line 712 "dchop0.ch"
+#line 713 "dchop0.ch"
+                                                        modified = true ;
+#line 713 "dchop0.ch"
+#line 714 "dchop0.ch"
+                                                    if ( clean_tree(cond1, true) ) 
+#line 714 "dchop0.ch"
+#line 715 "dchop0.ch"
+                                                        modified = true ;
+#line 715 "dchop0.ch"
+#line 716 "dchop0.ch"
+                                                    if ( clean_tree(cond2, true) ) 
+#line 716 "dchop0.ch"
+#line 717 "dchop0.ch"
+                                                        modified = true ;
+#line 717 "dchop0.ch"
+#line 718 "dchop0.ch"
+                                                    if ( clean_tree(stat1, true) ) 
+#line 718 "dchop0.ch"
+#line 719 "dchop0.ch"
+                                                        modified = true ;
+#line 719 "dchop0.ch"
+#line 720 "dchop0.ch"
+                                                    it.SkipSon(1);
+#line 720 "dchop0.ch"
+#line 721 "dchop0.ch"
+                                                    
+#line 721 "dchop0.ch"
+#line 721 "dchop0.ch"
                                                 }
                                                 
-#line 706 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 721 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 break ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case433 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case434 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::MUL_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case434 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case435 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::DIV_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case435 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case436 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::REM_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case436 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case437 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::MIN_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case437 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case438 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::PLU_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case438 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case439 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::LSH_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case439 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case440 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::RSH_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case440 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case441 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::AND_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case441 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case442 ;
                                                 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             case cplus::OR_AFF : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                             _Case442 : 
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 ;
-#line 707 "dchop0.ch"
-#line 707 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 722 "dchop0.ch"
                                                 goto _Case443 ;
                                                 
-#line 707 "dchop0.ch"
-#line 719 "dchop0.ch"
+#line 722 "dchop0.ch"
+#line 734 "dchop0.ch"
                                             case cplus::XOR_AFF : 
-#line 719 "dchop0.ch"
-#line 719 "dchop0.ch"
+#line 734 "dchop0.ch"
+#line 734 "dchop0.ch"
                                             _Case443 : 
-#line 719 "dchop0.ch"
-#line 719 "dchop0.ch"
+#line 734 "dchop0.ch"
+#line 734 "dchop0.ch"
                                                 ;
-#line 719 "dchop0.ch"
-#line 719 "dchop0.ch"
+#line 734 "dchop0.ch"
+#line 734 "dchop0.ch"
                                                 if ( !ignoreAff ) {
-#line 719 "dchop0.ch"
-#line 720 "dchop0.ch"
+#line 734 "dchop0.ch"
+#line 735 "dchop0.ch"
                                                                         PTREE   elem (for_elem) ;
-#line 720 "dchop0.ch"
+#line 735 "dchop0.ch"
                                                                         
-#line 720 "dchop0.ch"
-#line 721 "dchop0.ch"
+#line 735 "dchop0.ch"
+#line 736 "dchop0.ch"
                                                                         PTREE   father ;
-#line 721 "dchop0.ch"
+#line 736 "dchop0.ch"
                                                                         
-#line 721 "dchop0.ch"
-#line 722 "dchop0.ch"
+#line 736 "dchop0.ch"
+#line 737 "dchop0.ch"
                                                                         (father=FatherTree(elem));
-#line 722 "dchop0.ch"
+#line 737 "dchop0.ch"
                                                                         
-#line 722 "dchop0.ch"
-#line 725 "dchop0.ch"
+#line 737 "dchop0.ch"
+#line 740 "dchop0.ch"
                                                                         if ( ((_inter = (PPTREE)father,1) && 
-#line 725 "dchop0.ch"
+#line 740 "dchop0.ch"
                                                                                 (NumberTree(_inter) == cplus::EXP) &&
-#line 725 "dchop0.ch"
+#line 740 "dchop0.ch"
                                                                                 1) ) 
-#line 725 "dchop0.ch"
-#line 726 "dchop0.ch"
+#line 740 "dchop0.ch"
+#line 741 "dchop0.ch"
                                                                             break ;
                                                                         
-#line 726 "dchop0.ch"
-#line 729 "dchop0.ch"
+#line 741 "dchop0.ch"
+#line 744 "dchop0.ch"
                                                                         if ( !((!father)) ) {
-#line 729 "dchop0.ch"
-#line 730 "dchop0.ch"
+#line 744 "dchop0.ch"
+#line 745 "dchop0.ch"
                                                                                                 unsigned int   rank = elem.RankTree();
                                                                                                 
-#line 730 "dchop0.ch"
-#line 731 "dchop0.ch"
+#line 745 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                 PTREE   rep = (PTREE)0 ;
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                 
-#line 731 "dchop0.ch"
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                 {
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                     PPTREE _ptTree0= (PPTREE) 0,_ptRes0= (PPTREE) 0;
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                     _ptRes0 = MakeTree(cplus::EXP, 1);
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                     ReplaceTree(_ptRes0, 1, elem);
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                     rep = _ptRes0;
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                 }
-#line 731 "dchop0.ch"
+#line 746 "dchop0.ch"
                                                                                                 
-#line 731 "dchop0.ch"
-#line 732 "dchop0.ch"
+#line 746 "dchop0.ch"
+#line 747 "dchop0.ch"
                                                                                                 replacetree(father, rank, rep);
-#line 732 "dchop0.ch"
-#line 733 "dchop0.ch"
+#line 747 "dchop0.ch"
+#line 748 "dchop0.ch"
                                                                                                 modified = true ;
-#line 733 "dchop0.ch"
-#line 734 "dchop0.ch"
+#line 748 "dchop0.ch"
+#line 749 "dchop0.ch"
                                                                                                 
-#line 734 "dchop0.ch"
-#line 734 "dchop0.ch"
+#line 749 "dchop0.ch"
+#line 749 "dchop0.ch"
                                                                                               }
-#line 734 "dchop0.ch"
-#line 735 "dchop0.ch"
+#line 749 "dchop0.ch"
+#line 750 "dchop0.ch"
                                                                         
-#line 735 "dchop0.ch"
-#line 735 "dchop0.ch"
+#line 750 "dchop0.ch"
+#line 750 "dchop0.ch"
                                                                     }
-#line 735 "dchop0.ch"
-#line 736 "dchop0.ch"
+#line 750 "dchop0.ch"
+#line 751 "dchop0.ch"
                                                 break ;
                                                 
-#line 736 "dchop0.ch"
+#line 751 "dchop0.ch"
                                         }
-#line 736 "dchop0.ch"
+#line 751 "dchop0.ch"
                                         
-#line 736 "dchop0.ch"
-#line 738 "dchop0.ch"
+#line 751 "dchop0.ch"
+#line 753 "dchop0.ch"
                                         
-#line 738 "dchop0.ch"
-#line 738 "dchop0.ch"
+#line 753 "dchop0.ch"
+#line 753 "dchop0.ch"
                                     }
-#line 738 "dchop0.ch"
-#line 739 "dchop0.ch"
+#line 753 "dchop0.ch"
+#line 754 "dchop0.ch"
     return modified ;
     
-#line 739 "dchop0.ch"
-#line 740 "dchop0.ch"
+#line 754 "dchop0.ch"
+#line 755 "dchop0.ch"
     
-#line 740 "dchop0.ch"
-#line 740 "dchop0.ch"
+#line 755 "dchop0.ch"
+#line 755 "dchop0.ch"
 }
-#line 740 "dchop0.ch"
+#line 755 "dchop0.ch"
 
-#line 740 "dchop0.ch"
-#line 740 "dchop0.ch"
+#line 755 "dchop0.ch"
+#line 755 "dchop0.ch"
 static void dchop0_Anchor () { int i = 1;} 
-#line 740 "dchop0.ch"
+#line 755 "dchop0.ch"
 /*Well done my boy */ 
-#line 740 "dchop0.ch"
+#line 755 "dchop0.ch"
 

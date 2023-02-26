@@ -395,15 +395,38 @@ int main ( int argc, char **argv )
     DecompCplus::ptDecomp    =  (DecompCplus *)(&decomp);
     MetaInit((char *)0);
     doxy().AsLanguage();
-    ReadIncludeS("c.set", 1);
-    cplusGen =  metaQuick = 0 ;
-    if ( argc < 2 ) {
-        sprintf(name, "Bad name for your source file \n");
-        _write(2, name, strlen(name));
-        exit(0);
-    } else {
-        ptName =  *(argv + 1);
+    
+    EString setFile = "c.set";
+    int     offset = 0 ;
+    
+    while ( true ) {
+        if ( argc - offset < 2 ) {
+        help : 
+            {
+                EString message = "Bad name for your source file \n";
+                _write(2, message.c_str(), message.length());
+                exit(0);
+            }
+        } else {
+            ptName =  *(argv + 1 + offset);
+            if ( EString("-v") == ptName ) {
+                goto help ;
+            } else if ( EString("-help") == ptName ) {
+                goto help ;
+            } else if ( EString("-set") == ptName ) {
+                if ( argc - offset < 3 ) {
+                    sprintf(name, "Bad name for your source file \n");
+                    _write(2, name, strlen(name));
+                    goto help ;
+                }
+                setFile =  *(argv + 1 + ++offset);
+            } else 
+                break ;
+            offset += 1 ;
+        }
     }
+    ReadIncludeS(setFile.c_str(), 1);
+    cplusGen =  metaQuick = 0 ;
     
     // read the tree
     {
@@ -887,7 +910,7 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
         EString         nameString("@fn ");
         Protector<int>  protector(output, -1);
         StartOutputString();
-        (DecompChopb::ptDecomp)->ChopTree(header);
+        (DecompChopb::ptDecomp) -> ChopTree(header);
         nameString << EndOutputString();
         nameString.ReplaceString(";", "");
         
@@ -1032,7 +1055,7 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
             EString         returnString("@returns ");
             Protector<int>  protector(output, -1);
             StartOutputString();
-            (DecompChopb::ptDecomp)->ChopTree(type);
+            (DecompChopb::ptDecomp) -> ChopTree(type);
             returnString << EndOutputString();
             
             // put it
@@ -1544,7 +1567,7 @@ void DoxyClassNormalize ( PTREE &descriptor, PTREE &briefDescriptor, EString &ta
             EString         nameString = tag + " ";
             Protector<int>  protector(output, -1);
             StartOutputString();
-            (DecompChopb::ptDecomp)->ChopTree(className);
+            (DecompChopb::ptDecomp) -> ChopTree(className);
             classString =  EndOutputString();
             nameString << classString ;
             
@@ -2189,7 +2212,7 @@ void DoxyDeclaration ( PTREE &tree )
                 EString         typeString ;
                 Protector<int>  protector(output, -1);
                 StartOutputString();
-                (DecompChopb::ptDecomp)->ChopTree(listDeclarator);
+                (DecompChopb::ptDecomp) -> ChopTree(listDeclarator);
                 typeString << EndOutputString();
                 typeString.ReplaceString("\n", "");
                 RemoveLeadingSpace(typeString);

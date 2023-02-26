@@ -422,7 +422,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
 {
     PTREE   son1, son2, list1, list2 ;
     PTREE   refTree ;
-    char    string [3];
+    char    string [25];
     int     posRef, colRef, x, y, dx, dy, delta, ret, y0 ;
     PTREE   postAttribute ; // post attribute
     PTREE   preAttribute ;  // pre attribute
@@ -1136,7 +1136,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                     attributeList =  () * <NEWLINE,"1">;
                     if ( !hasIndented ) {
                         {
-                            char    string [3];
+                            char    string [25];
                             sprintf(string, "%d", nbTab + 1);
                             attributeList *= <TAB,MakeString(string)> * <MARK>;
                         }
@@ -1309,7 +1309,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                         // put attr
                         attributeList =  () * <NEWLINE,"1">;
                         if ( !hasIndented ) {
-                            char    string [10];
+                            char    string [25];
                             sprintf(string, "%d", nbTab + 1);
                             attributeList *= <TAB,MakeString(string)> * <MARK>;
                             hasIndented   =  1 ;

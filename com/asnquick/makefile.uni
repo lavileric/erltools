@@ -5,18 +5,24 @@ OBJECTS=level2.o quickasn.o quickinetutil.o quickconnect.o
 
 THE_LIB = ./qconnect.a
 
-libqconnect.so : level2.o quickasn.o quickinetutil.o quickconnect.o
-	$(C_PLUS) -shared -o libqconnect.so level2.o quickasn.o quickinetutil.o quickconnect.o
-
 library : $(OBJECTS)
 	for i in $(OBJECTS) ; do ar $(ARFLAGS) $(THE_LIB) $$i ; done
 
-DOLIB : level2.cc
-	$(MAKE) -j $(NUMBER_PROC) library
+libqconnect.so : $(OBJECTS)
+	$(C_PLUS) -shared -o libqconnect.so $(OBJECTS)
 
-all : DOLIB
+objects :
+	$(MAKE) -j $(NUMBER_PROC) $(OBJECTS)
 
-shared : libqconnect.so all
+all : quickcode
+	$(MAKE) objects 
+	$(MAKE) library
+
+
+shared : quickcode
+	$(MAKE) objects
+	$(MAKE) libqconnect.so 
+	$(MAKE) all
 
 META_DIR=../..
 

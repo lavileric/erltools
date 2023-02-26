@@ -1,4 +1,4 @@
-#ifndef GEN_MULTI_MULTITHREAD
+#ifndef GEN_MULTI_MULTITHRExD
 #   define GEN_MULTI_MULTITHREAD 
 #   include "erlstring.h"
 #   include "optimgenetic.h"

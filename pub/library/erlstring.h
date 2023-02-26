@@ -38,173 +38,155 @@
                     : pvStart(0),  allocated(false)
                 {
                     pvLength =  0 ;
+                    pvSize   =  0 ;
                     if ( mallocString ) {
                         Malloc(1);
-                        *pvString =  '\0';
                     } else 
                         pvString =  0 ;
                 }
                 
                 EStringRoot ( const char *val, int siz )
-                    : pvStart(0)
+                {
+                    CreateString(val, siz);
+                }
+                
+                EStringRoot ( const char *val )
+                {
+                    if ( val ) 
+                        CreateString(val, strlen(val));
+                    else 
+                        CreateString(val, 0);
+                }
+                
+                EStringRoot ( const EStringRoot &str )
+                {
+                    CreateString(str.c_str(), str.length());
+                }
+                
+                EStringRoot ( std::string str )
+                {
+                    CreateString(str.c_str(), str.length());
+                }
+                
+                EStringRoot ( char c )
+                {
+                    CreateString((char *)&c, 1);
+                }
+                
+                EStringRoot ( unsigned char c )
+                {
+                    CreateString((char *)&c, 1);
+                }
+                
+                void CreateString ( const char *val, unsigned int siz )
                 {
                     if ( !val ) 
                         siz =  0 ;
                     Malloc(siz + 1);
-                    pvLength =  siz ;
-                    if ( siz ) 
-                        memcpy(pvString, val, pvLength);
-                    *(pvString + siz) =  '\0';
-                }
-                
-                EStringRoot ( const char *val )
-                    : pvStart(0)
-                {
-                    if ( !val ) 
-                        pvLength =  0 ;
-                    else 
-                        pvLength =  strlen(val);
-                    Malloc(pvLength + 1);
-                    if ( val ) 
-                        memcpy(pvString, val, pvLength + 1);
-                    else 
-                        *pvString =  '\0';
-                }
-                
-                EStringRoot ( const EStringRoot &str )
-                    : pvStart(0)
-                {
-                    Malloc((pvLength = str.length()) + 1);
-                    if ( pvLength ) 
-                        memcpy(pvString, str.c_str(), pvLength);
-                    
-                    // VString are not 0 terminated
+                    if ( val ) {
+                        if ( siz ) 
+                            memcpy(pvString, val, siz);
+                        pvLength =  siz ;
+                    }
                     *(pvString + pvLength) =  '\0';
-                }
-                
-                EStringRoot ( std::string str )
-                    : pvStart(0)
-                {
-                    Malloc((pvLength = str.length()) + 1);
-                    if ( pvLength ) 
-                        memcpy(pvString, str.c_str(), pvLength);
-                    
-                    // VString are not 0 terminated
-                    *(pvString + pvLength) =  '\0';
-                }
-                
-                EStringRoot ( char c )
-                    : pvStart(0)
-                {
-                    Malloc((pvLength = 1) + 1);
-                    *pvString       =  c ;
-                    *(pvString + 1) =  '\0';
-                }
-                
-                EStringRoot ( unsigned char c )
-                    : pvStart(0)
-                {
-                    Malloc((pvLength = 1) + 1);
-                    *pvString       =  (char)c ;
-                    *(pvString + 1) =  '\0';
                 }
                 
                 EStringRoot ( int value )
-                    : pvStart(0)
                 {
-                    if ( basicSize >= 30 ) {
-                        Malloc(1);
-                        char    *pValue = ItoaQuick(value, pvString, basicSize);
-                        pvStart =  pValue - pvString ;
-                        if ( pvStart != 0 ) 
-                            pvLength =  basicSize - pvStart - 1 ;
-                        else 
-                            pvLength =  strlen(pvString);
-                    } else {
-                        char    *pValue = CompactItoa(value);
-                        Malloc((pvLength = strlen(pValue)) + 1);
-                        memcpy(pvString, pValue, pvLength + 1);
-                    }
+                    unsigned int    size ;
+                    
+                    Malloc(size = 30);
+                    
+                    char    *pValue = ItoaQuick(value, pvString, size);
+                    
+                    pvStart =  pValue - pvString ;
+                    if ( pvStart != 0 ) 
+                        pvLength =  size - pvStart - 1 ;
+                    else 
+                        pvLength =  strlen(pvString);
+                }
+                
+                EStringRoot ( unsigned int value )
+                {
+                    unsigned int    size ;
+                    
+                    Malloc(size = 30);
+                    
+                    char    *pValue = ItoaQuick(value, pvString, size);
+                    
+                    pvStart =  pValue - pvString ;
+                    if ( pvStart != 0 ) 
+                        pvLength =  size - pvStart - 1 ;
+                    else 
+                        pvLength =  strlen(pvString);
                 }
                 
                 EStringRoot ( long value )
-                    : pvStart(0)
                 {
-                    if ( basicSize >= 30 ) {
-                        Malloc(1);
-                        char    *pValue = LtoaQuick(value, pvString, basicSize);
-                        pvStart =  pValue - pvString ;
-                        if ( pvStart != 0 ) 
-                            pvLength =  basicSize - pvStart - 1 ;
-                        else 
-                            pvLength =  strlen(pvString);
-                    } else {
-                        char    *pValue = CompactLtoa(value);
-                        Malloc((pvLength = strlen(pValue)) + 1);
-                        memcpy(pvString, pValue, pvLength + 1);
-                    }
+                    unsigned int    size ;
+                    
+                    Malloc(size = 30);
+                    
+                    char    *pValue = LtoaQuick(value, pvString, size);
+                    
+                    pvStart =  pValue - pvString ;
+                    if ( pvStart != 0 ) 
+                        pvLength =  size - pvStart - 1 ;
+                    else 
+                        pvLength =  strlen(pvString);
                 }
                 
                 EStringRoot ( long long value )
-                    : pvStart(0)
                 {
                     std::string pValue = std::to_string(value);
                     
-                    Malloc((pvLength = pValue.length()) + 1);
+                    Malloc((pValue.length()) + 1);
+                    pvLength = pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
                 EStringRoot ( float value )
-                    : pvStart(0)
                 {
-#                   if 1
-                        
-                        std::ostringstream  stm ;
-                        
-                        stm << std::setprecision(std::numeric_limits<float> ::digits10 + 5) << value ;
-                        std::string pValue = stm.str();
-#                   else 
-                        std::string pValue = std::to_string(value);
-#                   endif
-                    Malloc((pvLength = pValue.length()) + 1);
+                    std::ostringstream  stm ;
+                    
+                    stm << std::setprecision(std::numeric_limits<float> ::digits10 + 5) << value ;
+                    
+                    std::string pValue = stm.str();
+                    
+                    Malloc((pValue.length()) + 1);
+                    pvLength = pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
                 EStringRoot ( double value )
-                    : pvStart(0)
                 {
-#                   if 1
-                        
-                        std::ostringstream  stm ;
-                        
-                        stm << std::setprecision(std::numeric_limits<double> ::digits10 + 5) << value ;
-                        std::string pValue = stm.str();
-#                   else 
-                        std::string pValue = std::to_string(value);
-#                   endif
-                    Malloc((pvLength = pValue.length()) + 1);
+                    std::ostringstream  stm ;
+                    
+                    stm << std::setprecision(std::numeric_limits<double> ::digits10 + 5) << value ;
+                    
+                    std::string pValue = stm.str();
+                    
+                    Malloc((pValue.length()) + 1);
+                    pvLength = pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
                 }
                 
                 EStringRoot ( long double value )
-                    : pvStart(0)
                 {
-#                   if 1
-                        
-                        std::ostringstream  stm ;
-                        
-                        stm << std::setprecision(std::numeric_limits<long double> ::digits10 + 5) << value ;
-                        std::string pValue = stm.str();
-#                   else 
-                        std::string pValue = std::to_string(value);
-#                   endif
-                    Malloc((pvLength = pValue.length()) + 1);
+                    std::ostringstream  stm ;
+                    
+                    stm << std::setprecision(std::numeric_limits<long double> ::digits10 + 5) << value ;
+                    
+                    std::string pValue = stm.str();
+                    
+                    Malloc((pValue.length()) + 1);
+                    pvLength = pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -215,98 +197,86 @@
                     Free();
                 }
                 
+                EStringRoot &Assign ( const char *str, unsigned int siz )
+                {
+                    if ( !str || siz == 0 ) {
+                        Free();
+                        return *this ;
+                    }
+                    if ( pvSize < siz + 1 || !pvString ) {
+                        Free();
+                        Malloc(siz + 1);
+                    } else if ( siz < STRING_QUANT && pvSize > 6 * STRING_QUANT ) {
+                        
+                        // limit growth of string
+                        Free();
+                        Malloc(6 * STRING_QUANT);
+                    }
+                    pvStart  =  0 ;
+                    pvLength =  siz ;
+                    memcpy(pvString, str, siz);
+                    *(pvString + pvLength) =  '\0';
+                    return *this ;
+                }
+                
                 virtual EStringRoot &operator= ( const EStringRoot &stlString )
                 {
                     if ( this == &stlString ) 
                         return *this ;
-                    if ( pvSize < stlString.length() + 1 ) {
-                        Realloc((pvLength = stlString.length()) + 1, stlString.c_str(), stlString.length());
-                        
-                        // VString are not 0 terminated
-                        *((char *)c_str() + pvLength) =  '\0';
-                        return *this ;
-                    } else if ( stlString.length() < STRING_QUANT && pvSize > 6 * STRING_QUANT ) {
-                        
-                        // limit growth of string
-                        Realloc(6 * STRING_QUANT, 0, 0);
-                    }
-                    pvStart  =  0 ;
-                    pvLength =  stlString.length();
-                    if ( pvLength ) 
-                        memcpy((char *)c_str(), stlString.c_str(), pvLength);
-                    
-                    // VString are not 0 terminated
-                    *((char *)c_str() + pvLength) =  '\0';
-                    return *this ;
+                    return Assign(stlString.c_str(), stlString.length());
                 }
                 
                 virtual EStringRoot &operator= ( const char *str )
                 {
-                    if ( !str ) 
-                        pvLength =  0 ;
+                    if ( str == (char *)0 ) 
+                        return Assign(str, 0);
                     else 
-                        pvLength =  strlen(str);
-                    if ( pvSize < pvLength + 1 ) {
-                        Realloc(pvLength + 1, str, pvLength + 1);
-                        return *this ;
-                    } else if ( pvLength < STRING_QUANT && pvSize > 6 * STRING_QUANT ) {
-                        
-                        // limit growth of string
-                        // limit growth of string
-                        Realloc(6 * STRING_QUANT, 0, 0);
-                    }
-                    pvStart =  0 ;
-                    if ( pvLength ) 
-                        memcpy((char *)c_str(), str, pvLength + 1);
-                    else 
-                        *(char *)(c_str()) =  '\0';
-                    return *this ;
+                        return Assign(str, strlen(str));
                 }
                 
                 virtual EStringRoot &operator= ( char c )
                 {
-                    pvLength =  1 ;
-                    if ( pvSize < 2 ) {
-                        Realloc(2, 0, 0);
-                    } else if ( pvSize > 6 * STRING_QUANT ) {
-                        
-                        // limit growth of string
-                        Realloc(6 * STRING_QUANT, 0, 0);
-                    }
-                    pvStart                =  0 ;
-                    *(char *)c_str()       =  c ;
-                    *((char *)c_str() + 1) =  '\0';
-                    return *this ;
+                    return Assign((char *)&c, 1);
                 }
                 
                 virtual EStringRoot &operator= ( unsigned char c )
                 {
-                    *this =  (char)c ;
+                    return Assign((char *)&c, 1);
+                }
+                
+                virtual EStringRoot &prepend ( const char *val, unsigned int length )
+                {
+                    if ( !val || length == 0 ) 
+                        return *this ;
+                    
+                    // alloc
+                    if ( pvStart < length || pvStart + pvLength >= pvSize || !pvString ) {
+                        if ( pvLength > 0 ) 
+                            Realloc(length + pvLength + 1, c_str(), -((int)pvLength) - 1);
+                        else {
+                            Malloc(length + 1);
+                            
+                            // if string empty pvStart is not positionned put it on the zero
+                            pvStart =  pvSize - 1 ;
+                        }
+                    }
+                    
+                    // copy data
+                    pvStart  -= length ;
+                    pvLength += length ;
+                    memcpy((char *)c_str(), val, length);
+                    *((char *)c_str() + pvLength) =  '\0';
                     return *this ;
                 }
                 
                 virtual EStringRoot &prepend ( const char val )
                 {
-                    unsigned int    length ;
-                    
-                    length =  1 ;
-                    
-                    // alloc memory
-                    if ( pvStart < length ) 
-                        Realloc(length + pvLength + 1, c_str(), -((int)pvLength + 1));
-                    
-                    // copy data
-                    pvStart                       -= length ;
-                    pvLength                      += length ;
-                    *(char *)c_str()              =  val ;
-                    *((char *)c_str() + pvLength) =  '\0';
-                    return *this ;
+                    return prepend((char *)&val, 1);
                 }
                 
                 virtual EStringRoot &prepend ( const unsigned char val )
                 {
-                    prepend((char)val);
-                    return *this ;
+                    return prepend((char *)&val, 1);
                 }
                 
                 virtual EStringRoot &prepend ( const char *val )
@@ -315,31 +285,12 @@
                     
                     if ( !val ) 
                         return *this ;
-                    length =  strlen(val);
-                    return prepend(val, length);
+                    return prepend(val, strlen(val));
                 }
                 
                 virtual EStringRoot &prepend ( const unsigned char *val )
                 {
                     return prepend((const char *)val);
-                }
-                
-                virtual EStringRoot &prepend ( const char *val, unsigned int length )
-                {
-                    if ( !val ) 
-                        return *this ;
-                    
-                    // alloc
-                    if ( pvStart < length ) 
-                        Realloc(length + pvLength + 1, c_str(), -((int)pvLength + 1));
-                    
-                    // copy data
-                    pvStart  -= length ;
-                    pvLength += length ;
-                    if ( length ) 
-                        memcpy((char *)c_str(), val, length);
-                    *((char *)c_str() + pvLength) =  '\0';
-                    return *this ;
                 }
                 
                 virtual EStringRoot &prepend ( const unsigned char *val, unsigned int length )
@@ -349,13 +300,13 @@
                 
                 virtual EStringRoot &prepend ( const EStringRoot &val )
                 {
-                    unsigned int    length = val.length();
-                    
                     return prepend(val.c_str(), val.length());
                 }
                 
                 virtual EStringRoot at ( int deb, unsigned int len ) const
                 {
+                    if ( !pvString ) 
+                        return c_str();
                     if ( deb < 0 ) {
                         len =  (unsigned int)( -deb);
                         deb += length();
@@ -388,99 +339,96 @@
                     return at(deb, (unsigned int)lg);
                 }
                 
-                virtual EStringRoot &operator+= ( const char *str )
+                EStringRoot &Append ( const char *str, unsigned int length )
                 {
-                    int length ;
-                    
-                    if ( !str ) 
+                    if ( !str || length == 0 ) 
                         return *this ;
-                    if ( pvLength + (length = strlen(str)) + 1 > pvSize - pvStart ) {
+                    if ( pvStart + pvLength + length + 1 > pvSize || !pvString ) {
                         Realloc(pvLength + length + 1, c_str(), pvLength);
                     }
+                    
+                    char    *ptStr ;
+                    
                     if ( length == 1 ) {
-                        char    *ptStr = (char *)c_str() + pvLength ;
-                        *ptStr++ =  *str ;
-                        *ptStr   =  '\0';
+                        ptStr  =  (char *)c_str() + pvLength ;
+                        *ptStr =  *str ;
                         pvLength++ ;
-                    } else {
-                        memcpy((char *)c_str() + pvLength, str, length + 1);
+                    } else if ( length > 0 ) {
+                        memcpy((char *)c_str() + pvLength, str, length);
                         pvLength += length ;
                     }
+                    ptStr  =  (char *)c_str() + pvLength ;
+                    *ptStr =  '\0';
                     return *this ;
+                }
+                
+                virtual EStringRoot &operator+= ( const char *str )
+                {
+                    if ( !str ) 
+                        return Append(str, 0);
+                    else 
+                        return Append(str, strlen(str));
                 }
                 
                 virtual EStringRoot &operator+= ( const unsigned char *str )
                 {
-                    *this += (const char *)str ;
-                    return *this ;
+                    if ( !str ) 
+                        return Append((const char *)str, 0);
+                    else 
+                        return Append((const char *)str, strlen((const char *)str));
                 }
                 
                 virtual EStringRoot &operator+= ( const EStringRoot &str )
                 {
-                    int length = str.length();
-                    
-                    if ( pvLength + length + 1 > pvSize - pvStart ) {
-                        Realloc(pvLength + length + 1, c_str(), pvLength);
-                    }
-                    if ( length ) {
-                        memcpy((char *)c_str() + pvLength, str.c_str(), length);
-                        pvLength += length ;
-                    }
-                    *((char *)c_str() + pvLength) =  '\0';
-                    return *this ;
+                    return Append(str.c_str(), str.length());
                 }
                 
                 virtual EStringRoot &operator+= ( const char c )
                 {
-                    if ( pvLength + 2 >= pvSize - pvStart ) {
-                        Realloc(pvLength + 2, c_str(), pvLength);
-                    }
-                    *((char *)c_str() + pvLength) =  c ;
-                    ++pvLength ;
-                    *((char *)c_str() + pvLength) =  '\0';
-                    return *this ;
+                    return Append((const char *)&c, 1);
                 }
                 
                 virtual EStringRoot &operator+= ( const unsigned char c )
                 {
-                    *this += (char)c ;
-                    return *this ;
+                    return Append((const char *)&c, 1);
                 }
                 
                 virtual EStringRoot &operator+= ( const int i )
                 {
-                    *this += CompactItoa(i);
-                    return *this ;
+                    EStringRoot<basicSize>  val (i) ;
+                    
+                    return operator+= (val);
                 }
                 
                 virtual EStringRoot &operator+= ( const long value )
                 {
-                    *this += CompactLtoa(value);
-                    return *this ;
+                    EStringRoot<basicSize>  val (value) ;
+                    
+                    return operator+= (val);
                 }
                 
                 virtual EStringRoot &operator+= ( const INT_64 value )
                 {
-                    *this += CompactLtoa(value);
-                    return *this ;
+                    
+                    //  *this += CompactLtoa(value);
+                    //  return *this ;
+                    EStringRoot<basicSize>  val (value) ;
+                    
+                    return operator+= (val);
                 }
                 
                 virtual EStringRoot &operator+= ( const float value )
                 {
-                    char    tmp [80];
+                    EStringRoot<basicSize>  val (value) ;
                     
-                    sprintf(tmp, "%f", value);
-                    *this += (char *)tmp ;
-                    return *this ;
+                    return operator+= (val);
                 }
                 
                 virtual EStringRoot &operator+= ( const double value )
                 {
-                    char    tmp [80];
+                    EStringRoot<basicSize>  val (value) ;
                     
-                    sprintf(tmp, "%f", value);
-                    *this += (char *)tmp ;
-                    return *this ;
+                    return operator+= (val);
                 }
                 
                 virtual EStringRoot operator+ ( const char *str ) const
@@ -590,18 +538,22 @@
                 
                 virtual void Free ()
                 {
-                    if ( allocated /* pvSize > 0 && pvString != pvBasicArray */ ) {
+                    if ( allocated /*not basicArray */ ) {
+                        
+                        /* 1 */
                         FreeString(pvString, pvSize - 1);
                         allocated =  false ;
                     }
+                    Malloc(1);
                 }
                 
-                // Malloc : malloc new space for string
+                /*r string*/
                 // parameters : 
                 //              size : new size
                 virtual void Malloc ( unsigned int size )
                 {
-                    pvStart =  0 ;
+                    pvStart  =  0 ;
+                    pvLength =  0 ;
                     if ( size <= 0 ) 
                         size =  1 ;
                     if ( size <= basicSize ) {
@@ -612,20 +564,24 @@
                         pvString  =  MallocString(pvSize = size);
                         allocated =  true ;
                     }
+                    *pvString =  '\0';
                 }
                 
                 // Realloc : realloc the string
                 //           size : new size
                 //           paramNewString : string to be copied inside 
                 //           lgth : store it starting from end if not 0
-                virtual void Realloc ( int size, const char *paramNewString, int lgth )
+                virtual void Realloc ( unsigned int size, const char *paramNewString, int lgth )
                 {
                     
-                    char    *newString ;   // new string
-                    int     bigOffset(0);  // offset for big strings
+                    char            *newString =0;   // new string
+                    int             bigOffset(0);  // offset for big strings
+                    unsigned int    absLgth = lgth < 0 ? -lgth : lgth ;
                     
                     if ( size <= 0 ) 
                         size =  1 ;
+                    if ( size < absLgth + 1 ) 
+                        size =  absLgth + 1 ;
                     if ( size > 300 * STRING_QUANT ) {
                         bigOffset =  300 * STRING_QUANT ;
                     }
@@ -633,15 +589,22 @@
                     // create a copy of stlString if lgth > 0 copy
                     // at beginning otherwise at end
                     newString =  MallocString(size + STRING_QUANT + bigOffset);
+                    
+                    unsigned int    newStart = 0 ;
+                    
                     if ( paramNewString ) {
                         if ( lgth > 0 ) {
                             memcpy(newString, paramNewString, lgth);
-                            pvStart =  0 ;
+                            newStart            =  0 ;
+                            *(newString + lgth) =  '\0';
                         } else if ( lgth < 0 ) {
-                            memcpy(newString + STRING_QUANT + size + bigOffset + lgth, paramNewString, -lgth);
-                            pvStart =  STRING_QUANT + size + bigOffset + lgth ;
-                        }
-                    }
+                            memcpy(newString + size + STRING_QUANT + bigOffset + lgth - 1, paramNewString, -lgth);
+                            newStart                                           =  STRING_QUANT + size + bigOffset + lgth - 1 ;
+                            *(newString + STRING_QUANT + size + bigOffset - 1) =  '\0';
+                        } else 
+                            newStart =  0 ;
+                    } else 
+                        lgth =  0 ;
                     
                     // free old
                     Free();
@@ -649,12 +612,14 @@
                     // set new 
                     {
                         
-                        // string was allocated
-                        allocated =  true ;
-                        
                         // insert copy here
                         pvString  =  newString ;
+                        pvLength  =  lgth ;
+                        pvStart   =  newStart ;
                         pvSize    =  size + STRING_QUANT + bigOffset ;
+                        
+                        // string was allocated
+                        allocated =  true ;
                     }
                 }
                 
@@ -662,7 +627,7 @@
                 //          size : new size
                 virtual void Resize ( unsigned int size )
                 {
-                    Realloc(size, c_str(), pvLength + 1);
+                    Realloc(size, c_str(), pvLength);
                 }
                 
                 // Size : gives size
@@ -1020,7 +985,7 @@
             {
                 if ( !val ) {
                     Malloc(1);
-                    *pvString =  '\0';
+                    pvLength =  0 ;
                     return ;
                 }
                 pvLength =  siz ;
@@ -1033,9 +998,10 @@
             {
                 if ( !val ) {
                     Malloc(1);
-                    *pvString =  '\0';
+                    pvLength =  0 ;
                     return ;
-                }
+                } else 
+                    pvLength =  siz ;
                 pvString =  (char *)val ;
                 pvStart  =  start ;
                 pvLength =  siz ;
@@ -1047,7 +1013,7 @@
             {
                 if ( !val ) {
                     Malloc(1);
-                    *pvString =  '\0';
+                    pvLength =  0 ;
                     return ;
                 } else 
                     pvLength =  strlen(val);
@@ -1122,14 +1088,13 @@
                     Free();
                     if ( !str ) {
                         Malloc(1);
-                        *pvString =  '\0';
                         return *this ;
                     } else 
                         pvLength =  strlen(str);
                     if ( pvLength ) 
                         pvString =  (char *)str ;
                     else 
-                        pvString =  0 ;
+                        Malloc(1);
                     pvStart =  pvSize = 0 ;
                     return *this ;
                 }
@@ -1139,8 +1104,10 @@
         
             VString ( char c )
             {
-                pvLength =  pvStart = 0 ;
-                pvString =  0 ;
+                CreateString((char *)&c, 1);
+                // pvLength =  1 ;
+                // pvString =  (char *)&c ;
+                // pvStart  =  pvSize = 0 ;
             }
             
 #           if 0
@@ -1180,11 +1147,12 @@
             char    *foundStr ;
             
             // make sure that string is terminated by a \0
-            if ( *(c_str() + length()) != '\0' ) {
-                if ( length() + 1 >= pvSize - pvStart ) {
+            if ( length() + 1 >= pvSize - pvStart || *(c_str() + length()) != '\0' ) {
+                if ( length() + 1 > pvSize - pvStart ) {
                     Realloc(length() + 1, c_str(), length());
                 }
                 *((char *)(c_str()) + length()) =  '\0';
+                pt                              =  (char *)(c_str());
             }
             
             // do the replacements

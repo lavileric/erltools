@@ -5,7 +5,7 @@ language sgt;
 // copy constructor
 // parameters :
 //              symbTab :copied symboltable
-SymbolTable::SymbolTable ( const  SymbolTable &symbTab )
+SymbolTable::SymbolTable ( const SymbolTable &symbTab )
     : pvSize(0),  pvSizeMax(0),  pvTable(0)
 {
     
@@ -86,19 +86,24 @@ int SymbolTable::RemoveLevel ()
     delete *(pvTable + pvSize);
     if ( pvSize > 0 ) 
         pvCurrentLevel =  *(pvTable + pvSize - 1);
+    else 
+        pvCurrentLevel =  0 ;
     
     // return current table size
     return pvSize ;
 }
 
 // insert a var at the current level
-void SymbolTable::AddVar ( const PTREE &var )
+void SymbolTable::AddVar ( const PTREE &var, bool remove )
 {
     
     // if no level is present create one
     if ( pvSize == 0 ) 
         AddLevel();
-    pvCurrentLevel->InsertRemove(var);
+    if ( remove ) 
+        pvCurrentLevel->InsertRemove(var);
+    else 
+        pvCurrentLevel->Insert(var);
 }
 
 // remove a var at the current level
@@ -109,6 +114,28 @@ void SymbolTable::RemoveVar ( const PTREE &var )
     pvCurrentLevel->Remove(var);
 }
 
+PTREE SymbolTable::GetVar ( int index, int level )
+{
+    
+    // check parameters
+    if ( (int)level >= Size() || index < 0 || index >= (**(pvTable + level)).Size() ) 
+        return (PTREE)0 ;
+    
+    // return value
+    return (**(pvTable + level))[index];
+}
+
+void SymbolTable::RemoveVar ( int index, int level )
+{
+    
+    // check parameters
+    if ( (int)level >= Size() ) 
+        return ;
+    
+    // remove value 
+    (**(pvTable + level)).Erase(index);
+}
+
 // get a var definition
 // parameters :
 //              var : the var to be searched
@@ -116,16 +143,33 @@ void SymbolTable::RemoveVar ( const PTREE &var )
 // return : the var
 PTREE SymbolTable::GetVar ( const char *var, int startLevel )
 {
-    TabList **ptLevel ;
-    PTREE   result ;
+    Index   result = GetIndex(var, startLevel);
+    
+    return GetVar(result.index, result.level);
+}
+
+// get a var definition
+// parameters :
+//              var : the var to be searched
+//              startLevel : level where to start
+// return : the var
+SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
+{
+    TabList             **ptLevel ;
+    PTREE               result ;
+    int                 resultIndex ;
+    static const Index  noResult = { -10, -10 };
+    
+    if ( !var ) 
+        return noResult ;
     
     // negative startlevel means to initialize it on top
     if ( startLevel < 0 ) 
         startLevel =  pvSize - 1 ;
     
     // if table is empty return NULL
-    if ( startLevel > pvSize - 1 || !pvSize ) 
-        return (PTREE)0 ;
+    if ( startLevel < 0 || startLevel > pvSize - 1 ) 
+        return noResult ;
     
     // initialize table pointer
     ptLevel     =  pvTable + startLevel ;
@@ -133,12 +177,71 @@ PTREE SymbolTable::GetVar ( const char *var, int startLevel )
     // search all level in ascending order
     pvLastLevel =  startLevel ;
     for (; ptLevel >= pvTable ; ptLevel--, pvLastLevel-- ) {
-        if ( (result = (**ptLevel)[var]) ) 
+        if ( (resultIndex = (*ptLevel)->GetIndex(var)) >= 0 ) {
+            Index   result = { pvLastLevel, resultIndex };
             return result ;
+        }
     }
     
     // if we have found nothing return NULL
-    return (PTREE)0 ;
+    return noResult ;
+}
+
+// get a var definition
+// parameters :
+//              var : the var to be searched
+//              startLevel : level where to start
+// return : the var
+SymbolTable::Index SymbolTable::GetFirstIndex ( const char *var, int startLevel )
+{
+    static const Index  noResult = { -10, -10 };
+    
+    // get index 
+    Index               result = GetIndex(var, startLevel);
+    
+    if ( result.index < 0 ) 
+        return noResult ;
+    
+    // get to first
+    int index = result.index ;
+    int trailingIndex = index ;
+    
+    while ( index >= 0 ) {
+        {
+            if ( VString(Value((*GetTabList(result.level))[index])) == var ) {
+                trailingIndex =  index ;
+                index         =  index - 1 ;
+            } else 
+                break ;
+        }
+    }
+    result.index =  trailingIndex ;
+    return result ;
+}
+
+// get a var definition
+// parameters :
+//              var : the var to be searched
+//              startLevel : level where to start
+// return : the var
+SymbolTable::Index SymbolTable::GetNextIndex ( const char *var, Index startIndex )
+{
+    static const Index  noResult = { -10, -10 };
+    
+    if ( startIndex.level < 0 || startIndex.level >= Size() ) 
+        return noResult ;
+    TabList & tabListFirst =  *GetTabList(startIndex.level);
+    
+    int index = startIndex.index + 1 ;
+    
+    // got to first
+    if ( index >= 0 && index < tabListFirst.Size() && !strcmp(VString(Value(tabListFirst [index])), var) ) {
+        startIndex.index =  index ;
+        return startIndex ;
+    } else if ( startIndex.level > 0 ) {
+        return GetFirstIndex(var, startIndex.level - 1);
+    }
+    return noResult ;
 }
 
 

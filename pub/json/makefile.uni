@@ -1,0 +1,65 @@
+
+all : m_done 
+	$(MAKE) chop 
+	$(MAKE) -j $(NUMBER_PROC) $(ALL_OBJECTS)
+	$(MAKE) json libjson
+
+shared : all
+
+META_DIR=../..
+
+include $(META_DIR)/makefile.der
+
+clean : clean_inc_appli
+	-rm json.h json.cc json0.cc chopper.cc
+	-rm json chop 
+	-rm -r compile.dir
+
+test : all_test
+
+# ../../cplusplu:../../chopb:../../library:../../metachop $(METAOPT) doxy.met ;\
+#if your grammar becomes too big you will have to json1 ...
+m_done : json.met
+	-@ mkdir compile.dir
+	@cp json.met compile.dir
+	@echo "metagen -c++ json.met"
+	@( cd compile.dir ;\
+	  metagen -c++ -path ../../cplusplu:../../library $(METAOPT) json.met ;\
+	  unify json.h ../json.h;\
+	  unify json.cpp ../json.cc;\
+	  unify json0.cpp ../json0.cc;)
+	@echo "ok" > m_done
+
+json.o : json.cc json.h
+
+json0.o : json0.cc json.h
+
+chopper.cc : chopper.ch chop
+
+EJson.cc : EJson.ch chop
+
+chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
+EJson.o : EJson.cc $(META_DIR)/pub/library/token.h 
+
+
+OBJECTS = json.o json0.o chopper.o 
+ALL_OBJECTS = $(OBJECTS) EJson.o
+
+CPLUS=../cplusplu/cplus.a
+METAGEN= ../parser/verif.o 
+
+json : $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o json $(OBJECTS) $(CPLUS) $(METAGEN) $(LIBRARY)
+
+libjson : libjson.a(EJson.o json.o json0.o )
+
+chop : 
+	$(MAKE) -f makefile.cho
+
+
+
+
+
+
+
+

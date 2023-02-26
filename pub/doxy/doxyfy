@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# look if emacs error
+emacs=""
+if [ "$1" = "-emacs" ]
+then
+    emacs="-emacs"
+    shift
+fi
+
+#look if there is a set indication
+name=$1
+SET_ORDER=""
+if [ $name = "-set" ] ; then
+    shift
+    SET_ORDER="-set $1"
+    shift;
+fi
+
+# give help if no arguments are given
+if [ "$1" = "" ]
+then
+    echo "usage: $0 filename(s)"
+    exit
+fi
+
+#find suffix of name
+for i in $*
+do
+    echo "Processing file $i:"
+
+    #doxyfy the file
+    doxy ${SET_ORDER} $i > $$_res.cpb 2>$$_error
+    
+    RESULT=$?
+
+    cat $$_error ; rm $$_error;
+
+    #replace original file
+    if [ $RESULT != 0 ] ; then
+        rm -f $$_res.cpb
+        exit $RESULT
+    else
+        mv $$_res.cpb `realpath $i`
+        cpb ${SET_ORDER}  `realpath $i`
+    fi
+done
+

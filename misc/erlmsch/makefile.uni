@@ -1,6 +1,7 @@
 
 all : m_done
-	$(MAKE) -j $(NUMBER_PROC) erlmsch
+	$(MAKE) -j $(NUMBER_PROC) $(OBJECTS)
+	$(MAKE) erlmsch
 
 
 OPT_FLAGS=-DCHOPB -Wno-empty-body

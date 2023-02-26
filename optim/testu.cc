@@ -170,7 +170,7 @@ template <class TypeFeature,int min,int max>
                 if ( size < 1 ) 
                     size =  1 ;
                 individual.Limits(size - 1, SimpleLimit<double> (min, max));
-                for ( int i = 0 ; i < size ; i++ ) {
+                for ( unsigned int i = 0 ; i < size ; i++ ) {
                     individual.Limits()[i].Step(pvStep);
                 }
                 return individual ;

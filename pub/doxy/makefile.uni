@@ -1,5 +1,7 @@
 
-all : m_done doxy chop
+all : m_done 
+	$(MAKE) chop
+	$(MAKE) doxy 
 
 META_DIR=../..
 

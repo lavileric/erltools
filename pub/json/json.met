@@ -1,0 +1,66 @@
+language json;
+
+use "cplus.met";
+
+define main_entry;
+    return take json_content;
+end;
+
+define parse_entry;
+    return take json_content;
+end;
+
+define json_content;
+    declare val,list_entry;
+    case
+        take "{" :
+            begin
+            if not see "}" then
+                repeat
+                    addlist(list_entry,take named_entry);
+                until not take ",";
+            take "}";
+            return maketree(JSON_LIST,list_entry);
+            end
+        take "[" :
+            begin
+            if not see "]" then
+                repeat
+                    addlist(list_entry,take json_content);
+                until not take ",";
+            take "]";
+            return maketree(JSON_SEQUENCE,list_entry);
+            end
+        take "-" :
+            begin
+            return maketree(NEG,take constan);
+            end
+        default :
+            begin
+            if val = take constan then
+                return val
+            else
+                case
+                    see !STRING : return maketree(STRING,take !STRING)
+                    take #"true" : return maketree(JSON_TRUE)
+                    take #"false" : return maketree(JSON_FALSE)
+                    default : break
+                end;
+            end
+    end;
+end;
+
+define named_entry;
+    declare entry;
+    entry = maketree(JSON_NAMED,maketree(JSON_NAME,take !STRING),());
+    take ":";
+    return replacetree(entry,2,take json_content);
+end;
+
+define bidon_bidon;
+    take !IDENT;
+    take !STRING;
+    take !NUMB;
+    take !CHARACTER;
+end.
+

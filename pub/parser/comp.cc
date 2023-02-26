@@ -2559,8 +2559,10 @@ void TreatUseGrammar ( PPTREE tree )
                 theUsedGrammar  =  MakeString(Value(grammElem));
                 contextListUsed =  GetWithContext(sontree(grammElem, 1));
             }
-            innerGrammar  =  MakeString(Value(grammElem));
+                innerGrammar  =  MakeString(Value(grammElem));
             currGrammName =  sontree(sontree(sontree(grammElem, 1), 1), 1);
+
+            EString grammarName = Value(grammElem);
             
             // starting from now on no display
             isVirtMod     =  1 ;
@@ -2800,7 +2802,9 @@ void GenerateHHeader ( PPTREE tree )
         
         // constructor
         WriteString(LanguageName(LO_CASE));
-        WriteString(" () {");
+        WriteString("() { _InitArrays () ;}");
+        NewLine();
+        WriteString("virtual void _InitArrays () {");
         NewLine();
         Tab();
         Mark();

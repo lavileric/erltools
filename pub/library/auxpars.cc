@@ -114,6 +114,8 @@ int                             keepOutputString ;
 int                             currCol = 0 ;           /* the current column for the display */ 
 int                             currLine = 0 ;          /* the current line for the display */ 
 int                             writeCol = 0 ;          /* the column of the last write */ 
+bool                            checkMapAlloc = false ;
+bool                            blockFreeTree = false ;
 
 #define MAXTABTAB 80
 
@@ -123,6 +125,10 @@ static PPTREE   MallocNodeTree (int arity) ;
 char            *MallocString (int size) ;
 void            FreeNodeTree (int arity, PPTREE tree) ;
 void            FreeString (char *string, int length) ;
+void            TreeFreeString (char *string, int length) ;
+void            RFreeString (char *string) ;
+void            *_fastcall RLMakeString (const char *string, int length) ;
+void            *_fastcall BlockRLMakeString (const char *string, int length) ;
 
 #define MAXOUTPUT 512
 
@@ -132,14 +138,75 @@ extern int  output ;
 int         writeLine = 0 ;
 
 #if defined(VISUAL) || defined(BORLAND)
-    HANDLE  storeRefCritical = 0 ;
-    HANDLE  addRefCritical = 0 ;
-    HANDLE  jumpCritical = 0 ;
+#   define HAND_CRIT HANDLE
 #elif defined(HAS_POSIX_SEMAPHORE)
-    CRITICAL_SECTION    storeRefCritical = 0 ;
-    CRITICAL_SECTION    jumpCritical = 0 ;
-    CRITICAL_SECTION    addRefCritical = 0 ;
+#   define HAND_CRIT CRITICAL_SECTION
+#else 
+#   define HAND_CRIT int
 #endif
+
+// critical section and protection
+HAND_CRIT   storeRefCritical = 0 ;
+long        dStoreRefCritical = 0 ;
+HAND_CRIT   addRefCritical = 0 ;
+long        dAddRefCritical = 0 ;
+HAND_CRIT   jumpCritical = 0 ;
+long        dJumpCritical = 0 ;
+HAND_CRIT   parsingCritical = 0 ;
+long        dParsingCritical = 0 ;
+
+#define CRITICAL_FUSE (3145927 + 2022)
+#define CRITICAL_OFFSET 314
+
+unsigned int    criticalFuse = CRITICAL_FUSE ;
+
+inline HAND_CRIT GetStoreRefCritical ()
+{
+    long    check = (long)storeRefCritical + CRITICAL_OFFSET ;
+    
+    if ( criticalFuse != CRITICAL_FUSE ) 
+        return 0 ;
+    if ( check == dStoreRefCritical ) 
+        return storeRefCritical ;
+    else 
+        return 0 ;
+}
+
+inline HAND_CRIT GetAddRefCritical ()
+{
+    long    check = (long)addRefCritical + CRITICAL_OFFSET ;
+    
+    if ( criticalFuse != CRITICAL_FUSE ) 
+        return 0 ;
+    if ( check == dAddRefCritical ) 
+        return addRefCritical ;
+    else 
+        return 0 ;
+}
+
+inline HAND_CRIT GetJumpCritical ()
+{
+    long    check = (long)jumpCritical + CRITICAL_OFFSET ;
+    
+    if ( criticalFuse != CRITICAL_FUSE ) 
+        return 0 ;
+    if ( check == dJumpCritical ) 
+        return jumpCritical ;
+    else 
+        return 0 ;
+}
+
+inline HAND_CRIT GetParsingCritical ()
+{
+    long    check = (long)parsingCritical + CRITICAL_OFFSET ;
+    
+    if ( criticalFuse != CRITICAL_FUSE ) 
+        return 0 ;
+    if ( check == dParsingCritical ) 
+        return parsingCritical ;
+    else 
+        return 0 ;
+}
 
 void Flush ()
 {
@@ -230,11 +297,7 @@ debut :
                     ptDest-- ;
                     if ( *ptDest != ' ' ) {
                         ptDest++ ;
-                        if ( *ptDest >= 'a' && *ptDest <= 'z'
-                                || *ptDest >= 'A' && *ptDest <= 'Z'
-                                || *ptDest >= '0' && *ptDest <= '9'
-                                || *ptDest == '_'
-                                || *ptDest == '$' ) 
+                        if ( *ptDest >= 'a' && *ptDest <= 'z' || *ptDest >= 'A' && *ptDest <= 'Z' || *ptDest >= '0' && *ptDest <= '9' || *ptDest == '_' || *ptDest == '$' ) 
                             *ptDest++ =  ' '; /* otherwise two words might be concatenated */ 
                     }
                 }
@@ -680,7 +743,7 @@ void ResetBufInput ( char *string )
         posBufInput  =  -1 ;
         posFileInput += lBufInput ;
         flagNewLine  =  0 ;
-        if ( lastContextPos && !lastContextPos->nbRef ) 
+        if ( lastContextPos && !lastContextPos -> nbRef ) 
             FreePos(lastContextPos);
         lastContextPos =  (PFILE_POSITION)0 ;
     } else 
@@ -696,7 +759,7 @@ char _fastcall GetAChar ()
             lBufInput =  0 ;
         posFileInput += lBufInput ;
     }
-    if ( lastContextPos && !lastContextPos->nbRef ) 
+    if ( lastContextPos && !lastContextPos -> nbRef ) 
         FreePos(lastContextPos);
     lastContextPos =  (PFILE_POSITION)0 ;
     if ( lBufInput == posBufInput + 1 ) 
@@ -711,7 +774,7 @@ char _fastcall GetAChar ()
 /***************************************/
 char _fastcall NextChar ()
 {
-    if ( lastContextPos && !lastContextPos->nbRef ) 
+    if ( lastContextPos && !lastContextPos -> nbRef ) 
         FreePos(lastContextPos);
     lastContextPos =  (PFILE_POSITION)0 ;
     if ( ptStockBuf < MAXLENGTH - 1 ) 
@@ -779,7 +842,7 @@ void FreezeBuf ()
 void FreeBuf ()
 {
     ptStockBuf =  stockPtStockBuf ;
-    if ( lastContextPos && !lastContextPos->nbRef ) 
+    if ( lastContextPos && !lastContextPos -> nbRef ) 
         FreePos(lastContextPos);
     lastContextPos =  (PFILE_POSITION)0 ;
 }
@@ -894,7 +957,7 @@ void _fastcall DumpBrainyValue ( PPTREE tree )
 void PatchNode ( PPTREE tree, PLANG language, int number )
 {
     if ( language ) 
-        CacheWrite(tree, number | language->languageMask);
+        CacheWrite(tree, number | language -> languageMask);
     else 
         CacheWrite(tree, number);
 }
@@ -929,7 +992,7 @@ char *_fastcall AllocString ( const char *string )
     register char   *myString ;
     
     if ( !string ) {
-        if ( myString = (char *)malloc(1) ) {
+        if ( (myString = (char *)malloc(1)) ) {
             *myString =  '\0';
             return myString ;
         } else {
@@ -948,24 +1011,46 @@ char *_fastcall AllocString ( const char *string )
 }
 
 /**************************************************************
-   MakeString : Creates a string that can be used in tree*/
+   LMakeTreeString : Creates a tree string  */
 /*s
    ***************************************************************/
-PPTREE _fastcall LMakeString ( const char *string, int length )
+PPTREE _fastcall LMakeTreeString ( void *myString, int length )
 {
-    register void   *myString ;
     register PPTREE tree ;
     
-    myString =  (void *)MallocString(length + 1);
-    memcpy(CacheAddrRead(myString), string, length);
-    *(CacheAddrRead(myString) + length) =  '\0';
-    tree                                =  MakeTree(TERM_TREE, 2);
+    tree =  MakeTree(TERM_TREE, 2);
     CacheWrite((char *)tree + sizeof(int), 0); /* arity of TERM_TREE is 0 */ 
     
     /* initialisations of pointer is done in MakeTree */
     SON_WRITE(tree, 1, myString); /* string */ 
     SON_WRITE(tree, 2, (void *)((char *)0 + length)); /* length of string */ 
     return (tree);
+}
+
+/**************************************************************
+   MakeString : Creates a string that can be used in tree*/
+/*s
+   ***************************************************************/
+PPTREE _fastcall LMakeString ( const char *string, int length )
+{
+    register void   *myString ;
+    
+    return LMakeTreeString(BlockRLMakeString(string, length), length);
+}
+
+/**************************************************************
+   CopyString : Copy a string that can be used in tree*/
+/*s
+   ***************************************************************/
+PPTREE _fastcall LCopyString ( PPTREE tree )
+{
+    int     length = (char *)SON_READ(tree, 2) - (char *)0 ;
+    char    *string = (char *)CacheAddrRead(SON_READ(tree, 1));
+    
+    if ( symbString ) 
+        return LMakeTreeString(string, length);
+    else 
+        return LMakeString(string, length);
 }
 
 PPTREE _fastcall MakeString ( const char *string )
@@ -1252,7 +1337,13 @@ PPTREE _fastcall AddListList ( PPTREE list, PPTREE elem )
         ptTree1 =  ptTree2 = list ;
         while ( (ptTree1 = (PPTREE)SON_READ(ptTree1, 2)) ) 
             ptTree2 =  ptTree1 ;
-        ReplaceTree(ptTree2, 2, elem);
+        {
+            PPTREE  toPut = elem ;
+            if ( elem && NumberTree(elem) != LIST ) {
+                toPut =  ListElem(elem);
+            }
+            ReplaceTree(ptTree2, 2, elem);
+        }
     } else 
         list =  elem ;
     return (list);
@@ -1277,10 +1368,16 @@ PPTREE ListPermutate ( PPTREE list )
     if ( oldDad ) 
         pos =  PosTree(list);
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( addRefCritical ) 
+        
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+        
+        if ( kAddRefCritical ) 
             WaitForSingleObject(addRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
+        
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+        
+        if ( kAddRefCritical ) 
             EnterCriticalSection(&addRefCritical);
 #   endif
     
@@ -1300,13 +1397,16 @@ PPTREE ListPermutate ( PPTREE list )
         SON_WRITE(listResult, -1, oldDad);
     } else 
         SON_WRITE(listResult, -1, (PPTREE)0);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( addRefCritical ) 
-            ReleaseSemaphore(addRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            LeaveCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kAddRefCritical ) 
+                ReleaseSemaphore(addRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                LeaveCriticalSection(&addRefCritical);
+#       endif
+    }
     
     // return value
     return listResult ;
@@ -1323,7 +1423,7 @@ int _fastcall ListLength ( PPTREE list )
     if ( !list ) 
         return 0 ;
     if ( list && NumberTree(list) == LIST ) 
-        while ( (list = (PPTREE)SON_READ(list, 2)) ) 
+        while ( NumberTree(list) == LIST && (list = (PPTREE)SON_READ(list, 2)) ) 
             i++ ;
     else 
         return 0 ;
@@ -1344,12 +1444,12 @@ PPTREE ListFind ( PPTREE list, PPTREE name )
     if ( NumberTree(list) == LIST ) 
         while ( list ) {
             if ( !strcmp(Value(list), theName) ) {
-                free(theName);
+                RFreeString(theName);
                 return sontree(list, 1);
             }
             list =  SonTree(list, 2);
         }
-    free(theName);
+    RFreeString(theName);
     return (PPTREE)0 ;
 }
 
@@ -1630,10 +1730,12 @@ void MetaInit ( const char *name )
     EString storeRefName (name) ;
     EString jumpName (name) ;
     EString addRefName (name) ;
+    EString parserName (name) ;
     
     storeRefName += "_metaStoreRef";
     addRefName   += "_metaAddRef";
     jumpName     += "_jumpCritical";
+    parserName   += "_parserCritical";
 #   if defined(VISUAL) || defined(BORLAND)
         
         DWORD               ident ;    // ident
@@ -1643,33 +1745,57 @@ void MetaInit ( const char *name )
         security.lpSecurityDescriptor =  0 ;
         security.bInheritHandle       =  true ;
         storeRefCritical              =  CreateSemaphore(&security, 1, 1, storeRefName);
+        dStoreRefCritical             =  (long)storeRefCritical + CRITICAL_OFFSET ;
         jumpCritical                  =  CreateSemaphore(&security, 1, 1, jumpName);
+        dJumpCritical                 =  (long)jumpCritical + CRITICAL_OFFSET ;
         addRefCritical                =  CreateSemaphore(&security, 1, 1, addRefName);
+        dAddRefCritical               =  (long)addRefCritical + CRITICAL_OFFSET ;
+        parsingCritical               =  CreateSemaphore(&security, 1, 1, parserName);
+        dParsingCritical              =  (long)parsingCritical + CRITICAL_OFFSET ;
 #   elif defined(HAS_POSIX_SEMAPHORE)
         InitializeCriticalSection(&storeRefCritical);
+        dStoreRefCritical =  (long)storeRefCritical + CRITICAL_OFFSET ;
         InitializeCriticalSection(&jumpCritical);
+        dJumpCritical =  (long)jumpCritical + CRITICAL_OFFSET ;
         InitializeCriticalSection(&addRefCritical);
+        dAddRefCritical =  (long)addRefCritical + CRITICAL_OFFSET ;
+        InitializeCriticalSection(&parsingCritical);
+        dParsingCritical =  (long)parsingCritical + CRITICAL_OFFSET ;
 #   endif
 }
 
 void MetaEnd ()
 {
     Flush();
-    ClearStoreRef();
+    
+    // why clearing it is the end
+    // ClearStoreRef();
     CacheEnd();
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
-            CloseHandle(storeRefCritical);
-        if ( addRefCritical ) 
-            CloseHandle(addRefCritical);
-        if ( jumpCritical ) 
-            CloseHandle(jumpCritical);
-        storeRefCritical =  jumpCritical = addRefCritical = 0 ;
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        DeleteCriticalSection(&storeRefCritical);
-        DeleteCriticalSection(&jumpCritical);
-        DeleteCriticalSection(&addRefCritical);
-        storeRefCritical =  jumpCritical = addRefCritical = 0 ;
+    
+    // closing the handle and setting could stuck some process waiting on a criticalSection
+    // the one having to close will never close it
+#   if 0
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( GetStoreRefCritical() ) 
+                CloseHandle(storeRefCritical);
+            if ( GetAddRefCritical() ) 
+                CloseHandle(addRefCritical);
+            if ( GetJumpCritical() ) 
+                CloseHandle(jumpCritical);
+            if ( GetParsingCritical ) 
+                CloseHandle(parsingCritical);
+            parsingCritical =  storeRefCritical = jumpCritical = addRefCritical = 0 ;
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( GetStoreRefCritical() ) 
+                DeleteCriticalSection(&storeRefCritical);
+            if ( GetJumpCritical() ) 
+                DeleteCriticalSection(&jumpCritical);
+            if ( GetAddRefCritical() ) 
+                DeleteCriticalSection(&addRefCritical);
+            if ( GetParsingCritical() ) 
+                DeleteCriticalSection(&parsingCritical);
+            parsingCritical =  storeRefCritical = jumpCritical = addRefCritical = 0 ;
+#       endif
 #   endif
     alreadyInitialized =  0 ;
 }
@@ -1698,6 +1824,8 @@ void CurrFilePosition ( long pos )
     c            =  NextChar();
 }
 
+#define FILE_POSITION_MARKER 31415927
+
 /* allocation of a context position */
 static  PFILE_POSITION AllocateContextPos ()
 {
@@ -1706,17 +1834,22 @@ static  PFILE_POSITION AllocateContextPos ()
        or allocate a new one */
     if ( FreeContextPos ) {
         PFILE_POSITION  inter = FreeContextPos ;
-        FreeContextPos =  FreeContextPos->next ;
+        FreeContextPos =  FreeContextPos -> next ;
+        if ( inter -> marker != FILE_POSITION_MARKER ) {
+            MetaExit(3, "FilePosition stack is corrupted");
+        }
         return inter ;
     } else {
-        return (PFILE_POSITION)malloc(sizeof(FILE_POSITION));
+        PFILE_POSITION  pFilePosition = (PFILE_POSITION)malloc(sizeof(FILE_POSITION));
+        pFilePosition -> marker =  FILE_POSITION_MARKER ;
+        return pFilePosition ;
     }
 }
 
 static  void _fastcall FreeTheContextPos ( PFILE_POSITION context )
 {
-    context->next  =  FreeContextPos ;
-    FreeContextPos =  context ;
+    context -> next =  FreeContextPos ;
+    FreeContextPos  =  context ;
 }
 
 PFILE_POSITION _fastcall SavePos ()
@@ -1725,18 +1858,18 @@ PFILE_POSITION _fastcall SavePos ()
     
     /* if we didn't move since last time return last context */
     if ( lastContextPos ) {
-        if ( tokenAhead == lastContextPos->tokenAhead ) {
-            lastContextPos->nbRef++ ;
+        if ( tokenAhead == lastContextPos -> tokenAhead ) {
+            lastContextPos -> nbRef++ ;
             return lastContextPos ;
-        } else if ( !lastContextPos->nbRef ) 
+        } else if ( !lastContextPos -> nbRef ) 
             FreePos(lastContextPos);
     }
     
     /* allocate a new context */
-    myPosition         =  AllocateContextPos();
+    myPosition           =  AllocateContextPos();
     
     /* save position */
-    myPosition->oldPos =  ptOldBuf ;
+    myPosition -> oldPos =  ptOldBuf ;
     
     /* if there is something in the string save it */
     if ( ptOldBuf != -1 ) {
@@ -1744,37 +1877,37 @@ PFILE_POSITION _fastcall SavePos ()
             oldBuf [ptOldBuf + 1] =  '\0';
         else if ( ptOldBuf >= 0 && ptOldBuf < MAXLENGTH ) 
             oldBuf [ptOldBuf] =  '\0';
-        myPosition->string =  (char *)AllocString(oldBuf);
+        myPosition -> string =  (char *)AllocString(oldBuf);
     }
     
     /* save position */
-    myPosition->oldPosStock =  ptStockBuf ;
+    myPosition -> oldPosStock =  ptStockBuf ;
     
     /* if there is something in the string save it */
     if ( ptStockBuf != -1 ) {
         if ( ptStockBuf >= MAXLENGTH - 1 ) 
             ptStockBuf =  MAXLENGTH - 2 ;
         stockBuf [ptStockBuf + 1] =  '\0';
-        myPosition->stringStock   =  (char *)AllocString(stockBuf);
+        myPosition -> stringStock =  (char *)AllocString(stockBuf);
     }
-    myPosition->charAhead   =  c ;
-    myPosition->position    =  posFileInput - lBufInput + posBufInput + 1 ;
-    myPosition->line        =  line ;
-    myPosition->col         =  col ;
-    myPosition->firstOnLine =  (char)firstOnLine ;
-    myPosition->comm        =  listComm ;
-    myPosition->lastTree    =  _lastTree ;
-    myPosition->tokenAhead  =  (char)tokenAhead ;
-    myPosition->lexElvalue  =  lexEl.Value ;
+    myPosition -> charAhead   =  c ;
+    myPosition -> position    =  posFileInput - lBufInput + posBufInput + 1 ;
+    myPosition -> line        =  line ;
+    myPosition -> col         =  col ;
+    myPosition -> firstOnLine =  (char)firstOnLine ;
+    myPosition -> comm        =  listComm ;
+    myPosition -> lastTree    =  _lastTree ;
+    myPosition -> tokenAhead  =  (char)tokenAhead ;
+    myPosition -> lexElvalue  =  lexEl.Value ;
     if ( tokenAhead ) 
-        myPosition->lexElstring =  AllocString(lexEl.string());
+        myPosition -> lexElstring =  AllocString(lexEl.string());
     else 
-        myPosition->lexElstring =  (char *)0 ;
-    myPosition->flagNewLine =  (char)flagNewLine ;
-    myPosition->nbRef       =  1 ;
+        myPosition -> lexElstring =  (char *)0 ;
+    myPosition -> flagNewLine =  (char)flagNewLine ;
+    myPosition -> nbRef       =  1 ;
     
     /* indicates that we are here for context sharing */
-    lastContextPos          =  myPosition ;
+    lastContextPos            =  myPosition ;
     return (myPosition);
 }
 
@@ -1788,48 +1921,48 @@ int _fastcall RestorePos ( PFILE_POSITION myPosition )
     
     /* if we have allready restored it do nothing */
     if ( lastContextPos == myPosition ) {
-        tokenAhead =  lastContextPos->tokenAhead ;
+        tokenAhead =  lastContextPos -> tokenAhead ;
         
         /* free comm collected by failed rules */
         ptComm     =  listComm ;
-        while ( ptComm && ptComm->collected > _funcLevel ) {
-            ptComm->collected =  0 ;
+        while ( ptComm && ptComm -> collected > _funcLevel ) {
+            ptComm -> collected =  0 ;
             
             /* EL the 1/12/93 */
-            ptComm            =  ptComm->next ;
+            ptComm              =  ptComm -> next ;
         }
         return 1 ;
     }
-    c =  myPosition->charAhead ;
-    if ( myPosition->position >= posFileInput - lBufInput && myPosition->position <= posFileInput ) {
-        posBufInput =  myPosition->position - posFileInput + lBufInput - 1 ;
+    c =  myPosition -> charAhead ;
+    if ( myPosition -> position >= posFileInput - lBufInput && myPosition -> position <= posFileInput ) {
+        posBufInput =  myPosition -> position - posFileInput + lBufInput - 1 ;
     } else {
-        _lseek(input, myPosition->position, SEEK_SET);
-        posFileInput =  myPosition->position ;
+        _lseek(input, myPosition -> position, SEEK_SET);
+        posFileInput =  myPosition -> position ;
         posBufInput  =  -1 ;
         lBufInput    =  0 ;
     }
-    flagNewLine =  myPosition->flagNewLine ;
-    ptOldBuf    =  myPosition->oldPos ;
+    flagNewLine =  myPosition -> flagNewLine ;
+    ptOldBuf    =  myPosition -> oldPos ;
     
     /* restore oldBuf if not empty */
     if ( ptOldBuf != -1 ) 
-        strcpy(oldBuf, myPosition->string);
+        strcpy(oldBuf, myPosition -> string);
     else 
         *oldBuf =  '\0';
-    ptStockBuf =  myPosition->oldPosStock ;
+    ptStockBuf =  myPosition -> oldPosStock ;
     
     /* restore stockBuf if not empty */
     if ( ptStockBuf != -1 ) 
-        strcpy(stockBuf, myPosition->stringStock);
+        strcpy(stockBuf, myPosition -> stringStock);
     else 
         *stockBuf =  '\0';
-    oldLine     =  line = myPosition->line ;
-    col         =  myPosition->col ;
-    firstOnLine =  myPosition->firstOnLine ;
-    _lastTree   =  myPosition->lastTree ;
+    oldLine     =  line = myPosition -> line ;
+    col         =  myPosition -> col ;
+    firstOnLine =  myPosition -> firstOnLine ;
+    _lastTree   =  myPosition -> lastTree ;
     storLine =  -1, storCol =  -1 ;
-    while ( listComm && listComm != myPosition->comm && (!listComm->collected || listComm->collected > _funcLevel) ) {
+    while ( listComm && listComm != myPosition -> comm && (!listComm -> collected || listComm -> collected > _funcLevel) ) {
         
         /* FreeTree(listComm -> content);*/
         FreeHeadComm();
@@ -1838,23 +1971,23 @@ int _fastcall RestorePos ( PFILE_POSITION myPosition )
     /* if comm have been collected by rules who are in error undo
        this */
     ptComm =  listComm ;
-    while ( ptComm && ptComm->collected > _funcLevel ) {
-        ptComm->collected =  0 ;
+    while ( ptComm && ptComm -> collected > _funcLevel ) {
+        ptComm -> collected =  0 ;
         
         /* EL the 1/12/93 */
-        ptComm            =  ptComm->next ;
+        ptComm              =  ptComm -> next ;
     }
     
     /* */
-    lexEl.Value =  myPosition->lexElvalue ;
-    tokenAhead  =  myPosition->tokenAhead ;
+    lexEl.Value =  myPosition -> lexElvalue ;
+    tokenAhead  =  myPosition -> tokenAhead ;
     if ( tokenAhead ) {
         lexEl.Erase();
-        lexEl.AddString(myPosition->lexElstring);
+        lexEl.AddString(myPosition -> lexElstring);
     }
     
     /* indicates that we are here */
-    if ( lastContextPos && !lastContextPos->nbRef ) 
+    if ( lastContextPos && !lastContextPos -> nbRef ) 
         FreePos(lastContextPos);
     lastContextPos =  myPosition ;
     return 1 ;
@@ -1862,26 +1995,26 @@ int _fastcall RestorePos ( PFILE_POSITION myPosition )
 
 void _fastcall FreePos ( PFILE_POSITION myPosition )
 {
-    myPosition->nbRef-- ;
+    myPosition -> nbRef-- ;
     
     /* if this context is not referenced free it */
-    if ( myPosition->nbRef <= 0 ) {
+    if ( myPosition -> nbRef <= 0 ) {
         
         /* we could still exploit it in a cycle Restore Save
            if nbRef < 0 we really want to free it */
-        if ( lastContextPos == myPosition && myPosition->nbRef == 0 ) 
+        if ( lastContextPos == myPosition && myPosition -> nbRef == 0 ) 
             return ;
-        if ( myPosition->oldPos != -1 ) {
-            free(myPosition->string);
-            myPosition->string =  (char *)0 ;
+        if ( myPosition -> oldPos != -1 ) {
+            free(myPosition -> string);
+            myPosition -> string =  (char *)0 ;
         }
-        if ( myPosition->oldPosStock != -1 ) {
-            free(myPosition->stringStock);
-            myPosition->stringStock =  (char *)0 ;
+        if ( myPosition -> oldPosStock != -1 ) {
+            free(myPosition -> stringStock);
+            myPosition -> stringStock =  (char *)0 ;
         }
-        if ( myPosition->lexElstring ) {
-            free(myPosition->lexElstring);
-            myPosition->lexElstring =  (char *)0 ;
+        if ( myPosition -> lexElstring ) {
+            free(myPosition -> lexElstring);
+            myPosition -> lexElstring =  (char *)0 ;
         }
         if ( myPosition == lastContextPos ) 
             lastContextPos =  0 ;
@@ -1901,11 +2034,11 @@ PLIST_TREE _fastcall AllocListTree ( PPTREE elem, PLIST_TREE list )
     
     if ( listTree ) {
         list_elem =  listTree ;
-        listTree  =  listTree->Next ;
+        listTree  =  listTree -> Next ;
     } else 
         list_elem =  (PLIST_TREE)malloc(sizeof(LIST_TREE));
-    list_elem->Next =  list ;
-    list_elem->tree =  elem ;
+    list_elem -> Next =  list ;
+    list_elem -> tree =  elem ;
     return list_elem ;
 }
 
@@ -1929,40 +2062,40 @@ void _fastcall MulFreeTreeInt ( PLIST_TREE list )
         headLastTree =  (PPTREE)0 ;
     deb =  end = list ;
     while ( deb ) {
-        pTree =  deb->tree ;
+        pTree =  deb -> tree ;
         if ( !pTree || pTree == (PPTREE) -1 ) 
             goto fin ;
         while ( (father = FatherTree(pTree)) != (PPTREE)0 ) 
             pTree =  father ;
-        for ( curr = list ; curr != end ; curr =  curr->Next ) 
-            if ( curr->tree == pTree ) 
+        for ( curr = list ; curr != end ; curr =  curr -> Next ) 
+            if ( curr -> tree == pTree ) 
                 goto fin ;
-        if ( end->tree != pTree ) {
-            end->tree =  pTree ;
+        if ( end -> tree != pTree ) {
+            end -> tree =  pTree ;
         }
-        end =  end->Next ;
+        end =  end -> Next ;
     fin : 
-        deb = deb->Next ;
+        deb = deb -> Next ;
     }
     
     // look if _lastTree will not be freed
-    for ( curr = list ; curr != end ; curr =  curr->Next ) {
-        if ( curr->tree == headLastTree ) 
+    for ( curr = list ; curr != end ; curr =  curr -> Next ) {
+        if ( curr -> tree == headLastTree ) 
             _lastTree =  (PPTREE)0 ;
     }
     
     // free all trees
-    for ( curr = list ; curr != end ; curr =  curr->Next ) {
+    for ( curr = list ; curr != end ; curr =  curr -> Next ) {
         if ( curr ) 
             deb =  curr ;
-        FreeTree(curr->tree);
+        FreeTree(curr -> tree);
     }
     
     // search last in list
-    for ( curr = deb ; curr ; curr =  curr->Next ) 
+    for ( curr = deb ; curr ; curr =  curr -> Next ) 
         deb =  curr ;
-    deb->Next =  listTree ;
-    listTree  =  list ;
+    deb -> Next =  listTree ;
+    listTree    =  list ;
 }
 
 #if !defined(VARARGS_2)
@@ -2027,10 +2160,16 @@ debut :
     if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
         return ;
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( addRefCritical ) 
+        
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+        
+        if ( kAddRefCritical ) 
             WaitForSingleObject(addRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
+        
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+        
+        if ( kAddRefCritical ) 
             EnterCriticalSection(&addRefCritical);
 #   endif
     
@@ -2038,27 +2177,30 @@ debut :
     if ( CacheRead((char *)tree + sizeof(int)) & REF_MASK ) {
         SON_WRITE(tree, -1, 0); /* rip his father */ 
 #       if defined(BORLAND) || defined(VISUAL)
-            if ( addRefCritical ) 
+            if ( kAddRefCritical ) 
                 ReleaseSemaphore(addRefCritical, 1, 0);
 #       elif defined(HAS_POSIX_SEMAPHORE)
-            if ( addRefCritical ) 
+            if ( kAddRefCritical ) 
                 LeaveCriticalSection(&addRefCritical);
 #       endif
         return ;
     }
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( addRefCritical ) 
-            ReleaseSemaphore(addRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            LeaveCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kAddRefCritical ) 
+                ReleaseSemaphore(addRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                LeaveCriticalSection(&addRefCritical);
+#       endif
+    }
     switch ( NumberTree(tree) ) {
         case TERM_TREE : 
             
             /* terminal tree */
             newTree = (PPTREE)SON_READ(tree, 0); /* comments */ 
-            FreeString((char *)SON_READ(tree, 1), ((char *)SON_READ(tree, 2) - (char *)0));
+            TreeFreeString((char *)SON_READ(tree, 1), ((char *)SON_READ(tree, 2) - (char *)0));
             FreeNodeTree(2, tree);
             tree = newTree ;
             goto debut ;
@@ -2071,7 +2213,7 @@ debut :
             break ;
         case CLASS_TREE : 
             newTree = (PPTREE)SON_READ(tree, 0); /* comments */ 
-            ((TreeClass *)SON_READ(tree, 1))->Destroy(tree);
+            ((TreeClass *)SON_READ(tree, 1)) -> Destroy(tree);
             tree = newTree ;
             goto debut ;
         case GEO : 
@@ -2113,7 +2255,7 @@ PPTREE _fastcall CopyTree ( const PPTREE tree )
         case TERM_TREE : 
             
             /* terminal tree */
-            myTree = LMakeString(CacheAddrRead(SON_READ(tree, 1)), (char *)SON_READ(tree, 2) - (char *)0);
+            myTree = LCopyString(tree);
             CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
             ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
             return myTree ;
@@ -2127,7 +2269,7 @@ PPTREE _fastcall CopyTree ( const PPTREE tree )
         case CLASS_TREE : 
             myTree = MakeTree(CLASS_TREE, 1);
             CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide class*/ 
-            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1))->Copy()));
+            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
             CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
             ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
             return myTree ;
@@ -2173,7 +2315,7 @@ unsigned int TreeSize ( PPTREE tree )
             return TreeSize((PPTREE)SON_READ(tree, 0)) + (1 + 2) * sizeof(PPTREE) + 2 * sizeof(int);
             break ;
         case CLASS_TREE : 
-            return TreeSize((PPTREE)SON_READ(tree, 0)) + (1 + 2) * sizeof(PPTREE) + 2 * sizeof(int) + ((TreeClass *)SON_READ(tree, 1))->Size();
+            return TreeSize((PPTREE)SON_READ(tree, 0)) + (1 + 2) * sizeof(PPTREE) + 2 * sizeof(int) + ((TreeClass *)SON_READ(tree, 1)) -> Size();
             break ;
         case GEO : 
             return TreeSize((PPTREE)SON_READ(tree, 0)) + (2 + 2) * sizeof(PPTREE) + 2 * sizeof(int);
@@ -2203,7 +2345,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
         case TERM_TREE : 
             
             /* terminal tree */
-            myTree = LMakeString(CacheAddrRead(SON_READ(tree, 1)), (char *)SON_READ(tree, 2) - (char *)0);
+            myTree = LCopyString(tree);
             CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
             return myTree ;
         case REF_TREE : 
@@ -2215,7 +2357,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
         case CLASS_TREE : 
             myTree = MakeTree(CLASS_TREE, 1);
             CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide class */ 
-            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1))->Copy()));
+            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
             CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
             return myTree ;
         case GEO : 
@@ -2250,7 +2392,7 @@ PCOMM_ELEM AllocCommElem ()
     
     if ( listCommFree ) {
         ptComm       =  listCommFree ;
-        listCommFree =  listCommFree->next ;
+        listCommFree =  listCommFree -> next ;
     } else 
         ptComm =  (PCOMM_ELEM)malloc(sizeof(COMM_ELEM));
     return (ptComm);
@@ -2264,14 +2406,14 @@ void FreeHeadComm ()
 {
     PCOMM_ELEM  commElem = listComm ;
     
-    listComm       =  listComm->next ;
-    commElem->next =  listCommFree ;
-    listCommFree   =  commElem ;
+    listComm         =  listComm -> next ;
+    commElem -> next =  listCommFree ;
+    listCommFree     =  commElem ;
     
     // if content has no father free it
-    if ( !FatherTree(commElem->content) ) {
-        FreeTree(commElem->content);
-        commElem->content =  (PPTREE)0 ;
+    if ( !FatherTree(commElem -> content) ) {
+        FreeTree(commElem -> content);
+        commElem -> content =  (PPTREE)0 ;
     }
 }
 
@@ -2285,7 +2427,7 @@ void FreeComm ( PCOMM_ELEM elem )
     
     while ( commElem && commElem != elem ) {
         oldPt    =  commElem ;
-        commElem =  commElem->next ;
+        commElem =  commElem -> next ;
     }
     if ( commElem == elem ) 
         if ( oldPt == commElem ) 
@@ -2293,14 +2435,14 @@ void FreeComm ( PCOMM_ELEM elem )
             FreeHeadComm();
         else 
         {
-            oldPt->next    =  commElem->next ;
-            commElem->next =  listCommFree ;
-            listCommFree   =  commElem ;
+            oldPt -> next    =  commElem -> next ;
+            commElem -> next =  listCommFree ;
+            listCommFree     =  commElem ;
             
             // if content has no father free it
-            if ( !FatherTree(commElem->content) ) {
-                FreeTree(commElem->content);
-                commElem->content =  (PPTREE)0 ;
+            if ( !FatherTree(commElem -> content) ) {
+                FreeTree(commElem -> content);
+                commElem -> content =  (PPTREE)0 ;
             }
         }
 }
@@ -2313,8 +2455,8 @@ PCOMM_ELEM CreateComm ()
 {
     PCOMM_ELEM  pCommElem = AllocCommElem();
     
-    pCommElem->next =  listComm ;
-    listComm        =  pCommElem ;
+    pCommElem -> next =  listComm ;
+    listComm          =  pCommElem ;
     return pCommElem ;
 }
 
@@ -2330,13 +2472,13 @@ void begin_comment ()
 {
     PCOMM_ELEM  ptCommElem = CreateComm();
     
-    ptCommElem->content   =  (PPTREE)0 ;
-    ptCommElem->collected =  0 ;
+    ptCommElem -> content   =  (PPTREE)0 ;
+    ptCommElem -> collected =  0 ;
     if ( col == col_deb && line == line_end + 1 && firstOnLine ) 
-        ptCommElem->type =  2 ;
+        ptCommElem -> type =  2 ;
     else if ( firstOnLine ) {
-        col_deb          =  -1 ;
-        ptCommElem->type =  1 ;
+        col_deb            =  -1 ;
+        ptCommElem -> type =  1 ;
     } else {
         col_deb =  col ;
         
@@ -2345,10 +2487,10 @@ void begin_comment ()
            is no rule between then, they must have the same type.
            */
         /*     We avoid a post following a pre on the same node */
-        if ( ptCommElem && ptCommElem->next && ptCommElem->next->type == 1 && line == line_end && !rule_between ) 
-            ptCommElem->type =  1 ;
+        if ( ptCommElem && ptCommElem -> next && ptCommElem -> next -> type == 1 && line == line_end && !rule_between ) 
+            ptCommElem -> type =  1 ;
         else 
-            ptCommElem->type =  0 ;
+            ptCommElem -> type =  0 ;
         /*>*/
     }
     filledComment =  ptCommElem ;
@@ -2360,8 +2502,8 @@ void begin_comment ()
    ***************************************************************/
 void store_comment_line ( int nb ) /*nb  number of characters in comment line */ 
 {
-    filledComment->content =  AddList(filledComment->content, MakeString(lexEl.string()));
-    line_end               =  line ;
+    filledComment -> content =  AddList(filledComment -> content, MakeString(lexEl.string()));
+    line_end                 =  line ;
 }
 
 /**************************************************************
@@ -2376,13 +2518,13 @@ int store_pos_as_comment ( int line, int col, int type )
     
     if ( line == storLine && col == storCol ) 
         return 1 ;
-    storLine              =  line ;
-    storCol               =  col ;
-    ptCommElem            =  CreateComm();
-    ptCommElem->content   =  (PPTREE)0 ;
-    ptCommElem->collected =  0 ;
-    ptCommElem->type      =  type ;
-    filledComment         =  ptCommElem ;
+    storLine                =  line ;
+    storCol                 =  col ;
+    ptCommElem              =  CreateComm();
+    ptCommElem -> content   =  (PPTREE)0 ;
+    ptCommElem -> collected =  0 ;
+    ptCommElem -> type      =  type ;
+    filledComment           =  ptCommElem ;
     //sprintf(string, POS_STUB_FORMAT, line, col);
     strcpy(ptString, POS_STUB);
     ptString    += strlen(ptString);
@@ -2391,7 +2533,7 @@ int store_pos_as_comment ( int line, int col, int type )
     ptString    += strlen(ptString);
     *ptString++ =  ' ';
     _itoa(col, ptString, 10);
-    filledComment->content =  AddList(filledComment->content, MakeString(string));
+    filledComment -> content =  AddList(filledComment -> content, MakeString(string));
     return 1 ;
 }
 
@@ -2411,10 +2553,10 @@ PCOMM_ELEM _fastcall LookComm ( int *ptNbPre )
     if ( !listComm ) 
         return (PCOMM_ELEM)0 ;
     ptComm =  listComm ;
-    while ( ptComm && (!ptComm->collected || ptComm->collected == _funcLevel) ) {
-        ptComm->collected =  _funcLevel ;
+    while ( ptComm && (!ptComm -> collected || ptComm -> collected == _funcLevel) ) {
+        ptComm -> collected =  _funcLevel ;
         (*ptNbPre)++ ;
-        ptComm =  ptComm->next ;
+        ptComm =  ptComm -> next ;
     }
     return listComm ;
 }
@@ -2439,32 +2581,32 @@ void SwitchCommType ( PCOMM_ELEM ptPreComm, int nbPre, int before, PPTREE node, 
         firstPre =  0 ;
     else 
         firstPre =  32000 ;
-    for ( i     = nbPre, inter = ptPreComm ; i ; i--, inter =  inter->next ) {
+    for ( i     = nbPre, inter = ptPreComm ; i ; i--, inter =  inter -> next ) {
         
         /* doesn't take into account the pos comment */
-        if ( strncmp(Value(inter->content), POS_STUB, strlen(POS_STUB)) && inter->type == 1 ) 
+        if ( strncmp(Value(inter -> content), POS_STUB, strlen(POS_STUB)) && inter -> type == 1 ) 
             firstPre =  i ;
     }
     
     /* then modify types accordingly */
-    for ( i     = nbPre, inter = ptPreComm ; i ; i--, inter =  inter->next ) {
+    for ( i     = nbPre, inter = ptPreComm ; i ; i--, inter =  inter -> next ) {
         if ( before && !node ) {
             
             /* if !node put everything in pre or post */
-            inter->collected =  0 ;
+            inter -> collected =  0 ;
             if ( oldNode ) {
-                if ( inter->type == 1 ) 
-                    inter->type =  0 ; /* post comment */ 
+                if ( inter -> type == 1 ) 
+                    inter -> type =  0 ; /* post comment */ 
             } else 
-                inter->type =  1 ; /* pre comment */ 
+                inter -> type =  1 ; /* pre comment */ 
         } else if ( i >= firstPre ) {
             
             /* otherwise trigger the computed node in pre */
-            inter->type =  1 ;
+            inter -> type =  1 ;
         } else {
             
             /* after node put pos comment in post mode if necessary */
-            inter->type =  0 ;
+            inter -> type =  0 ;
         }
     }
 }
@@ -2484,33 +2626,33 @@ void _fastcall AddComm ( PCOMM_ELEM ptPreComm, int nbPre, PPTREE node, PPTREE ol
     list_post =  list_pre = (PPTREE)0 ;
     if ( (node || oldNode) && nbPre ) {
         while ( nbPre ) {
-            if ( ptPreComm->type == 1 || !oldNode ) {
+            if ( ptPreComm -> type == 1 || !oldNode ) {
                 inter1 =  MakeTree(PRE, 1);
-                ReplaceTree(inter1, 1, ptPreComm->content);
+                ReplaceTree(inter1, 1, ptPreComm -> content);
                 list_pre =  AddList(inter1, list_pre);
                 
                 /* frame comment */
-                if ( SON_READ(ptPreComm->content, 2) ) 
-                    Frame(ptPreComm->content);
+                if ( SON_READ(ptPreComm -> content, 2) ) 
+                    Frame(ptPreComm -> content);
                 
                 /* free comment keeper */
                 inter     =  ptPreComm ;
-                ptPreComm =  ptPreComm->next ;
+                ptPreComm =  ptPreComm -> next ;
                 if ( keepPreComm == inter ) 
                     keepPreComm =  ptPreComm ;
                 FreeComm(inter);
             } else {
-                inter1 =  MakeTree(ptPreComm->type == 0 ? POST : PREPOST, 1);
-                ReplaceTree(inter1, 1, ptPreComm->content);
+                inter1 =  MakeTree(ptPreComm -> type == 0 ? POST : PREPOST, 1);
+                ReplaceTree(inter1, 1, ptPreComm -> content);
                 list_post =  AddList(inter1, list_post);
                 
                 /* frame comment */
-                if ( ptPreComm->content && SON_READ(ptPreComm->content, 2) ) 
-                    Frame(ptPreComm->content);
+                if ( ptPreComm -> content && SON_READ(ptPreComm -> content, 2) ) 
+                    Frame(ptPreComm -> content);
                 
                 /* free comment keeper */
                 inter     =  ptPreComm ;
-                ptPreComm =  ptPreComm->next ;
+                ptPreComm =  ptPreComm -> next ;
                 if ( keepPreComm == inter ) 
                     keepPreComm =  ptPreComm ;
                 FreeComm(inter);
@@ -2524,15 +2666,15 @@ void _fastcall AddComm ( PCOMM_ELEM ptPreComm, int nbPre, PPTREE node, PPTREE ol
             ReplaceTree(oldNode, 0, AddListList((PPTREE)SON_READ(oldNode, 0), list_post));
         }
     }
-    if ( listComm && !listComm->collected ) {
+    if ( listComm && !listComm -> collected ) {
         list_post =  (PPTREE)0 ;
         ptPreComm =  listComm ;
         
         /* count the number of comm to look for */
         nbPre     =  0 ;
-        while ( ptPreComm && !ptPreComm->collected ) {
+        while ( ptPreComm && !ptPreComm -> collected ) {
             nbPre++ ;
-            ptPreComm =  ptPreComm->next ;
+            ptPreComm =  ptPreComm -> next ;
         }
         
         /* switch type */
@@ -2540,25 +2682,25 @@ void _fastcall AddComm ( PCOMM_ELEM ptPreComm, int nbPre, PPTREE node, PPTREE ol
         
         /* treat comments */
         ptPreComm =  listComm ;
-        while ( ptPreComm && !ptPreComm->collected ) 
-            if ( (ptPreComm->type == 0 || ptPreComm->type == 2 || ptPreComm->type == PRIORITY) && node ) {
-                inter1 =  MakeTree(ptPreComm->type == 0 ? POST : PREPOST, 1);
-                ReplaceTree(inter1, 1, ptPreComm->content);
+        while ( ptPreComm && !ptPreComm -> collected ) 
+            if ( (ptPreComm -> type == 0 || ptPreComm -> type == 2 || ptPreComm -> type == PRIORITY) && node ) {
+                inter1 =  MakeTree(ptPreComm -> type == 0 ? POST : PREPOST, 1);
+                ReplaceTree(inter1, 1, ptPreComm -> content);
                 list_post =  AddList(inter1, list_post);
                 
                 /* frame comment */
-                if ( SON_READ(ptPreComm->content, 2) ) 
-                    Frame(ptPreComm->content);
+                if ( SON_READ(ptPreComm -> content, 2) ) 
+                    Frame(ptPreComm -> content);
                 
                 /* manage comment keeper */
                 inter     =  ptPreComm ;
-                ptPreComm =  ptPreComm->next ;
+                ptPreComm =  ptPreComm -> next ;
                 if ( keepPreComm == inter ) 
                     keepPreComm =  ptPreComm ;
                 FreeComm(inter);
             } else {
-                ptPreComm->type =  1 ; /* pre comment of next node */ 
-                ptPreComm       =  ptPreComm->next ;
+                ptPreComm -> type =  1 ; /* pre comment of next node */ 
+                ptPreComm         =  ptPreComm -> next ;
             }
         if ( list_post && node ) {
             ReplaceTree(node, 0, AddListList((PPTREE)SON_READ(node, 0), list_post));
@@ -2567,9 +2709,9 @@ void _fastcall AddComm ( PCOMM_ELEM ptPreComm, int nbPre, PPTREE node, PPTREE ol
         /* mark commentaries which were before the node and which are still
            here */
         ptPreComm =  keepPreComm ;
-        while ( ptPreComm && !ptPreComm->collected ) {
-            ptPreComm->type =  PRIORITY ;
-            ptPreComm       =  ptPreComm->next ;
+        while ( ptPreComm && !ptPreComm -> collected ) {
+            ptPreComm -> type =  PRIORITY ;
+            ptPreComm         =  ptPreComm -> next ;
         }
     }
     _lastTree =  node ;
@@ -3137,11 +3279,13 @@ char *LtoaQuick ( long nb, char *string, int length )
 
 char *CompactItoa ( int nb )
 {
+    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+    
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             WaitForSingleObject(storeRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             EnterCriticalSection(&storeRefCritical);
 #   endif
     if ( ++indexItoa >= NB_ITOA ) 
@@ -3151,22 +3295,24 @@ char *CompactItoa ( int nb )
     
     sResult =  ItoaQuick(nb, sResult, MAXLENGTH);
 #   if defined(BORLAND) || defined(VISUAL)
-        if ( storeRefCritical ) 
-            ReleaseSemaphore(storeRefCritical, 1, 0);
+        if ( kStoreCritical ) 
+            ReleaseSemaphore(kStoreCritical, 1, 0);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
-            LeaveCriticalSection(&storeRefCritical);
+        if ( kStoreCritical ) 
+            LeaveCriticalSection(&kStoreCritical);
 #   endif
     return sResult ;
 }
 
 char *CompactLtoa ( long nb )
 {
+    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+    
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             WaitForSingleObject(storeRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             EnterCriticalSection(&storeRefCritical);
 #   endif
     if ( ++indexItoa >= NB_ITOA ) 
@@ -3176,22 +3322,24 @@ char *CompactLtoa ( long nb )
     
     sResult =  LtoaQuick(nb, sResult, MAXLENGTH);
 #   if defined(BORLAND) || defined(VISUAL)
-        if ( storeRefCritical ) 
-            ReleaseSemaphore(storeRefCritical, 1, 0);
+        if ( kStoreCritical ) 
+            ReleaseSemaphore(kStoreCritical, 1, 0);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
-            LeaveCriticalSection(&storeRefCritical);
+        if ( kStoreCritical ) 
+            LeaveCriticalSection(&kStoreCritical);
 #   endif
     return sResult ;
 }
 
 char *CompactRtoa ( float nb )
 {
+    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+    
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             WaitForSingleObject(storeRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             EnterCriticalSection(&storeRefCritical);
 #   endif
     if ( ++indexItoa >= NB_ITOA ) 
@@ -3201,10 +3349,10 @@ char *CompactRtoa ( float nb )
     
     sprintf(sResult, "%.7e", nb);
 #   if defined(BORLAND) || defined(VISUAL)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             ReleaseSemaphore(storeRefCritical, 1, 0);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             LeaveCriticalSection(&storeRefCritical);
 #   endif
     return sResult ;
@@ -3245,12 +3393,12 @@ int AddConstVal ( const char *stringt, int val )
     if ( (number = FindConst(stringt)) != -1 ) 
         return number ;
     else {
-        point         =  (STRINGELEM *)malloc(sizeof(STRINGELEM));
-        point->string =  AllocString(stringt);
-        point->Value  =  val ;
-        point->next   =  listConst ;
-        listConst     =  point ;
-        return point->Value ;
+        point           =  (STRINGELEM *)malloc(sizeof(STRINGELEM));
+        point -> string =  AllocString(stringt);
+        point -> Value  =  val ;
+        point -> next   =  listConst ;
+        listConst       =  point ;
+        return point -> Value ;
     }
 }
 
@@ -3264,9 +3412,9 @@ int FindConst ( const char *string )
     
     point =  listConst ;
     while ( point ) {
-        if ( !strcmp(string, point->string) ) 
-            return point->Value ;
-        point =  point->next ;
+        if ( !strcmp(string, point -> string) ) 
+            return point -> Value ;
+        point =  point -> next ;
     }
     return -1 ;
 }
@@ -3281,9 +3429,9 @@ char *NameConst ( int numb )
     
     point =  listConst ;
     while ( point ) {
-        if ( point->Value == numb ) 
-            return point->string ;
-        point =  point->next ;
+        if ( point -> Value == numb ) 
+            return point -> string ;
+        point =  point -> next ;
     }
     return (char *)0 ;
 }
@@ -3296,26 +3444,26 @@ static PLANG    lang = (PLANG)0 ;
 /****************************************************************/
 void AddLang
 (
-const char *name, /* fArity, */ 
-int *tArity, 
-STRINGELEM *lConst, 
-PPTREE(*parser)(int), 
-int nbNode, 
-OVER_LANG *overLang 
+    const char *name, /* fArity, */ 
+    int *tArity, 
+    STRINGELEM *lConst, 
+    PPTREE(*parser)(int), 
+    int nbNode, 
+    OVER_LANG *overLang 
 )
 {
     PLANG   myLang ;
     
-    myLang               =  (PLANG)malloc(sizeof(LANG));
-    myLang->name         =  AllocString(name);
-    myLang->arityNode    =  tArity ;
-    myLang->listConst    =  lConst ;
-    myLang->parse_entry  =  parser ;
-    myLang->Next         =  lang ;
-    myLang->languageMask =  (nbLanguage++ & LANG_MASK) << (NODE_BIT);
-    myLang->nbNode       =  nbNode ;
-    myLang->overLang     =  overLang ;
-    lang                 =  myLang ;
+    myLang                 =  (PLANG)malloc(sizeof(LANG));
+    myLang -> name         =  AllocString(name);
+    myLang -> arityNode    =  tArity ;
+    myLang -> listConst    =  lConst ;
+    myLang -> parse_entry  =  parser ;
+    myLang -> Next         =  lang ;
+    myLang -> languageMask =  (nbLanguage++ & LANG_MASK) << (NODE_BIT);
+    myLang -> nbNode       =  nbNode ;
+    myLang -> overLang     =  overLang ;
+    lang                   =  myLang ;
 }
 
 /******************************************************************
@@ -3328,8 +3476,8 @@ void SwitchLang ( const char *name )
     
     if ( !name ) 
         return ;
-    while ( myLang && strcmp(myLang->name, name) ) 
-        myLang =  myLang->Next ;
+    while ( myLang && strcmp(myLang -> name, name) ) 
+        myLang =  myLang -> Next ;
     if ( !myLang ) {
         
         /* write(2, "Unknown Language \n", 18); */
@@ -3338,11 +3486,11 @@ void SwitchLang ( const char *name )
     
     /* suppression arity EL le 12/10/93 */
     /*    FuncArity = myLang -> FuncArity ; */
-    tabArity           =  myLang->arityNode ;
-    listConst          =  myLang->listConst ;
-    the_parse_entry_pt =  myLang->parse_entry ;
-    languageMask       =  myLang->languageMask ;
-    currentLanguage    =  myLang->name ;
+    tabArity           =  myLang -> arityNode ;
+    listConst          =  myLang -> listConst ;
+    the_parse_entry_pt =  myLang -> parse_entry ;
+    languageMask       =  myLang -> languageMask ;
+    currentLanguage    =  myLang -> name ;
     pCurrentLanguage   =  myLang ;
 }
 
@@ -3365,14 +3513,14 @@ void ComputeLang ( char *name )
     
     if ( !name ) 
         return ;
-    while ( myLang && strcmp(myLang->name, name) ) 
-        myLang =  myLang->Next ;
+    while ( myLang && strcmp(myLang -> name, name) ) 
+        myLang =  myLang -> Next ;
     if ( !myLang ) 
         _write(2, "Unknown Language \n", 18);
-    pConst =  myLang->listConst ;
+    pConst =  myLang -> listConst ;
     while ( pConst ) {
         i++ ;
-        pConst =  pConst->next ;
+        pConst =  pConst -> next ;
     }
     numbConstLang += i ;
 }
@@ -3456,30 +3604,30 @@ void LoadLang ( char *name )
         listConst =  listConstLang ;
         if ( !(myLang = GetLang(name)) ) 
             return ;
-        newListConst =  myLang->listConst ;
+        newListConst =  myLang -> listConst ;
         while ( newListConst ) {
             i++ ;
-            theName =  ConstName(newListConst->string);
+            theName =  ConstName(newListConst -> string);
             if ( FindConst(theName) == -1 ) {
-                AddConstVal(theName, newListConst->Value + offsetLang);
-                if ( i <= myLang->nbNode + 1 ) 
-                    tabArityLang [offsetLang + newListConst->Value] =  myLang->arityNode [newListConst->Value];
+                AddConstVal(theName, newListConst -> Value + offsetLang);
+                if ( i <= myLang -> nbNode + 1 ) 
+                    tabArityLang [offsetLang + newListConst -> Value] =  myLang -> arityNode [newListConst -> Value];
                 else 
-                    tabArityLang [offsetLang + newListConst->Value] =  -1 ;
+                    tabArityLang [offsetLang + newListConst -> Value] =  -1 ;
             } else 
                 free(theName);
-            newListConst =  newListConst->next ;
+            newListConst =  newListConst -> next ;
         }
         
         /* update overLang list for language */
-        pOverLang         =  (PLOVER_LANG)malloc(sizeof(LOVER_LANG));
-        pOverLang->name   =  AllocString(name);
-        pOverLang->offset =  offsetLang ;
-        pOverLang->next   =  listOverLang ;
-        listOverLang      =  pOverLang ;
-        offsetLang        += i ;
-        listConstLang     =  listConst ;
-        listConst         =  oldListConst ;
+        pOverLang           =  (PLOVER_LANG)malloc(sizeof(LOVER_LANG));
+        pOverLang -> name   =  AllocString(name);
+        pOverLang -> offset =  offsetLang ;
+        pOverLang -> next   =  listOverLang ;
+        listOverLang        =  pOverLang ;
+        offsetLang          += i ;
+        listConstLang       =  listConst ;
+        listConst           =  oldListConst ;
 #   endif
 }
 
@@ -3514,16 +3662,16 @@ void DumpConstLang ()
     STRINGELEM  *tree = listConstLang ;
     
     while ( tree ) {
-        if ( tree->Value >= 6 ) {
+        if ( tree -> Value >= 6 ) {
             WriteString("#define ");
-            WriteString(tree->string);
+            WriteString(tree -> string);
             WriteString(" ");
-            _itoa(tree->Value, NumbString, 10);
+            _itoa(tree -> Value, NumbString, 10);
             Tab();
             WriteString(NumbString);
             NewLine();
         }
-        tree =  tree->next ;
+        tree =  tree -> next ;
     }
 }
 
@@ -3569,11 +3717,11 @@ void DumpCLang ()
     Tab();
     Mark();
     j =  0 ;
-    for ( pOverLang = listOverLang ; pOverLang ; pOverLang =  pOverLang->next ) {
+    for ( pOverLang = listOverLang ; pOverLang ; pOverLang =  pOverLang -> next ) {
         WriteString("{\"");
-        WriteString(pOverLang->name);
+        WriteString(pOverLang -> name);
         WriteString("\",");
-        _itoa(pOverLang->offset, numb, 10);
+        _itoa(pOverLang -> offset, numb, 10);
         WriteString(numb);
         WriteString("}");
         WriteString(",");
@@ -3615,13 +3763,13 @@ void DumpCLang ()
     tree =  listConstLang ;
     while ( tree ) {
         WriteString("AddConstVal(\"");
-        WriteString(tree->string);
+        WriteString(tree -> string);
         WriteString("\", ");
-        _itoa(tree->Value, NumbString, 10);
+        _itoa(tree -> Value, NumbString, 10);
         WriteString(NumbString);
         WriteString(");");
         NewLine();
-        tree =  tree->next ;
+        tree =  tree -> next ;
     }
     WriteString("AddConstVal(\"LIST\",0);");
     NewLine();
@@ -3672,8 +3820,8 @@ PLANG GetLang ( char *name )
         return (PLANG)0 ;
     if ( !myLang ) 
         return (PLANG)0 ;
-    while ( myLang && strcmp(myLang->name, name) ) 
-        myLang =  myLang->Next ;
+    while ( myLang && strcmp(myLang -> name, name) ) 
+        myLang =  myLang -> Next ;
     if ( !myLang ) 
         _write(2, "Unknown Language \n", 18);
     return myLang ;
@@ -3688,8 +3836,8 @@ PLANG GetNodeLang ( PPTREE tree )
     int     mask = CacheRead(tree) & ~(NODE_MASK)&0xFFFF ;
     PLANG   myLang = lang ;
     
-    while ( myLang && mask != myLang->languageMask ) 
-        myLang =  myLang->Next ;
+    while ( myLang && mask != myLang -> languageMask ) 
+        myLang =  myLang -> Next ;
     if ( !myLang ) 
         _write(2, "Unknown Language for node \n", 23);
     return myLang ;
@@ -3703,8 +3851,8 @@ void SwitchLangMask ( int mask )
 {
     PLANG   myLang = lang ;
     
-    while ( myLang && mask != myLang->languageMask ) 
-        myLang =  myLang->Next ;
+    while ( myLang && mask != myLang -> languageMask ) 
+        myLang =  myLang -> Next ;
     if ( !myLang ) {
         _write(2, "Unknown Language mask \n", 23);
         pCurrentLanguage =  (PLANG)0 ;
@@ -3713,11 +3861,11 @@ void SwitchLangMask ( int mask )
     
     /* EL le 12/10*/
     /*    FuncArity = myLang -> FuncArity ; */
-    tabArity           =  myLang->arityNode ;
-    listConst          =  myLang->listConst ;
-    the_parse_entry_pt =  myLang->parse_entry ;
-    languageMask       =  myLang->languageMask ;
-    currentLanguage    =  myLang->name ;
+    tabArity           =  myLang -> arityNode ;
+    listConst          =  myLang -> listConst ;
+    the_parse_entry_pt =  myLang -> parse_entry ;
+    languageMask       =  myLang -> languageMask ;
+    currentLanguage    =  myLang -> name ;
     pCurrentLanguage   =  myLang ;
 }
 
@@ -3735,11 +3883,11 @@ void SwitchLangPoint ( PLANG myLang )
     
     /* EL le 12/10/93
        FuncArity = myLang -> FuncArity ; */
-    tabArity           =  myLang->arityNode ;
-    listConst          =  myLang->listConst ;
-    the_parse_entry_pt =  myLang->parse_entry ;
-    languageMask       =  myLang->languageMask ;
-    currentLanguage    =  myLang->name ;
+    tabArity           =  myLang -> arityNode ;
+    listConst          =  myLang -> listConst ;
+    the_parse_entry_pt =  myLang -> parse_entry ;
+    languageMask       =  myLang -> languageMask ;
+    currentLanguage    =  myLang -> name ;
     pCurrentLanguage   =  myLang ;
 }
 
@@ -3760,26 +3908,30 @@ PPTREE the_parse_entry ( int error_free )
 void _fastcall AddRef ( PPTREE tree )
 {
     register int    *node ;
+    HAND_CRIT       kAddRefCritical(GetAddRefCritical());
     
     if ( !tree || tree == (PPTREE) -1 ) 
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( addRefCritical ) 
+        if ( kAddRefCritical ) 
             WaitForSingleObject(addRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
+        if ( kAddRefCritical ) 
             EnterCriticalSection(&addRefCritical);
 #   endif
     *node =  (*node & REF_MASK) + 1 | *node & ~(REF_MASK);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( addRefCritical ) 
-            ReleaseSemaphore(addRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            LeaveCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kAddRefCritical ) 
+                ReleaseSemaphore(addRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                LeaveCriticalSection(&addRefCritical);
+#       endif
+    }
     if ( !(*node & REF_MASK) ) {
         MetaExit(2, "Abort : Invalid (null) Reference Number\n");
     }
@@ -3797,21 +3949,27 @@ void _fastcall RemRef ( PPTREE tree )
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( addRefCritical ) 
-            WaitForSingleObject(addRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            EnterCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kAddRefCritical ) 
+                WaitForSingleObject(addRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                EnterCriticalSection(&addRefCritical);
+#       endif
+    }
     *node =  (*node & REF_MASK) - 1 | *node & ~(REF_MASK);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( addRefCritical ) 
-            ReleaseSemaphore(addRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            LeaveCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kAddRefCritical ) 
+                ReleaseSemaphore(addRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                LeaveCriticalSection(&addRefCritical);
+#       endif
+    }
 }
 
 /******************************************************************
@@ -3827,21 +3985,27 @@ void _fastcall FreeRef ( PPTREE tree )
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( addRefCritical ) 
-            WaitForSingleObject(addRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            EnterCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kAddRefCritical ) 
+                WaitForSingleObject(addRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                EnterCriticalSection(&addRefCritical);
+#       endif
+    }
     *node =  (nbRef = (*node & REF_MASK) - 1) | *node & ~(REF_MASK);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( addRefCritical ) 
-            ReleaseSemaphore(addRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( addRefCritical ) 
-            LeaveCriticalSection(&addRefCritical);
-#   endif
+    {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kAddRefCritical ) 
+                ReleaseSemaphore(addRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                LeaveCriticalSection(&addRefCritical);
+#       endif
+    }
     if ( nbRef < 0 ) {
         MetaExit(2, "Abort : Invalid Reference Number\n");
     }
@@ -3908,19 +4072,19 @@ void MarkCoordTree ( PPTREE tree, int x, int y )
     /* try to find a coord elem in free list */
     pCoord =  listFreeCoord ;
     if ( pCoord ) {
-        listFreeCoord =  listFreeCoord->next ;
+        listFreeCoord =  listFreeCoord -> next ;
     } else {
         pCoord =  (PCOORD_ELEM)malloc(sizeof(COORD_ELEM));
     }
     
     /* fill the coord elem */
-    pCoord->tree =  tree ;
-    pCoord->x0   =  x ;
-    pCoord->y0   =  y ;
+    pCoord -> tree =  tree ;
+    pCoord -> x0   =  x ;
+    pCoord -> y0   =  y ;
     
     /* add it to the list */
-    pCoord->next =  listCoord ;
-    listCoord    =  pCoord ;
+    pCoord -> next =  listCoord ;
+    listCoord      =  pCoord ;
 }
 
 /**************************************************************
@@ -3937,12 +4101,12 @@ void UnMarkCoordTree ( PPTREE tree )
     while ( pCoord ) {
         
         /* put the elem in the free list */
-        listCoord     =  pCoord->next ;
-        pCoord->next  =  listFreeCoord ;
-        listFreeCoord =  pCoord ;
+        listCoord      =  pCoord -> next ;
+        pCoord -> next =  listFreeCoord ;
+        listFreeCoord  =  pCoord ;
         
         /* if we found the tree stop now */
-        if ( tree == pCoord->tree ) 
+        if ( tree == pCoord -> tree ) 
             break ;
         pCoord =  listCoord ;
     }
@@ -4057,9 +4221,9 @@ void GetCoordAbs ( PPTREE tree, PPTREE lim, int *x0, int *y0 )
     int     nx, ny, ndx, ndy ;
     PPTREE  father ;
     
-    if ( listCoord && tree == listCoord->tree ) {
-        *x0 =  listCoord->x0 ;
-        *y0 =  listCoord->y0 ;
+    if ( listCoord && tree == listCoord -> tree ) {
+        *x0 =  listCoord -> x0 ;
+        *y0 =  listCoord -> y0 ;
         return ;
     }
     GetCoord(tree, &x, &y, &dx, &dy);
@@ -4067,9 +4231,9 @@ void GetCoordAbs ( PPTREE tree, PPTREE lim, int *x0, int *y0 )
     while ( (father = fathertree(father)) ) {
         
         /* if we know the coordinates stop now */
-        if ( listCoord && father == listCoord->tree ) {
-            x += listCoord->x0 ;
-            y += listCoord->y0 ;
+        if ( listCoord && father == listCoord -> tree ) {
+            x += listCoord -> x0 ;
+            y += listCoord -> y0 ;
             break ;
         } else {
             GetCoord(father, &nx, &ny, &ndx, &ndy);
@@ -4267,13 +4431,14 @@ void ClearTreeStoreRef ()
 
 void ClearStoreRef ()
 {
-    PPTREE  *pt ;
+    PPTREE      *pt ;
+    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
     
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             WaitForSingleObject(storeRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             EnterCriticalSection(&storeRefCritical);
 #   endif
     try {
@@ -4293,24 +4458,24 @@ void ClearStoreRef ()
             if ( *ptStackInitialized ) 
                 while ( (*ptStackString)[size].Size() > 0 ) {
                     char    *myString = MallocString(size);
-                    free(myString);
+                    RFreeString(myString);
                 }
         }
     } catch ( ... ) {
 #       if defined(VISUAL) || defined(BORLAND)
-            if ( storeRefCritical ) 
+            if ( kStoreCritical ) 
                 ReleaseSemaphore(storeRefCritical, 1, 0);
 #       elif defined(HAS_POSIX_SEMAPHORE)
-            if ( storeRefCritical ) 
+            if ( kStoreCritical ) 
                 LeaveCriticalSection(&storeRefCritical);
 #       endif
         throw ;
     }
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
-            ReleaseSemaphore(storeRefCritical, 1, 0);
+        if ( kStoreCritical ) 
+            ReleaseSemaphore(kStoreCritical, 1, 0);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        if ( kStoreCritical ) 
             LeaveCriticalSection(&storeRefCritical);
 #   endif
 }
@@ -4322,10 +4487,16 @@ PPTREE StoreRef ( PPTREE tree )
     if ( !tree ) 
         return (PPTREE)0 ;
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
+        
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+        
+        if ( kStoreCritical ) 
             WaitForSingleObject(storeRefCritical, INFINITE);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
+        
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+        
+        if ( kStoreCritical ) 
             EnterCriticalSection(&storeRefCritical);
 #   endif
     try {
@@ -4350,19 +4521,22 @@ PPTREE StoreRef ( PPTREE tree )
         if ( toBeFreed ) 
             FreeRef(toBeFreed);
     } catch ( ... ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
 #       if defined(VISUAL) || defined(BORLAND)
-            ReleaseSemaphore(storeRefCritical, 1, 0);
+            if ( kStoreCritical ) 
+                ReleaseSemaphore(storeRefCritical, 1, 0);
 #       elif defined(HAS_POSIX_SEMAPHORE)
-            LeaveCriticalSection(&storeRefCritical);
+            if ( kStoreCritical ) 
+                LeaveCriticalSection(&storeRefCritical);
 #       endif
         throw ;
     }
 #   if defined(VISUAL) || defined(BORLAND)
-        if ( storeRefCritical ) 
-            ReleaseSemaphore(storeRefCritical, 1, 0);
+        if ( kStoreCritical ) 
+            ReleaseSemaphore(kStoreCritical, 1, 0);
 #   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( storeRefCritical ) 
-            LeaveCriticalSection(&storeRefCritical);
+        if ( kStoreCritical ) 
+            LeaveCriticalSection(&kStoreCritical);
 #   endif
     
     /* return tree */
@@ -4371,7 +4545,7 @@ PPTREE StoreRef ( PPTREE tree )
 
 const char *DispString ( EString *str )
 {
-    return str->c_str();
+    return str -> c_str();
 }
 
 // SetForReading : prepare metagen for reading
@@ -4563,10 +4737,11 @@ PPTREE Parser::ReadInFile ( int oldInput )
     PPTREE          ret = (PPTREE)0 ;
     PCOMM_ELEM      oldListComm ;
     
+    _InitArrays();
     sumAllError =  0 ;
     if ( input ) {
         position =  SavePos();
-        if ( lastContextPos && !lastContextPos->nbRef ) 
+        if ( lastContextPos && !lastContextPos -> nbRef ) 
             FreePos(lastContextPos);
         oldListComm  =  listComm ;
         saveLastTree =  _lastTree ;
@@ -4620,6 +4795,21 @@ PPTREE Parser::ReadInFile ( int oldInput )
 
 PPTREE Parser::ReadFile ( const char *name )
 {
+    bool        hasProtected (false) ;
+    HAND_CRIT   kparsingCritical(GetParsingCritical());
+    
+    if ( !reentrantProtect ) {
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kparsingCritical ) 
+                WaitForSingleObject(parsingCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kparsingCritical ) 
+                EnterCriticalSection(&parsingCritical);
+#       endif
+        reentrantProtect =  true ;
+        hasProtected     =  true ;
+    }
+    
     int     saveInput = input ;
     int     newInput ;
     PPTREE  ret = (PPTREE)0 ;
@@ -4651,6 +4841,17 @@ PPTREE Parser::ReadFile ( const char *name )
         free(buffer);
     }
     input =  saveInput ;
+    if ( hasProtected ) {
+        kparsingCritical =  GetParsingCritical();
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kparsingCritical ) 
+                ReleaseSemaphore(parsingCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kparsingCritical ) 
+                LeaveCriticalSection(&parsingCritical);
+#       endif
+        reentrantProtect =  false ;
+    }
     return ret ;
 }
 
@@ -4694,7 +4895,7 @@ void Parser::WriteFileTree ( const char *name, PTREE tree, PTREE *encoder )
         // write encoded tree
         if ( tree ) {
             if ( encoder ) 
-                encoder->CoarseEncode(tree, vect);
+                encoder -> CoarseEncode(tree, vect);
             else 
                 CoarseEncode(tree, vect);
             for ( auto iter = vect.begin() ; iter != vect.end() ; iter++ ) {
@@ -4735,7 +4936,7 @@ PPTREE Parser::ReadFileTree ( const char *name, PTREE *encoder )
         sourceExist =  stat(name, &statInfo);
         empty       =  stat(treeName.c_str(), &statInfoTree);
 #   endif
-    if ( !empty && (sourceExist || statInfo.st_mtime <= statInfoTree.st_mtime) ) {
+    if ( empty != -1 && (sourceExist == -1 || statInfo.st_mtime <= statInfoTree.st_mtime) ) {
         if ( (newInput = _open(treeName.c_str(), O_RDONLY | O_BINARY)) != -1 ) {
             int version = -1 ; // version of tree file
             _read(newInput, (char *)&version, sizeof(int));
@@ -4770,7 +4971,7 @@ PPTREE Parser::ReadFileTree ( const char *name, PTREE *encoder )
                     PTREE   retTree ; // resulting tree
                     char    *ptString = fileString ;
                     if ( encoder ) 
-                        retTree =  encoder->CoarseDecode(vect);
+                        retTree =  encoder -> CoarseDecode(vect);
                     else 
                         retTree =  CoarseDecode(vect);
                     AddRef(retTree);
@@ -4871,8 +5072,9 @@ EString FindFile ( const char *name, const char *env, int here )
 /***********************************************/
 static  PPTREE MallocNodeTree ( int arity )
 {
-    PPTREE  myPoint ;
-    int     ind ;
+    PPTREE      myPoint ;
+    int         ind = 0 ;
+    HAND_CRIT   kAddRefCritical(GetAddRefCritical());
     
     if ( 0 && *ptStackInitialized && arity < SIZE_STACK_PTREE && (ind = (*ptStackPtree)[arity].Size()) > 0 ) {
         myPoint =  (*ptStackPtree)[arity][--ind];
@@ -4880,21 +5082,21 @@ static  PPTREE MallocNodeTree ( int arity )
     } else {
 #       if 0
 #           if defined(VISUAL) || defined(BORLAND)
-                if ( addRefCritical ) 
-                    WaitForSingleObject(addRefCritical, INFINITE);
+                if ( kAddRefCritical ) 
+                    WaitForSingleObject(kAddRefCritical, INFINITE);
 #           elif defined(HAS_POSIX_SEMAPHORE)
-                if ( addRefCritical ) 
-                    EnterCriticalSection(&addRefCritical);
+                if ( kAddRefCritical ) 
+                    EnterCriticalSection(&kAddRefCritical);
 #           endif
 #       endif
         myPoint =  (PPTREE)CacheMalloc((arity + 2) * sizeof(PPTREE) + 2 * sizeof(int));
 #       if 0
 #           if defined(BORLAND) || defined(VISUAL)
-                if ( addRefCritical ) 
-                    ReleaseSemaphore(addRefCritical, 1, 0);
+                if ( kAddRefCritical ) 
+                    ReleaseSemaphore(kAddRefCritical, 1, 0);
 #           elif defined(HAS_POSIX_SEMAPHORE)
-                if ( addRefCritical ) 
-                    LeaveCriticalSection(&addRefCritical);
+                if ( kAddRefCritical ) 
+                    LeaveCriticalSection(&kAddRefCritical);
 #           endif
 #       endif
         if ( myPoint == (PPTREE)0 ) {
@@ -4904,15 +5106,75 @@ static  PPTREE MallocNodeTree ( int arity )
     return myPoint ;
 }
 
+#include <map>
+
+class MapperContainer {
+    
+    public :
+    
+        MapperContainer ()
+        {
+            memTable =  new std::map<long, MAP_POSITION> ;
+        }
+        
+        ~MapperContainer () {}
+        
+        std::map<long, MAP_POSITION>    *memTable ;
+};
+static MapperContainer  mapContainer ;
+extern bool             checkMapAlloc ;
+
+#define mapMapper (*(mapContainer . memTable))
+
+void InsertMap ( long pos, unsigned int size )
+{
+    if ( checkMapAlloc ) {
+        static long     count = 0 ;
+        MAP_POSITION    mapPosition = { pos, size, count };
+        mapMapper [pos] =  mapPosition ;
+        auto fIter = mapMapper.find(pos);
+        auto rIter = fIter ;
+        fIter++ ;
+        if ( fIter != mapMapper.end() ) {
+            long    fStart = (*fIter).second.start ;
+            if ( (long)(pos + size) > fStart ) {
+                MetaExit(3, "Allocation Error\n");
+            }
+        }
+        if ( rIter != mapMapper.begin() ) {
+            rIter-- ;
+            long    rEnd = (*rIter).second.start + (*rIter).second.size ;
+            if ( rEnd > pos ) {
+                MetaExit(3, "Allocation Error\n");
+            }
+        }
+        count++ ;
+    }
+}
+
+void RemoveMap ( long pos )
+{
+    if ( checkMapAlloc ) {
+        auto iter = mapMapper.find(pos);
+        if ( iter == mapMapper.end() ) 
+            MetaExit(3, "Allocation Error\n");
+        else 
+            mapMapper.erase(iter);
+    }
+}
+
 /**************************************************************
        MallocString : alloc of a string
    ************************/
 /*****************************************/
 char *MallocString ( int size )
 {
-    char    *myPoint ;
-    int     ind ;
+    char    *myPoint = (char *)0 ;
+    int     ind = 0 ;
     
+    if ( size <= 0 ) {
+        MetaExit(3, "String Allocation Error\n");
+    }
     if ( 0 && *ptStackInitialized && size < SIZE_STACK_STRING && (ind = (*ptStackString)[size].Size()) > 0 ) {
         myPoint =  (char *)(*ptStackString)[size].Get(--ind);
         (*ptStackString)[size].Erase(ind);
@@ -4923,6 +5185,84 @@ char *MallocString ( int size )
         }
     }
     return myPoint ;
+}
+
+/**************************************************************
+   RLMakeString : Creates a string */
+/*s
+   ***************************************************************/
+void *_fastcall RLMakeString ( const char *string, int length )
+{
+    register void   *myString ;
+    
+    myString =  (void *)MallocString(length + 1);
+    memcpy(CacheAddrRead(myString), string, length);
+    *(CacheAddrRead(myString) + length) =  '\0';
+    return myString ;
+}
+
+class BLOCK_DESCR {
+    
+    public :
+    
+        char    **address = (char **)0 ;
+        int     index = 0 ;
+};
+
+/* class created to avoid freeing of map, which could cause problems with so libraries */
+#define BLOCK_MAP std::map<std::string, BLOCK_DESCR>
+
+class BlockStringLock {
+    
+    public :
+    
+        BlockStringLock ()
+        {
+            pblockString =  new BLOCK_MAP ;
+        }
+        
+        ~BlockStringLock () {}
+        
+        std::map<std::string, BLOCK_DESCR>  *pblockString = 0 ;
+};
+BlockStringLock blockString ;
+
+#define BLOCK_SIZE 1000
+
+BLOCK_DESCR currentBlock ;
+bool        symbString = false ; // strings are managed in symbol tables
+
+/**************************************************************
+   RLMakeString : Creates a string */
+/*s
+   ***************************************************************/
+void *_fastcall BlockRLMakeString ( const char *string, int length )
+{
+    if ( !symbString ) 
+        return RLMakeString(string, length);
+    
+    // if the string exists return it
+    std::string searched (string, length) ;
+    auto         blockIter = blockString.pblockString -> find(searched);
+    
+    if ( blockIter != blockString.pblockString -> end() ) {
+        return *((*blockIter).second.address + (*blockIter).second.index);
+    }
+    
+    // else creates block if necessary
+    if ( currentBlock.address == 0 || currentBlock.index >= BLOCK_SIZE ) {
+        currentBlock.address =  (char **)malloc(BLOCK_SIZE * sizeof(char *));
+        currentBlock.index   =  0 ;
+    }
+    
+    // and allocate string 
+    void    *allocString = RLMakeString(string, length);
+    
+    // reference new string and return it
+    (*blockString.pblockString)[searched]        =  currentBlock ;
+    *(currentBlock.address + currentBlock.index) =  (char *)allocString ;
+    currentBlock.index++ ;
+    return allocString ;
 }
 
 /**************************************************************
@@ -4938,7 +5278,7 @@ void FreeNodeTree ( int arity, PPTREE tree )
         SON_WRITE(tree, 2, 0);
     }
     
-    int sizeEntry ;
+    int sizeEntry = 0 ;
     
     if ( 0 && *ptStackInitialized && arity < SIZE_STACK_PTREE && (sizeEntry = (*ptStackPtree)[arity].Size()) < SIZE_ENTRY ) {
         (*ptStackPtree)[arity].InsertAt(tree, sizeEntry);
@@ -4969,47 +5309,95 @@ void FreeNodeTree ( int arity, PPTREE tree )
     }
 }
 
-/**************************************************************
-       MallocString : alloc of a string
-   ************************/
-/*****************************************/
-void FreeString ( char *string, int length )
-{
-    int size ;
-    
-    if ( !string || length <= -1 ) 
-        return ;
-    size =  length + 1 ;
-    if ( 0 && *ptStackInitialized && size < SIZE_STACK_STRING && (*ptStackString)[size].Size() < SIZE_ENTRY * 5 ) 
-        (*ptStackString)[size].InsertAt((void *)string, (*ptStackString)[size].Size());
-    else {
-#       if 0
-#           if defined(VISUAL) || defined(BORLAND)
-                if ( addRefCritical ) 
-                    WaitForSingleObject(addRefCritical, INFINITE);
-#           elif defined(HAS_POSIX_SEMAPHORE)
-                if ( addRefCritical ) 
-                    EnterCriticalSection(&addRefCritical);
-#           endif
-#       endif
+#if 1
+    /**************************************************************
+           MallocString : alloc of a string
+       ************************/
+    /*****************************************/
+    void BasicFreeString ( char *string, int length )
+    {
+        int size ;
+        
+        if ( !string || length <= -1 ) 
+            return ;
+        size =  length + 1 ;
         CacheFree(string);
-#       if 0
-#           if defined(BORLAND) || defined(VISUAL)
-                if ( addRefCritical ) 
-                    ReleaseSemaphore(addRefCritical, 1, 0);
-#           elif defined(HAS_POSIX_SEMAPHORE)
-                if ( addRefCritical ) 
-                    LeaveCriticalSection(&addRefCritical);
-#           endif
-#       endif
     }
-}
+    
+    void FreeString ( char *string, int length )
+    {
+        BasicFreeString(string, length);
+    }
+    
+    void TreeFreeString ( char *string, int length )
+    {
+        if ( !symbString ) 
+            BasicFreeString(string, length);
+    }
+    
+    void RFreeString ( char *string )
+    {
+        if ( string ) 
+            free(string);
+    }
+#else 
+    /**************************************************************
+           MallocString : alloc of a string
+       ************************/
+    /*****************************************/
+    void FreeString ( char *string, int length )
+    {
+        int size ;
+        
+        if ( !string || length <= -1 ) 
+            return ;
+        size =  length + 1 ;
+        if ( 0 && *ptStackInitialized && size < SIZE_STACK_STRING && (*ptStackString)[size].Size() < SIZE_ENTRY * 5 ) 
+            (*ptStackString)[size].InsertAt((void *)string, (*ptStackString)[size].Size());
+        else {
+#           if 0
+#               if defined(VISUAL) || defined(BORLAND)
+                    if ( addRefCritical ) 
+                        WaitForSingleObject(addRefCritical, INFINITE);
+#               elif defined(HAS_POSIX_SEMAPHORE)
+                    if ( addRefCritical ) 
+                        EnterCriticalSection(&addRefCritical);
+#               endif
+#           endif
+            CacheFree(string);
+#           if 0
+#               if defined(BORLAND) || defined(VISUAL)
+                    if ( addRefCritical ) 
+                        ReleaseSemaphore(addRefCritical, 1, 0);
+#               elif defined(HAS_POSIX_SEMAPHORE)
+                    if ( addRefCritical ) 
+                        LeaveCriticalSection(&addRefCritical);
+#               endif
+#           endif
+        }
+    }
+#endif
 
 PPTREE Parser::ReadInString ( const char *name )
 {
+    bool    hasProtected = false ;
     
     /* << el 09/06/97 */
     PPTREE  resTree ; // resulting tree
+    
+    if ( !reentrantProtect ) {
+        HAND_CRIT   kparsingCritical(GetParsingCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kparsingCritical ) 
+                WaitForSingleObject(parsingCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kparsingCritical ) 
+                EnterCriticalSection(&parsingCritical);
+#       endif
+        reentrantProtect =  true ;
+        hasProtected     =  true ;
+    }
+    _InitArrays();
     
     /* >> */
     sumAllError  =  0 ;
@@ -5023,7 +5411,7 @@ PPTREE Parser::ReadInString ( const char *name )
     ptStockBuf   =  ptOldBuf = posBufInput = -1 ;
     lBufInput    =  tokenAhead = 0 ;
     lexCallLex   =  0 ;
-    if ( lastContextPos && !lastContextPos->nbRef ) 
+    if ( lastContextPos && !lastContextPos -> nbRef ) 
         FreePos(lastContextPos);
     lastContextPos =  (PFILE_POSITION)0 ;
     flagNewLine    =  0 ;
@@ -5041,6 +5429,17 @@ PPTREE Parser::ReadInString ( const char *name )
         // resTree = (*the_parse_entry_pt)(0);
         resTree   =  parse_entry(0);
         ResetBufInput((char *)0);
+        if ( hasProtected ) {
+            HAND_CRIT   kparsingCritical = GetParsingCritical();
+#           if defined(BORLAND) || defined(VISUAL)
+                if ( kparsingCritical ) 
+                    ReleaseSemaphore(parsingCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( kparsingCritical ) 
+                    LeaveCriticalSection(&parsingCritical);
+#           endif
+            reentrantProtect =  false ;
+        }
         return resTree ; /* >> */ 
 #   endif
 }
@@ -5057,13 +5456,23 @@ void    (*ptMetaExit)(int, const char *) = &DefaultExit ; // function called on 
 // parameters :
 //              level : level of exit
 //              string : a string displayed before exiting
+int     preventMetaExitClearStore = 0 ;
+
 void MetaExit ( int level, const char *string )
 {
     
     // int i = 1 ;
     // int j = 1 / (i - 1);
     write(2, string, strlen(string));
-    ClearStoreRef();
+    
+    // suppress locks
+    criticalFuse =  0 ;
+    
+    // not possible StoreRef call FreeRef call MetaExit call StoreRef 
+    // critical section auto blocked
+    /*
+       if ( !preventMetaExitClearStore ) 
+           ClearStoreRef();*/
     (*ptMetaExit)(level, string);
 }
 
@@ -5113,6 +5522,7 @@ int GetExtraInfo ( PPTREE tree )
             struct itimerval tval ;
             time_t          initSec ;
             time_t          initMill ;
+            HAND_CRIT       kjumpCritical(GetJumpCritical());
             
             if ( !val ) 
                 return WAIT_TIMEOUT ;
@@ -5127,6 +5537,9 @@ int GetExtraInfo ( PPTREE tree )
             long    startSec = 0 ;
             long    startMil = 0 ;
             
+            kjumpCritical =  GetJumpCritical();
+            if ( !kjumpCritical ) 
+                return WAIT_OBJECT_0 ;
             if ( timer ) {
 #               if defined(VISUAL) || defined(BORLAND)
                     WaitForSingleObject(jumpCritical, INFINITE);
@@ -5148,6 +5561,11 @@ int GetExtraInfo ( PPTREE tree )
                     tval.it_value.tv_usec    =  timer * 1000 ;
                     setitimer(ITIMER_REAL, &tval, 0);
                 }
+                kjumpCritical =  GetJumpCritical();
+                if ( !kjumpCritical ) 
+                    return WAIT_OBJECT_0 ;
+                
+                // --
 #               if defined(BORLAND) || defined(VISUAL)
                     ReleaseSemaphore(jumpCritical, 1, 0);
 #               elif defined(HAS_POSIX_SEMAPHORE)
