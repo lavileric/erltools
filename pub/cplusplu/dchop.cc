@@ -5235,7 +5235,7 @@ void DecompCplus::copy ()
     else 
         copyPrinted = true ;
     
-    str = "\n\r C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere \n\r";
+    str = "\n\r C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
     str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));

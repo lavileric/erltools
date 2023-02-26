@@ -99,10 +99,10 @@ void DecompChopb::FrameContent ( PTREE list )
                 1) ) {
 #line 23 "decomp.ch"
 #line 24 "decomp.ch"
-                        ptLine = BrainyValue(inter);
+                        ptLine =  BrainyValue(inter);
 #line 24 "decomp.ch"
 #line 25 "decomp.ch"
-                        nb = 0 ;
+                        nb =  0 ;
 #line 25 "decomp.ch"
 #line 26 "decomp.ch"
                         while ( *ptLine && (*ptLine == ' ' || *ptLine == '\t') ) {
@@ -123,7 +123,7 @@ void DecompChopb::FrameContent ( PTREE list )
                         if ( *ptLine ) 
 #line 30 "decomp.ch"
 #line 31 "decomp.ch"
-                            min = nb < min ? nb : min ;
+                            min =  nb < min ? nb : min ;
 #line 31 "decomp.ch"
 #line 32 "decomp.ch"
                         (inter?inter.Nextl():(PPTREE)0);
@@ -150,7 +150,7 @@ void DecompChopb::FrameContent ( PTREE list )
                                                 1) ) {
 #line 36 "decomp.ch"
 #line 37 "decomp.ch"
-                                                        ptLine = BrainyValue(inter);
+                                                        ptLine =  BrainyValue(inter);
 #line 37 "decomp.ch"
 #line 38 "decomp.ch"
                                                         if ( (nb = strlen(ptLine)) >= min ) {
@@ -196,7 +196,7 @@ void DecompChopb::FrameContent ( PTREE list )
                         
 #line 48 "decomp.ch"
 #line 49 "decomp.ch"
-                        ptLine = string + strlen(string) - 1 ;
+                        ptLine =  string + strlen(string) - 1 ;
 #line 49 "decomp.ch"
 #line 50 "decomp.ch"
                         while ( ptLine >= string && (*ptLine == ' ' || *ptLine == '\t') ) 
@@ -205,7 +205,7 @@ void DecompChopb::FrameContent ( PTREE list )
                             ptLine-- ;
 #line 51 "decomp.ch"
 #line 52 "decomp.ch"
-                        *(ptLine + 1) = '\0';
+                        *(ptLine + 1) =  '\0';
 #line 52 "decomp.ch"
 #line 53 "decomp.ch"
                         (inter?inter.Nextl():(PPTREE)0);
@@ -1365,7 +1365,7 @@ PTREE DecompChopb::IntDecomp ( const PTREE &paramTree, int funcAlone )
     
 #line 243 "decomp.ch"
 #line 245 "decomp.ch"
-    statementf = oldStatement ;
+    statementf =  oldStatement ;
 #line 245 "decomp.ch"
 #line 246 "decomp.ch"
     return oldPostComment ;
@@ -2663,7 +2663,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                 
 #line 414 "decomp.ch"
 #line 415 "decomp.ch"
-                                                delta = 0 ;
+                                                delta =  0 ;
 #line 415 "decomp.ch"
 #line 418 "decomp.ch"
                                                 _Baum0 = (PPTREE) 0 ;
@@ -2718,7 +2718,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                                     if ( x0 <= oldX ) {
 #line 430 "decomp.ch"
 #line 431 "decomp.ch"
-                                                                                            delta = 0 ;
+                                                                                            delta =  0 ;
 #line 431 "decomp.ch"
 #line 432 "decomp.ch"
                                                                                             
@@ -2727,7 +2727,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                                                         }
 #line 432 "decomp.ch"
 #line 433 "decomp.ch"
-                                                                    oldX = x0 ;
+                                                                    oldX =  x0 ;
 #line 433 "decomp.ch"
 #line 436 "decomp.ch"
                                                                     if ( x0 + dx + delta > rightMargin ) {
@@ -2736,72 +2736,72 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                                                                                 if ( Sequence(sonOld, son) ) {
 #line 437 "decomp.ch"
 #line 438 "decomp.ch"
-                                                                                                                                                {
+                                                                                                                                                    {
 #line 438 "decomp.ch"
-                                                                                                                                                PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                                        PPTREE _ptTree0=(PPTREE) 0;
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree0 = (PPTREE) 0;
+                                                                                                                                                        _ptTree0 = (PPTREE) 0;
 #line 438 "decomp.ch"
-                                                                                                                                                {
+                                                                                                                                                        {
 #line 438 "decomp.ch"
-                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                            PPTREE _ptTree1= (PPTREE) 0 ;
 #line 438 "decomp.ch"
-                                                                                                                                                {
+                                                                                                                                                            {
 #line 438 "decomp.ch"
-                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 438 "decomp.ch"
-                                                                                                                                                _ptRes2 = MakeTree(chopb::NEWLINE, 1);
+                                                                                                                                                                _ptRes2 = MakeTree(chopb::NEWLINE, 1);
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree2 = MakeString("1") ;
+                                                                                                                                                                _ptTree2 = MakeString("1") ;
 #line 438 "decomp.ch"
-                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree1 = _ptRes2;
+                                                                                                                                                                _ptTree1 = _ptRes2;
 #line 438 "decomp.ch"
-                                                                                                                                                }
+                                                                                                                                                            }
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                                            _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 438 "decomp.ch"
-                                                                                                                                                }
+                                                                                                                                                        }
 #line 438 "decomp.ch"
-                                                                                                                                                {
+                                                                                                                                                        {
 #line 438 "decomp.ch"
-                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                            PPTREE _ptTree1= (PPTREE) 0 ;
 #line 438 "decomp.ch"
-                                                                                                                                                {
+                                                                                                                                                            {
 #line 438 "decomp.ch"
-                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 438 "decomp.ch"
-                                                                                                                                                _ptRes2 = MakeTree(chopb::TAB, 1);
+                                                                                                                                                                _ptRes2 = MakeTree(chopb::TAB, 1);
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree2 = MakeString("1") ;
+                                                                                                                                                                _ptTree2 = MakeString("1") ;
 #line 438 "decomp.ch"
-                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree1 = _ptRes2;
+                                                                                                                                                                _ptTree1 = _ptRes2;
 #line 438 "decomp.ch"
-                                                                                                                                                }
+                                                                                                                                                            }
 #line 438 "decomp.ch"
-                                                                                                                                                _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                                            _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 438 "decomp.ch"
-                                                                                                                                                }
+                                                                                                                                                        }
 #line 438 "decomp.ch"
-                                                                                                                                                list2 = _ptTree0;
+                                                                                                                                                        list2 = _ptTree0;
 #line 438 "decomp.ch"
-                                                                                                                                                ;
+                                                                                                                                                        ;
 #line 438 "decomp.ch"
-                                                                                                                                                }
+                                                                                                                                                    }
 #line 438 "decomp.ch"
-                                                                                                                                                
+                                                                                                                                                    
 #line 438 "decomp.ch"
 #line 439 "decomp.ch"
-                                                                                                                                                PutAttr(son, list2, PRE_ATTR, PUT_BEG);
+                                                                                                                                                    PutAttr(son, list2, PRE_ATTR, PUT_BEG);
 #line 439 "decomp.ch"
 #line 440 "decomp.ch"
-                                                                                                                                                delta = -x0 + TAB_VALUE(dy, 1);
+                                                                                                                                                    delta =  -x0 + TAB_VALUE(dy, 1);
 #line 440 "decomp.ch"
 #line 441 "decomp.ch"
-                                                                                                                                                
+                                                                                                                                                    
 #line 441 "decomp.ch"
 #line 441 "decomp.ch"
                                                                                                                                                 }
@@ -2893,7 +2893,7 @@ void DecompChopb::TraiterSequence ( PTREE tree )
                                                                     if ( x0 + dx > rightMargin ) {
 #line 458 "decomp.ch"
 #line 459 "decomp.ch"
-                                                                                                        overlap = 1 ;
+                                                                                                        overlap =  1 ;
 #line 459 "decomp.ch"
 #line 460 "decomp.ch"
                                                                                                         break ;
@@ -3193,7 +3193,7 @@ void DecompChopb::ChopTree ( PTREE tree, int funcAlone )
                     copy();
 #line 494 "decomp.ch"
 #line 495 "decomp.ch"
-                    first = false ;
+                    first =  false ;
 #line 495 "decomp.ch"
 #line 496 "decomp.ch"
                     
@@ -3243,31 +3243,31 @@ void DecompChopb::copy ()
     
 #line 510 "decomp.ch"
 #line 512 "decomp.ch"
-    str = "\n\r Metachop prettyPrinter version 3.0, CopyRight(C) 1995-2018 Eric Lavillonniere \n\r";
+    str =  "\n\r Metachop prettyPrinter version 3.0, CopyRight(C) 1995-2023 Eric Lavillonniere \n\r";
 #line 512 "decomp.ch"
 #line 513 "decomp.ch"
     _write(2, str, strlen(str));
 #line 513 "decomp.ch"
 #line 514 "decomp.ch"
-    str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
+    str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
 #line 514 "decomp.ch"
 #line 515 "decomp.ch"
     _write(2, str, strlen(str));
 #line 515 "decomp.ch"
 #line 516 "decomp.ch"
-    str = " This is free software, and you are welcome to redistribute it \n\r";
+    str =  " This is free software, and you are welcome to redistribute it \n\r";
 #line 516 "decomp.ch"
 #line 517 "decomp.ch"
     _write(2, str, strlen(str));
 #line 517 "decomp.ch"
 #line 518 "decomp.ch"
-    str = " under certain conditions.\n\r";
+    str =  " under certain conditions.\n\r";
 #line 518 "decomp.ch"
 #line 519 "decomp.ch"
     _write(2, str, strlen(str));
 #line 519 "decomp.ch"
 #line 520 "decomp.ch"
-    str = " For details see file COPYING in C++ prettyPrinter directory.\n\r\n\r";
+    str =  " For details see file COPYING in C++ prettyPrinter directory.\n\r\n\r";
 #line 520 "decomp.ch"
 #line 521 "decomp.ch"
     _write(2, str, strlen(str));
