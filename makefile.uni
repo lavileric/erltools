@@ -137,7 +137,7 @@ checkpath :
 	@ echo "-> create erltools dir checker file"
 	@ echo "checker" > $(ERLTOOLS_DIR)/res2
 	@ echo "-> compare both file"
-	@ if [ "`cmp res1 res2`" != "" ] ; then echo "makefile.inc and makekefile.der must be updated, in particular ERLTOOLS_DIR variable" ; exit 1; fi
+	@ if [ "`cmp res1 res2`" != "" ] ; then echo "makefile.inc and makefile.der must be updated, in particular ERLTOOLS_DIR variable, or use outils/tmake and update definitions" ; exit 1; fi
 	@ echo "-> create locale executable file"
 	@ echo "echo \"#! /bin/sh \""  > check-erltools
 	@ echo "echo \"" `date` "\""  >> check-erltools

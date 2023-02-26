@@ -1,0 +1,26 @@
+#!/bin/sh
+# to be updated
+export SPACE_ROOT=${SPACE_ROOT:-~}
+export ERLTOOLS_DIR=${ERLTOOLS_DIR:-$SPACE_ROOT/erltools}
+export PATH=.:$PATH
+export LD_LIBRARY_PATH=.:$INSTALL_DIR:/usr/local/lib64:$LD_LIBRARY_PATH
+
+# for internal use
+export ALL_ROOT=${ALL_ROOT:-$SPACE_ROOT/project}
+export TOOLS_DIR=${ALL_ROOT}/asn1gentools
+export TOOLS_INSTALL_DIR=${TOOLS_INSTALL_DIR:-$SPACE_ROOT/bin}
+export INSTALL_DIR=$TOOLS_INSTALL_DIR
+export XERCES_DIR=/usr/local
+export JAVA_DIR=${JAVA_DIR:-$SPACE_ROOT/jre}
+export META_DIR=$ERLTOOLS_DIR
+export ERLTOOLS=${ERLTOOLS_DIR}
+
+#if -parallel use all procs
+if [ "$1"x = "-parallel"x ] ; then 
+    export NUMBER_PROC=`grep --text -c ^processor /proc/cpuinfo`
+    shift;
+fi
+
+/usr/bin/make $*
+
+
