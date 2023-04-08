@@ -365,7 +365,7 @@ template <class STACKED>
         else 
 #line 94 "clpretty.ch"
 #line 96 "clpretty.ch"
-            stack [pos] = stacked ;
+            stack [pos] =  stacked ;
 #line 96 "clpretty.ch"
         
 #line 96 "clpretty.ch"
@@ -420,13 +420,13 @@ inline bool SetMark ( PTREE &currTree, int &currMark )
     
 #line 109 "clpretty.ch"
 #line 112 "clpretty.ch"
-    withCoordinate = GetCoord(currTree, &x, &y, &dx, &posMark);
+    withCoordinate =  GetCoord(currTree, &x, &y, &dx, &posMark);
 #line 112 "clpretty.ch"
 #line 115 "clpretty.ch"
     if ( withCoordinate ) {
 #line 115 "clpretty.ch"
 #line 116 "clpretty.ch"
-                            currMark = posMark ;
+                            currMark =  posMark ;
 #line 116 "clpretty.ch"
 #line 117 "clpretty.ch"
                             return true ;
@@ -644,7 +644,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                         
 #line 187 "clpretty.ch"
 #line 188 "clpretty.ch"
-                        currMark = posStack [readStack].currMark ;
+                        currMark =  posStack [readStack].currMark ;
 #line 188 "clpretty.ch"
 #line 192 "clpretty.ch"
                         if ( ((_inter = (PPTREE)currTree,1) && 
@@ -674,7 +674,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                     1)) && !((!currTree)) ) {
 #line 195 "clpretty.ch"
 #line 196 "clpretty.ch"
-                                                                withCoordinate = GetCoord(currTree, &x, &y, &dx, &posMark);
+                                                                withCoordinate =  GetCoord(currTree, &x, &y, &dx, &posMark);
 #line 196 "clpretty.ch"
 #line 199 "clpretty.ch"
                                                                 if ( !withCoordinate ) {
@@ -688,7 +688,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                             
 #line 201 "clpretty.ch"
 #line 202 "clpretty.ch"
-                                                                                            maxDx = 0 ;
+                                                                                            maxDx =  0 ;
 #line 202 "clpretty.ch"
 #line 205 "clpretty.ch"
                                                                                             {
@@ -709,7 +709,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                                     for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
-                                                                                                        _for_elem = SonTree(currTree, _for_slot);
+                                                                                                        _for_elem =  SonTree(currTree, _for_slot);
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
                                                                                                         if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
@@ -734,7 +734,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                                                         1) ) 
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
-                                                                                                                    dx = strlen(Value(for_elem));
+                                                                                                                    dx =  strlen(Value(for_elem));
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
                                                                                                                 
@@ -746,7 +746,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                                             if ( x + dx > maxDx ) 
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
-                                                                                                                maxDx = x + dx ;
+                                                                                                                maxDx =  x + dx ;
 #line 208 "clpretty.ch"
 #line 208 "clpretty.ch"
                                                                                                             
@@ -779,7 +779,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                             if ( newLine ) 
 #line 222 "clpretty.ch"
 #line 223 "clpretty.ch"
-                                                                                                multiLine = 0x2 ;
+                                                                                                multiLine =  0x2 ;
 #line 223 "clpretty.ch"
 #line 224 "clpretty.ch"
                                                                                             PutCoord(currTree, 0, newLine | multiLine, maxDx, currMark);
@@ -829,7 +829,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                     if ( rank < father.TreeArity() ) {
 #line 241 "clpretty.ch"
 #line 242 "clpretty.ch"
-                                                                                            rank = ++(posStack [readStack].rank);
+                                                                                            rank =  ++posStack [readStack].rank ;
 #line 242 "clpretty.ch"
 #line 243 "clpretty.ch"
                                                                                             (currTree=father [rank]);
@@ -840,50 +840,50 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                             if ( !((!currTree)) ) {
 #line 244 "clpretty.ch"
 #line 245 "clpretty.ch"
-                                                                                                                        found = true ;
+                                                                                                                        found =  true ;
 #line 245 "clpretty.ch"
 #line 248 "clpretty.ch"
                                                                                                                         {
 #line 248 "clpretty.ch"
 #line 249 "clpretty.ch"
-                                                                                                                        if ( !SetMark(currTree, currMark) ) {
+                                                                                                                            if ( !SetMark(currTree, currMark) ) {
 #line 249 "clpretty.ch"
 #line 250 "clpretty.ch"
-                                                                                                                                                                if ( readStack > 0 ) {
+                                                                                                                                                                        if ( readStack > 0 ) {
 #line 250 "clpretty.ch"
 #line 253 "clpretty.ch"
-                                                                                                                                                                                       currMark = posStack [readStack - 1].currMark ;
+                                                                                                                                                                                               currMark =  posStack [readStack - 1].currMark ;
 #line 253 "clpretty.ch"
 #line 254 "clpretty.ch"
-                                                                                                                                                                                       
+                                                                                                                                                                                               
 #line 254 "clpretty.ch"
 #line 254 "clpretty.ch"
-                                                                                                                                                                                       } else 
+                                                                                                                                                                                               } else 
 #line 254 "clpretty.ch"
-                                                                                                                                                                {
+                                                                                                                                                                        {
 #line 254 "clpretty.ch"
 #line 255 "clpretty.ch"
-                                                                                                                                                                int i = 1 ;
-                                                                                                                                                                
+                                                                                                                                                                            int i = 1 ;
+                                                                                                                                                                            
 #line 255 "clpretty.ch"
 #line 256 "clpretty.ch"
-                                                                                                                                                                
+                                                                                                                                                                            
 #line 256 "clpretty.ch"
 #line 256 "clpretty.ch"
-                                                                                                                                                                }
-                                                                                                                                                                
+                                                                                                                                                                        }
+                                                                                                                                                                        
 #line 256 "clpretty.ch"
 #line 257 "clpretty.ch"
-                                                                                                                                                                
+                                                                                                                                                                        
 #line 257 "clpretty.ch"
 #line 257 "clpretty.ch"
-                                                                                                                                                                }
+                                                                                                                                                                    }
 #line 257 "clpretty.ch"
 #line 258 "clpretty.ch"
-                                                                                                                        posStack [readStack].currMark = currMark ;
+                                                                                                                            posStack [readStack].currMark =  currMark ;
 #line 258 "clpretty.ch"
 #line 259 "clpretty.ch"
-                                                                                                                        
+                                                                                                                            
 #line 259 "clpretty.ch"
 #line 259 "clpretty.ch"
                                                                                                                         }
@@ -893,59 +893,59 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                                                                                                                         while ( !((!currTree)) && currTree.TreeArity() >= 1 ) {
 #line 262 "clpretty.ch"
 #line 265 "clpretty.ch"
-                                                                                                                                                                                   if ( currTree.TreeArity() == 1 && (((_inter = (PPTREE)currTree,1) && 
+                                                                                                                                                                                    if ( currTree.TreeArity() == 1 && (((_inter = (PPTREE)currTree,1) && 
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                            (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
+                                                                                                                                                                                                                             (_retVal[1]=((_storeVal[1]=_inter,_inter=SonTree(_inter,1),1) &&
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                            (NumberTree(_inter) == TERM_TREE) &&
+                                                                                                                                                                                                                             (NumberTree(_inter) == TERM_TREE) &&
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                            1),
+                                                                                                                                                                                                                             1),
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                            (_inter=_storeVal[1],1),_retVal[1]) &&
+                                                                                                                                                                                                                             (_inter=_storeVal[1],1),_retVal[1]) &&
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                            1) || ((_inter = (PPTREE)currTree,1) && 
+                                                                                                                                                                                                                             1) || ((_inter = (PPTREE)currTree,1) && 
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                                    (!SonTree(_inter,1)) &&
+                                                                                                                                                                                                                                     (!SonTree(_inter,1)) &&
 #line 265 "clpretty.ch"
-                                                                                                                                                                                                                                    1)) ) 
+                                                                                                                                                                                                                                     1)) ) 
 #line 265 "clpretty.ch"
 #line 266 "clpretty.ch"
-                                                                                                                                                                                   break ;
-                                                                                                                                                                                   
+                                                                                                                                                                                    break ;
+                                                                                                                                                                                    
 #line 266 "clpretty.ch"
 #line 269 "clpretty.ch"
-                                                                                                                                                                                   
-                                                                                                                                                                                   PTREE newTree (currTree [1]) ;
+                                                                                                                                                                                    
+                                                                                                                                                                                    PTREE newTree (currTree [1]) ;
 #line 269 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 269 "clpretty.ch"
 #line 272 "clpretty.ch"
-                                                                                                                                                                                   SetMark(newTree, currMark);
+                                                                                                                                                                                    SetMark(newTree, currMark);
 #line 272 "clpretty.ch"
 #line 275 "clpretty.ch"
-                                                                                                                                                                                   {
+                                                                                                                                                                                    {
 #line 275 "clpretty.ch"
 #line 276 "clpretty.ch"
-                                                                                                                                                                                   POS_TREE newPos = { 1, currTree, currMark };
-                                                                                                                                                                                   
+                                                                                                                                                                                    POS_TREE newPos = { 1, currTree, currMark };
+                                                                                                                                                                                    
 #line 276 "clpretty.ch"
 #line 277 "clpretty.ch"
-                                                                                                                                                                                   PushValue<POS_TREE> (posStack, readStack, newPos);
+                                                                                                                                                                                    PushValue<POS_TREE> (posStack, readStack, newPos);
 #line 277 "clpretty.ch"
 #line 278 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 278 "clpretty.ch"
 #line 278 "clpretty.ch"
-                                                                                                                                                                                   }
-                                                                                                                                                                                   
+                                                                                                                                                                                    }
+                                                                                                                                                                                    
 #line 278 "clpretty.ch"
 #line 281 "clpretty.ch"
-                                                                                                                                                                                   (currTree=newTree);
+                                                                                                                                                                                    (currTree=newTree);
 #line 281 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 281 "clpretty.ch"
 #line 282 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 282 "clpretty.ch"
 #line 282 "clpretty.ch"
                                                                                                                                                                                    }
@@ -1098,13 +1098,13 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
                  }
 #line 326 "clpretty.ch"
 #line 327 "clpretty.ch"
-    withCoordinate = GetCoord(currTree, &x, &y, &dx, &posMark);
+    withCoordinate =  GetCoord(currTree, &x, &y, &dx, &posMark);
 #line 327 "clpretty.ch"
 #line 330 "clpretty.ch"
     if ( withCoordinate ) {
 #line 330 "clpretty.ch"
 #line 331 "clpretty.ch"
-                            currMark = posMark ;
+                            currMark =  posMark ;
 #line 331 "clpretty.ch"
 #line 332 "clpretty.ch"
                             
@@ -1128,7 +1128,7 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
         for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 335 "clpretty.ch"
 #line 335 "clpretty.ch"
-            _for_elem = SonTree(currTree, _for_slot);
+            _for_elem =  SonTree(currTree, _for_slot);
 #line 335 "clpretty.ch"
 #line 335 "clpretty.ch"
             if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) 
@@ -1184,7 +1184,7 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
                                                     for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
-                                                        _for_elem = SonTree(currTree, _for_slot);
+                                                        _for_elem =  SonTree(currTree, _for_slot);
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
                                                         if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
@@ -1209,7 +1209,7 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
                                                                         1) ) 
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
-                                                                    dx = strlen(Value(for_elem));
+                                                                    dx =  strlen(Value(for_elem));
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
                                                                 
@@ -1221,7 +1221,7 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
                                                             if ( x + dx > maxDx ) 
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
-                                                                maxDx = x + dx ;
+                                                                maxDx =  x + dx ;
 #line 348 "clpretty.ch"
 #line 348 "clpretty.ch"
                                                             
@@ -1254,7 +1254,7 @@ void clpretty::CompleteCoordinatesInt ( PTREE currTree )
                                             if ( newLine ) 
 #line 362 "clpretty.ch"
 #line 363 "clpretty.ch"
-                                                multiLine = 0x2 ;
+                                                multiLine =  0x2 ;
 #line 363 "clpretty.ch"
 #line 364 "clpretty.ch"
                                             PutCoord(currTree, 0, newLine | multiLine, maxDx, currMark);
@@ -1387,19 +1387,19 @@ int clpretty::GetBoxSize ( PTREE box )
                                 for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
-                                    _for_elem = SonTree(box, _for_slot);
+                                    _for_elem =  SonTree(box, _for_slot);
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
                                     if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
-                                        dx = GetBoxSize(for_elem);
+                                        dx =  GetBoxSize(for_elem);
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
                                         if ( dx > maxDx ) 
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
-                                            maxDx = dx ;
+                                            maxDx =  dx ;
 #line 394 "clpretty.ch"
 #line 394 "clpretty.ch"
                                         
@@ -1634,7 +1634,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     if ( colRef == markTab ) {
 #line 442 "clpretty.ch"
 #line 443 "clpretty.ch"
-                                posRef = TAB_VALUE(colRef, nbTab + 1);
+                                posRef =  TAB_VALUE(colRef, nbTab + 1);
 #line 443 "clpretty.ch"
 #line 444 "clpretty.ch"
                                 sprintf(string, "%d", nbTab + 1);
@@ -1648,7 +1648,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     {
 #line 445 "clpretty.ch"
 #line 446 "clpretty.ch"
-        posRef = TAB_VALUE(colRef, 1);
+        posRef =  TAB_VALUE(colRef, 1);
 #line 446 "clpretty.ch"
 #line 447 "clpretty.ch"
         strcpy(string, "1");
@@ -1850,7 +1850,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     GetCoordAbs(son1, _Baum0, &x0, &y0);
 #line 460 "clpretty.ch"
 #line 461 "clpretty.ch"
-    delta = posRef + 3 - x0 ;
+    delta =  posRef + 3 - x0 ;
 #line 461 "clpretty.ch"
 #line 462 "clpretty.ch"
     PutCoord(son1, x + delta, y, dx, dy);
@@ -1859,13 +1859,13 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     if ( x + delta + dx > maxDx ) 
 #line 463 "clpretty.ch"
 #line 464 "clpretty.ch"
-        maxDx = x + delta + dx ;
+        maxDx =  x + delta + dx ;
 #line 464 "clpretty.ch"
 #line 465 "clpretty.ch"
     TraitMark(son1, posRef);
 #line 465 "clpretty.ch"
 #line 468 "clpretty.ch"
-    delta = posRef - x0 - dx ;
+    delta =  posRef - x0 - dx ;
 #line 468 "clpretty.ch"
 #line 469 "clpretty.ch"
     GetCoord(son2, &x, &y, &dx, &dy);
@@ -1877,7 +1877,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     if ( x + delta + dx > maxDx ) 
 #line 471 "clpretty.ch"
 #line 472 "clpretty.ch"
-        maxDx = x + delta + dx ;
+        maxDx =  x + delta + dx ;
 #line 472 "clpretty.ch"
 #line 473 "clpretty.ch"
     TraitMark(son2, posRef);
@@ -1889,7 +1889,7 @@ void clpretty::TraiterExp3 ( PTREE tree, int x0 )
     if ( x + dx > maxDx ) 
 #line 477 "clpretty.ch"
 #line 478 "clpretty.ch"
-        maxDx = x + dx ;
+        maxDx =  x + dx ;
 #line 478 "clpretty.ch"
 #line 479 "clpretty.ch"
     GetCoord(tree, &x, &y, &dx, &dy);
@@ -1981,7 +1981,7 @@ void clpretty::TraiterForDeclaration ( PTREE tree, int x0 )
         GetCoord(son1, &x, &y, &dx, &colRef);
 #line 509 "clpretty.ch"
 #line 510 "clpretty.ch"
-        colRef = TAB_VALUE(colRef, 1);
+        colRef =  TAB_VALUE(colRef, 1);
 #line 510 "clpretty.ch"
 #line 511 "clpretty.ch"
         if ( x0 + x + dx >= rightMargin && (delta = colRef - x0 - x) < 0 ) {
@@ -2109,7 +2109,7 @@ void clpretty::TraiterForDeclaration ( PTREE tree, int x0 )
                                                                                         TraitMark(son1, colRef);
 #line 517 "clpretty.ch"
 #line 518 "clpretty.ch"
-                                                                                        aTreatment = 1 ;
+                                                                                        aTreatment =  1 ;
 #line 518 "clpretty.ch"
 #line 519 "clpretty.ch"
                                                                                         
@@ -2131,135 +2131,135 @@ void clpretty::TraiterForDeclaration ( PTREE tree, int x0 )
                             GetCoord(son2, &x, &y, &dx, &colRef);
 #line 524 "clpretty.ch"
 #line 525 "clpretty.ch"
-                            colRef = TAB_VALUE(colRef, 1);
+                            colRef =  TAB_VALUE(colRef, 1);
 #line 525 "clpretty.ch"
 #line 526 "clpretty.ch"
                             if ( x0 + x + dx >= rightMargin && (delta = colRef - x0 - x) < 0 || aTreatment ) {
 #line 526 "clpretty.ch"
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                            {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                PPTREE _ptTree0=(PPTREE) 0;
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree0 = (PPTREE) 0;
+                                                                                                                                _ptTree0 = (PPTREE) 0;
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                    {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 527 "clpretty.ch"
-                                                                                                                        _ptRes2 = MakeTree(pretty::NEWLINE, 1);
+                                                                                                                                        _ptRes2 = MakeTree(pretty::NEWLINE, 1);
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree2 = MakeString("1") ;
+                                                                                                                                        _ptTree2 = MakeString("1") ;
 #line 527 "clpretty.ch"
-                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree1 = _ptRes2;
+                                                                                                                                        _ptTree1 = _ptRes2;
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                    }
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                }
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                    {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 527 "clpretty.ch"
-                                                                                                                        _ptRes2 = MakeTree(pretty::TAB, 1);
+                                                                                                                                        _ptRes2 = MakeTree(pretty::TAB, 1);
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree2 = MakeString("1") ;
+                                                                                                                                        _ptTree2 = MakeString("1") ;
 #line 527 "clpretty.ch"
-                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree1 = _ptRes2;
+                                                                                                                                        _ptTree1 = _ptRes2;
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                    }
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                }
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 527 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                    {
 #line 527 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 527 "clpretty.ch"
-                                                                                                                        _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                        _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree1 = _ptRes2;
+                                                                                                                                        _ptTree1 = _ptRes2;
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                    }
 #line 527 "clpretty.ch"
-                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                }
 #line 527 "clpretty.ch"
-                                                                                                                        listAttrib = _ptTree0;
+                                                                                                                                listAttrib = _ptTree0;
 #line 527 "clpretty.ch"
-                                                                                                                        ;
+                                                                                                                                ;
 #line 527 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                            }
 #line 527 "clpretty.ch"
-                                                                                                                        
+                                                                                                                            
 #line 527 "clpretty.ch"
 #line 528 "clpretty.ch"
-                                                                                                                        PutAttr(son2, listAttrib, PRE_ATTR, PUT_BEG);
+                                                                                                                            PutAttr(son2, listAttrib, PRE_ATTR, PUT_BEG);
 #line 528 "clpretty.ch"
 #line 529 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                            {
 #line 529 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                PPTREE _ptTree0=(PPTREE) 0;
 #line 529 "clpretty.ch"
-                                                                                                                        _ptTree0 = (PPTREE) 0;
+                                                                                                                                _ptTree0 = (PPTREE) 0;
 #line 529 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                {
 #line 529 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 529 "clpretty.ch"
-                                                                                                                        {
+                                                                                                                                    {
 #line 529 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 529 "clpretty.ch"
-                                                                                                                        _ptRes2 = MakeTree(pretty::UNMARK, 0);
+                                                                                                                                        _ptRes2 = MakeTree(pretty::UNMARK, 0);
 #line 529 "clpretty.ch"
-                                                                                                                        _ptTree1 = _ptRes2;
+                                                                                                                                        _ptTree1 = _ptRes2;
 #line 529 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                    }
 #line 529 "clpretty.ch"
-                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 529 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                                }
 #line 529 "clpretty.ch"
-                                                                                                                        listAttrib = _ptTree0;
+                                                                                                                                listAttrib = _ptTree0;
 #line 529 "clpretty.ch"
-                                                                                                                        ;
+                                                                                                                                ;
 #line 529 "clpretty.ch"
-                                                                                                                        }
+                                                                                                                            }
 #line 529 "clpretty.ch"
-                                                                                                                        
+                                                                                                                            
 #line 529 "clpretty.ch"
 #line 530 "clpretty.ch"
-                                                                                                                        PutAttr(son2, listAttrib, POST_ATTR, PUT_END);
+                                                                                                                            PutAttr(son2, listAttrib, POST_ATTR, PUT_END);
 #line 530 "clpretty.ch"
 #line 531 "clpretty.ch"
-                                                                                                                        TraitMark(son2, colRef);
+                                                                                                                            TraitMark(son2, colRef);
 #line 531 "clpretty.ch"
 #line 532 "clpretty.ch"
-                                                                                                                        aTreatment = 1 ;
+                                                                                                                            aTreatment =  1 ;
 #line 532 "clpretty.ch"
 #line 533 "clpretty.ch"
-                                                                                                                        
+                                                                                                                            
 #line 533 "clpretty.ch"
 #line 533 "clpretty.ch"
                                                                                                                         }
@@ -2377,20 +2377,20 @@ void clpretty::AddTree ( PTREE tree, int delta )
     for ( int i = 0 ; i < currTabTree ; i++ ) 
 #line 564 "clpretty.ch"
 #line 565 "clpretty.ch"
-        if ( tabTree [i].tree == tree ) {
+        if ( tabTree [i].tree == (PPTREE)tree ) {
 #line 565 "clpretty.ch"
 #line 566 "clpretty.ch"
-                                                tabTree [i].delta = delta ;
+                                                        tabTree [i].delta =  delta ;
 #line 566 "clpretty.ch"
 #line 567 "clpretty.ch"
-                                                return ;
-                                                
+                                                        return ;
+                                                        
 #line 567 "clpretty.ch"
 #line 568 "clpretty.ch"
-                                                
+                                                        
 #line 568 "clpretty.ch"
 #line 568 "clpretty.ch"
-                                            }
+                                                      }
 #line 568 "clpretty.ch"
     
 #line 568 "clpretty.ch"
@@ -2398,10 +2398,10 @@ void clpretty::AddTree ( PTREE tree, int delta )
     if ( currTabTree < sizeTabTree ) {
 #line 571 "clpretty.ch"
 #line 572 "clpretty.ch"
-                                        tabTree [currTabTree].tree = tree ;
+                                        tabTree [currTabTree].tree =  tree ;
 #line 572 "clpretty.ch"
 #line 573 "clpretty.ch"
-                                        tabTree [currTabTree].delta = delta ;
+                                        tabTree [currTabTree].delta =  delta ;
 #line 573 "clpretty.ch"
 #line 574 "clpretty.ch"
                                         currTabTree++ ;
@@ -2447,7 +2447,7 @@ int clpretty::FindDelta ( PTREE tree )
                         for ( i = 0 ; i < currTabTree ; i++ ) 
 #line 591 "clpretty.ch"
 #line 592 "clpretty.ch"
-                            if ( tabTree [i].tree == tree ) 
+                            if ( tabTree [i].tree == (PPTREE)tree ) 
 #line 592 "clpretty.ch"
 #line 593 "clpretty.ch"
                                 return tabTree [i].delta ;
@@ -2703,16 +2703,16 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
     if ( colRef != markTab ) 
 #line 658 "clpretty.ch"
 #line 659 "clpretty.ch"
-        nbTab = 0 ;
+        nbTab =  0 ;
 #line 659 "clpretty.ch"
 #line 660 "clpretty.ch"
     nbTab += valTab ;
 #line 660 "clpretty.ch"
 #line 661 "clpretty.ch"
-    posRef = TAB_VALUE(colRef, nbTab);
+    posRef =  TAB_VALUE(colRef, nbTab);
 #line 661 "clpretty.ch"
 #line 662 "clpretty.ch"
-    delta = 0 ;
+    delta =  0 ;
 #line 662 "clpretty.ch"
 #line 665 "clpretty.ch"
     while ( listElem ) {
@@ -2742,7 +2742,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                             if ( x0 <= rightX ) {
 #line 672 "clpretty.ch"
 #line 673 "clpretty.ch"
-                                                    delta = 0 ;
+                                                    delta =  0 ;
 #line 673 "clpretty.ch"
 #line 674 "clpretty.ch"
                                                     
@@ -2751,7 +2751,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                   }
 #line 674 "clpretty.ch"
 #line 675 "clpretty.ch"
-                            rightX = x0 + dx ;
+                            rightX =  x0 + dx ;
 #line 675 "clpretty.ch"
 #line 679 "clpretty.ch"
                             if ( !lastTree && x0 + dx + delta > rightMargin ) {
@@ -2760,136 +2760,136 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                                                         if ( inParam && x0 + dx > posRef ) {
 #line 680 "clpretty.ch"
 #line 683 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                {
 #line 683 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                    PPTREE _ptTree0=(PPTREE) 0;
 #line 683 "clpretty.ch"
-                                                                                                                               _ptTree0 = (PPTREE) 0;
+                                                                                                                                    _ptTree0 = (PPTREE) 0;
 #line 683 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                    {
 #line 683 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
 #line 683 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                        {
 #line 683 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                            PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 683 "clpretty.ch"
-                                                                                                                               _ptRes2 = MakeTree(pretty::NEWLINE, 1);
+                                                                                                                                            _ptRes2 = MakeTree(pretty::NEWLINE, 1);
 #line 683 "clpretty.ch"
-                                                                                                                               _ptTree2 = MakeString("1") ;
+                                                                                                                                            _ptTree2 = MakeString("1") ;
 #line 683 "clpretty.ch"
-                                                                                                                               ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                            ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 683 "clpretty.ch"
-                                                                                                                               _ptTree1 = _ptRes2;
+                                                                                                                                            _ptTree1 = _ptRes2;
 #line 683 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                        }
 #line 683 "clpretty.ch"
-                                                                                                                               _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 683 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                    }
 #line 683 "clpretty.ch"
-                                                                                                                               postAttribute = _ptTree0;
+                                                                                                                                    postAttribute = _ptTree0;
 #line 683 "clpretty.ch"
-                                                                                                                               ;
+                                                                                                                                    ;
 #line 683 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                }
 #line 683 "clpretty.ch"
-                                                                                                                               
+                                                                                                                                
 #line 683 "clpretty.ch"
 #line 685 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                {
 #line 685 "clpretty.ch"
 #line 685 "clpretty.ch"
-                                                                                                                               char string [10];
-                                                                                                                               
+                                                                                                                                    char    string [10];
+                                                                                                                                    
 #line 685 "clpretty.ch"
 #line 686 "clpretty.ch"
-                                                                                                                               sprintf(string, "%d", nbTab);
+                                                                                                                                    sprintf(string, "%d", nbTab);
 #line 686 "clpretty.ch"
 #line 687 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                    {
 #line 687 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree0= (PPTREE) 0 ;
+                                                                                                                                        PPTREE _ptTree0= (PPTREE) 0 ;
 #line 687 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                        {
 #line 687 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                            PPTREE _ptTree1= (PPTREE) 0 ;
 #line 687 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                            {
 #line 687 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 687 "clpretty.ch"
-                                                                                                                               _ptRes2 = MakeTree(pretty::TAB, 1);
+                                                                                                                                                _ptRes2 = MakeTree(pretty::TAB, 1);
 #line 687 "clpretty.ch"
-                                                                                                                               _ptTree2 = StoreRef(MakeString(string));
+                                                                                                                                                _ptTree2 = StoreRef(MakeString(string));
 #line 687 "clpretty.ch"
-                                                                                                                               ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 687 "clpretty.ch"
-                                                                                                                               _ptTree1 = _ptRes2;
+                                                                                                                                                _ptTree1 = _ptRes2;
 #line 687 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                            }
 #line 687 "clpretty.ch"
-                                                                                                                               postAttribute =  AddList( postAttribute,_ptTree1);
+                                                                                                                                            postAttribute =  AddList( postAttribute,_ptTree1);
 #line 687 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                        }
 #line 687 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                        {
 #line 687 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                            PPTREE _ptTree1= (PPTREE) 0 ;
 #line 687 "clpretty.ch"
-                                                                                                                               {
+                                                                                                                                            {
 #line 687 "clpretty.ch"
-                                                                                                                               PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 687 "clpretty.ch"
-                                                                                                                               _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                                _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 687 "clpretty.ch"
-                                                                                                                               _ptTree1 = _ptRes2;
+                                                                                                                                                _ptTree1 = _ptRes2;
 #line 687 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                            }
 #line 687 "clpretty.ch"
-                                                                                                                               postAttribute =  AddList( postAttribute,_ptTree1);
+                                                                                                                                            postAttribute =  AddList( postAttribute,_ptTree1);
 #line 687 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                        }
 #line 687 "clpretty.ch"
-                                                                                                                               }
+                                                                                                                                    }
 #line 687 "clpretty.ch"
-                                                                                                                               
+                                                                                                                                    
 #line 687 "clpretty.ch"
 #line 688 "clpretty.ch"
-                                                                                                                               
+                                                                                                                                    
 #line 688 "clpretty.ch"
 #line 688 "clpretty.ch"
-                                                                                                                               }
-                                                                                                                               
+                                                                                                                                }
+                                                                                                                                
 #line 688 "clpretty.ch"
 #line 689 "clpretty.ch"
-                                                                                                                               hasIndented = 1 ;
+                                                                                                                                hasIndented =  1 ;
 #line 689 "clpretty.ch"
 #line 690 "clpretty.ch"
-                                                                                                                               PutAttr(currElem, postAttribute, PRE_ATTR, PUT_BEG);
+                                                                                                                                PutAttr(currElem, postAttribute, PRE_ATTR, PUT_BEG);
 #line 690 "clpretty.ch"
 #line 694 "clpretty.ch"
 #if 0
 #line 694 "clpretty.ch"
 #line 695 "clpretty.ch"
-                                                                                                                               delta = posRef - x0 - dx ;
+                                                                                                                                delta =  posRef - x0 - dx ;
 #line 695 "clpretty.ch"
 #line 695 "clpretty.ch"
-                                                                                                                               
+                                                                                                                                
 #line 695 "clpretty.ch"
-#else 
-                                                                                                                               delta = posRef - x0 ;
-#endif
-                                                                                                                               
+#                                                                                                                               else 
+                                                                                                                                    delta =  posRef - x0 ;
+#                                                                                                                               endif
+                                                                                                                                
 #line 695 "clpretty.ch"
 #line 699 "clpretty.ch"
-                                                                                                                               PutCoord(currElem, x + delta, y, dx, dy);
+                                                                                                                                PutCoord(currElem, x + delta, y, dx, dy);
 #line 699 "clpretty.ch"
 #line 702 "clpretty.ch"
-                                                                                                                               TraitMark(currElem, posRef);
+                                                                                                                                TraitMark(currElem, posRef);
 #line 702 "clpretty.ch"
 #line 703 "clpretty.ch"
-                                                                                                                               
+                                                                                                                                
 #line 703 "clpretty.ch"
 #line 703 "clpretty.ch"
                                                                                                                                } else 
@@ -2954,76 +2954,76 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                                                                             if ( !hasIndented ) {
 #line 718 "clpretty.ch"
 #line 719 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                    {
 #line 719 "clpretty.ch"
 #line 720 "clpretty.ch"
-                                                                                                                                  char string [10];
-                                                                                                                                  
+                                                                                                                                        char    string [10];
+                                                                                                                                        
 #line 720 "clpretty.ch"
 #line 721 "clpretty.ch"
-                                                                                                                                  sprintf(string, "%d", nbTab);
+                                                                                                                                        sprintf(string, "%d", nbTab);
 #line 721 "clpretty.ch"
 #line 722 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                        {
 #line 722 "clpretty.ch"
-                                                                                                                                  PPTREE _ptTree0= (PPTREE) 0 ;
+                                                                                                                                            PPTREE _ptTree0= (PPTREE) 0 ;
 #line 722 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                            {
 #line 722 "clpretty.ch"
-                                                                                                                                  PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
 #line 722 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                                {
 #line 722 "clpretty.ch"
-                                                                                                                                  PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 722 "clpretty.ch"
-                                                                                                                                  _ptRes2 = MakeTree(pretty::TAB, 1);
+                                                                                                                                                    _ptRes2 = MakeTree(pretty::TAB, 1);
 #line 722 "clpretty.ch"
-                                                                                                                                  _ptTree2 = StoreRef(MakeString(string));
+                                                                                                                                                    _ptTree2 = StoreRef(MakeString(string));
 #line 722 "clpretty.ch"
-                                                                                                                                  ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                    ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 722 "clpretty.ch"
-                                                                                                                                  _ptTree1 = _ptRes2;
+                                                                                                                                                    _ptTree1 = _ptRes2;
 #line 722 "clpretty.ch"
-                                                                                                                                  }
+                                                                                                                                                }
 #line 722 "clpretty.ch"
-                                                                                                                                  postAttribute =  AddList( postAttribute,_ptTree1);
+                                                                                                                                                postAttribute =  AddList( postAttribute,_ptTree1);
 #line 722 "clpretty.ch"
-                                                                                                                                  }
+                                                                                                                                            }
 #line 722 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                            {
 #line 722 "clpretty.ch"
-                                                                                                                                  PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
 #line 722 "clpretty.ch"
-                                                                                                                                  {
+                                                                                                                                                {
 #line 722 "clpretty.ch"
-                                                                                                                                  PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 722 "clpretty.ch"
-                                                                                                                                  _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                                    _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 722 "clpretty.ch"
-                                                                                                                                  _ptTree1 = _ptRes2;
+                                                                                                                                                    _ptTree1 = _ptRes2;
 #line 722 "clpretty.ch"
-                                                                                                                                  }
+                                                                                                                                                }
 #line 722 "clpretty.ch"
-                                                                                                                                  postAttribute =  AddList( postAttribute,_ptTree1);
+                                                                                                                                                postAttribute =  AddList( postAttribute,_ptTree1);
 #line 722 "clpretty.ch"
-                                                                                                                                  }
+                                                                                                                                            }
 #line 722 "clpretty.ch"
-                                                                                                                                  }
+                                                                                                                                        }
 #line 722 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                        
 #line 722 "clpretty.ch"
 #line 723 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                        
 #line 723 "clpretty.ch"
 #line 723 "clpretty.ch"
-                                                                                                                                  }
-                                                                                                                                  
+                                                                                                                                    }
+                                                                                                                                    
 #line 723 "clpretty.ch"
 #line 724 "clpretty.ch"
-                                                                                                                                  hasIndented = 1 ;
+                                                                                                                                    hasIndented =  1 ;
 #line 724 "clpretty.ch"
 #line 725 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                    
 #line 725 "clpretty.ch"
 #line 725 "clpretty.ch"
                                                                                                                                   }
@@ -3032,7 +3032,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                                                                             PutAttr(lastTree, postAttribute, POST_ATTR, PUT_END);
 #line 726 "clpretty.ch"
 #line 729 "clpretty.ch"
-                                                                                                            delta = deltaRef ;
+                                                                                                            delta =  deltaRef ;
 #line 729 "clpretty.ch"
 #line 730 "clpretty.ch"
                                                                                                             PutCoord(currElem, x + delta, y, dx, dy);
@@ -3049,7 +3049,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                                                     {
 #line 734 "clpretty.ch"
 #line 735 "clpretty.ch"
-                                                                                        deltaInhibitIndent = 1 ;
+                                                                                        deltaInhibitIndent =  1 ;
 #line 735 "clpretty.ch"
 #line 738 "clpretty.ch"
                                                                                         TraitMark(currElem, colRef);
@@ -3093,7 +3093,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
                                                        }
 #line 751 "clpretty.ch"
 #line 758 "clpretty.ch"
-                            deltaRef = posRef - x0 - dx ;
+                            deltaRef =  posRef - x0 - dx ;
 #line 758 "clpretty.ch"
 #line 759 "clpretty.ch"
                             (lastTree=currElem);
@@ -3268,7 +3268,7 @@ void clpretty::TraiterExpList ( PTREE tree, int x0, int valTab, int inParam )
     UnMarkCoordTree(tree);
 #line 795 "clpretty.ch"
 #line 796 "clpretty.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 796 "clpretty.ch"
 #line 797 "clpretty.ch"
     
@@ -3418,22 +3418,22 @@ void clpretty::TraiterMonoParam ( PTREE tree, int x0 )
     
 #line 835 "clpretty.ch"
 #line 838 "clpretty.ch"
-    nbTab = 1 ;
+    nbTab =  1 ;
 #line 838 "clpretty.ch"
 #line 839 "clpretty.ch"
     if ( colRef != markTab ) 
 #line 839 "clpretty.ch"
 #line 840 "clpretty.ch"
-        nbTab = 0 ;
+        nbTab =  0 ;
 #line 840 "clpretty.ch"
 #line 841 "clpretty.ch"
     nbTab += 1 ;
 #line 841 "clpretty.ch"
 #line 842 "clpretty.ch"
-    posRef = TAB_VALUE(colRef, nbTab);
+    posRef =  TAB_VALUE(colRef, nbTab);
 #line 842 "clpretty.ch"
 #line 843 "clpretty.ch"
-    delta = 0 ;
+    delta =  0 ;
 #line 843 "clpretty.ch"
 #line 847 "clpretty.ch"
     {
@@ -3542,13 +3542,13 @@ void clpretty::TraiterMonoParam ( PTREE tree, int x0 )
         
 #line 852 "clpretty.ch"
 #line 853 "clpretty.ch"
-        hasIndented = 1 ;
+        hasIndented =  1 ;
 #line 853 "clpretty.ch"
 #line 854 "clpretty.ch"
         PutAttr(tree, postAttribute, PRE_ATTR, PUT_BEG);
 #line 854 "clpretty.ch"
 #line 857 "clpretty.ch"
-        delta = posRef - x0 ;
+        delta =  posRef - x0 ;
 #line 857 "clpretty.ch"
 #line 858 "clpretty.ch"
         PutCoord(tree, x + delta, y, dx, colRef);
@@ -3600,7 +3600,7 @@ void clpretty::TraiterMonoParam ( PTREE tree, int x0 )
     PutAttr(tree, list, POST_ATTR, PUT_END);
 #line 864 "clpretty.ch"
 #line 865 "clpretty.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 865 "clpretty.ch"
 #line 866 "clpretty.ch"
     
@@ -3680,7 +3680,7 @@ void clpretty::Treat ( PTREE tree )
         FreeCoord(tree);
 #line 889 "clpretty.ch"
 #line 892 "clpretty.ch"
-    nbTab = 0 ;
+    nbTab =  0 ;
 #line 892 "clpretty.ch"
 #line 893 "clpretty.ch"
     if ( FatherTree(tree) ) {
@@ -3703,7 +3703,7 @@ void clpretty::Treat ( PTREE tree )
     
 #line 897 "clpretty.ch"
 #line 900 "clpretty.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 900 "clpretty.ch"
 #line 901 "clpretty.ch"
     
@@ -3781,54 +3781,54 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                                                                                         if ( !(y & 0x1) ) {
 #line 931 "clpretty.ch"
 #line 932 "clpretty.ch"
-                                                                                                                              switch ( OpTypeAlign(tree) ) {
+                                                                                                                                switch ( OpTypeAlign(tree) ) {
 #line 932 "clpretty.ch"
 #line 933 "clpretty.ch"
-                                                                                                                              case H_ALIGN : 
+                                                                                                                                    case H_ALIGN : 
 #line 933 "clpretty.ch"
 #line 934 "clpretty.ch"
-                                                                                                                              TraiterExp2H(tree, x0);
+                                                                                                                                        TraiterExp2H(tree, x0);
 #line 934 "clpretty.ch"
 #line 935 "clpretty.ch"
-                                                                                                                              break ;
-                                                                                                                              
+                                                                                                                                        break ;
+                                                                                                                                        
 #line 935 "clpretty.ch"
 #line 936 "clpretty.ch"
-                                                                                                                              case V_ALIGN : 
+                                                                                                                                    case V_ALIGN : 
 #line 936 "clpretty.ch"
 #line 937 "clpretty.ch"
-                                                                                                                              TraiterExp2V(tree, x0);
+                                                                                                                                        TraiterExp2V(tree, x0);
 #line 937 "clpretty.ch"
 #line 938 "clpretty.ch"
-                                                                                                                              break ;
-                                                                                                                              
+                                                                                                                                        break ;
+                                                                                                                                        
 #line 938 "clpretty.ch"
 #line 939 "clpretty.ch"
-                                                                                                                              case COND_ALIGN : 
+                                                                                                                                    case COND_ALIGN : 
 #line 939 "clpretty.ch"
 #line 940 "clpretty.ch"
-                                                                                                                              TraiterExp3(tree, x0);
+                                                                                                                                        TraiterExp3(tree, x0);
 #line 940 "clpretty.ch"
 #line 941 "clpretty.ch"
-                                                                                                                              break ;
-                                                                                                                              
+                                                                                                                                        break ;
+                                                                                                                                        
 #line 941 "clpretty.ch"
 #line 942 "clpretty.ch"
-                                                                                                                              case LIST_ALIGN : 
+                                                                                                                                    case LIST_ALIGN : 
 #line 942 "clpretty.ch"
 #line 943 "clpretty.ch"
-                                                                                                                              TraiterExpList(tree, x0);
+                                                                                                                                        TraiterExpList(tree, x0);
 #line 943 "clpretty.ch"
 #line 944 "clpretty.ch"
-                                                                                                                              break ;
-                                                                                                                              
+                                                                                                                                        break ;
+                                                                                                                                        
 #line 944 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                }
 #line 944 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 944 "clpretty.ch"
 #line 946 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 946 "clpretty.ch"
 #line 946 "clpretty.ch"
                                                                                                                               }
@@ -3837,72 +3837,72 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                                                                                         if ( TreatGeometrySpecific(tree, x0, x) ) {
 #line 950 "clpretty.ch"
 #line 951 "clpretty.ch"
-                                                                                                                                                      int maxDx = 0 ;
-                                                                                                                                                      
+                                                                                                                                                        int maxDx = 0 ;
+                                                                                                                                                        
 #line 951 "clpretty.ch"
 #line 952 "clpretty.ch"
-                                                                                                                                                      GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
+                                                                                                                                                        GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
 #line 952 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      {
+                                                                                                                                                        {
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      int _for_slot = 1, _arity = treearity(tree);
-                                                                                                                                                      
+                                                                                                                                                            int _for_slot = 1, _arity = treearity(tree);
+                                                                                                                                                            
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      MY_TREE _for_elem = (PPTREE)0 ;
-                                                                                                                                                      
+                                                                                                                                                            MY_TREE _for_elem = (PPTREE)0 ;
+                                                                                                                                                            
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      for (; _for_slot <= _arity ; _for_slot++ ) {
+                                                                                                                                                            for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      _for_elem = SonTree(tree, _for_slot);
+                                                                                                                                                                _for_elem =  SonTree(tree, _for_slot);
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
+                                                                                                                                                                if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      (elem=for_elem);
+                                                                                                                                                                    (elem=for_elem);
 #line 953 "clpretty.ch"
-                                                                                                                                                      
-#line 953 "clpretty.ch"
-#line 953 "clpretty.ch"
-                                                                                                                                                      dx = GetBoxSize(elem);
+                                                                                                                                                                    
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      if ( dx > maxDx ) 
+                                                                                                                                                                    dx =  GetBoxSize(elem);
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      maxDx = dx ;
+                                                                                                                                                                    if ( dx > maxDx ) 
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      
+                                                                                                                                                                        maxDx =  dx ;
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      }
+                                                                                                                                                                    
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      
+                                                                                                                                                                }
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      }
-#line 953 "clpretty.ch"
-                                                                                                                                                      
+                                                                                                                                                                
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      
+                                                                                                                                                            }
+#line 953 "clpretty.ch"
+                                                                                                                                                            
 #line 953 "clpretty.ch"
 #line 953 "clpretty.ch"
-                                                                                                                                                      }
+                                                                                                                                                            
+#line 953 "clpretty.ch"
+#line 953 "clpretty.ch"
+                                                                                                                                                        }
 #line 953 "clpretty.ch"
 #line 959 "clpretty.ch"
-                                                                                                                                                      PutCoord(tree, xRef, yRef |= 1, maxDx, posMarkRef);
+                                                                                                                                                        PutCoord(tree, xRef, yRef |= 1, maxDx, posMarkRef);
 #line 959 "clpretty.ch"
 #line 960 "clpretty.ch"
-                                                                                                                                                      
+                                                                                                                                                        
 #line 960 "clpretty.ch"
 #line 960 "clpretty.ch"
                                                                                                                                                       }
@@ -3911,84 +3911,84 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                                                                                         if ( treearity(tree) > 0 ) {
 #line 963 "clpretty.ch"
 #line 964 "clpretty.ch"
-                                                                                                                                      GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
+                                                                                                                                        GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
 #line 964 "clpretty.ch"
 #line 965 "clpretty.ch"
-                                                                                                                                      if ( x0 + xRef + dxRef > rightMargin ) {
+                                                                                                                                        if ( x0 + xRef + dxRef > rightMargin ) {
 #line 965 "clpretty.ch"
 #line 966 "clpretty.ch"
-                                                                                                                                                                                 int maxDx = 0 ;
-                                                                                                                                                                                 
+                                                                                                                                                                                    int maxDx = 0 ;
+                                                                                                                                                                                    
 #line 966 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 {
+                                                                                                                                                                                    {
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 int _for_slot = 1, _arity = treearity(tree);
-                                                                                                                                                                                 
+                                                                                                                                                                                    int _for_slot = 1, _arity = treearity(tree);
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 MY_TREE _for_elem = (PPTREE)0 ;
-                                                                                                                                                                                 
+                                                                                                                                                                                    MY_TREE _for_elem = (PPTREE)0 ;
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 for (; _for_slot <= _arity ; _for_slot++ ) {
+                                                                                                                                                                                    for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 _for_elem = SonTree(tree, _for_slot);
+                                                                                                                                                                                    _for_elem =  SonTree(tree, _for_slot);
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
+                                                                                                                                                                                    if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 (elem=for_elem);
+                                                                                                                                                                                    (elem=for_elem);
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 
-#line 967 "clpretty.ch"
-#line 967 "clpretty.ch"
-                                                                                                                                                                                 TreatGeometryDepth(elem, x0 + xRef, depth);
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 dx = GetBoxSize(elem);
+                                                                                                                                                                                    TreatGeometryDepth(elem, x0 + xRef, depth);
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 if ( dx > maxDx ) 
+                                                                                                                                                                                    dx =  GetBoxSize(elem);
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 maxDx = dx ;
+                                                                                                                                                                                    if ( dx > maxDx ) 
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                    maxDx =  dx ;
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 }
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                    }
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 }
-#line 967 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                    }
+#line 967 "clpretty.ch"
+                                                                                                                                                                                    
 #line 967 "clpretty.ch"
 #line 967 "clpretty.ch"
-                                                                                                                                                                                 }
+                                                                                                                                                                                    
+#line 967 "clpretty.ch"
+#line 967 "clpretty.ch"
+                                                                                                                                                                                    }
 #line 967 "clpretty.ch"
 #line 974 "clpretty.ch"
-                                                                                                                                                                                 PutCoord(tree, xRef, yRef |= 1, maxDx, posMarkRef);
+                                                                                                                                                                                    PutCoord(tree, xRef, yRef |= 1, maxDx, posMarkRef);
 #line 974 "clpretty.ch"
 #line 975 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                    
 #line 975 "clpretty.ch"
 #line 975 "clpretty.ch"
-                                                                                                                                                                                 }
+                                                                                                                                                                                   }
 #line 975 "clpretty.ch"
 #line 976 "clpretty.ch"
-                                                                                                                                      
+                                                                                                                                        
 #line 976 "clpretty.ch"
 #line 976 "clpretty.ch"
                                                                                                                                       }
@@ -4000,122 +4000,122 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                                                                                         if ( x0 + xRef + dxRef > rightMargin ) {
 #line 980 "clpretty.ch"
 #line 981 "clpretty.ch"
-                                                                                                                                                   if ( IsTop(tree) != -1 && x0 + xRef > 3 ) {
+                                                                                                                                                    if ( IsTop(tree) != -1 && x0 + xRef > 3 ) {
 #line 981 "clpretty.ch"
 #line 984 "clpretty.ch"
-                                                                                                                                                                                                    CleanAttributs(tree);
+                                                                                                                                                                                                     CleanAttributs(tree);
 #line 984 "clpretty.ch"
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                                                                                     PPTREE _ptTree0=(PPTREE) 0;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree0 = (PPTREE) 0;
+                                                                                                                                                                                                     _ptTree0 = (PPTREE) 0;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                                                                     PPTREE _ptTree1= (PPTREE) 0 ;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                                                     PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptRes2 = MakeTree(pretty::GOTO, 1);
+                                                                                                                                                                                                     _ptRes2 = MakeTree(pretty::GOTO, 1);
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree2 = MakeString("3") ;
+                                                                                                                                                                                                     _ptTree2 = MakeString("3") ;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                                                                     ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree1 = _ptRes2;
+                                                                                                                                                                                                     _ptTree1 = _ptRes2;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                                                                                     _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                                                                     PPTREE _ptTree1= (PPTREE) 0 ;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                                                     PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                                                                                     _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree1 = _ptRes2;
+                                                                                                                                                                                                     _ptTree1 = _ptRes2;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                                                                                     _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    list = _ptTree0;
+                                                                                                                                                                                                     list = _ptTree0;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    ;
+                                                                                                                                                                                                     ;
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 987 "clpretty.ch"
-                                                                                                                                                                                                    
+                                                                                                                                                                                                     
 #line 987 "clpretty.ch"
 #line 988 "clpretty.ch"
-                                                                                                                                                                                                    PutAttr(tree, list, PRE_ATTR, PUT_END);
+                                                                                                                                                                                                     PutAttr(tree, list, PRE_ATTR, PUT_END);
 #line 988 "clpretty.ch"
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                                                                                     PPTREE _ptTree0=(PPTREE) 0;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree0 = (PPTREE) 0;
+                                                                                                                                                                                                     _ptTree0 = (PPTREE) 0;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                                                                     PPTREE _ptTree1= (PPTREE) 0 ;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    {
+                                                                                                                                                                                                     {
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                                                     PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    _ptRes2 = MakeTree(pretty::UNMARK, 0);
+                                                                                                                                                                                                     _ptRes2 = MakeTree(pretty::UNMARK, 0);
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree1 = _ptRes2;
+                                                                                                                                                                                                     _ptTree1 = _ptRes2;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                                                                                     _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    list = _ptTree0;
+                                                                                                                                                                                                     list = _ptTree0;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    ;
+                                                                                                                                                                                                     ;
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 989 "clpretty.ch"
-                                                                                                                                                                                                    
+                                                                                                                                                                                                     
 #line 989 "clpretty.ch"
 #line 990 "clpretty.ch"
-                                                                                                                                                                                                    PutAttr(tree, list, POST_ATTR, PUT_END);
+                                                                                                                                                                                                     PutAttr(tree, list, POST_ATTR, PUT_END);
 #line 990 "clpretty.ch"
 #line 993 "clpretty.ch"
-                                                                                                                                                                                                    Treat(FatherTree(tree));
+                                                                                                                                                                                                     Treat(FatherTree(tree));
 #line 993 "clpretty.ch"
 #line 996 "clpretty.ch"
-                                                                                                                                                                                                    GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
+                                                                                                                                                                                                     GetCoord(tree, &xRef, &yRef, &dxRef, &posMarkRef);
 #line 996 "clpretty.ch"
 #line 997 "clpretty.ch"
-                                                                                                                                                                                                    PutCoord(tree, xRef, yRef, 3, posMarkRef);
+                                                                                                                                                                                                     PutCoord(tree, xRef, yRef, 3, posMarkRef);
 #line 997 "clpretty.ch"
 #line 998 "clpretty.ch"
-                                                                                                                                                                                                    
+                                                                                                                                                                                                     
 #line 998 "clpretty.ch"
 #line 998 "clpretty.ch"
-                                                                                                                                                                                                    }
+                                                                                                                                                                                                     }
 #line 998 "clpretty.ch"
 #line 999 "clpretty.ch"
-                                                                                                                                                   
+                                                                                                                                                    
 #line 999 "clpretty.ch"
 #line 999 "clpretty.ch"
                                                                                                                                                    }
@@ -4208,7 +4208,7 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                         GetCoord(tree, &x, &y, &dx, &posMark);
 #line 1014 "clpretty.ch"
 #line 1015 "clpretty.ch"
-                                        markTab = atoi(Value(tree1));
+                                        markTab =  atoi(Value(tree1));
 #line 1015 "clpretty.ch"
 #line 1016 "clpretty.ch"
                                         if ( oldMarkTab == -1 || posMark == oldMarkTab ) 
@@ -4219,7 +4219,7 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                                         else 
 #line 1017 "clpretty.ch"
 #line 1019 "clpretty.ch"
-                                            nbTab = 1 ;
+                                            nbTab =  1 ;
 #line 1019 "clpretty.ch"
                                         
 #line 1019 "clpretty.ch"
@@ -4233,10 +4233,10 @@ void clpretty::TreatGeometryDepth ( PTREE tree, int x0, unsigned int depth )
                     TreatGeometry(tree, x0);
 #line 1021 "clpretty.ch"
 #line 1024 "clpretty.ch"
-                    nbTab = oldNbTab ;
+                    nbTab =  oldNbTab ;
 #line 1024 "clpretty.ch"
 #line 1025 "clpretty.ch"
-                    markTab = oldMarkTab ;
+                    markTab =  oldMarkTab ;
 #line 1025 "clpretty.ch"
 #line 1026 "clpretty.ch"
                     
@@ -4288,7 +4288,7 @@ void clpretty::UpdateSize ( PTREE tree, int type )
                                     GetCoord(sontree(tree, 1), &x, &y, &dx, &dy);
 #line 1045 "clpretty.ch"
 #line 1046 "clpretty.ch"
-                                    maxDx = x + dx ;
+                                    maxDx =  x + dx ;
 #line 1046 "clpretty.ch"
 #line 1047 "clpretty.ch"
                                     GetCoord(sontree(tree, 2), &x, &y, &dx, &dy);
@@ -4297,7 +4297,7 @@ void clpretty::UpdateSize ( PTREE tree, int type )
                                     if ( x + dx > maxDx ) 
 #line 1048 "clpretty.ch"
 #line 1049 "clpretty.ch"
-                                        maxDx = x + dx ;
+                                        maxDx =  x + dx ;
 #line 1049 "clpretty.ch"
 #line 1052 "clpretty.ch"
                                     GetCoord(tree, &x, &y, &dx, &dy);
@@ -4498,22 +4498,22 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
     MarkCoordTree(tree, x0, 0);
 #line 1095 "clpretty.ch"
 #line 1098 "clpretty.ch"
-    priority = OpType(tree);
+    priority =  OpType(tree);
 #line 1098 "clpretty.ch"
 #line 1099 "clpretty.ch"
     if ( colRef != markTab ) 
 #line 1099 "clpretty.ch"
 #line 1100 "clpretty.ch"
-        nbTab = 0 ;
+        nbTab =  0 ;
 #line 1100 "clpretty.ch"
 #line 1101 "clpretty.ch"
-    posRef = TAB_VALUE(colRef, nbTab + 1);
+    posRef =  TAB_VALUE(colRef, nbTab + 1);
 #line 1101 "clpretty.ch"
 #line 1102 "clpretty.ch"
-    deltaRef = delta = 0 ;
+    deltaRef =  delta = 0 ;
 #line 1102 "clpretty.ch"
 #line 1103 "clpretty.ch"
-    currTabTree = 0 ;
+    currTabTree =  0 ;
 #line 1103 "clpretty.ch"
 #line 1106 "clpretty.ch"
     AddTree(tree, 0);
@@ -4540,7 +4540,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
             {
 #line 1109 "clpretty.ch"
 #line 1110 "clpretty.ch"
-                nPriority = OpType(for_elem);
+                nPriority =  OpType(for_elem);
 #line 1110 "clpretty.ch"
 #line 1111 "clpretty.ch"
                 GetCoord(for_elem, &x, &y, &dx, &lastMark);
@@ -4565,94 +4565,94 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                 if ( (!lastTree || deltaRef >= 0) && x0 + dx + delta > rightMargin ) {
 #line 1117 "clpretty.ch"
 #line 1118 "clpretty.ch"
-                                                                                                                              if ( !hasToPutVirt ) {
+                                                                                                                                if ( !hasToPutVirt ) {
 #line 1118 "clpretty.ch"
 #line 1119 "clpretty.ch"
-                                                                                                                                                     (hasToPutVirt=for_elem);
+                                                                                                                                                        (hasToPutVirt=for_elem);
 #line 1119 "clpretty.ch"
-                                                                                                                                                     
+                                                                                                                                                        
 #line 1119 "clpretty.ch"
 #line 1120 "clpretty.ch"
-                                                                                                                                                     (lastTree=for_elem);
+                                                                                                                                                        (lastTree=for_elem);
 #line 1120 "clpretty.ch"
-                                                                                                                                                     
+                                                                                                                                                        
 #line 1120 "clpretty.ch"
 #line 1121 "clpretty.ch"
-                                                                                                                                                     
+                                                                                                                                                        
 #line 1121 "clpretty.ch"
 #line 1121 "clpretty.ch"
-                                                                                                                                                     } else 
+                                                                                                                                                       } else 
 #line 1121 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                {
 #line 1121 "clpretty.ch"
 #line 1122 "clpretty.ch"
-                                                                                                                              char string [10];
-                                                                                                                              
+                                                                                                                                    char    string [10];
+                                                                                                                                    
 #line 1122 "clpretty.ch"
 #line 1123 "clpretty.ch"
-                                                                                                                              sprintf(string, "%d", colRef);
+                                                                                                                                    sprintf(string, "%d", colRef);
 #line 1123 "clpretty.ch"
 #line 1124 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                    {
 #line 1124 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                        PPTREE _ptTree0=(PPTREE) 0;
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptTree0 = (PPTREE) 0;
+                                                                                                                                        _ptTree0 = (PPTREE) 0;
 #line 1124 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                        {
 #line 1124 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                            PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1124 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                            {
 #line 1124 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptRes2 = MakeTree(pretty::TAB_VIRT, 2);
+                                                                                                                                                _ptRes2 = MakeTree(pretty::TAB_VIRT, 2);
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptTree2 = StoreRef(MakeString(string));
+                                                                                                                                                _ptTree2 = StoreRef(MakeString(string));
 #line 1124 "clpretty.ch"
-                                                                                                                              ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptTree2 = MakeString("1") ;
+                                                                                                                                                _ptTree2 = MakeString("1") ;
 #line 1124 "clpretty.ch"
-                                                                                                                              ReplaceTree(_ptRes2, 2, _ptTree2);
+                                                                                                                                                ReplaceTree(_ptRes2, 2, _ptTree2);
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptTree1 = _ptRes2;
+                                                                                                                                                _ptTree1 = _ptRes2;
 #line 1124 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                            }
 #line 1124 "clpretty.ch"
-                                                                                                                              _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                            _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 1124 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                        }
 #line 1124 "clpretty.ch"
-                                                                                                                              list = _ptTree0;
+                                                                                                                                        list = _ptTree0;
 #line 1124 "clpretty.ch"
-                                                                                                                              ;
+                                                                                                                                        ;
 #line 1124 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                    }
 #line 1124 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                    
 #line 1124 "clpretty.ch"
 #line 1125 "clpretty.ch"
-                                                                                                                              PutAttr(for_elem, list, PRE_ATTR, PUT_END);
+                                                                                                                                    PutAttr(for_elem, list, PRE_ATTR, PUT_END);
 #line 1125 "clpretty.ch"
 #line 1126 "clpretty.ch"
-                                                                                                                              (lastTree=for_elem);
+                                                                                                                                    (lastTree=for_elem);
 #line 1126 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                    
 #line 1126 "clpretty.ch"
 #line 1127 "clpretty.ch"
-                                                                                                                              for_elem = FatherTree(for_elem);
+                                                                                                                                    for_elem =  FatherTree(for_elem);
 #line 1127 "clpretty.ch"
 #line 1128 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                    
 #line 1128 "clpretty.ch"
 #line 1128 "clpretty.ch"
-                                                                                                                              }
-                                                                                                                              
+                                                                                                                                }
+                                                                                                                                
 #line 1128 "clpretty.ch"
 #line 1129 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 1129 "clpretty.ch"
 #line 1129 "clpretty.ch"
                                                                                                                               } else 
@@ -4663,235 +4663,235 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                     if ( x0 + dx + delta > rightMargin && lastTree && deltaRef < -1 ) {
 #line 1133 "clpretty.ch"
 #line 1133 "clpretty.ch"
-                                                                                                                              PTREE _Baum1 ;
+                                                                                                                                PTREE   _Baum1 ;
 #line 1133 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 1133 "clpretty.ch"
 #line 1136 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                {
 #line 1136 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree0=(PPTREE) 0;
+                                                                                                                                    PPTREE _ptTree0=(PPTREE) 0;
 #line 1136 "clpretty.ch"
-                                                                                                                              _ptTree0 = (PPTREE) 0;
+                                                                                                                                    _ptTree0 = (PPTREE) 0;
 #line 1136 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                    {
 #line 1136 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                        PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1136 "clpretty.ch"
-                                                                                                                              {
+                                                                                                                                        {
 #line 1136 "clpretty.ch"
-                                                                                                                              PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                            PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1136 "clpretty.ch"
-                                                                                                                              _ptRes2 = MakeTree(pretty::NEWLINE, 1);
+                                                                                                                                            _ptRes2 = MakeTree(pretty::NEWLINE, 1);
 #line 1136 "clpretty.ch"
-                                                                                                                              _ptTree2 = MakeString("1") ;
+                                                                                                                                            _ptTree2 = MakeString("1") ;
 #line 1136 "clpretty.ch"
-                                                                                                                              ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                            ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 1136 "clpretty.ch"
-                                                                                                                              _ptTree1 = _ptRes2;
+                                                                                                                                            _ptTree1 = _ptRes2;
 #line 1136 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                        }
 #line 1136 "clpretty.ch"
-                                                                                                                              _ptTree0 = AddList( _ptTree0,_ptTree1);
+                                                                                                                                        _ptTree0 = AddList( _ptTree0,_ptTree1);
 #line 1136 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                    }
 #line 1136 "clpretty.ch"
-                                                                                                                              attributeList = _ptTree0;
+                                                                                                                                    attributeList = _ptTree0;
 #line 1136 "clpretty.ch"
-                                                                                                                              ;
+                                                                                                                                    ;
 #line 1136 "clpretty.ch"
-                                                                                                                              }
+                                                                                                                                }
 #line 1136 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 1136 "clpretty.ch"
 #line 1137 "clpretty.ch"
-                                                                                                                              if ( !hasIndented ) {
+                                                                                                                                if ( !hasIndented ) {
 #line 1137 "clpretty.ch"
 #line 1138 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                        {
 #line 1138 "clpretty.ch"
 #line 1139 "clpretty.ch"
-                                                                                                                                                    char string [25];
-                                                                                                                                                    
+                                                                                                                                                            char    string [25];
+                                                                                                                                                            
 #line 1139 "clpretty.ch"
 #line 1140 "clpretty.ch"
-                                                                                                                                                    sprintf(string, "%d", nbTab + 1);
+                                                                                                                                                            sprintf(string, "%d", nbTab + 1);
 #line 1140 "clpretty.ch"
 #line 1141 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                            {
 #line 1141 "clpretty.ch"
-                                                                                                                                                    PPTREE _ptTree0= (PPTREE) 0 ;
+                                                                                                                                                                PPTREE _ptTree0= (PPTREE) 0 ;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                                {
 #line 1141 "clpretty.ch"
-                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                                    {
 #line 1141 "clpretty.ch"
-                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    _ptRes2 = MakeTree(pretty::TAB, 1);
+                                                                                                                                                                        _ptRes2 = MakeTree(pretty::TAB, 1);
 #line 1141 "clpretty.ch"
-                                                                                                                                                    _ptTree2 = StoreRef(MakeString(string));
+                                                                                                                                                                        _ptTree2 = StoreRef(MakeString(string));
 #line 1141 "clpretty.ch"
-                                                                                                                                                    ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 1141 "clpretty.ch"
-                                                                                                                                                    _ptTree1 = _ptRes2;
+                                                                                                                                                                        _ptTree1 = _ptRes2;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    }
+                                                                                                                                                                    }
 #line 1141 "clpretty.ch"
-                                                                                                                                                    attributeList =  AddList( attributeList,_ptTree1);
+                                                                                                                                                                    attributeList =  AddList( attributeList,_ptTree1);
 #line 1141 "clpretty.ch"
-                                                                                                                                                    }
+                                                                                                                                                                }
 #line 1141 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                                {
 #line 1141 "clpretty.ch"
-                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                                    PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    {
+                                                                                                                                                                    {
 #line 1141 "clpretty.ch"
-                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                                                        _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 1141 "clpretty.ch"
-                                                                                                                                                    _ptTree1 = _ptRes2;
+                                                                                                                                                                        _ptTree1 = _ptRes2;
 #line 1141 "clpretty.ch"
-                                                                                                                                                    }
+                                                                                                                                                                    }
 #line 1141 "clpretty.ch"
-                                                                                                                                                    attributeList =  AddList( attributeList,_ptTree1);
+                                                                                                                                                                    attributeList =  AddList( attributeList,_ptTree1);
 #line 1141 "clpretty.ch"
-                                                                                                                                                    }
+                                                                                                                                                                }
 #line 1141 "clpretty.ch"
-                                                                                                                                                    }
+                                                                                                                                                            }
 #line 1141 "clpretty.ch"
-                                                                                                                                                    
+                                                                                                                                                            
 #line 1141 "clpretty.ch"
 #line 1142 "clpretty.ch"
-                                                                                                                                                    
+                                                                                                                                                            
 #line 1142 "clpretty.ch"
 #line 1142 "clpretty.ch"
-                                                                                                                                                    }
-                                                                                                                                                    
+                                                                                                                                                        }
+                                                                                                                                                        
 #line 1142 "clpretty.ch"
 #line 1143 "clpretty.ch"
-                                                                                                                                                    hasIndented = 1 ;
+                                                                                                                                                        hasIndented =  1 ;
 #line 1143 "clpretty.ch"
 #line 1144 "clpretty.ch"
+                                                                                                                                                        
+#line 1144 "clpretty.ch"
+#line 1144 "clpretty.ch"
+                                                                                                                                                      }
+#line 1144 "clpretty.ch"
+#line 1145 "clpretty.ch"
+                                                                                                                                PutAttr(lastTree, attributeList, POST_ATTR, PUT_END);
+#line 1145 "clpretty.ch"
+#line 1148 "clpretty.ch"
+                                                                                                                                delta =  deltaRef ;
+#line 1148 "clpretty.ch"
+#line 1149 "clpretty.ch"
+                                                                                                                                _Baum1 = (PPTREE) 0 ;
+#line 1149 "clpretty.ch"
+                                                                                                                                
+#line 1149 "clpretty.ch"
+#line 1149 "clpretty.ch"
+                                                                                                                                (inter=SNextTree(lastTree, _Baum1));
+#line 1149 "clpretty.ch"
+                                                                                                                                
+#line 1149 "clpretty.ch"
+#line 1150 "clpretty.ch"
+                                                                                                                                while ( 1 ) {
+#line 1150 "clpretty.ch"
+#line 1150 "clpretty.ch"
+                                                                                                                                                PTREE   _Baum3 ;
+#line 1150 "clpretty.ch"
+                                                                                                                                                
+#line 1150 "clpretty.ch"
+#line 1151 "clpretty.ch"
+                                                                                                                                                (father=FatherTree(inter));
+#line 1151 "clpretty.ch"
+                                                                                                                                                
+#line 1151 "clpretty.ch"
+#line 1152 "clpretty.ch"
+                                                                                                                                                while ( inter && ((_inter = (PPTREE)father,1) && 
+#line 1152 "clpretty.ch"
+                                                                                                                                                                        (NumberTree(_inter) == pretty::ATTRIBUTS) &&
+#line 1152 "clpretty.ch"
+                                                                                                                                                                        1) && ranktree(inter) != 1 ) {
+#line 1152 "clpretty.ch"
+#line 1152 "clpretty.ch"
+                                                                                                                                                                                                        PTREE _Baum2 ;
+#line 1152 "clpretty.ch"
+                                                                                                                                                                                                        
+#line 1152 "clpretty.ch"
+#line 1153 "clpretty.ch"
+                                                                                                                                                                                                        _Baum2 = (PPTREE) 0 ;
+#line 1153 "clpretty.ch"
+                                                                                                                                                                                                        
+#line 1153 "clpretty.ch"
+#line 1153 "clpretty.ch"
+                                                                                                                                                                                                        (inter=SNextTree(father, _Baum2));
+#line 1153 "clpretty.ch"
+                                                                                                                                                                                                        
+#line 1153 "clpretty.ch"
+#line 1154 "clpretty.ch"
+                                                                                                                                                                                                        (father=FatherTree(inter));
+#line 1154 "clpretty.ch"
+                                                                                                                                                                                                        
+#line 1154 "clpretty.ch"
+#line 1155 "clpretty.ch"
+                                                                                                                                                                                                        
+#line 1155 "clpretty.ch"
+#line 1155 "clpretty.ch"
+                                                                                                                                                                                                        }
+#line 1155 "clpretty.ch"
+#line 1156 "clpretty.ch"
+                                                                                                                                                if ( inter != (PTREE)for_elem ) 
+#line 1156 "clpretty.ch"
+#line 1157 "clpretty.ch"
+                                                                                                                                                    AddTree(inter, delta);
+#line 1157 "clpretty.ch"
+                                                                                                                                                else 
+#line 1158 "clpretty.ch"
+                                                                                                                                                {
+#line 1158 "clpretty.ch"
+#line 1159 "clpretty.ch"
+                                                                                                                                                    deltaLoc =  delta - FindDelta(inter);
+#line 1159 "clpretty.ch"
+#line 1160 "clpretty.ch"
+                                                                                                                                                    PutCoord(inter, x + deltaLoc, y, dx, lastMark);
+#line 1160 "clpretty.ch"
+#line 1161 "clpretty.ch"
+                                                                                                                                                    break ;
                                                                                                                                                     
-#line 1144 "clpretty.ch"
-#line 1144 "clpretty.ch"
-                                                                                                                                                    }
-#line 1144 "clpretty.ch"
-#line 1145 "clpretty.ch"
-                                                                                                                              PutAttr(lastTree, attributeList, POST_ATTR, PUT_END);
-#line 1145 "clpretty.ch"
-#line 1148 "clpretty.ch"
-                                                                                                                              delta = deltaRef ;
-#line 1148 "clpretty.ch"
-#line 1149 "clpretty.ch"
-                                                                                                                              _Baum1 = (PPTREE) 0 ;
-#line 1149 "clpretty.ch"
-                                                                                                                              
-#line 1149 "clpretty.ch"
-#line 1149 "clpretty.ch"
-                                                                                                                              (inter=SNextTree(lastTree, _Baum1));
-#line 1149 "clpretty.ch"
-                                                                                                                              
-#line 1149 "clpretty.ch"
-#line 1150 "clpretty.ch"
-                                                                                                                              while ( 1 ) {
-#line 1150 "clpretty.ch"
-#line 1150 "clpretty.ch"
-                                                                                                                                           PTREE _Baum3 ;
-#line 1150 "clpretty.ch"
-                                                                                                                                           
-#line 1150 "clpretty.ch"
-#line 1151 "clpretty.ch"
-                                                                                                                                           (father=FatherTree(inter));
-#line 1151 "clpretty.ch"
-                                                                                                                                           
-#line 1151 "clpretty.ch"
-#line 1152 "clpretty.ch"
-                                                                                                                                           while ( inter && ((_inter = (PPTREE)father,1) && 
-#line 1152 "clpretty.ch"
-                                                                                                                                                               (NumberTree(_inter) == pretty::ATTRIBUTS) &&
-#line 1152 "clpretty.ch"
-                                                                                                                                                               1) && ranktree(inter) != 1 ) {
-#line 1152 "clpretty.ch"
-#line 1152 "clpretty.ch"
-                                                                                                                                                                                               PTREE _Baum2 ;
-#line 1152 "clpretty.ch"
-                                                                                                                                                                                               
-#line 1152 "clpretty.ch"
-#line 1153 "clpretty.ch"
-                                                                                                                                                                                               _Baum2 = (PPTREE) 0 ;
-#line 1153 "clpretty.ch"
-                                                                                                                                                                                               
-#line 1153 "clpretty.ch"
-#line 1153 "clpretty.ch"
-                                                                                                                                                                                               (inter=SNextTree(father, _Baum2));
-#line 1153 "clpretty.ch"
-                                                                                                                                                                                               
-#line 1153 "clpretty.ch"
-#line 1154 "clpretty.ch"
-                                                                                                                                                                                               (father=FatherTree(inter));
-#line 1154 "clpretty.ch"
-                                                                                                                                                                                               
-#line 1154 "clpretty.ch"
-#line 1155 "clpretty.ch"
-                                                                                                                                                                                               
-#line 1155 "clpretty.ch"
-#line 1155 "clpretty.ch"
-                                                                                                                                                                                               }
-#line 1155 "clpretty.ch"
-#line 1156 "clpretty.ch"
-                                                                                                                                           if ( inter != (PTREE)for_elem ) 
-#line 1156 "clpretty.ch"
-#line 1157 "clpretty.ch"
-                                                                                                                                           AddTree(inter, delta);
-#line 1157 "clpretty.ch"
-                                                                                                                                           else 
-#line 1158 "clpretty.ch"
-                                                                                                                                           {
-#line 1158 "clpretty.ch"
-#line 1159 "clpretty.ch"
-                                                                                                                                           deltaLoc = delta - FindDelta(inter);
-#line 1159 "clpretty.ch"
-#line 1160 "clpretty.ch"
-                                                                                                                                           PutCoord(inter, x + deltaLoc, y, dx, lastMark);
-#line 1160 "clpretty.ch"
-#line 1161 "clpretty.ch"
-                                                                                                                                           break ;
-                                                                                                                                           
 #line 1161 "clpretty.ch"
 #line 1162 "clpretty.ch"
-                                                                                                                                           
+                                                                                                                                                    
 #line 1162 "clpretty.ch"
 #line 1162 "clpretty.ch"
-                                                                                                                                           }
-                                                                                                                                           
+                                                                                                                                                }
+                                                                                                                                                
 #line 1162 "clpretty.ch"
 #line 1163 "clpretty.ch"
-                                                                                                                                           _Baum3 = (PPTREE) 0 ;
+                                                                                                                                                _Baum3 = (PPTREE) 0 ;
 #line 1163 "clpretty.ch"
-                                                                                                                                           
+                                                                                                                                                
 #line 1163 "clpretty.ch"
 #line 1163 "clpretty.ch"
-                                                                                                                                           (inter=NextTree(inter, _Baum3));
+                                                                                                                                                (inter=NextTree(inter, _Baum3));
 #line 1163 "clpretty.ch"
-                                                                                                                                           
+                                                                                                                                                
 #line 1163 "clpretty.ch"
 #line 1164 "clpretty.ch"
-                                                                                                                                           
+                                                                                                                                                
 #line 1164 "clpretty.ch"
 #line 1164 "clpretty.ch"
-                                                                                                                                           }
+                                                                                                                                             }
 #line 1164 "clpretty.ch"
 #line 1167 "clpretty.ch"
-                                                                                                                              TraitMark(for_elem, posRef);
+                                                                                                                                TraitMark(for_elem, posRef);
 #line 1167 "clpretty.ch"
 #line 1168 "clpretty.ch"
-                                                                                                                              
+                                                                                                                                
 #line 1168 "clpretty.ch"
 #line 1168 "clpretty.ch"
                                                                                                                               } else 
@@ -4899,7 +4899,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                     if ( hasIndented ) {
 #line 1168 "clpretty.ch"
 #line 1171 "clpretty.ch"
-                                                                            deltaLoc = delta - FindDelta(for_elem);
+                                                                            deltaLoc =  delta - FindDelta(for_elem);
 #line 1171 "clpretty.ch"
 #line 1172 "clpretty.ch"
                                                                             PutCoord(for_elem, x + deltaLoc, y, dx, lastMark);
@@ -4929,7 +4929,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                 if ( y & 0x2 ) {
 #line 1182 "clpretty.ch"
 #line 1183 "clpretty.ch"
-                                                                    delta = deltaRef = posRef - colRef ;
+                                                                    delta =  deltaRef = posRef - colRef ;
 #line 1183 "clpretty.ch"
 #line 1184 "clpretty.ch"
                                                                     
@@ -4938,7 +4938,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                                  } else 
 #line 1184 "clpretty.ch"
 #line 1185 "clpretty.ch"
-                                                    deltaRef = posRef - x0 - dx ;
+                                                    deltaRef =  posRef - x0 - dx ;
 #line 1185 "clpretty.ch"
                                                 
 #line 1185 "clpretty.ch"
@@ -5123,7 +5123,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
                                                                     GetCoord(tabTree [nbNode].tree, &x, &y, &dx, &lastMark);
 #line 1210 "clpretty.ch"
 #line 1211 "clpretty.ch"
-                                                                    deltaLoc = tabTree [nbNode].delta - FindDelta(tabTree [nbNode].tree);
+                                                                    deltaLoc =  tabTree [nbNode].delta - FindDelta(tabTree [nbNode].tree);
 #line 1211 "clpretty.ch"
 #line 1212 "clpretty.ch"
                                                                     PutCoord(tabTree [nbNode].tree, x + deltaLoc, y, dx, lastMark);
@@ -5143,7 +5143,7 @@ void clpretty::TraiterExp2H ( PTREE tree, int x0 )
     UnMarkCoordTree(tree);
 #line 1219 "clpretty.ch"
 #line 1220 "clpretty.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 1220 "clpretty.ch"
 #line 1221 "clpretty.ch"
     
@@ -5322,7 +5322,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
     MarkCoordTree(tree, x0, 0);
 #line 1260 "clpretty.ch"
 #line 1261 "clpretty.ch"
-    colRef = x0 ;
+    colRef =  x0 ;
 #line 1261 "clpretty.ch"
 #line 1264 "clpretty.ch"
     {
@@ -5400,19 +5400,19 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
     TraitMark(tree, colRef);
 #line 1268 "clpretty.ch"
 #line 1271 "clpretty.ch"
-    priority = OpType(tree);
+    priority =  OpType(tree);
 #line 1271 "clpretty.ch"
 #line 1272 "clpretty.ch"
     if ( markTab != colRef ) 
 #line 1272 "clpretty.ch"
 #line 1273 "clpretty.ch"
-        nbTab = 0 ;
+        nbTab =  0 ;
 #line 1273 "clpretty.ch"
 #line 1274 "clpretty.ch"
-    posRef = TAB_VALUE(x0, nbTab + 1);
+    posRef =  TAB_VALUE(x0, nbTab + 1);
 #line 1274 "clpretty.ch"
 #line 1275 "clpretty.ch"
-    deltaRef = delta = 0 ;
+    deltaRef =  delta = 0 ;
 #line 1275 "clpretty.ch"
 #line 1278 "clpretty.ch"
     AddTree(tree, 0);
@@ -5439,7 +5439,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
             {
 #line 1279 "clpretty.ch"
 #line 1282 "clpretty.ch"
-                nPriority = OpType(for_elem);
+                nPriority =  OpType(for_elem);
 #line 1282 "clpretty.ch"
 #line 1283 "clpretty.ch"
                 GetCoord(for_elem, &x, &y, &dx, &lastMark);
@@ -5541,7 +5541,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                                             
 #line 1298 "clpretty.ch"
 #line 1299 "clpretty.ch"
-                                                                                            for_elem = FatherTree(for_elem);
+                                                                                            for_elem =  FatherTree(for_elem);
 #line 1299 "clpretty.ch"
 #line 1300 "clpretty.ch"
                                                                                             
@@ -5586,15 +5586,15 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
 #line 1310 "clpretty.ch"
                                                                                                                         {
 #line 1310 "clpretty.ch"
-                                                                                                                        PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                            PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1310 "clpretty.ch"
-                                                                                                                        _ptRes2 = MakeTree(pretty::NEWLINE, 1);
+                                                                                                                            _ptRes2 = MakeTree(pretty::NEWLINE, 1);
 #line 1310 "clpretty.ch"
-                                                                                                                        _ptTree2 = MakeString("1") ;
+                                                                                                                            _ptTree2 = MakeString("1") ;
 #line 1310 "clpretty.ch"
-                                                                                                                        ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                            ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 1310 "clpretty.ch"
-                                                                                                                        _ptTree1 = _ptRes2;
+                                                                                                                            _ptTree1 = _ptRes2;
 #line 1310 "clpretty.ch"
                                                                                                                         }
 #line 1310 "clpretty.ch"
@@ -5614,66 +5614,66 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                                                                 if ( !hasIndented ) {
 #line 1311 "clpretty.ch"
 #line 1312 "clpretty.ch"
-                                                                                                                                      char string [25];
-                                                                                                                                      
+                                                                                                                                        char    string [25];
+                                                                                                                                        
 #line 1312 "clpretty.ch"
 #line 1313 "clpretty.ch"
-                                                                                                                                      sprintf(string, "%d", nbTab + 1);
+                                                                                                                                        sprintf(string, "%d", nbTab + 1);
 #line 1313 "clpretty.ch"
 #line 1314 "clpretty.ch"
-                                                                                                                                      {
+                                                                                                                                        {
 #line 1314 "clpretty.ch"
-                                                                                                                                      PPTREE _ptTree0= (PPTREE) 0 ;
+                                                                                                                                            PPTREE _ptTree0= (PPTREE) 0 ;
 #line 1314 "clpretty.ch"
-                                                                                                                                      {
+                                                                                                                                            {
 #line 1314 "clpretty.ch"
-                                                                                                                                      PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1314 "clpretty.ch"
-                                                                                                                                      {
+                                                                                                                                                {
 #line 1314 "clpretty.ch"
-                                                                                                                                      PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1314 "clpretty.ch"
-                                                                                                                                      _ptRes2 = MakeTree(pretty::TAB, 1);
+                                                                                                                                                    _ptRes2 = MakeTree(pretty::TAB, 1);
 #line 1314 "clpretty.ch"
-                                                                                                                                      _ptTree2 = StoreRef(MakeString(string));
+                                                                                                                                                    _ptTree2 = StoreRef(MakeString(string));
 #line 1314 "clpretty.ch"
-                                                                                                                                      ReplaceTree(_ptRes2, 1, _ptTree2);
+                                                                                                                                                    ReplaceTree(_ptRes2, 1, _ptTree2);
 #line 1314 "clpretty.ch"
-                                                                                                                                      _ptTree1 = _ptRes2;
+                                                                                                                                                    _ptTree1 = _ptRes2;
 #line 1314 "clpretty.ch"
-                                                                                                                                      }
+                                                                                                                                                }
 #line 1314 "clpretty.ch"
-                                                                                                                                      attributeList =  AddList( attributeList,_ptTree1);
+                                                                                                                                                attributeList =  AddList( attributeList,_ptTree1);
 #line 1314 "clpretty.ch"
-                                                                                                                                      }
+                                                                                                                                            }
 #line 1314 "clpretty.ch"
-                                                                                                                                      {
+                                                                                                                                            {
 #line 1314 "clpretty.ch"
-                                                                                                                                      PPTREE _ptTree1= (PPTREE) 0 ;
+                                                                                                                                                PPTREE _ptTree1= (PPTREE) 0 ;
 #line 1314 "clpretty.ch"
-                                                                                                                                      {
+                                                                                                                                                {
 #line 1314 "clpretty.ch"
-                                                                                                                                      PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
+                                                                                                                                                    PPTREE _ptTree2= (PPTREE) 0,_ptRes2= (PPTREE) 0;
 #line 1314 "clpretty.ch"
-                                                                                                                                      _ptRes2 = MakeTree(pretty::MARK, 0);
+                                                                                                                                                    _ptRes2 = MakeTree(pretty::MARK, 0);
 #line 1314 "clpretty.ch"
-                                                                                                                                      _ptTree1 = _ptRes2;
+                                                                                                                                                    _ptTree1 = _ptRes2;
 #line 1314 "clpretty.ch"
-                                                                                                                                      }
+                                                                                                                                                }
 #line 1314 "clpretty.ch"
-                                                                                                                                      attributeList =  AddList( attributeList,_ptTree1);
+                                                                                                                                                attributeList =  AddList( attributeList,_ptTree1);
 #line 1314 "clpretty.ch"
-                                                                                                                                      }
+                                                                                                                                            }
 #line 1314 "clpretty.ch"
-                                                                                                                                      }
+                                                                                                                                        }
 #line 1314 "clpretty.ch"
-                                                                                                                                      
+                                                                                                                                        
 #line 1314 "clpretty.ch"
 #line 1315 "clpretty.ch"
-                                                                                                                                      hasIndented = 1 ;
+                                                                                                                                        hasIndented =  1 ;
 #line 1315 "clpretty.ch"
 #line 1316 "clpretty.ch"
-                                                                                                                                      
+                                                                                                                                        
 #line 1316 "clpretty.ch"
 #line 1316 "clpretty.ch"
                                                                                                                                       }
@@ -5682,7 +5682,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                                                                 PutAttr(lastTree, attributeList, POST_ATTR, PUT_END);
 #line 1317 "clpretty.ch"
 #line 1320 "clpretty.ch"
-                                                                                                                delta = deltaRef ;
+                                                                                                                delta =  deltaRef ;
 #line 1320 "clpretty.ch"
 #line 1321 "clpretty.ch"
                                                                                                                 _Baum1 = (PPTREE) 0 ;
@@ -5698,87 +5698,87 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                                                                 while ( 1 ) {
 #line 1322 "clpretty.ch"
 #line 1322 "clpretty.ch"
-                                                                                                                             PTREE _Baum3 ;
+                                                                                                                                PTREE   _Baum3 ;
 #line 1322 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                
 #line 1322 "clpretty.ch"
 #line 1323 "clpretty.ch"
-                                                                                                                             (father=FatherTree(inter));
+                                                                                                                                (father=FatherTree(inter));
 #line 1323 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                
 #line 1323 "clpretty.ch"
 #line 1324 "clpretty.ch"
-                                                                                                                             while ( inter && ((_inter = (PPTREE)father,1) && 
+                                                                                                                                while ( inter && ((_inter = (PPTREE)father,1) && 
 #line 1324 "clpretty.ch"
-                                                                                                                                                 (NumberTree(_inter) == pretty::ATTRIBUTS) &&
+                                                                                                                                                        (NumberTree(_inter) == pretty::ATTRIBUTS) &&
 #line 1324 "clpretty.ch"
-                                                                                                                                                 1) && ranktree(inter) != 1 ) {
+                                                                                                                                                        1) && ranktree(inter) != 1 ) {
 #line 1324 "clpretty.ch"
 #line 1324 "clpretty.ch"
-                                                                                                                                                                                 PTREE _Baum2 ;
+                                                                                                                                                                                        PTREE _Baum2 ;
 #line 1324 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                        
 #line 1324 "clpretty.ch"
 #line 1325 "clpretty.ch"
-                                                                                                                                                                                 _Baum2 = (PPTREE) 0 ;
+                                                                                                                                                                                        _Baum2 = (PPTREE) 0 ;
 #line 1325 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                        
 #line 1325 "clpretty.ch"
 #line 1325 "clpretty.ch"
-                                                                                                                                                                                 (inter=SNextTree(father, _Baum2));
+                                                                                                                                                                                        (inter=SNextTree(father, _Baum2));
 #line 1325 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                        
 #line 1325 "clpretty.ch"
 #line 1326 "clpretty.ch"
-                                                                                                                                                                                 (father=FatherTree(inter));
+                                                                                                                                                                                        (father=FatherTree(inter));
 #line 1326 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                        
 #line 1326 "clpretty.ch"
 #line 1327 "clpretty.ch"
-                                                                                                                                                                                 
+                                                                                                                                                                                        
 #line 1327 "clpretty.ch"
 #line 1327 "clpretty.ch"
-                                                                                                                                                                                 }
+                                                                                                                                                                                        }
 #line 1327 "clpretty.ch"
 #line 1328 "clpretty.ch"
-                                                                                                                             if ( inter != (PTREE)for_elem ) 
+                                                                                                                                if ( inter != (PTREE)for_elem ) 
 #line 1328 "clpretty.ch"
 #line 1329 "clpretty.ch"
-                                                                                                                             AddTree(inter, delta);
+                                                                                                                                    AddTree(inter, delta);
 #line 1329 "clpretty.ch"
-                                                                                                                             else 
+                                                                                                                                else 
 #line 1330 "clpretty.ch"
-                                                                                                                             {
+                                                                                                                                {
 #line 1330 "clpretty.ch"
 #line 1331 "clpretty.ch"
-                                                                                                                             deltaLoc = delta - FindDelta(inter);
+                                                                                                                                    deltaLoc =  delta - FindDelta(inter);
 #line 1331 "clpretty.ch"
 #line 1332 "clpretty.ch"
-                                                                                                                             PutCoord(inter, x + deltaLoc, y, dx, lastMark);
+                                                                                                                                    PutCoord(inter, x + deltaLoc, y, dx, lastMark);
 #line 1332 "clpretty.ch"
 #line 1333 "clpretty.ch"
-                                                                                                                             break ;
-                                                                                                                             
+                                                                                                                                    break ;
+                                                                                                                                    
 #line 1333 "clpretty.ch"
 #line 1334 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                    
 #line 1334 "clpretty.ch"
 #line 1334 "clpretty.ch"
-                                                                                                                             }
-                                                                                                                             
+                                                                                                                                }
+                                                                                                                                
 #line 1334 "clpretty.ch"
 #line 1335 "clpretty.ch"
-                                                                                                                             _Baum3 = (PPTREE) 0 ;
+                                                                                                                                _Baum3 = (PPTREE) 0 ;
 #line 1335 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                
 #line 1335 "clpretty.ch"
 #line 1335 "clpretty.ch"
-                                                                                                                             (inter=NextTree(inter, _Baum3));
+                                                                                                                                (inter=NextTree(inter, _Baum3));
 #line 1335 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                
 #line 1335 "clpretty.ch"
 #line 1336 "clpretty.ch"
-                                                                                                                             
+                                                                                                                                
 #line 1336 "clpretty.ch"
 #line 1336 "clpretty.ch"
                                                                                                                              }
@@ -5801,7 +5801,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                     if ( hasIndented ) {
 #line 1341 "clpretty.ch"
 #line 1344 "clpretty.ch"
-                                                                            deltaLoc = delta - FindDelta(for_elem);
+                                                                            deltaLoc =  delta - FindDelta(for_elem);
 #line 1344 "clpretty.ch"
 #line 1345 "clpretty.ch"
                                                                             PutCoord(for_elem, x + deltaLoc, y, dx, lastMark);
@@ -5831,7 +5831,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                 if ( y & 0x2 ) {
 #line 1355 "clpretty.ch"
 #line 1356 "clpretty.ch"
-                                                                    delta = deltaRef = posRef - colRef ;
+                                                                    delta =  deltaRef = posRef - colRef ;
 #line 1356 "clpretty.ch"
 #line 1357 "clpretty.ch"
                                                                     
@@ -5840,7 +5840,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                  } else 
 #line 1357 "clpretty.ch"
 #line 1358 "clpretty.ch"
-                                                    deltaRef = posRef - x0 - dx ;
+                                                    deltaRef =  posRef - x0 - dx ;
 #line 1358 "clpretty.ch"
                                                 
 #line 1358 "clpretty.ch"
@@ -6025,7 +6025,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                                                     GetCoord(tabTree [nbNode].tree, &x, &y, &dx, &lastMark);
 #line 1383 "clpretty.ch"
 #line 1384 "clpretty.ch"
-                                                                    deltaLoc = tabTree [nbNode].delta - FindDelta(tabTree [nbNode].tree);
+                                                                    deltaLoc =  tabTree [nbNode].delta - FindDelta(tabTree [nbNode].tree);
 #line 1384 "clpretty.ch"
 #line 1385 "clpretty.ch"
                                                                     PutCoord(tabTree [nbNode].tree, x + deltaLoc, y, dx, lastMark);
@@ -6045,7 +6045,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
     UnMarkCoordTree(tree);
 #line 1392 "clpretty.ch"
 #line 1393 "clpretty.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 1393 "clpretty.ch"
 #line 1394 "clpretty.ch"
     
@@ -6090,7 +6090,7 @@ void clpretty::LNewLine ( int i )
     if ( currCol > maxX ) 
 #line 1403 "clpretty.ch"
 #line 1404 "clpretty.ch"
-        maxX = currCol ;
+        maxX =  currCol ;
 #line 1404 "clpretty.ch"
 #line 1405 "clpretty.ch"
     LNewLineOrg(i);
@@ -6154,7 +6154,7 @@ void clpretty::DecompVirt ( const PTREE &paramTree )
     GetCoordAbs(father, 0, &xFather, &yFather);
 #line 1423 "clpretty.ch"
 #line 1424 "clpretty.ch"
-    isVirtMod = 1 ;
+    isVirtMod =  1 ;
 #line 1424 "clpretty.ch"
 #line 1425 "clpretty.ch"
     GotoCol(dy + 1);
@@ -6163,13 +6163,13 @@ void clpretty::DecompVirt ( const PTREE &paramTree )
     Mark();
 #line 1428 "clpretty.ch"
 #line 1429 "clpretty.ch"
-    currCol = x0 ;
+    currCol =  x0 ;
 #line 1429 "clpretty.ch"
 #line 1430 "clpretty.ch"
-    currLine = y0 ;
+    currLine =  y0 ;
 #line 1430 "clpretty.ch"
 #line 1431 "clpretty.ch"
-    maxX = 0 ;
+    maxX =  0 ;
 #line 1431 "clpretty.ch"
 #line 1432 "clpretty.ch"
     Decomp(paramTree);
@@ -6178,10 +6178,10 @@ void clpretty::DecompVirt ( const PTREE &paramTree )
     UnMark();
 #line 1433 "clpretty.ch"
 #line 1434 "clpretty.ch"
-    isVirtMod = 0 ;
+    isVirtMod =  0 ;
 #line 1434 "clpretty.ch"
 #line 1435 "clpretty.ch"
-    currLine = currCol = 0 ;
+    currLine =  currCol = 0 ;
 #line 1435 "clpretty.ch"
 #line 1436 "clpretty.ch"
     
@@ -6552,16 +6552,16 @@ int clpretty::comm ( PTREE paramTree, int type )
     
 #line 1518 "clpretty.ch"
 #line 1520 "clpretty.ch"
-    intStartComment = startComment ? startComment : "/*";
+    intStartComment =  startComment ? startComment : "/*";
 #line 1520 "clpretty.ch"
 #line 1521 "clpretty.ch"
-    intMiddleComment = middleComment ? middleComment : "  ";
+    intMiddleComment =  middleComment ? middleComment : "  ";
 #line 1521 "clpretty.ch"
 #line 1522 "clpretty.ch"
-    intEndComment = endComment ? endComment : "*/";
+    intEndComment =  endComment ? endComment : "*/";
 #line 1522 "clpretty.ch"
 #line 1523 "clpretty.ch"
-    intPlusComment = plusComment ? plusComment : "//";
+    intPlusComment =  plusComment ? plusComment : "//";
 #line 1523 "clpretty.ch"
 #line 1524 "clpretty.ch"
     if ( (!paramTree) || inhibateComment ) 
@@ -6594,29 +6594,29 @@ int clpretty::comm ( PTREE paramTree, int type )
                                                                                                                 if ( beginning ) {
 #line 1534 "clpretty.ch"
 #line 1535 "clpretty.ch"
-                                                                                                                                  if ( *comment == *(intPlusComment + 1) && *(comment + 1) == ' ' ) 
+                                                                                                                                    if ( *comment == *(intPlusComment + 1) && *(comment + 1) == ' ' ) 
 #line 1535 "clpretty.ch"
 #line 1536 "clpretty.ch"
-                                                                                                                                  LNewLine(2);
+                                                                                                                                        LNewLine(2);
 #line 1536 "clpretty.ch"
-                                                                                                                                  else 
+                                                                                                                                    else 
 #line 1537 "clpretty.ch"
-                                                                                                                                  if ( *comment == ' ' ) 
+                                                                                                                                    if ( *comment == ' ' ) 
 #line 1537 "clpretty.ch"
 #line 1538 "clpretty.ch"
-                                                                                                                                  LNewLine(2);
+                                                                                                                                        LNewLine(2);
 #line 1538 "clpretty.ch"
-                                                                                                                                  else 
+                                                                                                                                    else 
 #line 1538 "clpretty.ch"
 #line 1540 "clpretty.ch"
-                                                                                                                                  LNewLine(1);
+                                                                                                                                        LNewLine(1);
 #line 1540 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                        
 #line 1540 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                    
 #line 1540 "clpretty.ch"
 #line 1541 "clpretty.ch"
-                                                                                                                                  
+                                                                                                                                    
 #line 1541 "clpretty.ch"
 #line 1541 "clpretty.ch"
                                                                                                                                   } else 
@@ -6641,7 +6641,7 @@ int clpretty::comm ( PTREE paramTree, int type )
                                                                             if ( inter ) 
 #line 1545 "clpretty.ch"
 #line 1546 "clpretty.ch"
-                                                                                comment = BrainyValue(inter);
+                                                                                comment =  BrainyValue(inter);
 #line 1546 "clpretty.ch"
 #line 1548 "clpretty.ch"
                                                                             Mark();
@@ -6670,12 +6670,12 @@ int clpretty::comm ( PTREE paramTree, int type )
                                                                             if ( beginning || *comment == *(intPlusComment + 1) ) {
 #line 1555 "clpretty.ch"
 #line 1556 "clpretty.ch"
-                                                                                                                                         LNewLine(1);
+                                                                                                                                            LNewLine(1);
 #line 1556 "clpretty.ch"
-                                                                                                                                         
+                                                                                                                                            
 #line 1556 "clpretty.ch"
 #line 1557 "clpretty.ch"
-                                                                                                                                         
+                                                                                                                                            
 #line 1557 "clpretty.ch"
 #line 1557 "clpretty.ch"
                                                                                                                                          } else 
@@ -6728,7 +6728,7 @@ int clpretty::comm ( PTREE paramTree, int type )
                                                                                                             if ( inter ) 
 #line 1565 "clpretty.ch"
 #line 1566 "clpretty.ch"
-                                                                                                                comment = BrainyValue(inter);
+                                                                                                                comment =  BrainyValue(inter);
 #line 1566 "clpretty.ch"
 #line 1567 "clpretty.ch"
                                                                                                             Space(1);
@@ -6762,12 +6762,12 @@ int clpretty::comm ( PTREE paramTree, int type )
                                                                                                             if ( PrePost() && inter || *comment == *(intPlusComment + 1) ) {
 #line 1573 "clpretty.ch"
 #line 1574 "clpretty.ch"
-                                                                                                                                                                                   LNewLine(1);
+                                                                                                                                                                                    LNewLine(1);
 #line 1574 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 1574 "clpretty.ch"
 #line 1575 "clpretty.ch"
-                                                                                                                                                                                   
+                                                                                                                                                                                    
 #line 1575 "clpretty.ch"
 #line 1575 "clpretty.ch"
                                                                                                                                                                                    } else 
@@ -6856,7 +6856,7 @@ void clpretty::Decomp ( const PTREE &paramTree, int funcAlone )
     
 #line 1594 "clpretty.ch"
 #line 1597 "clpretty.ch"
-    startNewLine = lastLineOn == currLine ? 0 : (lastLineOn = currLine, 0x4);
+    startNewLine =  lastLineOn == currLine ? 0 : (lastLineOn = currLine, 0x4);
 #line 1597 "clpretty.ch"
 #line 1598 "clpretty.ch"
     if ( (!paramTree) ) 
@@ -6873,10 +6873,10 @@ void clpretty::Decomp ( const PTREE &paramTree, int funcAlone )
                             1)) ) {
 #line 1603 "clpretty.ch"
 #line 1604 "clpretty.ch"
-                                    xFather = currCol, yFather = currLine ;
+                                    xFather =  currCol, yFather =  currLine ;
 #line 1604 "clpretty.ch"
 #line 1605 "clpretty.ch"
-                                    maxX = currCol ;
+                                    maxX =  currCol ;
 #line 1605 "clpretty.ch"
 #line 1606 "clpretty.ch"
                                     
@@ -6947,13 +6947,13 @@ void clpretty::Decomp ( const PTREE &paramTree, int funcAlone )
                             1)) ) {
 #line 1629 "clpretty.ch"
 #line 1630 "clpretty.ch"
-                                    xFather = oldXFather, yFather = oldYFather ;
+                                    xFather =  oldXFather, yFather =  oldYFather ;
 #line 1630 "clpretty.ch"
 #line 1634 "clpretty.ch"
                                     if ( currCol > maxX ) 
 #line 1634 "clpretty.ch"
 #line 1635 "clpretty.ch"
-                                        maxX = currCol ;
+                                        maxX =  currCol ;
 #line 1635 "clpretty.ch"
 #line 1639 "clpretty.ch"
                                     PutCoord(paramTree, begCurrCol - xFather, (currLine - begCurrLine > 0 ? 2 : 0) | startNewLine, maxX - begCurrCol, theMark);
@@ -6962,7 +6962,7 @@ void clpretty::Decomp ( const PTREE &paramTree, int funcAlone )
                                     if ( maxX < oldMaxX ) 
 #line 1642 "clpretty.ch"
 #line 1643 "clpretty.ch"
-                                        maxX = oldMaxX ;
+                                        maxX =  oldMaxX ;
 #line 1643 "clpretty.ch"
 #line 1644 "clpretty.ch"
                                     
@@ -7036,7 +7036,7 @@ void clpretty::CleanAttributs ( PTREE tree )
                                                         replacetree(FatherTree(for_elem), ranktree(for_elem), son);
 #line 1657 "clpretty.ch"
 #line 1658 "clpretty.ch"
-                                                        for_elem = son ;
+                                                        for_elem =  son ;
 #line 1658 "clpretty.ch"
 #line 1659 "clpretty.ch"
                                                         
@@ -7262,7 +7262,7 @@ void clpretty::DisplayError ( PTREE printList, bool current )
     
 #line 1698 "clpretty.ch"
 #line 1699 "clpretty.ch"
-    output = 2 ;
+    output =  2 ;
 #line 1699 "clpretty.ch"
 #line 1700 "clpretty.ch"
     if ( !emacsCompatibleError ) {
@@ -7363,7 +7363,7 @@ void clpretty::DisplayError ( PTREE printList, bool current )
     
 #line 1717 "clpretty.ch"
 #line 1718 "clpretty.ch"
-    output = oldOutput ;
+    output =  oldOutput ;
 #line 1718 "clpretty.ch"
 #line 1719 "clpretty.ch"
     

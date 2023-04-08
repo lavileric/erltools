@@ -7,22 +7,27 @@ CXXFLAGS ?=
 LDFLAGS  ?= 
 SHARED ?= 
 
+C_PLUS ?= $(CXX) $(CXXFLAGS)
+
+
+# for clang
+# C_PLUS = clang++ -stdlib=libc++
+# CXX  = $(C_PLUS)
+
 #compiler choice
 #MACHFLAGS=-march=athlon-xp  -pipe 
 # MACHFLAGS=-march=core2  -pipe
-MACHFLAGS ?=  -pipe -std=c++17 
+MACHFLAGS ?=  -pipe -std=c++20 
 # MACHFLAGS=  -pipe
 LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
-# C_PLUS ?= clang
-C_PLUS ?= $(CXX) $(CXXFLAGS)
-C_PLUS_LNK ?= $(CXX) $(CXXFLAGS) $(LDFLAGS)
+C_PLUS_LNK ?= $(CXX) $(CXXFLAGS) $(LDFLAGS)  
 C_PLUS_OPTIM ?= -g 
 # C_PLUS_OPTIM ?= -O2 -g
 # C_PLUS_OPTIM ?= -O3
 # C_PLUS_OPTIM ?= -O3 -g
 # C_PLUS_OPTIM ?= -s
 # -static-libgcc -Wl,-O1  -Wl,-dynamic-linker=/usr/newlocal/lib/ld-linux.so.2
-C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wno-cast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough -Wno-logical-op-parentheses -Wno-stringop-overflow
+C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wno-cast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough -Wno-logical-op-parentheses -Wno-stringop-overflow -Wno-unused-value -Wno-parentheses -Wno-dangling-else -Wno-unused-parameter
 # -Wno-unsequenced -Wno-unused-value 
 # -Wno-bitwise-op-parentheses -Wno-parentheses-equality -Wno-parentheses -Wno-unused-parameter
 # -Wno-deprecated

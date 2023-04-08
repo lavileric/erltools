@@ -432,7 +432,7 @@
 #   define comparetree(x, y) CompareTree(x,y,0,-1)
 #   define qcomparetree(x, y) QCompareTree((PPTREE)x,(PPTREE)y,(PPTREE)0,-1)
 #   define listlength(x) ListLength((PPTREE)x);
-    int _fastcall ListLength (PPTREE) ;
+    unsigned int    _fastcall ListLength (PPTREE) ;
 #   define SON_WRITE(dad, n, son) LCacheWrite((void* *)(((char *)dad) + 2 * sizeof(int) + (n+1) * sizeof(PPTREE)),(PPTREE)son)
     
     inline int _fastcall NumberTree ( PPTREE tree )

@@ -1,4 +1,4 @@
-#ifndef GEN_MULTI_MULTITHRExD
+#ifndef GEN_MULTI_MULTITHREAD
 #   define GEN_MULTI_MULTITHREAD 
 #   include "erlstring.h"
 #   include "optimgenetic.h"
@@ -21,9 +21,9 @@
                 write(2, message.c_str(), message.length());
                 (*pWaitingSemaphop).GetRessourceEnd(1);
             } else {
-                pIndividual->MarkedForEval(true);
+                pIndividual -> MarkedForEval(true);
                 waitingIndividuals.push_back(pIndividual);
-                pIndividualSemaphop =  pIndividual->GetSemaphop();
+                pIndividualSemaphop =  pIndividual -> GetSemaphop();
                 if ( pIndividualSemaphop != 0 ) 
                     oldSemaphop =  pIndividualSemaphop ;
                 (*pWaitingSemaphop).PutRessourceEnd();
@@ -119,14 +119,14 @@
             for ( auto iter = privateWaitingIndividuals.begin() ; iter != privateWaitingIndividuals.end() ; iter++ ) {
                 nbTreatment++ ;
                 pIndividual =  *iter ;
-                pIndividual->DelayedEval(false);
-                pIndividual->MarkedForEval(false);
+                pIndividual -> DelayedEval(false);
+                pIndividual -> MarkedForEval(false);
             }
             {
                 (*pWaitingSemaphop).ProtectSection();
                 numberToEvaluate -= currentBatch ;
                 if ( oldSemaphop ) 
-                    oldSemaphop->PutRessource(currentBatch);
+                    oldSemaphop -> PutRessource(currentBatch);
                 (*pWaitingSemaphop).UnProtectSection();
             }
             privateWaitingIndividuals.clear();

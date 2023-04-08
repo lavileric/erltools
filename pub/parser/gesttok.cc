@@ -62,24 +62,24 @@ static  inline void CNewLine ()
 }
 
 #define NewLine CNewLine
- /**************************************************************
-            AddConst : adds a Constant to the constant list
-    ***************************************************************/ 
 
+/**************************************************************
+           AddConst : adds a Constant to the constant list
+   ***************************************************************/
 int AddConst ( const char *string )
 {
     STRINGELEM  *point ;
     int         number ;
     
     /* retrieve or create it */
-    if ( (number = FindConst(string)) != - 1 ) 
+    if ( (number = FindConst(string)) != -1 ) 
         return (number);
     else {
-        point = (STRINGELEM *)malloc(sizeof(STRINGELEM));
-        point -> string = AllocString(string);
-        point -> Value = numberConst++ ;
-        point -> next = listConst ;
-        listConst = point ;
+        point           =  (STRINGELEM *)malloc(sizeof(STRINGELEM));
+        point -> string =  AllocString(string);
+        point -> Value  =  numberConst++ ;
+        point -> next   =  listConst ;
+        listConst       =  point ;
         return point -> Value ;
     }
 }
@@ -91,13 +91,13 @@ char *FindKey ( char *string )
 {
     KEYELEM *point ;
     
-    point = listKey ;
+    point =  listKey ;
     while ( point ) {
         if ( !strcmp(string, point -> string) ) 
             return point -> Value ;
-        point = point -> next ;
+        point =  point -> next ;
     }
-    return ((char *) - 1);
+    return ((char *) -1);
 }
 
 /**************************************************************
@@ -107,13 +107,13 @@ char *SymboKey ( char *string )
 {
     KEYELEM *point ;
     
-    point = listKey ;
+    point =  listKey ;
     while ( point ) {
         if ( !strcmp(string, point -> Value) ) 
             return point -> Value ;
-        point = point -> next ;
+        point =  point -> next ;
     }
-    return ((char *) - 1);
+    return ((char *) -1);
 }
 
 /**************************************************************
@@ -125,20 +125,19 @@ char *AddKey ( char *string )
     int     numb = 0 ;
     char    *symb ;
     
-    if ( (symb = FindKey(string)) != (char *) - 1 ) 
-        ;
-    else {
-        point = (KEYELEM *)malloc(sizeof(KEYELEM));
-        point -> string = AllocString(string);
-        point -> Value = AllocString(SymboName(string, 0));
-        while ( SymboKey(point -> Value) != (char *) - 1 ) {
+    if ( (symb = FindKey(string)) != (char *) -1 ) {
+    } else {
+        point           =  (KEYELEM *)malloc(sizeof(KEYELEM));
+        point -> string =  AllocString(string);
+        point -> Value  =  AllocString(SymboName(string, 0));
+        while ( SymboKey(point -> Value) != (char *) -1 ) {
             free(point -> Value);
-            point -> Value = AllocString(SymboName(string, ++numb));
+            point -> Value =  AllocString(SymboName(string, ++numb));
         }
         AddConst(point -> Value);
-        point -> next = listKey ;
-        listKey = point ;
-        symb = point -> Value ;
+        point -> next =  listKey ;
+        listKey       =  point ;
+        symb          =  point -> Value ;
     }
     return symb ;
 }
@@ -170,11 +169,11 @@ void DumpKey ( KEYELEM *list, int length )
         WriteString("}");
         NewLine();
     } else {
-        nb = length / 2 ;
-        ptList = list ;
+        nb     =  length / 2 ;
+        ptList =  list ;
         while ( --nb ) 
-            ptList = ptList -> next ;
-        ptList = ptList -> next ;
+            ptList =  ptList -> next ;
+        ptList =  ptList -> next ;
         WriteString("Value = strcmp(lexEl.string(),\"");
         WriteString(ptList -> string);
         WriteString("\");");
@@ -213,12 +212,12 @@ void ExchKey ( KEYELEM *key1, KEYELEM *key2 )
 {
     register char   *Value ;
     
-    Value = key1 -> string ;
-    key1 -> string = key2 -> string ;
-    key2 -> string = Value ;
-    Value = key1 -> Value ;
-    key1 -> Value = key2 -> Value ;
-    key2 -> Value = Value ;
+    Value          =  key1 -> string ;
+    key1 -> string =  key2 -> string ;
+    key2 -> string =  Value ;
+    Value          =  key1 -> Value ;
+    key1 -> Value  =  key2 -> Value ;
+    key2 -> Value  =  Value ;
 }
 
 /**************************************************************
@@ -228,15 +227,15 @@ void SortKey ()
 {
     register KEYELEM    *firstKey, *varKey ;
     
-    firstKey = listKey ;
+    firstKey =  listKey ;
     while ( firstKey ) {
-        varKey = firstKey -> next ;
+        varKey =  firstKey -> next ;
         while ( varKey ) {
             if ( strcmp(varKey -> string, firstKey -> string) < 0 ) 
                 ExchKey(firstKey, varKey);
-            varKey = varKey -> next ;
+            varKey =  varKey -> next ;
         }
-        firstKey = firstKey -> next ;
+        firstKey =  firstKey -> next ;
     }
 }
 
@@ -249,7 +248,7 @@ int KeyLength ( KEYELEM *list )
     
     while ( list ) {
         length++ ;
-        list = list -> next ;
+        list =  list -> next ;
     }
     return (length);
 }
@@ -263,12 +262,13 @@ void StripName ( char *name, char *string )
 {
     char    *ptString ;
     
-    strcpy(string, name);
-    ptString = string + strlen(string) - 1 ;
+    if ( string != name ) 
+        strcpy(string, name);
+    ptString =  string + strlen(string) - 1 ;
     while ( ptString >= string && *ptString != '_' ) 
         ptString-- ;
     if ( ptString >= string && !strcmp(ptString + 1, LanguageName(LO_CASE)) ) {
-        *ptString = '\0';
+        *ptString =  '\0';
     }
 }
 
@@ -279,7 +279,7 @@ void DumpConst ( STRINGELEM *tree )
     
     if ( !tree ) 
         return ;
-    output = houtput ;
+    output =  houtput ;
     if ( cplusGen ) {
         WriteString("virtual int SortKeyWord (int ret);");
         NewLine();
@@ -307,7 +307,7 @@ void DumpConst ( STRINGELEM *tree )
                 WriteString(" ,");
                 NewLine();
             }
-            tree = tree -> next ;
+            tree =  tree -> next ;
         }
         WriteString("PLACE_HOLD_CONST");
         NewLine();
@@ -332,7 +332,7 @@ void DumpConst ( STRINGELEM *tree )
     }
     
     /* repositionne tree sur sa valeur initiale */
-    tree = theTree ;
+    tree =  theTree ;
     while ( tree ) {
         if ( tree -> Value >= 6 ) {
             WriteString("#define ");
@@ -343,10 +343,10 @@ void DumpConst ( STRINGELEM *tree )
             WriteString(NumbString);
             NewLine();
         }
-        tree = tree -> next ;
+        tree =  tree -> next ;
     }
-    output = coutput ;
-    tree = theTree ;
+    output =  coutput ;
+    tree   =  theTree ;
     WriteString("STRINGELEM * ");
     WriteString(NameLang("listConst"));
     WriteString(";");
@@ -413,7 +413,7 @@ void DumpConst ( STRINGELEM *tree )
         WriteString(NumbString);
         WriteString(");");
         NewLine();
-        tree = tree -> next ;
+        tree =  tree -> next ;
     }
     WriteString("AddConstVal(\"LIST\",0);");
     NewLine();
@@ -459,7 +459,7 @@ PPTREE SecateString ( char *name, char *string )
 {
     PPTREE  pTree ;
     
-    pTree = MakeTree(*string, 1);
+    pTree =  MakeTree(*string, 1);
     if ( !*string ) {
         AddConst(name);
         SReplaceTree(pTree, 1, MakeString(name));
@@ -476,35 +476,35 @@ PPTREE AddToken ( char *name, char *symb, PPTREE tree )
 {
     register PPTREE ptTree, ptTree1 ;
     
-    ptTree = tree ;
+    ptTree =  tree ;
     if ( !ptTree || NumberTree(ptTree) == 1 ) {
         while ( ptTree && NumberTree(SonTree(ptTree, 1)) != *name ) 
-            ptTree = SonTree(ptTree, 2);
+            ptTree =  SonTree(ptTree, 2);
         if ( !ptTree ) {
-            ptTree = MakeTree(1, 2);
+            ptTree =  MakeTree(1, 2);
             SReplaceTree(ptTree, 1, SecateString(symb, name));
             if ( !tree ) 
                 return (ptTree);
             else {
-                ptTree1 = tree ;
+                ptTree1 =  tree ;
                 while ( SonTree(ptTree1, 2) ) 
-                    ptTree1 = SonTree(ptTree1, 2);
+                    ptTree1 =  SonTree(ptTree1, 2);
                 SReplaceTree(ptTree1, 2, ptTree);
             }
         } else 
             AddToken(name, symb, SonTree(ptTree, 1));
     } else {
-        ptTree1 = ptTree ;
+        ptTree1 =  ptTree ;
         while ( NumberTree(ptTree) == *name && *name ) {
             name++ ;
-            ptTree1 = ptTree ;
-            ptTree = SonTree(ptTree, 1);
+            ptTree1 =  ptTree ;
+            ptTree  =  SonTree(ptTree, 1);
         }
         if ( NumberTree(ptTree) != 1 && NumberTree(ptTree) != *name ) {
-            ptTree = MakeTree(1, 2);
+            ptTree =  MakeTree(1, 2);
             SReplaceTree(ptTree, 1, SonTree(ptTree1, 1));
             SReplaceTree(ptTree1, 1, ptTree);
-            ptTree1 = MakeTree(1, 2);
+            ptTree1 =  MakeTree(1, 2);
             SReplaceTree(ptTree1, 1, SecateString(symb, name));
             SReplaceTree(ptTree, 2, ptTree1);
         } else if ( NumberTree(ptTree) == 1 ) 
@@ -519,7 +519,7 @@ PPTREE AddToken ( char *name, char *symb, PPTREE tree )
 char *ConvertAscii ( char *dest, char car )
 {
     if ( car >= 'a' && car <= 'z' || car >= 'A' && car <= 'Z' || car >= '0' && car <= '9' ) {
-        *dest++ = car ;
+        *dest++ =  car ;
         return (dest);
     }
     {
@@ -636,16 +636,16 @@ char *SymboName ( const char *name, int numb )
 {
     register char   *ptDest ;
     
-    ptDest = symbName ;
+    ptDest =  symbName ;
     while ( *name ) 
-        ptDest = ConvertAscii(ptDest, *name++);
-    *ptDest = '\0';
-    ptDest = symbName ;
+        ptDest =  ConvertAscii(ptDest, *name++);
+    *ptDest =  '\0';
+    ptDest  =  symbName ;
     for (; *ptDest ; ptDest++ ) 
-        *ptDest = toupper(*ptDest);
+        *ptDest =  toupper(*ptDest);
     if ( numb ) {
-        *ptDest++ = '0' + numb ;
-        *ptDest = '\0';
+        *ptDest++ =  '0' + numb ;
+        *ptDest   =  '\0';
     }
     return (symbName);
 }
@@ -658,7 +658,7 @@ int SimpleString ( PPTREE tree )
     register int    numb ;
     
     while ( (numb = NumberTree(tree)) && numb != 1 ) 
-        tree = SonTree(tree, 1);
+        tree =  SonTree(tree, 1);
     return !numb ;
 }
 
@@ -669,11 +669,11 @@ void DumpString ( PPTREE tree )
 {
     char    string [2];
     
-    string [1] = 0 ;
+    string [1] =  0 ;
     WriteString("\"");
-    while ( *string = NumberTree(tree) ) {
+    while ( (*string = NumberTree(tree)) ) {
         WriteString(string);
-        tree = SonTree(tree, 1);
+        tree =  SonTree(tree, 1);
     }
     WriteString("\"");
 }
@@ -721,8 +721,8 @@ void DumpToken ( PPTREE tree, int level, int exitLevel, int diffLevel )
     
     if ( !tree ) 
         return ;
-    ptTree = tree ;
-    defaultString = (char *)0 ;
+    ptTree        =  tree ;
+    defaultString =  (char *)0 ;
     if ( !level ) {
         WriteString("int keepCurrCol = col ;");
         NewLine();
@@ -735,8 +735,8 @@ void DumpToken ( PPTREE tree, int level, int exitLevel, int diffLevel )
         while ( ptTree ) {
             if ( NumberTree(SonTree(ptTree, 1)) ) {
                 WriteString("case '");
-                string [1] = '\0';
-                string [0] = (char)NumberTree(SonTree(ptTree, 1));
+                string [1] =  '\0';
+                string [0] =  (char)NumberTree(SonTree(ptTree, 1));
                 WriteString(string);
                 WriteString("' :");
                 NewLine();
@@ -750,11 +750,11 @@ void DumpToken ( PPTREE tree, int level, int exitLevel, int diffLevel )
                 UnMark();
                 GotoMark();
             } else {
-                defaultString = AllocString(Value(SonTree(SonTree(ptTree, 1), 1)));
+                defaultString =  AllocString(Value(SonTree(SonTree(ptTree, 1), 1)));
                 if ( cplusGen ) 
                     StripName(defaultString, defaultString);
             }
-            ptTree = SonTree(ptTree, 2);
+            ptTree =  SonTree(ptTree, 2);
         }
         PrintExit("DumpToken", level);
         WriteString(" :;");
@@ -871,8 +871,8 @@ void DumpToken ( PPTREE tree, int level, int exitLevel, int diffLevel )
             NewLine();
         } else {
             WriteString("if ( c== '");
-            string [0] = (char)NumberTree(ptTree);
-            string [1] = '\0';
+            string [0] =  (char)NumberTree(ptTree);
+            string [1] =  '\0';
             WriteString(string);
             WriteString("') {");
             NewLine();
@@ -929,18 +929,18 @@ void DeclareNode ( const char *name, int arity )
     PNODE   ptNode ;
     int     old_arity ;
     
-    if ( (old_arity = ArityNodeName(name)) != - 1 ) 
+    if ( (old_arity = ArityNodeName(name)) != -1 ) 
         if ( old_arity != arity ) 
             Error(4, name, 1, arity);
-        else 
-            ;
+        else {
+        }
     else {
-        ptNode = AllocNode();
-        ptNode -> name = AllocString(name);
-        ptNode -> number = AddConst(name);
-        ptNode -> arity = arity ;
-        ptNode -> next = listNode ;
-        listNode = ptNode ;
+        ptNode           =  AllocNode();
+        ptNode -> name   =  AllocString(name);
+        ptNode -> number =  AddConst(name);
+        ptNode -> arity  =  arity ;
+        ptNode -> next   =  listNode ;
+        listNode         =  ptNode ;
     }
 }
 
@@ -954,9 +954,9 @@ int ArityNodeName ( const char *name )
     while ( ptNode ) {
         if ( !strcmp(name, ptNode -> name) ) 
             return ptNode -> arity ;
-        ptNode = ptNode -> next ;
+        ptNode =  ptNode -> next ;
     }
-    return - 1 ;
+    return -1 ;
 }
 
 /**************************************************************
@@ -969,9 +969,9 @@ int ArityNode ( int numb )
     while ( ptNode ) {
         if ( ptNode -> number == numb ) 
             return ptNode -> arity ;
-        ptNode = ptNode -> next ;
+        ptNode =  ptNode -> next ;
     }
-    return - 1 ;
+    return -1 ;
 }
 
 /**************************************************************
@@ -984,9 +984,9 @@ int NumberNodeName ( char *name )
     while ( ptNode ) {
         if ( !strcmp(name, ptNode -> name) ) 
             return ptNode -> number ;
-        ptNode = ptNode -> next ;
+        ptNode =  ptNode -> next ;
     }
-    return - 1 ;
+    return -1 ;
 }
 
 /**************************************************************
@@ -999,7 +999,7 @@ char *NameNode ( int numb )
     while ( ptNode ) {
         if ( ptNode -> number == numb ) 
             return ptNode -> name ;
-        ptNode = ptNode -> next ;
+        ptNode =  ptNode -> next ;
     }
     return ((char *)0);
 }
@@ -1014,8 +1014,8 @@ int MaxNode ()
     
     while ( ptNode ) {
         if ( ptNode -> number > max ) 
-            max = ptNode -> number ;
-        ptNode = ptNode -> next ;
+            max =  ptNode -> number ;
+        ptNode =  ptNode -> next ;
     }
     return (max);
 }
@@ -1039,7 +1039,7 @@ void DumpTheNode ()
         WriteString(numb);
         if ( j++ == 10 ) {
             NewLine();
-            j = 0 ;
+            j =  0 ;
         }
     }
     UnMark();
@@ -1066,7 +1066,7 @@ PDESCRIPT_ELEM FindDescript ( int numb )
     PDESCRIPT_ELEM  pDescript = pDescriptList ;
     
     /* search in the list */
-    for (; pDescript ; pDescript = pDescript -> next ) {
+    for (; pDescript ; pDescript =  pDescript -> next ) {
         if ( pDescript -> numb == numb ) 
             /* if found anything return the elem */
             return pDescript ;
@@ -1086,26 +1086,26 @@ void InsertDescript ( int numb, const char *name, int offset, PPTREE proc )
     
     /* otherwise insert it */
     if ( pDescriptListFree ) {
-        pDescript = pDescriptListFree ;
-        pDescriptListFree = pDescriptListFree -> next ;
+        pDescript         =  pDescriptListFree ;
+        pDescriptListFree =  pDescriptListFree -> next ;
     } else {
-        pDescript = (PDESCRIPT_ELEM)malloc(sizeof(DESCRIPT_ELEM));
+        pDescript =  (PDESCRIPT_ELEM)malloc(sizeof(DESCRIPT_ELEM));
     }
-    pDescript -> numb = numb ;
-    pDescript -> name = AllocString(name);
-    pDescript -> offset = offset ;
-    pDescript -> proc = proc ;
-    pDescript -> next = pDescriptList ;
-    pDescriptList = pDescript ;
+    pDescript -> numb   =  numb ;
+    pDescript -> name   =  AllocString(name);
+    pDescript -> offset =  offset ;
+    pDescript -> proc   =  proc ;
+    pDescript -> next   =  pDescriptList ;
+    pDescriptList       =  pDescript ;
 }
 
 void FreeDescriptList ()
 {
     PDESCRIPT_ELEM  ptDescript ;
     
-    pDescriptListFree = pDescriptList ;
-    pDescriptList = (PDESCRIPT_ELEM)0 ;
-    for ( ptDescript = pDescriptListFree ; ptDescript ; ptDescript = ptDescript -> next ) {
+    pDescriptListFree =  pDescriptList ;
+    pDescriptList     =  (PDESCRIPT_ELEM)0 ;
+    for ( ptDescript = pDescriptListFree ; ptDescript ; ptDescript =  ptDescript -> next ) {
         free(ptDescript -> name);
     }
 }
@@ -1117,14 +1117,14 @@ char *LowerNameNode ( char *dest, int i )
 {
     char    *ptSource, *ptDest, c ;
     
-    ptSource = NameNode(i);
-    ptDest = dest ;
+    ptSource =  NameNode(i);
+    ptDest   =  dest ;
     if ( ptSource ) 
         while ( *ptSource ) {
-            c = *ptSource++ ;
-            *ptDest++ = tolower(c);
+            c         =  *ptSource++ ;
+            *ptDest++ =  tolower(c);
         }
-    *ptDest = '\0';
+    *ptDest =  '\0';
     return dest ;
 }
 
@@ -1135,178 +1135,178 @@ char *ShortName ( char *string )
 {
     char    *ptString ;
     
-    ptString = string + strlen(string) - 1 ;
+    ptString =  string + strlen(string) - 1 ;
     while ( ptString >= string && *ptString != '_' ) 
         ptString-- ;
     if ( ptString >= string ) 
-        *ptString = '\0';
+        *ptString =  '\0';
     return string ;
 }
 
 void LispMake ()
 {
-#if 0
-    
-    int     i, j, max = MaxNode();
-    char    numb [10], name [256];
-    
-    WriteString("(#:parser:build-parser ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString(")");
-    NewLine();
-    WriteString("(#:parser:init-parser '");
-    WriteString(LanguageName(LO_CASE));
-    WriteString(")");
-    NewLine();
-    WriteString("(external-var ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_func ()) ");
-    NewLine();
-    WriteString("(external-var ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_arity ()) ");
-    NewLine();
-    WriteString("(external-var ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_operator ()) ");
-    NewLine();
-    NewLine();
-    WriteString("(setq ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_func (makevector ");
-    _itoa(max + 1, numb, 10);
-    WriteString(numb);
-    WriteString(" ()))");
-    NewLine();
-    WriteString("(setq ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_arity (makevector ");
-    _itoa(max + 1, numb, 10);
-    WriteString(numb);
-    WriteString(" ()))");
-    NewLine();
-    WriteString("(setq ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_operator (makevector ");
-    _itoa(max + 1, numb, 10);
-    WriteString(numb);
-    WriteString(" ()))");
-    NewLine();
-    NewLine();
-    WriteString("(de ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_set (pos name )");
-    NewLine();
-    Tab();
-    Mark();
-    WriteString("(exception-catch {name}:undefined-operator");
-    NewLine();
-    Tab();
-    WriteString("(vset ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_arity pos ");
-    WriteString("({operator}:arity ({name}:operator name ({name}:formalism '");
-    WriteString(LanguageName(UP_CASE));
-    WriteString(")))))");
-    NewLine();
-    WriteString("(exception-catch {name}:undefined-operator");
-    NewLine();
-    Tab();
-    WriteString("(vset ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_operator pos ");
-    WriteString("({name}:operator name ({name}:formalism '");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("))))");
-    WriteString(")");
-    UnMark();
-    NewLine();
-    NewLine();
-    WriteString("(de ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_operator ( name )");
-    NewLine();
-    Tab();
-    Mark();
-    WriteString("(exception-catch {name}:undefined-operator");
-    NewLine();
-    Tab();
-    WriteString("({name}:operator name ({name}:formalism '");
-    WriteString(LanguageName(UP_CASE));
-    WriteString(")))");
-    WriteString(")");
-    UnMark();
-    NewLine();
-    NewLine();
-    WriteString("(de ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_init ()");
-    NewLine();
-    Tab();
-    Mark();
-    for ( i = 4 ; i <= max ; i++ ) 
-        if ( ArityNode(i) >= 0 ) {
-            WriteString("(vset ");
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_func ");
-            Tab();
-            _itoa(i, numb, 10);
-            WriteString(numb);
-            Tab();
-            WriteString("'");
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_ntree_");
-            WriteString(numb);
-            WriteString(")");
-            NewLine();
-            WriteString("(");
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_set ");
-            _itoa(i, numb, 10);
-            Tab();
-            Tab();
-            WriteString(numb);
-            Tab();
-            WriteString("'");
-            ShortName(LowerNameNode(name, i));
-            WriteString(name);
-            Tab();
-            WriteString(")");
-            NewLine();
-        }
-    UnMark();
-    WriteString(")");
-    NewLine();
-    NewLine();
-    for ( i = 4 ; i <= max ; i++ ) 
-        if ( ArityNode(i) >= 0 ) {
-            ShortName(LowerNameNode(name, i));
-            WriteString("(de ");
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_ntree_");
-            _itoa(i, numb, 10);
-            WriteString(numb);
-            WriteString(" () ");
-            NewLine();
-            Tab();
-            Mark();
-            WriteString("({tree}:make (make-constant (");
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_operator '");
-            WriteString(name);
-            WriteString("))");
-            for ( j = 1 ; j <= ArityNode(i) ; j++ ) 
-                WriteString(" (#:metagen:pop)");
-            WriteString("))");
-            NewLine();
-            UnMark();
-            NewLine();
-        }
-    WriteString("(");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_init)");
-    NewLine();
-#endif
+#   if 0
+        
+        int     i, j, max = MaxNode();
+        char    numb [10], name [256];
+        
+        WriteString("(#:parser:build-parser ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString(")");
+        NewLine();
+        WriteString("(#:parser:init-parser '");
+        WriteString(LanguageName(LO_CASE));
+        WriteString(")");
+        NewLine();
+        WriteString("(external-var ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_func ()) ");
+        NewLine();
+        WriteString("(external-var ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_arity ()) ");
+        NewLine();
+        WriteString("(external-var ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_operator ()) ");
+        NewLine();
+        NewLine();
+        WriteString("(setq ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_func (makevector ");
+        _itoa(max + 1, numb, 10);
+        WriteString(numb);
+        WriteString(" ()))");
+        NewLine();
+        WriteString("(setq ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_arity (makevector ");
+        _itoa(max + 1, numb, 10);
+        WriteString(numb);
+        WriteString(" ()))");
+        NewLine();
+        WriteString("(setq ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_operator (makevector ");
+        _itoa(max + 1, numb, 10);
+        WriteString(numb);
+        WriteString(" ()))");
+        NewLine();
+        NewLine();
+        WriteString("(de ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_set (pos name )");
+        NewLine();
+        Tab();
+        Mark();
+        WriteString("(exception-catch {name}:undefined-operator");
+        NewLine();
+        Tab();
+        WriteString("(vset ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_arity pos ");
+        WriteString("({operator}:arity ({name}:operator name ({name}:formalism '");
+        WriteString(LanguageName(UP_CASE));
+        WriteString(")))))");
+        NewLine();
+        WriteString("(exception-catch {name}:undefined-operator");
+        NewLine();
+        Tab();
+        WriteString("(vset ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_operator pos ");
+        WriteString("({name}:operator name ({name}:formalism '");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("))))");
+        WriteString(")");
+        UnMark();
+        NewLine();
+        NewLine();
+        WriteString("(de ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_operator ( name )");
+        NewLine();
+        Tab();
+        Mark();
+        WriteString("(exception-catch {name}:undefined-operator");
+        NewLine();
+        Tab();
+        WriteString("({name}:operator name ({name}:formalism '");
+        WriteString(LanguageName(UP_CASE));
+        WriteString(")))");
+        WriteString(")");
+        UnMark();
+        NewLine();
+        NewLine();
+        WriteString("(de ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_init ()");
+        NewLine();
+        Tab();
+        Mark();
+        for ( i = 4 ; i <= max ; i++ ) 
+            if ( ArityNode(i) >= 0 ) {
+                WriteString("(vset ");
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_func ");
+                Tab();
+                _itoa(i, numb, 10);
+                WriteString(numb);
+                Tab();
+                WriteString("'");
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_ntree_");
+                WriteString(numb);
+                WriteString(")");
+                NewLine();
+                WriteString("(");
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_set ");
+                _itoa(i, numb, 10);
+                Tab();
+                Tab();
+                WriteString(numb);
+                Tab();
+                WriteString("'");
+                ShortName(LowerNameNode(name, i));
+                WriteString(name);
+                Tab();
+                WriteString(")");
+                NewLine();
+            }
+        UnMark();
+        WriteString(")");
+        NewLine();
+        NewLine();
+        for ( i = 4 ; i <= max ; i++ ) 
+            if ( ArityNode(i) >= 0 ) {
+                ShortName(LowerNameNode(name, i));
+                WriteString("(de ");
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_ntree_");
+                _itoa(i, numb, 10);
+                WriteString(numb);
+                WriteString(" () ");
+                NewLine();
+                Tab();
+                Mark();
+                WriteString("({tree}:make (make-constant (");
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_operator '");
+                WriteString(name);
+                WriteString("))");
+                for ( j = 1 ; j <= ArityNode(i) ; j++ ) 
+                    WriteString(" (#:metagen:pop)");
+                WriteString("))");
+                NewLine();
+                UnMark();
+                NewLine();
+            }
+        WriteString("(");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_init)");
+        NewLine();
+#   endif
 }
 
 /**************************************************************
@@ -1314,56 +1314,56 @@ void LispMake ()
    ***************************************************************/
 void CMake ()
 {
-#if 0
-    
-    int     i, max = MaxNode();
-    char    numb [10], *ptSource, *ptDest, name [256], c ;
-    
-    NewLine();
-    WriteString("struct LL_SYMBOL * ");
-    WriteString(LanguageName(UP_CASE));
-    WriteString("_func [");
-    _itoa(max + 1, numb, 10);
-    WriteString(numb);
-    WriteString("];");
-    NewLine();
-    WriteString("VtpInit () ");
-    NewLine();
-    WriteString("{");
-    NewLine();
-    Tab();
-    Mark();
-    for ( i = 4 ; i <= max ; i++ ) 
-        if ( ArityNode(i) >= 0 ) {
-            WriteString(LanguageName(UP_CASE));
-            WriteString("_func [");
-            _itoa(i, numb, 10);
-            WriteString(numb);
-            WriteString("] = getsym(\"");
-            WriteString("tree_");
-            WriteString(numb);
-            WriteString("\");");
-            NewLine();
-        }
-    WriteString("ll_entry_function = getsym(\"metagen_entry_function\");");
-    NewLine();
-    WriteString("ll_exit_function = getsym(\"metagen_exit_function\");");
-    NewLine();
-    WriteString("ll_is_oper_tree = getsym(\"metagen_is_oper_tree\");");
-    NewLine();
-    WriteString("ll_replace_tree = getsym(\"metagen_replace_tree\");");
-    NewLine();
-    WriteString("ll_addlist = getsym(\"metagen_addlist\");");
-    NewLine();
-    WriteString("ll_make_string = getsym(\"metagen_make_string\");");
-    NewLine();
-    WriteString("ll_equ_tree = getsym(\"metagen_equ_tree\");");
-    NewLine();
-    WriteString("ll_son_tree = getsym(\"metagen_son_tree\");");
-    NewLine();
-    UnMark();
-    WriteString("}");
-#endif
+#   if 0
+        
+        int     i, max = MaxNode();
+        char    numb [10], *ptSource, *ptDest, name [256], c ;
+        
+        NewLine();
+        WriteString("struct LL_SYMBOL * ");
+        WriteString(LanguageName(UP_CASE));
+        WriteString("_func [");
+        _itoa(max + 1, numb, 10);
+        WriteString(numb);
+        WriteString("];");
+        NewLine();
+        WriteString("VtpInit () ");
+        NewLine();
+        WriteString("{");
+        NewLine();
+        Tab();
+        Mark();
+        for ( i = 4 ; i <= max ; i++ ) 
+            if ( ArityNode(i) >= 0 ) {
+                WriteString(LanguageName(UP_CASE));
+                WriteString("_func [");
+                _itoa(i, numb, 10);
+                WriteString(numb);
+                WriteString("] = getsym(\"");
+                WriteString("tree_");
+                WriteString(numb);
+                WriteString("\");");
+                NewLine();
+            }
+        WriteString("ll_entry_function = getsym(\"metagen_entry_function\");");
+        NewLine();
+        WriteString("ll_exit_function = getsym(\"metagen_exit_function\");");
+        NewLine();
+        WriteString("ll_is_oper_tree = getsym(\"metagen_is_oper_tree\");");
+        NewLine();
+        WriteString("ll_replace_tree = getsym(\"metagen_replace_tree\");");
+        NewLine();
+        WriteString("ll_addlist = getsym(\"metagen_addlist\");");
+        NewLine();
+        WriteString("ll_make_string = getsym(\"metagen_make_string\");");
+        NewLine();
+        WriteString("ll_equ_tree = getsym(\"metagen_equ_tree\");");
+        NewLine();
+        WriteString("ll_son_tree = getsym(\"metagen_son_tree\");");
+        NewLine();
+        UnMark();
+        WriteString("}");
+#   endif
 }
 
 extern int  output, loutput, coutput ;
@@ -1372,7 +1372,7 @@ void terminal_build ( PPTREE tree )
 {
     char    name [20];
     
-    tree = SonTree(tree, 1);
+    tree =  SonTree(tree, 1);
     if ( !(output = loutput) ) 
         return ;
     WriteString("(de ");
@@ -1394,7 +1394,7 @@ void terminal_build ( PPTREE tree )
         WriteString(BrainyValue(SonTree(SonTree(tree, 1), 2)));
         WriteString("}:make value))");
         NewLine();
-        tree = SonTree(tree, 2);
+        tree =  SonTree(tree, 2);
     }
     WriteString("(t ({char-string}:make value))");
     NewLine();
@@ -1403,5 +1403,5 @@ void terminal_build ( PPTREE tree )
     NewLine();
     NewLine();
     UnMark();
-    output = coutput ;
+    output =  coutput ;
 }

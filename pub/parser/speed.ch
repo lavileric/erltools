@@ -312,7 +312,7 @@ debut :
                     father     += <,<>,newContent>;
                     
                     /* connect tail of function */
-                    while ( father != <,<>,()> ) 
+                    while ( father.TreeArity () >= 2 &&  father != <,<>,()> ) 
                         father == <,<>,father>;
                     father += <,<>,functionElem>;
                 }

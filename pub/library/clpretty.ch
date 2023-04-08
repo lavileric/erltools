@@ -239,7 +239,7 @@ void clpretty::CompleteCoordinates ( PTREE currTree )
                 PTREE   father(posStack [readStack].tree);
                 while ( !found ) {
                     if ( rank < father.TreeArity() ) {
-                        rank     =  ++(posStack [readStack].rank);
+                        rank     =  ++posStack [readStack].rank ;
                         currTree =  father [rank];
                         if ( currTree != () ) {
                             found =  true ;
@@ -555,14 +555,13 @@ void clpretty::AddTree ( PTREE tree, int delta )
     
     // allocates enough space
     if ( currTabTree >= sizeTabTree ) {
-        if ( sizeTabTree && (tabTree = (PPTREE_DELTA)realloc(tabTree, sizeof(TREE_DELTA) * (sizeTabTree + 10)))
-                || (tabTree = (PPTREE_DELTA)malloc(sizeof(TREE_DELTA) * 10)) ) 
+        if ( sizeTabTree && (tabTree = (PPTREE_DELTA)realloc(tabTree, sizeof(TREE_DELTA) * (sizeTabTree + 10))) || (tabTree = (PPTREE_DELTA)malloc(sizeof(TREE_DELTA) * 10)) ) 
             sizeTabTree += 10 ;
     }
     
     // if tree is allready here change it
     for ( int i = 0 ; i < currTabTree ; i++ ) 
-        if ( tabTree [i].tree == tree ) {
+        if ( tabTree [i].tree == (PPTREE)tree ) {
             tabTree [i].delta =  delta ;
             return ;
         }
@@ -589,7 +588,7 @@ int clpretty::FindDelta ( PTREE tree )
     
     while ( tree ) {
         for ( i = 0 ; i < currTabTree ; i++ ) 
-            if ( tabTree [i].tree == tree ) 
+            if ( tabTree [i].tree == (PPTREE)tree ) 
                 return tabTree [i].delta ;
         tree =  fathertree(tree);
     }
@@ -1333,6 +1332,10 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                 break ;
                             }
                             inter =  NextTree(inter, ());
+                            s
+                            // nothing left get out
+                            if ( inter == () ) 
+                                break ;
                         }
                         
                         // update mark

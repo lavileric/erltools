@@ -4,7 +4,12 @@
 #   include <map>
 #   define OPTIM_COST_MAX(type) std::numeric_limits<typename type> ::max()
 #   define OPTIM_COST_MIN(type) std::numeric_limits<typename type>::lowest()
-    typedef enum { LOCAL_GRADIENT_ALGO, GENETIC_ALGORITHM_ALGO, SIMULATED_ANNEALING_ALGO, NO_ALGO } EAlgoType ;
+    typedef enum {
+        LOCAL_GRADIENT_ALGO, 
+        GENETIC_ALGORITHM_ALGO, 
+        SIMULATED_ANNEALING_ALGO, 
+        NO_ALGO
+    }   EAlgoType ;
     
     //*****************************************************************************
     // Class Declaration
@@ -33,22 +38,22 @@
                 
                 bool operator< ( const SortUnit &sortUnit ) const
                 {
-                    return this->cost < sortUnit.cost ;
+                    return this -> cost < sortUnit.cost ;
                 }
                 
                 bool operator> ( const SortUnit &sortUnit ) const
                 {
-                    return this->cost > sortUnit.cost ;
+                    return this -> cost > sortUnit.cost ;
                 }
                 
                 bool operator== ( const SortUnit &sortUnit ) const
                 {
-                    return this->cost == sortUnit.cost ;
+                    return this -> cost == sortUnit.cost ;
                 }
                 
                 bool operator!= ( const SortUnit &sortUnit ) const
                 {
-                    return this->cost != sortUnit.cost ;
+                    return this -> cost != sortUnit.cost ;
                 }
                 
                 bool            population ; // first population or second
@@ -79,8 +84,8 @@
                 
                 // Methods
                 virtual bool    Run (EString fileName = "", bool verbose = true) = 0 ;
-                bool            Step (std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation
-                    , std::vector<IndividualType> &newPopulation, std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool verbose = true) ;
+                bool            Step (std::vector<IndividualType> &refPopulation, std::vector<IndividualType> &nextPopulation, std::vector<IndividualType> &newPopulation
+                    , std::vector<SortUnit<typename IndividualType::TypeCost> > &sortArray, bool verbose = true) ;
                 virtual void    Print () = 0 ;
                 
                 OptimAlgo &MaxSimulatedVectors ( unsigned int maxSimulatedVectors )
@@ -194,6 +199,11 @@
                     result << " Simultated Vectors : \t\t\t\t\t\t\t" << SimulatedVectors() << "\n";
                     result << " Steady Vectors : \t\t\t\t\t\t\t" << SteadyVectors() << "\n";
                     return result ;
+                }
+                
+                void Seed ( long long seed )
+                {
+                    randGen.seed(seed);
                 }
             
             protected :

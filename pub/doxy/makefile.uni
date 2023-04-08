@@ -43,7 +43,7 @@ METAGEN= ../parser/verif.o
 
 
 doxy : $(OBJECTS) $(LIBRARY)
-	$(C_PLUS) -o doxy $(OBJECTS) $(METACHOP) $(CHOPB) $(CPLUS) $(METAGEN)  $(LIBRARY)
+	$(C_PLUS) -o doxy $(OBJECTS)  $(CPLUS)  $(METAGEN)  $(METACHOP) $(CHOPB)  $(LIBRARY)
 
 chop : 
 	make -f makefile.cho

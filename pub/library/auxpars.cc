@@ -41,7 +41,7 @@
      Modification of AddComm : add new level PRIORITY for bounding
    Eric Lavillonniere - 18 november 1993
      Modification of SavePos RestorePos et FreePos
-     for decreasing the number or malloc and free for context
+     for decreasing the number or malloc and free for   
    Eric Lavillonniere - 4 october 1993
      Modification of PrintError interface
    Jean-Philippe Jouve - 29 September 1993
@@ -210,8 +210,9 @@ inline HAND_CRIT GetParsingCritical ()
 
 void Flush ()
 {
-    if ( output > 0 || output == OUTPUT_IN_STRING && ptOutPut > outBuf ) 
+    if ( (output > 0 || output == OUTPUT_IN_STRING) && ptOutPut > outBuf ) {
         WriteString("\n");
+    }
 }
 
 int True ()
@@ -331,6 +332,24 @@ debut :
     }
     if ( more ) 
         goto debut ;
+}
+
+EString &EndOutputString ()
+{
+    if ( output == OUTPUT_IN_STRING ) {
+        Flush();
+        
+        // restore output
+        output =  keepOutputString ;
+        
+        // suppress \n of last flush
+        if ( outputString.length() > 0 && outputString [outputString.length() - 1] == '\n' ) 
+            outputString.length(outputString.length() - 1);
+        
+        // clear the output buffer
+        ptOutPut =  outBuf ;
+    }
+    return outputString ;
 }
 
 void _fastcall WriteStringVirtInt ( const char *string, int len )
@@ -1416,9 +1435,9 @@ PPTREE ListPermutate ( PPTREE list )
     ListLength : compute the length of a list
    ***********/
 /******************************************************/
-int _fastcall ListLength ( PPTREE list )
+unsigned int _fastcall ListLength ( PPTREE list )
 {
-    register int    i = 1 ;
+    register unsigned int   i = 1 ;
     
     if ( !list ) 
         return 0 ;
@@ -4717,7 +4736,7 @@ PPTREE Parser::ReadInclude ( const char *name, int here, bool compTree )
         sprintf(string, "Cannot open %s\n", name);
         MetaExit(3, string);
     }
-    if ( parsed != PTREE((void *)0) && parsed != PTREE((void *) -1) ) {
+    if ( parsed != (PPTREE)0 && parsed != (PPTREE) -1 ) {
         listInclude =  ::AddList(listInclude, parsed);
     }
     return parsed ;

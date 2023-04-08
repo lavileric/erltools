@@ -98,7 +98,7 @@
             }
             
             /// 
-            /// @fn SymbolTableAddHandler  &SymbolTableAddHandler::Level (unsigned int level) 
+            /// @fn SymbolTableAddHandler   &SymbolTableAddHandler::Level (unsigned int level) 
             /// 
             /// @brief Level
             /// 
@@ -127,11 +127,23 @@
                     int i = 1 ;
                 }
             }
+            
+            /// 
+            /// @fn SymbolTable &SymbolTableAddHandler::SymbTable () 
+            /// 
+            /// @brief SymbTable
+            /// 
+            /// @returns  SymbolTable
+            /// 
+            SymbolTable &SymbTable ()
+            {
+                return pvSymbolTable ;
+            }
         
         private :
         
-            unsigned int    pvLevel = 0 ;    ///< level
-            SymbolTable     &pvSymbolTable ; ///< pvSymbolTable
-            int             pvTableSize = 0 ;
+            unsigned int    pvLevel = 0 ;     ///< level
+            SymbolTable     &pvSymbolTable ;  ///< pvSymbolTable
+            int             pvTableSize = 0 ; ///< pvTableSize
     };
 #endif

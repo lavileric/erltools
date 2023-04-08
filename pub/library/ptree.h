@@ -228,14 +228,24 @@
                 return PTREE(pptree);
             }
             
-            int operator== ( const PTREE &ptree ) const
+            bool operator== ( const PTREE &ptree ) const
             {
                 return pt == ptree.pt ;
             }
             
-            int operator!= ( const PTREE &ptree ) const
+            bool operator!= ( const PTREE &ptree ) const
             {
                 return pt != ptree.pt ;
+            }
+            
+            bool operator== ( const PPTREE &pptree ) const
+            {
+                return pt == pptree ;
+            }
+            
+            bool operator!= ( const PPTREE &pptree ) const
+            {
+                return pt != pptree ;
             }
             
             PPTREE operator^ ( int nb ) const
@@ -485,8 +495,8 @@
     
     // apply a method on a class
 #   define APPLY_CLASS(tree, type, meth) (NumberTree(tree) == CLASS_TREE? \
-                                       		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
-                                                                            0)
+                                          		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
+                                                                               0)
 #   define UNCHECKED_APPLY_CLASS(tree, type, meth) (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) 
 #   define ALLOCATE_CLASS(meth) (MakeTreeClass( * (TreeClass *) new meth))
 #endif
