@@ -201,7 +201,7 @@
                     return result ;
                 }
                 
-                void Seed ( long long seed )
+                static void Seed ( long long seed )
                 {
                     randGen.seed(seed);
                 }
