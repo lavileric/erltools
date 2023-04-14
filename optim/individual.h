@@ -602,8 +602,8 @@
                 SimpleLimit ( SimpleType min, SimpleType max )
                     : FeatureLimit<SimpleType, SimpleType> (min, max, min)
                 {
-                    this->pvStep  =  1 ;
-                    pvLastApplied =  (SimpleType)0 ;
+                    this -> pvStep =  1 ;
+                    pvLastApplied  =  (SimpleType)0 ;
                 }
                 
                 SimpleLimit ( SimpleType min, SimpleType max, SimpleType step )
@@ -619,7 +619,7 @@
                 // Random : get a random value
                 virtual SimpleType Random () const
                 {
-                    return MTRandomValue<SimpleType> (this->Min(), this->Max() + 1);
+                    return MTRandomValue<SimpleType> (this -> Min(), this -> Max() + 1);
                 }
                 
                 // Vibrato with imposed value
@@ -629,10 +629,10 @@
                     
                     SimpleType  newVal = currVal + pvLastApplied ;
                     
-                    if ( newVal > this->Max() ) 
-                        newVal =  this->Min();
-                    if ( newVal < this->Min() ) 
-                        newVal =  this->Max() - this->pvStep ;
+                    if ( newVal > this -> Max() ) 
+                        newVal =  this -> Min();
+                    if ( newVal < this -> Min() ) 
+                        newVal =  this -> Max() - this -> pvStep ;
                     return newVal ;
                 }
                 
@@ -645,9 +645,9 @@
                     step =  MTRandomValue<char> (0, 2);
                     if ( step == 0 ) 
                         step =  -1 ;
-                    pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this->Step()) /*this->Step()*/ ;
+                    pvLastApplied =  step * (typeStep == 0 ? Random() / 5 : this -> Step()) /*this->Step()*/ ;
                     if ( pvLastApplied == 0 ) 
-                        pvLastApplied =  this->Step();
+                        pvLastApplied =  this -> Step();
                     if ( isnan(currVal + pvLastApplied) ) 
                         pvLastApplied =  -pvLastApplied ;
                     
@@ -668,7 +668,7 @@
                 {
                     EString content ;
                     
-                    content << "(" << (long)this->Min() << "," << (long)this->Max() << "," << (long)this->Step() << ")";
+                    content << "(" << (long)this -> Min() << "," << (long)this -> Max() << "," << (long)this -> Step() << ")";
                     return content ;
                 }
                 
@@ -755,7 +755,7 @@
                         return *&pvFeatures [index];
                     } else {
                         EString error("Feature1: Individual Index Illegal access : ");
-                        error << (int)index << " " << (int) Size();
+                        error << (int)index << " " << (int)Size();
                         IndividualDisplayError(error);
                     }
                     return *&pvFeatures [0];
@@ -774,7 +774,7 @@
 #                       endif
                     } else {
                         EString error("FeatureCopy: Individual Index Illegal access : ");
-                        error << (int)start << " " << (int)size << (int)Size() << "\n" ;
+                        error << (int)start << " " << (int)size << (int)Size() << "\n";
                         IndividualDisplayError(error);
                     }
                     return *&pvFeatures [0];
@@ -845,7 +845,7 @@
                         return *&pvLimits [index];
                     } else {
                         EString error("Limits: Individual Index Illegal access : ");
-                        error << (int)index  << " " << (int) Size()<< "\n" ;
+                        error << (int)index << " " << (int)Size() << "\n";
                         IndividualDisplayError(error);
                     }
                     return *&pvLimits [0];
@@ -895,7 +895,7 @@
                         pvFeatures [index] =  framedFeature ;
                     } else {
                         EString error("Feature0: Individual Index Illegal access : ");
-                        error << (int)index << " " << (int) Size()<< "\n" ;
+                        error << (int)index << " " << (int)Size() << "\n";
                         IndividualDisplayError(error);
                     }
                     
@@ -940,13 +940,13 @@
                         AddWaitingIndividuals((DelayedEvaluator *)this);
                         return 0 ;
                     } else 
-                        return this->Evaluate(pSemaphop);
+                        return this -> Evaluate(pSemaphop);
                 }
                 
                 // delayed eval
                 virtual void DelayedEval ( bool withMessage = true )
                 {
-                    this->Evaluate(pvpKeepSemaphop, withMessage);
+                    this -> Evaluate(pvpKeepSemaphop, withMessage);
                 }
                 
                 // Size : return size of individual
@@ -981,7 +981,7 @@
                 {
                     pvEvaluated =  evaluated ;
                     if ( evaluated && pSemaphop ) {
-                        pSemaphop->PutRessource(1);
+                        pSemaphop -> PutRessource(1);
                     }
                     return *this ;
                 }
@@ -1025,8 +1025,8 @@
                 
                 EString Content ()
                 {
-                    EString content ;
-                    unsigned int     param ;
+                    EString         content ;
+                    unsigned int    param ;
                     
                     for ( param = 0 ; param < Size() ; param++ ) {
                         content << (int)param << " = " << Feature(param) << Limits(param).Content() << " ";
@@ -1109,8 +1109,7 @@
                           if ( MTRandomValue<TypeFeature>(0, 2) )
                        vectorg [index] = 2 ;*/
                     for ( unsigned int param = 0 ; param < size ; param++ ) {
-                        Feature(param, vectorg [param] == 1 ? father.Feature(param) : mother.Feature(param)
-                            , vectorg [param] == 1 ? father.Limits(param) : mother.Limits(param));
+                        Feature(param, vectorg [param] == 1 ? father.Feature(param) : mother.Feature(param), vectorg [param] == 1 ? father.Limits(param) : mother.Limits(param));
                     }
                 }
                 
@@ -1231,7 +1230,7 @@
                 OrderedIndividual ( const OrderedIndividual &individual )
                     : Individual<TypeFeature, FeatureLimits, FeatureCost> ()
                 {
-                    ((Individual<TypeFeature, FeatureLimits, FeatureCost> *)this)->Affect((Individual<TypeFeature, FeatureLimits, FeatureCost> &)individual);
+                    ((Individual<TypeFeature, FeatureLimits, FeatureCost> *)this) -> Affect((Individual<TypeFeature, FeatureLimits, FeatureCost> &)individual);
                 }
                 
                 virtual void MergeFrom ( OrderedIndividual &father, OrderedIndividual &mother )
@@ -1248,18 +1247,18 @@
                     
                     // copy characteritics of mother until before merge point
                     for ( indexInsert = 0 ; indexInsert < mergePoint ; indexInsert++ ) {
-                        this->Feature(indexInsert, mother.Feature(indexInsert), mother.Limits(indexInsert));
+                        this -> Feature(indexInsert, mother.Feature(indexInsert), mother.Limits(indexInsert));
                         alreadyPut.insert(mother.Feature(indexInsert));
                     }
                     
                     // then take characteristics of mother taking into account father order
                     for ( index = 0 ; index < size ; index++ ) {
                         if ( alreadyPut.find(father.Feature(index)) == alreadyPut.end() ) {
-                            this->Feature(indexInsert++, father.Feature(index), father.Limits(index));
+                            this -> Feature(indexInsert++, father.Feature(index), father.Limits(index));
                             
                             // alreadyPut.insert(father.Feature(index));
 #                           if 0
-                                if ( this->Feature(index) == 0 ) {
+                                if ( this -> Feature(index) == 0 ) {
                                     MetaExit(3, "OOPS");
                                 }
 #                           endif
@@ -1272,7 +1271,7 @@
                     
                     // Then randomly choose the nb of param to be mutated for this cell
                     // ----------------------------------------------------------------
-                    int NB_PARAM = MTRandomValue<int> (1, (this->Size() + 1) / 2);
+                    int NB_PARAM = MTRandomValue<int> (1, (this -> Size() + 1) / 2);
                     
                     // For each param to be mutated
                     // ----------------------------
@@ -1283,18 +1282,18 @@
                             
                             // Randomly choose parameters index
                             // --------------------------------
-                            int lParamIndex = MTRandomValue<int> (0, this->Size());
+                            int lParamIndex = MTRandomValue<int> (0, this -> Size());
                             int lParamIndex1 = lParamIndex ;
-                            if ( this->Size() <= 1 ) 
+                            if ( this -> Size() <= 1 ) 
                                 return ;
                             while ( lParamIndex1 == lParamIndex ) 
-                                lParamIndex1 =  MTRandomValue<int> (0, this->Size());
+                                lParamIndex1 =  MTRandomValue<int> (0, this -> Size());
                             
                             // if exchange is allowed do it
-                            if ( this->CanExchange(lParamIndex, lParamIndex1) ) {
-                                TypeFeature lKeepValue = this->Feature(lParamIndex);
-                                this->Feature(lParamIndex, this->Feature(lParamIndex1));
-                                this->Feature(lParamIndex1, lKeepValue);
+                            if ( this -> CanExchange(lParamIndex, lParamIndex1) ) {
+                                TypeFeature lKeepValue = this -> Feature(lParamIndex);
+                                this -> Feature(lParamIndex, this -> Feature(lParamIndex1));
+                                this -> Feature(lParamIndex1, lKeepValue);
                                 exchange =  true ;
                             }
                         }

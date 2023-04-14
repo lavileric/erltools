@@ -2,6 +2,8 @@ language sgt;
 
 #include "symb.h"
 
+bool    SymbolTable::throwOn = false ;
+
 // copy constructor
 // parameters :
 //              symbTab :copied symboltable
@@ -13,9 +15,11 @@ SymbolTable::SymbolTable ( const SymbolTable &symbTab )
     PTREE   symbol ;  // a var
     PTREE   type ;
     
+    pvValidity =  TABLE_VALIDITY ;
+    
     // do job at each level
     for ( int currLevel = 0 ; currLevel <= symbTab.Size() - 1 ; currLevel++ ) {
-        listVar =  symbTab.GetTabList(currLevel)->List();
+        listVar =  symbTab.GetTabList(currLevel) -> List();
         AddLevel();
         while ( (symbol = nextl(listVar)) ) {
             AddVar(CopyTree(symbol));
@@ -28,6 +32,7 @@ SymbolTable::SymbolTable ( const SymbolTable &symbTab )
 //              symbTab : copied symboltable
 const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
 {
+    CheckValidity();
     
     PTREE   listVar ; // list of var at a level
     PTREE   symbol ;  // a var
@@ -39,7 +44,7 @@ const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
     
     // do job at each level
     for ( int currLevel = 0 ; currLevel <= symbTab.Size() - 1 ; currLevel++ ) {
-        listVar =  symbTab.GetTabList(currLevel)->List();
+        listVar =  symbTab.GetTabList(currLevel) -> List();
         AddLevel();
         while ( (symbol = nextl(listVar)) ) {
             AddVar(CopyTree(symbol));
@@ -56,6 +61,7 @@ const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
 // return : number of levels
 int SymbolTable::AddLevel ( PPTREE initList )
 {
+    CheckValidity();
     
     // if table is full realloc some space
     if ( pvSize == pvSizeMax ) {
@@ -76,6 +82,7 @@ int SymbolTable::AddLevel ( PPTREE initList )
 // remove a level from the table
 int SymbolTable::RemoveLevel ()
 {
+    CheckValidity();
     
     // if table is empty do nothing
     if ( !pvSize ) 
@@ -96,14 +103,15 @@ int SymbolTable::RemoveLevel ()
 // insert a var at the current level
 void SymbolTable::AddVar ( const PTREE &var, bool remove )
 {
+    CheckValidity();
     
     // if no level is present create one
     if ( pvSize == 0 ) 
         AddLevel();
     if ( remove ) 
-        pvCurrentLevel->InsertRemove(var);
+        pvCurrentLevel -> InsertRemove(var);
     else 
-        pvCurrentLevel->Insert(var);
+        pvCurrentLevel -> Insert(var);
 }
 
 // remove a var at the current level
@@ -111,11 +119,12 @@ void SymbolTable::RemoveVar ( const PTREE &var )
 {
     if ( pvSize == 0 ) 
         return ;
-    pvCurrentLevel->Remove(var);
+    pvCurrentLevel -> Remove(var);
 }
 
 PTREE SymbolTable::GetVar ( int index, int level )
 {
+    CheckValidity();
     
     // check parameters
     if ( (int)level >= Size() || index < 0 || index >= (**(pvTable + level)).Size() ) 
@@ -127,6 +136,7 @@ PTREE SymbolTable::GetVar ( int index, int level )
 
 void SymbolTable::RemoveVar ( int index, int level )
 {
+    CheckValidity();
     
     // check parameters
     if ( (int)level >= Size() ) 
@@ -143,6 +153,8 @@ void SymbolTable::RemoveVar ( int index, int level )
 // return : the var
 PTREE SymbolTable::GetVar ( const char *var, int startLevel )
 {
+    CheckValidity();
+    
     Index   result = GetIndex(var, startLevel);
     
     return GetVar(result.index, result.level);
@@ -160,6 +172,7 @@ SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
     int                 resultIndex ;
     static const Index  noResult = { -10, -10 };
     
+    CheckValidity();
     if ( !var ) 
         return noResult ;
     
@@ -177,7 +190,7 @@ SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
     // search all level in ascending order
     pvLastLevel =  startLevel ;
     for (; ptLevel >= pvTable ; ptLevel--, pvLastLevel-- ) {
-        if ( (resultIndex = (*ptLevel)->GetIndex(var)) >= 0 ) {
+        if ( (resultIndex = (*ptLevel) -> GetIndex(var)) >= 0 ) {
             Index   result = { pvLastLevel, resultIndex };
             return result ;
         }
@@ -196,8 +209,10 @@ SymbolTable::Index SymbolTable::GetFirstIndex ( const char *var, int startLevel 
 {
     static const Index  noResult = { -10, -10 };
     
+    CheckValidity();
+    
     // get index 
-    Index               result = GetIndex(var, startLevel);
+    Index   result = GetIndex(var, startLevel);
     
     if ( result.index < 0 ) 
         return noResult ;
@@ -228,6 +243,9 @@ SymbolTable::Index SymbolTable::GetNextIndex ( const char *var, Index startIndex
 {
     static const Index  noResult = { -10, -10 };
     
+    CheckValidity();
+    
+    // --
     if ( startIndex.level < 0 || startIndex.level >= Size() ) 
         return noResult ;
     TabList & tabListFirst =  *GetTabList(startIndex.level);
@@ -243,5 +261,4 @@ SymbolTable::Index SymbolTable::GetNextIndex ( const char *var, Index startIndex
     }
     return noResult ;
 }
-
 

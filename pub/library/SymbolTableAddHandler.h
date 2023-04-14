@@ -32,7 +32,7 @@
             /// @param [in,out] symbTable 
             /// 
             SymbolTableAddHandler ( SymbolTable &symbTable )
-                : pvSymbolTable(symbTable)
+                : pvSymbolTable(symbTable),  pvLevel(0)
             {
                 pvTableSize =  symbTable.Size();
             }
