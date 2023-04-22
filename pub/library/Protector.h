@@ -16,6 +16,12 @@
                 {
                     val =  assignment ;
                 }
+
+                 Protector ( Protected &val, Protected assignment , Protected restore)
+                    : refVal(val),  store(restore)
+                {
+                    val =  assignment ;
+                }
                 
                 ~Protector ()
                 {
