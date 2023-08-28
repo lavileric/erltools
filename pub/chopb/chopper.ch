@@ -63,6 +63,10 @@ int main ( int argc, char **argv )
     DecompCplus::ptDecomp =  (DecompCplus *)(&decomp);
     MetaInit((char *)0);
     chopb().AsLanguage();
+
+    // --
+    erltoolsStorageKeeper =  true ;
+    SetSingleThread(true);
     
     EString setFile = "c.set";
     int     offset = 0 ;
@@ -188,5 +192,4 @@ int main ( int argc, char **argv )
         return 0 ;
     return 0 ;
 }
-
 

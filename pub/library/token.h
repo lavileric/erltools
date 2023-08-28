@@ -139,7 +139,7 @@
     extern int  tabValue ;    /* la valeur du tab */ 
     extern int  rightMargin ; /* la valeur de la marge droite */ 
 #   define SON_POS(tree, n) ((void **) ((char *) tree+2 * sizeof(int)	\
-                                                            					+ 2*sizeof(PPTREE) + (n - 1) * sizeof (PPTREE)))
+                                                                              					+ 2*sizeof(PPTREE) + (n - 1) * sizeof (PPTREE)))
 #   define TAB_SPACE tabValue
 #   define TAB_VALUE(col, n) ( (col) + (n) * TAB_SPACE - (col) % TAB_SPACE)
 #   define EQTYPE(x, y) ((x==y) || (x==POST && y == PREPOST))
@@ -259,15 +259,15 @@
 #   define COMM_POS(node) ((char *) node + 2* sizeof(int) + sizeof(PPTREE))
 #   define COMM_SON(node) (SonTree(tree,0))
 #   define COMM_FATHER_VALUE(node) (NumberTree(SonTree(node,0)) != GEO ? node :\
-                                                                                                                   SonTree(node,0))
+                                                                                                                                     SonTree(node,0))
 #   define COMM_SON_VALUE(node) (SonTree(COMM_FATHER_VALUE(node),0))
 #   define COMM_POS_VALUE(node) (NumberTree(COMM_SON(node)) != GEO ? COMM_POS(node) :\
-                                                                                                                   COMM_POS(COMM_SON(node)))
+                                                                                                                                     COMM_POS(COMM_SON(node)))
 #   define TERM_OR_META(x, y) (lexEl.Value == x || lexEl.Value ==META \
-                                                                                                          || (PrintError(GetLexString(),y,oldLine,line,col,1,0),0))
+                                                                                                                            || (PrintError(GetLexString(),y,oldLine,line,col,1,0),0))
 #   define BUILD_TERM_META(x) (lexEl.Value ==META ?\
-                                                                                                  ( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string()))) \
-                                                                                                  : (x= CommString(lexEl.string())))
+                                                                                                                    ( x =MakeTree(META,1),ReplaceTree(x,1,CommString(lexEl.string()))) \
+                                                                                                                    : (x= CommString(lexEl.string())))
     extern char *currentLanguage ;
     extern int  ptStockBuf ;
     
@@ -426,7 +426,7 @@
     char    *IsComm (PPTREE, int) ;
     int     SizeComm (PPTREE) ;
 #   define PrintCommE(x, y, z, t, u, v) (\
-                                                                                                  isVirtMod? PrintCommEVirtInt(x,y,z,t,u,v):PrintCommEInt(x,y,z,t,u,v))
+                                                                                                                    isVirtMod? PrintCommEVirtInt(x,y,z,t,u,v):PrintCommEInt(x,y,z,t,u,v))
     
     typedef struct var_struct {
         char             *name ;
@@ -462,106 +462,106 @@
 #   define POS_STUB_FORMAT "\002 %d %d"
 # ifdef DUMP_COORD
 #   define PUT_COORD_CALL {\
-                                                                                                                                                          if (dumpCoord) {\
-                                                                                                                                                              store_pos_as_comment(oldLine,oldCol,1);\
-                                                                                                                                                          }}
+                                                                                                                                                                            if (dumpCoord) {\
+                                                                                                                                                                                store_pos_as_comment(oldLine,oldCol,1);\
+                                                                                                                                                                            }}
 #   define PUT_COORD_AFTER_COMMENTS_CALL {\
-                                                                                                                                                          if (lexCallLex && dumpCoord) \
-                                                                                                                                                              store_pos_as_comment (oldLineEntry, oldColEntry,0);\
-                                                                                                                                                          lexCallLex = 0 ;}
+                                                                                                                                                                            if (lexCallLex && dumpCoord) \
+                                                                                                                                                                                store_pos_as_comment (oldLineEntry, oldColEntry,0);\
+                                                                                                                                                                            lexCallLex = 0 ;}
 # else 
 #   define PUT_COORD_CALL {}
 #   define PUT_COORD_AFTER_COMMENTS_CALL {}
 # endif
 #   define PUT_COORD \
-                                                                                                  /* put coords comment */\
-                                                                                                  WriteString("PUT_COORD_CALL;");\
-                                                                                                  NewLine();
+                                                                                                                    /* put coords comment */\
+                                                                                                                    WriteString("PUT_COORD_CALL;");\
+                                                                                                                    NewLine();
 #   define PUT_COORD_AFTER_COMMENTS \
-                                                                                                  /* put coords comment */\
-                                                                                                  WriteString("PUT_COORD_AFTER_COMMENTS_CALL;");\
-                                                                                                  NewLine();
+                                                                                                                    /* put coords comment */\
+                                                                                                                    WriteString("PUT_COORD_AFTER_COMMENTS_CALL;");\
+                                                                                                                    NewLine();
 #   define SEE_TOKEN(x, y) (lexEl.Value == x || \
-                                                                                                      (PrintError(GetLexString(),y,oldLine,line,col,1,0),0))
+                                                                                                                        (PrintError(GetLexString(),y,oldLine,line,col,1,0),0))
 #   define TOKEN_EXIT(y, x) {\
-                                                                                                      PrintError(GetLexString(),x,oldLine,line,col,1,error_free);\
-                                                                                                      goto y ;\
-                                                                                                  } 
+                                                                                                                        PrintError(GetLexString(),x,oldLine,line,col,1,error_free);\
+                                                                                                                        goto y ;\
+                                                                                                                    } 
 #   define CASE_EXIT(y, x) {\
-                                                                                                      PrintError(GetLexString(),x,oldLine,line,col,1,error_free);\
-                                                                                                      goto y ;\
-                                                                                                  }
+                                                                                                                        PrintError(GetLexString(),x,oldLine,line,col,1,error_free);\
+                                                                                                                        goto y ;\
+                                                                                                                    }
 #   define PROG_EXIT(y, x) {\
-                                                                                                      PrintError(GetLexString(),x,oldLine,line,col,2,error_free);\
-                                                                                                      goto y ;\
-                                                                                                  }
+                                                                                                                        PrintError(GetLexString(),x,oldLine,line,col,2,error_free);\
+                                                                                                                        goto y ;\
+                                                                                                                    }
 #   define LEX_EXIT_GOTO(y, x) {\
-                                                                                                      PrintError(GetLexString(),x,oldLine,line,col,0,error_free);\
-                                                                                                      goto y;\
-                                                                                              }
+                                                                                                                        PrintError(GetLexString(),x,oldLine,line,col,0,error_free);\
+                                                                                                                        goto y;\
+                                                                                                                }
 #   define LEX_EXIT(y, x) {\
-                                                                                                      PrintError(GetLexString(),x,oldLine,line,col,0,0);\
-                                                                                              }
+                                                                                                                        PrintError(GetLexString(),x,oldLine,line,col,0,0);\
+                                                                                                                }
 #   define GET_ARRAY_VALUE(_tab, nb) (_tab[(nb)>>3] & (1 << ((nb) & 0x7)))
 #   define SET_ARRAY_VALUE(_tab, nb) (_tab[(nb)>>3] \
-                                                                                                                  |= (1 << ((nb) & 0x7)))
+                                                                                                                                    |= (1 << ((nb) & 0x7)))
 #   define NOTHING 
 #   define PUSH_CALL_QUICK(x) ( \
-                                                                                                      ((_value = ((_retValue = (x(0))) != (PPTREE) -1)) ? FreeTreeRec(_retValue) :0),\
-                                                                                                      _value)
+                                                                                                                        ((_value = ((_retValue = (x(0))) != (PPTREE) -1)) ? FreeTreeRec(_retValue) :0),\
+                                                                                                                        _value)
 #   define PUSH_CALL(x) \
-                                                                                                  (_filePosition = SavePos(),_value = ( (_retValue = x(0)) != (PPTREE) -1)\
-                                                                                                      ,FreeTreeRec(_retValue),RestorePos(_filePosition),\
-                                                                                                      FreePos(_filePosition),_value)
+                                                                                                                    (_filePosition = SavePos(),_value = ( (_retValue = x(0)) != (PPTREE) -1)\
+                                                                                                                        ,FreeTreeRec(_retValue),RestorePos(_filePosition),\
+                                                                                                                        FreePos(_filePosition),_value)
 #   define PUSH_CALL_AFF(y, x) \
-                                                                                                  (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
-                                                                                                      ,_value || RestorePos(_filePosition),FreePos(_filePosition),_value)
+                                                                                                                    (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
+                                                                                                                        ,_value || RestorePos(_filePosition),FreePos(_filePosition),_value)
 #   define PUSH_CALL_AFF_QUICK(y, x) ((y x(0)) != (PPTREE) -1)
 #   define PUSH_CALL_VERIF(x, lexOffset, lexFct, arrayEntry) \
-                                                                                                  ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? PUSH_CALL(x) : 0))
+                                                                                                                    ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? PUSH_CALL(x) : 0))
 #   define PUSH_CALL_AFF_VERIF(y, x, lexOffset, lexFct, arrayEntry) \
-                                                                                                  ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? /* PUSH_CALL_AFF(y,x)*/\
-                                                                                                  (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
-                                                                                                      ,_value || RestorePos(_filePosition),\
-                                                                                                                         FreePos(_filePosition),_value) : 0))
+                                                                                                                    ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? /* PUSH_CALL_AFF(y,x)*/\
+                                                                                                                    (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
+                                                                                                                        ,_value || RestorePos(_filePosition),\
+                                                                                                                                           FreePos(_filePosition),_value) : 0))
 #   define QUICK_CALL(x, lexOffset, lexFct, arrayEntry) \
-                                                                                                  ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? x : (PPTREE) -1))
+                                                                                                                    ((tokenAhead == lexOffset || (lexFct(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? x : (PPTREE) -1))
 #   define LEX_FUNCTION(arrayEntry, gramm) \
-                                                                                                             (((gramm *)(rootGrammar()))->*(ptTokenFuncArray[arrayEntry]))
+                                                                                                                               (((gramm *)(rootGrammar()))->*(ptTokenFuncArray[arrayEntry]))
 #   define LEX_FUNCTION_OFFSET(arrayEntry) (ptTokenNbFuncArray[arrayEntry])
 #   define NPUSH_CALL_VERIF(x, arrayEntry, gramm) \
-                                                                                                  ( LEX_FUNCTION_OFFSET(arrayEntry) ?\
-                                                                                                  ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry) \
-                                                                                                                  || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? PUSH_CALL(x) : 0))\
-                                                                                                      : PUSH_CALL(x))
+                                                                                                                    ( LEX_FUNCTION_OFFSET(arrayEntry) ?\
+                                                                                                                    ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry) \
+                                                                                                                                    || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? PUSH_CALL(x) : 0))\
+                                                                                                                        : PUSH_CALL(x))
 #   define NPUSH_CALL_AFF_VERIF(y, x, arrayEntry, gramm) \
-                                                                                                      ( LEX_FUNCTION_OFFSET(arrayEntry) ?\
-                                                                                                      ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry)\
-                                                                                                                              || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? /* PUSH_CALL_AFF(y,x)*/\
-                                                                                                          (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
-                                                                                                          ,_value || RestorePos(_filePosition),\
-                                                                                                                         FreePos(_filePosition),_value) : 0))\
-                                                                                                          /* PUSH_CALL_AFF(y,x)*/\
-                                                                                                      :(_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
-                                                                                                          ,_value || RestorePos(_filePosition),\
-                                                                                                                         FreePos(_filePosition),_value))
+                                                                                                                        ( LEX_FUNCTION_OFFSET(arrayEntry) ?\
+                                                                                                                        ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry)\
+                                                                                                                                                || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? /* PUSH_CALL_AFF(y,x)*/\
+                                                                                                                            (_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
+                                                                                                                            ,_value || RestorePos(_filePosition),\
+                                                                                                                                           FreePos(_filePosition),_value) : 0))\
+                                                                                                                            /* PUSH_CALL_AFF(y,x)*/\
+                                                                                                                        :(_filePosition = SavePos(),_value = ((y x(0)) != (PPTREE) -1)\
+                                                                                                                            ,_value || RestorePos(_filePosition),\
+                                                                                                                                           FreePos(_filePosition),_value))
 #   define NQUICK_CALL(x, arrayEntry, gramm) \
-                                                                                                  (LEX_FUNCTION_OFFSET(arrayEntry) ?\
-                                                                                                  ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry) \
-                                                                                                                  || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
-                                                                                                      (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
-                                                                                                            ? x : (PPTREE) -1))\
-                                                                                                   : x)
+                                                                                                                    (LEX_FUNCTION_OFFSET(arrayEntry) ?\
+                                                                                                                    ((tokenAhead == LEX_FUNCTION_OFFSET(arrayEntry) \
+                                                                                                                                    || (LEX_FUNCTION(arrayEntry,gramm)(),TRACE_LEX(1))),\
+                                                                                                                        (GET_ARRAY_VALUE(ptTokenArray [arrayEntry],lexEl.Value) \
+                                                                                                                              ? x : (PPTREE) -1))\
+                                                                                                                     : x)
 #   define TRACE_ENTER 1
 #   define TRACE_RETURN 2
 #   define TRACE_EXIT 3
@@ -991,4 +991,7 @@
 #   endif
 #   define EOF ((char) 255) 
     extern bool symbString ;
+    extern bool erltoolsStorageKeeper ;
+    extern bool checkMapAlloc ;
+    void        SetSingleThread (bool single) ;
 #endif /* TOKEN_LOADED  */ 

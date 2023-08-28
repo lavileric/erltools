@@ -60,6 +60,7 @@
 
 #include <fcntl.h>
 #include <vector>
+#include <limits.h>
 
 /* void SwitchLang PARAM((char *)); */
 void                            SwitchLang (char *) ;
@@ -116,6 +117,13 @@ int                             currLine = 0 ;          /* the current line for 
 int                             writeCol = 0 ;          /* the column of the last write */ 
 bool                            checkMapAlloc = false ;
 bool                            blockFreeTree = false ;
+unsigned int                    stringCount = 0 ;
+static bool                     singleThread = false ;
+
+void SetSingleThread ( bool single )
+{
+    singleThread =  single ;
+}
 
 #define MAXTABTAB 80
 
@@ -154,6 +162,8 @@ HAND_CRIT   jumpCritical = 0 ;
 long        dJumpCritical = 0 ;
 HAND_CRIT   parsingCritical = 0 ;
 long        dParsingCritical = 0 ;
+HAND_CRIT   mallocCritical = 0 ;
+long        dMallocCritical = 0 ;
 
 #define CRITICAL_FUSE (3145927 + 2022)
 #define CRITICAL_OFFSET 314
@@ -204,6 +214,18 @@ inline HAND_CRIT GetParsingCritical ()
         return 0 ;
     if ( check == dParsingCritical ) 
         return parsingCritical ;
+    else 
+        return 0 ;
+}
+
+HAND_CRIT GetMallocCritical ()
+{
+    long    check = (long)mallocCritical + CRITICAL_OFFSET ;
+    
+    if ( criticalFuse != CRITICAL_FUSE ) 
+        return 0 ;
+    if ( check == dMallocCritical ) 
+        return mallocCritical ;
     else 
         return 0 ;
 }
@@ -1379,6 +1401,9 @@ PPTREE ListPermutate ( PPTREE list )
     
     if ( NumberTree(list) != LIST ) 
         return list ;
+    nextList =  (PPTREE)SON_READ(list, 2);
+    if ( NumberTree(nextList) != LIST ) 
+        return list ;
     
     unsigned int    pos = 0 ;
     PPTREE          oldDad = FatherTree(list);
@@ -1386,19 +1411,19 @@ PPTREE ListPermutate ( PPTREE list )
     // remember old dad
     if ( oldDad ) 
         pos =  PosTree(list);
-#   if defined(VISUAL) || defined(BORLAND)
-        
-        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
-        
-        if ( kAddRefCritical ) 
-            WaitForSingleObject(addRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        
-        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
-        
-        if ( kAddRefCritical ) 
-            EnterCriticalSection(&addRefCritical);
-#   endif
+    
+    // --
+    if ( !singleThread ) {
+#       if defined(VISUAL) || defined(BORLAND)
+            HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+            if ( kAddRefCritical ) 
+                WaitForSingleObject(addRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+            if ( kAddRefCritical ) 
+                EnterCriticalSection(&addRefCritical);
+#       endif
+    }
     
     // permutate list
     while ( list ) {
@@ -1416,15 +1441,19 @@ PPTREE ListPermutate ( PPTREE list )
         SON_WRITE(listResult, -1, oldDad);
     } else 
         SON_WRITE(listResult, -1, (PPTREE)0);
-    {
-        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
-#       if defined(BORLAND) || defined(VISUAL)
-            if ( kAddRefCritical ) 
-                ReleaseSemaphore(addRefCritical, 1, 0);
-#       elif defined(HAS_POSIX_SEMAPHORE)
-            if ( kAddRefCritical ) 
-                LeaveCriticalSection(&addRefCritical);
-#       endif
+    
+    // -- 
+    if ( !singleThread ) {
+        {
+            HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#           if defined(BORLAND) || defined(VISUAL)
+                if ( kAddRefCritical ) 
+                    ReleaseSemaphore(addRefCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( kAddRefCritical ) 
+                    LeaveCriticalSection(&addRefCritical);
+#           endif
+        }
     }
     
     // return value
@@ -1750,15 +1779,16 @@ void MetaInit ( const char *name )
     EString jumpName (name) ;
     EString addRefName (name) ;
     EString parserName (name) ;
+    EString mallocName (name) ;
     
     storeRefName += "_metaStoreRef";
     addRefName   += "_metaAddRef";
     jumpName     += "_jumpCritical";
     parserName   += "_parserCritical";
+    mallocName   += "_mallocCritical";
 #   if defined(VISUAL) || defined(BORLAND)
         
-        DWORD               ident ;    // ident
-        SECURITY_ATTRIBUTES security ; // security
+        SECURITY_ATTRIBUTES security = 0 ; // security
         
         security.nLength              =  sizeof(SECURITY_ATTRIBUTES);
         security.lpSecurityDescriptor =  0 ;
@@ -1771,6 +1801,8 @@ void MetaInit ( const char *name )
         dAddRefCritical               =  (long)addRefCritical + CRITICAL_OFFSET ;
         parsingCritical               =  CreateSemaphore(&security, 1, 1, parserName);
         dParsingCritical              =  (long)parsingCritical + CRITICAL_OFFSET ;
+        mallocCritical                =  CreateSemaphore(&security, 1, 1, mallocName);
+        dMallocCritical               =  (long)mallocCritical + CRITICAL_OFFSET ;
 #   elif defined(HAS_POSIX_SEMAPHORE)
         InitializeCriticalSection(&storeRefCritical);
         dStoreRefCritical =  (long)storeRefCritical + CRITICAL_OFFSET ;
@@ -1780,6 +1812,8 @@ void MetaInit ( const char *name )
         dAddRefCritical =  (long)addRefCritical + CRITICAL_OFFSET ;
         InitializeCriticalSection(&parsingCritical);
         dParsingCritical =  (long)parsingCritical + CRITICAL_OFFSET ;
+        InitializeCriticalSection(&mallocCritical);
+        dMallocCritical =  (long)mallocCritical + CRITICAL_OFFSET ;
 #   endif
 }
 
@@ -1801,8 +1835,10 @@ void MetaEnd ()
                 CloseHandle(addRefCritical);
             if ( GetJumpCritical() ) 
                 CloseHandle(jumpCritical);
-            if ( GetParsingCritical ) 
+            if ( GetParsingCritical() ) 
                 CloseHandle(parsingCritical);
+            if ( GetMallocCritical() ) 
+                CloseHandle(mallocCritical);
             parsingCritical =  storeRefCritical = jumpCritical = addRefCritical = 0 ;
 #       elif defined(HAS_POSIX_SEMAPHORE)
             if ( GetStoreRefCritical() ) 
@@ -1813,6 +1849,8 @@ void MetaEnd ()
                 DeleteCriticalSection(&addRefCritical);
             if ( GetParsingCritical() ) 
                 DeleteCriticalSection(&parsingCritical);
+            if ( GetMallocCritical() ) 
+                CloseHandle(mallocCritical);
             parsingCritical =  storeRefCritical = jumpCritical = addRefCritical = 0 ;
 #       endif
 #   endif
@@ -2178,33 +2216,37 @@ void _fastcall FreeTreeRec ( PPTREE tree )
 debut : 
     if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
         return ;
-#   if defined(VISUAL) || defined(BORLAND)
-        
+    
+    // --
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
-        
-        if ( kAddRefCritical ) 
-            WaitForSingleObject(addRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        
-        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
-        
-        if ( kAddRefCritical ) 
-            EnterCriticalSection(&addRefCritical);
-#   endif
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kAddRefCritical ) 
+                WaitForSingleObject(addRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                EnterCriticalSection(&addRefCritical);
+#       endif
+    }
     
     /* look if the tree is not referenced */
     if ( CacheRead((char *)tree + sizeof(int)) & REF_MASK ) {
         SON_WRITE(tree, -1, 0); /* rip his father */ 
-#       if defined(BORLAND) || defined(VISUAL)
-            if ( kAddRefCritical ) 
-                ReleaseSemaphore(addRefCritical, 1, 0);
-#       elif defined(HAS_POSIX_SEMAPHORE)
-            if ( kAddRefCritical ) 
-                LeaveCriticalSection(&addRefCritical);
-#       endif
+        
+        // -- 
+        if ( !singleThread ) {
+            HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#           if defined(BORLAND) || defined(VISUAL)
+                if ( kAddRefCritical ) 
+                    ReleaseSemaphore(addRefCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( kAddRefCritical ) 
+                    LeaveCriticalSection(&addRefCritical);
+#           endif
+        }
         return ;
     }
-    {
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(BORLAND) || defined(VISUAL)
             if ( kAddRefCritical ) 
@@ -3237,13 +3279,14 @@ char *ItoaQuick ( int nb, char *string, int length )
     if ( ptInter > string ) 
         *--ptInter =  '\0';
     if ( nb < 0 ) {
-        nb =  -nb ;
+        int negNb =  -nb ;
         
         // be careful for MIN_INT
-        if ( nb == -nb ) {
+        if ( nb == negNb ) {
             sprintf(string, "%d", nb);
             return string ;
         } else {
+            nb = negNb;
             neg =  true ;
         }
     }
@@ -3272,13 +3315,14 @@ char *LtoaQuick ( long nb, char *string, int length )
     if ( ptInter > string ) 
         *--ptInter =  '\0';
     if ( nb < 0 ) {
-        nb =  -nb ;
+        long negNb =  -nb ;
         
         // be careful for MIN_INT
-        if ( nb == -nb ) {
+        if ( nb == negNb ) {
             sprintf(string, "%ld", nb);
             return string ;
         } else {
+            nb = negNb ;
             neg =  true ;
         }
     }
@@ -3298,82 +3342,94 @@ char *LtoaQuick ( long nb, char *string, int length )
 
 char *CompactItoa ( int nb )
 {
-    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
-    
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            WaitForSingleObject(storeRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            EnterCriticalSection(&storeRefCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kStoreCritical ) 
+                WaitForSingleObject(storeRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                EnterCriticalSection(&storeRefCritical);
+#       endif
+    }
     if ( ++indexItoa >= NB_ITOA ) 
         indexItoa =  0 ;
     
     char    *sResult = (char *)itoaStore + indexItoa * MAXLENGTH ;
     
     sResult =  ItoaQuick(nb, sResult, MAXLENGTH);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( kStoreCritical ) 
-            ReleaseSemaphore(kStoreCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            LeaveCriticalSection(&kStoreCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kStoreCritical ) 
+                ReleaseSemaphore(kStoreCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                LeaveCriticalSection(&kStoreCritical);
+#       endif
+    }
     return sResult ;
 }
 
 char *CompactLtoa ( long nb )
 {
-    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
-    
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            WaitForSingleObject(storeRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            EnterCriticalSection(&storeRefCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kStoreCritical ) 
+                WaitForSingleObject(storeRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                EnterCriticalSection(&storeRefCritical);
+#       endif
+    }
     if ( ++indexItoa >= NB_ITOA ) 
         indexItoa =  0 ;
     
     char    *sResult = (char *)itoaStore + indexItoa * MAXLENGTH ;
     
     sResult =  LtoaQuick(nb, sResult, MAXLENGTH);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( kStoreCritical ) 
-            ReleaseSemaphore(kStoreCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            LeaveCriticalSection(&kStoreCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kStoreCritical ) 
+                ReleaseSemaphore(kStoreCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                LeaveCriticalSection(&kStoreCritical);
+#       endif
+    }
     return sResult ;
 }
 
 char *CompactRtoa ( float nb )
 {
-    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
-    
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            WaitForSingleObject(storeRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            EnterCriticalSection(&storeRefCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kStoreCritical ) 
+                WaitForSingleObject(storeRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                EnterCriticalSection(&storeRefCritical);
+#       endif
+    }
     if ( ++indexItoa >= NB_ITOA ) 
         indexItoa =  0 ;
     
     char    *sResult = (char *)itoaStore + indexItoa * MAXLENGTH ;
     
     sprintf(sResult, "%.7e", nb);
-#   if defined(BORLAND) || defined(VISUAL)
-        if ( kStoreCritical ) 
-            ReleaseSemaphore(storeRefCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            LeaveCriticalSection(&storeRefCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(BORLAND) || defined(VISUAL)
+            if ( kStoreCritical ) 
+                ReleaseSemaphore(storeRefCritical, 1, 0);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                LeaveCriticalSection(&storeRefCritical);
+#       endif
+    }
     return sResult ;
 }
 
@@ -3927,21 +3983,27 @@ PPTREE the_parse_entry ( int error_free )
 void _fastcall AddRef ( PPTREE tree )
 {
     register int    *node ;
-    HAND_CRIT       kAddRefCritical(GetAddRefCritical());
     
     if ( !tree || tree == (PPTREE) -1 ) 
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kAddRefCritical ) 
-            WaitForSingleObject(addRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kAddRefCritical ) 
-            EnterCriticalSection(&addRefCritical);
-#   endif
+    
+    // --
+    if ( !singleThread ) {
+        HAND_CRIT   kAddRefCritical(GetAddRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kAddRefCritical ) 
+                WaitForSingleObject(addRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kAddRefCritical ) 
+                EnterCriticalSection(&addRefCritical);
+#       endif
+    }
     *node =  (*node & REF_MASK) + 1 | *node & ~(REF_MASK);
-    {
+    
+    // --
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(BORLAND) || defined(VISUAL)
             if ( kAddRefCritical ) 
@@ -3968,7 +4030,7 @@ void _fastcall RemRef ( PPTREE tree )
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
-    {
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(VISUAL) || defined(BORLAND)
             if ( kAddRefCritical ) 
@@ -3979,7 +4041,7 @@ void _fastcall RemRef ( PPTREE tree )
 #       endif
     }
     *node =  (*node & REF_MASK) - 1 | *node & ~(REF_MASK);
-    {
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(BORLAND) || defined(VISUAL)
             if ( kAddRefCritical ) 
@@ -4004,7 +4066,7 @@ void _fastcall FreeRef ( PPTREE tree )
         return ;
     node =  (int *)CacheAddrReadM(tree);
     node++ ;
-    {
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(VISUAL) || defined(BORLAND)
             if ( kAddRefCritical ) 
@@ -4015,7 +4077,7 @@ void _fastcall FreeRef ( PPTREE tree )
 #       endif
     }
     *node =  (nbRef = (*node & REF_MASK) - 1) | *node & ~(REF_MASK);
-    {
+    if ( !singleThread ) {
         HAND_CRIT   kAddRefCritical(GetAddRefCritical());
 #       if defined(BORLAND) || defined(VISUAL)
             if ( kAddRefCritical ) 
@@ -4450,16 +4512,18 @@ void ClearTreeStoreRef ()
 
 void ClearStoreRef ()
 {
-    PPTREE      *pt ;
-    HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+    PPTREE  *pt ;
     
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            WaitForSingleObject(storeRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            EnterCriticalSection(&storeRefCritical);
-#   endif
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kStoreCritical ) 
+                WaitForSingleObject(storeRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                EnterCriticalSection(&storeRefCritical);
+#       endif
+    }
     try {
         
         // clear real store ref space
@@ -4481,22 +4545,28 @@ void ClearStoreRef ()
                 }
         }
     } catch ( ... ) {
+        if ( !singleThread ) {
+            HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#           if defined(VISUAL) || defined(BORLAND)
+                if ( kStoreCritical ) 
+                    ReleaseSemaphore(storeRefCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( kStoreCritical ) 
+                    LeaveCriticalSection(&storeRefCritical);
+#           endif
+        }
+        throw ;
+    }
+    if ( !singleThread ) {
+        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
 #       if defined(VISUAL) || defined(BORLAND)
             if ( kStoreCritical ) 
-                ReleaseSemaphore(storeRefCritical, 1, 0);
+                ReleaseSemaphore(kStoreCritical, 1, 0);
 #       elif defined(HAS_POSIX_SEMAPHORE)
             if ( kStoreCritical ) 
                 LeaveCriticalSection(&storeRefCritical);
 #       endif
-        throw ;
     }
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            ReleaseSemaphore(kStoreCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            LeaveCriticalSection(&storeRefCritical);
-#   endif
 }
 
 static long indexStoreRef = 0 ;
@@ -4505,19 +4575,16 @@ PPTREE StoreRef ( PPTREE tree )
 {
     if ( !tree ) 
         return (PPTREE)0 ;
-#   if defined(VISUAL) || defined(BORLAND)
-        
+    if ( !singleThread ) {
         HAND_CRIT   kStoreCritical(GetStoreRefCritical());
-        
-        if ( kStoreCritical ) 
-            WaitForSingleObject(storeRefCritical, INFINITE);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        
-        HAND_CRIT   kStoreCritical(GetStoreRefCritical());
-        
-        if ( kStoreCritical ) 
-            EnterCriticalSection(&storeRefCritical);
-#   endif
+#       if defined(VISUAL) || defined(BORLAND)
+            if ( kStoreCritical ) 
+                WaitForSingleObject(storeRefCritical, INFINITE);
+#       elif defined(HAS_POSIX_SEMAPHORE)
+            if ( kStoreCritical ) 
+                EnterCriticalSection(&storeRefCritical);
+#       endif
+    }
     try {
         PPTREE  *content = (ptTabPt) + *ptTabPtPos ;
         PPTREE  toBeFreed ;
@@ -4540,23 +4607,28 @@ PPTREE StoreRef ( PPTREE tree )
         if ( toBeFreed ) 
             FreeRef(toBeFreed);
     } catch ( ... ) {
+        if ( !singleThread ) {
+            HAND_CRIT   kStoreCritical(GetStoreRefCritical());
+#           if defined(VISUAL) || defined(BORLAND)
+                if ( kStoreCritical ) 
+                    ReleaseSemaphore(storeRefCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( kStoreCritical ) 
+                    LeaveCriticalSection(&storeRefCritical);
+#           endif
+        }
+        throw ;
+    }
+    if ( !singleThread ) {
         HAND_CRIT   kStoreCritical(GetStoreRefCritical());
 #       if defined(VISUAL) || defined(BORLAND)
             if ( kStoreCritical ) 
-                ReleaseSemaphore(storeRefCritical, 1, 0);
+                ReleaseSemaphore(kStoreCritical, 1, 0);
 #       elif defined(HAS_POSIX_SEMAPHORE)
             if ( kStoreCritical ) 
-                LeaveCriticalSection(&storeRefCritical);
+                LeaveCriticalSection(&kStoreCritical);
 #       endif
-        throw ;
     }
-#   if defined(VISUAL) || defined(BORLAND)
-        if ( kStoreCritical ) 
-            ReleaseSemaphore(kStoreCritical, 1, 0);
-#   elif defined(HAS_POSIX_SEMAPHORE)
-        if ( kStoreCritical ) 
-            LeaveCriticalSection(&kStoreCritical);
-#   endif
     
     /* return tree */
     return tree ;
@@ -5125,6 +5197,130 @@ static  PPTREE MallocNodeTree ( int arity )
     return myPoint ;
 }
 
+#define MEMORY_STORAGE UCHAR_MAX
+#define MEMORY_STORAGE_SIZE unsigned char 
+
+static void *memoryStorage [MEMORY_STORAGE] = { 0 };
+static int  memoryStorageUsage [MEMORY_STORAGE] = { 0 };
+bool        erltoolsStorageKeeper = 0 ;
+
+#define ALLOCATED_BLOCK_CHUNK 1024 * 300
+
+static char         *allocatedBlock = 0 ;
+static unsigned int posAllocatedBlock = ALLOCATED_BLOCK_CHUNK ;
+
+/**************************************************************
+       CacheMalloc : malloc of a data with cache manager
+   ***************************************************************/
+long NCacheMalloc ( int ssize )
+{
+    if ( ssize > 0 ) {
+        unsigned int    size = ssize ;
+        if ( !erltoolsStorageKeeper ) {
+            return (long)malloc(size);
+        } else {
+            long    allocated ;
+            if ( !singleThread ) {
+                HAND_CRIT   mallocCritical(GetMallocCritical());
+#               if defined(VISUAL) || defined(BORLAND)
+                    if ( mallocCritical ) 
+                        WaitForSingleObject(mallocCritical, INFINITE);
+#               elif defined(HAS_POSIX_SEMAPHORE)
+                    if ( mallocCritical ) 
+                        EnterCriticalSection(&mallocCritical);
+#               endif
+            }
+            if ( size < sizeof(void *) ) 
+                size =  sizeof(void *);
+            unsigned int    sizeAccessor = size - sizeof(void *);
+            if ( sizeAccessor < MEMORY_STORAGE && memoryStorage [sizeAccessor] != 0 ) {
+                allocated =  (long)memoryStorage [sizeAccessor];
+                void    *pti = *(void **)memoryStorage [sizeAccessor];
+                memoryStorage [sizeAccessor] =  pti ;
+                memoryStorageUsage [sizeAccessor]-- ;
+                MEMORY_STORAGE_SIZE *pt = (MEMORY_STORAGE_SIZE *)allocated ;
+                pt-- ;
+                if ( *pt != sizeAccessor ) {
+                    MetaExit(3, "Allocation Error\n");
+                }
+            } else {
+                MEMORY_STORAGE_SIZE *pt ;
+                if ( sizeAccessor >= MEMORY_STORAGE ) {
+                    sizeAccessor =  MEMORY_STORAGE ;
+                    pt           =  (MEMORY_STORAGE_SIZE *)malloc(size + sizeof(MEMORY_STORAGE_SIZE));
+                } else {
+                    if ( posAllocatedBlock + size + sizeof(MEMORY_STORAGE_SIZE) > ALLOCATED_BLOCK_CHUNK ) {
+                        allocatedBlock    =  (char *)malloc(ALLOCATED_BLOCK_CHUNK);
+                        posAllocatedBlock =  0 ;
+                    }
+                    pt                =  (MEMORY_STORAGE_SIZE *)(allocatedBlock + posAllocatedBlock);
+                    posAllocatedBlock += size + sizeof(MEMORY_STORAGE_SIZE);
+                }
+                if ( pt ) {
+                    *pt =  (char)sizeAccessor ;
+                    pt++ ;
+                    allocated =  (long)(pt);
+                } else 
+                    allocated =  0 ;
+            }
+            if ( !singleThread ) {
+#               if defined(BORLAND) || defined(VISUAL)
+                    if ( mallocCritical ) 
+                        ReleaseSemaphore(mallocCritical, 1, 0);
+#               elif defined(HAS_POSIX_SEMAPHORE)
+                    if ( mallocCritical ) 
+                        LeaveCriticalSection(&mallocCritical);
+#               endif
+            }
+            
+            // --
+            return allocated ;
+        }
+    }
+    return 0 ;
+}
+
+/**************************************************************
+       CacheFree : free of a data with cache manager
+   ***************************************************************/
+static int  nb = 0 ;
+
+void NCacheFree ( void *position )
+{
+    if ( !erltoolsStorageKeeper ) {
+        free((char *)position);
+    } else {
+        if ( !singleThread ) {
+            HAND_CRIT   mallocCritical(GetMallocCritical());
+#           if defined(VISUAL) || defined(BORLAND)
+                if ( mallocCritical ) 
+                    WaitForSingleObject(mallocCritical, INFINITE);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( mallocCritical ) 
+                    EnterCriticalSection(&mallocCritical);
+#           endif
+        }
+        MEMORY_STORAGE_SIZE *ptr = (MEMORY_STORAGE_SIZE *)position ;
+        ptr-- ;
+        unsigned int    sizeAccessor = *ptr ;
+        if ( sizeAccessor < MEMORY_STORAGE ) {
+            *(void **)position           =  memoryStorage [sizeAccessor];
+            memoryStorage [sizeAccessor] =  (void *)position ;
+            memoryStorageUsage [sizeAccessor]++ ;
+        } else 
+            free((char *)ptr);
+        if ( !singleThread ) {
+#           if defined(BORLAND) || defined(VISUAL)
+                if ( mallocCritical ) 
+                    ReleaseSemaphore(mallocCritical, 1, 0);
+#           elif defined(HAS_POSIX_SEMAPHORE)
+                if ( mallocCritical ) 
+                    LeaveCriticalSection(&mallocCritical);
+#           endif
+        }
+    }
+}
+
 #include <map>
 
 class MapperContainer {
@@ -5141,7 +5337,6 @@ class MapperContainer {
         std::map<long, MAP_POSITION>    *memTable ;
 };
 static MapperContainer  mapContainer ;
-extern bool             checkMapAlloc ;
 
 #define mapMapper (*(mapContainer . memTable))
 

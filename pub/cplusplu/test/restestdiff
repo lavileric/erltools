@@ -6,7 +6,7 @@ Reading ./c.set ...
 Reading aligndec.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -26,7 +26,7 @@ Reading ./c.set ...
 Reading araz.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -40,7 +40,7 @@ Reading ./c.set ...
 Reading auto.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -54,7 +54,7 @@ Reading ./c.set ...
 Reading bit_example.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -68,7 +68,7 @@ Reading ./c.set ...
 Reading bug.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -82,7 +82,7 @@ Reading ./c.set ...
 Reading call_funct.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -96,7 +96,7 @@ Reading ./c.set ...
 Reading case.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -110,7 +110,7 @@ Reading ./c.set ...
 Reading class.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -124,7 +124,7 @@ Reading ./c.set ...
 Reading commentafterif.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -138,12 +138,14 @@ Reading ./c.set ...
 Reading concert.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+53a54
+> 
 
 cpluspre.c_l
 
@@ -152,7 +154,7 @@ Reading ./c.set ...
 Reading cpluspre.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -166,7 +168,7 @@ Reading ./c.set ...
 Reading crcCode.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -192,7 +194,7 @@ Reading ./c.set ...
 Reading dec1.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -206,7 +208,7 @@ Reading ./c.set ...
 Reading dec2.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -220,7 +222,7 @@ Reading ./c.set ...
 Reading dec.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -234,7 +236,7 @@ Reading ./c.set ...
 Reading declar.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -248,7 +250,7 @@ Reading ./c.set ...
 Reading decl.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -262,7 +264,7 @@ Reading ./c.set ...
 Reading decl_cond_aff.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -276,12 +278,14 @@ Reading ./c.set ...
 Reading define.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+1a2
+> 
 
 definecomment.c_l
 
@@ -290,7 +294,7 @@ Reading ./c.set ...
 Reading definecomment.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -304,7 +308,7 @@ Reading ./c.set ...
 Reading elessai.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -334,7 +338,7 @@ Reading ./c.set ...
 Reading eless.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -348,7 +352,7 @@ Reading ./c.set ...
 Reading elmain.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -362,7 +366,7 @@ Reading ./c.set ...
 Reading enum.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -376,7 +380,7 @@ Reading ./c.set ...
 Reading equalcon.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -396,7 +400,7 @@ Reading ./c.set ...
 Reading er1.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -410,7 +414,7 @@ Reading ./c.set ...
 Reading er.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -424,7 +428,7 @@ Reading ./c.set ...
 Reading essai.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -438,12 +442,14 @@ Reading ./c.set ...
 Reading ess.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+56a57
+> 
 
 except.c_l
 
@@ -452,12 +458,14 @@ Reading ./c.set ...
 Reading except.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+29a30
+> 
 
 exception.c_l
 
@@ -466,7 +474,7 @@ Reading ./c.set ...
 Reading exception.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -480,7 +488,7 @@ Reading ./c.set ...
 Reading exp_cast.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -494,7 +502,7 @@ Reading ./c.set ...
 Reading fa.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -508,7 +516,7 @@ Reading ./c.set ...
 Reading ff.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -522,7 +530,7 @@ Reading ./c.set ...
 Reading ffu.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -536,7 +544,7 @@ Reading ./c.set ...
 Reading fi.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -550,7 +558,7 @@ Reading ./c.set ...
 Reading fifi.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -564,12 +572,14 @@ Reading ./c.set ...
 Reading filecommentend.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+5a6
+> 
 
 fo.c_l
 
@@ -578,7 +588,7 @@ Reading ./c.set ...
 Reading fo.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -592,7 +602,7 @@ Reading ./c.set ...
 Reading fofo.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -606,7 +616,7 @@ Reading ./c.set ...
 Reading for.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -620,7 +630,7 @@ Reading ./c.set ...
 Reading formin.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -634,7 +644,7 @@ Reading ./c.set ...
 Reading fu.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -648,7 +658,7 @@ Reading ./c.set ...
 Reading func.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -662,7 +672,7 @@ Reading ./c.set ...
 Reading funchead.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -676,7 +686,7 @@ Reading ./c.set ...
 Reading fy.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -690,12 +700,14 @@ Reading ./c.set ...
 Reading namespace.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+69a70
+> 
 
 newc++.c_l
 
@@ -704,7 +716,7 @@ Reading ./c.set ...
 Reading newc++.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -718,7 +730,7 @@ Reading ./c.set ...
 Reading newfeatures.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -732,7 +744,7 @@ Reading ./c.set ...
 Reading nexcept.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -746,7 +758,7 @@ Reading ./c.set ...
 Reading oo.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -760,7 +772,7 @@ Reading ./c.set ...
 Reading parametersunder.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -774,7 +786,7 @@ Reading ./c.set ...
 Reading re.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -808,7 +820,7 @@ Reading ./c.set ...
 Reading reer.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -822,7 +834,7 @@ Reading ./c.set ...
 Reading ref.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -844,7 +856,7 @@ Reading ./c.set ...
 Reading rfu.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -858,7 +870,7 @@ Reading ./c.set ...
 Reading rifi.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -872,7 +884,7 @@ Reading ./c.set ...
 Reading rref.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -886,7 +898,7 @@ Reading ./c.set ...
 Reading ru.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -900,7 +912,7 @@ Reading ./c.set ...
 Reading ta.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -914,7 +926,7 @@ Reading ./c.set ...
 Reading tans1.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -928,7 +940,7 @@ Reading ./c.set ...
 Reading te.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -974,7 +986,7 @@ Reading ./c.set ...
 Reading temparg.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -988,7 +1000,7 @@ Reading ./c.set ...
 Reading template.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1002,7 +1014,7 @@ Reading ./c.set ...
 Reading test1.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1092,7 +1104,7 @@ Reading ./c.set ...
 Reading test.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1106,7 +1118,7 @@ Reading ./c.set ...
 Reading testcommentend.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1120,7 +1132,7 @@ Reading ./c.set ...
 Reading testfloat.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1134,7 +1146,7 @@ Reading ./c.set ...
 Reading teststat.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1148,7 +1160,7 @@ Reading ./c.set ...
 Reading testthrow.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1162,7 +1174,7 @@ Reading ./c.set ...
 Reading toto.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1176,7 +1188,7 @@ Reading ./c.set ...
 Reading tref.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1190,7 +1202,7 @@ Reading ./c.set ...
 Reading try.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1204,7 +1216,7 @@ Reading ./c.set ...
 Reading tstruct.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1218,7 +1230,7 @@ Reading ./c.set ...
 Reading ttttest.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1232,7 +1244,7 @@ Reading ./c.set ...
 Reading tu.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1246,7 +1258,7 @@ Reading ./c.set ...
 Reading tw.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1260,7 +1272,7 @@ Reading ./c.set ...
 Reading twi.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1282,7 +1294,7 @@ Reading ./c.set ...
 Reading ty.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1296,7 +1308,7 @@ Reading ./c.set ...
 Reading typedef.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1310,7 +1322,7 @@ Reading ./c.set ...
 Reading tz.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1324,12 +1336,14 @@ Reading ./c.set ...
 Reading uusimStruct.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+164a165
+> 
 
 yy.c_l
 
@@ -1338,7 +1352,7 @@ Reading ./c.set ...
 Reading yy.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1352,7 +1366,7 @@ Reading ./c.set ...
 Reading yyy.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1366,7 +1380,7 @@ Reading ./c.set ...
 Reading zz.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.
@@ -1380,7 +1394,7 @@ Reading ./c.set ...
 Reading zzz.c_l ...
  Done
 
- C++ prettyPrinter version 7.0.0, CopyRight(C) 1989-2018 Eric Lavillonniere 
+ C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere 
  C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.
  This is free software, and you are welcome to redistribute it 
  under certain conditions.

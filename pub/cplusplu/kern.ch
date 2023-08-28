@@ -65,6 +65,9 @@ int main ( int argc, char **argv )
     EString setFile = "c.set";
     int     offset = 0 ;
     int     theMargin = -1 ;
+
+    erltoolsStorageKeeper = true ;
+    SetSingleThread(true);
     
     while ( true ) {
         if ( argc - offset < 2 ) {

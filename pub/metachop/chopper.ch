@@ -43,6 +43,10 @@ int main ( int argc, char **argv )
     char            *ptName ;
     DecompMetachop  decomp ;
     
+    erltoolsStorageKeeper =  true ;
+    SetSingleThread(true);
+    
+    // --
     dumpCoord                =  1 ;
     cplusGen                 =  1 ;
     DecompMetachop::ptDecomp =  &decomp ;
@@ -81,7 +85,7 @@ follow :
     TrimPosComment(tree);
     
     // compile tree
-    DecompMetachop::ptDecomp->ChopTree(tree);
+    DecompMetachop::ptDecomp -> ChopTree(tree);
     MetaEnd();
     if ( !firstError ) 
         return 1 ;
@@ -89,5 +93,4 @@ follow :
         return 0 ;
     return 0 ;
 }
-
 

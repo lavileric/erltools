@@ -18,6 +18,7 @@
 #   include <sstream>
 #   include <iomanip>
 #   include <limits>
+    extern unsigned int stringCount ;
     
     /* LF 04/10/2000 */
 #   if 0
@@ -41,8 +42,11 @@
                     pvSize   =  0 ;
                     if ( mallocString ) {
                         Malloc(1);
-                    } else 
+                    } else {
                         pvString =  0 ;
+                        
+                        // count    =  stringCount++ ;
+                    }
                 }
                 
                 EStringRoot ( const char *val, int siz )
@@ -140,8 +144,8 @@
                 {
                     std::string pValue = std::to_string(value);
                     
-                    Malloc((pValue.length()) + 1);
-                    pvLength = pValue.length();
+                    Malloc(pValue.length() + 1);
+                    pvLength =  pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -155,8 +159,8 @@
                     
                     std::string pValue = stm.str();
                     
-                    Malloc((pValue.length()) + 1);
-                    pvLength = pValue.length();
+                    Malloc(pValue.length() + 1);
+                    pvLength =  pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -170,8 +174,8 @@
                     
                     std::string pValue = stm.str();
                     
-                    Malloc((pValue.length()) + 1);
-                    pvLength = pValue.length();
+                    Malloc(pValue.length() + 1);
+                    pvLength =  pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -185,8 +189,8 @@
                     
                     std::string pValue = stm.str();
                     
-                    Malloc((pValue.length()) + 1);
-                    pvLength = pValue.length();
+                    Malloc(pValue.length() + 1);
+                    pvLength =  pValue.length();
                     if ( pvLength ) 
                         memcpy(pvString, pValue.c_str(), pvLength);
                     *(pvString + pvLength) =  0 ;
@@ -565,6 +569,8 @@
                         allocated =  true ;
                     }
                     *pvString =  '\0';
+                    
+                    // count =  stringCount++ ;
                 }
                 
                 // Realloc : realloc the string
@@ -574,8 +580,8 @@
                 virtual void Realloc ( unsigned int size, const char *paramNewString, int lgth )
                 {
                     
-                    char            *newString =0;   // new string
-                    int             bigOffset(0);  // offset for big strings
+                    char            *newString = 0 ; // new string
+                    int             bigOffset(0);    // offset for big strings
                     unsigned int    absLgth = lgth < 0 ? -lgth : lgth ;
                     
                     if ( size <= 0 ) 
@@ -621,6 +627,8 @@
                         // string was allocated
                         allocated =  true ;
                     }
+                    
+                    // count =  stringCount++ ;
                 }
                 
                 // Resize : resize string 
@@ -714,10 +722,10 @@
                     unsigned int    length ;
                     
                     if ( !str ) 
-                        return this->length() == 0 ;
+                        return this -> length() == 0 ;
                     else 
                         length =  strlen(str);
-                    if ( this->length() == length ) {
+                    if ( this -> length() == length ) {
                         if ( length == 0 ) 
                             return true ;
                         else 
@@ -882,11 +890,11 @@
                     
                     // check parameters
                     if ( length == -1 ) 
-                        length =  this->length();
+                        length =  this -> length();
                     if ( start < 0 ) 
                         start =  0 ;
-                    if ( length + start > (int)(this->length()) ) {
-                        length =  this->length() - start ;
+                    if ( length + start > (int)(this -> length()) ) {
+                        length =  this -> length() - start ;
                     }
                     
                     // convert string
@@ -906,11 +914,11 @@
                     
                     // check parameters
                     if ( length == -1 ) 
-                        length =  this->length();
+                        length =  this -> length();
                     if ( start < 0 ) 
                         start =  0 ;
-                    if ( (unsigned)(length + start) > this->length() ) {
-                        length =  this->length() - start ;
+                    if ( (unsigned)(length + start) > this -> length() ) {
+                        length =  this -> length() - start ;
                     }
                     
                     // convert string
@@ -934,7 +942,7 @@
                 friend std::ostream &operator<< ( std::ostream &os, const EStringRoot *str )
                 {
                     if ( str != 0 ) {
-                        os << str->c_str();
+                        os << str -> c_str();
                     }
                     return (os);
                 }
@@ -969,6 +977,7 @@
                 unsigned int    pvSize ;
                 unsigned int    pvStart ;
                 char            pvBasicArray [basicSize + 1];
+            // unsigned int    count ;
         };
     typedef EStringRoot<STRING_BASIC>   EString ;
     
@@ -1105,6 +1114,7 @@
             VString ( char c )
             {
                 CreateString((char *)&c, 1);
+                
                 // pvLength =  1 ;
                 // pvString =  (char *)&c ;
                 // pvStart  =  pvSize = 0 ;

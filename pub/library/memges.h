@@ -106,19 +106,21 @@
     
     void    InsertMap (long pos, unsigned int size) ;
     void    RemoveMap (long pos) ;
+    long    NCacheMalloc (int size) ;
+    void    NCacheFree (void *position) ;
     
     inline long CacheMalloc ( int size )
     {
         long    ret ;
         
         if ( size <= 0 ) {
-            MetaExit(3, "String Allocation Error\n");
+            MetaExit(3, "Allocation Error : CacheMalloc of erltools \n");
         }
-        if ( (ret = (long)malloc(size)) ) {
+        if ( (ret = NCacheMalloc(size)) ) {
             InsertMap(ret, size);
             return ret ;
         } else {
-            MetaExit(3, "Allocation Error\n");
+            MetaExit(3, "Allocation Error : CacheMalloc of erltools \n");
         }
         return 0 ;
     }
@@ -133,7 +135,7 @@
         if ( blockFreeTree ) 
             return ;
         RemoveMap((long)position);
-        free((char *)position);
+        NCacheFree(position);
     }
     
     inline int CacheLockFree ()

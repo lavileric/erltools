@@ -144,6 +144,8 @@ Reading concert.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+53a54
+> 
 
 cpluspre.c_l
 
@@ -282,6 +284,8 @@ Reading define.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+1a2
+> 
 
 definecomment.c_l
 
@@ -444,6 +448,8 @@ Reading ess.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+56a57
+> 
 
 except.c_l
 
@@ -458,6 +464,8 @@ Reading except.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+29a30
+> 
 
 exception.c_l
 
@@ -570,6 +578,8 @@ Reading filecommentend.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+5a6
+> 
 
 fo.c_l
 
@@ -696,6 +706,8 @@ Reading namespace.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+69a70
+> 
 
 newc++.c_l
 
@@ -1330,6 +1342,8 @@ Reading uusimStruct.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+164a165
+> 
 
 yy.c_l
 

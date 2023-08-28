@@ -396,6 +396,10 @@ int main ( int argc, char **argv )
     MetaInit((char *)0);
     doxy().AsLanguage();
     
+    // --
+    erltoolsStorageKeeper =  true ;
+    SetSingleThread(true);
+    
     EString setFile = "c.set";
     int     offset = 0 ;
     
@@ -581,7 +585,7 @@ PTREE DeclaratorToIdent ( PTREE &elem )
             case <ARROW,name> : break ;
             case <ADDR,name> : break ;
             case <TYP_BIT,name> : break ;
-            case <POINT,name> : break ;
+            case <POINT ,name> : break ;
             case <TYP_AFF,name> : break ;
             case <TYP_ADDR,name> : break ;
             case <TYP_ARRAY,name> : break ;
@@ -2721,5 +2725,4 @@ void DoxyFy ( TreeStruct &treeStruct )
     //  DumpTree(tree);
     decomp.ChopTree(treeStruct.tree);
 }
-
 
