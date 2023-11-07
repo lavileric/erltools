@@ -91,6 +91,7 @@ prettyprinter : basic
 	- cp ./cplusplu/cpb $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/cpb
 	- cp ./cplusplu/cpbem $(INSTALL_DIR)
+	-@ rm -f $(INSTALL_DIR)/cpbem
 	- chmod 550 $(INSTALL_DIR)/cpbem
 	- cp ./cplusplu/cpbqem $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/cpbqem
@@ -151,6 +152,7 @@ install :
 	- cp ./cplusplu/c.set $(INSTALL_DIR)
 	- cp ./cplusplu/cpb $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/cpb
+	-@ rm -f $(INSTALL_DIR)/cpbem
 	- cp ./cplusplu/cpbem $(INSTALL_DIR)
 	- chmod 550 $(INSTALL_DIR)/cpbem
 	- cp ./cplusplu/cpbqem $(INSTALL_DIR)
@@ -167,6 +169,7 @@ install :
 	- chmod 550 $(INSTALL_DIR)/unify
 	- cp ./doxy/doxy $(INSTALL_DIR)
 	- cp ./doxy/doxyfy $(INSTALL_DIR)
+	- cp ./json/prettyJson $(INSTALL_DIR)
 	if [ -f library/libmeta.so ] ; then\
 		(cp library/libmeta.so $(INSTALL_DIR));\
 	fi

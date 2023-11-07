@@ -66,7 +66,11 @@
                 }
                 
                 // Desctructor
-                virtual ~OptimGenetic () {}
+                virtual ~OptimGenetic () {
+                    pvCurrentPopulation.clear();
+                    pvNextPopulation.clear();
+                    pvNewPopulation.clear();
+                }
                 
                 // Get & Set
                 virtual EAlgoType AlgoType () const

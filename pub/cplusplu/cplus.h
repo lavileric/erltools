@@ -431,26 +431,26 @@ class cplus: public pretty,public virtual Parser {
         EXCL =  158 ,
         PLUS =  157 ,
         TIRE =  156 ,
-        POUV =  155 ,
-        DEFAULT =   154 ,
-        CASE =  153 ,
-        TRY =   152 ,
-        THROW =     151 ,
-        FORALLSONS =    150 ,
-        WHILE =     149 ,
-        SWITCH =    148 ,
-        RETURN =    147 ,
-        PVIR =  146 ,
-        IF =    145 ,
-        FOR =   144 ,
-        AOUV =  143 ,
-        DO =    142 ,
-        CONTINUE =  141 ,
-        BREAK =     140 ,
-        OPERATOR =  139 ,
-        TILD =  138 ,
-        ETCO =  137 ,
-        ETOI =  136 ,
+        DEFAULT =   155 ,
+        CASE =  154 ,
+        TRY =   153 ,
+        THROW =     152 ,
+        FORALLSONS =    151 ,
+        WHILE =     150 ,
+        SWITCH =    149 ,
+        RETURN =    148 ,
+        PVIR =  147 ,
+        IF =    146 ,
+        FOR =   145 ,
+        AOUV =  144 ,
+        DO =    143 ,
+        CONTINUE =  142 ,
+        BREAK =     141 ,
+        OPERATOR =  140 ,
+        TILD =  139 ,
+        ETCO =  138 ,
+        ETOI =  137 ,
+        POUV =  136 ,
         UNSIGNED =  135 ,
         SIGNED =    134 ,
         SHORT =     133 ,
@@ -790,26 +790,26 @@ extern cplus * parser_cplus;
 #define EXCL_cplus  158
 #define PLUS_cplus  157
 #define TIRE_cplus  156
-#define POUV_cplus  155
-#define DEFAULT_cplus   154
-#define CASE_cplus  153
-#define TRY_cplus   152
-#define THROW_cplus     151
-#define FORALLSONS_cplus    150
-#define WHILE_cplus     149
-#define SWITCH_cplus    148
-#define RETURN_cplus    147
-#define PVIR_cplus  146
-#define IF_cplus    145
-#define FOR_cplus   144
-#define AOUV_cplus  143
-#define DO_cplus    142
-#define CONTINUE_cplus  141
-#define BREAK_cplus     140
-#define OPERATOR_cplus  139
-#define TILD_cplus  138
-#define ETCO_cplus  137
-#define ETOI_cplus  136
+#define DEFAULT_cplus   155
+#define CASE_cplus  154
+#define TRY_cplus   153
+#define THROW_cplus     152
+#define FORALLSONS_cplus    151
+#define WHILE_cplus     150
+#define SWITCH_cplus    149
+#define RETURN_cplus    148
+#define PVIR_cplus  147
+#define IF_cplus    146
+#define FOR_cplus   145
+#define AOUV_cplus  144
+#define DO_cplus    143
+#define CONTINUE_cplus  142
+#define BREAK_cplus     141
+#define OPERATOR_cplus  140
+#define TILD_cplus  139
+#define ETCO_cplus  138
+#define ETOI_cplus  137
+#define POUV_cplus  136
 #define UNSIGNED_cplus  135
 #define SIGNED_cplus    134
 #define SHORT_cplus     133

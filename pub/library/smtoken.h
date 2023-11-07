@@ -461,6 +461,7 @@
     void    LDumpTree (PPTREE treeParam) ;
     void    DumpTree (PPTREE) ;
     void    CLDumpTree (PPTREE) ;
+    void    SetOuput (int) ;
 #endif
 #ifndef ON_W
 #   define INT_64 long long

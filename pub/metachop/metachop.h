@@ -281,26 +281,26 @@ class metachop: public chopb,public virtual Parser {
         EXCL =  158 ,
         PLUS =  157 ,
         TIRE =  156 ,
-        POUV =  155 ,
-        DEFAULT =   154 ,
-        CASE =  153 ,
-        TRY =   152 ,
-        THROW =     151 ,
-        FORALLSONS =    150 ,
-        WHILE =     149 ,
-        SWITCH =    148 ,
-        RETURN =    147 ,
-        PVIR =  146 ,
-        IF =    145 ,
-        FOR =   144 ,
-        AOUV =  143 ,
-        DO =    142 ,
-        CONTINUE =  141 ,
-        BREAK =     140 ,
-        OPERATOR =  139 ,
-        TILD =  138 ,
-        ETCO =  137 ,
-        ETOI =  136 ,
+        DEFAULT =   155 ,
+        CASE =  154 ,
+        TRY =   153 ,
+        THROW =     152 ,
+        FORALLSONS =    151 ,
+        WHILE =     150 ,
+        SWITCH =    149 ,
+        RETURN =    148 ,
+        PVIR =  147 ,
+        IF =    146 ,
+        FOR =   145 ,
+        AOUV =  144 ,
+        DO =    143 ,
+        CONTINUE =  142 ,
+        BREAK =     141 ,
+        OPERATOR =  140 ,
+        TILD =  139 ,
+        ETCO =  138 ,
+        ETOI =  137 ,
+        POUV =  136 ,
         UNSIGNED =  135 ,
         SIGNED =    134 ,
         SHORT =     133 ,
@@ -676,26 +676,26 @@ extern metachop * parser_metachop;
 #define EXCL_metachop   158
 #define PLUS_metachop   157
 #define TIRE_metachop   156
-#define POUV_metachop   155
-#define DEFAULT_metachop    154
-#define CASE_metachop   153
-#define TRY_metachop    152
-#define THROW_metachop  151
-#define FORALLSONS_metachop     150
-#define WHILE_metachop  149
-#define SWITCH_metachop     148
-#define RETURN_metachop     147
-#define PVIR_metachop   146
-#define IF_metachop     145
-#define FOR_metachop    144
-#define AOUV_metachop   143
-#define DO_metachop     142
-#define CONTINUE_metachop   141
-#define BREAK_metachop  140
-#define OPERATOR_metachop   139
-#define TILD_metachop   138
-#define ETCO_metachop   137
-#define ETOI_metachop   136
+#define DEFAULT_metachop    155
+#define CASE_metachop   154
+#define TRY_metachop    153
+#define THROW_metachop  152
+#define FORALLSONS_metachop     151
+#define WHILE_metachop  150
+#define SWITCH_metachop     149
+#define RETURN_metachop     148
+#define PVIR_metachop   147
+#define IF_metachop     146
+#define FOR_metachop    145
+#define AOUV_metachop   144
+#define DO_metachop     143
+#define CONTINUE_metachop   142
+#define BREAK_metachop  141
+#define OPERATOR_metachop   140
+#define TILD_metachop   139
+#define ETCO_metachop   138
+#define ETOI_metachop   137
+#define POUV_metachop   136
 #define UNSIGNED_metachop   135
 #define SIGNED_metachop     134
 #define SHORT_metachop  133

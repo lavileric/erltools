@@ -90,6 +90,9 @@ then
 elif [ $suffix = "JAVA" ]
 then
     pjava $flat ${file} > $2
+elif [ $suffix = "json" ]
+then
+    prettyJson ${file} > $2
 else
     cplus $emacs $tableString $WIDTH_INDICATION $SET_ORDER ${file} > $2
 fi

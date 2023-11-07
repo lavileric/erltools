@@ -2333,10 +2333,19 @@ define declarator;
 end;
 
 define func_declarator;
-    declare valTree[2];
+    declare valTree[2],funcDecl;
     if valTree = take range_modifier then
         return replacetree(valTree,2,take func_declarator);
     case
+        take "(" :
+            begin
+            if see "*" then
+                funcDecl = maketree(TYP,take declarator)
+            else
+                break;
+            take ")";
+            return funcDecl;
+            end
         take "*" : return maketree(TYP_ADDR,take func_declarator)
         take "&" : return maketree(TYP_REF,take func_declarator)
         see "~" : return take qualified_name
@@ -3616,4 +3625,3 @@ define parse_entry;
     else
         take statement;
 end.
-

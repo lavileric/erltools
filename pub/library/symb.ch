@@ -1,9 +1,21 @@
+/// 
+/// @file symb.ch
+/// 
+/// @brief symb.ch
+/// 
 language sgt;
 
 #include "symb.h"
 
-bool    SymbolTable::throwOn = false ;
+bool    SymbolTable::throwOn = false ; ///< SymbolTable
 
+/// 
+/// @fn SymbolTable::SymbolTable (const SymbolTable &symbTab) 
+/// 
+/// @brief SymbolTable
+/// 
+/// @param [in] symbTab 
+/// 
 // copy constructor
 // parameters :
 //              symbTab :copied symboltable
@@ -27,6 +39,16 @@ SymbolTable::SymbolTable ( const SymbolTable &symbTab )
     }
 }
 
+/// 
+/// @fn const SymbolTable   &SymbolTable::operator= (const SymbolTable &symbTab) 
+/// 
+//| @brief =
+/// 
+/// @param [in] symbTab 
+//| #### param [in] symbTable 
+/// 
+//| @returns  const SymbolTable
+/// 
 // copy constructor
 // parameters :
 //              symbTab : copied symboltable
@@ -55,6 +77,15 @@ const SymbolTable &SymbolTable::operator= ( const SymbolTable &symbTab )
     return *this ;
 }
 
+/// 
+/// @fn int SymbolTable::AddLevel (PPTREE initList) 
+/// 
+//| @brief AddLevel
+/// 
+//| @param [in,out] initList 
+/// 
+//| @returns  int
+/// 
 // add a level to table with initalization
 // parameters :
 //              initList : list of variable decl
@@ -79,6 +110,13 @@ int SymbolTable::AddLevel ( PPTREE initList )
     return ++pvSize ;
 }
 
+/// 
+/// @fn int SymbolTable::RemoveLevel () 
+/// 
+//| @brief RemoveLevel
+/// 
+//| @returns  int
+/// 
 // remove a level from the table
 int SymbolTable::RemoveLevel ()
 {
@@ -100,6 +138,14 @@ int SymbolTable::RemoveLevel ()
     return pvSize ;
 }
 
+/// 
+/// @fn void    SymbolTable::AddVar (const PTREE &var, bool remove) 
+/// 
+/// @brief AddVar
+/// 
+/// @param [in] var    
+/// @param [in] remove 
+/// 
 // insert a var at the current level
 void SymbolTable::AddVar ( const PTREE &var, bool remove )
 {
@@ -114,6 +160,13 @@ void SymbolTable::AddVar ( const PTREE &var, bool remove )
         pvCurrentLevel -> Insert(var);
 }
 
+/// 
+/// @fn void    SymbolTable::RemoveVar (const PTREE &var) 
+/// 
+/// @brief RemoveVar
+/// 
+/// @param [in] var 
+/// 
 // remove a var at the current level
 void SymbolTable::RemoveVar ( const PTREE &var )
 {
@@ -122,6 +175,16 @@ void SymbolTable::RemoveVar ( const PTREE &var )
     pvCurrentLevel -> Remove(var);
 }
 
+/// 
+/// @fn PTREE   SymbolTable::GetVar (int index, int level) 
+/// 
+//| @brief GetVar
+/// 
+//| @param [in] index 
+//| @param [in] level 
+/// 
+//| @returns  PTREE
+/// 
 PTREE SymbolTable::GetVar ( int index, int level )
 {
     CheckValidity();
@@ -134,6 +197,14 @@ PTREE SymbolTable::GetVar ( int index, int level )
     return (**(pvTable + level))[index];
 }
 
+/// 
+/// @fn void    SymbolTable::RemoveVar (int index, int level) 
+/// 
+//| @brief RemoveVar
+/// 
+//| @param [in] index 
+//| @param [in] level 
+/// 
 void SymbolTable::RemoveVar ( int index, int level )
 {
     CheckValidity();
@@ -146,6 +217,17 @@ void SymbolTable::RemoveVar ( int index, int level )
     (**(pvTable + level)).Erase(index);
 }
 
+/// 
+/// @fn PTREE   SymbolTable::GetVar (const char *var, int startLevel) 
+/// 
+//| @brief GetVar
+/// 
+/// @param [in] var        
+//| @param [in] startLevel 
+//| #### param [in] name       
+/// 
+//| @returns  PTREE
+/// 
 // get a var definition
 // parameters :
 //              var : the var to be searched
@@ -155,11 +237,28 @@ PTREE SymbolTable::GetVar ( const char *var, int startLevel )
 {
     CheckValidity();
     
+    // if no name return nothing
+    if ( !var || !*var ) {
+        PTREE   nullTree ;
+        return nullTree ;
+    }
+    
     Index   result = GetIndex(var, startLevel);
     
     return GetVar(result.index, result.level);
 }
 
+/// 
+/// @fn SymbolTable::Index  SymbolTable::GetIndex (const char *var, int startLevel) 
+/// 
+//| @brief GetIndex
+/// 
+/// @param [in] var        
+//| @param [in] startLevel 
+//| #### param [in] name       
+/// 
+//| @returns  SymbolTable::Index
+/// 
 // get a var definition
 // parameters :
 //              var : the var to be searched
@@ -173,7 +272,7 @@ SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
     static const Index  noResult = { -10, -10 };
     
     CheckValidity();
-    if ( !var ) 
+    if ( !var || !*var ) 
         return noResult ;
     
     // negative startlevel means to initialize it on top
@@ -200,6 +299,17 @@ SymbolTable::Index SymbolTable::GetIndex ( const char *var, int startLevel )
     return noResult ;
 }
 
+/// 
+/// @fn SymbolTable::Index  SymbolTable::GetFirstIndex (const char *var, int startLevel) 
+/// 
+//| @brief GetFirstIndex
+/// 
+/// @param [in] var        
+//| @param [in] startLevel 
+//| #### param [in] name       
+/// 
+//| @returns  SymbolTable::Index
+/// 
 // get a var definition
 // parameters :
 //              var : the var to be searched
@@ -234,6 +344,16 @@ SymbolTable::Index SymbolTable::GetFirstIndex ( const char *var, int startLevel 
     return result ;
 }
 
+/// 
+/// @fn SymbolTable::Index  SymbolTable::GetNextIndex (const char *var, Index startIndex) 
+/// 
+/// @brief GetNextIndex
+/// 
+/// @param [in]     var        
+/// @param [in,out] startIndex 
+/// 
+/// @returns  SymbolTable::Index
+/// 
 // get a var definition
 // parameters :
 //              var : the var to be searched

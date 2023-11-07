@@ -308,26 +308,26 @@ class chopb: public cplus,public virtual Parser {
         EXCL =  158 ,
         PLUS =  157 ,
         TIRE =  156 ,
-        POUV =  155 ,
-        DEFAULT =   154 ,
-        CASE =  153 ,
-        TRY =   152 ,
-        THROW =     151 ,
-        FORALLSONS =    150 ,
-        WHILE =     149 ,
-        SWITCH =    148 ,
-        RETURN =    147 ,
-        PVIR =  146 ,
-        IF =    145 ,
-        FOR =   144 ,
-        AOUV =  143 ,
-        DO =    142 ,
-        CONTINUE =  141 ,
-        BREAK =     140 ,
-        OPERATOR =  139 ,
-        TILD =  138 ,
-        ETCO =  137 ,
-        ETOI =  136 ,
+        DEFAULT =   155 ,
+        CASE =  154 ,
+        TRY =   153 ,
+        THROW =     152 ,
+        FORALLSONS =    151 ,
+        WHILE =     150 ,
+        SWITCH =    149 ,
+        RETURN =    148 ,
+        PVIR =  147 ,
+        IF =    146 ,
+        FOR =   145 ,
+        AOUV =  144 ,
+        DO =    143 ,
+        CONTINUE =  142 ,
+        BREAK =     141 ,
+        OPERATOR =  140 ,
+        TILD =  139 ,
+        ETCO =  138 ,
+        ETOI =  137 ,
+        POUV =  136 ,
         UNSIGNED =  135 ,
         SIGNED =    134 ,
         SHORT =     133 ,
@@ -703,26 +703,26 @@ extern chopb * parser_chopb;
 #define EXCL_chopb  158
 #define PLUS_chopb  157
 #define TIRE_chopb  156
-#define POUV_chopb  155
-#define DEFAULT_chopb   154
-#define CASE_chopb  153
-#define TRY_chopb   152
-#define THROW_chopb     151
-#define FORALLSONS_chopb    150
-#define WHILE_chopb     149
-#define SWITCH_chopb    148
-#define RETURN_chopb    147
-#define PVIR_chopb  146
-#define IF_chopb    145
-#define FOR_chopb   144
-#define AOUV_chopb  143
-#define DO_chopb    142
-#define CONTINUE_chopb  141
-#define BREAK_chopb     140
-#define OPERATOR_chopb  139
-#define TILD_chopb  138
-#define ETCO_chopb  137
-#define ETOI_chopb  136
+#define DEFAULT_chopb   155
+#define CASE_chopb  154
+#define TRY_chopb   153
+#define THROW_chopb     152
+#define FORALLSONS_chopb    151
+#define WHILE_chopb     150
+#define SWITCH_chopb    149
+#define RETURN_chopb    148
+#define PVIR_chopb  147
+#define IF_chopb    146
+#define FOR_chopb   145
+#define AOUV_chopb  144
+#define DO_chopb    143
+#define CONTINUE_chopb  142
+#define BREAK_chopb     141
+#define OPERATOR_chopb  140
+#define TILD_chopb  139
+#define ETCO_chopb  138
+#define ETOI_chopb  137
+#define POUV_chopb  136
 #define UNSIGNED_chopb  135
 #define SIGNED_chopb    134
 #define SHORT_chopb     133

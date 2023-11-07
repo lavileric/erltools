@@ -242,6 +242,11 @@ int True ()
     return 1 ;
 }
 
+void SetOuput ( int val )
+{
+    output =  val ;
+}
+
 /******************************************************************
     WriteString : Write a string on display
    *********/
@@ -3270,27 +3275,26 @@ static int  indexItoa = 0 ;
 
 char *ItoaQuick ( int nb, char *string, int length )
 {
-    char    *ptInter = string + length ;
-    int     rest ;
-    bool    neg = false ;
+    char            *ptInter = string + length ;
+    int             rest = nb ;
+    bool            neg = false ;
+    volatile int    negNb = 0 ;
     
     if ( !string || length <= 0 ) 
         return 0 ;
     if ( ptInter > string ) 
         *--ptInter =  '\0';
     if ( nb < 0 ) {
-        int negNb =  -nb ;
+        negNb =  -nb ;
+        nb    =  negNb ;
+        neg   =  true ;
+    }
+    if ( negNb < 0 ) {
         
         // be careful for MIN_INT
-        if ( nb == negNb ) {
-            sprintf(string, "%d", nb);
-            return string ;
-        } else {
-            nb = negNb;
-            neg =  true ;
-        }
-    }
-    if ( nb > 0 ) 
+        sprintf(string, "%d", rest);
+        return string ;
+    } else if ( nb > 0 ) 
         while ( nb && ptInter > string ) {
             rest       =  nb % 10 ;
             *--ptInter =  '0' + rest ;
@@ -3306,27 +3310,26 @@ char *ItoaQuick ( int nb, char *string, int length )
 
 char *LtoaQuick ( long nb, char *string, int length )
 {
-    char    *ptInter = string + length ;
-    long    rest ;
-    bool    neg = false ;
+    char            *ptInter = string + length ;
+    long            rest = nb ;
+    bool            neg = false ;
+    volatile long   negNb = 0 ;
     
     if ( !string || length <= 0 ) 
         return 0 ;
     if ( ptInter > string ) 
         *--ptInter =  '\0';
     if ( nb < 0 ) {
-        long negNb =  -nb ;
+        negNb =  -nb ;
+        nb    =  negNb ;
+        neg   =  true ;
+    }
+    if ( negNb < 0 ) {
         
         // be careful for MIN_INT
-        if ( nb == negNb ) {
-            sprintf(string, "%ld", nb);
-            return string ;
-        } else {
-            nb = negNb ;
-            neg =  true ;
-        }
-    }
-    if ( nb > 0 ) 
+        sprintf(string, "%ld", rest);
+        return string ;
+    } else if ( nb > 0 ) 
         while ( nb && ptInter > string ) {
             rest       =  nb % 10 ;
             *--ptInter =  '0' + rest ;

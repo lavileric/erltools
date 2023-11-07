@@ -1,5 +1,5 @@
-#ifndef INCLUDE_DECISL
-#define INCLUDE_DECISL 
+#ifndef INCLUDE_DECJAVA_
+#define INCLUDE_DECJAVA_
 #include "deccplus.h"
 
 class DecompJava : public DecompCplus {

@@ -47,6 +47,7 @@
 #   include "memges.h"
 #   include "erlstring.h"
 #   include <vector>
+#   include <string>
     void    FreeNodeTree (int arity, PPTREE tree) ;
     
     class PTREE {
@@ -74,6 +75,13 @@
             }
             
             PTREE ( const EString &ch )
+            {
+                pt =  MakeString(ch.c_str());
+                if ( pt ) 
+                    AddRef(pt);
+            }
+            
+            PTREE ( const std::string &ch )
             {
                 pt =  MakeString(ch.c_str());
                 if ( pt ) 
@@ -495,8 +503,8 @@
     
     // apply a method on a class
 #   define APPLY_CLASS(tree, type, meth) (NumberTree(tree) == CLASS_TREE? \
-                                          		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
-                                                                               0)
+                                                		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
+                                                                                     0)
 #   define UNCHECKED_APPLY_CLASS(tree, type, meth) (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) 
 #   define ALLOCATE_CLASS(meth) (MakeTreeClass( * (TreeClass *) new meth))
 #endif
