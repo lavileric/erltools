@@ -1,4 +1,4 @@
-cTHE_LIB= ./cplus.a
+THE_LIB= ./cplus.a
 
 LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o cplus10.o
 

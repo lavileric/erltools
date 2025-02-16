@@ -7,7 +7,7 @@ CXXFLAGS ?=
 LDFLAGS  ?= 
 SHARED ?= 
 
-# SANITIZE = -fsanitize=address -fno-omit-frame-pointer
+SANITIZE = -fsanitize=address -fno-omit-frame-pointer
 
 C_PLUS ?= $(CXX) $(CXXFLAGS) $(SANITIZE)
 
@@ -23,7 +23,8 @@ C_PLUS ?= $(CXX) $(CXXFLAGS) $(SANITIZE)
 #compiler choice
 #MACHFLAGS=-march=athlon-xp  -pipe 
 # MACHFLAGS=-march=core2  -pipe
-MACHFLAGS ?=  -pipe -std=c++20 
+PIPE ?= -pipe
+MACHFLAGS ?=  $(PIPE) -std=c++20 
 # MACHFLAGS=  -pipe
 LIBC2FLAGS=-DREENTRANT -DSUN -DLINUX -DLINUX_GLIBC2GCC3 -D_REENTRANT -D_IO_MT_SAFE_IO -D_PTHREADS
 C_PLUS_LNK ?= $(CXX) $(CXXFLAGS) $(LDFLAGS)  $(SANITIZE)

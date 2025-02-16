@@ -18,7 +18,8 @@ class metalang: public pretty,public virtual Parser {
     
     static int init ; 
     
-    metalang () {
+    metalang() { _InitArrays () ;}
+    virtual void _InitArrays () {
         ptTokenArray = _tokenArray;
         ptTokenFuncArray =(_FUNC_MEMB_METALANG) _tokenFuncArray;
         ptTokenNbFuncArray = _tokenNbFuncArray;

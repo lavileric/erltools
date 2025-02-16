@@ -45,6 +45,9 @@ class A : private virtual Bsdskldjf, protected sdlkfjsdlfk
     
         char    *string ;
 };
+class A elemA ;
+
+typedef MyClass<::Elem1::Elem2 *>   MyClass1 ;
 
 const char *name () const
 {

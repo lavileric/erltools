@@ -1975,12 +1975,14 @@ define exception_ansi;
 end;
 
 define range_modifier_ident;
-    declare retTree[2];
+    declare retTree[2],completeName;
     if retTree = take range_modifier then
         return replacetree(retTree,2,take range_modifier_ident)
     else
-        if see !IDENT then
-            return maketree(IDENT,take !IDENT);
+        begin
+        if completeName = take complete_class_name then
+            return completeName;
+        end;
 end;
 
 define class_declaration;
@@ -2016,6 +2018,7 @@ define simple_type;
     declare valTree;
     case
         take #"typename" : return maketree(TYPENAME,maketree(TIDENT,take complete_class_name))
+        take #"class" : return maketree(CLASSNAME,maketree(TIDENT,take complete_class_name))
         take #"decltype" :
             begin
             take "(";

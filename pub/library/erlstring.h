@@ -18,7 +18,11 @@
 #   include <sstream>
 #   include <iomanip>
 #   include <limits>
+#   include <stdio.h>
+#   include <sys/stat.h>
+#   include "Protector.h"
     extern unsigned int stringCount ;
+#   define LINT_SUPPRESS(errnumb) 
     
     /* LF 04/10/2000 */
 #   if 0
@@ -38,11 +42,11 @@
                 EStringRoot ( bool mallocString = true )
                     : pvStart(0),  allocated(false)
                 {
-                    pvLength =  0 ;
-                    pvSize   =  0 ;
                     if ( mallocString ) {
-                        Malloc(1);
+                        CreateString(0, 0);
                     } else {
+                        pvLength =  0 ;
+                        pvSize   =  0 ;
                         pvString =  0 ;
                         
                         // count    =  stringCount++ ;
@@ -67,7 +71,7 @@
                     CreateString(str.c_str(), str.length());
                 }
                 
-                EStringRoot ( std::string str )
+                EStringRoot ( const std::string str )
                 {
                     CreateString(str.c_str(), str.length());
                 }
@@ -87,11 +91,10 @@
                     if ( !val ) 
                         siz =  0 ;
                     Malloc(siz + 1);
-                    if ( val ) {
-                        if ( siz ) 
-                            memcpy(pvString, val, siz);
-                        pvLength =  siz ;
+                    if ( val && siz ) {
+                        memcpy(pvString, val, siz);
                     }
+                    pvLength               =  siz ;
                     *(pvString + pvLength) =  '\0';
                 }
                 
@@ -140,15 +143,47 @@
                         pvLength =  strlen(pvString);
                 }
                 
+                EStringRoot ( unsigned long value )
+                {
+                    unsigned int    size ;
+                    
+                    Malloc(size = 30);
+                    
+                    char    *pValue = LtoaQuick(value, pvString, size);
+                    
+                    pvStart =  pValue - pvString ;
+                    if ( pvStart != 0 ) 
+                        pvLength =  size - pvStart - 1 ;
+                    else 
+                        pvLength =  strlen(pvString);
+                }
+                
                 EStringRoot ( long long value )
                 {
-                    std::string pValue = std::to_string(value);
-                    
-                    Malloc(pValue.length() + 1);
-                    pvLength =  pValue.length();
-                    if ( pvLength ) 
-                        memcpy(pvString, pValue.c_str(), pvLength);
-                    *(pvString + pvLength) =  0 ;
+                    try {
+                        std::string pValue (std::to_string(value)) ;
+                        Malloc(pValue.length() + 1);
+                        pvLength =  pValue.length();
+                        if ( pvLength ) 
+                            memcpy(pvString, pValue.c_str(), pvLength);
+                        *(pvString + pvLength) =  0 ;
+                    } catch ( ... ) {
+                        CreateString(0, 0);
+                    }
+                }
+                
+                EStringRoot ( unsigned long long value )
+                {
+                    try {
+                        std::string pValue (std::to_string(value)) ;
+                        Malloc(pValue.length() + 1);
+                        pvLength =  pValue.length();
+                        if ( pvLength ) 
+                            memcpy(pvString, pValue.c_str(), pvLength);
+                        *(pvString + pvLength) =  0 ;
+                    } catch ( ... ) {
+                        CreateString(0, 0);
+                    }
                 }
                 
                 EStringRoot ( float value )
@@ -157,7 +192,7 @@
                     
                     stm << std::setprecision(std::numeric_limits<float> ::digits10 + 5) << value ;
                     
-                    std::string pValue = stm.str();
+                    std::string pValue(stm.str());
                     
                     Malloc(pValue.length() + 1);
                     pvLength =  pValue.length();
@@ -172,7 +207,7 @@
                     
                     stm << std::setprecision(std::numeric_limits<double> ::digits10 + 5) << value ;
                     
-                    std::string pValue = stm.str();
+                    std::string pValue(stm.str());
                     
                     Malloc(pValue.length() + 1);
                     pvLength =  pValue.length();
@@ -187,7 +222,7 @@
                     
                     stm << std::setprecision(std::numeric_limits<long double> ::digits10 + 5) << value ;
                     
-                    std::string pValue = stm.str();
+                    std::string pValue(stm.str());
                     
                     Malloc(pValue.length() + 1);
                     pvLength =  pValue.length();
@@ -357,7 +392,7 @@
                         ptStr  =  (char *)c_str() + pvLength ;
                         *ptStr =  *str ;
                         pvLength++ ;
-                    } else if ( length > 0 ) {
+                    } else {
                         memcpy((char *)c_str() + pvLength, str, length);
                         pvLength += length ;
                     }
@@ -505,20 +540,17 @@
                 
                 const char *c_str () const
                 {
-                    static const char   *nullString = "";
+                    static const char   nullArray [1] = { 0 };
                     
                     if ( !pvString ) 
-                        return nullString ;
+                        return (const char *)nullArray ;
                     else 
                         return pvString + pvStart ;
                 }
                 
                 operator const char *() const
                 {
-                    if ( !pvString ) 
-                        return "";
-                    else 
-                        return c_str();
+                    return c_str();
                 }
                 
                 operator std::string () const
@@ -540,7 +572,7 @@
                         pvLength =  val ;
                 }
                 
-                virtual void Free ()
+                void Free ()
                 {
                     if ( allocated /*not basicArray */ ) {
                         
@@ -554,11 +586,11 @@
                 /*r string*/
                 // parameters : 
                 //              size : new size
-                virtual void Malloc ( unsigned int size )
+                void Malloc ( unsigned int size )
                 {
                     pvStart  =  0 ;
                     pvLength =  0 ;
-                    if ( size <= 0 ) 
+                    if ( size == 0 ) 
                         size =  1 ;
                     if ( size <= basicSize ) {
                         pvString  =  pvBasicArray ;
@@ -577,14 +609,14 @@
                 //           size : new size
                 //           paramNewString : string to be copied inside 
                 //           lgth : store it starting from end if not 0
-                virtual void Realloc ( unsigned int size, const char *paramNewString, int lgth )
+                void Realloc ( unsigned int size, const char *paramNewString, int lgth )
                 {
                     
                     char            *newString = 0 ; // new string
                     int             bigOffset(0);    // offset for big strings
                     unsigned int    absLgth = lgth < 0 ? -lgth : lgth ;
                     
-                    if ( size <= 0 ) 
+                    if ( size == 0 ) 
                         size =  1 ;
                     if ( size < absLgth + 1 ) 
                         size =  absLgth + 1 ;
@@ -633,7 +665,7 @@
                 
                 // Resize : resize string 
                 //          size : new size
-                virtual void Resize ( unsigned int size )
+                void Resize ( unsigned int size )
                 {
                     Realloc(size, c_str(), pvLength);
                 }
@@ -967,6 +999,68 @@
                         result << (char *)hexa ;
                     }
                     return result ;
+                }
+                
+                void Read ( EStringRoot &filePath )
+                {
+                    const size_t    blockSize = 1024 ;
+                    
+                    CreateString(0, 0);
+                    
+                    // read size of file 
+                    long    fileSize = 0 ;
+                    
+                    {
+                        struct stat fileStat ;
+                        if ( stat(filePath, &fileStat) == -1 ) {
+                            return ;
+                        }
+                        fileSize =  fileStat.st_size ;
+                    }
+                    Malloc(fileSize + 1);
+                    
+                    int input = _open(filePath.c_str(), O_RDONLY);
+                    
+                    // if file is opened dump tree
+                    if ( input > 0 ) {
+                        char    buffer [blockSize];
+                        ssize_t bytesRead ;
+                        while ( (bytesRead = read(input, buffer, blockSize)) > 0 ) {
+                            Append(buffer, bytesRead);
+                        }
+                        close(input);
+                    }
+                }
+                
+                void Write ( EStringRoot &filePath )
+                {
+                    int             output = _open(filePath.c_str(), O_CREAT | O_RDWR | O_BINARY | O_TRUNC, 0666 /*S_IWRITE | S_IREAD*/ );
+                    const size_t    blockSize = 1024 ;
+                    
+                    // if file is opened dump tree
+                    if ( output > 0 ) {
+                        unsigned int    remaining(length());
+                        unsigned int    pos = 0 ;
+                        
+                        // --
+                        while ( remaining > 0 ) {
+                            
+                            // --
+                            unsigned int    written (remaining) ;
+                            if ( written > blockSize ) 
+                                written =  blockSize ;
+                            
+                            // --
+                            write(output, c_str() + pos, written);
+                            
+                            // --
+                            pos       += written ;
+                            remaining =  remaining - written ;
+                        }
+                        
+                        // close file
+                        _close(output);
+                    }
                 }
             
             protected :

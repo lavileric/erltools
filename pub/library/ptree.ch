@@ -194,6 +194,7 @@ PTREE PTREE::InternalCoarseDecode ( char *&string, EString &buffer, std::vector<
     int     currPos = -1 ;
     bool    worked = false ;
     
+    // pre-fill buffer up to 20248
     do {
         worked =  false ;
         char    *internal = (char *)(const char *)buffer ;
@@ -329,4 +330,221 @@ start :
     return myTree ;
 }
 
+/********************************************************************
+       DumpTree : Dump a tree on screen with Geometry
+   *******************************************************************/
+static int  lineNumberRef = 1 ;
+static int  dumpMoreMode = 0 ;
+static int  pageNumberRef ;
+static int  pageNumber ;
+
+static  void DumpNewLine ( int i )
+{
+    char    c [3];
+    
+    if ( lineNumberRef <= 30000 ) 
+        LNewLine(i);
+    if ( dumpMoreMode && currLine - lineNumberRef >= 24 ) {
+        lineNumberRef =  currLine ;
+        pageNumber++ ;
+        _read(0, &c, 1);
+        if ( pageNumber >= pageNumberRef ) 
+            lineNumberRef =  30000 ;
+    }
+}
+
+#define LNewLine DumpNewLine
+
+void PTREE::CLDumpTree ()
+{
+    PTREE   nTree = copytree(PTREE(this -> pt));
+    
+    DestroyPosCommentRec(nTree);
+    
+    int oldOutput = output ;
+    
+    Flush();
+    output =  1 ;
+    nTree.LDumpTree();
+    output =  oldOutput ;
+}
+
+void PTREE::LDumpTree ()
+{
+    PTREE   tree(this -> pt);
+    
+    tree.DumpTree();
+    NewLine();
+}
+
+// 
+void PTREE::DumpTree ()
+{
+    int     i, test ;
+    PTREE   name1, son ;
+    PTREE   comm, cont ;
+    int     oldIsVirtMod = isVirtMod ;
+    
+    isVirtMod =  0 ;
+    
+    PTREE   tree(this -> pt);
+    
+    // when in more mode if lineNumberRef >= 30000 we must stop
+    if ( lineNumberRef >= 30000 ) 
+        return ;
+    
+    // 
+    if ( tree == () ) {
+        "[ NIL ] ";
+        return ;
+    }
+    
+    /* print pre comments */
+    comm =  (PTREE)0 ;
+    while ( (PPTREE)(comm = NextComm(tree, PRE, comm)) ) {
+        cont =  (PTREE)0 ;
+        "PRE -> " <NL>
+            <T> {{
+                    while ( (PPTREE)(cont = NextCommContent(comm, cont)) ) {
+                        PrintString(value(cont)) <NL>
+                    }
+                }}
+    }
+    switch ( tree ) {
+        case <TERM_TREE> : 
+            {
+                int     x, y, dx, dy, x0, y0 ;
+                char    myString [30];
+                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
+                    GetCoordAbs(tree, (), &x0, &y0);
+                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
+                    "{" WriteString(myString) "}" <NL>
+                }
+            }
+            "\"" value(tree) "\"";
+            break ;
+        case <CLASS_TREE> : 
+            {
+                int     x, y, dx, dy, x0, y0 ;
+                char    myString [30];
+                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
+                    GetCoordAbs(tree, (), &x0, &y0);
+                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
+                    "{" WriteString(myString) "}" <NL>
+                }
+            }
+            "[" WriteString(NameConst(APPLY_CLASS(tree, TreeClass, Type()))) WriteString(" <> ") "\"" WriteString(APPLY_CLASS(tree, TreeClass, Value())) "\"]";
+            break ;
+        case <LIST> : 
+            {
+                int     x, y, dx, dy, x0, y0 ;
+                char    myString [30];
+                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
+                    GetCoordAbs(tree, (), &x0, &y0);
+                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
+                    "{" WriteString(myString) "}" <NL>
+                }
+            }
+            "[ LIST " <NL>
+                <T> {{
+                        while ( tree != () && tree == <LIST> && lineNumberRef < 30000 ) {
+                            son =  nextl(tree);
+                            son.DumpTree();
+                            <NL>
+                        }
+                        if ( tree && tree != <LIST> ) {
+                            "$";
+                            tree.DumpTree();
+                            <NL>
+                        }
+                    }}
+            "]";
+            break ;
+        case <IN_LANGUAGE> : 
+            {
+                tree == <,name1,tree>;
+                in Value(name1) {
+                    {
+                        int     x, y, dx, dy, x0, y0 ;
+                        char    myString [30];
+                        if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
+                            GetCoordAbs(tree, (), &x0, &y0);
+                            sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
+                            "{" WriteString(myString) "}" <NL>
+                        }
+                    }
+                    "[ IN_LANGUAGE" <NL>
+                        <T> {{
+                                "[ \"" value(name1) "\" ]" <NL>
+                                tree.DumpTree();
+                                <NL>
+                            }}
+                    "]";
+                }
+            }
+            break ;
+        default : 
+            {
+                int     x, y, dx, dy, x0, y0 ;
+                char    myString [30];
+                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
+                    GetCoordAbs(tree, (), &x0, &y0);
+                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
+                    "{" WriteString(myString) "}" <NL>
+                }
+            }
+            "[ " WriteString(NameConst(NumberTree(tree)));
+            if ( (test = treearity(tree) > 1 || treearity(tree) == 1 && treearity(sontree(tree, 1)) > 1) ) {
+                <NL>
+                    <T>
+            } else 
+                " " 
+            {{
+                for ( i = 1 ; i <= treearity(tree) && lineNumberRef < 30000 ; i++ ) {
+                    PTREE   son(sontree(tree, i));
+                    son.DumpTree();
+                    if ( test ) 
+                        <NL>
+                }
+            }}
+            "]";
+    }
+    
+    /* print post comments */
+    comm =  (PTREE)0 ;
+    while ( (comm = NextComm(tree, POST, comm)) ) {
+        cont =  (PTREE)0 ;
+        <NL>
+        if ( PrePost() ) 
+            "PREPOST -> " 
+        else 
+            "POST -> " 
+        <NL>
+            <T> {{
+                    while ( (cont = NextCommContent(comm, cont)) ) {
+                        PrintString(value(cont)) <NL>
+                    }
+                }}
+    }
+    isVirtMod =  oldIsVirtMod ;
+}
+
+// dumptree stopping after each page
+void PTREE::MDumpTree ( int pageNum )
+{
+    PTREE   tree(this -> pt);
+    
+    dumpMoreMode  =  1 ;
+    lineNumberRef =  currLine ;
+    pageNumber    =  0 ;
+    pageNumberRef =  pageNum ;
+    tree.DumpTree();
+    dumpMoreMode  =  0 ;
+    lineNumberRef =  0 ;
+}
+
+void PTREE::DumpNode ()
+{
+    "[ " WriteString(NameConst(PTREE(this -> pt).NumberTree())) "]" <NL>
+}
 

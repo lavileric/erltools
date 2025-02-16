@@ -229,20 +229,21 @@ class cplus: public pretty,public virtual Parser {
     virtual void InitConst ();
     
     enum constants {
-        TUNSIGNED =     357 ,
-        BDECR =     356 ,
-        BINCR =     355 ,
-        ADDR =  354 ,
-        NOT =   353 ,
-        LNEG =  352 ,
-        POS =   351 ,
-        NEG =   350 ,
-        PARAM_TYPE =    349 ,
-        STRING_LIST =   348 ,
-        LABEL =     347 ,
-        THROW_ANSI =    346 ,
-        ELSE =  345 ,
-        DECL_TYPE =     344 ,
+        TUNSIGNED =     358 ,
+        BDECR =     357 ,
+        BINCR =     356 ,
+        ADDR =  355 ,
+        NOT =   354 ,
+        LNEG =  353 ,
+        POS =   352 ,
+        NEG =   351 ,
+        PARAM_TYPE =    350 ,
+        STRING_LIST =   349 ,
+        LABEL =     348 ,
+        THROW_ANSI =    347 ,
+        ELSE =  346 ,
+        DECL_TYPE =     345 ,
+        CLASSNAME =     344 ,
         TIDENT =    343 ,
         TSIGNED =   342 ,
         TSHORT =    341 ,
@@ -588,20 +589,21 @@ class cplus: public pretty,public virtual Parser {
 extern cplus * parser_cplus;
 
 #endif
-#define TUNSIGNED_cplus     357
-#define BDECR_cplus     356
-#define BINCR_cplus     355
-#define ADDR_cplus  354
-#define NOT_cplus   353
-#define LNEG_cplus  352
-#define POS_cplus   351
-#define NEG_cplus   350
-#define PARAM_TYPE_cplus    349
-#define STRING_LIST_cplus   348
-#define LABEL_cplus     347
-#define THROW_ANSI_cplus    346
-#define ELSE_cplus  345
-#define DECL_TYPE_cplus     344
+#define TUNSIGNED_cplus     358
+#define BDECR_cplus     357
+#define BINCR_cplus     356
+#define ADDR_cplus  355
+#define NOT_cplus   354
+#define LNEG_cplus  353
+#define POS_cplus   352
+#define NEG_cplus   351
+#define PARAM_TYPE_cplus    350
+#define STRING_LIST_cplus   349
+#define LABEL_cplus     348
+#define THROW_ANSI_cplus    347
+#define ELSE_cplus  346
+#define DECL_TYPE_cplus     345
+#define CLASSNAME_cplus     344
 #define TIDENT_cplus    343
 #define TSIGNED_cplus   342
 #define TSHORT_cplus    341

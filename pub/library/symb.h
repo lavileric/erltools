@@ -67,7 +67,7 @@
             /// @brief SymbolTable
             /// 
             // destructor
-            ~SymbolTable ()
+            virtual ~SymbolTable ()
             {
                 CheckValidity();
                 
@@ -88,7 +88,7 @@
             /// @brief Clear
             /// 
             // remove every symbol in the table
-            void Clear ()
+            virtual void Clear ()
             {
                 CheckValidity();
                 
@@ -114,7 +114,7 @@
             // parameters :
             //              initList : list of variable decl
             // return : number of levels
-            int     AddLevel (PPTREE initList = 0) ;
+            virtual int     AddLevel (PPTREE initList = 0) ;
             
             /// 
             /// @fn int SymbolTable::RemoveLevel () 
@@ -124,13 +124,13 @@
             /// @returns  int
             /// 
             // remove a level to the table
-            int     RemoveLevel () ;
+            virtual int     RemoveLevel () ;
             
             // insert a var at the current level
-            void    AddVar (const PTREE &, bool remove = true) ;
+            virtual void    AddVar (const PTREE &, bool remove = true) ;
             
             // remove a var at the current level
-            void    RemoveVar (const PTREE &) ;
+            virtual void    RemoveVar (const PTREE &) ;
             
             /// 
             /// @fn PTREE   SymbolTable::GetVar (const PTREE &tree, int startLevel = -1) 
@@ -143,7 +143,7 @@
             /// @returns  PTREE
             /// 
             // get a var definition
-            PTREE GetVar ( const PTREE &tree, int startLevel = -1 )
+            virtual PTREE GetVar ( const PTREE &tree, int startLevel = -1 )
             {
                 return GetVar(Value(tree), startLevel);
             }
@@ -157,7 +157,7 @@
             /// 
             /// @returns  PTREE
             /// 
-            PTREE operator[] ( PTREE tree )
+            virtual PTREE operator[] ( PTREE tree )
             {
                 return GetVar(tree);
             }
@@ -173,7 +173,7 @@
             /// @returns  PTREE
             /// 
             // get a var definition by its name
-            PTREE   GetVar (const char *name, int startLevel = -1) ;
+            virtual PTREE   GetVar (const char *name, int startLevel = -1) ;
             
             /// 
             /// @fn PTREE   SymbolTable::GetVar (int index, int level) 
@@ -185,7 +185,7 @@
             /// 
             /// @returns  PTREE
             /// 
-            PTREE   GetVar (int index, int level) ;
+            virtual PTREE   GetVar (int index, int level) ;
             
             /// 
             /// @fn void    SymbolTable::RemoveVar (int index, int level) 
@@ -195,7 +195,7 @@
             /// @param [in] index 
             /// @param [in] level 
             /// 
-            void    RemoveVar (int index, int level) ;
+            virtual void    RemoveVar (int index, int level) ;
             
             /// 
             /// @fn SymbolTable::Index  SymbolTable::GetIndex (const char *name, int startLevel = -1) 
@@ -208,7 +208,7 @@
             /// @returns  SymbolTable::Index
             /// 
             // get a var definition by its name
-            Index   GetIndex (const char *name, int startLevel = -1) ;
+            virtual Index   GetIndex (const char *name, int startLevel = -1) ;
             
             /// 
             /// @fn SymbolTable::Index  SymbolTable::GetFirstIndex (const char *name, int startLevel = -1) 
@@ -220,7 +220,7 @@
             /// 
             /// @returns  SymbolTable::Index
             /// 
-            Index   GetFirstIndex (const char *name, int startLevel = -1) ;
+            virtual Index   GetFirstIndex (const char *name, int startLevel = -1) ;
             
             /// 
             /// @fn SymbolTable::Index  SymbolTable::GetNextIndex (const char *name, SymbolTable::Index index) 
@@ -232,7 +232,7 @@
             /// 
             /// @returns  SymbolTable::Index
             /// 
-            Index   GetNextIndex (const char *name, Index index) ;
+            virtual Index   GetNextIndex (const char *name, Index index) ;
             
             /// 
             /// @fn PTREE   SymbolTable::operator[] (const char *name) 
@@ -243,7 +243,7 @@
             /// 
             /// @returns  PTREE
             /// 
-            PTREE operator[] ( const char *name )
+            virtual PTREE operator[] ( const char *name )
             {
                 CheckValidity();
                 
@@ -261,7 +261,7 @@
             /// @returns  TabList
             /// 
             // GetList : get a list at a given level
-            TabList *GetTabList ( int level ) const
+            virtual TabList *GetTabList ( int level ) const
             {
                 CheckValidity();
                 
@@ -273,6 +273,24 @@
             }
             
             /// 
+            /// @fn void    SymbolTable::SetTabList (TabList *list, int level) 
+            /// 
+            /// @brief SetTabList
+            /// 
+            /// @param [in,out] list
+            /// @param [in] level
+            /// 
+            void SetTabList ( TabList *list, int level )
+            {
+                if ( level >= 0 ) {
+                    while ( level >= Size() ) {
+                        AddLevel();
+                    }
+                    pvTable [level] =  list ;
+                }
+            }
+            
+            /// 
             /// @fn int SymbolTable::Size () const 
             /// 
             /// @brief Size
@@ -281,7 +299,7 @@
             /// 
             // Size : get size of current table
             // return : the size
-            int Size () const
+            virtual int Size () const
             {
                 CheckValidity();
                 
@@ -298,7 +316,7 @@
             /// 
             // LastLevel : return level at which last search succeeded
             // return : the level
-            int LastLevel () const
+            virtual int LastLevel () const
             {
                 CheckValidity();
                 
@@ -318,7 +336,7 @@
             // operator = 
             // parameters :
             //              symbTable : the copied table
-            const SymbolTable   &operator= (const SymbolTable &symbTable) ;
+            virtual const SymbolTable   &operator= (const SymbolTable &symbTable) ;
             
             /// 
             /// @fn void    SymbolTable::CheckValidity () const 
@@ -341,6 +359,18 @@
             bool Valid () const
             {
                 return pvValidity == TABLE_VALIDITY ;
+            }
+            
+            /// 
+            /// @fn SymbolTable *SymbolTable::PExtTable () 
+            /// 
+            /// @brief PExtTable
+            /// 
+            /// @returns  SymbolTable
+            /// 
+            virtual SymbolTable *PExtTable ()
+            {
+                return 0 ;
             }
             
             static bool throwOn ; ///< throwOn

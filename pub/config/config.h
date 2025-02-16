@@ -10,7 +10,8 @@ class config: public virtual Parser {
     
     static int init ; 
     
-    config () {
+    config() { _InitArrays () ;}
+    virtual void _InitArrays () {
         ptTokenArray = _tokenArray;
         ptTokenFuncArray = _tokenFuncArray;
         ptTokenNbFuncArray = _tokenNbFuncArray;

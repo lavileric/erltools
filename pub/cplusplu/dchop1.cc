@@ -6890,4 +6890,3 @@ static void dchop1_Anchor () { int i = 1;}
 #line 1154 "dchop1.ch"
 /*Well done my boy */ 
 #line 1154 "dchop1.ch"
-

@@ -957,4 +957,3 @@ static void chopper_Anchor () { int i = 1;}
 #line 367 "chopper.ch"
 /*Well done my boy */ 
 #line 367 "chopper.ch"
-

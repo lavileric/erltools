@@ -1,8 +1,11 @@
 
-all : m_done 
+all : annex
+	$(MAKE) prettyJson
+
+annex : m_done
 	$(MAKE) chop 
 	$(MAKE) -j $(NUMBER_PROC) $(ALL_OBJECTS)
-	$(MAKE) libjson prettyJson
+	$(MAKE) libjson.a
  
 shared : all
 
@@ -40,13 +43,16 @@ prettyJson.cc : prettyJson.ch chop
 
 EJson.cc : EJson.ch chop
 
+DecompJson.cc : DecompJson.ch chop
+
 chopper.o : chopper.cc $(META_DIR)/pub/library/token.h 
 prettyJson.o : prettyJson.cc $(META_DIR)/pub/library/token.h 
 EJson.o : EJson.cc $(META_DIR)/pub/library/token.h 
+DecompJson.o : DecompJson.cc $(META_DIR)/pub/library/token.h 
 
 
 OBJECTS = json.o json0.o  
-ALL_OBJECTS = $(OBJECTS) EJson.o
+ALL_OBJECTS = $(OBJECTS) EJson.o DecompJson.o 
 
 
 CPLUS=../cplusplu/cplus.a
@@ -55,10 +61,11 @@ METAGEN= ../parser/verif.o
 json : chopper.o $(OBJECTS) $(LIBRARY)
 	$(C_PLUS) -o json chopper.o $(OBJECTS) $(CPLUS) $(METAGEN) $(LIBRARY)
 
-libjson : libjson.a(EJson.o json.o json0.o )
+libjson.a : DecompJson.o EJson.o json.o json0.o 
+	ar rvU libjson.a DecompJson.o EJson.o json.o json0.o 
 
-prettyJson : prettyJson.o libjson $(LIBRARY)
-	$(C_PLUS) -o prettyJson prettyJson.o libjson.a $(CPLUS) $(METAGEN) $(LIBRARY)
+prettyJson : prettyJson.o $(OBJECTS) $(LIBRARY)
+	$(C_PLUS) -o prettyJson prettyJson.o $(ALL_OBJECTS) $(CPLUS) $(METAGEN) $(LIBRARY)
 
 chop : 
 	$(MAKE) -f makefile.cho

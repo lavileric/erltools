@@ -1013,7 +1013,7 @@
                     return !(*this == individual);
                 }
                 
-                void VectContent ( std::vector<TypeParam> &vect )
+                virtual void VectContent ( std::vector<TypeParam> &vect )
                 {
                     unsigned int    param ;
                     

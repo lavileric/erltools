@@ -404,7 +404,8 @@
     
     //void            MetaInit () ;
     void            MetaEnd () ;
-    void            MetaInit (const char *val = 0) ;
+    void            MetaInit (const char *name = 0) ;
+    void            SemaphoreInit (const char *name = 0) ;
     class PTREE ;
     PPTREE          StoreRef (PPTREE) ;
     void            FreeString (char *string, int length) ;

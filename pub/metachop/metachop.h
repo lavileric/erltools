@@ -43,56 +43,57 @@ class metachop: public chopb,public virtual Parser {
     virtual void InitConst ();
     
     enum constants {
-        NODE_LIST =     393 ,
-        NODE_TREE =     392 ,
-        SPACE =     391 ,
-        SEP_OMIT =  390 ,
-        SEP_BEFORE =    389 ,
-        SEP_AFTER =     388 ,
-        AFERAFER =  387 ,
-        ALINEA =    386 ,
-        CHOP_DEF =  385 ,
-        NIL =   384 ,
-        IN_LANG =   383 ,
-        NEXT =  382 ,
-        DEF_IDENT =     381 ,
-        BOX =   380 ,
-        EXPO =  379 ,
-        EXPO_AFF =  378 ,
-        ETOIETOIEGAL =  377 ,
-        IN =    376 ,
-        PARSE =     375 ,
-        NEXTL =     374 ,
-        VALUE =     373 ,
-        INFESUPE =  372 ,
-        FOREACH =   371 ,
-        INFESEPOSUPE =  370 ,
-        INFESEPBSUPE =  369 ,
-        INFESEPASUPE =  368 ,
-        AOUVAOUV =  367 ,
-        ARRO =  366 ,
-        NL_BEG =    365 ,
-        TAB_BEG =   364 ,
-        SPACE_BEG =     363 ,
-        MAKETREE_SUP =  362 ,
-        MAKETREE_INF =  361 ,
-        PARSE_ELEM =    360 ,
-        SIMP_ETOI =     359 ,
-        ETOI_ETOI =     358 ,
-        TUNSIGNED =     357 ,
-        BDECR =     356 ,
-        BINCR =     355 ,
-        ADDR =  354 ,
-        NOT =   353 ,
-        LNEG =  352 ,
-        POS =   351 ,
-        NEG =   350 ,
-        PARAM_TYPE =    349 ,
-        STRING_LIST =   348 ,
-        LABEL =     347 ,
-        THROW_ANSI =    346 ,
-        ELSE =  345 ,
-        DECL_TYPE =     344 ,
+        NODE_LIST =     394 ,
+        NODE_TREE =     393 ,
+        SPACE =     392 ,
+        SEP_OMIT =  391 ,
+        SEP_BEFORE =    390 ,
+        SEP_AFTER =     389 ,
+        AFERAFER =  388 ,
+        ALINEA =    387 ,
+        CHOP_DEF =  386 ,
+        NIL =   385 ,
+        IN_LANG =   384 ,
+        NEXT =  383 ,
+        DEF_IDENT =     382 ,
+        BOX =   381 ,
+        EXPO =  380 ,
+        EXPO_AFF =  379 ,
+        ETOIETOIEGAL =  378 ,
+        IN =    377 ,
+        PARSE =     376 ,
+        NEXTL =     375 ,
+        VALUE =     374 ,
+        INFESUPE =  373 ,
+        FOREACH =   372 ,
+        INFESEPOSUPE =  371 ,
+        INFESEPBSUPE =  370 ,
+        INFESEPASUPE =  369 ,
+        AOUVAOUV =  368 ,
+        ARRO =  367 ,
+        NL_BEG =    366 ,
+        TAB_BEG =   365 ,
+        SPACE_BEG =     364 ,
+        MAKETREE_SUP =  363 ,
+        MAKETREE_INF =  362 ,
+        PARSE_ELEM =    361 ,
+        SIMP_ETOI =     360 ,
+        ETOI_ETOI =     359 ,
+        TUNSIGNED =     358 ,
+        BDECR =     357 ,
+        BINCR =     356 ,
+        ADDR =  355 ,
+        NOT =   354 ,
+        LNEG =  353 ,
+        POS =   352 ,
+        NEG =   351 ,
+        PARAM_TYPE =    350 ,
+        STRING_LIST =   349 ,
+        LABEL =     348 ,
+        THROW_ANSI =    347 ,
+        ELSE =  346 ,
+        DECL_TYPE =     345 ,
+        CLASSNAME =     344 ,
         TIDENT =    343 ,
         TSIGNED =   342 ,
         TSHORT =    341 ,
@@ -438,56 +439,57 @@ class metachop: public chopb,public virtual Parser {
 extern metachop * parser_metachop;
 
 #endif
-#define NODE_LIST_metachop  393
-#define NODE_TREE_metachop  392
-#define SPACE_metachop  391
-#define SEP_OMIT_metachop   390
-#define SEP_BEFORE_metachop     389
-#define SEP_AFTER_metachop  388
-#define AFERAFER_metachop   387
-#define ALINEA_metachop     386
-#define CHOP_DEF_metachop   385
-#define NIL_metachop    384
-#define IN_LANG_metachop    383
-#define NEXT_metachop   382
-#define DEF_IDENT_metachop  381
-#define BOX_metachop    380
-#define EXPO_metachop   379
-#define EXPO_AFF_metachop   378
-#define ETOIETOIEGAL_metachop   377
-#define IN_metachop     376
-#define PARSE_metachop  375
-#define NEXTL_metachop  374
-#define VALUE_metachop  373
-#define INFESUPE_metachop   372
-#define FOREACH_metachop    371
-#define INFESEPOSUPE_metachop   370
-#define INFESEPBSUPE_metachop   369
-#define INFESEPASUPE_metachop   368
-#define AOUVAOUV_metachop   367
-#define ARRO_metachop   366
-#define NL_BEG_metachop     365
-#define TAB_BEG_metachop    364
-#define SPACE_BEG_metachop  363
-#define MAKETREE_SUP_metachop   362
-#define MAKETREE_INF_metachop   361
-#define PARSE_ELEM_metachop     360
-#define SIMP_ETOI_metachop  359
-#define ETOI_ETOI_metachop  358
-#define TUNSIGNED_metachop  357
-#define BDECR_metachop  356
-#define BINCR_metachop  355
-#define ADDR_metachop   354
-#define NOT_metachop    353
-#define LNEG_metachop   352
-#define POS_metachop    351
-#define NEG_metachop    350
-#define PARAM_TYPE_metachop     349
-#define STRING_LIST_metachop    348
-#define LABEL_metachop  347
-#define THROW_ANSI_metachop     346
-#define ELSE_metachop   345
-#define DECL_TYPE_metachop  344
+#define NODE_LIST_metachop  394
+#define NODE_TREE_metachop  393
+#define SPACE_metachop  392
+#define SEP_OMIT_metachop   391
+#define SEP_BEFORE_metachop     390
+#define SEP_AFTER_metachop  389
+#define AFERAFER_metachop   388
+#define ALINEA_metachop     387
+#define CHOP_DEF_metachop   386
+#define NIL_metachop    385
+#define IN_LANG_metachop    384
+#define NEXT_metachop   383
+#define DEF_IDENT_metachop  382
+#define BOX_metachop    381
+#define EXPO_metachop   380
+#define EXPO_AFF_metachop   379
+#define ETOIETOIEGAL_metachop   378
+#define IN_metachop     377
+#define PARSE_metachop  376
+#define NEXTL_metachop  375
+#define VALUE_metachop  374
+#define INFESUPE_metachop   373
+#define FOREACH_metachop    372
+#define INFESEPOSUPE_metachop   371
+#define INFESEPBSUPE_metachop   370
+#define INFESEPASUPE_metachop   369
+#define AOUVAOUV_metachop   368
+#define ARRO_metachop   367
+#define NL_BEG_metachop     366
+#define TAB_BEG_metachop    365
+#define SPACE_BEG_metachop  364
+#define MAKETREE_SUP_metachop   363
+#define MAKETREE_INF_metachop   362
+#define PARSE_ELEM_metachop     361
+#define SIMP_ETOI_metachop  360
+#define ETOI_ETOI_metachop  359
+#define TUNSIGNED_metachop  358
+#define BDECR_metachop  357
+#define BINCR_metachop  356
+#define ADDR_metachop   355
+#define NOT_metachop    354
+#define LNEG_metachop   353
+#define POS_metachop    352
+#define NEG_metachop    351
+#define PARAM_TYPE_metachop     350
+#define STRING_LIST_metachop    349
+#define LABEL_metachop  348
+#define THROW_ANSI_metachop     347
+#define ELSE_metachop   346
+#define DECL_TYPE_metachop  345
+#define CLASSNAME_metachop  344
 #define TIDENT_metachop     343
 #define TSIGNED_metachop    342
 #define TSHORT_metachop     341

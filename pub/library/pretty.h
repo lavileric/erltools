@@ -14,7 +14,8 @@ class pretty: public virtual Parser {
     
     static int init ; 
     
-    pretty () {
+    pretty() { _InitArrays () ;}
+    virtual void _InitArrays () {
         ptTokenArray = _tokenArray;
         ptTokenFuncArray = _tokenFuncArray;
         ptTokenNbFuncArray = _tokenNbFuncArray;

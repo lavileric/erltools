@@ -138,13 +138,13 @@ PVAR AllocVar ()
     
     if ( listFreeVar ) {
         myPoint     =  listFreeVar ;
-        listFreeVar =  listFreeVar->next ;
+        listFreeVar =  listFreeVar -> next ;
     } else 
         myPoint =  (PVAR)malloc(sizeof(VAR));
-    myPoint->name   =  (char *)0 ;
-    myPoint->father =  (PPTREE)0 ;
-    myPoint->slot   =  -1 ;
-    myPoint->elem   =  (PPTREE)0 ;
+    myPoint -> name   =  (char *)0 ;
+    myPoint -> father =  (PPTREE)0 ;
+    myPoint -> slot   =  -1 ;
+    myPoint -> elem   =  (PPTREE)0 ;
     return (myPoint);
 }
 
@@ -158,13 +158,13 @@ void FreeVar ()
     interVar =  frontVar = listVar ;
     while ( frontVar ) {
         interVar =  frontVar ;
-        free(frontVar->name);
-        frontVar =  frontVar->next ;
+        free(frontVar -> name);
+        frontVar =  frontVar -> next ;
     }
     if ( frontVar != interVar ) {
-        interVar->next =  listFreeVar ;
-        listFreeVar    =  listVar ;
-        listVar        =  (PVAR)0 ;
+        interVar -> next =  listFreeVar ;
+        listFreeVar      =  listVar ;
+        listVar          =  (PVAR)0 ;
     }
 }
 
@@ -175,13 +175,13 @@ void InsertVar ( char *name, PTREE father, int slot, PTREE elem )
 {
     PVAR    pVar ;
     
-    pVar         =  AllocVar();
-    pVar->name   =  name ;
-    pVar->father =  father ;
-    pVar->slot   =  slot ;
-    pVar->elem   =  elem ;
-    pVar->next   =  listVar ;
-    listVar      =  pVar ;
+    pVar           =  AllocVar();
+    pVar -> name   =  name ;
+    pVar -> father =  father ;
+    pVar -> slot   =  slot ;
+    pVar -> elem   =  elem ;
+    pVar -> next   =  listVar ;
+    listVar        =  pVar ;
 }
 
 /******************************************************************
@@ -192,9 +192,9 @@ PVAR SearchVar ( const char *name )
     register PVAR   pVar = listVar ;
     
     while ( pVar ) {
-        if ( !strcmp(pVar->name, name) ) 
+        if ( !strcmp(pVar -> name, name) ) 
             return (pVar);
-        pVar =  pVar->next ;
+        pVar =  pVar -> next ;
     }
     return (PVAR)0 ;
 }
@@ -346,215 +346,33 @@ void replace ( PTREE paramTree, PTREE tree, PTREE new_value )
 /********************************************************************
        DumpTree : Dump a tree on screen with Geometry
    *******************************************************************/
-static int  lineNumberRef = 1 ;
-static int  dumpMoreMode = 0 ;
-static int  pageNumberRef ;
-static int  pageNumber ;
-
-void DumpNewLine ( int i )
-{
-    char    c [3];
-    
-    if ( lineNumberRef <= 30000 ) 
-        LNewLine(i);
-    if ( dumpMoreMode && currLine - lineNumberRef >= 24 ) {
-        lineNumberRef =  currLine ;
-        pageNumber++ ;
-        _read(0, &c, 1);
-        if ( pageNumber >= pageNumberRef ) 
-            lineNumberRef =  30000 ;
-    }
-}
-
-#define LNewLine DumpNewLine
-
 void CLDumpTree ( PPTREE treeParam )
 {
-    PTREE   nTree = copytree(treeParam);
+    PTREE   tree (treeParam) ;
     
-    DestroyPosCommentRec(nTree);
-    
-    int oldOutput = output ;
-    
-    Flush();
-    output =  1 ;
-    LDumpTree(nTree);
-    output =  oldOutput ;
+    tree.CLDumpTree();
 }
 
 void LDumpTree ( PPTREE treeParam )
 {
-    AddRef(treeParam);
-    DumpTree(treeParam);
-    NewLine();
+    PTREE(treeParam).LDumpTree();
 }
 
 // 
 void DumpTree ( PPTREE treeParam )
 {
-    int     i, test ;
-    PTREE   name1, son ;
-    PTREE   comm, cont ;
-    int     oldIsVirtMod = isVirtMod ;
-    
-    isVirtMod =  0 ;
-    
-    PTREE   tree (treeParam) ;
-    
-    // when in more mode if lineNumberRef >= 30000 we must stop
-    if ( lineNumberRef >= 30000 ) 
-        return ;
-    
-    // 
-    if ( tree == () ) {
-        "[ NIL ] ";
-        return ;
-    }
-    
-    /* print pre comments */
-    comm =  (PTREE)0 ;
-    while ( (PPTREE)(comm = NextComm(tree, PRE, comm)) ) {
-        cont =  (PTREE)0 ;
-        "PRE -> " <NL>
-            <T> {{
-                    while ( (PPTREE)(cont = NextCommContent(comm, cont)) ) {
-                        PrintString(value(cont)) <NL>
-                    }
-                }}
-    }
-    switch ( tree ) {
-        case <TERM_TREE> : 
-            {
-                int     x, y, dx, dy, x0, y0 ;
-                char    myString [30];
-                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
-                    GetCoordAbs(tree, (), &x0, &y0);
-                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
-                    "{" WriteString(myString) "}" <NL>
-                }
-            }
-            "\"" value(tree) "\"";
-            break ;
-        case <CLASS_TREE> : 
-            {
-                int     x, y, dx, dy, x0, y0 ;
-                char    myString [30];
-                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
-                    GetCoordAbs(tree, (), &x0, &y0);
-                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
-                    "{" WriteString(myString) "}" <NL>
-                }
-            }
-            "[" WriteString(NameConst(APPLY_CLASS(tree, TreeClass, Type()))) WriteString(" <> ") "\"" WriteString(APPLY_CLASS(tree, TreeClass, Value())) "\"]";
-            break ;
-        case <LIST> : 
-            {
-                int     x, y, dx, dy, x0, y0 ;
-                char    myString [30];
-                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
-                    GetCoordAbs(tree, (), &x0, &y0);
-                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
-                    "{" WriteString(myString) "}" <NL>
-                }
-            }
-            "[ LIST " <NL>
-                <T> {{
-                        while ( tree != () && tree == <LIST> && lineNumberRef < 30000 ) {
-                            son =  nextl(tree);
-                            DumpTree(son);
-                            <NL>
-                        }
-                        if ( tree && tree != <LIST> ) {
-                            "$";
-                            DumpTree(tree);
-                            <NL>
-                        }
-                    }}
-            "]";
-            break ;
-        case <IN_LANGUAGE> : 
-            {
-                tree == <,name1,tree>;
-                in Value(name1) {
-                    {
-                        int     x, y, dx, dy, x0, y0 ;
-                        char    myString [30];
-                        if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
-                            GetCoordAbs(tree, (), &x0, &y0);
-                            sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
-                            "{" WriteString(myString) "}" <NL>
-                        }
-                    }
-                    "[ IN_LANGUAGE" <NL>
-                        <T> {{
-                                "[ \"" value(name1) "\" ]" <NL>
-                                DumpTree(tree);
-                                <NL>
-                            }}
-                    "]";
-                }
-            }
-            break ;
-        default : 
-            {
-                int     x, y, dx, dy, x0, y0 ;
-                char    myString [30];
-                if ( GetCoord(tree, &x, &y, &dx, &dy) ) {
-                    GetCoordAbs(tree, (), &x0, &y0);
-                    sprintf(myString, "%d %d %d %d %d %d", y0, x0, y, x, dy, dx);
-                    "{" WriteString(myString) "}" <NL>
-                }
-            }
-            "[ " WriteString(NameConst(NumberTree(tree)));
-            if ( (test = treearity(tree) > 1 || treearity(tree) == 1 && treearity(sontree(tree, 1)) > 1) ) {
-                <NL>
-                    <T>
-            } else 
-                " " 
-            {{
-                for ( i = 1 ; i <= treearity(tree) && lineNumberRef < 30000 ; i++ ) {
-                    DumpTree(sontree(tree, i));
-                    if ( test ) 
-                        <NL>
-                }
-            }}
-            "]";
-    }
-    
-    /* print post comments */
-    comm =  (PTREE)0 ;
-    while ( (comm = NextComm(tree, POST, comm)) ) {
-        cont =  (PTREE)0 ;
-        <NL>
-        if ( PrePost() ) 
-            "PREPOST -> " 
-        else 
-            "POST -> " 
-        <NL>
-            <T> {{
-                    while ( (cont = NextCommContent(comm, cont)) ) {
-                        PrintString(value(cont)) <NL>
-                    }
-                }}
-    }
-    isVirtMod =  oldIsVirtMod ;
+    PTREE(treeParam).DumpTree();
 }
 
 // dumptree stopping after each page
 void MDumpTree ( PPTREE tree, int pageNum )
 {
-    dumpMoreMode  =  1 ;
-    lineNumberRef =  currLine ;
-    pageNumber    =  0 ;
-    pageNumberRef =  pageNum ;
-    DumpTree(tree);
-    dumpMoreMode  =  0 ;
-    lineNumberRef =  0 ;
+    PTREE(tree).MDumpTree(pageNum);
 }
 
 void DumpNode ( PPTREE tree )
 {
-    "[ " WriteString(NameConst(NumberTree(tree))) "]" <NL>
+    PTREE(tree).DumpNode();
 }
 
 #undef LNewLine
@@ -700,21 +518,21 @@ void PatchANode ( char *languageName, PTREE the_elem )
     char        *NodeLanguage ;
     OVER_LANG   *pOverLang ;
     
-    NodeLanguage =  GetNodeLang(the_elem)->name ;
-    pOverLang    =  GetLang(languageName)->overLang ;
-    for (; pOverLang && pOverLang->name ; pOverLang++ ) 
-        if ( !strcmp(pOverLang->name, NodeLanguage) ) {
+    NodeLanguage =  GetNodeLang(the_elem) -> name ;
+    pOverLang    =  GetLang(languageName) -> overLang ;
+    for (; pOverLang && pOverLang -> name ; pOverLang++ ) 
+        if ( !strcmp(pOverLang -> name, NodeLanguage) ) {
             if ( NumberTree(the_elem) > IN_LANGUAGE && NumberTree(the_elem) != TERM_TREE ) 
-                PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem) + pOverLang->offset);
+                PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem) + pOverLang -> offset);
             else 
                 PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem));
             goto nextNode ;
         }
-    pOverLang =  GetNodeLang(the_elem)->overLang ;
-    for (; pOverLang && pOverLang->name ; pOverLang++ ) 
-        if ( !strcmp(pOverLang->name, languageName) ) {
+    pOverLang =  GetNodeLang(the_elem) -> overLang ;
+    for (; pOverLang && pOverLang -> name ; pOverLang++ ) 
+        if ( !strcmp(pOverLang -> name, languageName) ) {
             if ( NumberTree(the_elem) > IN_LANGUAGE && NumberTree(the_elem) != TERM_TREE ) 
-                PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem) - pOverLang->offset);
+                PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem) - pOverLang -> offset);
             else 
                 PatchNode(the_elem, GetLang(languageName), NumberTree(the_elem));
             goto nextNode ;
@@ -1200,5 +1018,4 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
     _itoa(nbParam, myString, 10);
     WriteString(NameConst(NumberTree(paramTree))) "," WriteString(myString) ",";
 }
-
 

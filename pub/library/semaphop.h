@@ -802,7 +802,7 @@
                 if ( priority != 1 && priority < NB_PRIORITY ) 
                     for ( index = 2 ; index <= priority ; index++ ) 
                         pvTabPriority [index]++ ;
-                while ( usedRessources < nbRessource || priority < NB_PRIORITY && pvTabPriority [priority + 1] ) {
+                while ( usedRessources < nbRessource || priority < NB_PRIORITY-1 && pvTabPriority [priority + 1] ) {
                     
                     // wanna stock nut?
                     struct timespec *pTime = 0 ;
@@ -823,7 +823,7 @@
                         timedOut =  SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
                         if ( timedOut && withTimeVal ) 
                             break ;
-                    } while ( priority < NB_PRIORITY && pvTabPriority [priority + 1] );
+                    } while ( priority < NB_PRIORITY-1 && pvTabPriority [priority + 1] );
                     if ( timedOut && withTimeVal ) 
                         break ;
                 }
@@ -926,7 +926,7 @@
                 if ( priority != 1 && priority < NB_PRIORITY ) 
                     for ( index = 2 ; index <= priority ; index++ ) 
                         pvTabPriority [index]++ ;
-                while ( usedRessources > nbRessource || priority < NB_PRIORITY && pvTabPriority [priority + 1] ) {
+                while ( usedRessources > nbRessource || priority < NB_PRIORITY-1 && pvTabPriority [priority + 1] ) {
                     
                     // wanna stock nut?
                     struct timespec *pTime = 0 ;
@@ -947,7 +947,7 @@
                         timedOut =  SleepUntilCondition(&condGetRessource, &ressourceSC, pTime);
                         if ( timedOut && withTimeVal ) 
                             break ;
-                    } while ( priority < NB_PRIORITY && pvTabPriority [priority + 1] );
+                    } while ( priority < NB_PRIORITY-1 && pvTabPriority [priority + 1] );
                     if ( timedOut && withTimeVal ) 
                         break ;
                 }

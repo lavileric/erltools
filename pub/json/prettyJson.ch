@@ -18,9 +18,10 @@ language json;
 #include <fcntl.h>
 #include "Protector.h"
 
-char    *theFileName = (char *)0 ; ///< theFileName
-int     compiledLine = 0 ;         ///< compiledLine
-void    decomp (PTREE) ;
+char        *theFileName ;          ///< theFileName
+int         compiledLine = 0 ;      ///< compiledLine
+DecompJson  *DecompJson::ptDecomp ; ///< DecompJson
+extern void decomp (PTREE) ;
 
 /// 
 /// @class  QuickProgErlms
@@ -78,137 +79,12 @@ static  void ReadIncludeSN ( const char *name, int here )
     QuickProgErlms().ReadInclude(name, here);
 }
 
-/******************************************************************
-       decomp : decompilation d'un arbre
-   *******************************************************************/
-static bool indented = false ; /// 
-
-/// 
-/// @fn PTREE   DecompJson::IntDecomp (const PTREE &paramTree, int funcAlone) 
-/// 
-/// @brief IntDecomp
-/// 
-/// @param [in] paramTree 
-/// @param [in] funcAlone 
-/// #### param [in] paramTree
-/// #### param [in] funcAlone
-/// 
-/// @returns  PTREE
-/// 
-PTREE DecompJson::IntDecomp ( const PTREE &paramTree, int funcAlone )
-{
-    PTREE   elem, list, name ;
-    PTREE   oldPostComment = postComment ;
-    
-    switch ( paramTree ) {
-        case <JSON_LIST,list> : 
-            {
-                bool    first = true ;
-                "{"     <T> {{
-                                <NL>
-                                while ( (elem = nextl(list)) ) {
-                                    if ( !first ) {
-                                        "," <NL>
-                                    } else 
-                                        first =  false ;
-                                    @elem
-                                }
-                            }} <NL>
-                "}";
-                oldPostComment =  paramTree ;
-                comm(paramTree, POST);
-                <NL>
-            }
-            break ;
-        case <JSON_SEQUENCE,list> : 
-            {
-                bool    first = true ;
-                "[" <NL>
-                    <T> {{
-                            while ( (elem = nextl(list)) ) {
-                                if ( !first ) {
-                                    "," <NL>
-                                } else 
-                                    first =  false ;
-                                @elem
-                            }
-                        }}
-                <SEPA> <SEPB> "]";
-                oldPostComment =  paramTree ;
-                comm(paramTree, POST);
-                <NL>
-            }
-            break ;
-        case <JSON_NAMED,name,elem> : 
-            {
-                "\"" PrintString(Value(paramTree)) "\" : " @elem
-            }
-            break ;
-        case <NEG,elem> : 
-            {
-                "-" @elem
-            }
-            break ;
-        case <JSON_TRUE> : 
-            {
-                "true";
-            }
-            break ;
-        case <JSON_FALSE> : 
-            {
-                "false";
-            }
-            break ;
-        case <STRING> : 
-            {
-                "\"" PrintString(Value(paramTree)) "\"";
-            }
-            break ;
-        default : 
-            {
-                oldPostComment =  DecompCplus::IntDecomp(paramTree, funcAlone);
-            }
-    }
-    return oldPostComment ;
-}
-
-/// 
-/// @fn void    DecompJson::ChopTree (PTREE tree, int funcAlone) 
-/// 
-/// @brief ChopTree
-/// 
-/// @param [in,out] tree      
-/// @param [in]     funcAlone 
-/// 
-/*************************************************************************/
-/*   ChopTree : chop the tree : here call decomp                         */
-/*************************************************************************/
-void DecompJson::ChopTree ( PTREE tree, int funcAlone )
-{
-    PTREE   elem ;
-    PTREE   list ;
-    
-    // display copyright
-    copy();
-    
-    // switch to java lang
-    SwitchLang("json");
-    
-    // decomp;
-    Decomp(tree, funcAlone);
-    
-    // win time do not free tree
-    AddRef(tree);
-}
-
-DecompJson  *DecompJson::ptDecomp ; ///< DecompJson
-
 /// 
 /// @fn int ChopTree (PTREE tree) 
 /// 
 /// @brief ChopTree
 /// 
-/// @param [in,out] tree 
+/// @param [in,out] tree
 /// 
 /// @returns  int
 /// 

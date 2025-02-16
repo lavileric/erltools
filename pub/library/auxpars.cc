@@ -402,11 +402,12 @@ void _fastcall WriteString ( const char *string, int len )
 /*******************************************************************/
 void _fastcall PrintString ( const char *string, int len )
 {
-    char    c = *string ;
     
     // int     len ;
     if ( !string ) 
         return ;
+    
+    char    c = *string ;
     
     // len = strlen(string);
     /* on ne fait rien si la chaine est vide */
@@ -519,7 +520,7 @@ void _fastcall Space ( int i )
 /*****************************************************************/
 void _fastcall Mark ()
 {
-    if ( ptTabTab <= MAXTABTAB ) 
+    if ( ptTabTab >= 0 && ptTabTab < MAXTABTAB ) 
         tabTab [ptTabTab++] =  currCol ;
     else 
         ptTabTab++ ;
@@ -1312,7 +1313,7 @@ int _fastcall PosTree ( PPTREE tree )
         return 0 ;
     i    =  treearity(father);
     addr =  (int *)CacheAddrRead(father);
-    while ( MSonTree(addr, i) != tree && i > 0 ) 
+    while ( i >= 0 && MSonTree(addr, i) != tree && i > 0 ) 
         i-- ;
     return i ;
 }
@@ -1475,7 +1476,7 @@ unsigned int _fastcall ListLength ( PPTREE list )
     
     if ( !list ) 
         return 0 ;
-    if ( list && NumberTree(list) == LIST ) 
+    if ( NumberTree(list) == LIST ) 
         while ( NumberTree(list) == LIST && (list = (PPTREE)SON_READ(list, 2)) ) 
             i++ ;
     else 
@@ -1763,22 +1764,13 @@ class InitForUnix {
 #           endif
         }
 }            initForUnix ;
+static int  nbInit = 0 ;
 
-void MetaInit ( const char *name )
+void SemaphoreInit ( const char *name )
 {
-    if ( alreadyInitialized ) 
-        return ;
-    else {
-        alreadyInitialized =  1 ;
-    }
-    InitOutput();
-    CacheInit();
-    InitStoreRef();
-    line =  oldLine = 1 ;
     if ( !name ) {
         name =  NULL_STRING();
     }
-    metaName =  AllocString(name);
     
     EString storeRefName (name) ;
     EString jumpName (name) ;
@@ -1786,11 +1778,11 @@ void MetaInit ( const char *name )
     EString parserName (name) ;
     EString mallocName (name) ;
     
-    storeRefName += "_metaStoreRef";
-    addRefName   += "_metaAddRef";
-    jumpName     += "_jumpCritical";
-    parserName   += "_parserCritical";
-    mallocName   += "_mallocCritical";
+    storeRefName << "_metaStoreRef_" << nbInit ;
+    addRefName << "_metaAddRef_" << nbInit ;
+    jumpName << "_jumpCritical_" << nbInit ;
+    parserName << "_parserCritical_" << nbInit ;
+    mallocName << "_mallocCritical_" << nbInit ;
 #   if defined(VISUAL) || defined(BORLAND)
         
         SECURITY_ATTRIBUTES security = 0 ; // security
@@ -1820,6 +1812,25 @@ void MetaInit ( const char *name )
         InitializeCriticalSection(&mallocCritical);
         dMallocCritical =  (long)mallocCritical + CRITICAL_OFFSET ;
 #   endif
+    if ( !name ) {
+        name =  NULL_STRING();
+    }
+    metaName =  AllocString(name);
+}
+
+void MetaInit ( const char *name )
+{
+    if ( alreadyInitialized ) 
+        return ;
+    else {
+        alreadyInitialized =  1 ;
+    }
+    InitOutput();
+    CacheInit();
+    InitStoreRef();
+    line =  oldLine = 1 ;
+    SemaphoreInit(name);
+    nbInit++ ;
 }
 
 void MetaEnd ()
@@ -1903,6 +1914,7 @@ static  PFILE_POSITION AllocateContextPos ()
         return inter ;
     } else {
         PFILE_POSITION  pFilePosition = (PFILE_POSITION)malloc(sizeof(FILE_POSITION));
+        memset((char*)pFilePosition,0,sizeof(PFILE_POSITION));
         pFilePosition -> marker =  FILE_POSITION_MARKER ;
         return pFilePosition ;
     }
@@ -1935,7 +1947,7 @@ PFILE_POSITION _fastcall SavePos ()
     
     /* if there is something in the string save it */
     if ( ptOldBuf != -1 ) {
-        if ( ptOldBuf < MAXLENGTH ) 
+        if ( ptOldBuf < MAXLENGTH - 1 ) 
             oldBuf [ptOldBuf + 1] =  '\0';
         else if ( ptOldBuf >= 0 && ptOldBuf < MAXLENGTH ) 
             oldBuf [ptOldBuf] =  '\0';
@@ -2132,10 +2144,8 @@ void _fastcall MulFreeTreeInt ( PLIST_TREE list )
         for ( curr = list ; curr != end ; curr =  curr -> Next ) 
             if ( curr -> tree == pTree ) 
                 goto fin ;
-        if ( end -> tree != pTree ) {
-            end -> tree =  pTree ;
-        }
-        end =  end -> Next ;
+        end -> tree =  pTree ;
+        end         =  end -> Next ;
     fin : 
         deb = deb -> Next ;
     }
@@ -2147,17 +2157,17 @@ void _fastcall MulFreeTreeInt ( PLIST_TREE list )
     }
     
     // free all trees
-    for ( curr = list ; curr != end ; curr =  curr -> Next ) {
-        if ( curr ) 
-            deb =  curr ;
+    for ( curr = list ; curr && curr != end ; curr =  curr -> Next ) {
+        deb =  curr ;
         FreeTree(curr -> tree);
     }
     
     // search last in list
     for ( curr = deb ; curr ; curr =  curr -> Next ) 
         deb =  curr ;
-    deb -> Next =  listTree ;
-    listTree    =  list ;
+    if ( deb ) 
+        deb -> Next =  listTree ;
+    listTree =  list ;
 }
 
 #if !defined(VARARGS_2)
@@ -2454,7 +2464,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
    ***************************************************************/
 PCOMM_ELEM AllocCommElem ()
 {
-    PCOMM_ELEM  ptComm ;
+    PCOMM_ELEM  ptComm = { 0 };
     
     if ( listCommFree ) {
         ptComm       =  listCommFree ;
@@ -2538,13 +2548,17 @@ void begin_comment ()
 {
     PCOMM_ELEM  ptCommElem = CreateComm();
     
-    ptCommElem -> content   =  (PPTREE)0 ;
-    ptCommElem -> collected =  0 ;
-    if ( col == col_deb && line == line_end + 1 && firstOnLine ) 
-        ptCommElem -> type =  2 ;
-    else if ( firstOnLine ) {
-        col_deb            =  -1 ;
-        ptCommElem -> type =  1 ;
+    if ( ptCommElem ) {
+        ptCommElem -> content   =  (PPTREE)0 ;
+        ptCommElem -> collected =  0 ;
+    }
+    if ( col == col_deb && line == line_end + 1 && firstOnLine ) {
+        if ( ptCommElem ) 
+            ptCommElem -> type =  2 ;
+    } else if ( firstOnLine ) {
+        col_deb =  -1 ;
+        if ( ptCommElem ) 
+            ptCommElem -> type =  1 ;
     } else {
         col_deb =  col ;
         
@@ -2555,7 +2569,7 @@ void begin_comment ()
         /*     We avoid a post following a pre on the same node */
         if ( ptCommElem && ptCommElem -> next && ptCommElem -> next -> type == 1 && line == line_end && !rule_between ) 
             ptCommElem -> type =  1 ;
-        else 
+        else if ( ptCommElem ) 
             ptCommElem -> type =  0 ;
         /*>*/
     }
@@ -3340,6 +3354,101 @@ char *LtoaQuick ( long nb, char *string, int length )
     if ( neg && ptInter > string ) {
         *--ptInter =  '-';
     }
+    return ptInter ;
+}
+
+char *LLtoaQuick ( long long nb, char *string, int length )
+{
+    char                *ptInter = string + length ;
+    long long           rest = nb ;
+    bool                neg = false ;
+    volatile long long  negNb = 0 ;
+    
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
+    if ( nb < 0 ) {
+        negNb =  -nb ;
+        nb    =  negNb ;
+        neg   =  true ;
+    }
+    if ( negNb < 0 ) {
+        
+        // be careful for MIN_INT
+        sprintf(string, "%lld", rest);
+        return string ;
+    } else if ( nb > 0 ) 
+        while ( nb && ptInter > string ) {
+            rest       =  nb % 10 ;
+            *--ptInter =  '0' + rest ;
+            nb         =  nb / 10 ;
+        }
+    else if ( ptInter > string ) 
+        *--ptInter =  '0';
+    if ( neg && ptInter > string ) {
+        *--ptInter =  '-';
+    }
+    return ptInter ;
+}
+
+char *ItoaQuick ( unsigned int nb, char *string, int length )
+{
+    char            *ptInter = string + length ;
+    unsigned int    rest = nb ;
+    
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
+    if ( nb > 0 ) 
+        while ( nb && ptInter > string ) {
+            rest       =  nb % 10 ;
+            *--ptInter =  '0' + rest ;
+            nb         =  nb / 10 ;
+        }
+    else if ( ptInter > string ) 
+        *--ptInter =  '0';
+    return ptInter ;
+}
+
+char *LtoaQuick ( unsigned long nb, char *string, int length )
+{
+    char            *ptInter = string + length ;
+    unsigned long   rest = nb ;
+    
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
+    if ( nb > 0 ) 
+        while ( nb && ptInter > string ) {
+            rest       =  nb % 10 ;
+            *--ptInter =  '0' + rest ;
+            nb         =  nb / 10 ;
+        }
+    else if ( ptInter > string ) 
+        *--ptInter =  '0';
+    return ptInter ;
+}
+
+char *LLtoaQuick ( unsigned long long nb, char *string, int length )
+{
+    char                *ptInter = string + length ;
+    unsigned long long  rest = nb ;
+    
+    if ( !string || length <= 0 ) 
+        return 0 ;
+    if ( ptInter > string ) 
+        *--ptInter =  '\0';
+    if ( nb > 0 ) 
+        while ( nb && ptInter > string ) {
+            rest       =  nb % 10 ;
+            *--ptInter =  '0' + rest ;
+            nb         =  nb / 10 ;
+        }
+    else if ( ptInter > string ) 
+        *--ptInter =  '0';
     return ptInter ;
 }
 
@@ -5087,7 +5196,8 @@ PPTREE Parser::ReadFileTree ( const char *name, PTREE *encoder )
     AddRef(ret);
     {
         PTREE   cleanTree = ret ;
-        CleanTree(cleanTree);
+        
+        // CleanTree(cleanTree);
     }
     RemRef(ret);
     
@@ -5235,8 +5345,11 @@ long NCacheMalloc ( int ssize )
             }
             if ( size < sizeof(void *) ) 
                 size =  sizeof(void *);
+            
+            // size is at least sizeof(void * ) so 0 in indicator will indicate a size of sizeof(void *)
+            // will not be able to code size >= MEMORY_STORAGE 
             unsigned int    sizeAccessor = size - sizeof(void *);
-            if ( sizeAccessor < MEMORY_STORAGE && memoryStorage [sizeAccessor] != 0 ) {
+            if ( sizeAccessor < MEMORY_STORAGE && memoryStorageUsage [sizeAccessor] != 0 ) {
                 allocated =  (long)memoryStorage [sizeAccessor];
                 void    *pti = *(void **)memoryStorage [sizeAccessor];
                 memoryStorage [sizeAccessor] =  pti ;

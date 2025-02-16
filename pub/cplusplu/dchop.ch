@@ -175,7 +175,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
             comm(paramTree, PRE);
         } else 
             comm(paramTree, PRE);
-        postComment =  oldPostComment = this->IntDecomp(paramTree, funcAlone);
+        postComment =  oldPostComment = this -> IntDecomp(paramTree, funcAlone);
         if ( postComment != paramTree && !noPostComment ) 
             comm(paramTree, POST);
         if ( commPre ) {
@@ -458,7 +458,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <PARAM_TYPE,exp1,exp2> : 
             @exp1 "<";
-            while ( exp2 == <LIST>) {
+            while ( exp2 == <LIST> ) {
                 son =  nextl(exp2);
                 @son
                 if ( exp2 ) {
@@ -471,7 +471,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <DECLARATION,sc,type,list_decl> : 
             {
                 int hasPutMark = 0 ; // indicates whether we have   
-                statementf = 0;         
+                statementf =  0 ;
                 
                 // put a mark for unparsing          
                 if ( type == <CLASS,<>,<>,<>,exp> && exp != () ) 
@@ -652,7 +652,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 "__asm__(";
                 val == <STRING_LIST,val>;
                 if ( val == <LIST> ) {
-                    while ( val == <LIST>  ) {
+                    while ( val == <LIST> ) {
                         son =  nextl(val);
                         @son
                         if ( val != () ) {
@@ -694,7 +694,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             @declarator <SEPB> "(";
             list = exp_list ;
             if ( 1 /* typ_list_ok */ ) 
-                while ( exp_list == <LIST>  ) {
+                while ( exp_list == <LIST> ) {
                     son =  nextl(exp_list);
                     @son
                     if ( exp_list != () ) {
@@ -962,7 +962,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             @exp2
             break ;
         case <STRING_LIST,list> : 
-            while ( list == <LIST>  ) {
+            while ( list == <LIST> ) {
                 son =  nextl(list);
                 @son
                 if ( list != () ) 
@@ -1046,7 +1046,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         "{" <NL>
                     }
                     statementf =  1 ;
-                    while ( list == <LIST>  ) {
+                    while ( list == <LIST> ) {
                         son         =  nextl(list);
                         postComment =  son ;
                         postComment == <ATTRIBUTS,postComment>;
@@ -1447,6 +1447,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <TYPENAME,ident> : 
             "typename" @ident
             break ;
+        case <CLASSNAME,ident> : 
+            "class" @ident
+            break ;
         case <DECL_TYPE,exp> : 
             "decltype(" @exp ")";
             break ;
@@ -1637,7 +1640,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             GotoCol(0);
             {{
                 "#pragma notmanaged" <NL>
-                while ( list == <LIST>) {
+                while ( list == <LIST> ) {
                     son =  nextl(list);
                     @son <NL>
                 }
@@ -1694,7 +1697,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             "(" @type ")" @exp
             break ;
         case <ATTRIBUTS,exp,list,list1> : 
-            while ( list == <LIST>) {
+            while ( list == <LIST> ) {
                 son =  nextl(list);
                 TraitAttribut(son);
             }
@@ -2021,7 +2024,7 @@ void DecompCplus::DecompilerListeExternSimp ( PTREE list )
     PTREE   son, father ;
     int     typeBlock = -1, oldTypeBlock = -1 ;
     
-    while ( list == <LIST>  ) {
+    while ( list == <LIST> ) {
         father    =  list ^ ;
         son       =  nextl(list);
         typeBlock =  TypeOfBlock(son);
@@ -2079,5 +2082,4 @@ void DecompCplus::copy ()
     str =  " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
     _write(2, str, strlen(str));
 }
-
 

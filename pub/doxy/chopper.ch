@@ -113,7 +113,7 @@ void                        DoxyFy (TreeStruct &treeStruct) ;
 /// 
 /// @brief FilePart
 /// 
-/// @param [in,out] name 
+/// @param [in]     name 
 /// 
 /// @returns  EString
 /// 
@@ -133,7 +133,7 @@ EString FilePart ( const char *name )
 /// 
 /// @brief DirectoryPart
 /// 
-/// @param [in,out] name 
+/// @param [in]     name 
 /// 
 /// @returns  EString
 /// 
@@ -585,7 +585,7 @@ PTREE DeclaratorToIdent ( PTREE &elem )
             case <ARROW,name> : break ;
             case <ADDR,name> : break ;
             case <TYP_BIT,name> : break ;
-            case <POINT ,name> : break ;
+            case <POINT,name> : break ;
             case <TYP_AFF,name> : break ;
             case <TYP_ADDR,name> : break ;
             case <TYP_ARRAY,name> : break ;
@@ -1474,6 +1474,7 @@ FUNC_DESCRIPTOR DoxyFuncNormalize ( PTREE &tree, PTREE &qualifier, DoxyContent &
     
     // return empty descriptor 
     FUNC_DESCRIPTOR functDescriptor ;
+    functDescriptor.isDeclarator = false ;
     
     return functDescriptor ;
 }
@@ -1542,6 +1543,7 @@ FUNC_DESCRIPTOR DoxyDeclFuncNormalize ( PTREE &tree, PTREE &qualifier, DoxyConte
     // return empty descriptor
     FUNC_DESCRIPTOR functDescriptor ;
     
+    functDescriptor.isDeclarator =  false ;
     return functDescriptor ;
 }
 

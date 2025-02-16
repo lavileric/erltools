@@ -290,6 +290,15 @@
             virtual void    CoarseEncode (PTREE tree, EString &string) ;
             virtual void    CoarseEncode (PTREE tree, std::vector<EString> &) ;
             
+            virtual void CoarseFileEncode ( EString &filePath )
+            {
+                PTREE   tree(this -> pt);
+                EString encoded ;
+                
+                CoarseEncode(tree, encoded);
+                encoded.Write(filePath);
+            }
+            
             // CoarseDecode : CoarseDecode a tree
             // parameters :
             //              string : input string
@@ -304,6 +313,18 @@
                 return InternalCoarseDecode(string, buffer, vect);
             }
             
+            virtual PTREE CoarseFileDecode ( EString &filePath )
+            {
+                EString content ;
+                
+                content.Read(filePath);
+                
+                PTREE   result (CoarseDecode(content)) ;
+                
+                this -> pt =  (PPTREE)result ;
+                return result ;
+            }
+            
             // virtual PTREE   CoarseDecode (char *&string) ;
             // DecodeClass : Decode a class 
             // parameters :
@@ -314,7 +335,13 @@
             // CleanTree : clean tree before saving
             // parameters : 
             //              tree : tree to be cleaned
-            virtual void CleanTree ( const PTREE &tree ) {}
+            virtual void CleanTree () {}
+            
+            void    CLDumpTree () ;
+            void    LDumpTree () ;
+            void    DumpTree () ;
+            void    MDumpTree (int pageNum) ;
+            void    DumpNode () ;
         
         protected :
         
@@ -503,8 +530,8 @@
     
     // apply a method on a class
 #   define APPLY_CLASS(tree, type, meth) (NumberTree(tree) == CLASS_TREE? \
-                                                		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
-                                                                                     0)
+                                                               		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
+                                                                                                    0)
 #   define UNCHECKED_APPLY_CLASS(tree, type, meth) (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) 
 #   define ALLOCATE_CLASS(meth) (MakeTreeClass( * (TreeClass *) new meth))
 #endif

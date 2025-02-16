@@ -11,14 +11,17 @@ define parse_entry;
 end;
 
 define json_content;
-    declare val,list_entry;
+    declare val,list_entry,inter;
     case
         take "{" :
             begin
             if not see "}" then
                 repeat
-                    addlist(list_entry,take named_entry);
-                until not take ",";
+                begin
+                    if inter = take named_entry then 
+                        addlist(list_entry,inter);
+                end
+                until not take "," ;
             take "}";
             return maketree(JSON_LIST,list_entry);
             end
@@ -26,7 +29,10 @@ define json_content;
             begin
             if not see "]" then
                 repeat
-                    addlist(list_entry,take json_content);
+                begin
+                    if inter = take json_content then 
+                        addlist(list_entry, inter);
+                end
                 until not take ",";
             take "]";
             return maketree(JSON_SEQUENCE,list_entry);

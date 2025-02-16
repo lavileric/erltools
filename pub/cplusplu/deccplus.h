@@ -3,6 +3,7 @@
 #   include "cplus.h"
 #   include "interf.h"
 #   include "clpretty.h"
+#   include "DecompFile.h"
     int     IsRange (char *) ;
     void    Range (PTREE) ;
     void    AnalyseRange (char *) ;
@@ -31,7 +32,7 @@
             }
     };
     
-    class DecompCplus : public clpretty {
+    class DecompCplus : public clpretty, public DecompFile {
         
         public :
         
@@ -103,6 +104,17 @@
             
             virtual void TraiterSequence ( PTREE ) {}
             
+            int Statementf ()
+            {
+                return statementf ;
+            }
+            
+            DecompCplus &Statementf ( int statementfVal )
+            {
+                statementf =  statementfVal ;
+                return *this ;
+            }
+            
             // miscellaneous variables
             int     inClass ;
             int     indentFuncFlag ; // indicates to put a nl after function type   
@@ -124,7 +136,7 @@
     
     inline void decomp_cplus ( PTREE tree )
     {
-        DecompCplus::ptDecomp->Decomp(tree);
+        DecompCplus::ptDecomp -> Decomp(tree);
     }
     
     //  

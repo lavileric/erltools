@@ -21,7 +21,7 @@ ALL_OBJECTS = chop.o doxy.o doxy0.o
 
 chop :  $(ALL_OBJECTS) $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
 	$(C_PLUS) -o chop doxy.o doxy0.o chop.o $(CHOPCORE) $(CPLUS_OBJ) $(CPLUS)  $(METACHOP) $(CHOPB) $(LIBRARY)
-	strip chop
+#	strip chop
 
 
 
