@@ -169,7 +169,7 @@ debut :
                                                                                                             
 #line 81 "outil.ch"
 #line 82 "outil.ch"
-                                                                                                            slot =  1 ;
+                                                                                                            slot = 1 ;
 #line 82 "outil.ch"
 #line 83 "outil.ch"
                                                                                                             goto debut ;
@@ -252,19 +252,19 @@ debut :
     
 #line 104 "outil.ch"
 #line 105 "outil.ch"
-    nbTree2 =  NumberTree(tree2);
+    nbTree2 = NumberTree(tree2);
 #line 105 "outil.ch"
 #line 106 "outil.ch"
     if ( nbTree1 == CLASS_TREE ) 
 #line 106 "outil.ch"
 #line 107 "outil.ch"
-        nbTree1 =  TERM_TREE ;
+        nbTree1 = TERM_TREE ;
 #line 107 "outil.ch"
 #line 108 "outil.ch"
     if ( nbTree2 == CLASS_TREE ) 
 #line 108 "outil.ch"
 #line 109 "outil.ch"
-        nbTree2 =  TERM_TREE ;
+        nbTree2 = TERM_TREE ;
 #line 109 "outil.ch"
 #line 110 "outil.ch"
     if ( nbTree1 == nbTree2 ) {
@@ -301,10 +301,10 @@ debut :
                                                                                         
 #line 119 "outil.ch"
 #line 122 "outil.ch"
-                                                                                        tree1 =  sontree(tree1, 1);
+                                                                                        tree1 = sontree(tree1, 1);
 #line 122 "outil.ch"
 #line 123 "outil.ch"
-                                                                                        tree2 =  sontree(tree2, 1);
+                                                                                        tree2 = sontree(tree2, 1);
 #line 123 "outil.ch"
 #line 124 "outil.ch"
                                                                                         goto debut ;
@@ -366,10 +366,10 @@ PVAR AllocVar ()
     if ( listFreeVar ) {
 #line 139 "outil.ch"
 #line 140 "outil.ch"
-                            myPoint =  listFreeVar ;
+                            myPoint = listFreeVar ;
 #line 140 "outil.ch"
 #line 141 "outil.ch"
-                            listFreeVar =  listFreeVar -> next ;
+                            listFreeVar = listFreeVar -> next ;
 #line 141 "outil.ch"
 #line 142 "outil.ch"
                             
@@ -378,21 +378,21 @@ PVAR AllocVar ()
                         } else 
 #line 142 "outil.ch"
 #line 143 "outil.ch"
-        myPoint =  (PVAR)malloc(sizeof(VAR));
+        myPoint = (PVAR)malloc(sizeof(VAR));
 #line 143 "outil.ch"
     
 #line 143 "outil.ch"
 #line 144 "outil.ch"
-    myPoint -> name =  (char *)0 ;
+    myPoint -> name = (char *)0 ;
 #line 144 "outil.ch"
 #line 145 "outil.ch"
-    myPoint -> father =  (PPTREE)0 ;
+    myPoint -> father = (PPTREE)0 ;
 #line 145 "outil.ch"
 #line 146 "outil.ch"
-    myPoint -> slot =  -1 ;
+    myPoint -> slot = -1 ;
 #line 146 "outil.ch"
 #line 147 "outil.ch"
-    myPoint -> elem =  (PPTREE)0 ;
+    myPoint -> elem = (PPTREE)0 ;
 #line 147 "outil.ch"
 #line 148 "outil.ch"
     return (myPoint);
@@ -422,19 +422,19 @@ void FreeVar ()
     
 #line 156 "outil.ch"
 #line 158 "outil.ch"
-    interVar =  frontVar = listVar ;
+    interVar = frontVar = listVar ;
 #line 158 "outil.ch"
 #line 159 "outil.ch"
     while ( frontVar ) {
 #line 159 "outil.ch"
 #line 160 "outil.ch"
-                            interVar =  frontVar ;
+                            interVar = frontVar ;
 #line 160 "outil.ch"
 #line 161 "outil.ch"
                             free(frontVar -> name);
 #line 161 "outil.ch"
 #line 162 "outil.ch"
-                            frontVar =  frontVar -> next ;
+                            frontVar = frontVar -> next ;
 #line 162 "outil.ch"
 #line 163 "outil.ch"
                             
@@ -446,13 +446,13 @@ void FreeVar ()
     if ( frontVar != interVar ) {
 #line 164 "outil.ch"
 #line 165 "outil.ch"
-                                    interVar -> next =  listFreeVar ;
+                                    interVar -> next = listFreeVar ;
 #line 165 "outil.ch"
 #line 166 "outil.ch"
-                                    listFreeVar =  listVar ;
+                                    listFreeVar = listVar ;
 #line 166 "outil.ch"
 #line 167 "outil.ch"
-                                    listVar =  (PVAR)0 ;
+                                    listVar = (PVAR)0 ;
 #line 167 "outil.ch"
 #line 168 "outil.ch"
                                     
@@ -484,25 +484,25 @@ void InsertVar ( char *name, PTREE father, int slot, PTREE elem )
     
 #line 176 "outil.ch"
 #line 178 "outil.ch"
-    pVar =  AllocVar();
+    pVar = AllocVar();
 #line 178 "outil.ch"
 #line 179 "outil.ch"
-    pVar -> name =  name ;
+    pVar -> name = name ;
 #line 179 "outil.ch"
 #line 180 "outil.ch"
-    pVar -> father =  father ;
+    pVar -> father = father ;
 #line 180 "outil.ch"
 #line 181 "outil.ch"
-    pVar -> slot =  slot ;
+    pVar -> slot = slot ;
 #line 181 "outil.ch"
 #line 182 "outil.ch"
-    pVar -> elem =  elem ;
+    pVar -> elem = elem ;
 #line 182 "outil.ch"
 #line 183 "outil.ch"
-    pVar -> next =  listVar ;
+    pVar -> next = listVar ;
 #line 183 "outil.ch"
 #line 184 "outil.ch"
-    listVar =  pVar ;
+    listVar = pVar ;
 #line 184 "outil.ch"
 #line 185 "outil.ch"
     
@@ -538,7 +538,7 @@ PVAR SearchVar ( const char *name )
                         
 #line 196 "outil.ch"
 #line 197 "outil.ch"
-                        pVar =  pVar -> next ;
+                        pVar = pVar -> next ;
 #line 197 "outil.ch"
 #line 198 "outil.ch"
                         
@@ -663,7 +663,7 @@ start :
                                                 
 #line 227 "outil.ch"
 #line 228 "outil.ch"
-                                                arity =  treearity(operand);
+                                                arity = treearity(operand);
 #line 228 "outil.ch"
 #line 229 "outil.ch"
 #line 229 "outil.ch"
@@ -699,7 +699,7 @@ start :
                                                                         
 #line 235 "outil.ch"
 #line 236 "outil.ch"
-                                                                        position =  arity ;
+                                                                        position = arity ;
 #line 236 "outil.ch"
 #line 237 "outil.ch"
                                                                         goto start ;
@@ -750,7 +750,7 @@ PTREE ForReplace ( PTREE &elem, PTREE &father, int slot, PTREE &treeSubstitution
     if ( !nbsubstitution ) 
 #line 250 "outil.ch"
 #line 251 "outil.ch"
-        nbsubstitution =  1 ;
+        nbsubstitution = 1 ;
 #line 251 "outil.ch"
     else 
 #line 251 "outil.ch"
@@ -1066,11 +1066,11 @@ PTREE metafind ( PTREE paramTree, PTREE tree )
                 if ( NumberTree(for_elem) == META && !strcmp(myString, CacheAddrRead(sontree(sontree(for_elem, 1), 1))) ) {
 #line 318 "outil.ch"
 #line 319 "outil.ch"
-                                                                                                                                        return for_elem ;
-                                                                                                                                        
+                                                                                                                                      return for_elem ;
+                                                                                                                                      
 #line 319 "outil.ch"
 #line 320 "outil.ch"
-                                                                                                                                        
+                                                                                                                                      
 #line 320 "outil.ch"
 #line 320 "outil.ch"
                                                                                                                                       }
@@ -1182,7 +1182,7 @@ void replace ( PTREE paramTree, PTREE tree, PTREE new_value )
                                                 if ( firstReplace ) {
 #line 335 "outil.ch"
 #line 336 "outil.ch"
-                                                                        firstReplace =  0 ;
+                                                                        firstReplace = 0 ;
 #line 336 "outil.ch"
 #line 337 "outil.ch"
                                                                         (replace_tree=new_value);
@@ -1435,7 +1435,7 @@ void TheConstructor ( PPTREE(&stackTree)[1024], int &ptStackTree, int va_alist, 
     va_start(arg_marker);
 #line 393 "outil.ch"
 #line 394 "outil.ch"
-    NodeType =  (int)va_arg(arg_marker,INT);
+    NodeType = (int)va_arg(arg_marker,INT);
 #line 394 "outil.ch"
 #line 395 "outil.ch"
     while ( NodeType != -3 ) {
@@ -1490,7 +1490,7 @@ void TheConstructor ( PPTREE(&stackTree)[1024], int &ptStackTree, int va_alist, 
                                     
 #line 408 "outil.ch"
 #line 410 "outil.ch"
-                                    NodeType =  (int)va_arg(arg_marker,INT);
+                                    NodeType = (int)va_arg(arg_marker,INT);
 #line 410 "outil.ch"
 #line 411 "outil.ch"
                                     
@@ -1543,7 +1543,7 @@ void TheConstructor ( int va_alist, ... )
     va_start(arg_marker);
 #line 422 "outil.ch"
 #line 423 "outil.ch"
-    NodeType =  (int)va_arg(arg_marker,INT);
+    NodeType = (int)va_arg(arg_marker,INT);
 #line 423 "outil.ch"
 #line 424 "outil.ch"
     while ( NodeType != -3 ) {
@@ -1598,7 +1598,7 @@ void TheConstructor ( int va_alist, ... )
                                     
 #line 437 "outil.ch"
 #line 439 "outil.ch"
-                                    NodeType =  (int)va_arg(arg_marker,INT);
+                                    NodeType = (int)va_arg(arg_marker,INT);
 #line 439 "outil.ch"
 #line 440 "outil.ch"
                                     
@@ -1626,228 +1626,228 @@ void TheConstructor ( int va_alist, ... )
 #line 441 "outil.ch"
 #else 
 #line 445 "outil.ch"
+
+#line 445 "outil.ch"
+void TheConstructor ( PPTREE(&stackTree)[1024], int &ptStackTree, int NodeType, ... )
+#line 445 "outil.ch"
+{
+#line 445 "outil.ch"
+#line 445 "outil.ch"
+    int _nextVal ;
     
 #line 445 "outil.ch"
-    void TheConstructor ( PPTREE(&stackTree)[1024], int &ptStackTree, int NodeType, ... )
-#line 445 "outil.ch"
-    {
-#line 445 "outil.ch"
-#line 445 "outil.ch"
-        int _nextVal ;
-        
-#line 445 "outil.ch"
 #line 448 "outil.ch"
-        
-        register int    arity ;
-        
+    
+    register int    arity ;
+    
 #line 448 "outil.ch"
 #line 449 "outil.ch"
-        MY_TREE ptTree ;
-        
+    MY_TREE ptTree ;
+    
 #line 449 "outil.ch"
 #line 450 "outil.ch"
-        va_list arg_marker ;
-        
+    va_list arg_marker ;
+    
 #line 450 "outil.ch"
 #line 452 "outil.ch"
-        va_start(arg_marker, NodeType);
+    va_start(arg_marker, NodeType);
 #line 452 "outil.ch"
 #line 453 "outil.ch"
 #if 0
 #line 453 "outil.ch"
 #line 456 "outil.ch"
-        NodeType =  (int)va_arg(arg_marker,INT);
+    NodeType = (int)va_arg(arg_marker,INT);
 #line 456 "outil.ch"
 #line 456 "outil.ch"
-        
+    
 #line 456 "outil.ch"
-#       endif
-        
+#endif
+    
 #line 456 "outil.ch"
 #line 458 "outil.ch"
-        while ( NodeType != -3 ) {
+    while ( NodeType != -3 ) {
 #line 458 "outil.ch"
 #line 459 "outil.ch"
-                                        switch ( NodeType ) {
+                                    switch ( NodeType ) {
 #line 459 "outil.ch"
 #line 460 "outil.ch"
-                                            case -2 : 
+                                        case -2 : 
 #line 460 "outil.ch"
 #line 461 "outil.ch"
-                                                PushTree((PPTREE)va_arg(arg_marker,PPTREE));
+                                            PushTree((PPTREE)va_arg(arg_marker,PPTREE));
 #line 461 "outil.ch"
 #line 462 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 462 "outil.ch"
 #line 463 "outil.ch"
-                                            case -4 : 
+                                        case -4 : 
 #line 463 "outil.ch"
 #line 464 "outil.ch"
-                                                PushTree((PPTREE)0);
+                                            PushTree((PPTREE)0);
 #line 464 "outil.ch"
 #line 465 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 465 "outil.ch"
 #line 467 "outil.ch"
-                                            default : 
+                                        default : 
 #line 467 "outil.ch"
 #line 467 "outil.ch"
-                                                ptTree = MakeTree(NodeType, arity = (int)va_arg(arg_marker,INT));
+                                            ptTree = MakeTree(NodeType, arity = (int)va_arg(arg_marker,INT));
 #line 467 "outil.ch"
 #line 468 "outil.ch"
 #line 468 "outil.ch"
-                                                for (; arity ; arity-- ) 
+                                            for (; arity ; arity-- ) 
 #line 468 "outil.ch"
 #line 469 "outil.ch"
-                                                    ReplaceTree(ptTree, arity, PopTree);
+                                                ReplaceTree(ptTree, arity, PopTree);
 #line 469 "outil.ch"
-                                                
+                                            
 #line 469 "outil.ch"
 #line 470 "outil.ch"
-                                                PushTree(ptTree);
+                                            PushTree(ptTree);
 #line 470 "outil.ch"
 #line 471 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 471 "outil.ch"
-                                        }
-#line 471 "outil.ch"
-                                        
-#line 471 "outil.ch"
-#line 473 "outil.ch"
-                                        NodeType =  (int)va_arg(arg_marker,INT);
-#line 473 "outil.ch"
-#line 474 "outil.ch"
-                                        
-#line 474 "outil.ch"
-#line 474 "outil.ch"
                                     }
+#line 471 "outil.ch"
+                                    
+#line 471 "outil.ch"
+#line 473 "outil.ch"
+                                    NodeType = (int)va_arg(arg_marker,INT);
+#line 473 "outil.ch"
 #line 474 "outil.ch"
-#line 475 "outil.ch"
-        
-#line 475 "outil.ch"
-#line 475 "outil.ch"
-    }
+                                    
+#line 474 "outil.ch"
+#line 474 "outil.ch"
+                                }
+#line 474 "outil.ch"
 #line 475 "outil.ch"
     
+#line 475 "outil.ch"
+#line 475 "outil.ch"
+}
+#line 475 "outil.ch"
+
 #if 0
 #line 475 "outil.ch"
 #line 478 "outil.ch"
 #line 478 "outil.ch"
+
+#line 478 "outil.ch"
+void TheConstructor ( int NodeType, ... )
+#line 478 "outil.ch"
+{
+#line 478 "outil.ch"
+#line 478 "outil.ch"
+    int _nextVal ;
     
 #line 478 "outil.ch"
-    void TheConstructor ( int NodeType, ... )
-#line 478 "outil.ch"
-    {
-#line 478 "outil.ch"
-#line 478 "outil.ch"
-        int _nextVal ;
-        
-#line 478 "outil.ch"
 #line 481 "outil.ch"
-        
-        register int    arity ;
-        
+    
+    register int    arity ;
+    
 #line 481 "outil.ch"
 #line 482 "outil.ch"
-        MY_TREE ptTree ;
-        
+    MY_TREE ptTree ;
+    
 #line 482 "outil.ch"
 #line 483 "outil.ch"
-        va_list arg_marker ;
-        
+    va_list arg_marker ;
+    
 #line 483 "outil.ch"
 #line 485 "outil.ch"
-        va_start(arg_marker, NodeType);
+    va_start(arg_marker, NodeType);
 #line 485 "outil.ch"
 #line 486 "outil.ch"
 #if 0
 #line 486 "outil.ch"
 #line 489 "outil.ch"
-        NodeType =  (int)va_arg(arg_marker,INT);
+    NodeType = (int)va_arg(arg_marker,INT);
 #line 489 "outil.ch"
 #line 489 "outil.ch"
-        
+    
 #line 489 "outil.ch"
-#       endif
-        
+#endif
+    
 #line 489 "outil.ch"
 #line 491 "outil.ch"
-        while ( NodeType != -3 ) {
+    while ( NodeType != -3 ) {
 #line 491 "outil.ch"
 #line 492 "outil.ch"
-                                        switch ( NodeType ) {
+                                    switch ( NodeType ) {
 #line 492 "outil.ch"
 #line 493 "outil.ch"
-                                            case -2 : 
+                                        case -2 : 
 #line 493 "outil.ch"
 #line 494 "outil.ch"
-                                                PushTree((PPTREE)va_arg(arg_marker,PPTREE));
+                                            PushTree((PPTREE)va_arg(arg_marker,PPTREE));
 #line 494 "outil.ch"
 #line 495 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 495 "outil.ch"
 #line 496 "outil.ch"
-                                            case -4 : 
+                                        case -4 : 
 #line 496 "outil.ch"
 #line 497 "outil.ch"
-                                                PushTree((PPTREE)0);
+                                            PushTree((PPTREE)0);
 #line 497 "outil.ch"
 #line 498 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 498 "outil.ch"
 #line 500 "outil.ch"
-                                            default : 
+                                        default : 
 #line 500 "outil.ch"
 #line 500 "outil.ch"
-                                                ptTree = MakeTree(NodeType, arity = (int)va_arg(arg_marker,INT));
+                                            ptTree = MakeTree(NodeType, arity = (int)va_arg(arg_marker,INT));
 #line 500 "outil.ch"
 #line 501 "outil.ch"
 #line 501 "outil.ch"
-                                                for (; arity ; arity-- ) 
+                                            for (; arity ; arity-- ) 
 #line 501 "outil.ch"
 #line 502 "outil.ch"
-                                                    ReplaceTree(ptTree, arity, PopTree);
+                                                ReplaceTree(ptTree, arity, PopTree);
 #line 502 "outil.ch"
-                                                
+                                            
 #line 502 "outil.ch"
 #line 503 "outil.ch"
-                                                PushTree(ptTree);
+                                            PushTree(ptTree);
 #line 503 "outil.ch"
 #line 504 "outil.ch"
-                                                break ;
-                                                
+                                            break ;
+                                            
 #line 504 "outil.ch"
-                                        }
-#line 504 "outil.ch"
-                                        
-#line 504 "outil.ch"
-#line 506 "outil.ch"
-                                        NodeType =  (int)va_arg(arg_marker,INT);
-#line 506 "outil.ch"
-#line 507 "outil.ch"
-                                        
-#line 507 "outil.ch"
-#line 507 "outil.ch"
                                     }
+#line 504 "outil.ch"
+                                    
+#line 504 "outil.ch"
+#line 506 "outil.ch"
+                                    NodeType = (int)va_arg(arg_marker,INT);
+#line 506 "outil.ch"
+#line 507 "outil.ch"
+                                    
+#line 507 "outil.ch"
+#line 507 "outil.ch"
+                                }
 #line 507 "outil.ch"
 #line 508 "outil.ch"
-        
-#line 508 "outil.ch"
-#line 508 "outil.ch"
-    }
-#line 508 "outil.ch"
-    
     
 #line 508 "outil.ch"
 #line 508 "outil.ch"
-    
+}
 #line 508 "outil.ch"
-#   endif
+
+
+#line 508 "outil.ch"
+#line 508 "outil.ch"
+
+#line 508 "outil.ch"
+#endif
 #endif
 
 #line 515 "outil.ch"
@@ -1871,10 +1871,10 @@ void PatchANode ( char *languageName, PTREE the_elem )
     
 #line 519 "outil.ch"
 #line 521 "outil.ch"
-    NodeLanguage =  GetNodeLang(the_elem) -> name ;
+    NodeLanguage = GetNodeLang(the_elem) -> name ;
 #line 521 "outil.ch"
 #line 522 "outil.ch"
-    pOverLang =  GetLang(languageName) -> overLang ;
+    pOverLang = GetLang(languageName) -> overLang ;
 #line 522 "outil.ch"
 #line 523 "outil.ch"
 #line 523 "outil.ch"
@@ -1909,7 +1909,7 @@ void PatchANode ( char *languageName, PTREE the_elem )
     
 #line 530 "outil.ch"
 #line 531 "outil.ch"
-    pOverLang =  GetNodeLang(the_elem) -> overLang ;
+    pOverLang = GetNodeLang(the_elem) -> overLang ;
 #line 531 "outil.ch"
 #line 532 "outil.ch"
 #line 532 "outil.ch"
@@ -1983,7 +1983,7 @@ void InLang ( char *languageName, PTREE tree )
         for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 546 "outil.ch"
 #line 546 "outil.ch"
-            _for_elem =  SonTree(tree, _for_slot);
+            _for_elem = SonTree(tree, _for_slot);
 #line 546 "outil.ch"
 #line 546 "outil.ch"
             if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) {
@@ -2143,7 +2143,7 @@ int GetStartPos ( const PTREE &tree, int *line, int *col, bool opposite )
                                                         if ( GetPosCommentContent(comm, line, col) ) {
 #line 601 "outil.ch"
 #line 606 "outil.ch"
-                                                                                                            result =  1 ;
+                                                                                                            result = 1 ;
 #line 606 "outil.ch"
 #line 609 "outil.ch"
                                                                                                             if ( opposite ) 
@@ -2202,7 +2202,7 @@ static  int SearchPosInt ( const PTREE &tree, int *line, int *col )
         for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 624 "outil.ch"
 #line 624 "outil.ch"
-            _for_elem =  SonTree(tree, _for_slot);
+            _for_elem = SonTree(tree, _for_slot);
 #line 624 "outil.ch"
 #line 624 "outil.ch"
             if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) 
@@ -2423,7 +2423,7 @@ int GetEndPos ( const PTREE &tree, int *line, int *col, bool opposite )
                                                             if ( GetPosCommentContent(comm, line, col) ) {
 #line 685 "outil.ch"
 #line 688 "outil.ch"
-                                                                                                                result =  1 ;
+                                                                                                                result = 1 ;
 #line 688 "outil.ch"
 #line 689 "outil.ch"
                                                                                                                 if ( !opposite ) 
@@ -2909,26 +2909,26 @@ void TrimPosComment ( const PTREE &tree )
                                                                     if ( father != tree && GetPosCommentContent(comm, &line, &col) ) {
 #line 824 "outil.ch"
 #line 825 "outil.ch"
-                                                                                                                                                GetPosCommentContent(father, &lineFather, &colFather);
+                                                                                                                                             GetPosCommentContent(father, &lineFather, &colFather);
 #line 825 "outil.ch"
 #line 826 "outil.ch"
-                                                                                                                                                if ( lineFather > line || lineFather == line && colFather > col ) {
+                                                                                                                                             if ( lineFather > line || lineFather == line && colFather > col ) {
 #line 826 "outil.ch"
 #line 827 "outil.ch"
-                                                                                                                                                                                                                        DestroyComment(father);
+                                                                                                                                                                                                                     DestroyComment(father);
 #line 827 "outil.ch"
 #line 828 "outil.ch"
-                                                                                                                                                                                                                        continue ;
-                                                                                                                                                                                                                        
+                                                                                                                                                                                                                     continue ;
+                                                                                                                                                                                                                     
 #line 828 "outil.ch"
 #line 829 "outil.ch"
-                                                                                                                                                                                                                        
+                                                                                                                                                                                                                     
 #line 829 "outil.ch"
 #line 829 "outil.ch"
-                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                     }
 #line 829 "outil.ch"
 #line 830 "outil.ch"
-                                                                                                                                                
+                                                                                                                                             
 #line 830 "outil.ch"
 #line 830 "outil.ch"
                                                                                                                                              }
@@ -2956,10 +2956,10 @@ void TrimPosComment ( const PTREE &tree )
     
 #line 834 "outil.ch"
 #line 835 "outil.ch"
-    first =  0 ;
+    first = 0 ;
 #line 835 "outil.ch"
 #line 836 "outil.ch"
-    again =  0 ;
+    again = 0 ;
 #line 836 "outil.ch"
 #line 837 "outil.ch"
     while ( ((comm=NextComm(tree, PRE, comm))) ) {
@@ -2971,10 +2971,10 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                 if ( line > preLineMax || line == preLineMax && col > preColMax ) {
 #line 839 "outil.ch"
 #line 840 "outil.ch"
-                                                                                                                                                                                        preLineMax =  line ;
+                                                                                                                                                                                        preLineMax = line ;
 #line 840 "outil.ch"
 #line 841 "outil.ch"
-                                                                                                                                                                                        preColMax =  col ;
+                                                                                                                                                                                        preColMax = col ;
 #line 841 "outil.ch"
 #line 844 "outil.ch"
                                                                                                                                                                                         if ( oldComm && !again ) {
@@ -3006,7 +3006,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                                                                                         
 #line 852 "outil.ch"
 #line 853 "outil.ch"
-                                                                                                                                                                                        again =  0 ;
+                                                                                                                                                                                        again = 0 ;
 #line 853 "outil.ch"
 #line 854 "outil.ch"
                                                                                                                                                                                         
@@ -3016,7 +3016,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                                                                                         
 #line 854 "outil.ch"
 #line 855 "outil.ch"
-                                                                                                                                                                                        first =  1 ;
+                                                                                                                                                                                        first = 1 ;
 #line 855 "outil.ch"
 #line 856 "outil.ch"
                                                                                                                                                                                         
@@ -3030,12 +3030,12 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                     if ( !again ) {
 #line 859 "outil.ch"
 #line 860 "outil.ch"
-                                                                                                                                        (comm=DestroyComment(comm));
+                                                                                                                                    (comm=DestroyComment(comm));
 #line 860 "outil.ch"
-                                                                                                                                        
+                                                                                                                                    
 #line 860 "outil.ch"
 #line 861 "outil.ch"
-                                                                                                                                        
+                                                                                                                                    
 #line 861 "outil.ch"
 #line 861 "outil.ch"
                                                                                                                                     } else 
@@ -3048,7 +3048,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                         
 #line 862 "outil.ch"
 #line 863 "outil.ch"
-                                                                                                                        again =  0 ;
+                                                                                                                        again = 0 ;
 #line 863 "outil.ch"
 #line 864 "outil.ch"
                                                                                                                         
@@ -3071,7 +3071,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                              } else 
 #line 866 "outil.ch"
 #line 867 "outil.ch"
-                                                            again =  1 ;
+                                                            again = 1 ;
 #line 867 "outil.ch"
                                                         
 #line 867 "outil.ch"
@@ -3085,10 +3085,10 @@ void TrimPosComment ( const PTREE &tree )
     if ( first ) {
 #line 869 "outil.ch"
 #line 870 "outil.ch"
-                    currentLine =  preLineMax ;
+                    currentLine = preLineMax ;
 #line 870 "outil.ch"
 #line 871 "outil.ch"
-                    currentCol =  preColMax ;
+                    currentCol = preColMax ;
 #line 871 "outil.ch"
 #line 872 "outil.ch"
                     
@@ -3112,7 +3112,7 @@ void TrimPosComment ( const PTREE &tree )
         for (; _for_slot <= _arity ; _for_slot++ ) {
 #line 873 "outil.ch"
 #line 873 "outil.ch"
-            _for_elem =  SonTree(tree, _for_slot);
+            _for_elem = SonTree(tree, _for_slot);
 #line 873 "outil.ch"
 #line 873 "outil.ch"
             if ( _for_elem && NumberTree(_for_elem) != IN_LANGUAGE ) 
@@ -3140,10 +3140,10 @@ void TrimPosComment ( const PTREE &tree )
     
 #line 876 "outil.ch"
 #line 877 "outil.ch"
-    first =  0 ;
+    first = 0 ;
 #line 877 "outil.ch"
 #line 878 "outil.ch"
-    again =  0 ;
+    again = 0 ;
 #line 878 "outil.ch"
 #line 879 "outil.ch"
     while ( ((comm=NextComm(tree, POST, comm))) ) {
@@ -3155,10 +3155,10 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                     if ( (line < postLineMin || line == postLineMin && col < postColMin) && (line >= currentLine || line == currentLine && col >= currentCol) ) {
 #line 881 "outil.ch"
 #line 882 "outil.ch"
-                                                                                                                                                                                                                                                                              postLineMin =  line ;
+                                                                                                                                                                                                                                                                              postLineMin = line ;
 #line 882 "outil.ch"
 #line 883 "outil.ch"
-                                                                                                                                                                                                                                                                              postColMin =  col ;
+                                                                                                                                                                                                                                                                              postColMin = col ;
 #line 883 "outil.ch"
 #line 886 "outil.ch"
                                                                                                                                                                                                                                                                               if ( oldComm && !again ) {
@@ -3185,7 +3185,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                                                                                                                                                                               {
 #line 893 "outil.ch"
 #line 894 "outil.ch"
-                                                                                                                                                                                                                                                                              again =  0 ;
+                                                                                                                                                                                                                                                                              again = 0 ;
 #line 894 "outil.ch"
 #line 895 "outil.ch"
                                                                                                                                                                                                                                                                               (oldComm=0);
@@ -3200,7 +3200,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                                                                                                                                                                               
 #line 896 "outil.ch"
 #line 897 "outil.ch"
-                                                                                                                                                                                                                                                                              first =  1 ;
+                                                                                                                                                                                                                                                                              first = 1 ;
 #line 897 "outil.ch"
 #line 898 "outil.ch"
                                                                                                                                                                                                                                                                               
@@ -3214,20 +3214,20 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                         if ( !again ) {
 #line 901 "outil.ch"
 #line 902 "outil.ch"
-                                                                                                                                            (comm=DestroyComment(comm));
+                                                                                                                                        (comm=DestroyComment(comm));
 #line 902 "outil.ch"
-                                                                                                                                            
+                                                                                                                                        
 #line 902 "outil.ch"
 #line 903 "outil.ch"
-                                                                                                                                            again =  0 ;
+                                                                                                                                        again = 0 ;
 #line 903 "outil.ch"
 #line 904 "outil.ch"
-                                                                                                                                            (oldComm=0);
+                                                                                                                                        (oldComm=0);
 #line 904 "outil.ch"
-                                                                                                                                            
+                                                                                                                                        
 #line 904 "outil.ch"
 #line 905 "outil.ch"
-                                                                                                                                            
+                                                                                                                                        
 #line 905 "outil.ch"
 #line 905 "outil.ch"
                                                                                                                                         }
@@ -3246,7 +3246,7 @@ void TrimPosComment ( const PTREE &tree )
                                                                                                                  } else 
 #line 907 "outil.ch"
 #line 908 "outil.ch"
-                                                                again =  1 ;
+                                                                again = 1 ;
 #line 908 "outil.ch"
                                                             
 #line 908 "outil.ch"
@@ -3260,10 +3260,10 @@ void TrimPosComment ( const PTREE &tree )
     if ( first ) {
 #line 910 "outil.ch"
 #line 911 "outil.ch"
-                    currentLine =  postLineMin ;
+                    currentLine = postLineMin ;
 #line 911 "outil.ch"
 #line 912 "outil.ch"
-                    currentCol =  postColMin ;
+                    currentCol = postColMin ;
 #line 912 "outil.ch"
 #line 913 "outil.ch"
                     
@@ -3491,7 +3491,7 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
     
 #line 972 "outil.ch"
 #line 974 "outil.ch"
-    theConstructorDump =  true ;
+    theConstructorDump = true ;
 #line 974 "outil.ch"
 #line 975 "outil.ch"
     if ( nbTreeParam ) {
@@ -3503,10 +3503,10 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
                             PrintString("TheConstructor(stackTree,ptStackTree,");
 #line 977 "outil.ch"
 #line 978 "outil.ch"
-                            NbTree =  nbTreeParam ;
+                            NbTree = nbTreeParam ;
 #line 978 "outil.ch"
 #line 979 "outil.ch"
-                            NbDump =  0 ;
+                            NbDump = 0 ;
 #line 979 "outil.ch"
 #line 980 "outil.ch"
                             MakeTreeGenDirRec(paramTree);
@@ -3547,7 +3547,7 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
                             PrintString("TheConstructor(stackTree,ptStackTree,");
 #line 987 "outil.ch"
 #line 988 "outil.ch"
-                            NbTree =  0 ;
+                            NbTree = 0 ;
 #line 988 "outil.ch"
 #line 989 "outil.ch"
                             
@@ -3574,7 +3574,7 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
                             
 #line 993 "outil.ch"
 #line 994 "outil.ch"
-                            NbDump =  0 ;
+                            NbDump = 0 ;
 #line 994 "outil.ch"
 #line 995 "outil.ch"
                             
@@ -3641,10 +3641,10 @@ void MakeTreeGenDirRec ( PTREE &paramTree, int nbTreeParam )
                                                   }
 #line 1007 "outil.ch"
 #line 1008 "outil.ch"
-    nbParam =  treearity(paramTree);
+    nbParam = treearity(paramTree);
 #line 1008 "outil.ch"
 #line 1009 "outil.ch"
-    currParam =  1 ;
+    currParam = 1 ;
 #line 1009 "outil.ch"
 #line 1010 "outil.ch"
     while ( currParam <= nbParam ) {

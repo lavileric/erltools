@@ -1332,7 +1332,7 @@ void clpretty::TraiterExp2V ( PTREE tree, int x0 )
                                 break ;
                             }
                             inter =  NextTree(inter, ());
-                            s
+                            
                             // nothing left get out
                             if ( inter == () ) 
                                 break ;
