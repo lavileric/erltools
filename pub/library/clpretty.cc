@@ -1285,7 +1285,7 @@ void clpretty::CompleteCoordinatesOld ( PTREE currTree )
 #line 368 "clpretty.ch"
 #line 370 "clpretty.ch"
     
-    Protector<int>     protector (output, 1) ;
+    Protector<int>     protector(output, 1);
     
 #line 370 "clpretty.ch"
 #line 372 "clpretty.ch"

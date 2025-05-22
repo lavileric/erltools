@@ -61,9 +61,9 @@ class chopb: public cplus,public virtual Parser {
     int inMakeTree;
     int parse;
     int or_not_ok;
-    static signed char * _tokenArray [172];
-    static int (chopb::*(_tokenFuncArray [172])) ();
-    static int _tokenNbFuncArray [172];
+    static signed char * _tokenArray [173];
+    static int (chopb::*(_tokenFuncArray [173])) ();
+    static int _tokenNbFuncArray [173];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 
@@ -273,43 +273,43 @@ class chopb: public cplus,public virtual Parser {
         TYP_AFF =   204 ,
         ABST_DECLARATOR =   203 ,
         DECLARATOR =    202 ,
-        POINPOINPOIN =  201 ,
-        LAND =  200 ,
-        INIT_NEW =  199 ,
-        VIRG =  198 ,
-        QUALIFIED =     197 ,
-        MINUS =     196 ,
-        TYP =   195 ,
-        PFER =  194 ,
-        DESTRUCT =  193 ,
-        TYP_REF =   192 ,
-        TYP_ADDR =  191 ,
-        INFE =  190 ,
-        _TYPEDEF_PROTECTEDARRAY_S =     189 ,
-        _TYPEDEF_PROTECTEDARRAY =   188 ,
-        _PROTECTEDPOINTER_S =   187 ,
-        _PROTECTEDPOINTER =     186 ,
-        _PROTECTEDARRAY_S =     185 ,
-        _PROTECTEDARRAY =   184 ,
-        USING =     183 ,
-        NAMESPACE =     182 ,
-        CATCH =     181 ,
-        DPOI =  180 ,
-        PUBLIC =    179 ,
-        PROTECTED =     178 ,
-        PRIVATE =   177 ,
-        CHAPEGAL =  176 ,
-        VBAREGAL =  175 ,
-        ETCOEGAL =  174 ,
-        SUPESUPEEGAL =  173 ,
-        INFEINFEEGAL =  172 ,
-        TIREEGAL =  171 ,
-        PLUSEGAL =  170 ,
-        POURCEGAL =     169 ,
-        ETOIEGAL =  168 ,
-        EGAL =  167 ,
-        ASM =   166 ,
-        CFER =  165 ,
+        LAND =  201 ,
+        INIT_NEW =  200 ,
+        VIRG =  199 ,
+        QUALIFIED =     198 ,
+        MINUS =     197 ,
+        TYP =   196 ,
+        PFER =  195 ,
+        DESTRUCT =  194 ,
+        TYP_REF =   193 ,
+        TYP_ADDR =  192 ,
+        INFE =  191 ,
+        _TYPEDEF_PROTECTEDARRAY_S =     190 ,
+        _TYPEDEF_PROTECTEDARRAY =   189 ,
+        _PROTECTEDPOINTER_S =   188 ,
+        _PROTECTEDPOINTER =     187 ,
+        _PROTECTEDARRAY_S =     186 ,
+        _PROTECTEDARRAY =   185 ,
+        USING =     184 ,
+        NAMESPACE =     183 ,
+        CATCH =     182 ,
+        DPOI =  181 ,
+        PUBLIC =    180 ,
+        PROTECTED =     179 ,
+        PRIVATE =   178 ,
+        CHAPEGAL =  177 ,
+        VBAREGAL =  176 ,
+        ETCOEGAL =  175 ,
+        SUPESUPEEGAL =  174 ,
+        INFEINFEEGAL =  173 ,
+        TIREEGAL =  172 ,
+        PLUSEGAL =  171 ,
+        POURCEGAL =     170 ,
+        ETOIEGAL =  169 ,
+        EGAL =  168 ,
+        ASM =   167 ,
+        CFER =  166 ,
+        POINPOINPOIN =  165 ,
         VA_ARG =    164 ,
         DELETE =    163 ,
         NEW =   162 ,
@@ -679,43 +679,43 @@ extern chopb * parser_chopb;
 #define TYP_AFF_chopb   204
 #define ABST_DECLARATOR_chopb   203
 #define DECLARATOR_chopb    202
-#define POINPOINPOIN_chopb  201
-#define LAND_chopb  200
-#define INIT_NEW_chopb  199
-#define VIRG_chopb  198
-#define QUALIFIED_chopb     197
-#define MINUS_chopb     196
-#define TYP_chopb   195
-#define PFER_chopb  194
-#define DESTRUCT_chopb  193
-#define TYP_REF_chopb   192
-#define TYP_ADDR_chopb  191
-#define INFE_chopb  190
-#define _TYPEDEF_PROTECTEDARRAY_S_chopb     189
-#define _TYPEDEF_PROTECTEDARRAY_chopb   188
-#define _PROTECTEDPOINTER_S_chopb   187
-#define _PROTECTEDPOINTER_chopb     186
-#define _PROTECTEDARRAY_S_chopb     185
-#define _PROTECTEDARRAY_chopb   184
-#define USING_chopb     183
-#define NAMESPACE_chopb     182
-#define CATCH_chopb     181
-#define DPOI_chopb  180
-#define PUBLIC_chopb    179
-#define PROTECTED_chopb     178
-#define PRIVATE_chopb   177
-#define CHAPEGAL_chopb  176
-#define VBAREGAL_chopb  175
-#define ETCOEGAL_chopb  174
-#define SUPESUPEEGAL_chopb  173
-#define INFEINFEEGAL_chopb  172
-#define TIREEGAL_chopb  171
-#define PLUSEGAL_chopb  170
-#define POURCEGAL_chopb     169
-#define ETOIEGAL_chopb  168
-#define EGAL_chopb  167
-#define ASM_chopb   166
-#define CFER_chopb  165
+#define LAND_chopb  201
+#define INIT_NEW_chopb  200
+#define VIRG_chopb  199
+#define QUALIFIED_chopb     198
+#define MINUS_chopb     197
+#define TYP_chopb   196
+#define PFER_chopb  195
+#define DESTRUCT_chopb  194
+#define TYP_REF_chopb   193
+#define TYP_ADDR_chopb  192
+#define INFE_chopb  191
+#define _TYPEDEF_PROTECTEDARRAY_S_chopb     190
+#define _TYPEDEF_PROTECTEDARRAY_chopb   189
+#define _PROTECTEDPOINTER_S_chopb   188
+#define _PROTECTEDPOINTER_chopb     187
+#define _PROTECTEDARRAY_S_chopb     186
+#define _PROTECTEDARRAY_chopb   185
+#define USING_chopb     184
+#define NAMESPACE_chopb     183
+#define CATCH_chopb     182
+#define DPOI_chopb  181
+#define PUBLIC_chopb    180
+#define PROTECTED_chopb     179
+#define PRIVATE_chopb   178
+#define CHAPEGAL_chopb  177
+#define VBAREGAL_chopb  176
+#define ETCOEGAL_chopb  175
+#define SUPESUPEEGAL_chopb  174
+#define INFEINFEEGAL_chopb  173
+#define TIREEGAL_chopb  172
+#define PLUSEGAL_chopb  171
+#define POURCEGAL_chopb     170
+#define ETOIEGAL_chopb  169
+#define EGAL_chopb  168
+#define ASM_chopb   167
+#define CFER_chopb  166
+#define POINPOINPOIN_chopb  165
 #define VA_ARG_chopb    164
 #define DELETE_chopb    163
 #define NEW_chopb   162
