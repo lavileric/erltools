@@ -124,14 +124,15 @@ void traitement ( PTREE tree )
         
 #line 50 "trait.ch"
 #line 50 "trait.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 50 "trait.ch"
         
 #line 50 "trait.ch"
 #line 50 "trait.ch"
         _iterator1.AllSearch(1);
 #line 50 "trait.ch"
 #line 50 "trait.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 50 "trait.ch"
 #line 50 "trait.ch"
             {
@@ -277,14 +278,15 @@ void traitement_proc ( PTREE tree )
         
 #line 69 "trait.ch"
 #line 69 "trait.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 69 "trait.ch"
         
 #line 69 "trait.ch"
 #line 69 "trait.ch"
         _iterator1.AllSearch(1);
 #line 69 "trait.ch"
 #line 69 "trait.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 69 "trait.ch"
 #line 69 "trait.ch"
             {
@@ -375,14 +377,15 @@ void traitement_proc ( PTREE tree )
         
 #line 74 "trait.ch"
 #line 74 "trait.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 74 "trait.ch"
         
 #line 74 "trait.ch"
 #line 74 "trait.ch"
         _iterator2.AllSearch(1);
 #line 74 "trait.ch"
 #line 74 "trait.ch"
-        while ( _for_elem = _iterator2++ ) {
+        while ( (_for_elem=_iterator2++) ) {
 #line 74 "trait.ch"
 #line 74 "trait.ch"
             {
@@ -657,14 +660,15 @@ void traitement_while ( PTREE tree )
         
 #line 103 "trait.ch"
 #line 103 "trait.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 103 "trait.ch"
         
 #line 103 "trait.ch"
 #line 103 "trait.ch"
         _iterator1.AllSearch(1);
 #line 103 "trait.ch"
 #line 103 "trait.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 103 "trait.ch"
 #line 103 "trait.ch"
             {
@@ -835,14 +839,15 @@ void traitement_addlist ( PTREE tree )
         
 #line 124 "trait.ch"
 #line 124 "trait.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 124 "trait.ch"
         
 #line 124 "trait.ch"
 #line 124 "trait.ch"
         _iterator1.AllSearch(1);
 #line 124 "trait.ch"
 #line 125 "trait.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 125 "trait.ch"
 #line 125 "trait.ch"
             find_elem++ ;
@@ -972,14 +977,15 @@ void traitement_addlist ( PTREE tree )
                                 
 #line 134 "trait.ch"
 #line 134 "trait.ch"
-                                PPTREE  _for_elem ;
+                                PTREE   _for_elem ;
+#line 134 "trait.ch"
                                 
 #line 134 "trait.ch"
 #line 134 "trait.ch"
                                 _iterator2.AllSearch(1);
 #line 134 "trait.ch"
 #line 135 "trait.ch"
-                                while ( _for_elem = _iterator2++ ) {
+                                while ( (_for_elem=_iterator2++) ) {
 #line 135 "trait.ch"
 #line 135 "trait.ch"
                                     rep_addlist(for_elem, theName, theOldName);
@@ -1537,4 +1543,3 @@ void rep_addlist ( PTREE tree, PTREE new_value, PTREE old_value )
 static void trait_Anchor () { int i = 1;} 
 #line 198 "trait.ch"
 /*Well done my boy */ 
-

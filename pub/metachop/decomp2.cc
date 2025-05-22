@@ -1792,4 +1792,3 @@ static void decomp2_Anchor () { int i = 1;}
 #line 259 "decomp2.ch"
 /*Well done my boy */ 
 #line 259 "decomp2.ch"
-

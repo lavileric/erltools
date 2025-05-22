@@ -1595,11 +1595,11 @@ debut :
                                                                                                     
 #line 312 "speed.ch"
 #line 315 "speed.ch"
-                                                                                                    while ( !(((_inter = (PPTREE)father,1) && 
+                                                                                                    while ( father.TreeArity() >= 2 && !(((_inter = (PPTREE)father,1) && 
 #line 315 "speed.ch"
-                                                                                                                    (!SonTree(_inter,2)) &&
+                                                                                                                                              (!SonTree(_inter,2)) &&
 #line 315 "speed.ch"
-                                                                                                                    1)) ) 
+                                                                                                                                              1)) ) 
 #line 315 "speed.ch"
 #line 316 "speed.ch"
                                                                                                         ((_inter = (PPTREE)father,1) && 
@@ -2025,14 +2025,15 @@ PTREE GetTokensFunctionName ( PTREE func )
         
 #line 409 "speed.ch"
 #line 409 "speed.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 409 "speed.ch"
         
 #line 409 "speed.ch"
 #line 409 "speed.ch"
         _iterator1.AllSearch(1);
 #line 409 "speed.ch"
 #line 409 "speed.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 409 "speed.ch"
 #line 409 "speed.ch"
             {
@@ -2321,14 +2322,15 @@ PTREE GetTokensFunction ( PTREE func )
         
 #line 453 "speed.ch"
 #line 453 "speed.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 453 "speed.ch"
         
 #line 453 "speed.ch"
 #line 453 "speed.ch"
         _iterator1.AllSearch(1);
 #line 453 "speed.ch"
 #line 454 "speed.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 454 "speed.ch"
 #line 454 "speed.ch"
             replacetree(for_elem, 0, (PTREE)0);
@@ -2449,14 +2451,15 @@ void TreeTokenAnalyze ( const PTREE &tree )
         
 #line 475 "speed.ch"
 #line 475 "speed.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 475 "speed.ch"
         
 #line 475 "speed.ch"
 #line 475 "speed.ch"
         _iterator1.AllSearch(1);
 #line 475 "speed.ch"
 #line 475 "speed.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 475 "speed.ch"
 #line 475 "speed.ch"
             {
@@ -5272,14 +5275,15 @@ PTREE GetWithContext ( PTREE tree )
         
 #line 1068 "speed.ch"
 #line 1068 "speed.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 1068 "speed.ch"
         
 #line 1068 "speed.ch"
 #line 1068 "speed.ch"
         _iterator1.AllSearch(1);
 #line 1068 "speed.ch"
 #line 1068 "speed.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 1068 "speed.ch"
 #line 1068 "speed.ch"
             {
@@ -5750,4 +5754,3 @@ void ReleasePosComment ( PTREE tree )
 static void speed_Anchor () { int i = 1;} 
 #line 1123 "speed.ch"
 /*Well done my boy */ 
-

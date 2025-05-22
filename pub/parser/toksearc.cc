@@ -257,14 +257,15 @@ void SearchToken ( PTREE tree, int numb )
         
 #line 97 "toksearc.ch"
 #line 97 "toksearc.ch"
-        PPTREE  _for_elem ;
+        PTREE   _for_elem ;
+#line 97 "toksearc.ch"
         
 #line 97 "toksearc.ch"
 #line 97 "toksearc.ch"
         _iterator1.AllSearch(1);
 #line 97 "toksearc.ch"
 #line 97 "toksearc.ch"
-        while ( _for_elem = _iterator1++ ) {
+        while ( (_for_elem=_iterator1++) ) {
 #line 97 "toksearc.ch"
 #line 97 "toksearc.ch"
             {
@@ -536,4 +537,3 @@ void SearchToken ( PTREE tree, int numb )
 static void toksearc_Anchor () { int i = 1;} 
 #line 145 "toksearc.ch"
 /*Well done my boy */ 
-
