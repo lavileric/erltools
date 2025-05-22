@@ -7,7 +7,7 @@ CXXFLAGS ?=
 LDFLAGS  ?= 
 SHARED ?= 
 
-SANITIZE = -fsanitize=address -fno-omit-frame-pointer
+# SANITIZE = -fsanitize=address,null,bounds-strict,return -fno-omit-frame-pointer
 
 C_PLUS ?= $(CXX) $(CXXFLAGS) $(SANITIZE)
 
@@ -34,7 +34,7 @@ C_PLUS_OPTIM ?= -g
 # C_PLUS_OPTIM ?= -O3 -g
 # C_PLUS_OPTIM ?= -s
 # -static-libgcc -Wl,-O1  -Wl,-dynamic-linker=/usr/newlocal/lib/ld-linux.so.2
-C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wno-cast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough -Wno-logical-op-parentheses -Wno-stringop-overflow -Wno-unused-value -Wno-parentheses -Wno-dangling-else -Wno-unused-parameter
+C_WARNING ?=  -W -Wreturn-type -Wswitch -Wcomment -Wformat -Wchar-subscripts -Wuninitialized -Wno-cast-align -Wno-unused-result -Wno-register -Wno-implicit-fallthrough -Wno-logical-op-parentheses -Wno-stringop-overflow -Wno-unused-value -Wno-parentheses -Wno-dangling-else -Wno-unused-parameter 
 # -Wno-unsequenced -Wno-unused-value 
 # -Wno-bitwise-op-parentheses -Wno-parentheses-equality -Wno-parentheses -Wno-unused-parameter
 # -Wno-deprecated

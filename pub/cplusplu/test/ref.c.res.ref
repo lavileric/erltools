@@ -368,7 +368,7 @@ PTREE   tree ;
                         NewLine();
                         CaseCharac(carend);
                     }
-                    if ( tree = SonTree(tree, 2) ) 
+                    if ( (tree = SonTree(tree, 2)) ) 
                         NewLine();
                 }
             }
@@ -584,7 +584,7 @@ PTREE   tree ;
                 if ( !foundLexName ) 
                     lexName = AllocString(Value(ptTree));
             }
-        while ( ptTree = SonTree(ptTree, 2) ) 
+        while ( (ptTree = SonTree(ptTree, 2)) ) 
             if ( ptTree
                     && NumberTree(SonTree(ptTree, 1))
                         == LEXDEFINE_metalang ) {

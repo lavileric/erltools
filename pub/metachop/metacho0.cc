@@ -20,11 +20,11 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
     register int Value;
 #line 24 "metachop.met"
-    Value = strcmp(lexEl.string(),"language");
+    Value = strcmp(lexEl.string(),"in");
 #line 24 "metachop.met"
     if (Value > 0) {
 #line 24 "metachop.met"
-        Value = strcmp(lexEl.string(),"struct");
+        Value = strcmp(lexEl.string(),"static");
 #line 24 "metachop.met"
         if (Value > 0) {
 #line 24 "metachop.met"
@@ -128,11 +128,23 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"switch")) {
+                        Value = strcmp(lexEl.string(),"switch");
 #line 24 "metachop.met"
-                            return(SWITCH) ;
+                        if (Value > 0) {
 #line 24 "metachop.met"
-                        }
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"struct")) {
+#line 24 "metachop.met"
+                                return(STRUCT) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(SWITCH);
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
@@ -148,81 +160,85 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
         } else if (Value < 0) {
 #line 24 "metachop.met"
-            Value = strcmp(lexEl.string(),"protected");
+            Value = strcmp(lexEl.string(),"parse");
 #line 24 "metachop.met"
             if (Value > 0) {
 #line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"short");
+                Value = strcmp(lexEl.string(),"return");
 #line 24 "metachop.met"
                 if (Value > 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"sizeof");
+                    Value = strcmp(lexEl.string(),"signed");
 #line 24 "metachop.met"
                     if (Value > 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"static")) {
+                        if(!strcmp(lexEl.string(),"sizeof")) {
 #line 24 "metachop.met"
-                            return(STATIC) ;
+                            return(SIZEOF) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"signed")) {
+                        if(!strcmp(lexEl.string(),"short")) {
 #line 24 "metachop.met"
-                            return(SIGNED) ;
+                            return(SHORT) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(SIZEOF);
+                        return(SIGNED);
 #line 24 "metachop.met"
                 } else if (Value < 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"register");
+                    Value = strcmp(lexEl.string(),"public");
 #line 24 "metachop.met"
                     if (Value > 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"return")) {
+                        if(!strcmp(lexEl.string(),"register")) {
 #line 24 "metachop.met"
-                            return(RETURN) ;
+                            return(REGISTER) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"public")) {
+                        Value = strcmp(lexEl.string(),"protected");
 #line 24 "metachop.met"
-                            return(PUBLIC) ;
+                        if (Value > 0) {
 #line 24 "metachop.met"
-                        }
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"private")) {
+#line 24 "metachop.met"
+                                return(PRIVATE) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(PROTECTED);
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(REGISTER);
+                        return(PUBLIC);
 #line 24 "metachop.met"
                 } else 
 #line 24 "metachop.met"
-                    return(SHORT);
+                    return(RETURN);
 #line 24 "metachop.met"
             } else if (Value < 0) {
 #line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"nextl");
+                Value = strcmp(lexEl.string(),"namespace");
 #line 24 "metachop.met"
                 if (Value > 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"parse");
+                    Value = strcmp(lexEl.string(),"nextl");
 #line 24 "metachop.met"
                     if (Value > 0) {
-#line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"private")) {
-#line 24 "metachop.met"
-                            return(PRIVATE) ;
-#line 24 "metachop.met"
-                        }
-#line 24 "metachop.met"
-                    } else if (Value < 0) {
 #line 24 "metachop.met"
                         if(!strcmp(lexEl.string(),"operator")) {
 #line 24 "metachop.met"
@@ -230,15 +246,7 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
-                    } else 
-#line 24 "metachop.met"
-                        return(PARSE);
-#line 24 "metachop.met"
-                } else if (Value < 0) {
-#line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"namespace");
-#line 24 "metachop.met"
-                    if (Value > 0) {
+                    } else if (Value < 0) {
 #line 24 "metachop.met"
                         if(!strcmp(lexEl.string(),"new")) {
 #line 24 "metachop.met"
@@ -246,7 +254,15 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
-                    } else if (Value < 0) {
+                    } else 
+#line 24 "metachop.met"
+                        return(NEXTL);
+#line 24 "metachop.met"
+                } else if (Value < 0) {
+#line 24 "metachop.met"
+                    Value = strcmp(lexEl.string(),"language");
+#line 24 "metachop.met"
+                    if (Value > 0) {
 #line 24 "metachop.met"
                         if(!strcmp(lexEl.string(),"long")) {
 #line 24 "metachop.met"
@@ -254,115 +270,123 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
+                    } else if (Value < 0) {
+#line 24 "metachop.met"
+                        Value = strcmp(lexEl.string(),"int");
+#line 24 "metachop.met"
+                        if (Value > 0) {
+#line 24 "metachop.met"
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"inline")) {
+#line 24 "metachop.met"
+                                return(INLINE) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(INT);
+#line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(NAMESPACE);
+                        return(LANGUAGE);
 #line 24 "metachop.met"
                 } else 
 #line 24 "metachop.met"
-                    return(NEXTL);
+                    return(NAMESPACE);
 #line 24 "metachop.met"
             } else 
 #line 24 "metachop.met"
-                return(PROTECTED);
+                return(PARSE);
 #line 24 "metachop.met"
         } else 
 #line 24 "metachop.met"
-            return(STRUCT);
+            return(STATIC);
 #line 24 "metachop.met"
     } else if (Value < 0) {
 #line 24 "metachop.met"
-        Value = strcmp(lexEl.string(),"delete");
+        Value = strcmp(lexEl.string(),"const");
 #line 24 "metachop.met"
         if (Value > 0) {
 #line 24 "metachop.met"
-            Value = strcmp(lexEl.string(),"forallsons");
+            Value = strcmp(lexEl.string(),"enum");
 #line 24 "metachop.met"
             if (Value > 0) {
 #line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"if");
+                Value = strcmp(lexEl.string(),"foreach");
 #line 24 "metachop.met"
                 if (Value > 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"inline");
+                    Value = strcmp(lexEl.string(),"goto");
 #line 24 "metachop.met"
                     if (Value > 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"int")) {
+                        if(!strcmp(lexEl.string(),"if")) {
 #line 24 "metachop.met"
-                            return(INT) ;
+                            return(IF) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"in")) {
+                        if(!strcmp(lexEl.string(),"friend")) {
 #line 24 "metachop.met"
-                            return(IN) ;
+                            return(FRIEND) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(INLINE);
+                        return(GOTO);
 #line 24 "metachop.met"
                 } else if (Value < 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"friend");
+                    Value = strcmp(lexEl.string(),"for");
 #line 24 "metachop.met"
                     if (Value > 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"goto")) {
+                        if(!strcmp(lexEl.string(),"forallsons")) {
 #line 24 "metachop.met"
-                            return(GOTO) ;
+                            return(FORALLSONS) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"foreach")) {
+                        Value = strcmp(lexEl.string(),"float");
 #line 24 "metachop.met"
-                            return(FOREACH) ;
+                        if (Value > 0) {
 #line 24 "metachop.met"
-                        }
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"extern")) {
+#line 24 "metachop.met"
+                                return(EXTERN) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(FLOAT);
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(FRIEND);
+                        return(FOR);
 #line 24 "metachop.met"
                 } else 
 #line 24 "metachop.met"
-                    return(IF);
+                    return(FOREACH);
 #line 24 "metachop.met"
             } else if (Value < 0) {
 #line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"enum");
+                Value = strcmp(lexEl.string(),"delete");
 #line 24 "metachop.met"
                 if (Value > 0) {
-#line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"float");
-#line 24 "metachop.met"
-                    if (Value > 0) {
-#line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"for")) {
-#line 24 "metachop.met"
-                            return(FOR) ;
-#line 24 "metachop.met"
-                        }
-#line 24 "metachop.met"
-                    } else if (Value < 0) {
-#line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"extern")) {
-#line 24 "metachop.met"
-                            return(EXTERN) ;
-#line 24 "metachop.met"
-                        }
-#line 24 "metachop.met"
-                    } else 
-#line 24 "metachop.met"
-                        return(FLOAT);
-#line 24 "metachop.met"
-                } else if (Value < 0) {
 #line 24 "metachop.met"
                     Value = strcmp(lexEl.string(),"double");
 #line 24 "metachop.met"
@@ -386,23 +410,7 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                         return(DOUBLE);
 #line 24 "metachop.met"
-                } else 
-#line 24 "metachop.met"
-                    return(ENUM);
-#line 24 "metachop.met"
-            } else 
-#line 24 "metachop.met"
-                return(FORALLSONS);
-#line 24 "metachop.met"
-        } else if (Value < 0) {
-#line 24 "metachop.met"
-            Value = strcmp(lexEl.string(),"catch");
-#line 24 "metachop.met"
-            if (Value > 0) {
-#line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"constexpr");
-#line 24 "metachop.met"
-                if (Value > 0) {
+                } else if (Value < 0) {
 #line 24 "metachop.met"
                     Value = strcmp(lexEl.string(),"decltype");
 #line 24 "metachop.met"
@@ -416,71 +424,135 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"continue")) {
+                        Value = strcmp(lexEl.string(),"continue");
 #line 24 "metachop.met"
-                            return(CONTINUE) ;
+                        if (Value > 0) {
 #line 24 "metachop.met"
-                        }
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"constexpr")) {
+#line 24 "metachop.met"
+                                return(CONSTEXPR) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(CONTINUE);
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
                         return(DECLTYPE);
 #line 24 "metachop.met"
-                } else if (Value < 0) {
-#line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"class");
-#line 24 "metachop.met"
-                    if (Value > 0) {
-#line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"const")) {
-#line 24 "metachop.met"
-                            return(CONST) ;
-#line 24 "metachop.met"
-                        }
-#line 24 "metachop.met"
-                    } else if (Value < 0) {
-#line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"char")) {
-#line 24 "metachop.met"
-                            return(CHAR) ;
-#line 24 "metachop.met"
-                        }
-#line 24 "metachop.met"
-                    } else 
-#line 24 "metachop.met"
-                        return(CLASS);
-#line 24 "metachop.met"
                 } else 
 #line 24 "metachop.met"
-                    return(CONSTEXPR);
+                    return(DELETE);
 #line 24 "metachop.met"
-            } else if (Value < 0) {
+            } else 
 #line 24 "metachop.met"
-                Value = strcmp(lexEl.string(),"asm");
+                return(ENUM);
+#line 24 "metachop.met"
+        } else if (Value < 0) {
+#line 24 "metachop.met"
+            Value = strcmp(lexEl.string(),"_typedef_protectedArray");
+#line 24 "metachop.met"
+            if (Value > 0) {
+#line 24 "metachop.met"
+                Value = strcmp(lexEl.string(),"case");
 #line 24 "metachop.met"
                 if (Value > 0) {
 #line 24 "metachop.met"
-                    Value = strcmp(lexEl.string(),"break");
+                    Value = strcmp(lexEl.string(),"char");
 #line 24 "metachop.met"
                     if (Value > 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"case")) {
+                        if(!strcmp(lexEl.string(),"class")) {
 #line 24 "metachop.met"
-                            return(CASE) ;
+                            return(CLASS) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else if (Value < 0) {
 #line 24 "metachop.met"
-                        if(!strcmp(lexEl.string(),"auto")) {
+                        if(!strcmp(lexEl.string(),"catch")) {
 #line 24 "metachop.met"
-                            return(AUTO) ;
+                            return(CATCH) ;
 #line 24 "metachop.met"
                         }
 #line 24 "metachop.met"
                     } else 
 #line 24 "metachop.met"
-                        return(BREAK);
+                        return(CHAR);
+#line 24 "metachop.met"
+                } else if (Value < 0) {
+#line 24 "metachop.met"
+                    Value = strcmp(lexEl.string(),"auto");
+#line 24 "metachop.met"
+                    if (Value > 0) {
+#line 24 "metachop.met"
+                        if(!strcmp(lexEl.string(),"break")) {
+#line 24 "metachop.met"
+                            return(BREAK) ;
+#line 24 "metachop.met"
+                        }
+#line 24 "metachop.met"
+                    } else if (Value < 0) {
+#line 24 "metachop.met"
+                        Value = strcmp(lexEl.string(),"asm");
+#line 24 "metachop.met"
+                        if (Value > 0) {
+#line 24 "metachop.met"
+                            return(defaultValue);
+#line 24 "metachop.met"
+                        } else if (Value < 0) {
+#line 24 "metachop.met"
+                            if(!strcmp(lexEl.string(),"_typedef_protectedArray_s")) {
+#line 24 "metachop.met"
+                                return(_TYPEDEF_PROTECTEDARRAY_S) ;
+#line 24 "metachop.met"
+                            }
+#line 24 "metachop.met"
+                        } else 
+#line 24 "metachop.met"
+                            return(ASM);
+#line 24 "metachop.met"
+                    } else 
+#line 24 "metachop.met"
+                        return(AUTO);
+#line 24 "metachop.met"
+                } else 
+#line 24 "metachop.met"
+                    return(CASE);
+#line 24 "metachop.met"
+            } else if (Value < 0) {
+#line 24 "metachop.met"
+                Value = strcmp(lexEl.string(),"_protectedArray");
+#line 24 "metachop.met"
+                if (Value > 0) {
+#line 24 "metachop.met"
+                    Value = strcmp(lexEl.string(),"_protectedPointer");
+#line 24 "metachop.met"
+                    if (Value > 0) {
+#line 24 "metachop.met"
+                        if(!strcmp(lexEl.string(),"_protectedPointer_s")) {
+#line 24 "metachop.met"
+                            return(_PROTECTEDPOINTER_S) ;
+#line 24 "metachop.met"
+                        }
+#line 24 "metachop.met"
+                    } else if (Value < 0) {
+#line 24 "metachop.met"
+                        if(!strcmp(lexEl.string(),"_protectedArray_s")) {
+#line 24 "metachop.met"
+                            return(_PROTECTEDARRAY_S) ;
+#line 24 "metachop.met"
+                        }
+#line 24 "metachop.met"
+                    } else 
+#line 24 "metachop.met"
+                        return(_PROTECTEDPOINTER);
 #line 24 "metachop.met"
                 } else if (Value < 0) {
 #line 24 "metachop.met"
@@ -520,19 +592,19 @@ int metachop::SortKeyWord (int defaultValue)
 #line 24 "metachop.met"
                 } else 
 #line 24 "metachop.met"
-                    return(ASM);
+                    return(_PROTECTEDARRAY);
 #line 24 "metachop.met"
             } else 
 #line 24 "metachop.met"
-                return(CATCH);
+                return(_TYPEDEF_PROTECTEDARRAY);
 #line 24 "metachop.met"
         } else 
 #line 24 "metachop.met"
-            return(DELETE);
+            return(CONST);
 #line 24 "metachop.met"
     } else 
 #line 24 "metachop.met"
-        return(LANGUAGE);
+        return(IN);
 #line 24 "metachop.met"
     return(defaultValue);
 #line 24 "metachop.met"
@@ -4478,6 +4550,27 @@ int metachop::Lex ()
 -- 7 -- arg_declarator
     META
     IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
     AUTO
     REGISTER
     VOLATILE
@@ -4504,9 +4597,51 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    INFE
+    POINPOINPOIN
+    INFESUPE
+    VALUE
+    NEXTL
+    PARSE
+    IN
 -- 8 -- arg_declarator_base
     META
     IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
     AUTO
     REGISTER
     VOLATILE
@@ -4533,7 +4668,28 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 9 -- arg_declarator_followed
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    INFE
+    POINPOINPOIN
+    INFESUPE
+    VALUE
+    NEXTL
+    PARSE
+    IN
+-- 9 -- arg_declarator_base_type
     META
     IDENT
     AUTO
@@ -4562,7 +4718,78 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 10 -- arg_declarator_type
+-- 10 -- arg_declarator_followed
+    META
+    IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    INFE
+    POINPOINPOIN
+    INFESUPE
+    VALUE
+    NEXTL
+    PARSE
+    IN
+-- 11 -- arg_declarator_type
     META
     IDENT
     AUTO
@@ -4591,12 +4818,12 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 11 -- arg_typ_declarator
+-- 12 -- arg_typ_declarator
     META
     POUV
--- 12 -- arg_typ_list
+-- 13 -- arg_typ_list
     ALWAYS
--- 13 -- array_expression_follow
+-- 14 -- array_expression_follow
     META
     IDENT
     STRING
@@ -4656,13 +4883,13 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 14 -- asm_call
+-- 15 -- asm_call
     META
     __ASM__
--- 15 -- asm_declaration
+-- 16 -- asm_declaration
     META
     ASM
--- 16 -- assignment_end
+-- 17 -- assignment_end
     META
     SLASEGAL
     EGAL
@@ -4675,7 +4902,7 @@ int metachop::Lex ()
     ETCOEGAL
     VBAREGAL
     CHAPEGAL
--- 17 -- assignment_expression
+-- 18 -- assignment_expression
     META
     IDENT
     STRING
@@ -4734,10 +4961,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 18 -- attribute_call
+-- 19 -- attribute_call
     META
     __ATTRIBUTE__
--- 19 -- base_specifier
+-- 20 -- base_specifier
     META
     IDENT
     VIRTUAL
@@ -4745,7 +4972,7 @@ int metachop::Lex ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 20 -- base_specifier_elem
+-- 21 -- base_specifier_elem
     META
     IDENT
     VIRTUAL
@@ -4753,11 +4980,11 @@ int metachop::Lex ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 21 -- bit_field_decl
+-- 22 -- bit_field_decl
     META
     IDENT
     DPOI
--- 22 -- cast_expression
+-- 23 -- cast_expression
     META
     IDENT
     STRING
@@ -4816,32 +5043,32 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 23 -- cast_expression_value
+-- 24 -- cast_expression_value
     META
     POUV
--- 24 -- catch_unit
+-- 25 -- catch_unit
     META
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 25 -- catch_unit_ansi
+-- 26 -- catch_unit_ansi
     META
     CATCH
--- 26 -- class_declaration
+-- 27 -- class_declaration
     META
     STRUCT
     UNION
     CLASS
--- 27 -- comment_eater
+-- 28 -- comment_eater
     ALWAYS
--- 28 -- complete_class_name
+-- 29 -- complete_class_name
     META
     IDENT
     DPOIDPOI
--- 29 -- compound_statement
+-- 30 -- compound_statement
     META
     AOUV
--- 30 -- conditional_expression
+-- 31 -- conditional_expression
     META
     IDENT
     STRING
@@ -4900,11 +5127,11 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 31 -- const_or_volatile
+-- 32 -- const_or_volatile
     META
     VOLATILE
     CONST
--- 32 -- constan
+-- 33 -- constan
     META
     CHARACT
     INTEGER
@@ -4926,9 +5153,9 @@ int metachop::Lex ()
     LOCTAL
     UOCTAL
     OCTAL
--- 33 -- ctor_initializer
+-- 34 -- ctor_initializer
     ALWAYS
--- 34 -- data_decl_exotic
+-- 35 -- data_decl_exotic
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -4941,7 +5168,7 @@ int metachop::Lex ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 35 -- data_decl_sc_decl
+-- 36 -- data_decl_sc_decl
     META
     IDENT
     AUTO
@@ -4961,7 +5188,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 36 -- data_decl_sc_decl_full
+-- 37 -- data_decl_sc_decl_full
     META
     IDENT
     AUTO
@@ -4981,7 +5208,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 37 -- data_decl_sc_decl_short
+-- 38 -- data_decl_sc_decl_short
     META
     IDENT
     REGISTER
@@ -4998,7 +5225,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 38 -- data_decl_sc_ty_decl
+-- 39 -- data_decl_sc_ty_decl
     META
     IDENT
     AUTO
@@ -5029,7 +5256,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 39 -- data_decl_sc_ty_decl_full
+-- 40 -- data_decl_sc_ty_decl_full
     META
     IDENT
     AUTO
@@ -5060,7 +5287,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 40 -- data_decl_sc_ty_decl_short
+-- 41 -- data_decl_sc_ty_decl_short
     META
     IDENT
     AUTO
@@ -5089,9 +5316,9 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 41 -- data_declaration
+-- 42 -- data_declaration
     ALWAYS
--- 42 -- data_declaration_for
+-- 43 -- data_declaration_for
     META
     IDENT
     AUTO
@@ -5122,7 +5349,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 43 -- data_declaration_for_full
+-- 44 -- data_declaration_for_full
     META
     IDENT
     AUTO
@@ -5153,7 +5380,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 44 -- data_declaration_for_short
+-- 45 -- data_declaration_for_short
     META
     IDENT
     AUTO
@@ -5182,12 +5409,12 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 45 -- data_declaration_strict
+-- 46 -- data_declaration_strict
     ALWAYS
--- 46 -- deallocation_expression
+-- 47 -- deallocation_expression
     META
     DELETE
--- 47 -- declarator
+-- 48 -- declarator
     META
     IDENT
     REGISTER
@@ -5204,9 +5431,9 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 48 -- declarator_follow
+-- 49 -- declarator_follow
     ALWAYS
--- 49 -- declarator_list
+-- 50 -- declarator_list
     META
     IDENT
     REGISTER
@@ -5223,7 +5450,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 50 -- declarator_list_init
+-- 51 -- declarator_list_init
     META
     IDENT
     REGISTER
@@ -5240,7 +5467,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 51 -- declarator_value
+-- 52 -- declarator_value
     META
     IDENT
     REGISTER
@@ -5257,10 +5484,10 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 52 -- define_dir
+-- 53 -- define_dir
     META
     DEFINE_DIR
--- 53 -- directive
+-- 54 -- directive
     META
     INCLUDE_DIR
     LINE_DIR
@@ -5269,19 +5496,19 @@ int metachop::Lex ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 54 -- end_pragma
+-- 55 -- end_pragma
     META
     PRAGMA_DIR
--- 55 -- end_pragma_managed
+-- 56 -- end_pragma_managed
     META
     PRAGMA_DIR
--- 56 -- enum_declarator
+-- 57 -- enum_declarator
     META
     ENUM
--- 57 -- enum_val
+-- 58 -- enum_val
     META
     IDENT
--- 58 -- equality_expression
+-- 59 -- equality_expression
     META
     IDENT
     STRING
@@ -5340,16 +5567,16 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 59 -- exception
+-- 60 -- exception
     META
     TRY_UPPER
--- 60 -- exception_ansi
+-- 61 -- exception_ansi
     META
     TRY
--- 61 -- exception_list
+-- 62 -- exception_list
     META
     THROW
--- 62 -- exclusive_or_expression
+-- 63 -- exclusive_or_expression
     META
     IDENT
     STRING
@@ -5408,7 +5635,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 63 -- expression
+-- 64 -- expression
     META
     IDENT
     STRING
@@ -5467,7 +5694,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 64 -- expression_for
+-- 65 -- expression_for
     META
     IDENT
     STRING
@@ -5526,13 +5753,13 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 65 -- ext_all
+-- 66 -- ext_all
     ALWAYS
--- 66 -- ext_all_ext
+-- 67 -- ext_all_ext
     ALWAYS
--- 67 -- ext_all_no_linkage
+-- 68 -- ext_all_no_linkage
     ALWAYS
--- 68 -- ext_data_decl_sc_ty
+-- 69 -- ext_data_decl_sc_ty
     META
     IDENT
     AUTO
@@ -5563,7 +5790,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 69 -- ext_data_decl_sc_ty_full
+-- 70 -- ext_data_decl_sc_ty_full
     META
     IDENT
     AUTO
@@ -5594,7 +5821,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 70 -- ext_data_decl_sc_ty_short
+-- 71 -- ext_data_decl_sc_ty_short
     META
     IDENT
     AUTO
@@ -5623,11 +5850,11 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 71 -- ext_data_decl_simp
+-- 72 -- ext_data_decl_simp
     ALWAYS
--- 72 -- ext_data_declaration
+-- 73 -- ext_data_declaration
     ALWAYS
--- 73 -- ext_decl_dir
+-- 74 -- ext_decl_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -5639,7 +5866,7 @@ int metachop::Lex ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 74 -- ext_decl_if_dir
+-- 75 -- ext_decl_if_dir
     META
     IDENT
     STRING
@@ -5698,14 +5925,14 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 75 -- ext_decl_ifdef_dir
+-- 76 -- ext_decl_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 76 -- for_statement
+-- 77 -- for_statement
     META
     POUV
--- 77 -- func_declaration
+-- 78 -- func_declaration
     META
     IDENT
     AUTO
@@ -5741,7 +5968,7 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 78 -- func_declarator
+-- 79 -- func_declarator
     META
     IDENT
     REGISTER
@@ -5758,14 +5985,14 @@ int metachop::Lex ()
     ETCO
     TILD
     OPERATOR
--- 79 -- ident_mul
+-- 80 -- ident_mul
     META
     IDENT
     DPOIDPOI
--- 80 -- include_dir
+-- 81 -- include_dir
     META
     INCLUDE_DIR
--- 81 -- inclusive_or_expression
+-- 82 -- inclusive_or_expression
     META
     IDENT
     STRING
@@ -5824,14 +6051,14 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 82 -- initializer
+-- 83 -- initializer
     ALWAYS
--- 83 -- inline_namespace
+-- 84 -- inline_namespace
     META
     INLINE
--- 84 -- inside_declaration
+-- 85 -- inside_declaration
     ALWAYS
--- 85 -- inside_declaration1
+-- 86 -- inside_declaration1
     META
     IDENT
     AUTO
@@ -5860,19 +6087,19 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 86 -- inside_declaration2
+-- 87 -- inside_declaration2
     META
     IDENT
     DPOI
--- 87 -- inside_declaration_extension
+-- 88 -- inside_declaration_extension
     ALWAYS
--- 88 -- label_beg
+-- 89 -- label_beg
     META
     IDENT
--- 89 -- linkage_specification
+-- 90 -- linkage_specification
     META
     EXTERN
--- 90 -- logical_and_expression
+-- 91 -- logical_and_expression
     META
     IDENT
     STRING
@@ -5931,7 +6158,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 91 -- logical_or_expression
+-- 92 -- logical_or_expression
     META
     IDENT
     STRING
@@ -5990,10 +6217,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 92 -- long_type
+-- 93 -- long_type
     META
     LONG
--- 93 -- macro
+-- 94 -- macro
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -6006,19 +6233,19 @@ int metachop::Lex ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 94 -- macro_extended
+-- 95 -- macro_extended
     ALWAYS
--- 95 -- main_entry
+-- 96 -- main_entry
     META
     LANGUAGE
--- 96 -- member_declarator
+-- 97 -- member_declarator
     META
     IDENT
     DPOIDPOI
--- 97 -- message_map
+-- 98 -- message_map
     META
     BEGIN_MESSAGE_MAP
--- 98 -- multiplicative_expression
+-- 99 -- multiplicative_expression
     META
     IDENT
     STRING
@@ -6077,14 +6304,14 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 99 -- name_space
+-- 100 -- name_space
     META
     NAMESPACE
     USING
--- 100 -- new_1
+-- 101 -- new_1
     META
     POUV
--- 101 -- new_2
+-- 102 -- new_2
     META
     IDENT
     AUTO
@@ -6114,9 +6341,9 @@ int metachop::Lex ()
     SIGNED
     UNSIGNED
     POUV
--- 102 -- new_declarator
+-- 103 -- new_declarator
     ALWAYS
--- 103 -- new_type_name
+-- 104 -- new_type_name
     META
     IDENT
     AUTO
@@ -6145,21 +6372,21 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 104 -- none_statement
+-- 105 -- none_statement
     ALWAYS
--- 105 -- operator_function_name
+-- 106 -- operator_function_name
     META
     OPERATOR
--- 106 -- other_config
+-- 107 -- other_config
     META
     PRAGMA_CONTENT
--- 107 -- parameter_list
+-- 108 -- parameter_list
     META
     POUV
--- 108 -- parameter_list_extended
+-- 109 -- parameter_list_extended
     META
     POUV
--- 109 -- pm_expression
+-- 110 -- pm_expression
     META
     IDENT
     STRING
@@ -6218,7 +6445,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 110 -- postfix_expression
+-- 111 -- postfix_expression
     META
     IDENT
     STRING
@@ -6267,13 +6494,13 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 111 -- pretty::bidon
+-- 112 -- pretty::bidon
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 112 -- pretty::parse_entry
+-- 113 -- pretty::parse_entry
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 113 -- primary_expression
+-- 114 -- primary_expression
     META
     IDENT
     STRING
@@ -6308,34 +6535,42 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 114 -- program
+-- 115 -- program
     ALWAYS
--- 115 -- protect_declare
+-- 116 -- protect_declare
     META
     PRIVATE
     PROTECTED
     PUBLIC
--- 116 -- ptr_operator
+-- 117 -- protected_array_declaration
+    META
+    _PROTECTEDARRAY
+    _PROTECTEDARRAY_S
+    _PROTECTEDPOINTER
+    _PROTECTEDPOINTER_S
+    _TYPEDEF_PROTECTEDARRAY
+    _TYPEDEF_PROTECTEDARRAY_S
+-- 118 -- ptr_operator
     META
     IDENT
     DPOIDPOI
     ETOI
     ETCO
--- 117 -- qualified_name
+-- 119 -- qualified_name
     META
     IDENT
     TILD
--- 118 -- qualified_name_elem
+-- 120 -- qualified_name_elem
     META
     DPOIDPOI
--- 119 -- quick_prog
+-- 121 -- quick_prog
     ALWAYS
--- 120 -- quick_prog_elem
+-- 122 -- quick_prog_elem
     ALWAYS
--- 121 -- range_in_liste
+-- 123 -- range_in_liste
     META
     IDENT
--- 122 -- range_modifier
+-- 124 -- range_modifier
     META
     IDENT
     REGISTER
@@ -6347,19 +6582,19 @@ int metachop::Lex ()
     FRIEND
     CONST
     CONSTEXPR
--- 123 -- range_modifier_function
+-- 125 -- range_modifier_function
     META
     INLINE
     VIRTUAL
     FRIEND
     CONST
     CONSTEXPR
--- 124 -- range_modifier_ident
+-- 126 -- range_modifier_ident
     ALWAYS
--- 125 -- range_pragma
+-- 127 -- range_pragma
     META
     PRAGMA_RANGE
--- 126 -- relational_expression
+-- 128 -- relational_expression
     META
     IDENT
     STRING
@@ -6418,9 +6653,9 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 127 -- sc_specifier
+-- 129 -- sc_specifier
     ALWAYS
--- 128 -- shift_expression
+-- 130 -- shift_expression
     META
     IDENT
     STRING
@@ -6479,7 +6714,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 129 -- short_long_int_char
+-- 131 -- short_long_int_char
     META
     INT
     CHAR
@@ -6487,30 +6722,13 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 130 -- signed_type
+-- 132 -- signed_type
     META
     SIGNED
--- 131 -- simple_ident
+-- 133 -- simple_ident
     META
     IDENT
--- 132 -- simple_type
-    META
-    IDENT
-    AUTO
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 133 -- simple_type_name
+-- 134 -- simple_type
     META
     IDENT
     AUTO
@@ -6527,12 +6745,29 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 134 -- sizeof_type
+-- 135 -- simple_type_name
+    META
+    IDENT
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 136 -- sizeof_type
     META
     POUV
--- 135 -- stat_all
+-- 137 -- stat_all
     ALWAYS
--- 136 -- stat_dir
+-- 138 -- stat_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -6544,7 +6779,7 @@ int metachop::Lex ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 137 -- stat_dir_switch
+-- 139 -- stat_dir_switch
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -6556,7 +6791,7 @@ int metachop::Lex ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 138 -- stat_if_dir
+-- 140 -- stat_if_dir
     META
     IDENT
     STRING
@@ -6615,11 +6850,11 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 139 -- stat_ifdef_dir
+-- 141 -- stat_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 140 -- statement
+-- 142 -- statement
     META
     GOTO
     IDENT
@@ -6700,7 +6935,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 141 -- statement_expression
+-- 143 -- statement_expression
     META
     IDENT
     STRING
@@ -6759,10 +6994,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 142 -- string_list
+-- 144 -- string_list
     META
     STRING
--- 143 -- switch_elem
+-- 145 -- switch_elem
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -6776,13 +7011,13 @@ int metachop::Lex ()
     LINE_REFERENCE_DIR
     CASE
     DEFAULT
--- 144 -- switch_list
+-- 146 -- switch_list
     META
     AOUV
--- 145 -- template_type
+-- 147 -- template_type
     META
     INFE
--- 146 -- type_and_declarator
+-- 148 -- type_and_declarator
     META
     IDENT
     AUTO
@@ -6813,39 +7048,10 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 147 -- type_descr
+-- 149 -- type_descr
     META
     IDENT
--- 148 -- type_name
-    META
-    IDENT
-    AUTO
-    REGISTER
-    VOLATILE
-    __ATTRIBUTE__
-    __ASM__
-    INLINE
-    VIRTUAL
-    FRIEND
-    CONST
-    CONSTEXPR
-    ENUM
-    STRUCT
-    UNION
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 149 -- type_specifier
+-- 150 -- type_name
     META
     IDENT
     AUTO
@@ -6874,7 +7080,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 150 -- type_specifier_without_param
+-- 151 -- type_specifier
     META
     IDENT
     AUTO
@@ -6903,7 +7109,7 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 151 -- typedef_and_declarator
+-- 152 -- type_specifier_without_param
     META
     IDENT
     AUTO
@@ -6932,7 +7138,36 @@ int metachop::Lex ()
     SHORT
     SIGNED
     UNSIGNED
--- 152 -- unary_expression
+-- 153 -- typedef_and_declarator
+    META
+    IDENT
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 154 -- unary_expression
     META
     IDENT
     STRING
@@ -6991,10 +7226,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 153 -- unsigned_type
+-- 155 -- unsigned_type
     META
     UNSIGNED
--- 154 -- cplus::assignment_expression
+-- 156 -- cplus::assignment_expression
     META
     IDENT
     STRING
@@ -7053,69 +7288,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 155 -- cplus::cast_expression_value
+-- 157 -- cplus::cast_expression_value
     META
     POUV
--- 156 -- cplus::exclusive_or_expression
-    META
-    IDENT
-    STRING
-    CHARACT
-    INTEGER
-    ULINTEGER
-    ULLINTEGER
-    LLINTEGER
-    LINTEGER
-    UINTEGER
-    FLOATVAL
-    ULHEXA
-    ULLHEXA
-    LLHEXA
-    LHEXA
-    UHEXA
-    HEXA
-    ULLOCTAL
-    LLOCTAL
-    ULOCTAL
-    LOCTAL
-    UOCTAL
-    OCTAL
-    AUTO
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
-    POUV
-    ETOI
-    ETCO
-    TILD
-    OPERATOR
-    TIRE
-    PLUS
-    EXCL
-    PLUSPLUS
-    TIRETIRE
-    SIZEOF
-    NEW
-    DELETE
-    VA_ARG
-    INFE
-    POINPOINPOIN
-    INFESUPE
-    VALUE
-    NEXTL
-    PARSE
-    IN
--- 157 -- cplus::expression
+-- 158 -- cplus::exclusive_or_expression
     META
     IDENT
     STRING
@@ -7174,9 +7350,68 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 158 -- cplus::main_entry
+-- 159 -- cplus::expression
+    META
+    IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    INFE
+    POINPOINPOIN
+    INFESUPE
+    VALUE
+    NEXTL
+    PARSE
+    IN
+-- 160 -- cplus::main_entry
     ALWAYS
--- 159 -- cplus::multiplicative_expression
+-- 161 -- cplus::multiplicative_expression
     META
     IDENT
     STRING
@@ -7235,7 +7470,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 160 -- cplus::postfix_expression
+-- 162 -- cplus::postfix_expression
     META
     IDENT
     STRING
@@ -7284,7 +7519,7 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 161 -- cplus::primary_expression
+-- 163 -- cplus::primary_expression
     META
     IDENT
     STRING
@@ -7312,66 +7547,7 @@ int metachop::Lex ()
     TILD
     OPERATOR
     VA_ARG
--- 162 -- cplus::relational_expression
-    META
-    IDENT
-    STRING
-    CHARACT
-    INTEGER
-    ULINTEGER
-    ULLINTEGER
-    LLINTEGER
-    LINTEGER
-    UINTEGER
-    FLOATVAL
-    ULHEXA
-    ULLHEXA
-    LLHEXA
-    LHEXA
-    UHEXA
-    HEXA
-    ULLOCTAL
-    LLOCTAL
-    ULOCTAL
-    LOCTAL
-    UOCTAL
-    OCTAL
-    AUTO
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
-    POUV
-    ETOI
-    ETCO
-    TILD
-    OPERATOR
-    TIRE
-    PLUS
-    EXCL
-    PLUSPLUS
-    TIRETIRE
-    SIZEOF
-    NEW
-    DELETE
-    VA_ARG
-    INFE
-    POINPOINPOIN
-    INFESUPE
-    VALUE
-    NEXTL
-    PARSE
-    IN
--- 163 -- cplus::shift_expression
+-- 164 -- cplus::relational_expression
     META
     IDENT
     STRING
@@ -7430,7 +7606,66 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 164 -- cplus::statement
+-- 165 -- cplus::shift_expression
+    META
+    IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    INFE
+    POINPOINPOIN
+    INFESUPE
+    VALUE
+    NEXTL
+    PARSE
+    IN
+-- 166 -- cplus::statement
     META
     GOTO
     IDENT
@@ -7505,18 +7740,18 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 165 -- old
+-- 167 -- old
     ALWAYS
--- 166 -- prog
+-- 168 -- prog
     META
     LANGUAGE
--- 167 -- take_follow
+-- 169 -- take_follow
     META
     INFE
     INFESUPE
--- 168 -- take_follow_list
+-- 170 -- take_follow_list
     ALWAYS
--- 169 -- take_follow_super
+-- 171 -- take_follow_super
     META
     IDENT
     STRING
@@ -7575,10 +7810,10 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 170 -- chopb::main_entry
+-- 172 -- chopb::main_entry
     META
     LANGUAGE
--- 171 -- chopb::primary_expression
+-- 173 -- chopb::primary_expression
     META
     IDENT
     STRING
@@ -7613,187 +7848,189 @@ int metachop::Lex ()
     NEXTL
     PARSE
     IN
--- 172 -- chopb::prog
+-- 174 -- chopb::prog
     META
     LANGUAGE
 */
 
-signed char *metachop::_tokenArray [173] = {
-    (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\077\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\200\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\340\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\101\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\370\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\300\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\006\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\370\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\374\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\377\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\001\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\340\003\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000"
+signed char *metachop::_tokenArray [175] = {
+    (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\077\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\200\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\340\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\101\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\370\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\300\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\006\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\370\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\374\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\376\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\100\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\017\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000"
 };
-typedef int (metachop::*(DEF_FUNC_TOKEN_ARRAY [173]))() ;
+typedef int (metachop::*(DEF_FUNC_TOKEN_ARRAY [175]))() ;
 DEF_FUNC_TOKEN_ARRAY metachop::_tokenFuncArray = {
     /*bidon                          */0,
     /*parse_entry                    */0,
@@ -7804,6 +8041,7 @@ DEF_FUNC_TOKEN_ARRAY metachop::_tokenFuncArray = {
     /*and_expression                 */(&metachop::Lex),
     /*arg_declarator                 */(&metachop::Lex),
     /*arg_declarator_base            */(&metachop::Lex),
+    /*arg_declarator_base_type       */(&metachop::Lex),
     /*arg_declarator_followed        */(&metachop::Lex),
     /*arg_declarator_type            */(&metachop::Lex),
     /*arg_typ_declarator             */(&metachop::Lex),
@@ -7911,6 +8149,7 @@ DEF_FUNC_TOKEN_ARRAY metachop::_tokenFuncArray = {
     /*primary_expression             */(&metachop::Lex),
     /*program                        */0,
     /*protect_declare                */(&metachop::Lex),
+    /*protected_array_declaration    */(&metachop::Lex),
     /*ptr_operator                   */(&metachop::Lex),
     /*qualified_name                 */(&metachop::Lex),
     /*qualified_name_elem            */(&metachop::Lex),
@@ -7969,7 +8208,7 @@ DEF_FUNC_TOKEN_ARRAY metachop::_tokenFuncArray = {
     /*chopb::primary_expression      */(&metachop::Lex),
     /*chopb::prog                    */(&metachop::Lex)
 };
-int metachop::_tokenNbFuncArray [173] = {
+int metachop::_tokenNbFuncArray [175] = {
     /*bidon                          */0,
     /*parse_entry                    */0,
     /*abstract_declarator            */0,
@@ -7979,6 +8218,7 @@ int metachop::_tokenNbFuncArray [173] = {
     /*and_expression                 */1,
     /*arg_declarator                 */1,
     /*arg_declarator_base            */1,
+    /*arg_declarator_base_type       */1,
     /*arg_declarator_followed        */1,
     /*arg_declarator_type            */1,
     /*arg_typ_declarator             */1,
@@ -8086,6 +8326,7 @@ int metachop::_tokenNbFuncArray [173] = {
     /*primary_expression             */1,
     /*program                        */0,
     /*protect_declare                */1,
+    /*protected_array_declaration    */1,
     /*ptr_operator                   */1,
     /*qualified_name                 */1,
     /*qualified_name_elem            */1,
@@ -8160,26 +8401,27 @@ int _arityNode_metachop[] = {   2 , 1 , 1 , 1 , 1 , 2 , -1 , 3 , 1 , 1 , 1 , 0
                               , -1 , 4 , 3 , -1 , 1 , 2 , 2 , 2 , -1 , -1 , 2
                               , 1 , -1 , 2 , -1 , -1 , -1 , -1 , 4 , 2 , 2 , -1
                               , 1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
-                              , -1 , -1 , -1 , -1 , 2 , 3 , 1 , -1 , 1 , 1 , 1
-                              , -1 , 1 , 2 , 2 , -1 , 1 , 2 , -1 , 2 , 2 , 2
-                              , 4 , 0 , 2 , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 2
-                              , 2 , 2 , 2 , 2 , 1 , 1 , 2 , 2 , 2 , 0 , 2
-                              , -1 , 1 , 1 , -1 , 3 , 2 , 1 , 1 , 1 , 1 , 1
-                              , 1 , 3 , 0 , 1 , 3 , 3 , -1 , 2 , 2 , 2 , 2
+                              , -1 , -1 , -1 , -1 , 2 , 3 , 1 , -1 , -1 , -1 , -1
+                              , -1 , -1 , -1 , 1 , 1 , 1 , -1 , 1 , 2 , 2 , -1
+                              , 1 , 2 , -1 , 2 , 2 , 2 , 4 , 0 , 2 , 1 , 2
+                              , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 1
+                              , 1 , 2 , 2 , 2 , 0 , 2 , -1 , 1 , 1 , -1 , 3
+                              , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 3 , 0 , 1 , 3
+                              , 3 , -1 , 2 , 2 , 2 , 2 , 1 , 1 , 1 , 1 , 1
                               , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
-                              , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
-                              , 1 , 0 , -1 , -1 , 2 , 2 , 2 , 2 , 1 , -1 , 2
-                              , 1 , -1 , 1 , -1 , 2 , 2 , 0 , -1 , 1 , 2 , 11
-                              , 0 , -1 , 2 , 1 , 1 , 2 , 1 , -1 , 2 , -1 , 2
-                              , 1 , 0 , 0 , 2 , 1 , -1 , 2 , 2 , 2 , 2 , 2
-                              , 2 , 0 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , 2 , 2
-                              , 2 , 2 , 2 , 2 , 1 , 1 , 1 , 1 , 2 , 1 , 1
-                              , 1 , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , 0 , 1
-                              , 1 , 1 , 1 , 1 , -1 , 1 , 2 , 1 , 2 , 1 , 1
-                              , 1 , 1 , 1 , 1 , 1 , 1 , -1 , -1 , 1 , -1 , -1
-                              , -1 , -1 , -1 , 1 , -1 , -1 , -1 , -1 , 3 , -1 , 1
-                              , -1 , 1 , -1 , -1 , 2 , 2 , 1 , 0 , 1 , 2 , 0
-                              , 2 , 1 , -1 , 0 , 0 , 0 , 1 , 1 , 1 };
+                              , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 0 , -1 , -1 , 2
+                              , 2 , 2 , 2 , 1 , -1 , 2 , 1 , -1 , 1 , -1 , 2
+                              , 2 , 0 , -1 , 1 , 2 , 11 , 0 , -1 , 2 , 1 , 1
+                              , 2 , 1 , -1 , 2 , -1 , 2 , 1 , 0 , 0 , 2 , 1
+                              , -1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , -1 , -1 , -1
+                              , -1 , -1 , -1 , -1 , 2 , 2 , 2 , 2 , 2 , 2 , 1
+                              , 1 , 1 , 1 , 2 , 5 , 4 , 5 , 4 , 1 , 1 , 1
+                              , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , 0 , 1 , 1
+                              , 1 , 1 , 1 , -1 , 1 , 2 , 1 , 2 , 1 , 1 , 1
+                              , 1 , 1 , 1 , 1 , 1 , -1 , -1 , 1 , -1 , -1 , -1
+                              , -1 , -1 , 1 , -1 , -1 , -1 , -1 , 3 , -1 , 1 , -1
+                              , 1 , -1 , -1 , 2 , 2 , 1 , 0 , 1 , 2 , 0 , 2
+                              , 1 , -1 , 0 , 0 , 0 , 1 , 1 , 1 };
 
     
 STRINGELEM * listConst_metachop;
@@ -8196,217 +8438,227 @@ void metachop::InitConst()
         
         STRINGELEM * inter = listConst;
         listConst = (STRINGELEM *) 0;
-        AddConstVal("metachop::NODE_LIST", 394);
-        AddConstVal("metachop::NODE_TREE", 393);
-        AddConstVal("metachop::SPACE", 392);
-        AddConstVal("metachop::SEP_OMIT", 391);
-        AddConstVal("metachop::SEP_BEFORE", 390);
-        AddConstVal("metachop::SEP_AFTER", 389);
-        AddConstVal("metachop::AFERAFER", 388);
-        AddConstVal("metachop::ALINEA", 387);
-        AddConstVal("metachop::CHOP_DEF", 386);
-        AddConstVal("metachop::NIL", 385);
-        AddConstVal("metachop::IN_LANG", 384);
-        AddConstVal("metachop::NEXT", 383);
-        AddConstVal("metachop::DEF_IDENT", 382);
-        AddConstVal("metachop::BOX", 381);
-        AddConstVal("metachop::EXPO", 380);
-        AddConstVal("metachop::EXPO_AFF", 379);
-        AddConstVal("metachop::ETOIETOIEGAL", 378);
-        AddConstVal("metachop::IN", 377);
-        AddConstVal("metachop::PARSE", 376);
-        AddConstVal("metachop::NEXTL", 375);
-        AddConstVal("metachop::VALUE", 374);
-        AddConstVal("metachop::INFESUPE", 373);
-        AddConstVal("metachop::FOREACH", 372);
-        AddConstVal("metachop::INFESEPOSUPE", 371);
-        AddConstVal("metachop::INFESEPBSUPE", 370);
-        AddConstVal("metachop::INFESEPASUPE", 369);
-        AddConstVal("metachop::AOUVAOUV", 368);
-        AddConstVal("metachop::ARRO", 367);
-        AddConstVal("metachop::NL_BEG", 366);
-        AddConstVal("metachop::TAB_BEG", 365);
-        AddConstVal("metachop::SPACE_BEG", 364);
-        AddConstVal("metachop::MAKETREE_SUP", 363);
-        AddConstVal("metachop::MAKETREE_INF", 362);
-        AddConstVal("metachop::PARSE_ELEM", 361);
-        AddConstVal("metachop::SIMP_ETOI", 360);
-        AddConstVal("metachop::ETOI_ETOI", 359);
-        AddConstVal("metachop::TUNSIGNED", 358);
-        AddConstVal("metachop::BDECR", 357);
-        AddConstVal("metachop::BINCR", 356);
-        AddConstVal("metachop::ADDR", 355);
-        AddConstVal("metachop::NOT", 354);
-        AddConstVal("metachop::LNEG", 353);
-        AddConstVal("metachop::POS", 352);
-        AddConstVal("metachop::NEG", 351);
-        AddConstVal("metachop::PARAM_TYPE", 350);
-        AddConstVal("metachop::STRING_LIST", 349);
-        AddConstVal("metachop::LABEL", 348);
-        AddConstVal("metachop::THROW_ANSI", 347);
-        AddConstVal("metachop::ELSE", 346);
-        AddConstVal("metachop::DECL_TYPE", 345);
-        AddConstVal("metachop::CLASSNAME", 344);
-        AddConstVal("metachop::TIDENT", 343);
-        AddConstVal("metachop::TSIGNED", 342);
-        AddConstVal("metachop::TSHORT", 341);
-        AddConstVal("metachop::TCHAR", 340);
-        AddConstVal("metachop::TINT", 339);
-        AddConstVal("metachop::RSHI", 338);
-        AddConstVal("metachop::LSHI", 337);
-        AddConstVal("metachop::LT", 336);
-        AddConstVal("metachop::GT", 335);
-        AddConstVal("metachop::GEQU", 334);
-        AddConstVal("metachop::LEQU", 333);
-        AddConstVal("metachop::SPACE_ARROW", 332);
-        AddConstVal("metachop::TAB_DIRECTIVE", 331);
-        AddConstVal("metachop::ENUM_PARAMETERS_UNDER", 330);
-        AddConstVal("metachop::ENUM_VERT_VALUE", 329);
-        AddConstVal("metachop::PROTECT_MEMB", 328);
-        AddConstVal("metachop::LANGUAGE", 327);
-        AddConstVal("metachop::EXP", 326);
-        AddConstVal("metachop::ADECR", 325);
-        AddConstVal("metachop::AINCR", 324);
-        AddConstVal("metachop::ARROW", 323);
-        AddConstVal("metachop::REF", 322);
-        AddConstVal("metachop::EXP_BRA", 321);
-        AddConstVal("metachop::EXP_LIST", 320);
-        AddConstVal("metachop::ARROW_MEMB", 319);
-        AddConstVal("metachop::DOT_MEMB", 318);
-        AddConstVal("metachop::POINETOI", 317);
-        AddConstVal("metachop::TIRESUPEETOI", 316);
-        AddConstVal("metachop::TIRESUPE", 315);
-        AddConstVal("metachop::SUPESUPE", 314);
-        AddConstVal("metachop::INFEINFE", 313);
-        AddConstVal("metachop::SUPEEGAL", 312);
-        AddConstVal("metachop::INFEEGAL", 311);
-        AddConstVal("metachop::NONE", 310);
-        AddConstVal("metachop::NEW_DECLARATOR", 309);
-        AddConstVal("metachop::USING_NAMESPACE", 308);
-        AddConstVal("metachop::NAMESPACE_ALIAS", 307);
-        AddConstVal("metachop::REM", 306);
-        AddConstVal("metachop::DIV", 305);
-        AddConstVal("metachop::MUL", 304);
-        AddConstVal("metachop::POURC", 303);
-        AddConstVal("metachop::MESSAGE_MAP", 302);
-        AddConstVal("metachop::MACRO", 301);
-        AddConstVal("metachop::TDOUBLE", 300);
-        AddConstVal("metachop::TFLOAT", 299);
-        AddConstVal("metachop::TLONG", 298);
-        AddConstVal("metachop::OR", 297);
-        AddConstVal("metachop::VBARVBAR", 296);
-        AddConstVal("metachop::AND", 295);
-        AddConstVal("metachop::ETCOETCO", 294);
-        AddConstVal("metachop::COMPOUND_EXT", 293);
-        AddConstVal("metachop::EXTERNAL", 292);
-        AddConstVal("metachop::INLINE_NAMESPACE", 291);
-        AddConstVal("metachop::INITIALIZER", 290);
-        AddConstVal("metachop::LOR", 289);
-        AddConstVal("metachop::VBAR", 288);
-        AddConstVal("metachop::DELETE_FUNCTION", 287);
-        AddConstVal("metachop::FUNC", 286);
-        AddConstVal("metachop::ALL_OF", 285);
-        AddConstVal("metachop::EXTENSION", 284);
-        AddConstVal("metachop::__EXTENSION__", 283);
-        AddConstVal("metachop::STAT_VOID", 282);
-        AddConstVal("metachop::TYPEDEF", 281);
-        AddConstVal("metachop::TEMPLATE_DECL", 280);
-        AddConstVal("metachop::SUPE", 279);
-        AddConstVal("metachop::CLASS_PARAM", 278);
-        AddConstVal("metachop::TEMPLATE", 277);
-        AddConstVal("metachop::EXP_SEQ", 276);
-        AddConstVal("metachop::LXOR", 275);
-        AddConstVal("metachop::CHAP", 274);
-        AddConstVal("metachop::EXCEPTION_LIST", 273);
-        AddConstVal("metachop::EXCEPTION_ANSI", 272);
-        AddConstVal("metachop::EXCEPTION", 271);
-        AddConstVal("metachop::NEQU", 270);
-        AddConstVal("metachop::EQU", 269);
-        AddConstVal("metachop::EXCLEGAL", 268);
-        AddConstVal("metachop::EGALEGAL", 267);
-        AddConstVal("metachop::ENUM_CLASS", 266);
-        AddConstVal("metachop::PRAGMA", 265);
-        AddConstVal("metachop::PARAMETERS", 264);
-        AddConstVal("metachop::FUNC_HEADER", 263);
-        AddConstVal("metachop::INDENT_FUNCTION_TYPE", 262);
-        AddConstVal("metachop::COMMENT_PLUS", 261);
-        AddConstVal("metachop::COMMENT_END", 260);
-        AddConstVal("metachop::COMMENT_MIDDLE", 259);
-        AddConstVal("metachop::COMMENT_START", 258);
-        AddConstVal("metachop::MARGIN_VALUE", 257);
-        AddConstVal("metachop::BRACE_ALIGN_VALUE", 256);
-        AddConstVal("metachop::DECL_ALIGN", 255);
-        AddConstVal("metachop::ASSIGN_ALIGN", 254);
-        AddConstVal("metachop::SINGLE_SWITCH_INDENT_VALUE", 253);
-        AddConstVal("metachop::SIMPLIFY_VALUE", 252);
-        AddConstVal("metachop::SIMPLIFY", 251);
-        AddConstVal("metachop::MODE_VALUE", 250);
-        AddConstVal("metachop::TAB_VALUE", 249);
-        AddConstVal("metachop::CONFIG", 248);
-        AddConstVal("metachop::NOT_MANAGED", 247);
-        AddConstVal("metachop::NO_PRETTY", 246);
-        AddConstVal("metachop::ALINE", 245);
-        AddConstVal("metachop::ERROR", 244);
-        AddConstVal("metachop::UNDEF", 243);
-        AddConstVal("metachop::TYP_AFF_BRA", 242);
-        AddConstVal("metachop::TYP_AFF_CALL", 241);
-        AddConstVal("metachop::MEMBER_DECLARATOR", 240);
-        AddConstVal("metachop::TYP_ARRAY", 239);
-        AddConstVal("metachop::COUV", 238);
-        AddConstVal("metachop::FOR_DECLARATION", 237);
-        AddConstVal("metachop::DECLARATION", 236);
-        AddConstVal("metachop::CTOR_INITIALIZER", 235);
-        AddConstVal("metachop::BRACE_MARKER", 234);
-        AddConstVal("metachop::CTOR_INIT", 233);
-        AddConstVal("metachop::LONGLONG", 232);
-        AddConstVal("metachop::IUNLONGLONG", 231);
-        AddConstVal("metachop::IUNLONG", 230);
-        AddConstVal("metachop::IUN", 229);
-        AddConstVal("metachop::ILONGLONG", 228);
-        AddConstVal("metachop::ILONG", 227);
-        AddConstVal("metachop::RANGE_MODIFIER", 226);
-        AddConstVal("metachop::COND_AFF", 225);
-        AddConstVal("metachop::INTE", 224);
-        AddConstVal("metachop::COMPOUND", 223);
-        AddConstVal("metachop::CLASS_DECL", 222);
-        AddConstVal("metachop::AFER", 221);
-        AddConstVal("metachop::CATCH_ANSI", 220);
-        AddConstVal("metachop::EXCEPT_ANSI_ALL", 219);
-        AddConstVal("metachop::CAST", 218);
-        AddConstVal("metachop::TYP_BIT", 217);
-        AddConstVal("metachop::PROTECT", 216);
-        AddConstVal("metachop::BASE_LIST", 215);
-        AddConstVal("metachop::ATTRIBUTE_CALL", 214);
-        AddConstVal("metachop::XOR_AFF", 213);
-        AddConstVal("metachop::OR_AFF", 212);
-        AddConstVal("metachop::AND_AFF", 211);
-        AddConstVal("metachop::RSH_AFF", 210);
-        AddConstVal("metachop::LSH_AFF", 209);
-        AddConstVal("metachop::MIN_AFF", 208);
-        AddConstVal("metachop::PLU_AFF", 207);
-        AddConstVal("metachop::REM_AFF", 206);
-        AddConstVal("metachop::DIV_AFF", 205);
-        AddConstVal("metachop::MUL_AFF", 204);
-        AddConstVal("metachop::AFF", 203);
-        AddConstVal("metachop::ASM_CALL", 202);
-        AddConstVal("metachop::EXP_ARRAY", 201);
-        AddConstVal("metachop::VAR_LIST", 200);
-        AddConstVal("metachop::TYP_LIST", 199);
-        AddConstVal("metachop::TYP_AFF", 198);
-        AddConstVal("metachop::ABST_DECLARATOR", 197);
-        AddConstVal("metachop::DECLARATOR", 196);
-        AddConstVal("metachop::POINPOINPOIN", 195);
-        AddConstVal("metachop::LAND", 194);
-        AddConstVal("metachop::INIT_NEW", 193);
-        AddConstVal("metachop::VIRG", 192);
-        AddConstVal("metachop::QUALIFIED", 191);
-        AddConstVal("metachop::MINUS", 190);
-        AddConstVal("metachop::TYP", 189);
-        AddConstVal("metachop::PFER", 188);
-        AddConstVal("metachop::DESTRUCT", 187);
-        AddConstVal("metachop::TYP_REF", 186);
-        AddConstVal("metachop::TYP_ADDR", 185);
-        AddConstVal("metachop::INFE", 184);
+        AddConstVal("metachop::NODE_LIST", 404);
+        AddConstVal("metachop::NODE_TREE", 403);
+        AddConstVal("metachop::SPACE", 402);
+        AddConstVal("metachop::SEP_OMIT", 401);
+        AddConstVal("metachop::SEP_BEFORE", 400);
+        AddConstVal("metachop::SEP_AFTER", 399);
+        AddConstVal("metachop::AFERAFER", 398);
+        AddConstVal("metachop::ALINEA", 397);
+        AddConstVal("metachop::CHOP_DEF", 396);
+        AddConstVal("metachop::NIL", 395);
+        AddConstVal("metachop::IN_LANG", 394);
+        AddConstVal("metachop::NEXT", 393);
+        AddConstVal("metachop::DEF_IDENT", 392);
+        AddConstVal("metachop::BOX", 391);
+        AddConstVal("metachop::EXPO", 390);
+        AddConstVal("metachop::EXPO_AFF", 389);
+        AddConstVal("metachop::ETOIETOIEGAL", 388);
+        AddConstVal("metachop::IN", 387);
+        AddConstVal("metachop::PARSE", 386);
+        AddConstVal("metachop::NEXTL", 385);
+        AddConstVal("metachop::VALUE", 384);
+        AddConstVal("metachop::INFESUPE", 383);
+        AddConstVal("metachop::FOREACH", 382);
+        AddConstVal("metachop::INFESEPOSUPE", 381);
+        AddConstVal("metachop::INFESEPBSUPE", 380);
+        AddConstVal("metachop::INFESEPASUPE", 379);
+        AddConstVal("metachop::AOUVAOUV", 378);
+        AddConstVal("metachop::ARRO", 377);
+        AddConstVal("metachop::NL_BEG", 376);
+        AddConstVal("metachop::TAB_BEG", 375);
+        AddConstVal("metachop::SPACE_BEG", 374);
+        AddConstVal("metachop::MAKETREE_SUP", 373);
+        AddConstVal("metachop::MAKETREE_INF", 372);
+        AddConstVal("metachop::PARSE_ELEM", 371);
+        AddConstVal("metachop::SIMP_ETOI", 370);
+        AddConstVal("metachop::ETOI_ETOI", 369);
+        AddConstVal("metachop::TUNSIGNED", 368);
+        AddConstVal("metachop::BDECR", 367);
+        AddConstVal("metachop::BINCR", 366);
+        AddConstVal("metachop::ADDR", 365);
+        AddConstVal("metachop::NOT", 364);
+        AddConstVal("metachop::LNEG", 363);
+        AddConstVal("metachop::POS", 362);
+        AddConstVal("metachop::NEG", 361);
+        AddConstVal("metachop::PARAM_TYPE", 360);
+        AddConstVal("metachop::STRING_LIST", 359);
+        AddConstVal("metachop::LABEL", 358);
+        AddConstVal("metachop::THROW_ANSI", 357);
+        AddConstVal("metachop::ELSE", 356);
+        AddConstVal("metachop::DECL_TYPE", 355);
+        AddConstVal("metachop::CLASSNAME", 354);
+        AddConstVal("metachop::TIDENT", 353);
+        AddConstVal("metachop::TSIGNED", 352);
+        AddConstVal("metachop::TSHORT", 351);
+        AddConstVal("metachop::TCHAR", 350);
+        AddConstVal("metachop::TINT", 349);
+        AddConstVal("metachop::RSHI", 348);
+        AddConstVal("metachop::LSHI", 347);
+        AddConstVal("metachop::LT", 346);
+        AddConstVal("metachop::GT", 345);
+        AddConstVal("metachop::GEQU", 344);
+        AddConstVal("metachop::LEQU", 343);
+        AddConstVal("metachop::SPACE_ARROW", 342);
+        AddConstVal("metachop::TAB_DIRECTIVE", 341);
+        AddConstVal("metachop::ENUM_PARAMETERS_UNDER", 340);
+        AddConstVal("metachop::ENUM_VERT_VALUE", 339);
+        AddConstVal("metachop::PROTECTED_ARRAY_S_TYPEDEF", 338);
+        AddConstVal("metachop::PROTECTED_ARRAY_TYPEDEF", 337);
+        AddConstVal("metachop::PROTECTED_ARRAY_S", 336);
+        AddConstVal("metachop::PROTECTED_ARRAY", 335);
+        AddConstVal("metachop::PROTECT_MEMB", 334);
+        AddConstVal("metachop::LANGUAGE", 333);
+        AddConstVal("metachop::EXP", 332);
+        AddConstVal("metachop::ADECR", 331);
+        AddConstVal("metachop::AINCR", 330);
+        AddConstVal("metachop::ARROW", 329);
+        AddConstVal("metachop::REF", 328);
+        AddConstVal("metachop::EXP_BRA", 327);
+        AddConstVal("metachop::EXP_LIST", 326);
+        AddConstVal("metachop::ARROW_MEMB", 325);
+        AddConstVal("metachop::DOT_MEMB", 324);
+        AddConstVal("metachop::POINETOI", 323);
+        AddConstVal("metachop::TIRESUPEETOI", 322);
+        AddConstVal("metachop::TIRESUPE", 321);
+        AddConstVal("metachop::SUPESUPE", 320);
+        AddConstVal("metachop::INFEINFE", 319);
+        AddConstVal("metachop::SUPEEGAL", 318);
+        AddConstVal("metachop::INFEEGAL", 317);
+        AddConstVal("metachop::NONE", 316);
+        AddConstVal("metachop::NEW_DECLARATOR", 315);
+        AddConstVal("metachop::USING_NAMESPACE", 314);
+        AddConstVal("metachop::NAMESPACE_ALIAS", 313);
+        AddConstVal("metachop::REM", 312);
+        AddConstVal("metachop::DIV", 311);
+        AddConstVal("metachop::MUL", 310);
+        AddConstVal("metachop::POURC", 309);
+        AddConstVal("metachop::MESSAGE_MAP", 308);
+        AddConstVal("metachop::MACRO", 307);
+        AddConstVal("metachop::TDOUBLE", 306);
+        AddConstVal("metachop::TFLOAT", 305);
+        AddConstVal("metachop::TLONG", 304);
+        AddConstVal("metachop::OR", 303);
+        AddConstVal("metachop::VBARVBAR", 302);
+        AddConstVal("metachop::AND", 301);
+        AddConstVal("metachop::ETCOETCO", 300);
+        AddConstVal("metachop::COMPOUND_EXT", 299);
+        AddConstVal("metachop::EXTERNAL", 298);
+        AddConstVal("metachop::INLINE_NAMESPACE", 297);
+        AddConstVal("metachop::INITIALIZER", 296);
+        AddConstVal("metachop::LOR", 295);
+        AddConstVal("metachop::VBAR", 294);
+        AddConstVal("metachop::DELETE_FUNCTION", 293);
+        AddConstVal("metachop::FUNC", 292);
+        AddConstVal("metachop::ALL_OF", 291);
+        AddConstVal("metachop::EXTENSION", 290);
+        AddConstVal("metachop::__EXTENSION__", 289);
+        AddConstVal("metachop::STAT_VOID", 288);
+        AddConstVal("metachop::TYPEDEF", 287);
+        AddConstVal("metachop::TEMPLATE_DECL", 286);
+        AddConstVal("metachop::SUPE", 285);
+        AddConstVal("metachop::CLASS_PARAM", 284);
+        AddConstVal("metachop::TEMPLATE", 283);
+        AddConstVal("metachop::EXP_SEQ", 282);
+        AddConstVal("metachop::LXOR", 281);
+        AddConstVal("metachop::CHAP", 280);
+        AddConstVal("metachop::EXCEPTION_LIST", 279);
+        AddConstVal("metachop::EXCEPTION_ANSI", 278);
+        AddConstVal("metachop::EXCEPTION", 277);
+        AddConstVal("metachop::NEQU", 276);
+        AddConstVal("metachop::EQU", 275);
+        AddConstVal("metachop::EXCLEGAL", 274);
+        AddConstVal("metachop::EGALEGAL", 273);
+        AddConstVal("metachop::ENUM_CLASS", 272);
+        AddConstVal("metachop::PRAGMA", 271);
+        AddConstVal("metachop::PARAMETERS", 270);
+        AddConstVal("metachop::FUNC_HEADER", 269);
+        AddConstVal("metachop::INDENT_FUNCTION_TYPE", 268);
+        AddConstVal("metachop::COMMENT_PLUS", 267);
+        AddConstVal("metachop::COMMENT_END", 266);
+        AddConstVal("metachop::COMMENT_MIDDLE", 265);
+        AddConstVal("metachop::COMMENT_START", 264);
+        AddConstVal("metachop::MARGIN_VALUE", 263);
+        AddConstVal("metachop::BRACE_ALIGN_VALUE", 262);
+        AddConstVal("metachop::DECL_ALIGN", 261);
+        AddConstVal("metachop::ASSIGN_ALIGN", 260);
+        AddConstVal("metachop::SINGLE_SWITCH_INDENT_VALUE", 259);
+        AddConstVal("metachop::SIMPLIFY_VALUE", 258);
+        AddConstVal("metachop::SIMPLIFY", 257);
+        AddConstVal("metachop::MODE_VALUE", 256);
+        AddConstVal("metachop::TAB_VALUE", 255);
+        AddConstVal("metachop::CONFIG", 254);
+        AddConstVal("metachop::NOT_MANAGED", 253);
+        AddConstVal("metachop::NO_PRETTY", 252);
+        AddConstVal("metachop::ALINE", 251);
+        AddConstVal("metachop::ERROR", 250);
+        AddConstVal("metachop::UNDEF", 249);
+        AddConstVal("metachop::TYP_AFF_BRA", 248);
+        AddConstVal("metachop::TYP_AFF_CALL", 247);
+        AddConstVal("metachop::MEMBER_DECLARATOR", 246);
+        AddConstVal("metachop::TYP_ARRAY", 245);
+        AddConstVal("metachop::COUV", 244);
+        AddConstVal("metachop::FOR_DECLARATION", 243);
+        AddConstVal("metachop::DECLARATION", 242);
+        AddConstVal("metachop::CTOR_INITIALIZER", 241);
+        AddConstVal("metachop::BRACE_MARKER", 240);
+        AddConstVal("metachop::CTOR_INIT", 239);
+        AddConstVal("metachop::LONGLONG", 238);
+        AddConstVal("metachop::IUNLONGLONG", 237);
+        AddConstVal("metachop::IUNLONG", 236);
+        AddConstVal("metachop::IUN", 235);
+        AddConstVal("metachop::ILONGLONG", 234);
+        AddConstVal("metachop::ILONG", 233);
+        AddConstVal("metachop::RANGE_MODIFIER", 232);
+        AddConstVal("metachop::COND_AFF", 231);
+        AddConstVal("metachop::INTE", 230);
+        AddConstVal("metachop::COMPOUND", 229);
+        AddConstVal("metachop::CLASS_DECL", 228);
+        AddConstVal("metachop::AFER", 227);
+        AddConstVal("metachop::CATCH_ANSI", 226);
+        AddConstVal("metachop::EXCEPT_ANSI_ALL", 225);
+        AddConstVal("metachop::CAST", 224);
+        AddConstVal("metachop::TYP_BIT", 223);
+        AddConstVal("metachop::PROTECT", 222);
+        AddConstVal("metachop::BASE_LIST", 221);
+        AddConstVal("metachop::ATTRIBUTE_CALL", 220);
+        AddConstVal("metachop::XOR_AFF", 219);
+        AddConstVal("metachop::OR_AFF", 218);
+        AddConstVal("metachop::AND_AFF", 217);
+        AddConstVal("metachop::RSH_AFF", 216);
+        AddConstVal("metachop::LSH_AFF", 215);
+        AddConstVal("metachop::MIN_AFF", 214);
+        AddConstVal("metachop::PLU_AFF", 213);
+        AddConstVal("metachop::REM_AFF", 212);
+        AddConstVal("metachop::DIV_AFF", 211);
+        AddConstVal("metachop::MUL_AFF", 210);
+        AddConstVal("metachop::AFF", 209);
+        AddConstVal("metachop::ASM_CALL", 208);
+        AddConstVal("metachop::EXP_ARRAY", 207);
+        AddConstVal("metachop::VAR_LIST", 206);
+        AddConstVal("metachop::TYP_LIST", 205);
+        AddConstVal("metachop::TYP_AFF", 204);
+        AddConstVal("metachop::ABST_DECLARATOR", 203);
+        AddConstVal("metachop::DECLARATOR", 202);
+        AddConstVal("metachop::POINPOINPOIN", 201);
+        AddConstVal("metachop::LAND", 200);
+        AddConstVal("metachop::INIT_NEW", 199);
+        AddConstVal("metachop::VIRG", 198);
+        AddConstVal("metachop::QUALIFIED", 197);
+        AddConstVal("metachop::MINUS", 196);
+        AddConstVal("metachop::TYP", 195);
+        AddConstVal("metachop::PFER", 194);
+        AddConstVal("metachop::DESTRUCT", 193);
+        AddConstVal("metachop::TYP_REF", 192);
+        AddConstVal("metachop::TYP_ADDR", 191);
+        AddConstVal("metachop::INFE", 190);
+        AddConstVal("metachop::_TYPEDEF_PROTECTEDARRAY_S", 189);
+        AddConstVal("metachop::_TYPEDEF_PROTECTEDARRAY", 188);
+        AddConstVal("metachop::_PROTECTEDPOINTER_S", 187);
+        AddConstVal("metachop::_PROTECTEDPOINTER", 186);
+        AddConstVal("metachop::_PROTECTEDARRAY_S", 185);
+        AddConstVal("metachop::_PROTECTEDARRAY", 184);
         AddConstVal("metachop::USING", 183);
         AddConstVal("metachop::NAMESPACE", 182);
         AddConstVal("metachop::CATCH", 181);
@@ -8593,7 +8845,7 @@ void metachop::InitConst()
         AddConstVal("LIST",0);
         listConst_metachop = listConst;
         listConst = inter;
-        AddLang("metachop",_arityNode_metachop,listConst_metachop,bri_parse_entry_metachop,394,(OVER_LANG *) 0);
+        AddLang("metachop",_arityNode_metachop,listConst_metachop,bri_parse_entry_metachop,404,(OVER_LANG *) 0);
         }
 }
 

@@ -61,226 +61,236 @@ class chopb: public cplus,public virtual Parser {
     int inMakeTree;
     int parse;
     int or_not_ok;
-    static signed char * _tokenArray [170];
-    static int (chopb::*(_tokenFuncArray [170])) ();
-    static int _tokenNbFuncArray [170];
+    static signed char * _tokenArray [172];
+    static int (chopb::*(_tokenFuncArray [172])) ();
+    static int _tokenNbFuncArray [172];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 
     virtual void InitConst ();
     
     enum constants {
-        NODE_LIST =     394 ,
-        NODE_TREE =     393 ,
-        SPACE =     392 ,
-        SEP_OMIT =  391 ,
-        SEP_BEFORE =    390 ,
-        SEP_AFTER =     389 ,
-        AFERAFER =  388 ,
-        ALINEA =    387 ,
-        CHOP_DEF =  386 ,
-        NIL =   385 ,
-        IN_LANG =   384 ,
-        NEXT =  383 ,
-        DEF_IDENT =     382 ,
-        BOX =   381 ,
-        EXPO =  380 ,
-        EXPO_AFF =  379 ,
-        ETOIETOIEGAL =  378 ,
-        IN =    377 ,
-        PARSE =     376 ,
-        NEXTL =     375 ,
-        VALUE =     374 ,
-        INFESUPE =  373 ,
-        FOREACH =   372 ,
-        INFESEPOSUPE =  371 ,
-        INFESEPBSUPE =  370 ,
-        INFESEPASUPE =  369 ,
-        AOUVAOUV =  368 ,
-        ARRO =  367 ,
-        NL_BEG =    366 ,
-        TAB_BEG =   365 ,
-        SPACE_BEG =     364 ,
-        MAKETREE_SUP =  363 ,
-        MAKETREE_INF =  362 ,
-        PARSE_ELEM =    361 ,
-        SIMP_ETOI =     360 ,
-        ETOI_ETOI =     359 ,
-        TUNSIGNED =     358 ,
-        BDECR =     357 ,
-        BINCR =     356 ,
-        ADDR =  355 ,
-        NOT =   354 ,
-        LNEG =  353 ,
-        POS =   352 ,
-        NEG =   351 ,
-        PARAM_TYPE =    350 ,
-        STRING_LIST =   349 ,
-        LABEL =     348 ,
-        THROW_ANSI =    347 ,
-        ELSE =  346 ,
-        DECL_TYPE =     345 ,
-        CLASSNAME =     344 ,
-        TIDENT =    343 ,
-        TSIGNED =   342 ,
-        TSHORT =    341 ,
-        TCHAR =     340 ,
-        TINT =  339 ,
-        RSHI =  338 ,
-        LSHI =  337 ,
-        LT =    336 ,
-        GT =    335 ,
-        GEQU =  334 ,
-        LEQU =  333 ,
-        SPACE_ARROW =   332 ,
-        TAB_DIRECTIVE =     331 ,
-        ENUM_PARAMETERS_UNDER =     330 ,
-        ENUM_VERT_VALUE =   329 ,
-        PROTECT_MEMB =  328 ,
-        LANGUAGE =  327 ,
-        EXP =   326 ,
-        ADECR =     325 ,
-        AINCR =     324 ,
-        ARROW =     323 ,
-        REF =   322 ,
-        EXP_BRA =   321 ,
-        EXP_LIST =  320 ,
-        ARROW_MEMB =    319 ,
-        DOT_MEMB =  318 ,
-        POINETOI =  317 ,
-        TIRESUPEETOI =  316 ,
-        TIRESUPE =  315 ,
-        SUPESUPE =  314 ,
-        INFEINFE =  313 ,
-        SUPEEGAL =  312 ,
-        INFEEGAL =  311 ,
-        NONE =  310 ,
-        NEW_DECLARATOR =    309 ,
-        USING_NAMESPACE =   308 ,
-        NAMESPACE_ALIAS =   307 ,
-        REM =   306 ,
-        DIV =   305 ,
-        MUL =   304 ,
-        POURC =     303 ,
-        MESSAGE_MAP =   302 ,
-        MACRO =     301 ,
-        TDOUBLE =   300 ,
-        TFLOAT =    299 ,
-        TLONG =     298 ,
-        OR =    297 ,
-        VBARVBAR =  296 ,
-        AND =   295 ,
-        ETCOETCO =  294 ,
-        COMPOUND_EXT =  293 ,
-        EXTERNAL =  292 ,
-        INLINE_NAMESPACE =  291 ,
-        INITIALIZER =   290 ,
-        LOR =   289 ,
-        VBAR =  288 ,
-        DELETE_FUNCTION =   287 ,
-        FUNC =  286 ,
-        ALL_OF =    285 ,
-        EXTENSION =     284 ,
-        __EXTENSION__ =     283 ,
-        STAT_VOID =     282 ,
-        TYPEDEF =   281 ,
-        TEMPLATE_DECL =     280 ,
-        SUPE =  279 ,
-        CLASS_PARAM =   278 ,
-        TEMPLATE =  277 ,
-        EXP_SEQ =   276 ,
-        LXOR =  275 ,
-        CHAP =  274 ,
-        EXCEPTION_LIST =    273 ,
-        EXCEPTION_ANSI =    272 ,
-        EXCEPTION =     271 ,
-        NEQU =  270 ,
-        EQU =   269 ,
-        EXCLEGAL =  268 ,
-        EGALEGAL =  267 ,
-        ENUM_CLASS =    266 ,
-        PRAGMA =    265 ,
-        PARAMETERS =    264 ,
-        FUNC_HEADER =   263 ,
-        INDENT_FUNCTION_TYPE =  262 ,
-        COMMENT_PLUS =  261 ,
-        COMMENT_END =   260 ,
-        COMMENT_MIDDLE =    259 ,
-        COMMENT_START =     258 ,
-        MARGIN_VALUE =  257 ,
-        BRACE_ALIGN_VALUE =     256 ,
-        DECL_ALIGN =    255 ,
-        ASSIGN_ALIGN =  254 ,
-        SINGLE_SWITCH_INDENT_VALUE =    253 ,
-        SIMPLIFY_VALUE =    252 ,
-        SIMPLIFY =  251 ,
-        MODE_VALUE =    250 ,
-        TAB_VALUE =     249 ,
-        CONFIG =    248 ,
-        NOT_MANAGED =   247 ,
-        NO_PRETTY =     246 ,
-        ALINE =     245 ,
-        ERROR =     244 ,
-        UNDEF =     243 ,
-        TYP_AFF_BRA =   242 ,
-        TYP_AFF_CALL =  241 ,
-        MEMBER_DECLARATOR =     240 ,
-        TYP_ARRAY =     239 ,
-        COUV =  238 ,
-        FOR_DECLARATION =   237 ,
-        DECLARATION =   236 ,
-        CTOR_INITIALIZER =  235 ,
-        BRACE_MARKER =  234 ,
-        CTOR_INIT =     233 ,
-        LONGLONG =  232 ,
-        IUNLONGLONG =   231 ,
-        IUNLONG =   230 ,
-        IUN =   229 ,
-        ILONGLONG =     228 ,
-        ILONG =     227 ,
-        RANGE_MODIFIER =    226 ,
-        COND_AFF =  225 ,
-        INTE =  224 ,
-        COMPOUND =  223 ,
-        CLASS_DECL =    222 ,
-        AFER =  221 ,
-        CATCH_ANSI =    220 ,
-        EXCEPT_ANSI_ALL =   219 ,
-        CAST =  218 ,
-        TYP_BIT =   217 ,
-        PROTECT =   216 ,
-        BASE_LIST =     215 ,
-        ATTRIBUTE_CALL =    214 ,
-        XOR_AFF =   213 ,
-        OR_AFF =    212 ,
-        AND_AFF =   211 ,
-        RSH_AFF =   210 ,
-        LSH_AFF =   209 ,
-        MIN_AFF =   208 ,
-        PLU_AFF =   207 ,
-        REM_AFF =   206 ,
-        DIV_AFF =   205 ,
-        MUL_AFF =   204 ,
-        AFF =   203 ,
-        ASM_CALL =  202 ,
-        EXP_ARRAY =     201 ,
-        VAR_LIST =  200 ,
-        TYP_LIST =  199 ,
-        TYP_AFF =   198 ,
-        ABST_DECLARATOR =   197 ,
-        DECLARATOR =    196 ,
-        POINPOINPOIN =  195 ,
-        LAND =  194 ,
-        INIT_NEW =  193 ,
-        VIRG =  192 ,
-        QUALIFIED =     191 ,
-        MINUS =     190 ,
-        TYP =   189 ,
-        PFER =  188 ,
-        DESTRUCT =  187 ,
-        TYP_REF =   186 ,
-        TYP_ADDR =  185 ,
-        INFE =  184 ,
+        NODE_LIST =     404 ,
+        NODE_TREE =     403 ,
+        SPACE =     402 ,
+        SEP_OMIT =  401 ,
+        SEP_BEFORE =    400 ,
+        SEP_AFTER =     399 ,
+        AFERAFER =  398 ,
+        ALINEA =    397 ,
+        CHOP_DEF =  396 ,
+        NIL =   395 ,
+        IN_LANG =   394 ,
+        NEXT =  393 ,
+        DEF_IDENT =     392 ,
+        BOX =   391 ,
+        EXPO =  390 ,
+        EXPO_AFF =  389 ,
+        ETOIETOIEGAL =  388 ,
+        IN =    387 ,
+        PARSE =     386 ,
+        NEXTL =     385 ,
+        VALUE =     384 ,
+        INFESUPE =  383 ,
+        FOREACH =   382 ,
+        INFESEPOSUPE =  381 ,
+        INFESEPBSUPE =  380 ,
+        INFESEPASUPE =  379 ,
+        AOUVAOUV =  378 ,
+        ARRO =  377 ,
+        NL_BEG =    376 ,
+        TAB_BEG =   375 ,
+        SPACE_BEG =     374 ,
+        MAKETREE_SUP =  373 ,
+        MAKETREE_INF =  372 ,
+        PARSE_ELEM =    371 ,
+        SIMP_ETOI =     370 ,
+        ETOI_ETOI =     369 ,
+        TUNSIGNED =     368 ,
+        BDECR =     367 ,
+        BINCR =     366 ,
+        ADDR =  365 ,
+        NOT =   364 ,
+        LNEG =  363 ,
+        POS =   362 ,
+        NEG =   361 ,
+        PARAM_TYPE =    360 ,
+        STRING_LIST =   359 ,
+        LABEL =     358 ,
+        THROW_ANSI =    357 ,
+        ELSE =  356 ,
+        DECL_TYPE =     355 ,
+        CLASSNAME =     354 ,
+        TIDENT =    353 ,
+        TSIGNED =   352 ,
+        TSHORT =    351 ,
+        TCHAR =     350 ,
+        TINT =  349 ,
+        RSHI =  348 ,
+        LSHI =  347 ,
+        LT =    346 ,
+        GT =    345 ,
+        GEQU =  344 ,
+        LEQU =  343 ,
+        SPACE_ARROW =   342 ,
+        TAB_DIRECTIVE =     341 ,
+        ENUM_PARAMETERS_UNDER =     340 ,
+        ENUM_VERT_VALUE =   339 ,
+        PROTECTED_ARRAY_S_TYPEDEF =     338 ,
+        PROTECTED_ARRAY_TYPEDEF =   337 ,
+        PROTECTED_ARRAY_S =     336 ,
+        PROTECTED_ARRAY =   335 ,
+        PROTECT_MEMB =  334 ,
+        LANGUAGE =  333 ,
+        EXP =   332 ,
+        ADECR =     331 ,
+        AINCR =     330 ,
+        ARROW =     329 ,
+        REF =   328 ,
+        EXP_BRA =   327 ,
+        EXP_LIST =  326 ,
+        ARROW_MEMB =    325 ,
+        DOT_MEMB =  324 ,
+        POINETOI =  323 ,
+        TIRESUPEETOI =  322 ,
+        TIRESUPE =  321 ,
+        SUPESUPE =  320 ,
+        INFEINFE =  319 ,
+        SUPEEGAL =  318 ,
+        INFEEGAL =  317 ,
+        NONE =  316 ,
+        NEW_DECLARATOR =    315 ,
+        USING_NAMESPACE =   314 ,
+        NAMESPACE_ALIAS =   313 ,
+        REM =   312 ,
+        DIV =   311 ,
+        MUL =   310 ,
+        POURC =     309 ,
+        MESSAGE_MAP =   308 ,
+        MACRO =     307 ,
+        TDOUBLE =   306 ,
+        TFLOAT =    305 ,
+        TLONG =     304 ,
+        OR =    303 ,
+        VBARVBAR =  302 ,
+        AND =   301 ,
+        ETCOETCO =  300 ,
+        COMPOUND_EXT =  299 ,
+        EXTERNAL =  298 ,
+        INLINE_NAMESPACE =  297 ,
+        INITIALIZER =   296 ,
+        LOR =   295 ,
+        VBAR =  294 ,
+        DELETE_FUNCTION =   293 ,
+        FUNC =  292 ,
+        ALL_OF =    291 ,
+        EXTENSION =     290 ,
+        __EXTENSION__ =     289 ,
+        STAT_VOID =     288 ,
+        TYPEDEF =   287 ,
+        TEMPLATE_DECL =     286 ,
+        SUPE =  285 ,
+        CLASS_PARAM =   284 ,
+        TEMPLATE =  283 ,
+        EXP_SEQ =   282 ,
+        LXOR =  281 ,
+        CHAP =  280 ,
+        EXCEPTION_LIST =    279 ,
+        EXCEPTION_ANSI =    278 ,
+        EXCEPTION =     277 ,
+        NEQU =  276 ,
+        EQU =   275 ,
+        EXCLEGAL =  274 ,
+        EGALEGAL =  273 ,
+        ENUM_CLASS =    272 ,
+        PRAGMA =    271 ,
+        PARAMETERS =    270 ,
+        FUNC_HEADER =   269 ,
+        INDENT_FUNCTION_TYPE =  268 ,
+        COMMENT_PLUS =  267 ,
+        COMMENT_END =   266 ,
+        COMMENT_MIDDLE =    265 ,
+        COMMENT_START =     264 ,
+        MARGIN_VALUE =  263 ,
+        BRACE_ALIGN_VALUE =     262 ,
+        DECL_ALIGN =    261 ,
+        ASSIGN_ALIGN =  260 ,
+        SINGLE_SWITCH_INDENT_VALUE =    259 ,
+        SIMPLIFY_VALUE =    258 ,
+        SIMPLIFY =  257 ,
+        MODE_VALUE =    256 ,
+        TAB_VALUE =     255 ,
+        CONFIG =    254 ,
+        NOT_MANAGED =   253 ,
+        NO_PRETTY =     252 ,
+        ALINE =     251 ,
+        ERROR =     250 ,
+        UNDEF =     249 ,
+        TYP_AFF_BRA =   248 ,
+        TYP_AFF_CALL =  247 ,
+        MEMBER_DECLARATOR =     246 ,
+        TYP_ARRAY =     245 ,
+        COUV =  244 ,
+        FOR_DECLARATION =   243 ,
+        DECLARATION =   242 ,
+        CTOR_INITIALIZER =  241 ,
+        BRACE_MARKER =  240 ,
+        CTOR_INIT =     239 ,
+        LONGLONG =  238 ,
+        IUNLONGLONG =   237 ,
+        IUNLONG =   236 ,
+        IUN =   235 ,
+        ILONGLONG =     234 ,
+        ILONG =     233 ,
+        RANGE_MODIFIER =    232 ,
+        COND_AFF =  231 ,
+        INTE =  230 ,
+        COMPOUND =  229 ,
+        CLASS_DECL =    228 ,
+        AFER =  227 ,
+        CATCH_ANSI =    226 ,
+        EXCEPT_ANSI_ALL =   225 ,
+        CAST =  224 ,
+        TYP_BIT =   223 ,
+        PROTECT =   222 ,
+        BASE_LIST =     221 ,
+        ATTRIBUTE_CALL =    220 ,
+        XOR_AFF =   219 ,
+        OR_AFF =    218 ,
+        AND_AFF =   217 ,
+        RSH_AFF =   216 ,
+        LSH_AFF =   215 ,
+        MIN_AFF =   214 ,
+        PLU_AFF =   213 ,
+        REM_AFF =   212 ,
+        DIV_AFF =   211 ,
+        MUL_AFF =   210 ,
+        AFF =   209 ,
+        ASM_CALL =  208 ,
+        EXP_ARRAY =     207 ,
+        VAR_LIST =  206 ,
+        TYP_LIST =  205 ,
+        TYP_AFF =   204 ,
+        ABST_DECLARATOR =   203 ,
+        DECLARATOR =    202 ,
+        POINPOINPOIN =  201 ,
+        LAND =  200 ,
+        INIT_NEW =  199 ,
+        VIRG =  198 ,
+        QUALIFIED =     197 ,
+        MINUS =     196 ,
+        TYP =   195 ,
+        PFER =  194 ,
+        DESTRUCT =  193 ,
+        TYP_REF =   192 ,
+        TYP_ADDR =  191 ,
+        INFE =  190 ,
+        _TYPEDEF_PROTECTEDARRAY_S =     189 ,
+        _TYPEDEF_PROTECTEDARRAY =   188 ,
+        _PROTECTEDPOINTER_S =   187 ,
+        _PROTECTEDPOINTER =     186 ,
+        _PROTECTEDARRAY_S =     185 ,
+        _PROTECTEDARRAY =   184 ,
         USING =     183 ,
         NAMESPACE =     182 ,
         CATCH =     181 ,
@@ -466,217 +476,227 @@ class chopb: public cplus,public virtual Parser {
 extern chopb * parser_chopb;
 
 #endif
-#define NODE_LIST_chopb     394
-#define NODE_TREE_chopb     393
-#define SPACE_chopb     392
-#define SEP_OMIT_chopb  391
-#define SEP_BEFORE_chopb    390
-#define SEP_AFTER_chopb     389
-#define AFERAFER_chopb  388
-#define ALINEA_chopb    387
-#define CHOP_DEF_chopb  386
-#define NIL_chopb   385
-#define IN_LANG_chopb   384
-#define NEXT_chopb  383
-#define DEF_IDENT_chopb     382
-#define BOX_chopb   381
-#define EXPO_chopb  380
-#define EXPO_AFF_chopb  379
-#define ETOIETOIEGAL_chopb  378
-#define IN_chopb    377
-#define PARSE_chopb     376
-#define NEXTL_chopb     375
-#define VALUE_chopb     374
-#define INFESUPE_chopb  373
-#define FOREACH_chopb   372
-#define INFESEPOSUPE_chopb  371
-#define INFESEPBSUPE_chopb  370
-#define INFESEPASUPE_chopb  369
-#define AOUVAOUV_chopb  368
-#define ARRO_chopb  367
-#define NL_BEG_chopb    366
-#define TAB_BEG_chopb   365
-#define SPACE_BEG_chopb     364
-#define MAKETREE_SUP_chopb  363
-#define MAKETREE_INF_chopb  362
-#define PARSE_ELEM_chopb    361
-#define SIMP_ETOI_chopb     360
-#define ETOI_ETOI_chopb     359
-#define TUNSIGNED_chopb     358
-#define BDECR_chopb     357
-#define BINCR_chopb     356
-#define ADDR_chopb  355
-#define NOT_chopb   354
-#define LNEG_chopb  353
-#define POS_chopb   352
-#define NEG_chopb   351
-#define PARAM_TYPE_chopb    350
-#define STRING_LIST_chopb   349
-#define LABEL_chopb     348
-#define THROW_ANSI_chopb    347
-#define ELSE_chopb  346
-#define DECL_TYPE_chopb     345
-#define CLASSNAME_chopb     344
-#define TIDENT_chopb    343
-#define TSIGNED_chopb   342
-#define TSHORT_chopb    341
-#define TCHAR_chopb     340
-#define TINT_chopb  339
-#define RSHI_chopb  338
-#define LSHI_chopb  337
-#define LT_chopb    336
-#define GT_chopb    335
-#define GEQU_chopb  334
-#define LEQU_chopb  333
-#define SPACE_ARROW_chopb   332
-#define TAB_DIRECTIVE_chopb     331
-#define ENUM_PARAMETERS_UNDER_chopb     330
-#define ENUM_VERT_VALUE_chopb   329
-#define PROTECT_MEMB_chopb  328
-#define LANGUAGE_chopb  327
-#define EXP_chopb   326
-#define ADECR_chopb     325
-#define AINCR_chopb     324
-#define ARROW_chopb     323
-#define REF_chopb   322
-#define EXP_BRA_chopb   321
-#define EXP_LIST_chopb  320
-#define ARROW_MEMB_chopb    319
-#define DOT_MEMB_chopb  318
-#define POINETOI_chopb  317
-#define TIRESUPEETOI_chopb  316
-#define TIRESUPE_chopb  315
-#define SUPESUPE_chopb  314
-#define INFEINFE_chopb  313
-#define SUPEEGAL_chopb  312
-#define INFEEGAL_chopb  311
-#define NONE_chopb  310
-#define NEW_DECLARATOR_chopb    309
-#define USING_NAMESPACE_chopb   308
-#define NAMESPACE_ALIAS_chopb   307
-#define REM_chopb   306
-#define DIV_chopb   305
-#define MUL_chopb   304
-#define POURC_chopb     303
-#define MESSAGE_MAP_chopb   302
-#define MACRO_chopb     301
-#define TDOUBLE_chopb   300
-#define TFLOAT_chopb    299
-#define TLONG_chopb     298
-#define OR_chopb    297
-#define VBARVBAR_chopb  296
-#define AND_chopb   295
-#define ETCOETCO_chopb  294
-#define COMPOUND_EXT_chopb  293
-#define EXTERNAL_chopb  292
-#define INLINE_NAMESPACE_chopb  291
-#define INITIALIZER_chopb   290
-#define LOR_chopb   289
-#define VBAR_chopb  288
-#define DELETE_FUNCTION_chopb   287
-#define FUNC_chopb  286
-#define ALL_OF_chopb    285
-#define EXTENSION_chopb     284
-#define __EXTENSION___chopb     283
-#define STAT_VOID_chopb     282
-#define TYPEDEF_chopb   281
-#define TEMPLATE_DECL_chopb     280
-#define SUPE_chopb  279
-#define CLASS_PARAM_chopb   278
-#define TEMPLATE_chopb  277
-#define EXP_SEQ_chopb   276
-#define LXOR_chopb  275
-#define CHAP_chopb  274
-#define EXCEPTION_LIST_chopb    273
-#define EXCEPTION_ANSI_chopb    272
-#define EXCEPTION_chopb     271
-#define NEQU_chopb  270
-#define EQU_chopb   269
-#define EXCLEGAL_chopb  268
-#define EGALEGAL_chopb  267
-#define ENUM_CLASS_chopb    266
-#define PRAGMA_chopb    265
-#define PARAMETERS_chopb    264
-#define FUNC_HEADER_chopb   263
-#define INDENT_FUNCTION_TYPE_chopb  262
-#define COMMENT_PLUS_chopb  261
-#define COMMENT_END_chopb   260
-#define COMMENT_MIDDLE_chopb    259
-#define COMMENT_START_chopb     258
-#define MARGIN_VALUE_chopb  257
-#define BRACE_ALIGN_VALUE_chopb     256
-#define DECL_ALIGN_chopb    255
-#define ASSIGN_ALIGN_chopb  254
-#define SINGLE_SWITCH_INDENT_VALUE_chopb    253
-#define SIMPLIFY_VALUE_chopb    252
-#define SIMPLIFY_chopb  251
-#define MODE_VALUE_chopb    250
-#define TAB_VALUE_chopb     249
-#define CONFIG_chopb    248
-#define NOT_MANAGED_chopb   247
-#define NO_PRETTY_chopb     246
-#define ALINE_chopb     245
-#define ERROR_chopb     244
-#define UNDEF_chopb     243
-#define TYP_AFF_BRA_chopb   242
-#define TYP_AFF_CALL_chopb  241
-#define MEMBER_DECLARATOR_chopb     240
-#define TYP_ARRAY_chopb     239
-#define COUV_chopb  238
-#define FOR_DECLARATION_chopb   237
-#define DECLARATION_chopb   236
-#define CTOR_INITIALIZER_chopb  235
-#define BRACE_MARKER_chopb  234
-#define CTOR_INIT_chopb     233
-#define LONGLONG_chopb  232
-#define IUNLONGLONG_chopb   231
-#define IUNLONG_chopb   230
-#define IUN_chopb   229
-#define ILONGLONG_chopb     228
-#define ILONG_chopb     227
-#define RANGE_MODIFIER_chopb    226
-#define COND_AFF_chopb  225
-#define INTE_chopb  224
-#define COMPOUND_chopb  223
-#define CLASS_DECL_chopb    222
-#define AFER_chopb  221
-#define CATCH_ANSI_chopb    220
-#define EXCEPT_ANSI_ALL_chopb   219
-#define CAST_chopb  218
-#define TYP_BIT_chopb   217
-#define PROTECT_chopb   216
-#define BASE_LIST_chopb     215
-#define ATTRIBUTE_CALL_chopb    214
-#define XOR_AFF_chopb   213
-#define OR_AFF_chopb    212
-#define AND_AFF_chopb   211
-#define RSH_AFF_chopb   210
-#define LSH_AFF_chopb   209
-#define MIN_AFF_chopb   208
-#define PLU_AFF_chopb   207
-#define REM_AFF_chopb   206
-#define DIV_AFF_chopb   205
-#define MUL_AFF_chopb   204
-#define AFF_chopb   203
-#define ASM_CALL_chopb  202
-#define EXP_ARRAY_chopb     201
-#define VAR_LIST_chopb  200
-#define TYP_LIST_chopb  199
-#define TYP_AFF_chopb   198
-#define ABST_DECLARATOR_chopb   197
-#define DECLARATOR_chopb    196
-#define POINPOINPOIN_chopb  195
-#define LAND_chopb  194
-#define INIT_NEW_chopb  193
-#define VIRG_chopb  192
-#define QUALIFIED_chopb     191
-#define MINUS_chopb     190
-#define TYP_chopb   189
-#define PFER_chopb  188
-#define DESTRUCT_chopb  187
-#define TYP_REF_chopb   186
-#define TYP_ADDR_chopb  185
-#define INFE_chopb  184
+#define NODE_LIST_chopb     404
+#define NODE_TREE_chopb     403
+#define SPACE_chopb     402
+#define SEP_OMIT_chopb  401
+#define SEP_BEFORE_chopb    400
+#define SEP_AFTER_chopb     399
+#define AFERAFER_chopb  398
+#define ALINEA_chopb    397
+#define CHOP_DEF_chopb  396
+#define NIL_chopb   395
+#define IN_LANG_chopb   394
+#define NEXT_chopb  393
+#define DEF_IDENT_chopb     392
+#define BOX_chopb   391
+#define EXPO_chopb  390
+#define EXPO_AFF_chopb  389
+#define ETOIETOIEGAL_chopb  388
+#define IN_chopb    387
+#define PARSE_chopb     386
+#define NEXTL_chopb     385
+#define VALUE_chopb     384
+#define INFESUPE_chopb  383
+#define FOREACH_chopb   382
+#define INFESEPOSUPE_chopb  381
+#define INFESEPBSUPE_chopb  380
+#define INFESEPASUPE_chopb  379
+#define AOUVAOUV_chopb  378
+#define ARRO_chopb  377
+#define NL_BEG_chopb    376
+#define TAB_BEG_chopb   375
+#define SPACE_BEG_chopb     374
+#define MAKETREE_SUP_chopb  373
+#define MAKETREE_INF_chopb  372
+#define PARSE_ELEM_chopb    371
+#define SIMP_ETOI_chopb     370
+#define ETOI_ETOI_chopb     369
+#define TUNSIGNED_chopb     368
+#define BDECR_chopb     367
+#define BINCR_chopb     366
+#define ADDR_chopb  365
+#define NOT_chopb   364
+#define LNEG_chopb  363
+#define POS_chopb   362
+#define NEG_chopb   361
+#define PARAM_TYPE_chopb    360
+#define STRING_LIST_chopb   359
+#define LABEL_chopb     358
+#define THROW_ANSI_chopb    357
+#define ELSE_chopb  356
+#define DECL_TYPE_chopb     355
+#define CLASSNAME_chopb     354
+#define TIDENT_chopb    353
+#define TSIGNED_chopb   352
+#define TSHORT_chopb    351
+#define TCHAR_chopb     350
+#define TINT_chopb  349
+#define RSHI_chopb  348
+#define LSHI_chopb  347
+#define LT_chopb    346
+#define GT_chopb    345
+#define GEQU_chopb  344
+#define LEQU_chopb  343
+#define SPACE_ARROW_chopb   342
+#define TAB_DIRECTIVE_chopb     341
+#define ENUM_PARAMETERS_UNDER_chopb     340
+#define ENUM_VERT_VALUE_chopb   339
+#define PROTECTED_ARRAY_S_TYPEDEF_chopb     338
+#define PROTECTED_ARRAY_TYPEDEF_chopb   337
+#define PROTECTED_ARRAY_S_chopb     336
+#define PROTECTED_ARRAY_chopb   335
+#define PROTECT_MEMB_chopb  334
+#define LANGUAGE_chopb  333
+#define EXP_chopb   332
+#define ADECR_chopb     331
+#define AINCR_chopb     330
+#define ARROW_chopb     329
+#define REF_chopb   328
+#define EXP_BRA_chopb   327
+#define EXP_LIST_chopb  326
+#define ARROW_MEMB_chopb    325
+#define DOT_MEMB_chopb  324
+#define POINETOI_chopb  323
+#define TIRESUPEETOI_chopb  322
+#define TIRESUPE_chopb  321
+#define SUPESUPE_chopb  320
+#define INFEINFE_chopb  319
+#define SUPEEGAL_chopb  318
+#define INFEEGAL_chopb  317
+#define NONE_chopb  316
+#define NEW_DECLARATOR_chopb    315
+#define USING_NAMESPACE_chopb   314
+#define NAMESPACE_ALIAS_chopb   313
+#define REM_chopb   312
+#define DIV_chopb   311
+#define MUL_chopb   310
+#define POURC_chopb     309
+#define MESSAGE_MAP_chopb   308
+#define MACRO_chopb     307
+#define TDOUBLE_chopb   306
+#define TFLOAT_chopb    305
+#define TLONG_chopb     304
+#define OR_chopb    303
+#define VBARVBAR_chopb  302
+#define AND_chopb   301
+#define ETCOETCO_chopb  300
+#define COMPOUND_EXT_chopb  299
+#define EXTERNAL_chopb  298
+#define INLINE_NAMESPACE_chopb  297
+#define INITIALIZER_chopb   296
+#define LOR_chopb   295
+#define VBAR_chopb  294
+#define DELETE_FUNCTION_chopb   293
+#define FUNC_chopb  292
+#define ALL_OF_chopb    291
+#define EXTENSION_chopb     290
+#define __EXTENSION___chopb     289
+#define STAT_VOID_chopb     288
+#define TYPEDEF_chopb   287
+#define TEMPLATE_DECL_chopb     286
+#define SUPE_chopb  285
+#define CLASS_PARAM_chopb   284
+#define TEMPLATE_chopb  283
+#define EXP_SEQ_chopb   282
+#define LXOR_chopb  281
+#define CHAP_chopb  280
+#define EXCEPTION_LIST_chopb    279
+#define EXCEPTION_ANSI_chopb    278
+#define EXCEPTION_chopb     277
+#define NEQU_chopb  276
+#define EQU_chopb   275
+#define EXCLEGAL_chopb  274
+#define EGALEGAL_chopb  273
+#define ENUM_CLASS_chopb    272
+#define PRAGMA_chopb    271
+#define PARAMETERS_chopb    270
+#define FUNC_HEADER_chopb   269
+#define INDENT_FUNCTION_TYPE_chopb  268
+#define COMMENT_PLUS_chopb  267
+#define COMMENT_END_chopb   266
+#define COMMENT_MIDDLE_chopb    265
+#define COMMENT_START_chopb     264
+#define MARGIN_VALUE_chopb  263
+#define BRACE_ALIGN_VALUE_chopb     262
+#define DECL_ALIGN_chopb    261
+#define ASSIGN_ALIGN_chopb  260
+#define SINGLE_SWITCH_INDENT_VALUE_chopb    259
+#define SIMPLIFY_VALUE_chopb    258
+#define SIMPLIFY_chopb  257
+#define MODE_VALUE_chopb    256
+#define TAB_VALUE_chopb     255
+#define CONFIG_chopb    254
+#define NOT_MANAGED_chopb   253
+#define NO_PRETTY_chopb     252
+#define ALINE_chopb     251
+#define ERROR_chopb     250
+#define UNDEF_chopb     249
+#define TYP_AFF_BRA_chopb   248
+#define TYP_AFF_CALL_chopb  247
+#define MEMBER_DECLARATOR_chopb     246
+#define TYP_ARRAY_chopb     245
+#define COUV_chopb  244
+#define FOR_DECLARATION_chopb   243
+#define DECLARATION_chopb   242
+#define CTOR_INITIALIZER_chopb  241
+#define BRACE_MARKER_chopb  240
+#define CTOR_INIT_chopb     239
+#define LONGLONG_chopb  238
+#define IUNLONGLONG_chopb   237
+#define IUNLONG_chopb   236
+#define IUN_chopb   235
+#define ILONGLONG_chopb     234
+#define ILONG_chopb     233
+#define RANGE_MODIFIER_chopb    232
+#define COND_AFF_chopb  231
+#define INTE_chopb  230
+#define COMPOUND_chopb  229
+#define CLASS_DECL_chopb    228
+#define AFER_chopb  227
+#define CATCH_ANSI_chopb    226
+#define EXCEPT_ANSI_ALL_chopb   225
+#define CAST_chopb  224
+#define TYP_BIT_chopb   223
+#define PROTECT_chopb   222
+#define BASE_LIST_chopb     221
+#define ATTRIBUTE_CALL_chopb    220
+#define XOR_AFF_chopb   219
+#define OR_AFF_chopb    218
+#define AND_AFF_chopb   217
+#define RSH_AFF_chopb   216
+#define LSH_AFF_chopb   215
+#define MIN_AFF_chopb   214
+#define PLU_AFF_chopb   213
+#define REM_AFF_chopb   212
+#define DIV_AFF_chopb   211
+#define MUL_AFF_chopb   210
+#define AFF_chopb   209
+#define ASM_CALL_chopb  208
+#define EXP_ARRAY_chopb     207
+#define VAR_LIST_chopb  206
+#define TYP_LIST_chopb  205
+#define TYP_AFF_chopb   204
+#define ABST_DECLARATOR_chopb   203
+#define DECLARATOR_chopb    202
+#define POINPOINPOIN_chopb  201
+#define LAND_chopb  200
+#define INIT_NEW_chopb  199
+#define VIRG_chopb  198
+#define QUALIFIED_chopb     197
+#define MINUS_chopb     196
+#define TYP_chopb   195
+#define PFER_chopb  194
+#define DESTRUCT_chopb  193
+#define TYP_REF_chopb   192
+#define TYP_ADDR_chopb  191
+#define INFE_chopb  190
+#define _TYPEDEF_PROTECTEDARRAY_S_chopb     189
+#define _TYPEDEF_PROTECTEDARRAY_chopb   188
+#define _PROTECTEDPOINTER_S_chopb   187
+#define _PROTECTEDPOINTER_chopb     186
+#define _PROTECTEDARRAY_S_chopb     185
+#define _PROTECTEDARRAY_chopb   184
 #define USING_chopb     183
 #define NAMESPACE_chopb     182
 #define CATCH_chopb     181

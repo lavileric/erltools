@@ -2981,7 +2981,7 @@ void DecompCplus::Treat ( PTREE tree )
 #line 358 "dchop1.ch"
 #line 358 "dchop1.ch"
         
-        ItPtree it(tree, _Baum0);
+        ItPtree it (tree, _Baum0) ;
         
 #line 358 "dchop1.ch"
 #line 359 "dchop1.ch"
@@ -3030,7 +3030,7 @@ void DecompCplus::Treat ( PTREE tree )
 #line 365 "dchop1.ch"
 #line 365 "dchop1.ch"
         
-        ItPtree it(tree, _Baum1);
+        ItPtree it (tree, _Baum1) ;
         
 #line 365 "dchop1.ch"
 #line 366 "dchop1.ch"

@@ -16,7 +16,7 @@ char    *fifi (char *toto, void *fifi, int skfjlkdsfj, char **ssssss
 
 typedef int PTREE ;
 
-PTREE   (*ptFunction)() ;
+PTREE (*ptFunction) () ;
 
 main ()
 {

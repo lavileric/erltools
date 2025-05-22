@@ -502,9 +502,9 @@
 #   define LEX_EXIT(y, x) {\
                                                                                                                         PrintError(GetLexString(),x,oldLine,line,col,0,0);\
                                                                                                                 }
-#   define GET_ARRAY_VALUE(_tab, nb) (_tab[(nb)>>3] & (1 << ((nb) & 0x7)))
-#   define SET_ARRAY_VALUE(_tab, nb) (_tab[(nb)>>3] \
-                                                                                                                                    |= (1 << ((nb) & 0x7)))
+#   define GET_ARRAY_VALUE(_tab, nb) ((nb)>= 0 ? (_tab[(nb)>>3] & (1 << ((nb) & 0x7))):0)
+#   define SET_ARRAY_VALUE(_tab, nb) ((nb>=0)  ? (_tab[(nb)>>3] \
+                                                                                                                                    |= (1 << ((nb) & 0x7))):0)
 #   define NOTHING 
 #   define PUSH_CALL_QUICK(x) ( \
                                                                                                                         ((_value = ((_retValue = (x(0))) != (PPTREE) -1)) ? FreeTreeRec(_retValue) :0),\

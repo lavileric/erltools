@@ -8,7 +8,7 @@ language metachop;
 #include "decmetac.h"
 
 int         statementf, equality, caseDesign, simpleCase, ifCase, condDesign, condCase ;
-char        *ptEquality, *ptCase, *ptCond ;
+char        *ptEquality=0, *ptCase=0, *ptCond =0;
 extern int  warningOk ;
 extern int  indentFunctionType, ansiMode ;
 extern int  nbVerify ;
@@ -608,7 +608,9 @@ PTREE DecompMetachop::IntDecomp ( const PTREE &paramTree, int funcAlone )
             if ( statementf ) {
                 ";" <NL>
             }
-            free(ptCond);
+            if (ptCond)
+                free(ptCond);
+            ptCond = 0;
             break ;
         case <COMPOUND,list> : 
             if ( ansiMode && list != () ) 

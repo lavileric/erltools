@@ -98,6 +98,7 @@ follow :
     tree = metachop () . ReadFile ( theFileName);
     AddRef(tree);
     ChopTree(tree);
+    blockFreeTree = true;
     MetaEnd();
     if ( !firstError ) 
         return 1 ;

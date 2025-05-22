@@ -1013,6 +1013,109 @@ define asm_declaration;
     return retTree;
 end;
 
+define protected_array_declaration;
+    declare valTreeR,valTreeRS;
+    if take #"_protectedArray" then
+        begin
+        take "(";
+        valTreeR = maketree(PROTECTED_ARRAY,take range_modifier,(),(),(),());
+        take ",";
+        replacetree(valTreeR,2,take arg_declarator_type);
+        take ",";
+        replacetree(valTreeR,3,take arg_declarator_type);
+        take ",";
+        replacetree(valTreeR,4,take declarator);
+        take ",";
+        replacetree(valTreeR,5,take additive_expression);
+        take ")";
+        if take ";" then
+            ;
+        return valTreeR;
+        end
+    else
+        if take #"_protectedArray_s" then
+            begin
+            take "(";
+            valTreeRS = maketree(PROTECTED_ARRAY_S,take arg_declarator_type,(),(),());
+            take ",";
+            replacetree(valTreeRS,2,take arg_declarator_type);
+            take ",";
+            replacetree(valTreeRS,3,take declarator);
+            take ",";
+            replacetree(valTreeRS,4,take additive_expression);
+            take ")";
+            if take ";" then
+                ;
+            return valTreeRS;
+            end
+        else
+            if take #"_protectedPointer" then
+                begin
+                take "(";
+                valTreeR = maketree(PROTECTED_ARRAY,take range_modifier,(),(),(),());
+                take ",";
+                replacetree(valTreeR,2,take arg_declarator_type);
+                take ",";
+                replacetree(valTreeR,3,take arg_declarator_type);
+                take ",";
+                replacetree(valTreeR,4,take declarator);
+                take ")";
+                if take ";" then
+                    ;
+                return valTreeR;
+                end
+            else
+                if take #"_protectedPointer_s" then
+                    begin
+                    take "(";
+                    valTreeRS = maketree(PROTECTED_ARRAY_S,take arg_declarator_type,(),(),());
+                    take ",";
+                    replacetree(valTreeRS,2,take arg_declarator_type);
+                    take ",";
+                    replacetree(valTreeRS,3,take declarator);
+                    take ")";
+                    if take ";" then
+                        ;
+                    return valTreeRS;
+                    end
+                else
+                    if take #"_typedef_protectedArray" then
+                        begin
+                        take "(";
+                        valTreeR = maketree(PROTECTED_ARRAY_TYPEDEF,take range_modifier,(),(),(),());
+                        take ",";
+                        replacetree(valTreeR,2,take arg_declarator_type);
+                        take ",";
+                        replacetree(valTreeR,3,take arg_declarator_type);
+                        take ",";
+                        replacetree(valTreeR,4,take declarator);
+                        take ",";
+                        replacetree(valTreeR,5,take additive_expression);
+                        take ")";
+                        if take ";" then
+                            ;
+                        return valTreeR;
+                        end
+                    else
+                        if take #"_typedef_protectedArray_s" then
+                            begin
+                            take "(";
+                            valTreeRS = maketree(PROTECTED_ARRAY_S_TYPEDEF,take arg_declarator_type,(),(),());
+                            take ",";
+                            replacetree(valTreeRS,2,take arg_declarator_type);
+                            take ",";
+                            replacetree(valTreeRS,3,take declarator);
+                            take ",";
+                            replacetree(valTreeRS,4,take additive_expression);
+                            take ")";
+                            if take ";" then
+                                ;
+                            return valTreeRS;
+                            end
+                        else
+                            break;
+end;
+
 define ext_all_no_linkage;
     declare decl,listTemp;
     if take #"template" then
@@ -1027,7 +1130,7 @@ define ext_all_no_linkage;
         take ">";
         return maketree(TEMPLATE_DECL,listTemp,take ext_all_no_linkage);
         end;
-    if decl = take ext_data_declaration or decl = take func_declaration or decl = take ext_decl_dir or decl = take asm_declaration then
+    if decl = take ext_data_declaration or decl = take func_declaration or decl = take ext_decl_dir or decl = take asm_declaration or decl = take protected_array_declaration then
         return decl
     else
         return take func_declaration;
@@ -1755,7 +1858,7 @@ define type_specifier;
     if take "<" then
         begin
         repeat
-            if exp = take additive_expression or exp = take type_name then
+            if exp = take conditional_expression or exp = take type_name then
                 addlist(listParam,exp);
         until not take ",";
         take ">";
@@ -2492,7 +2595,7 @@ define arg_typ_list;
     return retTree;
 end;
 
-define arg_declarator_base;
+define arg_declarator_base_type;
     declare retTree,valTree;
     retTree = take type_specifier;
     if valTree = take declarator then
@@ -2507,6 +2610,19 @@ define arg_declarator_base;
         valTree = maketree(TYP_AFF,valTree,take assignment_expression);
         end;
     return valTree;
+end;
+
+define arg_declarator_expression;
+    if not see "..." then
+        return take additive_expression;
+end;
+
+define arg_declarator_base;
+    declare retTree;
+    if not retTree = take arg_declarator_base_type then
+        if not retTree = take arg_declarator_expression then
+            retTree = take arg_declarator_base_type;
+    return retTree;
 end;
 
 define arg_declarator;

@@ -11,511 +11,535 @@
 
 
 
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 int cplus::SortKeyWord (int defaultValue)
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
     register int Value;
-#line 2080 "cplus.met"
-    Value = strcmp(lexEl.string(),"int");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+    Value = strcmp(lexEl.string(),"goto");
+#line 2183 "cplus.met"
     if (Value > 0) {
-#line 2080 "cplus.met"
-        Value = strcmp(lexEl.string(),"switch");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+        Value = strcmp(lexEl.string(),"static");
+#line 2183 "cplus.met"
         if (Value > 0) {
-#line 2080 "cplus.met"
-            Value = strcmp(lexEl.string(),"unsigned");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+            Value = strcmp(lexEl.string(),"union");
+#line 2183 "cplus.met"
             if (Value > 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"void");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"virtual");
+#line 2183 "cplus.met"
                 if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"while");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"volatile");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"volatile")) {
-#line 2080 "cplus.met"
-                            return(VOLATILE) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"while")) {
+#line 2183 "cplus.met"
+                            return(WHILE) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"void")) {
+#line 2183 "cplus.met"
+                            return(VOID) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(WHILE);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(VOLATILE);
+#line 2183 "cplus.met"
                 } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"va_arg");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"using");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"virtual")) {
-#line 2080 "cplus.met"
-                            return(VIRTUAL) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"va_arg")) {
+#line 2183 "cplus.met"
+                            return(VA_ARG) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"using")) {
-#line 2080 "cplus.met"
-                            return(USING) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"unsigned")) {
+#line 2183 "cplus.met"
+                            return(UNSIGNED) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(VA_ARG);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(USING);
+#line 2183 "cplus.met"
                 } else 
-#line 2080 "cplus.met"
-                    return(VOID);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    return(VIRTUAL);
+#line 2183 "cplus.met"
             } else if (Value < 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"typedef");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"throw");
+#line 2183 "cplus.met"
                 if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"union");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"typedef");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         if(!strcmp(lexEl.string(),"typename")) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                             return(TYPENAME) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(UNION);
-#line 2080 "cplus.met"
-                } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"throw");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
                         if(!strcmp(lexEl.string(),"try")) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                             return(TRY) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(TYPEDEF);
+#line 2183 "cplus.met"
+                } else if (Value < 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"switch");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
                         if(!strcmp(lexEl.string(),"template")) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                             return(TEMPLATE) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"struct")) {
+#line 2183 "cplus.met"
+                            return(STRUCT) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(THROW);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(SWITCH);
+#line 2183 "cplus.met"
                 } else 
-#line 2080 "cplus.met"
-                    return(TYPEDEF);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    return(THROW);
+#line 2183 "cplus.met"
             } else 
-#line 2080 "cplus.met"
-                return(UNSIGNED);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                return(UNION);
+#line 2183 "cplus.met"
         } else if (Value < 0) {
-#line 2080 "cplus.met"
-            Value = strcmp(lexEl.string(),"register");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+            Value = strcmp(lexEl.string(),"private");
+#line 2183 "cplus.met"
             if (Value > 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"sizeof");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"return");
+#line 2183 "cplus.met"
                 if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"struct");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"signed");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"static")) {
-#line 2080 "cplus.met"
-                            return(STATIC) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"sizeof")) {
+#line 2183 "cplus.met"
+                            return(SIZEOF) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"short")) {
+#line 2183 "cplus.met"
+                            return(SHORT) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(STRUCT);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(SIGNED);
+#line 2183 "cplus.met"
                 } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"short");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"public");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"signed")) {
-#line 2080 "cplus.met"
-                            return(SIGNED) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"register")) {
+#line 2183 "cplus.met"
+                            return(REGISTER) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"return")) {
-#line 2080 "cplus.met"
-                            return(RETURN) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"protected")) {
+#line 2183 "cplus.met"
+                            return(PROTECTED) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(SHORT);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(PUBLIC);
+#line 2183 "cplus.met"
                 } else 
-#line 2080 "cplus.met"
-                    return(SIZEOF);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    return(RETURN);
+#line 2183 "cplus.met"
             } else if (Value < 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"operator");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"long");
+#line 2183 "cplus.met"
                 if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"protected");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"new");
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"public")) {
-#line 2080 "cplus.met"
-                            return(PUBLIC) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"operator")) {
+#line 2183 "cplus.met"
+                            return(OPERATOR) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"private")) {
-#line 2080 "cplus.met"
-                            return(PRIVATE) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"namespace")) {
+#line 2183 "cplus.met"
+                            return(NAMESPACE) ;
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
-                        return(PROTECTED);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        return(NEW);
+#line 2183 "cplus.met"
                 } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"namespace");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"new")) {
-#line 2080 "cplus.met"
-                            return(NEW) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"long")) {
-#line 2080 "cplus.met"
-                            return(LONG) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(NAMESPACE);
-#line 2080 "cplus.met"
-                } else 
-#line 2080 "cplus.met"
-                    return(OPERATOR);
-#line 2080 "cplus.met"
-            } else 
-#line 2080 "cplus.met"
-                return(REGISTER);
-#line 2080 "cplus.met"
-        } else 
-#line 2080 "cplus.met"
-            return(SWITCH);
-#line 2080 "cplus.met"
-    } else if (Value < 0) {
-#line 2080 "cplus.met"
-        Value = strcmp(lexEl.string(),"default");
-#line 2080 "cplus.met"
-        if (Value > 0) {
-#line 2080 "cplus.met"
-            Value = strcmp(lexEl.string(),"float");
-#line 2080 "cplus.met"
-            if (Value > 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"goto");
-#line 2080 "cplus.met"
-                if (Value > 0) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     Value = strcmp(lexEl.string(),"inline");
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"int")) {
+#line 2183 "cplus.met"
+                            return(INT) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
                     } else if (Value < 0) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         if(!strcmp(lexEl.string(),"if")) {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                             return(IF) ;
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                     } else 
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                         return(INLINE);
-#line 2080 "cplus.met"
-                } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"forallsons");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"friend")) {
-#line 2080 "cplus.met"
-                            return(FRIEND) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"for")) {
-#line 2080 "cplus.met"
-                            return(FOR) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(FORALLSONS);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
                 } else 
-#line 2080 "cplus.met"
-                    return(GOTO);
-#line 2080 "cplus.met"
-            } else if (Value < 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"else");
-#line 2080 "cplus.met"
-                if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"extern");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"enum")) {
-#line 2080 "cplus.met"
-                            return(ENUM) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(EXTERN);
-#line 2080 "cplus.met"
-                } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"do");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"double")) {
-#line 2080 "cplus.met"
-                            return(DOUBLE) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"delete")) {
-#line 2080 "cplus.met"
-                            return(DELETE) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(DO);
-#line 2080 "cplus.met"
-                } else 
-#line 2080 "cplus.met"
-                    return(ELSE);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                    return(LONG);
+#line 2183 "cplus.met"
             } else 
-#line 2080 "cplus.met"
-                return(FLOAT);
-#line 2080 "cplus.met"
-        } else if (Value < 0) {
-#line 2080 "cplus.met"
-            Value = strcmp(lexEl.string(),"catch");
-#line 2080 "cplus.met"
-            if (Value > 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"constexpr");
-#line 2080 "cplus.met"
-                if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"decltype");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        return(defaultValue);
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"continue")) {
-#line 2080 "cplus.met"
-                            return(CONTINUE) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(DECLTYPE);
-#line 2080 "cplus.met"
-                } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"class");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"const")) {
-#line 2080 "cplus.met"
-                            return(CONST) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"char")) {
-#line 2080 "cplus.met"
-                            return(CHAR) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(CLASS);
-#line 2080 "cplus.met"
-                } else 
-#line 2080 "cplus.met"
-                    return(CONSTEXPR);
-#line 2080 "cplus.met"
-            } else if (Value < 0) {
-#line 2080 "cplus.met"
-                Value = strcmp(lexEl.string(),"asm");
-#line 2080 "cplus.met"
-                if (Value > 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"break");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"case")) {
-#line 2080 "cplus.met"
-                            return(CASE) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"auto")) {
-#line 2080 "cplus.met"
-                            return(AUTO) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(BREAK);
-#line 2080 "cplus.met"
-                } else if (Value < 0) {
-#line 2080 "cplus.met"
-                    Value = strcmp(lexEl.string(),"__asm__");
-#line 2080 "cplus.met"
-                    if (Value > 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"__attribute__")) {
-#line 2080 "cplus.met"
-                            return(__ATTRIBUTE__) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else if (Value < 0) {
-#line 2080 "cplus.met"
-                        if(!strcmp(lexEl.string(),"+____------____")) {
-#line 2080 "cplus.met"
-                            return(PLUS____TIRETIRETIRETIRETIRETIRE____) ;
-#line 2080 "cplus.met"
-                        }
-#line 2080 "cplus.met"
-                    } else 
-#line 2080 "cplus.met"
-                        return(__ASM__);
-#line 2080 "cplus.met"
-                } else 
-#line 2080 "cplus.met"
-                    return(ASM);
-#line 2080 "cplus.met"
-            } else 
-#line 2080 "cplus.met"
-                return(CATCH);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+                return(PRIVATE);
+#line 2183 "cplus.met"
         } else 
-#line 2080 "cplus.met"
-            return(DEFAULT);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+            return(STATIC);
+#line 2183 "cplus.met"
+    } else if (Value < 0) {
+#line 2183 "cplus.met"
+        Value = strcmp(lexEl.string(),"class");
+#line 2183 "cplus.met"
+        if (Value > 0) {
+#line 2183 "cplus.met"
+            Value = strcmp(lexEl.string(),"double");
+#line 2183 "cplus.met"
+            if (Value > 0) {
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"float");
+#line 2183 "cplus.met"
+                if (Value > 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"forallsons");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"friend")) {
+#line 2183 "cplus.met"
+                            return(FRIEND) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"for")) {
+#line 2183 "cplus.met"
+                            return(FOR) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(FORALLSONS);
+#line 2183 "cplus.met"
+                } else if (Value < 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"enum");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"extern")) {
+#line 2183 "cplus.met"
+                            return(EXTERN) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"else")) {
+#line 2183 "cplus.met"
+                            return(ELSE) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(ENUM);
+#line 2183 "cplus.met"
+                } else 
+#line 2183 "cplus.met"
+                    return(FLOAT);
+#line 2183 "cplus.met"
+            } else if (Value < 0) {
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"decltype");
+#line 2183 "cplus.met"
+                if (Value > 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"delete");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"do")) {
+#line 2183 "cplus.met"
+                            return(DO) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"default")) {
+#line 2183 "cplus.met"
+                            return(DEFAULT) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(DELETE);
+#line 2183 "cplus.met"
+                } else if (Value < 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"constexpr");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"continue")) {
+#line 2183 "cplus.met"
+                            return(CONTINUE) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"const")) {
+#line 2183 "cplus.met"
+                            return(CONST) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(CONSTEXPR);
+#line 2183 "cplus.met"
+                } else 
+#line 2183 "cplus.met"
+                    return(DECLTYPE);
+#line 2183 "cplus.met"
+            } else 
+#line 2183 "cplus.met"
+                return(DOUBLE);
+#line 2183 "cplus.met"
+        } else if (Value < 0) {
+#line 2183 "cplus.met"
+            Value = strcmp(lexEl.string(),"_typedef_protectedArray");
+#line 2183 "cplus.met"
+            if (Value > 0) {
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"break");
+#line 2183 "cplus.met"
+                if (Value > 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"catch");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"char")) {
+#line 2183 "cplus.met"
+                            return(CHAR) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"case")) {
+#line 2183 "cplus.met"
+                            return(CASE) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(CATCH);
+#line 2183 "cplus.met"
+                } else if (Value < 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"asm");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"auto")) {
+#line 2183 "cplus.met"
+                            return(AUTO) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"_typedef_protectedArray_s")) {
+#line 2183 "cplus.met"
+                            return(_TYPEDEF_PROTECTEDARRAY_S) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(ASM);
+#line 2183 "cplus.met"
+                } else 
+#line 2183 "cplus.met"
+                    return(BREAK);
+#line 2183 "cplus.met"
+            } else if (Value < 0) {
+#line 2183 "cplus.met"
+                Value = strcmp(lexEl.string(),"_protectedArray");
+#line 2183 "cplus.met"
+                if (Value > 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"_protectedPointer");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"_protectedPointer_s")) {
+#line 2183 "cplus.met"
+                            return(_PROTECTEDPOINTER_S) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"_protectedArray_s")) {
+#line 2183 "cplus.met"
+                            return(_PROTECTEDARRAY_S) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(_PROTECTEDPOINTER);
+#line 2183 "cplus.met"
+                } else if (Value < 0) {
+#line 2183 "cplus.met"
+                    Value = strcmp(lexEl.string(),"__asm__");
+#line 2183 "cplus.met"
+                    if (Value > 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"__attribute__")) {
+#line 2183 "cplus.met"
+                            return(__ATTRIBUTE__) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else if (Value < 0) {
+#line 2183 "cplus.met"
+                        if(!strcmp(lexEl.string(),"+____------____")) {
+#line 2183 "cplus.met"
+                            return(PLUS____TIRETIRETIRETIRETIRETIRE____) ;
+#line 2183 "cplus.met"
+                        }
+#line 2183 "cplus.met"
+                    } else 
+#line 2183 "cplus.met"
+                        return(__ASM__);
+#line 2183 "cplus.met"
+                } else 
+#line 2183 "cplus.met"
+                    return(_PROTECTEDARRAY);
+#line 2183 "cplus.met"
+            } else 
+#line 2183 "cplus.met"
+                return(_TYPEDEF_PROTECTEDARRAY);
+#line 2183 "cplus.met"
+        } else 
+#line 2183 "cplus.met"
+            return(CLASS);
+#line 2183 "cplus.met"
     } else 
-#line 2080 "cplus.met"
-        return(INT);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
+        return(GOTO);
+#line 2183 "cplus.met"
     return(defaultValue);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 int cplus::UpSortKeyWord(int value) 
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 {
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
     register char * ptSource=lexEl.string();
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
     for (;*ptSource;ptSource++) *ptSource = toupper(*ptSource);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
     return SortKeyWord (value);
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 }
-#line 2080 "cplus.met"
+#line 2183 "cplus.met"
 #line 303 "cplus.met"
 int cplus::Lex ()
 #line 303 "cplus.met"
@@ -7304,6 +7328,27 @@ int cplus::the_exit ()
 -- 7 -- arg_declarator
     META
     IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
     AUTO
     REGISTER
     VOLATILE
@@ -7330,9 +7375,45 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    POINPOINPOIN
 -- 8 -- arg_declarator_base
     META
     IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
     AUTO
     REGISTER
     VOLATILE
@@ -7359,7 +7440,22 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 9 -- arg_declarator_followed
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    POINPOINPOIN
+-- 9 -- arg_declarator_base_type
     META
     IDENT
     AUTO
@@ -7388,7 +7484,125 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 10 -- arg_declarator_type
+-- 10 -- arg_declarator_expression
+    META
+    IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    POINPOINPOIN
+-- 11 -- arg_declarator_followed
+    META
+    IDENT
+    STRING
+    CHARACT
+    INTEGER
+    ULINTEGER
+    ULLINTEGER
+    LLINTEGER
+    LINTEGER
+    UINTEGER
+    FLOATVAL
+    ULHEXA
+    ULLHEXA
+    LLHEXA
+    LHEXA
+    UHEXA
+    HEXA
+    ULLOCTAL
+    LLOCTAL
+    ULOCTAL
+    LOCTAL
+    UOCTAL
+    OCTAL
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+    POUV
+    ETOI
+    ETCO
+    TILD
+    OPERATOR
+    TIRE
+    PLUS
+    EXCL
+    PLUSPLUS
+    TIRETIRE
+    SIZEOF
+    NEW
+    DELETE
+    VA_ARG
+    POINPOINPOIN
+-- 12 -- arg_declarator_type
     META
     IDENT
     AUTO
@@ -7417,12 +7631,12 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 11 -- arg_typ_declarator
+-- 13 -- arg_typ_declarator
     META
     POUV
--- 12 -- arg_typ_list
+-- 14 -- arg_typ_list
     ALWAYS
--- 13 -- array_expression_follow
+-- 15 -- array_expression_follow
     META
     IDENT
     STRING
@@ -7475,13 +7689,13 @@ int cplus::the_exit ()
     DELETE
     VA_ARG
     CFER
--- 14 -- asm_call
+-- 16 -- asm_call
     META
     __ASM__
--- 15 -- asm_declaration
+-- 17 -- asm_declaration
     META
     ASM
--- 16 -- assignment_end
+-- 18 -- assignment_end
     META
     SLASEGAL
     EGAL
@@ -7494,7 +7708,7 @@ int cplus::the_exit ()
     ETCOEGAL
     VBAREGAL
     CHAPEGAL
--- 17 -- assignment_expression
+-- 19 -- assignment_expression
     META
     IDENT
     STRING
@@ -7546,10 +7760,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 18 -- attribute_call
+-- 20 -- attribute_call
     META
     __ATTRIBUTE__
--- 19 -- base_specifier
+-- 21 -- base_specifier
     META
     IDENT
     VIRTUAL
@@ -7557,7 +7771,7 @@ int cplus::the_exit ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 20 -- base_specifier_elem
+-- 22 -- base_specifier_elem
     META
     IDENT
     VIRTUAL
@@ -7565,11 +7779,11 @@ int cplus::the_exit ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 21 -- bit_field_decl
+-- 23 -- bit_field_decl
     META
     IDENT
     DPOI
--- 22 -- cast_expression
+-- 24 -- cast_expression
     META
     IDENT
     STRING
@@ -7621,32 +7835,32 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 23 -- cast_expression_value
+-- 25 -- cast_expression_value
     META
     POUV
--- 24 -- catch_unit
+-- 26 -- catch_unit
     META
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 25 -- catch_unit_ansi
+-- 27 -- catch_unit_ansi
     META
     CATCH
--- 26 -- class_declaration
+-- 28 -- class_declaration
     META
     STRUCT
     UNION
     CLASS
--- 27 -- comment_eater
+-- 29 -- comment_eater
     ALWAYS
--- 28 -- complete_class_name
+-- 30 -- complete_class_name
     META
     IDENT
     DPOIDPOI
--- 29 -- compound_statement
+-- 31 -- compound_statement
     META
     AOUV
--- 30 -- conditional_expression
+-- 32 -- conditional_expression
     META
     IDENT
     STRING
@@ -7698,11 +7912,11 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 31 -- const_or_volatile
+-- 33 -- const_or_volatile
     META
     VOLATILE
     CONST
--- 32 -- constan
+-- 34 -- constan
     META
     CHARACT
     INTEGER
@@ -7724,9 +7938,9 @@ int cplus::the_exit ()
     LOCTAL
     UOCTAL
     OCTAL
--- 33 -- ctor_initializer
+-- 35 -- ctor_initializer
     ALWAYS
--- 34 -- data_decl_exotic
+-- 36 -- data_decl_exotic
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -7739,7 +7953,7 @@ int cplus::the_exit ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 35 -- data_decl_sc_decl
+-- 37 -- data_decl_sc_decl
     META
     IDENT
     AUTO
@@ -7759,7 +7973,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 36 -- data_decl_sc_decl_full
+-- 38 -- data_decl_sc_decl_full
     META
     IDENT
     AUTO
@@ -7779,7 +7993,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 37 -- data_decl_sc_decl_short
+-- 39 -- data_decl_sc_decl_short
     META
     IDENT
     REGISTER
@@ -7796,7 +8010,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 38 -- data_decl_sc_ty_decl
+-- 40 -- data_decl_sc_ty_decl
     META
     IDENT
     AUTO
@@ -7827,7 +8041,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 39 -- data_decl_sc_ty_decl_full
+-- 41 -- data_decl_sc_ty_decl_full
     META
     IDENT
     AUTO
@@ -7858,7 +8072,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 40 -- data_decl_sc_ty_decl_short
+-- 42 -- data_decl_sc_ty_decl_short
     META
     IDENT
     AUTO
@@ -7887,9 +8101,9 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 41 -- data_declaration
+-- 43 -- data_declaration
     ALWAYS
--- 42 -- data_declaration_for
+-- 44 -- data_declaration_for
     META
     IDENT
     AUTO
@@ -7920,7 +8134,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 43 -- data_declaration_for_full
+-- 45 -- data_declaration_for_full
     META
     IDENT
     AUTO
@@ -7951,7 +8165,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 44 -- data_declaration_for_short
+-- 46 -- data_declaration_for_short
     META
     IDENT
     AUTO
@@ -7980,12 +8194,12 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 45 -- data_declaration_strict
+-- 47 -- data_declaration_strict
     ALWAYS
--- 46 -- deallocation_expression
+-- 48 -- deallocation_expression
     META
     DELETE
--- 47 -- declarator
+-- 49 -- declarator
     META
     IDENT
     REGISTER
@@ -8002,9 +8216,9 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 48 -- declarator_follow
+-- 50 -- declarator_follow
     ALWAYS
--- 49 -- declarator_list
+-- 51 -- declarator_list
     META
     IDENT
     REGISTER
@@ -8021,7 +8235,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 50 -- declarator_list_init
+-- 52 -- declarator_list_init
     META
     IDENT
     REGISTER
@@ -8038,7 +8252,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 51 -- declarator_value
+-- 53 -- declarator_value
     META
     IDENT
     REGISTER
@@ -8055,10 +8269,10 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 52 -- define_dir
+-- 54 -- define_dir
     META
     DEFINE_DIR
--- 53 -- directive
+-- 55 -- directive
     META
     INCLUDE_DIR
     LINE_DIR
@@ -8067,19 +8281,19 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 54 -- end_pragma
+-- 56 -- end_pragma
     META
     PRAGMA_DIR
--- 55 -- end_pragma_managed
+-- 57 -- end_pragma_managed
     META
     PRAGMA_DIR
--- 56 -- enum_declarator
+-- 58 -- enum_declarator
     META
     ENUM
--- 57 -- enum_val
+-- 59 -- enum_val
     META
     IDENT
--- 58 -- equality_expression
+-- 60 -- equality_expression
     META
     IDENT
     STRING
@@ -8131,16 +8345,16 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 59 -- exception
+-- 61 -- exception
     META
     TRY_UPPER
--- 60 -- exception_ansi
+-- 62 -- exception_ansi
     META
     TRY
--- 61 -- exception_list
+-- 63 -- exception_list
     META
     THROW
--- 62 -- exclusive_or_expression
+-- 64 -- exclusive_or_expression
     META
     IDENT
     STRING
@@ -8192,7 +8406,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 63 -- expression
+-- 65 -- expression
     META
     IDENT
     STRING
@@ -8244,7 +8458,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 64 -- expression_for
+-- 66 -- expression_for
     META
     IDENT
     STRING
@@ -8296,13 +8510,13 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 65 -- ext_all
+-- 67 -- ext_all
     ALWAYS
--- 66 -- ext_all_ext
+-- 68 -- ext_all_ext
     ALWAYS
--- 67 -- ext_all_no_linkage
+-- 69 -- ext_all_no_linkage
     ALWAYS
--- 68 -- ext_data_decl_sc_ty
+-- 70 -- ext_data_decl_sc_ty
     META
     IDENT
     AUTO
@@ -8333,7 +8547,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 69 -- ext_data_decl_sc_ty_full
+-- 71 -- ext_data_decl_sc_ty_full
     META
     IDENT
     AUTO
@@ -8364,7 +8578,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 70 -- ext_data_decl_sc_ty_short
+-- 72 -- ext_data_decl_sc_ty_short
     META
     IDENT
     AUTO
@@ -8393,11 +8607,11 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 71 -- ext_data_decl_simp
+-- 73 -- ext_data_decl_simp
     ALWAYS
--- 72 -- ext_data_declaration
+-- 74 -- ext_data_declaration
     ALWAYS
--- 73 -- ext_decl_dir
+-- 75 -- ext_decl_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -8409,7 +8623,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 74 -- ext_decl_if_dir
+-- 76 -- ext_decl_if_dir
     META
     IDENT
     STRING
@@ -8461,14 +8675,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 75 -- ext_decl_ifdef_dir
+-- 77 -- ext_decl_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 76 -- for_statement
+-- 78 -- for_statement
     META
     POUV
--- 77 -- func_declaration
+-- 79 -- func_declaration
     META
     IDENT
     AUTO
@@ -8504,7 +8718,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 78 -- func_declarator
+-- 80 -- func_declarator
     META
     IDENT
     REGISTER
@@ -8521,14 +8735,14 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 79 -- ident_mul
+-- 81 -- ident_mul
     META
     IDENT
     DPOIDPOI
--- 80 -- include_dir
+-- 82 -- include_dir
     META
     INCLUDE_DIR
--- 81 -- inclusive_or_expression
+-- 83 -- inclusive_or_expression
     META
     IDENT
     STRING
@@ -8580,14 +8794,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 82 -- initializer
+-- 84 -- initializer
     ALWAYS
--- 83 -- inline_namespace
+-- 85 -- inline_namespace
     META
     INLINE
--- 84 -- inside_declaration
+-- 86 -- inside_declaration
     ALWAYS
--- 85 -- inside_declaration1
+-- 87 -- inside_declaration1
     META
     IDENT
     AUTO
@@ -8616,19 +8830,19 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 86 -- inside_declaration2
+-- 88 -- inside_declaration2
     META
     IDENT
     DPOI
--- 87 -- inside_declaration_extension
+-- 89 -- inside_declaration_extension
     ALWAYS
--- 88 -- label_beg
+-- 90 -- label_beg
     META
     IDENT
--- 89 -- linkage_specification
+-- 91 -- linkage_specification
     META
     EXTERN
--- 90 -- logical_and_expression
+-- 92 -- logical_and_expression
     META
     IDENT
     STRING
@@ -8680,7 +8894,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 91 -- logical_or_expression
+-- 93 -- logical_or_expression
     META
     IDENT
     STRING
@@ -8732,10 +8946,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 92 -- long_type
+-- 94 -- long_type
     META
     LONG
--- 93 -- macro
+-- 95 -- macro
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -8748,18 +8962,18 @@ int cplus::the_exit ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 94 -- macro_extended
+-- 96 -- macro_extended
     ALWAYS
--- 95 -- main_entry
+-- 97 -- main_entry
     ALWAYS
--- 96 -- member_declarator
+-- 98 -- member_declarator
     META
     IDENT
     DPOIDPOI
--- 97 -- message_map
+-- 99 -- message_map
     META
     BEGIN_MESSAGE_MAP
--- 98 -- multiplicative_expression
+-- 100 -- multiplicative_expression
     META
     IDENT
     STRING
@@ -8811,14 +9025,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 99 -- name_space
+-- 101 -- name_space
     META
     NAMESPACE
     USING
--- 100 -- new_1
+-- 102 -- new_1
     META
     POUV
--- 101 -- new_2
+-- 103 -- new_2
     META
     IDENT
     AUTO
@@ -8848,9 +9062,9 @@ int cplus::the_exit ()
     SIGNED
     UNSIGNED
     POUV
--- 102 -- new_declarator
+-- 104 -- new_declarator
     ALWAYS
--- 103 -- new_type_name
+-- 105 -- new_type_name
     META
     IDENT
     AUTO
@@ -8879,21 +9093,21 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 104 -- none_statement
+-- 106 -- none_statement
     ALWAYS
--- 105 -- operator_function_name
+-- 107 -- operator_function_name
     META
     OPERATOR
--- 106 -- other_config
+-- 108 -- other_config
     META
     PRAGMA_CONTENT
--- 107 -- parameter_list
+-- 109 -- parameter_list
     META
     POUV
--- 108 -- parameter_list_extended
+-- 110 -- parameter_list_extended
     META
     POUV
--- 109 -- pm_expression
+-- 111 -- pm_expression
     META
     IDENT
     STRING
@@ -8945,7 +9159,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 110 -- postfix_expression
+-- 112 -- postfix_expression
     META
     IDENT
     STRING
@@ -8987,13 +9201,13 @@ int cplus::the_exit ()
     TILD
     OPERATOR
     VA_ARG
--- 111 -- pretty::bidon
+-- 113 -- pretty::bidon
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 112 -- pretty::parse_entry
+-- 114 -- pretty::parse_entry
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 113 -- primary_expression
+-- 115 -- primary_expression
     META
     IDENT
     STRING
@@ -9021,34 +9235,42 @@ int cplus::the_exit ()
     TILD
     OPERATOR
     VA_ARG
--- 114 -- program
+-- 116 -- program
     ALWAYS
--- 115 -- protect_declare
+-- 117 -- protect_declare
     META
     PRIVATE
     PROTECTED
     PUBLIC
--- 116 -- ptr_operator
+-- 118 -- protected_array_declaration
+    META
+    _PROTECTEDARRAY
+    _PROTECTEDARRAY_S
+    _PROTECTEDPOINTER
+    _PROTECTEDPOINTER_S
+    _TYPEDEF_PROTECTEDARRAY
+    _TYPEDEF_PROTECTEDARRAY_S
+-- 119 -- ptr_operator
     META
     IDENT
     DPOIDPOI
     ETOI
     ETCO
--- 117 -- qualified_name
+-- 120 -- qualified_name
     META
     IDENT
     TILD
--- 118 -- qualified_name_elem
+-- 121 -- qualified_name_elem
     META
     DPOIDPOI
--- 119 -- quick_prog
+-- 122 -- quick_prog
     ALWAYS
--- 120 -- quick_prog_elem
+-- 123 -- quick_prog_elem
     ALWAYS
--- 121 -- range_in_liste
+-- 124 -- range_in_liste
     META
     IDENT
--- 122 -- range_modifier
+-- 125 -- range_modifier
     META
     IDENT
     REGISTER
@@ -9060,19 +9282,19 @@ int cplus::the_exit ()
     FRIEND
     CONST
     CONSTEXPR
--- 123 -- range_modifier_function
+-- 126 -- range_modifier_function
     META
     INLINE
     VIRTUAL
     FRIEND
     CONST
     CONSTEXPR
--- 124 -- range_modifier_ident
+-- 127 -- range_modifier_ident
     ALWAYS
--- 125 -- range_pragma
+-- 128 -- range_pragma
     META
     PRAGMA_RANGE
--- 126 -- relational_expression
+-- 129 -- relational_expression
     META
     IDENT
     STRING
@@ -9124,9 +9346,9 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 127 -- sc_specifier
+-- 130 -- sc_specifier
     ALWAYS
--- 128 -- shift_expression
+-- 131 -- shift_expression
     META
     IDENT
     STRING
@@ -9178,7 +9400,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 129 -- short_long_int_char
+-- 132 -- short_long_int_char
     META
     INT
     CHAR
@@ -9186,30 +9408,13 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 130 -- signed_type
+-- 133 -- signed_type
     META
     SIGNED
--- 131 -- simple_ident
+-- 134 -- simple_ident
     META
     IDENT
--- 132 -- simple_type
-    META
-    IDENT
-    AUTO
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 133 -- simple_type_name
+-- 135 -- simple_type
     META
     IDENT
     AUTO
@@ -9226,12 +9431,29 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 134 -- sizeof_type
+-- 136 -- simple_type_name
+    META
+    IDENT
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 137 -- sizeof_type
     META
     POUV
--- 135 -- stat_all
+-- 138 -- stat_all
     ALWAYS
--- 136 -- stat_dir
+-- 139 -- stat_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9243,7 +9465,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 137 -- stat_dir_switch
+-- 140 -- stat_dir_switch
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9255,7 +9477,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 138 -- stat_if_dir
+-- 141 -- stat_if_dir
     META
     IDENT
     STRING
@@ -9307,11 +9529,11 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 139 -- stat_ifdef_dir
+-- 142 -- stat_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 140 -- statement
+-- 143 -- statement
     META
     GOTO
     IDENT
@@ -9379,7 +9601,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 141 -- statement_expression
+-- 144 -- statement_expression
     META
     IDENT
     STRING
@@ -9431,10 +9653,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 142 -- string_list
+-- 145 -- string_list
     META
     STRING
--- 143 -- switch_elem
+-- 146 -- switch_elem
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9448,13 +9670,13 @@ int cplus::the_exit ()
     LINE_REFERENCE_DIR
     CASE
     DEFAULT
--- 144 -- switch_list
+-- 147 -- switch_list
     META
     AOUV
--- 145 -- template_type
+-- 148 -- template_type
     META
     INFE
--- 146 -- type_and_declarator
+-- 149 -- type_and_declarator
     META
     IDENT
     AUTO
@@ -9485,39 +9707,10 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 147 -- type_descr
+-- 150 -- type_descr
     META
     IDENT
--- 148 -- type_name
-    META
-    IDENT
-    AUTO
-    REGISTER
-    VOLATILE
-    __ATTRIBUTE__
-    __ASM__
-    INLINE
-    VIRTUAL
-    FRIEND
-    CONST
-    CONSTEXPR
-    ENUM
-    STRUCT
-    UNION
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 149 -- type_specifier
+-- 151 -- type_name
     META
     IDENT
     AUTO
@@ -9546,7 +9739,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 150 -- type_specifier_without_param
+-- 152 -- type_specifier
     META
     IDENT
     AUTO
@@ -9575,7 +9768,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 151 -- typedef_and_declarator
+-- 153 -- type_specifier_without_param
     META
     IDENT
     AUTO
@@ -9604,7 +9797,36 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 152 -- unary_expression
+-- 154 -- typedef_and_declarator
+    META
+    IDENT
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 155 -- unary_expression
     META
     IDENT
     STRING
@@ -9656,168 +9878,171 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 153 -- unsigned_type
+-- 156 -- unsigned_type
     META
     UNSIGNED
 */
 
-signed char *cplus::_tokenArray [154] = {
-    (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\200\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\340\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\101\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\370\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\300\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\006\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\370\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\374\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+signed char *cplus::_tokenArray [157] = {
+    (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\137\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\377\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\020\000\002\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\340\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\101\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\370\377\177\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\300\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\040\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\340\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\120\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\000\000\000\000\031\000\000\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\176\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\002\006\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\010\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\200\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\370\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\374\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\100\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\020\000\370\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\100\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\377\377\377\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\004\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\200\307\017\000\000\000\000\000\000\000\000\000\000\000\000\014\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\360\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 };
-typedef int (cplus::*(DEF_FUNC_TOKEN_ARRAY [154]))() ;
+typedef int (cplus::*(DEF_FUNC_TOKEN_ARRAY [157]))() ;
 DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*bidon                          */0,
     /*parse_entry                    */0,
@@ -9828,6 +10053,8 @@ DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*and_expression                 */(&cplus::Lex),
     /*arg_declarator                 */(&cplus::Lex),
     /*arg_declarator_base            */(&cplus::Lex),
+    /*arg_declarator_base_type       */(&cplus::Lex),
+    /*arg_declarator_expression      */(&cplus::Lex),
     /*arg_declarator_followed        */(&cplus::Lex),
     /*arg_declarator_type            */(&cplus::Lex),
     /*arg_typ_declarator             */(&cplus::Lex),
@@ -9935,6 +10162,7 @@ DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*primary_expression             */(&cplus::Lex),
     /*program                        */0,
     /*protect_declare                */(&cplus::Lex),
+    /*protected_array_declaration    */(&cplus::Lex),
     /*ptr_operator                   */(&cplus::Lex),
     /*qualified_name                 */(&cplus::Lex),
     /*qualified_name_elem            */(&cplus::Lex),
@@ -9974,7 +10202,7 @@ DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*unary_expression               */(&cplus::Lex),
     /*unsigned_type                  */(&cplus::Lex)
 };
-int cplus::_tokenNbFuncArray [154] = {
+int cplus::_tokenNbFuncArray [157] = {
     /*bidon                          */0,
     /*parse_entry                    */0,
     /*abstract_declarator            */0,
@@ -9984,6 +10212,8 @@ int cplus::_tokenNbFuncArray [154] = {
     /*and_expression                 */1,
     /*arg_declarator                 */1,
     /*arg_declarator_base            */1,
+    /*arg_declarator_base_type       */1,
+    /*arg_declarator_expression      */1,
     /*arg_declarator_followed        */1,
     /*arg_declarator_type            */1,
     /*arg_typ_declarator             */1,
@@ -10091,6 +10321,7 @@ int cplus::_tokenNbFuncArray [154] = {
     /*primary_expression             */1,
     /*program                        */0,
     /*protect_declare                */1,
+    /*protected_array_declaration    */1,
     /*ptr_operator                   */1,
     /*qualified_name                 */1,
     /*qualified_name_elem            */1,
@@ -10145,24 +10376,25 @@ int _arityNode_cplus[] = {   2 , 1 , 1 , 1 , 1 , 2 , -1 , 3 , 1 , 1 , 1 , 0
                            , -1 , -1 , -1 , -1 , -1 , -1 , -1 , 1 , 1 , 1 , 2
                            , -1 , 4 , 3 , -1 , 1 , 2 , 2 , 2 , -1 , -1 , 2
                            , 1 , -1 , 2 , -1 , -1 , -1 , -1 , 4 , 2 , 2 , -1
-                           , 1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
-                           , -1 , -1 , -1 , -1 , 2 , 3 , 1 , -1 , 1 , 1 , 1
-                           , -1 , 1 , 2 , 2 , -1 , 1 , 2 , -1 , 2 , 2 , 2
-                           , 4 , 0 , 2 , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 2
-                           , 2 , 2 , 2 , 2 , 1 , 1 , 2 , 2 , 2 , 0 , 2
-                           , -1 , 1 , 1 , -1 , 3 , 2 , 1 , 1 , 1 , 1 , 1
-                           , 1 , 3 , 0 , 1 , 3 , 3 , -1 , 2 , 2 , 2 , 2
+                           , -1 , 1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , -1
+                           , -1 , -1 , -1 , -1 , -1 , 2 , 3 , 1 , -1 , -1 , -1
+                           , -1 , -1 , -1 , -1 , 1 , 1 , 1 , -1 , 1 , 2 , 2
+                           , -1 , 1 , 2 , 2 , 2 , 2 , 4 , 0 , 2 , 1 , 2
+                           , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 1
+                           , 1 , 2 , 2 , 2 , 0 , 2 , -1 , 1 , 1 , -1 , 3
+                           , 2 , 1 , 1 , 1 , 1 , 1 , 1 , 3 , 0 , 1 , 3
+                           , 3 , -1 , 2 , 2 , 2 , 2 , 1 , 1 , 1 , 1 , 1
                            , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
-                           , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1
-                           , 1 , 0 , -1 , -1 , 2 , 2 , 2 , 2 , 1 , -1 , 2
-                           , 1 , -1 , 1 , -1 , 2 , 2 , 0 , -1 , 1 , 2 , 11
-                           , 0 , -1 , 2 , 1 , 1 , 2 , 1 , -1 , 2 , -1 , 2
-                           , 1 , 0 , 0 , 2 , 1 , -1 , 2 , 2 , 2 , 2 , 2
-                           , 2 , 0 , -1 , -1 , -1 , -1 , -1 , -1 , -1 , 2 , 2
-                           , 2 , 2 , 2 , 2 , 1 , 1 , 1 , 1 , 2 , 1 , 1
-                           , 1 , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , 0 , 1
-                           , 1 , 1 , 1 , 1 , -1 , 1 , 2 , 1 , 2 , 1 , 1
-                           , 1 , 1 , 1 , 1 , 1 , 1 };
+                           , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 0 , -1 , -1 , 2
+                           , 2 , 2 , 2 , 1 , -1 , 2 , 1 , -1 , 1 , -1 , 2
+                           , 2 , 0 , -1 , 1 , 2 , 11 , 0 , -1 , 2 , 1 , 1
+                           , 2 , 1 , -1 , 2 , -1 , 2 , 1 , 0 , 0 , 2 , 1
+                           , -1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , -1 , -1 , -1
+                           , -1 , -1 , -1 , -1 , 2 , 2 , 2 , 2 , 2 , 2 , 1
+                           , 1 , 1 , 1 , 2 , 5 , 4 , 5 , 4 , 1 , 1 , 1
+                           , 1 , 2 , 2 , 2 , 2 , 2 , 2 , 0 , 0 , 1 , 1
+                           , 1 , 1 , 1 , -1 , 1 , 2 , 1 , 2 , 1 , 1 , 1
+                           , 1 , 1 , 1 , 1 , 1 };
 
     
 STRINGELEM * listConst_cplus;
@@ -10179,200 +10411,210 @@ void cplus::InitConst()
         
         STRINGELEM * inter = listConst;
         listConst = (STRINGELEM *) 0;
-        AddConstVal("cplus::TUNSIGNED", 358);
-        AddConstVal("cplus::BDECR", 357);
-        AddConstVal("cplus::BINCR", 356);
-        AddConstVal("cplus::ADDR", 355);
-        AddConstVal("cplus::NOT", 354);
-        AddConstVal("cplus::LNEG", 353);
-        AddConstVal("cplus::POS", 352);
-        AddConstVal("cplus::NEG", 351);
-        AddConstVal("cplus::PARAM_TYPE", 350);
-        AddConstVal("cplus::STRING_LIST", 349);
-        AddConstVal("cplus::LABEL", 348);
-        AddConstVal("cplus::THROW_ANSI", 347);
-        AddConstVal("cplus::ELSE", 346);
-        AddConstVal("cplus::DECL_TYPE", 345);
-        AddConstVal("cplus::CLASSNAME", 344);
-        AddConstVal("cplus::TIDENT", 343);
-        AddConstVal("cplus::TSIGNED", 342);
-        AddConstVal("cplus::TSHORT", 341);
-        AddConstVal("cplus::TCHAR", 340);
-        AddConstVal("cplus::TINT", 339);
-        AddConstVal("cplus::RSHI", 338);
-        AddConstVal("cplus::LSHI", 337);
-        AddConstVal("cplus::LT", 336);
-        AddConstVal("cplus::GT", 335);
-        AddConstVal("cplus::GEQU", 334);
-        AddConstVal("cplus::LEQU", 333);
-        AddConstVal("cplus::SPACE_ARROW", 332);
-        AddConstVal("cplus::TAB_DIRECTIVE", 331);
-        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 330);
-        AddConstVal("cplus::ENUM_VERT_VALUE", 329);
-        AddConstVal("cplus::PROTECT_MEMB", 328);
-        AddConstVal("cplus::LANGUAGE", 327);
-        AddConstVal("cplus::EXP", 326);
-        AddConstVal("cplus::ADECR", 325);
-        AddConstVal("cplus::AINCR", 324);
-        AddConstVal("cplus::ARROW", 323);
-        AddConstVal("cplus::REF", 322);
-        AddConstVal("cplus::EXP_BRA", 321);
-        AddConstVal("cplus::EXP_LIST", 320);
-        AddConstVal("cplus::ARROW_MEMB", 319);
-        AddConstVal("cplus::DOT_MEMB", 318);
-        AddConstVal("cplus::POINETOI", 317);
-        AddConstVal("cplus::TIRESUPEETOI", 316);
-        AddConstVal("cplus::TIRESUPE", 315);
-        AddConstVal("cplus::SUPESUPE", 314);
-        AddConstVal("cplus::INFEINFE", 313);
-        AddConstVal("cplus::SUPEEGAL", 312);
-        AddConstVal("cplus::INFEEGAL", 311);
-        AddConstVal("cplus::NONE", 310);
-        AddConstVal("cplus::NEW_DECLARATOR", 309);
-        AddConstVal("cplus::USING_NAMESPACE", 308);
-        AddConstVal("cplus::NAMESPACE_ALIAS", 307);
-        AddConstVal("cplus::REM", 306);
-        AddConstVal("cplus::DIV", 305);
-        AddConstVal("cplus::MUL", 304);
-        AddConstVal("cplus::POURC", 303);
-        AddConstVal("cplus::MESSAGE_MAP", 302);
-        AddConstVal("cplus::MACRO", 301);
-        AddConstVal("cplus::TDOUBLE", 300);
-        AddConstVal("cplus::TFLOAT", 299);
-        AddConstVal("cplus::TLONG", 298);
-        AddConstVal("cplus::OR", 297);
-        AddConstVal("cplus::VBARVBAR", 296);
-        AddConstVal("cplus::AND", 295);
-        AddConstVal("cplus::ETCOETCO", 294);
-        AddConstVal("cplus::COMPOUND_EXT", 293);
-        AddConstVal("cplus::EXTERNAL", 292);
-        AddConstVal("cplus::INLINE_NAMESPACE", 291);
-        AddConstVal("cplus::INITIALIZER", 290);
-        AddConstVal("cplus::LOR", 289);
-        AddConstVal("cplus::VBAR", 288);
-        AddConstVal("cplus::DELETE_FUNCTION", 287);
-        AddConstVal("cplus::FUNC", 286);
-        AddConstVal("cplus::ALL_OF", 285);
-        AddConstVal("cplus::EXTENSION", 284);
-        AddConstVal("cplus::__EXTENSION__", 283);
-        AddConstVal("cplus::STAT_VOID", 282);
-        AddConstVal("cplus::TYPEDEF", 281);
-        AddConstVal("cplus::TEMPLATE_DECL", 280);
-        AddConstVal("cplus::SUPE", 279);
-        AddConstVal("cplus::CLASS_PARAM", 278);
-        AddConstVal("cplus::TEMPLATE", 277);
-        AddConstVal("cplus::EXP_SEQ", 276);
-        AddConstVal("cplus::LXOR", 275);
-        AddConstVal("cplus::CHAP", 274);
-        AddConstVal("cplus::EXCEPTION_LIST", 273);
-        AddConstVal("cplus::EXCEPTION_ANSI", 272);
-        AddConstVal("cplus::EXCEPTION", 271);
-        AddConstVal("cplus::NEQU", 270);
-        AddConstVal("cplus::EQU", 269);
-        AddConstVal("cplus::EXCLEGAL", 268);
-        AddConstVal("cplus::EGALEGAL", 267);
-        AddConstVal("cplus::ENUM_CLASS", 266);
-        AddConstVal("cplus::PRAGMA", 265);
-        AddConstVal("cplus::PARAMETERS", 264);
-        AddConstVal("cplus::FUNC_HEADER", 263);
-        AddConstVal("cplus::INDENT_FUNCTION_TYPE", 262);
-        AddConstVal("cplus::COMMENT_PLUS", 261);
-        AddConstVal("cplus::COMMENT_END", 260);
-        AddConstVal("cplus::COMMENT_MIDDLE", 259);
-        AddConstVal("cplus::COMMENT_START", 258);
-        AddConstVal("cplus::MARGIN_VALUE", 257);
-        AddConstVal("cplus::BRACE_ALIGN_VALUE", 256);
-        AddConstVal("cplus::DECL_ALIGN", 255);
-        AddConstVal("cplus::ASSIGN_ALIGN", 254);
-        AddConstVal("cplus::SINGLE_SWITCH_INDENT_VALUE", 253);
-        AddConstVal("cplus::SIMPLIFY_VALUE", 252);
-        AddConstVal("cplus::SIMPLIFY", 251);
-        AddConstVal("cplus::MODE_VALUE", 250);
-        AddConstVal("cplus::TAB_VALUE", 249);
-        AddConstVal("cplus::CONFIG", 248);
-        AddConstVal("cplus::NOT_MANAGED", 247);
-        AddConstVal("cplus::NO_PRETTY", 246);
-        AddConstVal("cplus::ALINE", 245);
-        AddConstVal("cplus::ERROR", 244);
-        AddConstVal("cplus::UNDEF", 243);
-        AddConstVal("cplus::TYP_AFF_BRA", 242);
-        AddConstVal("cplus::TYP_AFF_CALL", 241);
-        AddConstVal("cplus::MEMBER_DECLARATOR", 240);
-        AddConstVal("cplus::TYP_ARRAY", 239);
-        AddConstVal("cplus::COUV", 238);
-        AddConstVal("cplus::FOR_DECLARATION", 237);
-        AddConstVal("cplus::DECLARATION", 236);
-        AddConstVal("cplus::CTOR_INITIALIZER", 235);
-        AddConstVal("cplus::BRACE_MARKER", 234);
-        AddConstVal("cplus::CTOR_INIT", 233);
-        AddConstVal("cplus::LONGLONG", 232);
-        AddConstVal("cplus::IUNLONGLONG", 231);
-        AddConstVal("cplus::IUNLONG", 230);
-        AddConstVal("cplus::IUN", 229);
-        AddConstVal("cplus::ILONGLONG", 228);
-        AddConstVal("cplus::ILONG", 227);
-        AddConstVal("cplus::RANGE_MODIFIER", 226);
-        AddConstVal("cplus::COND_AFF", 225);
-        AddConstVal("cplus::INTE", 224);
-        AddConstVal("cplus::COMPOUND", 223);
-        AddConstVal("cplus::CLASS_DECL", 222);
-        AddConstVal("cplus::AFER", 221);
-        AddConstVal("cplus::CATCH_ANSI", 220);
-        AddConstVal("cplus::EXCEPT_ANSI_ALL", 219);
-        AddConstVal("cplus::CAST", 218);
-        AddConstVal("cplus::TYP_BIT", 217);
-        AddConstVal("cplus::PROTECT", 216);
-        AddConstVal("cplus::BASE_LIST", 215);
-        AddConstVal("cplus::ATTRIBUTE_CALL", 214);
-        AddConstVal("cplus::XOR_AFF", 213);
-        AddConstVal("cplus::OR_AFF", 212);
-        AddConstVal("cplus::AND_AFF", 211);
-        AddConstVal("cplus::RSH_AFF", 210);
-        AddConstVal("cplus::LSH_AFF", 209);
-        AddConstVal("cplus::MIN_AFF", 208);
-        AddConstVal("cplus::PLU_AFF", 207);
-        AddConstVal("cplus::REM_AFF", 206);
-        AddConstVal("cplus::DIV_AFF", 205);
-        AddConstVal("cplus::MUL_AFF", 204);
-        AddConstVal("cplus::AFF", 203);
-        AddConstVal("cplus::ASM_CALL", 202);
-        AddConstVal("cplus::EXP_ARRAY", 201);
-        AddConstVal("cplus::VAR_LIST", 200);
-        AddConstVal("cplus::TYP_LIST", 199);
-        AddConstVal("cplus::TYP_AFF", 198);
-        AddConstVal("cplus::ABST_DECLARATOR", 197);
-        AddConstVal("cplus::DECLARATOR", 196);
-        AddConstVal("cplus::POINPOINPOIN", 195);
-        AddConstVal("cplus::LAND", 194);
-        AddConstVal("cplus::INIT_NEW", 193);
-        AddConstVal("cplus::VIRG", 192);
-        AddConstVal("cplus::QUALIFIED", 191);
-        AddConstVal("cplus::MINUS", 190);
-        AddConstVal("cplus::TYP", 189);
-        AddConstVal("cplus::PFER", 188);
-        AddConstVal("cplus::DESTRUCT", 187);
-        AddConstVal("cplus::TYP_REF", 186);
-        AddConstVal("cplus::TYP_ADDR", 185);
-        AddConstVal("cplus::INFE", 184);
-        AddConstVal("cplus::USING", 183);
-        AddConstVal("cplus::NAMESPACE", 182);
-        AddConstVal("cplus::CATCH", 181);
-        AddConstVal("cplus::DPOI", 180);
-        AddConstVal("cplus::PUBLIC", 179);
-        AddConstVal("cplus::PROTECTED", 178);
-        AddConstVal("cplus::PRIVATE", 177);
-        AddConstVal("cplus::CHAPEGAL", 176);
-        AddConstVal("cplus::VBAREGAL", 175);
-        AddConstVal("cplus::ETCOEGAL", 174);
-        AddConstVal("cplus::SUPESUPEEGAL", 173);
-        AddConstVal("cplus::INFEINFEEGAL", 172);
-        AddConstVal("cplus::TIREEGAL", 171);
-        AddConstVal("cplus::PLUSEGAL", 170);
-        AddConstVal("cplus::POURCEGAL", 169);
-        AddConstVal("cplus::ETOIEGAL", 168);
-        AddConstVal("cplus::EGAL", 167);
-        AddConstVal("cplus::ASM", 166);
-        AddConstVal("cplus::CFER", 165);
+        AddConstVal("cplus::TUNSIGNED", 368);
+        AddConstVal("cplus::BDECR", 367);
+        AddConstVal("cplus::BINCR", 366);
+        AddConstVal("cplus::ADDR", 365);
+        AddConstVal("cplus::NOT", 364);
+        AddConstVal("cplus::LNEG", 363);
+        AddConstVal("cplus::POS", 362);
+        AddConstVal("cplus::NEG", 361);
+        AddConstVal("cplus::PARAM_TYPE", 360);
+        AddConstVal("cplus::STRING_LIST", 359);
+        AddConstVal("cplus::LABEL", 358);
+        AddConstVal("cplus::THROW_ANSI", 357);
+        AddConstVal("cplus::ELSE", 356);
+        AddConstVal("cplus::DECL_TYPE", 355);
+        AddConstVal("cplus::CLASSNAME", 354);
+        AddConstVal("cplus::TIDENT", 353);
+        AddConstVal("cplus::TSIGNED", 352);
+        AddConstVal("cplus::TSHORT", 351);
+        AddConstVal("cplus::TCHAR", 350);
+        AddConstVal("cplus::TINT", 349);
+        AddConstVal("cplus::RSHI", 348);
+        AddConstVal("cplus::LSHI", 347);
+        AddConstVal("cplus::LT", 346);
+        AddConstVal("cplus::GT", 345);
+        AddConstVal("cplus::GEQU", 344);
+        AddConstVal("cplus::LEQU", 343);
+        AddConstVal("cplus::SPACE_ARROW", 342);
+        AddConstVal("cplus::TAB_DIRECTIVE", 341);
+        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 340);
+        AddConstVal("cplus::ENUM_VERT_VALUE", 339);
+        AddConstVal("cplus::PROTECTED_ARRAY_S_TYPEDEF", 338);
+        AddConstVal("cplus::PROTECTED_ARRAY_TYPEDEF", 337);
+        AddConstVal("cplus::PROTECTED_ARRAY_S", 336);
+        AddConstVal("cplus::PROTECTED_ARRAY", 335);
+        AddConstVal("cplus::PROTECT_MEMB", 334);
+        AddConstVal("cplus::LANGUAGE", 333);
+        AddConstVal("cplus::EXP", 332);
+        AddConstVal("cplus::ADECR", 331);
+        AddConstVal("cplus::AINCR", 330);
+        AddConstVal("cplus::ARROW", 329);
+        AddConstVal("cplus::REF", 328);
+        AddConstVal("cplus::EXP_BRA", 327);
+        AddConstVal("cplus::EXP_LIST", 326);
+        AddConstVal("cplus::ARROW_MEMB", 325);
+        AddConstVal("cplus::DOT_MEMB", 324);
+        AddConstVal("cplus::POINETOI", 323);
+        AddConstVal("cplus::TIRESUPEETOI", 322);
+        AddConstVal("cplus::TIRESUPE", 321);
+        AddConstVal("cplus::SUPESUPE", 320);
+        AddConstVal("cplus::INFEINFE", 319);
+        AddConstVal("cplus::SUPEEGAL", 318);
+        AddConstVal("cplus::INFEEGAL", 317);
+        AddConstVal("cplus::NONE", 316);
+        AddConstVal("cplus::NEW_DECLARATOR", 315);
+        AddConstVal("cplus::USING_NAMESPACE", 314);
+        AddConstVal("cplus::NAMESPACE_ALIAS", 313);
+        AddConstVal("cplus::REM", 312);
+        AddConstVal("cplus::DIV", 311);
+        AddConstVal("cplus::MUL", 310);
+        AddConstVal("cplus::POURC", 309);
+        AddConstVal("cplus::MESSAGE_MAP", 308);
+        AddConstVal("cplus::MACRO", 307);
+        AddConstVal("cplus::TDOUBLE", 306);
+        AddConstVal("cplus::TFLOAT", 305);
+        AddConstVal("cplus::TLONG", 304);
+        AddConstVal("cplus::OR", 303);
+        AddConstVal("cplus::VBARVBAR", 302);
+        AddConstVal("cplus::AND", 301);
+        AddConstVal("cplus::ETCOETCO", 300);
+        AddConstVal("cplus::COMPOUND_EXT", 299);
+        AddConstVal("cplus::EXTERNAL", 298);
+        AddConstVal("cplus::INLINE_NAMESPACE", 297);
+        AddConstVal("cplus::INITIALIZER", 296);
+        AddConstVal("cplus::LOR", 295);
+        AddConstVal("cplus::VBAR", 294);
+        AddConstVal("cplus::DELETE_FUNCTION", 293);
+        AddConstVal("cplus::FUNC", 292);
+        AddConstVal("cplus::ALL_OF", 291);
+        AddConstVal("cplus::EXTENSION", 290);
+        AddConstVal("cplus::__EXTENSION__", 289);
+        AddConstVal("cplus::STAT_VOID", 288);
+        AddConstVal("cplus::TYPEDEF", 287);
+        AddConstVal("cplus::TEMPLATE_DECL", 286);
+        AddConstVal("cplus::SUPE", 285);
+        AddConstVal("cplus::CLASS_PARAM", 284);
+        AddConstVal("cplus::TEMPLATE", 283);
+        AddConstVal("cplus::EXP_SEQ", 282);
+        AddConstVal("cplus::LXOR", 281);
+        AddConstVal("cplus::CHAP", 280);
+        AddConstVal("cplus::EXCEPTION_LIST", 279);
+        AddConstVal("cplus::EXCEPTION_ANSI", 278);
+        AddConstVal("cplus::EXCEPTION", 277);
+        AddConstVal("cplus::NEQU", 276);
+        AddConstVal("cplus::EQU", 275);
+        AddConstVal("cplus::EXCLEGAL", 274);
+        AddConstVal("cplus::EGALEGAL", 273);
+        AddConstVal("cplus::ENUM_CLASS", 272);
+        AddConstVal("cplus::PRAGMA", 271);
+        AddConstVal("cplus::PARAMETERS", 270);
+        AddConstVal("cplus::FUNC_HEADER", 269);
+        AddConstVal("cplus::INDENT_FUNCTION_TYPE", 268);
+        AddConstVal("cplus::COMMENT_PLUS", 267);
+        AddConstVal("cplus::COMMENT_END", 266);
+        AddConstVal("cplus::COMMENT_MIDDLE", 265);
+        AddConstVal("cplus::COMMENT_START", 264);
+        AddConstVal("cplus::MARGIN_VALUE", 263);
+        AddConstVal("cplus::BRACE_ALIGN_VALUE", 262);
+        AddConstVal("cplus::DECL_ALIGN", 261);
+        AddConstVal("cplus::ASSIGN_ALIGN", 260);
+        AddConstVal("cplus::SINGLE_SWITCH_INDENT_VALUE", 259);
+        AddConstVal("cplus::SIMPLIFY_VALUE", 258);
+        AddConstVal("cplus::SIMPLIFY", 257);
+        AddConstVal("cplus::MODE_VALUE", 256);
+        AddConstVal("cplus::TAB_VALUE", 255);
+        AddConstVal("cplus::CONFIG", 254);
+        AddConstVal("cplus::NOT_MANAGED", 253);
+        AddConstVal("cplus::NO_PRETTY", 252);
+        AddConstVal("cplus::ALINE", 251);
+        AddConstVal("cplus::ERROR", 250);
+        AddConstVal("cplus::UNDEF", 249);
+        AddConstVal("cplus::TYP_AFF_BRA", 248);
+        AddConstVal("cplus::TYP_AFF_CALL", 247);
+        AddConstVal("cplus::MEMBER_DECLARATOR", 246);
+        AddConstVal("cplus::TYP_ARRAY", 245);
+        AddConstVal("cplus::COUV", 244);
+        AddConstVal("cplus::FOR_DECLARATION", 243);
+        AddConstVal("cplus::DECLARATION", 242);
+        AddConstVal("cplus::CTOR_INITIALIZER", 241);
+        AddConstVal("cplus::BRACE_MARKER", 240);
+        AddConstVal("cplus::CTOR_INIT", 239);
+        AddConstVal("cplus::LONGLONG", 238);
+        AddConstVal("cplus::IUNLONGLONG", 237);
+        AddConstVal("cplus::IUNLONG", 236);
+        AddConstVal("cplus::IUN", 235);
+        AddConstVal("cplus::ILONGLONG", 234);
+        AddConstVal("cplus::ILONG", 233);
+        AddConstVal("cplus::RANGE_MODIFIER", 232);
+        AddConstVal("cplus::COND_AFF", 231);
+        AddConstVal("cplus::INTE", 230);
+        AddConstVal("cplus::COMPOUND", 229);
+        AddConstVal("cplus::CLASS_DECL", 228);
+        AddConstVal("cplus::AFER", 227);
+        AddConstVal("cplus::CATCH_ANSI", 226);
+        AddConstVal("cplus::EXCEPT_ANSI_ALL", 225);
+        AddConstVal("cplus::CAST", 224);
+        AddConstVal("cplus::TYP_BIT", 223);
+        AddConstVal("cplus::PROTECT", 222);
+        AddConstVal("cplus::BASE_LIST", 221);
+        AddConstVal("cplus::ATTRIBUTE_CALL", 220);
+        AddConstVal("cplus::XOR_AFF", 219);
+        AddConstVal("cplus::OR_AFF", 218);
+        AddConstVal("cplus::AND_AFF", 217);
+        AddConstVal("cplus::RSH_AFF", 216);
+        AddConstVal("cplus::LSH_AFF", 215);
+        AddConstVal("cplus::MIN_AFF", 214);
+        AddConstVal("cplus::PLU_AFF", 213);
+        AddConstVal("cplus::REM_AFF", 212);
+        AddConstVal("cplus::DIV_AFF", 211);
+        AddConstVal("cplus::MUL_AFF", 210);
+        AddConstVal("cplus::AFF", 209);
+        AddConstVal("cplus::ASM_CALL", 208);
+        AddConstVal("cplus::EXP_ARRAY", 207);
+        AddConstVal("cplus::VAR_LIST", 206);
+        AddConstVal("cplus::TYP_LIST", 205);
+        AddConstVal("cplus::TYP_AFF", 204);
+        AddConstVal("cplus::ABST_DECLARATOR", 203);
+        AddConstVal("cplus::DECLARATOR", 202);
+        AddConstVal("cplus::LAND", 201);
+        AddConstVal("cplus::INIT_NEW", 200);
+        AddConstVal("cplus::VIRG", 199);
+        AddConstVal("cplus::QUALIFIED", 198);
+        AddConstVal("cplus::MINUS", 197);
+        AddConstVal("cplus::TYP", 196);
+        AddConstVal("cplus::PFER", 195);
+        AddConstVal("cplus::DESTRUCT", 194);
+        AddConstVal("cplus::TYP_REF", 193);
+        AddConstVal("cplus::TYP_ADDR", 192);
+        AddConstVal("cplus::INFE", 191);
+        AddConstVal("cplus::_TYPEDEF_PROTECTEDARRAY_S", 190);
+        AddConstVal("cplus::_TYPEDEF_PROTECTEDARRAY", 189);
+        AddConstVal("cplus::_PROTECTEDPOINTER_S", 188);
+        AddConstVal("cplus::_PROTECTEDPOINTER", 187);
+        AddConstVal("cplus::_PROTECTEDARRAY_S", 186);
+        AddConstVal("cplus::_PROTECTEDARRAY", 185);
+        AddConstVal("cplus::USING", 184);
+        AddConstVal("cplus::NAMESPACE", 183);
+        AddConstVal("cplus::CATCH", 182);
+        AddConstVal("cplus::DPOI", 181);
+        AddConstVal("cplus::PUBLIC", 180);
+        AddConstVal("cplus::PROTECTED", 179);
+        AddConstVal("cplus::PRIVATE", 178);
+        AddConstVal("cplus::CHAPEGAL", 177);
+        AddConstVal("cplus::VBAREGAL", 176);
+        AddConstVal("cplus::ETCOEGAL", 175);
+        AddConstVal("cplus::SUPESUPEEGAL", 174);
+        AddConstVal("cplus::INFEINFEEGAL", 173);
+        AddConstVal("cplus::TIREEGAL", 172);
+        AddConstVal("cplus::PLUSEGAL", 171);
+        AddConstVal("cplus::POURCEGAL", 170);
+        AddConstVal("cplus::ETOIEGAL", 169);
+        AddConstVal("cplus::EGAL", 168);
+        AddConstVal("cplus::ASM", 167);
+        AddConstVal("cplus::CFER", 166);
+        AddConstVal("cplus::POINPOINPOIN", 165);
         AddConstVal("cplus::VA_ARG", 164);
         AddConstVal("cplus::DELETE", 163);
         AddConstVal("cplus::NEW", 162);
@@ -10540,7 +10782,7 @@ void cplus::InitConst()
         AddConstVal("LIST",0);
         listConst_cplus = listConst;
         listConst = inter;
-        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,358,(OVER_LANG *) 0);
+        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,368,(OVER_LANG *) 0);
         }
 }
 

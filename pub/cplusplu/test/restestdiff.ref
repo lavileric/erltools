@@ -12,12 +12,6 @@ Reading aligndec.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-58,59c58,59
-<     if ( (i = 5) ) {}
-<     if ( (i = 5) ) {
----
->     if ( i = 5 ) {}
->     if ( i = 5 ) {
 
 araz.c_l
 
@@ -144,8 +138,6 @@ Reading concert.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-53a54
-> 
 
 cpluspre.c_l
 
@@ -174,18 +166,6 @@ Reading crcCode.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-53c53
-<                 crc_accum = crc_accum << 1 ^ POLYNOMIAL ;
----
->                 crc_accum = (crc_accum << 1) ^ POLYNOMIAL ;
-55c55
-<                 crc_accum = crc_accum << 1 ;
----
->                 crc_accum = (crc_accum << 1);
-69c69
-<         crc_accum = crc_accum << 8 ^ crc_table [i];
----
->         crc_accum = (crc_accum << 8) ^ crc_table [i];
 
 dec1.c_l
 
@@ -284,8 +264,6 @@ Reading define.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-1a2
-> 
 
 definecomment.c_l
 
@@ -314,22 +292,6 @@ Reading elessai.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-154c154
-<     if ( (a = b) ) 
----
->     if ( a = b ) 
-156c156
-<     while ( (a && a <<= b) ) 
----
->     while ( a && a <<= b ) 
-160c160
-<     } while ( (a += b) );
----
->     } while ( a += b );
-165c165
-<     for ( a ; (a -= 2) ;) 
----
->     for ( a ; a -= 2 ;) 
 
 eless.c_l
 
@@ -386,12 +348,6 @@ Reading equalcon.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-13,14c13,14
-<                                             if ( (a = verylongidentifier(
-<                                                     verylongvar)) ) {
----
->                                             if ( a = verylongidentifier(
->                                                     verylongvar) ) {
 
 er1.c_l
 
@@ -448,8 +404,6 @@ Reading ess.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-56a57
-> 
 
 except.c_l
 
@@ -464,8 +418,6 @@ Reading except.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-29a30
-> 
 
 exception.c_l
 
@@ -578,8 +530,6 @@ Reading filecommentend.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-5a6
-> 
 
 fo.c_l
 
@@ -706,8 +656,6 @@ Reading namespace.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-69a70
-> 
 
 newc++.c_l
 
@@ -792,26 +740,6 @@ Reading re.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-4,12c4,12
-<         if ( (a = b) ) {
-<             if ( (a = b) ) {
-<                 if ( (a = b) ) {
-<                     if ( (a = b) ) {
-<                         if ( (a = b) ) {
-<                             if ( (a = b) ) {
-<                                 if ( (a = b) ) {
-<                                     if ( (a = b) ) {
-<                                         if ( (a = b) ) {
----
->         if ( a = b ) {
->             if ( a = b ) {
->                 if ( a = b ) {
->                     if ( a = b ) {
->                         if ( a = b ) {
->                             if ( a = b ) {
->                                 if ( a = b ) {
->                                     if ( a = b ) {
->                                         if ( a = b ) {
 
 reer.c_l
 
@@ -840,14 +768,6 @@ Reading ref.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-371c371
-<                     if ( (tree = SonTree(tree, 2)) ) 
----
->                     if ( tree = SonTree(tree, 2) ) 
-587c587
-<         while ( (ptTree = SonTree(ptTree, 2)) ) 
----
->         while ( ptTree = SonTree(ptTree, 2) ) 
 
 rfu.c_l
 
@@ -946,38 +866,6 @@ Reading te.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-4,12c4,12
-<         if ( (a = b) ) {
-<             if ( (a = b) ) {
-<                 if ( (a = b) ) {
-<                     if ( (a = b) ) {
-<                         if ( (a = b) ) {
-<                             if ( (a = b) ) {
-<                                 if ( (a = b) ) {
-<                                     if ( (a = b) ) {
-<                                         if ( (a = b) ) {
----
->         if ( a = b ) {
->             if ( a = b ) {
->                 if ( a = b ) {
->                     if ( a = b ) {
->                         if ( a = b ) {
->                             if ( a = b ) {
->                                 if ( a = b ) {
->                                     if ( a = b ) {
->                                         if ( a = b ) {
-14,18c14,18
-<                                                 if ( (a = b) ) {
-<                                                     if ( (a = b) ) {
-<                                                         if ( (a = b) ) {
-<                                                             if ( (a = b) ) {
-<                                                                 if ( (a = b) ) {
----
->                                                 if ( a = b ) {
->                                                     if ( a = b ) {
->                                                         if ( a = b ) {
->                                                             if ( a = b ) {
->                                                                 if ( a = b ) {
 
 temparg.c_l
 
@@ -1020,82 +908,6 @@ Reading test1.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-270c270
-<                                 return 1 ;
----
->                                 return (1);
-286c286
-<                                         return 1 ;
----
->                                         return (1);
-299c299
-<                                         return 1 ;
----
->                                         return (1);
-329c329
-<                         return 1 ;
----
->                         return (1);
-348c348
-<                                         return 1 ;
----
->                                         return (1);
-361c361
-<                                         return 1 ;
----
->                                         return (1);
-381c381
-<                                 return 1 ;
----
->                                 return (1);
-401c401
-<                         return 1 ;
----
->                         return (1);
-414c414
-<                         return 1 ;
----
->                         return (1);
-427c427
-<                         return 1 ;
----
->                         return (1);
-514c514
-<                         return 1 ;
----
->                         return (1);
-867c867
-<                         return 1 ;
----
->                         return (1);
-983c983
-<                                 return 1 ;
----
->                                 return (1);
-1026c1026
-<                         return 1 ;
----
->                         return (1);
-1147c1147
-<                             return 1 ;
----
->                             return (1);
-1224c1224
-<                             return 1 ;
----
->                             return (1);
-1266c1266
-<                                 return 1 ;
----
->                                 return (1);
-1281c1281
-<                                     return 1 ;
----
->                                     return (1);
-1391c1391
-<                             return 1 ;
----
->                             return (1);
 
 test.c_l
 
@@ -1278,14 +1090,6 @@ Reading twi.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-371c371
-<                     if ( (tree = SonTree(tree, 2)) ) 
----
->                     if ( tree = SonTree(tree, 2) ) 
-698c698
-<         while ( (ptTree = SonTree(ptTree, 2)) ) 
----
->         while ( ptTree = SonTree(ptTree, 2) ) 
 
 ty.c_l
 
@@ -1342,8 +1146,6 @@ Reading uusimStruct.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
-164a165
-> 
 
 yy.c_l
 

@@ -151,18 +151,18 @@ void inst_inter ()
 /**********************************/
 void affect_cond ()
 {
-    if ( a = b ) 
+    if ( (a = b) ) 
         a ;
-    while ( a && a <<= b ) 
+    while ( (a && a <<= b) ) 
         a ;
     do {
         a ;
-    } while ( a += b );
+    } while ( (a += b) );
     switch ( a = b ) {
         case 5 : ;
         default : ;
     }
-    for ( a ; a -= 2 ;) 
+    for ( a ; (a -= 2) ;) 
         b ;
 }
 

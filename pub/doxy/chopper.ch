@@ -694,7 +694,7 @@ PTREE GetParam ( PTREE &sParameter )
                 }
 #           endif
         }
-        if ( aDeclarator == <,<>,<TYP,<IDENT>>> && ListLength(sParameter) == 1 ) {
+        if ( aDeclarator.TreeArity() >= 2 && aDeclarator == <,<>,<TYP,<IDENT>>> && ListLength(sParameter) == 1 ) {
             throw 0 ;
         }
         

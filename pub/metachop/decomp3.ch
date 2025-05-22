@@ -208,7 +208,8 @@ void GenTree ( PTREE tree )
                         break ;
                     }
                     switch ( ptTree ) {
-                        case <EXP_SEQ> : 
+                        case <EXP_SEQ> :
+                        case <TYP_LIST> :
                         case <FOREACH> : 
                         case <RETURN> : 
                             massageIt = 1 ;

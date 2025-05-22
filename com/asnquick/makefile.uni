@@ -63,7 +63,7 @@ qconnect.$(LIB_SUF) : $(OBJECTS_QUICK)
 ##### ihm #####
 
 ihm.cc : ihm.asn quickcode
-	quickcode ihm.asn  
+	- quickcode ihm.asn  
 	cpb ihm.cc
 	cpb ihm.h
 
@@ -72,7 +72,7 @@ ihm.o : ihm.cc ihm.h  quickasn.h
 ##### level2 #####
 
 level2.cc : level2.asn   quickcode
-	quickcode level2.asn  
+	- quickcode level2.asn  
 	cpb level2.cc
 	cpb level2.h
 

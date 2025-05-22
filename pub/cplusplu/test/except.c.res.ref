@@ -27,4 +27,3 @@ void GfxAbsorbNewProcess ( const LPTSTR strGuts, const size_t idxFrom )
         return ;
     }
 } //  high-level system to thrust a new process into an existing graph
-

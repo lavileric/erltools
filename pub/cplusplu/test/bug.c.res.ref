@@ -23,7 +23,7 @@ UserCollection::UserCollection ()
     char    buffer [BUFFERSIZ], *user ;
     
     try {
-        ifstream    passwd("/etc/passwd");
+        ifstream    passwd ("/etc/passwd") ;
         while ( passwd.getline(buffer, sizeof(buffer) - 1) != NULL ) {
             user = strtok(buffer, ":");
             new_user = new User(user);

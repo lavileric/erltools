@@ -127,7 +127,7 @@
             virtual int     RemoveLevel () ;
             
             // insert a var at the current level
-            virtual void    AddVar (const PTREE &, bool remove = true) ;
+            virtual void    AddVar (const PTREE &, bool remove = true, int level = -1 ) ;
             
             // remove a var at the current level
             virtual void    RemoveVar (const PTREE &) ;

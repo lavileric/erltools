@@ -31,7 +31,7 @@ PPTREE metachop::main_entry ( int error_free)
 #line 13 "metachop.met"
         PPTREE _ptTree0=0;
 #line 13 "metachop.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 166, metachop))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 168, metachop))== (PPTREE) -1 ) {
 #line 13 "metachop.met"
             MulFreeTree(1,_ptTree0);
             PROG_EXIT(main_entry_exit,"main_entry")
@@ -148,7 +148,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 30 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 30 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 167, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 169, metachop))== (PPTREE) -1 ) {
 #line 30 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -175,7 +175,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 31 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 31 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 168, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 170, metachop))== (PPTREE) -1 ) {
 #line 31 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -604,7 +604,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 83 "metachop.met"
                 _ptRes0= MakeTree(IN_LANG, 2);
 #line 83 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 63, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 64, metachop))== (PPTREE) -1 ) {
 #line 83 "metachop.met"
                     MulFreeTree(7,_ptRes0,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -625,7 +625,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 85 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 85 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 140, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 142, metachop))== (PPTREE) -1 ) {
 #line 85 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -673,7 +673,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 91 "metachop.met"
 #line 92 "metachop.met"
 #line 93 "metachop.met"
-                if (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(expression), 63, metachop)){
+                if (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(expression), 64, metachop)){
 #line 93 "metachop.met"
 #line 94 "metachop.met"
 #line 95 "metachop.met"
@@ -762,7 +762,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 105 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 105 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 105, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 106, metachop))== (PPTREE) -1 ) {
 #line 105 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -785,7 +785,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 106 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 106 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 117, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 119, metachop))== (PPTREE) -1 ) {
 #line 106 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -917,7 +917,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 117 "metachop.met"
                     PPTREE _ptTree0=0;
 #line 117 "metachop.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 63, metachop))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 64, metachop))== (PPTREE) -1 ) {
 #line 117 "metachop.met"
                         MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1001,7 +1001,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 123 "metachop.met"
                     PPTREE _ptTree0=0;
 #line 123 "metachop.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 117, metachop))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 119, metachop))== (PPTREE) -1 ) {
 #line 123 "metachop.met"
                         MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1026,7 +1026,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 124 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 124 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 142, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 144, metachop))== (PPTREE) -1 ) {
 #line 124 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1070,7 +1070,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 128 "metachop.met"
                 _ptRes0= MakeTree(VA_ARG, 2);
 #line 128 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(assignment_expression)(error_free), 17, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(assignment_expression)(error_free), 18, metachop))== (PPTREE) -1 ) {
 #line 128 "metachop.met"
                     MulFreeTree(7,_ptRes0,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1102,7 +1102,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 130 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 130 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 148, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 150, metachop))== (PPTREE) -1 ) {
 #line 130 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1149,7 +1149,7 @@ PPTREE metachop::primary_expression ( int error_free)
 #line 134 "metachop.met"
                 PPTREE _ptTree0=0;
 #line 134 "metachop.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(constan)(error_free), 32, metachop))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(constan)(error_free), 33, metachop))== (PPTREE) -1 ) {
 #line 134 "metachop.met"
                     MulFreeTree(6,_ptTree0,expTree,list,result,ret,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1303,7 +1303,7 @@ PPTREE metachop::prog ( int error_free)
 #line 22 "metachop.met"
         PPTREE _ptTree0=0;
 #line 22 "metachop.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 114, metachop))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 115, metachop))== (PPTREE) -1 ) {
 #line 22 "metachop.met"
             MulFreeTree(2,_ptTree0,langTree);
             PROG_EXIT(prog_exit,"prog")

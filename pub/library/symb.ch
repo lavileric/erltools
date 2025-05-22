@@ -12,9 +12,9 @@ bool    SymbolTable::throwOn = false ; ///< SymbolTable
 /// 
 /// @fn SymbolTable::SymbolTable (const SymbolTable &symbTab) 
 /// 
-/// @brief SymbolTable
+//| @brief SymbolTable
 /// 
-/// @param [in] symbTab 
+//| @param [in] symbTab 
 /// 
 // copy constructor
 // parameters :
@@ -139,25 +139,38 @@ int SymbolTable::RemoveLevel ()
 }
 
 /// 
-/// @fn void    SymbolTable::AddVar (const PTREE &var, bool remove) 
+/// @fn void    SymbolTable::AddVar (const PTREE &var, bool remove, int level) 
 /// 
 /// @brief AddVar
 /// 
 /// @param [in] var    
 /// @param [in] remove 
+/// @param [in] level  
 /// 
 // insert a var at the current level
-void SymbolTable::AddVar ( const PTREE &var, bool remove )
+void SymbolTable::AddVar ( const PTREE &var, bool remove, int level )
 {
     CheckValidity();
     
     // if no level is present create one
-    if ( pvSize == 0 ) 
+    if ( pvSize == 0 ) {
         AddLevel();
+    }
+    
+    TabList *varLevel (pvCurrentLevel) ;
+    
+    // if level indication select the good one 
+    if ( level >= pvSize ) 
+        return ;
+    if ( level >= 0 ) {
+        varLevel =  *(pvTable + level);
+    }
+    
+    // add the variable 
     if ( remove ) 
-        pvCurrentLevel -> InsertRemove(var);
+        varLevel -> InsertRemove(var);
     else 
-        pvCurrentLevel -> Insert(var);
+        varLevel -> Insert(var);
 }
 
 /// 

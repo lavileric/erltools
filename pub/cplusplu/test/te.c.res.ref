@@ -1,21 +1,21 @@
 main ()
 {
     if ( (a = b) ) {
-        if ( a = b ) {
-            if ( a = b ) {
-                if ( a = b ) {
-                    if ( a = b ) {
-                        if ( a = b ) {
-                            if ( a = b ) {
-                                if ( a = b ) {
-                                    if ( a = b ) {
-                                        if ( a = b ) {
+        if ( (a = b) ) {
+            if ( (a = b) ) {
+                if ( (a = b) ) {
+                    if ( (a = b) ) {
+                        if ( (a = b) ) {
+                            if ( (a = b) ) {
+                                if ( (a = b) ) {
+                                    if ( (a = b) ) {
+                                        if ( (a = b) ) {
                                             if ( a < b ) {
-                                                if ( a = b ) {
-                                                    if ( a = b ) {
-                                                        if ( a = b ) {
-                                                            if ( a = b ) {
-                                                                if ( a = b ) {
+                                                if ( (a = b) ) {
+                                                    if ( (a = b) ) {
+                                                        if ( (a = b) ) {
+                                                            if ( (a = b) ) {
+                                                                if ( (a = b) ) {
   if ( a < b ) {
     alskdfjklsd
         = aslkdf

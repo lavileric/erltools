@@ -803,7 +803,7 @@ int main ( int argc, char **argv )
                         {
 #line 167 "kern.ch"
 #line 167 "kern.ch"
-                            Protector<int>     protector(output, -1);
+                            Protector<int>     protector (output, -1) ;
                             
 #line 167 "kern.ch"
 #line 168 "kern.ch"
@@ -890,7 +890,7 @@ int main ( int argc, char **argv )
                             
 #line 187 "kern.ch"
 #line 188 "kern.ch"
-                            Protector<int>     protector(output, -1);
+                            Protector<int>     protector (output, -1) ;
                             
 #line 188 "kern.ch"
 #line 187 "kern.ch"

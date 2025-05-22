@@ -202,7 +202,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
 
 PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
 {
-    PTREE   list, list1, son, sc, type, declarator, param, param_decl, stat, decl, list_decl, ctor ;
+    PTREE   list, list1, son, sc, type, declarator, param, param_decl, stat, decl, list_decl, ctor, full ;
     PTREE   val, exp_list, init, exp1, exp2, exp3, exp, ident, stat1, stat2, name1, name2, range ;
     PTREE   exceptionList ;
     PTREE   ident1, name ;
@@ -229,6 +229,34 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 list    =  name ;
                 <SEPO>
                 DecompilerListeExternSimp(list);
+            }
+            break ;
+        case <PROTECTED_ARRAY,range,full,type,ident,exp> : 
+            {
+                if ( exp == () ) {
+                    "_protectedPointer" "(" @range "," @full "," @type "," @ident ")" ";" <NL>
+                } else {
+                    "_protectedArray" "(" @range "," @full "," @type "," @ident "," @exp ")" ";" <NL>
+                }
+            }
+            break ;
+        case <PROTECTED_ARRAY_S,full,type,ident,exp> : 
+            {
+                if ( exp == () ) {
+                    "_protectedPointer_s" "(" @full "," @type "," @ident ")" ";" <NL>
+                } else {
+                    "_protectedArray_s" "(" @full "," @type "," @ident "," @exp ")" ";" <NL>
+                }
+            }
+            break ;
+        case <PROTECTED_ARRAY_TYPEDEF,range,full,type,ident,exp> : 
+            {
+                "_typedef_protectedArray" "(" @range "," @full "," @type "," @ident "," @exp ")" ";" <NL>
+            }
+            break ;
+        case <PROTECTED_ARRAY_S_TYPEDEF,full,type,ident,exp> : 
+            {
+                "_typedef_protectedArray_s" "(" @full "," @type "," @ident "," @exp ")" ";" <NL>
             }
             break ;
         case <TYPEDEF,type,declarator> : 
@@ -691,26 +719,41 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             "]";
             break ;
         case <TYP_LIST,declarator,exp_list,range,except> : 
-            @declarator <SEPB> "(";
-            list = exp_list ;
-            if ( 1 /* typ_list_ok */ ) 
-                while ( exp_list == <LIST> ) {
-                    son =  nextl(exp_list);
-                    @son
-                    if ( exp_list != () ) {
-                        "," <S>
-                    }
+            {
+                bool    putPar = false ;
+                {
+                    PTREE   inside = declarator ;
+                    while ( inside == <RANGE_MODIFIER,<>,inside> ) 
+                        ;
+                    if ( inside == <TYP_ADDR> ) 
+                        putPar =  true ;
                 }
-            ")" <SEPA>
-            if ( except != () ) {
-                "throw" <S> "(";
-                except == <,except>;
-                if ( except != () ) 
-                    DecompList(except, ",", ")", 0);
-                else 
+                if ( putPar ) 
+                    "(" 
+                @declarator
+                if ( putPar ) 
                     ")" 
+                <SEPB> "(";
+                list =  exp_list ;
+                if ( 1 /* typ_list_ok */ ) 
+                    while ( exp_list == <LIST> ) {
+                        son =  nextl(exp_list);
+                        @son
+                        if ( exp_list != () ) {
+                            "," <S>
+                        }
+                    }
+                ")" <SEPA>
+                if ( except != () ) {
+                    "throw" <S> "(";
+                    except == <,except>;
+                    if ( except != () ) 
+                        DecompList(except, ",", ")", 0);
+                    else 
+                        ")" 
+                }
+                <SEPA> @range
             }
-            <SEPA> @range
             break ;
         case <INITIALIZER,init> : 
             if ( init == <LIST> ) {
