@@ -2614,7 +2614,9 @@ end;
 
 define arg_declarator_expression;
     if not see "..." then
-        return take additive_expression;
+        return take additive_expression
+    else
+        break;
 end;
 
 define arg_declarator_base;
