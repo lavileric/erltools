@@ -54,7 +54,7 @@ PPTREE cplus::ptr_operator ( int error_free)
             }
 #line 2291 "cplus.met"
 #line 2292 "cplus.met"
-            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 33, cplus)){
+            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 34, cplus)){
 #line 2292 "cplus.met"
 #line 2293 "cplus.met"
                 ReplaceTree(retTree ,1 ,valTree );
@@ -96,7 +96,7 @@ PPTREE cplus::ptr_operator ( int error_free)
             }
 #line 2298 "cplus.met"
 #line 2299 "cplus.met"
-            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 33, cplus)){
+            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 34, cplus)){
 #line 2299 "cplus.met"
 #line 2300 "cplus.met"
                 ReplaceTree(retTree ,1 ,valTree );
@@ -123,7 +123,7 @@ PPTREE cplus::ptr_operator ( int error_free)
 #line 2305 "cplus.met"
 #line 2304 "cplus.met"
 #line 2305 "cplus.met"
-            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 98, cplus))== (PPTREE) -1 ) {
+            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 99, cplus))== (PPTREE) -1 ) {
 #line 2305 "cplus.met"
                 MulFreeTree(3,retTree,retour,valTree);
                 PROG_EXIT(ptr_operator_exit,"ptr_operator")
@@ -140,7 +140,7 @@ PPTREE cplus::ptr_operator ( int error_free)
 #line 2307 "cplus.met"
 #line 2308 "cplus.met"
 #line 2309 "cplus.met"
-            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 98, cplus))== (PPTREE) -1 ) {
+            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 99, cplus))== (PPTREE) -1 ) {
 #line 2309 "cplus.met"
                 MulFreeTree(3,retTree,retour,valTree);
                 PROG_EXIT(ptr_operator_exit,"ptr_operator")
@@ -160,7 +160,7 @@ PPTREE cplus::ptr_operator ( int error_free)
     }
 #line 2309 "cplus.met"
 #line 2312 "cplus.met"
-    if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 33, cplus)){
+    if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 34, cplus)){
 #line 2312 "cplus.met"
 #line 2313 "cplus.met"
         ReplaceTree(retour ,2 ,valTree );
@@ -282,7 +282,7 @@ PPTREE cplus::qualified_name ( int error_free)
     } else {
 #line 1899 "cplus.met"
 #line 1901 "cplus.met"
-        if ( (retTree=NQUICK_CALL(_Tak(simple_ident)(error_free), 134, cplus))== (PPTREE) -1 ) {
+        if ( (retTree=NQUICK_CALL(_Tak(simple_ident)(error_free), 135, cplus))== (PPTREE) -1 ) {
 #line 1901 "cplus.met"
             MulFreeTree(4,inter,retTree,templateVal,val);
             PROG_EXIT(qualified_name_exit,"qualified_name")
@@ -314,7 +314,7 @@ PPTREE cplus::qualified_name ( int error_free)
 #line 1906 "cplus.met"
         while (((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( DPOIDPOI,"::")) && 
 #line 1906 "cplus.met"
-              (NPUSH_CALL_AFF_VERIF(val = ,_Tak(qualified_name_elem), 121, cplus))) { 
+              (NPUSH_CALL_AFF_VERIF(val = ,_Tak(qualified_name_elem), 122, cplus))) { 
 #line 1906 "cplus.met"
 #line 1907 "cplus.met"
 #line 1908 "cplus.met"
@@ -349,7 +349,7 @@ PPTREE cplus::qualified_name ( int error_free)
     }
 #line 1912 "cplus.met"
 #line 1914 "cplus.met"
-    if (NPUSH_CALL_AFF_VERIF(templateVal = ,_Tak(template_type), 148, cplus)){
+    if (NPUSH_CALL_AFF_VERIF(templateVal = ,_Tak(template_type), 149, cplus)){
 #line 1914 "cplus.met"
 #line 1915 "cplus.met"
 #line 1916 "cplus.met"
@@ -374,7 +374,7 @@ PPTREE cplus::qualified_name ( int error_free)
 #line 1919 "cplus.met"
                     ReplaceTree(_ptRes1, 1, retTree );
 #line 1919 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(qualified_name)(error_free), 120, cplus))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(qualified_name)(error_free), 121, cplus))== (PPTREE) -1 ) {
 #line 1919 "cplus.met"
                         MulFreeTree(7,_ptRes1,_ptTree1,_ptTree0,inter,retTree,templateVal,val);
                         PROG_EXIT(qualified_name_exit,"qualified_name")
@@ -564,7 +564,7 @@ PPTREE cplus::qualified_name_elem ( int error_free)
 #line 1874 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 1874 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(simple_ident)(error_free), 134, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(simple_ident)(error_free), 135, cplus))== (PPTREE) -1 ) {
 #line 1874 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(qualified_name_elem_exit,"qualified_name_elem")
@@ -587,7 +587,7 @@ PPTREE cplus::qualified_name_elem ( int error_free)
 #line 1875 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 1875 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 107, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 108, cplus))== (PPTREE) -1 ) {
 #line 1875 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(qualified_name_elem_exit,"qualified_name_elem")
@@ -668,7 +668,7 @@ PPTREE cplus::quick_prog ( int error_free)
     PPTREE list = (PPTREE) 0,valTree = (PPTREE) 0;
 #line 803 "cplus.met"
 #line 805 "cplus.met"
-    while ((NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(quick_prog_elem), 123, cplus)) && 
+    while ((NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(quick_prog_elem), 124, cplus)) && 
 #line 805 "cplus.met"
           (! (valTree == (PPTREE) 0))) { 
 #line 805 "cplus.met"
@@ -707,7 +707,7 @@ PPTREE cplus::quick_prog ( int error_free)
     if ((tokenAhead && tokenAhead != -1)|| (c != EOF)){
 #line 811 "cplus.met"
 #line 812 "cplus.met"
-        if ( (NQUICK_CALL(_Tak(quick_prog_elem)(error_free), 123, cplus))== (PPTREE) -1 ) {
+        if ( (NQUICK_CALL(_Tak(quick_prog_elem)(error_free), 124, cplus))== (PPTREE) -1 ) {
 #line 812 "cplus.met"
             MulFreeTree(2,list,valTree);
             PROG_EXIT(quick_prog_exit,"quick_prog")
@@ -804,7 +804,7 @@ PPTREE cplus::quick_prog_elem ( int error_free)
 #line 840 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 840 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(include_dir)(error_free), 82, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(include_dir)(error_free), 83, cplus))== (PPTREE) -1 ) {
 #line 840 "cplus.met"
                     MulFreeTree(2,_ptTree0,retTree);
                     PROG_EXIT(quick_prog_elem_exit,"quick_prog_elem")
@@ -828,7 +828,7 @@ PPTREE cplus::quick_prog_elem ( int error_free)
 #line 841 "cplus.met"
 #line 842 "cplus.met"
 #line 843 "cplus.met"
-            if (NPUSH_CALL_VERIF(_Tak(range_pragma), 128, cplus)){
+            if (NPUSH_CALL_VERIF(_Tak(range_pragma), 129, cplus)){
 #line 843 "cplus.met"
 #line 843 "cplus.met"
             }
@@ -2060,7 +2060,7 @@ PPTREE cplus::quick_prog_elem ( int error_free)
 #line 963 "cplus.met"
                                 PPTREE _ptTree0=0;
 #line 963 "cplus.met"
-                                if ( (_ptTree0=NQUICK_CALL(_Tak(other_config)(error_free), 108, cplus))== (PPTREE) -1 ) {
+                                if ( (_ptTree0=NQUICK_CALL(_Tak(other_config)(error_free), 109, cplus))== (PPTREE) -1 ) {
 #line 963 "cplus.met"
                                     MulFreeTree(2,_ptTree0,retTree);
                                     PROG_EXIT(quick_prog_elem_exit,"quick_prog_elem")
@@ -2337,7 +2337,7 @@ PPTREE cplus::range_modifier ( int error_free)
 #line 2263 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
 #line 2263 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(range_in_liste)(error_free), 124, cplus))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(range_in_liste)(error_free), 125, cplus))== (PPTREE) -1 ) {
 #line 2263 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         PROG_EXIT(range_modifier_exit,"range_modifier")
@@ -2455,7 +2455,7 @@ PPTREE cplus::range_modifier ( int error_free)
 #line 2268 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
 #line 2268 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(attribute_call)(error_free), 20, cplus))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(attribute_call)(error_free), 21, cplus))== (PPTREE) -1 ) {
 #line 2268 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         PROG_EXIT(range_modifier_exit,"range_modifier")
@@ -2492,7 +2492,7 @@ PPTREE cplus::range_modifier ( int error_free)
 #line 2272 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
 #line 2272 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(asm_call)(error_free), 16, cplus))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(asm_call)(error_free), 17, cplus))== (PPTREE) -1 ) {
 #line 2272 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         PROG_EXIT(range_modifier_exit,"range_modifier")
@@ -2522,7 +2522,7 @@ PPTREE cplus::range_modifier ( int error_free)
 #line 2274 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 2274 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(range_modifier_function)(error_free), 126, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(range_modifier_function)(error_free), 127, cplus))== (PPTREE) -1 ) {
 #line 2274 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(range_modifier_exit,"range_modifier")
@@ -2869,7 +2869,7 @@ PPTREE cplus::range_modifier_ident ( int error_free)
     PPTREE retTree = (PPTREE) 0,completeName = (PPTREE) 0;
 #line 2080 "cplus.met"
 #line 2082 "cplus.met"
-    if (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(range_modifier), 125, cplus)){
+    if (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(range_modifier), 126, cplus)){
 #line 2082 "cplus.met"
 #line 2083 "cplus.met"
         {
@@ -2880,7 +2880,7 @@ PPTREE cplus::range_modifier_ident ( int error_free)
 #line 2083 "cplus.met"
                 PPTREE _ptTree1=0;
 #line 2083 "cplus.met"
-                if ( (_ptTree1=NQUICK_CALL(_Tak(range_modifier_ident)(error_free), 127, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree1=NQUICK_CALL(_Tak(range_modifier_ident)(error_free), 128, cplus))== (PPTREE) -1 ) {
 #line 2083 "cplus.met"
                     MulFreeTree(4,_ptTree1,_ptTree0,completeName,retTree);
                     PROG_EXIT(range_modifier_ident_exit,"range_modifier_ident")
@@ -2901,7 +2901,7 @@ PPTREE cplus::range_modifier_ident ( int error_free)
 #line 2083 "cplus.met"
 #line 2085 "cplus.met"
 #line 2086 "cplus.met"
-        if (NPUSH_CALL_AFF_VERIF(completeName = ,_Tak(complete_class_name), 30, cplus)){
+        if (NPUSH_CALL_AFF_VERIF(completeName = ,_Tak(complete_class_name), 31, cplus)){
 #line 2086 "cplus.met"
 #line 2087 "cplus.met"
             {

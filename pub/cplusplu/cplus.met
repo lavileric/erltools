@@ -2560,10 +2560,10 @@ end;
 define arg_typ_list;
     declare retTree,valTree;
     {{ { int followed = 0;}};
-    if valTree = take arg_declarator_followed then
+    if valTree = take arg_declarator_followed_strict then
         {{ followed = 1;}}
     else
-        valTree = take arg_declarator;
+        valTree = take arg_declarator_strict;
     addlist(retTree,valTree);
     begin
     {{ {  int exit = 0 ; }};
@@ -2635,9 +2635,17 @@ define arg_declarator;
     return retTree;
 end;
 
-define arg_declarator_followed;
+define arg_declarator_strict;
     declare retTree;
-    retTree = take arg_declarator_base;
+    retTree = take arg_declarator_base_type;
+    if not see ")" and not see "..." then
+        take ",";
+    return retTree;
+end;
+
+define arg_declarator_followed_strict;
+    declare retTree;
+    retTree = take arg_declarator_base_type;
     if not see "..." then
         take ",";
     return retTree;
@@ -3253,13 +3261,13 @@ define parameter_list_extended;
     if not see ")" then
         begin
         {{ { int exit = 0 ;}};
-        if (valTree = take arg_declarator_followed) then
+        if (valTree = take arg_declarator_followed_strict) then
             begin
             {{ followed = 1 ;}};
             addlist(paramList,valTree);
             end
         else
-            if (valTree = take arg_declarator) then
+            if (valTree = take arg_declarator_strict) then
                 addlist(paramList,valTree)
             else
                 begin

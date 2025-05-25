@@ -7537,72 +7537,7 @@ int cplus::the_exit ()
     DELETE
     VA_ARG
     POINPOINPOIN
--- 11 -- arg_declarator_followed
-    META
-    IDENT
-    STRING
-    CHARACT
-    INTEGER
-    ULINTEGER
-    ULLINTEGER
-    LLINTEGER
-    LINTEGER
-    UINTEGER
-    FLOATVAL
-    ULHEXA
-    ULLHEXA
-    LLHEXA
-    LHEXA
-    UHEXA
-    HEXA
-    ULLOCTAL
-    LLOCTAL
-    ULOCTAL
-    LOCTAL
-    UOCTAL
-    OCTAL
-    AUTO
-    REGISTER
-    VOLATILE
-    __ATTRIBUTE__
-    __ASM__
-    INLINE
-    VIRTUAL
-    FRIEND
-    CONST
-    CONSTEXPR
-    ENUM
-    STRUCT
-    UNION
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
-    POUV
-    ETOI
-    ETCO
-    TILD
-    OPERATOR
-    TIRE
-    PLUS
-    EXCL
-    PLUSPLUS
-    TIRETIRE
-    SIZEOF
-    NEW
-    DELETE
-    VA_ARG
-    POINPOINPOIN
--- 12 -- arg_declarator_type
+-- 11 -- arg_declarator_followed_strict
     META
     IDENT
     AUTO
@@ -7631,12 +7566,70 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 13 -- arg_typ_declarator
+-- 12 -- arg_declarator_strict
+    META
+    IDENT
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 13 -- arg_declarator_type
+    META
+    IDENT
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 14 -- arg_typ_declarator
     META
     POUV
--- 14 -- arg_typ_list
+-- 15 -- arg_typ_list
     ALWAYS
--- 15 -- array_expression_follow
+-- 16 -- array_expression_follow
     META
     IDENT
     STRING
@@ -7689,13 +7682,13 @@ int cplus::the_exit ()
     DELETE
     VA_ARG
     CFER
--- 16 -- asm_call
+-- 17 -- asm_call
     META
     __ASM__
--- 17 -- asm_declaration
+-- 18 -- asm_declaration
     META
     ASM
--- 18 -- assignment_end
+-- 19 -- assignment_end
     META
     SLASEGAL
     EGAL
@@ -7708,7 +7701,7 @@ int cplus::the_exit ()
     ETCOEGAL
     VBAREGAL
     CHAPEGAL
--- 19 -- assignment_expression
+-- 20 -- assignment_expression
     META
     IDENT
     STRING
@@ -7760,10 +7753,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 20 -- attribute_call
+-- 21 -- attribute_call
     META
     __ATTRIBUTE__
--- 21 -- base_specifier
+-- 22 -- base_specifier
     META
     IDENT
     VIRTUAL
@@ -7771,7 +7764,7 @@ int cplus::the_exit ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 22 -- base_specifier_elem
+-- 23 -- base_specifier_elem
     META
     IDENT
     VIRTUAL
@@ -7779,11 +7772,11 @@ int cplus::the_exit ()
     PRIVATE
     PROTECTED
     PUBLIC
--- 23 -- bit_field_decl
+-- 24 -- bit_field_decl
     META
     IDENT
     DPOI
--- 24 -- cast_expression
+-- 25 -- cast_expression
     META
     IDENT
     STRING
@@ -7835,32 +7828,32 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 25 -- cast_expression_value
+-- 26 -- cast_expression_value
     META
     POUV
--- 26 -- catch_unit
+-- 27 -- catch_unit
     META
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 27 -- catch_unit_ansi
+-- 28 -- catch_unit_ansi
     META
     CATCH
--- 28 -- class_declaration
+-- 29 -- class_declaration
     META
     STRUCT
     UNION
     CLASS
--- 29 -- comment_eater
+-- 30 -- comment_eater
     ALWAYS
--- 30 -- complete_class_name
+-- 31 -- complete_class_name
     META
     IDENT
     DPOIDPOI
--- 31 -- compound_statement
+-- 32 -- compound_statement
     META
     AOUV
--- 32 -- conditional_expression
+-- 33 -- conditional_expression
     META
     IDENT
     STRING
@@ -7912,11 +7905,11 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 33 -- const_or_volatile
+-- 34 -- const_or_volatile
     META
     VOLATILE
     CONST
--- 34 -- constan
+-- 35 -- constan
     META
     CHARACT
     INTEGER
@@ -7938,9 +7931,9 @@ int cplus::the_exit ()
     LOCTAL
     UOCTAL
     OCTAL
--- 35 -- ctor_initializer
+-- 36 -- ctor_initializer
     ALWAYS
--- 36 -- data_decl_exotic
+-- 37 -- data_decl_exotic
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -7953,7 +7946,7 @@ int cplus::the_exit ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 37 -- data_decl_sc_decl
+-- 38 -- data_decl_sc_decl
     META
     IDENT
     AUTO
@@ -7973,7 +7966,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 38 -- data_decl_sc_decl_full
+-- 39 -- data_decl_sc_decl_full
     META
     IDENT
     AUTO
@@ -7993,7 +7986,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 39 -- data_decl_sc_decl_short
+-- 40 -- data_decl_sc_decl_short
     META
     IDENT
     REGISTER
@@ -8010,7 +8003,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 40 -- data_decl_sc_ty_decl
+-- 41 -- data_decl_sc_ty_decl
     META
     IDENT
     AUTO
@@ -8041,7 +8034,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 41 -- data_decl_sc_ty_decl_full
+-- 42 -- data_decl_sc_ty_decl_full
     META
     IDENT
     AUTO
@@ -8072,7 +8065,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 42 -- data_decl_sc_ty_decl_short
+-- 43 -- data_decl_sc_ty_decl_short
     META
     IDENT
     AUTO
@@ -8101,9 +8094,9 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 43 -- data_declaration
+-- 44 -- data_declaration
     ALWAYS
--- 44 -- data_declaration_for
+-- 45 -- data_declaration_for
     META
     IDENT
     AUTO
@@ -8134,7 +8127,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 45 -- data_declaration_for_full
+-- 46 -- data_declaration_for_full
     META
     IDENT
     AUTO
@@ -8165,7 +8158,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 46 -- data_declaration_for_short
+-- 47 -- data_declaration_for_short
     META
     IDENT
     AUTO
@@ -8194,12 +8187,12 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 47 -- data_declaration_strict
+-- 48 -- data_declaration_strict
     ALWAYS
--- 48 -- deallocation_expression
+-- 49 -- deallocation_expression
     META
     DELETE
--- 49 -- declarator
+-- 50 -- declarator
     META
     IDENT
     REGISTER
@@ -8216,9 +8209,9 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 50 -- declarator_follow
+-- 51 -- declarator_follow
     ALWAYS
--- 51 -- declarator_list
+-- 52 -- declarator_list
     META
     IDENT
     REGISTER
@@ -8235,7 +8228,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 52 -- declarator_list_init
+-- 53 -- declarator_list_init
     META
     IDENT
     REGISTER
@@ -8252,7 +8245,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 53 -- declarator_value
+-- 54 -- declarator_value
     META
     IDENT
     REGISTER
@@ -8269,10 +8262,10 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 54 -- define_dir
+-- 55 -- define_dir
     META
     DEFINE_DIR
--- 55 -- directive
+-- 56 -- directive
     META
     INCLUDE_DIR
     LINE_DIR
@@ -8281,19 +8274,19 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 56 -- end_pragma
+-- 57 -- end_pragma
     META
     PRAGMA_DIR
--- 57 -- end_pragma_managed
+-- 58 -- end_pragma_managed
     META
     PRAGMA_DIR
--- 58 -- enum_declarator
+-- 59 -- enum_declarator
     META
     ENUM
--- 59 -- enum_val
+-- 60 -- enum_val
     META
     IDENT
--- 60 -- equality_expression
+-- 61 -- equality_expression
     META
     IDENT
     STRING
@@ -8345,16 +8338,16 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 61 -- exception
+-- 62 -- exception
     META
     TRY_UPPER
--- 62 -- exception_ansi
+-- 63 -- exception_ansi
     META
     TRY
--- 63 -- exception_list
+-- 64 -- exception_list
     META
     THROW
--- 64 -- exclusive_or_expression
+-- 65 -- exclusive_or_expression
     META
     IDENT
     STRING
@@ -8406,7 +8399,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 65 -- expression
+-- 66 -- expression
     META
     IDENT
     STRING
@@ -8458,7 +8451,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 66 -- expression_for
+-- 67 -- expression_for
     META
     IDENT
     STRING
@@ -8510,13 +8503,13 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 67 -- ext_all
+-- 68 -- ext_all
     ALWAYS
--- 68 -- ext_all_ext
+-- 69 -- ext_all_ext
     ALWAYS
--- 69 -- ext_all_no_linkage
+-- 70 -- ext_all_no_linkage
     ALWAYS
--- 70 -- ext_data_decl_sc_ty
+-- 71 -- ext_data_decl_sc_ty
     META
     IDENT
     AUTO
@@ -8547,7 +8540,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 71 -- ext_data_decl_sc_ty_full
+-- 72 -- ext_data_decl_sc_ty_full
     META
     IDENT
     AUTO
@@ -8578,7 +8571,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 72 -- ext_data_decl_sc_ty_short
+-- 73 -- ext_data_decl_sc_ty_short
     META
     IDENT
     AUTO
@@ -8607,11 +8600,11 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 73 -- ext_data_decl_simp
+-- 74 -- ext_data_decl_simp
     ALWAYS
--- 74 -- ext_data_declaration
+-- 75 -- ext_data_declaration
     ALWAYS
--- 75 -- ext_decl_dir
+-- 76 -- ext_decl_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -8623,7 +8616,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 76 -- ext_decl_if_dir
+-- 77 -- ext_decl_if_dir
     META
     IDENT
     STRING
@@ -8675,14 +8668,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 77 -- ext_decl_ifdef_dir
+-- 78 -- ext_decl_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 78 -- for_statement
+-- 79 -- for_statement
     META
     POUV
--- 79 -- func_declaration
+-- 80 -- func_declaration
     META
     IDENT
     AUTO
@@ -8718,7 +8711,7 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 80 -- func_declarator
+-- 81 -- func_declarator
     META
     IDENT
     REGISTER
@@ -8735,14 +8728,14 @@ int cplus::the_exit ()
     ETCO
     TILD
     OPERATOR
--- 81 -- ident_mul
+-- 82 -- ident_mul
     META
     IDENT
     DPOIDPOI
--- 82 -- include_dir
+-- 83 -- include_dir
     META
     INCLUDE_DIR
--- 83 -- inclusive_or_expression
+-- 84 -- inclusive_or_expression
     META
     IDENT
     STRING
@@ -8794,14 +8787,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 84 -- initializer
+-- 85 -- initializer
     ALWAYS
--- 85 -- inline_namespace
+-- 86 -- inline_namespace
     META
     INLINE
--- 86 -- inside_declaration
+-- 87 -- inside_declaration
     ALWAYS
--- 87 -- inside_declaration1
+-- 88 -- inside_declaration1
     META
     IDENT
     AUTO
@@ -8830,19 +8823,19 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 88 -- inside_declaration2
+-- 89 -- inside_declaration2
     META
     IDENT
     DPOI
--- 89 -- inside_declaration_extension
+-- 90 -- inside_declaration_extension
     ALWAYS
--- 90 -- label_beg
+-- 91 -- label_beg
     META
     IDENT
--- 91 -- linkage_specification
+-- 92 -- linkage_specification
     META
     EXTERN
--- 92 -- logical_and_expression
+-- 93 -- logical_and_expression
     META
     IDENT
     STRING
@@ -8894,7 +8887,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 93 -- logical_or_expression
+-- 94 -- logical_or_expression
     META
     IDENT
     STRING
@@ -8946,10 +8939,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 94 -- long_type
+-- 95 -- long_type
     META
     LONG
--- 95 -- macro
+-- 96 -- macro
     META
     DECLARE_DYNAMIC
     DECLARE_SERIAL
@@ -8962,18 +8955,18 @@ int cplus::the_exit ()
     CATCH_ALL
     CATCH_UPPER
     AND_CATCH
--- 96 -- macro_extended
+-- 97 -- macro_extended
     ALWAYS
--- 97 -- main_entry
+-- 98 -- main_entry
     ALWAYS
--- 98 -- member_declarator
+-- 99 -- member_declarator
     META
     IDENT
     DPOIDPOI
--- 99 -- message_map
+-- 100 -- message_map
     META
     BEGIN_MESSAGE_MAP
--- 100 -- multiplicative_expression
+-- 101 -- multiplicative_expression
     META
     IDENT
     STRING
@@ -9025,14 +9018,14 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 101 -- name_space
+-- 102 -- name_space
     META
     NAMESPACE
     USING
--- 102 -- new_1
+-- 103 -- new_1
     META
     POUV
--- 103 -- new_2
+-- 104 -- new_2
     META
     IDENT
     AUTO
@@ -9062,9 +9055,9 @@ int cplus::the_exit ()
     SIGNED
     UNSIGNED
     POUV
--- 104 -- new_declarator
+-- 105 -- new_declarator
     ALWAYS
--- 105 -- new_type_name
+-- 106 -- new_type_name
     META
     IDENT
     AUTO
@@ -9093,21 +9086,21 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 106 -- none_statement
+-- 107 -- none_statement
     ALWAYS
--- 107 -- operator_function_name
+-- 108 -- operator_function_name
     META
     OPERATOR
--- 108 -- other_config
+-- 109 -- other_config
     META
     PRAGMA_CONTENT
--- 109 -- parameter_list
+-- 110 -- parameter_list
     META
     POUV
--- 110 -- parameter_list_extended
+-- 111 -- parameter_list_extended
     META
     POUV
--- 111 -- pm_expression
+-- 112 -- pm_expression
     META
     IDENT
     STRING
@@ -9159,7 +9152,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 112 -- postfix_expression
+-- 113 -- postfix_expression
     META
     IDENT
     STRING
@@ -9201,13 +9194,13 @@ int cplus::the_exit ()
     TILD
     OPERATOR
     VA_ARG
--- 113 -- pretty::bidon
+-- 114 -- pretty::bidon
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 114 -- pretty::parse_entry
+-- 115 -- pretty::parse_entry
     META
     PLUS____TIRETIRETIRETIRETIRETIRE____
--- 115 -- primary_expression
+-- 116 -- primary_expression
     META
     IDENT
     STRING
@@ -9235,14 +9228,14 @@ int cplus::the_exit ()
     TILD
     OPERATOR
     VA_ARG
--- 116 -- program
+-- 117 -- program
     ALWAYS
--- 117 -- protect_declare
+-- 118 -- protect_declare
     META
     PRIVATE
     PROTECTED
     PUBLIC
--- 118 -- protected_array_declaration
+-- 119 -- protected_array_declaration
     META
     _PROTECTEDARRAY
     _PROTECTEDARRAY_S
@@ -9250,27 +9243,27 @@ int cplus::the_exit ()
     _PROTECTEDPOINTER_S
     _TYPEDEF_PROTECTEDARRAY
     _TYPEDEF_PROTECTEDARRAY_S
--- 119 -- ptr_operator
+-- 120 -- ptr_operator
     META
     IDENT
     DPOIDPOI
     ETOI
     ETCO
--- 120 -- qualified_name
+-- 121 -- qualified_name
     META
     IDENT
     TILD
--- 121 -- qualified_name_elem
+-- 122 -- qualified_name_elem
     META
     DPOIDPOI
--- 122 -- quick_prog
+-- 123 -- quick_prog
     ALWAYS
--- 123 -- quick_prog_elem
+-- 124 -- quick_prog_elem
     ALWAYS
--- 124 -- range_in_liste
+-- 125 -- range_in_liste
     META
     IDENT
--- 125 -- range_modifier
+-- 126 -- range_modifier
     META
     IDENT
     REGISTER
@@ -9282,19 +9275,19 @@ int cplus::the_exit ()
     FRIEND
     CONST
     CONSTEXPR
--- 126 -- range_modifier_function
+-- 127 -- range_modifier_function
     META
     INLINE
     VIRTUAL
     FRIEND
     CONST
     CONSTEXPR
--- 127 -- range_modifier_ident
+-- 128 -- range_modifier_ident
     ALWAYS
--- 128 -- range_pragma
+-- 129 -- range_pragma
     META
     PRAGMA_RANGE
--- 129 -- relational_expression
+-- 130 -- relational_expression
     META
     IDENT
     STRING
@@ -9346,9 +9339,9 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 130 -- sc_specifier
+-- 131 -- sc_specifier
     ALWAYS
--- 131 -- shift_expression
+-- 132 -- shift_expression
     META
     IDENT
     STRING
@@ -9400,7 +9393,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 132 -- short_long_int_char
+-- 133 -- short_long_int_char
     META
     INT
     CHAR
@@ -9408,30 +9401,13 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 133 -- signed_type
+-- 134 -- signed_type
     META
     SIGNED
--- 134 -- simple_ident
+-- 135 -- simple_ident
     META
     IDENT
--- 135 -- simple_type
-    META
-    IDENT
-    AUTO
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 136 -- simple_type_name
+-- 136 -- simple_type
     META
     IDENT
     AUTO
@@ -9448,12 +9424,29 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 137 -- sizeof_type
+-- 137 -- simple_type_name
+    META
+    IDENT
+    AUTO
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 138 -- sizeof_type
     META
     POUV
--- 138 -- stat_all
+-- 139 -- stat_all
     ALWAYS
--- 139 -- stat_dir
+-- 140 -- stat_dir
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9465,7 +9458,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 140 -- stat_dir_switch
+-- 141 -- stat_dir_switch
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9477,7 +9470,7 @@ int cplus::the_exit ()
     DEFINE_DIR
     UNDEF_DIR
     LINE_REFERENCE_DIR
--- 141 -- stat_if_dir
+-- 142 -- stat_if_dir
     META
     IDENT
     STRING
@@ -9529,11 +9522,11 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 142 -- stat_ifdef_dir
+-- 143 -- stat_ifdef_dir
     META
     IFDEF_DIR
     IFNDEF_DIR
--- 143 -- statement
+-- 144 -- statement
     META
     GOTO
     IDENT
@@ -9601,7 +9594,7 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 144 -- statement_expression
+-- 145 -- statement_expression
     META
     IDENT
     STRING
@@ -9653,10 +9646,10 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 145 -- string_list
+-- 146 -- string_list
     META
     STRING
--- 146 -- switch_elem
+-- 147 -- switch_elem
     META
     INCLUDE_DIR
     IFDEF_DIR
@@ -9670,13 +9663,13 @@ int cplus::the_exit ()
     LINE_REFERENCE_DIR
     CASE
     DEFAULT
--- 147 -- switch_list
+-- 148 -- switch_list
     META
     AOUV
--- 148 -- template_type
+-- 149 -- template_type
     META
     INFE
--- 149 -- type_and_declarator
+-- 150 -- type_and_declarator
     META
     IDENT
     AUTO
@@ -9707,39 +9700,10 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 150 -- type_descr
+-- 151 -- type_descr
     META
     IDENT
--- 151 -- type_name
-    META
-    IDENT
-    AUTO
-    REGISTER
-    VOLATILE
-    __ATTRIBUTE__
-    __ASM__
-    INLINE
-    VIRTUAL
-    FRIEND
-    CONST
-    CONSTEXPR
-    ENUM
-    STRUCT
-    UNION
-    CLASS
-    TYPENAME
-    DECLTYPE
-    DOUBLE
-    FLOAT
-    VOID
-    DPOIDPOI
-    INT
-    CHAR
-    LONG
-    SHORT
-    SIGNED
-    UNSIGNED
--- 152 -- type_specifier
+-- 152 -- type_name
     META
     IDENT
     AUTO
@@ -9768,7 +9732,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 153 -- type_specifier_without_param
+-- 153 -- type_specifier
     META
     IDENT
     AUTO
@@ -9797,7 +9761,7 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 154 -- typedef_and_declarator
+-- 154 -- type_specifier_without_param
     META
     IDENT
     AUTO
@@ -9826,7 +9790,36 @@ int cplus::the_exit ()
     SHORT
     SIGNED
     UNSIGNED
--- 155 -- unary_expression
+-- 155 -- typedef_and_declarator
+    META
+    IDENT
+    AUTO
+    REGISTER
+    VOLATILE
+    __ATTRIBUTE__
+    __ASM__
+    INLINE
+    VIRTUAL
+    FRIEND
+    CONST
+    CONSTEXPR
+    ENUM
+    STRUCT
+    UNION
+    CLASS
+    TYPENAME
+    DECLTYPE
+    DOUBLE
+    FLOAT
+    VOID
+    DPOIDPOI
+    INT
+    CHAR
+    LONG
+    SHORT
+    SIGNED
+    UNSIGNED
+-- 156 -- unary_expression
     META
     IDENT
     STRING
@@ -9878,12 +9871,12 @@ int cplus::the_exit ()
     NEW
     DELETE
     VA_ARG
--- 156 -- unsigned_type
+-- 157 -- unsigned_type
     META
     UNSIGNED
 */
 
-signed char *cplus::_tokenArray [157] = {
+signed char *cplus::_tokenArray [158] = {
     (signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
@@ -9895,7 +9888,8 @@ signed char *cplus::_tokenArray [157] = {
     ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-    ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\220\377\377\377\037\000\360\077\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+    ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\001\000\000\000\000\000\000\000\000\000\000\220\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
@@ -10042,7 +10036,7 @@ signed char *cplus::_tokenArray [157] = {
     ,(signed char *) "\020\000\375\377\177\000\000\000\000\000\000\000\000\020\000\370\377\037\000\360\037\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
     ,(signed char *) "\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 };
-typedef int (cplus::*(DEF_FUNC_TOKEN_ARRAY [157]))() ;
+typedef int (cplus::*(DEF_FUNC_TOKEN_ARRAY [158]))() ;
 DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*bidon                          */0,
     /*parse_entry                    */0,
@@ -10055,7 +10049,8 @@ DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*arg_declarator_base            */(&cplus::Lex),
     /*arg_declarator_base_type       */(&cplus::Lex),
     /*arg_declarator_expression      */(&cplus::Lex),
-    /*arg_declarator_followed        */(&cplus::Lex),
+    /*arg_declarator_followed_strict */(&cplus::Lex),
+    /*arg_declarator_strict          */(&cplus::Lex),
     /*arg_declarator_type            */(&cplus::Lex),
     /*arg_typ_declarator             */(&cplus::Lex),
     /*arg_typ_list                   */0,
@@ -10202,7 +10197,7 @@ DEF_FUNC_TOKEN_ARRAY cplus::_tokenFuncArray = {
     /*unary_expression               */(&cplus::Lex),
     /*unsigned_type                  */(&cplus::Lex)
 };
-int cplus::_tokenNbFuncArray [157] = {
+int cplus::_tokenNbFuncArray [158] = {
     /*bidon                          */0,
     /*parse_entry                    */0,
     /*abstract_declarator            */0,
@@ -10214,7 +10209,8 @@ int cplus::_tokenNbFuncArray [157] = {
     /*arg_declarator_base            */1,
     /*arg_declarator_base_type       */1,
     /*arg_declarator_expression      */1,
-    /*arg_declarator_followed        */1,
+    /*arg_declarator_followed_strict */1,
+    /*arg_declarator_strict          */1,
     /*arg_declarator_type            */1,
     /*arg_typ_declarator             */1,
     /*arg_typ_list                   */0,

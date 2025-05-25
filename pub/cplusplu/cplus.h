@@ -67,7 +67,8 @@ class cplus: public pretty,public virtual Parser {
     virtual PPTREE arg_declarator_base ( int error_free) ;
     virtual PPTREE arg_declarator_base_type ( int error_free) ;
     virtual PPTREE arg_declarator_expression ( int error_free) ;
-    virtual PPTREE arg_declarator_followed ( int error_free) ;
+    virtual PPTREE arg_declarator_followed_strict ( int error_free) ;
+    virtual PPTREE arg_declarator_strict ( int error_free) ;
     virtual PPTREE arg_declarator_type ( int error_free) ;
     virtual PPTREE arg_typ_declarator ( int error_free) ;
     virtual PPTREE arg_typ_list ( int error_free) ;
@@ -223,9 +224,9 @@ class cplus: public pretty,public virtual Parser {
     int inside_long;
     int switchContext;
     int noString;
-    static signed char * _tokenArray [157];
-    static int (cplus::*(_tokenFuncArray [157])) ();
-    static int _tokenNbFuncArray [157];
+    static signed char * _tokenArray [158];
+    static int (cplus::*(_tokenFuncArray [158])) ();
+    static int _tokenNbFuncArray [158];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 

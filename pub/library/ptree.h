@@ -267,10 +267,8 @@
             }
             
             operator PPTREE ( void ) const
-            {
-                return pt ;
-            }
-            
+            {                return pt ;
+                    
             unsigned int Size () const
             {
                 return TreeSize(pt);
