@@ -249,7 +249,7 @@ PFUNC_ELEM AllocFuncElem ()
     
     if ( listFuncFree ) {
         ptFunc       =  listFuncFree ;
-        listFuncFree =  listFuncFree->next ;
+        listFuncFree =  listFuncFree -> next ;
     } else 
         ptFunc =  (PFUNC_ELEM)malloc(sizeof(FUNC_ELEM));
     return (ptFunc);
@@ -263,10 +263,10 @@ void StackFunction ( char *name, PTREE tree )
     PFUNC_ELEM  pFuncElem = AllocFuncElem();
     
     AddRef(tree);
-    pFuncElem->name =  name ;
-    pFuncElem->tree =  tree ;
-    pFuncElem->next =  listFunc ;
-    listFunc        =  pFuncElem ;
+    pFuncElem -> name =  name ;
+    pFuncElem -> tree =  tree ;
+    pFuncElem -> next =  listFunc ;
+    listFunc          =  pFuncElem ;
 }
 
 /******************************************************************
@@ -276,9 +276,9 @@ void FreeHeadFunc ()
 {
     PFUNC_ELEM  funcElem = listFunc ;
     
-    listFunc       =  listFunc->next ;
-    funcElem->next =  listFuncFree ;
-    listFuncFree   =  funcElem ;
+    listFunc         =  listFunc -> next ;
+    funcElem -> next =  listFuncFree ;
+    listFuncFree     =  funcElem ;
 }
 
 /******************************************************************
@@ -392,12 +392,11 @@ void DumpFunction ()
     PTREE   tree ;
     
     while ( listFunc ) {
-        name =  listFunc->name ;
-        tree =  listFunc->tree ;
+        name =  listFunc -> name ;
+        tree =  listFunc -> tree ;
         FreeHeadFunc();
         tree1 =  tree ;
         DumpAFunction(name, tree);
     }
 }
-
 

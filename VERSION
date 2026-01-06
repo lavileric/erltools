@@ -24,3 +24,4 @@
 17/02/18  6.01 bad definition of NULL, corrected
 01/06/18 7.0  Put erltools under LGPLV30 or later
 26/02/23 7.0.1 Add doxyfy for doxyfying C/C++ programm and json to manipulate json data
+06/06/26 7.0.2 mainly check with -fsanityze and correct 3 original bugs 

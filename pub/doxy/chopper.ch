@@ -971,8 +971,8 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
                 if ( commData == <H> || commData == <C> ) {
                     std::string     comm (Value(commData)) ;
                     std::smatch     sm ;
-                    unsigned int    start ;
-                    unsigned int    length ;
+                    unsigned int    start =0;
+                    unsigned int    length =0;
                     unsigned int    found(0);
                     if ( regex_search(comm, sm, paramInOut) ) {
                         start  =  sm.position(0);

@@ -509,7 +509,7 @@ void DecompChopb::copy ()
 {
     const char  *str ;
     
-    str =  "\n\r Metachop prettyPrinter version 3.0, CopyRight(C) 1995-2023 Eric Lavillonniere \n\r";
+    str =  "\n\r Metachop prettyPrinter version 3.1, CopyRight(C) 1995-2026 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
     str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));

@@ -1,3 +1,8 @@
+/// 
+/// @file dchop.ch
+/// 
+/// @brief dchop.ch
+/// 
 /*************************************************************************/
 /*                                                                       */
 /*        dchop.ch   - Built by Eric Lavillonniere on Tandon 386 - 93   */
@@ -25,13 +30,22 @@
 language cplus;
 
 #ifdef FOR_METACHOP
-    PTREE   postComment ;
+PTREE   postComment ; ///< postComment
 #endif
 
 #include "deccplus.h"
 
 char    *DecToIdent (PTREE) ;
 
+/// 
+/// @fn int DecompCplus::TypeOfBlock (PTREE tree) 
+/// 
+/// @brief TypeOfBlock
+/// 
+/// @param [in,out] tree
+/// 
+/// @returns  int
+/// 
 int DecompCplus::TypeOfBlock ( PTREE tree )
 {
     PTREE   son ;
@@ -76,6 +90,15 @@ int DecompCplus::TypeOfBlock ( PTREE tree )
     return typeBlock ;
 }
 
+/// 
+/// @fn void    DecompCplus::DecompCommCtrl (const PTREE &paramTree, int funcAlone, bool noPostComment) 
+/// 
+/// @brief DecompCommCtrl
+/// 
+/// @param [in] paramTree
+/// @param [in] funcAlone
+/// @param [in] noPostComment
+/// 
 /******************************************************************
        decomp : decompilation d'un arbre
    *******************************************************************/
@@ -95,10 +118,10 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     /* les variables dynamiques xFather et yFather designe les
        coordonnees du pere */
     if ( isVirtMod ) {
-        xFather =  currCol, yFather =  currLine ;
-        maxX =  currCol ;
+        xFather = currCol, yFather = currLine ;
+        maxX = currCol ;
     }
-    exp =  paramTree ;
+    exp = paramTree ;
     exp == <TEMPLATE_DECL,<>,exp>;
     switch ( exp ) {
         case <ATTRIBUTS> : 
@@ -111,12 +134,12 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         case <USING> : 
         case <USING_NAMESPACE> : 
             if ( (exp ^ ) == <TEMPLATE_DECL> ) 
-                exp =  exp ^ ;
+                exp = exp ^ ;
             if ( middleInList(exp) ) {
                 
                 // put a new line before every function            
                 // put it before the comment            
-                exp =  paramTree ;
+                exp = paramTree ;
                 
                 // if we are on an attribute go down   
                 exp == <TEMPLATE_DECL,<>,exp>;
@@ -134,7 +157,12 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
                             <NL,1>
                     } else 
                         <NL,1>
-                if ( exp == <MESSAGE_MAP> || exp == <NAMESPACE> || exp == <INLINE_NAMESPACE> || exp == <NAMESPACE_ALIAS> || exp == <USING> || exp == <USING_NAMESPACE> ) 
+                if ( exp == <MESSAGE_MAP>
+                        || exp == <NAMESPACE>
+                        || exp == <INLINE_NAMESPACE>
+                        || exp == <NAMESPACE_ALIAS>
+                        || exp == <USING>
+                        || exp == <USING_NAMESPACE> ) 
                     <NL,2>
                 if ( exp == <DECLARATION,<>,<CLASS,name,<>,<>,stat>> ) 
                     if ( !strcmp(value(name), "class") ) 
@@ -155,9 +183,9 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     // if funcAlone prevent the display of empty line
     if ( funcAlone ) {
         int oldIsVirtMod = isVirtMod ;
-        isVirtMod =  1 ;
+        isVirtMod = 1 ;
         <NL,3>
-        isVirtMod =  oldIsVirtMod ;
+        isVirtMod = oldIsVirtMod ;
     }
     {
         char    *commPre = 0 ;
@@ -175,7 +203,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
             comm(paramTree, PRE);
         } else 
             comm(paramTree, PRE);
-        postComment =  oldPostComment = this -> IntDecomp(paramTree, funcAlone);
+        postComment = oldPostComment = this -> IntDecomp(paramTree, funcAlone);
         if ( postComment != paramTree && !noPostComment ) 
             comm(paramTree, POST);
         if ( commPre ) {
@@ -183,12 +211,12 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         }
     }
     if ( isVirtMod && paramTree != <ATTRIBUTS> ) {
-        xFather =  oldXFather, yFather =  oldYFather ;
+        xFather = oldXFather, yFather = oldYFather ;
         
         // perhaps we didn't got a newline in this node   
         // update the maxX   
         if ( currCol > maxX ) 
-            maxX =  currCol ;
+            maxX = currCol ;
         
         // put coord on node   
         // second coordinate indicates if box is higher than one line
@@ -196,10 +224,20 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         
         // father will have max of current length and of this son   
         if ( maxX < oldMaxX ) 
-            maxX =  oldMaxX ;
+            maxX = oldMaxX ;
     }
 }
 
+/// 
+/// @fn PTREE   DecompCplus::IntDecomp (const PTREE &paramTree, int funcAlone) 
+/// 
+/// @brief IntDecomp
+/// 
+/// @param [in] paramTree
+/// @param [in] funcAlone
+/// 
+/// @returns  PTREE
+/// 
 PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
 {
     PTREE   list, list1, son, sc, type, declarator, param, param_decl, stat, decl, list_decl, ctor, full ;
@@ -219,14 +257,14 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <LIST> : 
             list = paramTree ;
             while ( list == <LIST> ) {
-                son =  nextl(list);
+                son = nextl(list);
                 @son
             }
             break ;
         case <LANGUAGE,name> : 
             {
-                inClass =  0 ;
-                list    =  name ;
+                inClass = 0 ;
+                list = name ;
                 <SEPO>
                 DecompilerListeExternSimp(list);
             }
@@ -267,7 +305,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             "typedef" @type
             if ( type == <CLASS> ) {
                 while ( declarator == <LIST> ) {
-                    son =  nextl(declarator);
+                    son = nextl(declarator);
                         <T> @son
                     if ( declarator != () ) {
                         "," <S>
@@ -276,7 +314,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             } else {
                 {{
                     while ( declarator == <LIST> ) {
-                        son =  nextl(declarator);
+                        son = nextl(declarator);
                             <T> @son
                         if ( declarator != () ) {
                             "," <S>
@@ -301,21 +339,21 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 bool    hasExceptionList = false ;
                 
                 // do the job
-                exp2 =  ctor ;
+                exp2 = ctor ;
                 if ( ctor ) 
                     ctor == <,ctor>;
                 if ( exceptionList ) {
                     exceptionList == <,exceptionList>;
-                    hasExceptionList =  true ;
+                    hasExceptionList = true ;
                 }
                 if ( stat != () ) 
                     stat == <,stat1>;
                 {
                     
                     // on se protege dans le cas d'un extern sans compound   
-                    exp1 =  paramTree ^ ;
+                    exp1 = paramTree ^ ;
                     if ( exp1 == <ATTRIBUTS> ) 
-                        exp1 =  exp1 ^ ;
+                        exp1 = exp1 ^ ;
                     if ( exp1 != <EXTERNAL> ) {
                         
                         // on ne fait rien sur le premier d'une liste     
@@ -332,7 +370,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 <NL>
                         }
                         if ( indentFunctionType ) 
-                            indentFuncFlag =  1 ;
+                            indentFuncFlag = 1 ;
                     }
                 }
                 {{
@@ -340,7 +378,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         value(sc)   <T>
                     }
                     @type @declarator
-                    indentFuncFlag =  0 ;
+                    indentFuncFlag = 0 ;
                     if ( parameterUnder ) {
                         <NL>
                     } else {
@@ -348,7 +386,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     }
                     "(";
                     if ( param != () && parameterUnder ) {
-                        withNewLine =  true ;
+                        withNewLine = true ;
                         <NL>
                         if ( parameterUnderTab ) 
                                 <T> 
@@ -358,10 +396,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     // on autorise les () et ( a )       
                     if ( param != () && !parameterUnder ) 
                         <S> 
-                    val =  param ;
+                    val = param ;
                     comm(val, PRE);
                     while ( param == <LIST> ) {
-                        son =  nextl(param);
+                        son = nextl(param);
                         if ( parameterUnder ) {
                             PTREE   elem = son ;
                             if ( elem == <ATTRIBUTS,elem> ) 
@@ -381,9 +419,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 PTREE   attr ;
                                 bool    commDisp = false ;
                                 while ( list1 == <LIST> ) {
-                                    attr =  nextl(list1);
+                                    attr = nextl(list1);
                                     if ( attr == <NEWLINE> ) {
-                                        commDisp =  true ;
+                                        commDisp = true ;
                                         comm(son, POST);
                                     }
                                     TraitAttribut(attr);
@@ -420,7 +458,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                             <T> {{
                                     ":" <S>
                                     while ( ctor == <LIST> ) {
-                                        son =  nextl(ctor);
+                                        son = nextl(ctor);
                                         @son
                                         if ( ctor != () ) {
                                             "," <S> <SEPA>
@@ -436,7 +474,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     if ( deleteFunc != () ) {
                         "=" <SEPA> "delete;";
                     } else {
-                        statementf =  0 ;
+                        statementf = 0 ;
                         if ( withNewLine ) {
                             <NL>
                         }
@@ -487,7 +525,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <PARAM_TYPE,exp1,exp2> : 
             @exp1 "<";
             while ( exp2 == <LIST> ) {
-                son =  nextl(exp2);
+                son = nextl(exp2);
                 @son
                 if ( exp2 ) {
                     "," <S>
@@ -499,7 +537,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <DECLARATION,sc,type,list_decl> : 
             {
                 int hasPutMark = 0 ; // indicates whether we have   
-                statementf =  0 ;
+                statementf = 0 ;
                 
                 // put a mark for unparsing          
                 if ( type == <CLASS,<>,<>,<>,exp> && exp != () ) 
@@ -524,7 +562,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 while ( list_decl == <LIST> ) {
                     
                     // put a mark before first declaration            
-                    decl =  nextl(list_decl);
+                    decl = nextl(list_decl);
                     @decl
                     if ( list_decl != () ) {
                         "," <S>
@@ -536,11 +574,11 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 
                 // decomp postcomment before newLine            
                 comm(paramTree, POST);
-                oldPostComment =  paramTree ;
+                oldPostComment = paramTree ;
                 
                 // if we have have an attribute put also NL            
                 // in traitStruct            
-                exp            =  paramTree ^ ;
+                exp = paramTree ^ ;
                 if ( paramTree != <FOR_DECLARATION> ) 
                     if ( (paramTree ^ ) != <ATTRIBUTS> ) {
                         if ( !LastInTopList(paramTree) ) {
@@ -564,13 +602,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 }
                 bool    alignVert = false ;
                 if ( enumVert ) 
-                    alignVert =  true ;
+                    alignVert = true ;
                 else {
-                    list =  list_decl ;
+                    list = list_decl ;
                     while ( list == <LIST> ) {
-                        son =  list [1];
+                        son = list [1];
                         if ( IsComm(son, POST) ) {
-                            alignVert =  true ;
+                            alignVert = true ;
                             break ;
                         }
                         nextl(list);
@@ -588,7 +626,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     } else 
                         <SEPA> 
                     while ( list_decl == <LIST> ) {
-                        son =  nextl(list_decl);
+                        son = nextl(list_decl);
                         
                         // decomp without post comment
                         if ( alignVert ) {
@@ -609,9 +647,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 PTREE   attr ;
                                 bool    commDisp = false ;
                                 while ( list1 == <LIST> ) {
-                                    attr =  nextl(list1);
+                                    attr = nextl(list1);
                                     if ( attr == <NEWLINE> ) {
-                                        commDisp =  true ;
+                                        commDisp = true ;
                                         comm(son, POST);
                                     }
                                     TraitAttribut(attr);
@@ -681,7 +719,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 val == <STRING_LIST,val>;
                 if ( val == <LIST> ) {
                     while ( val == <LIST> ) {
-                        son =  nextl(val);
+                        son = nextl(val);
                         @son
                         if ( val != () ) {
                             "," <SEPA>
@@ -708,7 +746,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             // type il faut le faire ici   
             if ( indentFuncFlag ) {
                 <NL>
-                indentFuncFlag =  0 ;
+                indentFuncFlag = 0 ;
             }
             value(ident)
             break ;
@@ -726,7 +764,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     while ( inside == <RANGE_MODIFIER,<>,inside> ) 
                         ;
                     if ( inside == <TYP_ADDR> ) 
-                        putPar =  true ;
+                        putPar = true ;
                 }
                 if ( putPar ) 
                     "(" 
@@ -734,10 +772,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( putPar ) 
                     ")" 
                 <SEPB> "(";
-                list =  exp_list ;
+                list = exp_list ;
                 if ( 1 /* typ_list_ok */ ) 
                     while ( exp_list == <LIST> ) {
-                        son =  nextl(exp_list);
+                        son = nextl(exp_list);
                         @son
                         if ( exp_list != () ) {
                             "," <S>
@@ -759,7 +797,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             if ( init == <LIST> ) {
                 "{" <SEPA>
                 while ( init == <LIST> ) {
-                    exp =  nextl(init);
+                    exp = nextl(init);
                     @exp
                     if ( init != () ) {
                         "," <S>
@@ -784,7 +822,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <EXP_SEQ,list> : 
             statementf = 0 ;
             while ( list == <LIST> ) {
-                exp =  nextl(list);
+                exp = nextl(list);
                 @exp
                 if ( list != () ) {
                     "," <S>
@@ -1006,7 +1044,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <STRING_LIST,list> : 
             while ( list == <LIST> ) {
-                son =  nextl(list);
+                son = nextl(list);
                 @son
                 if ( list != () ) 
                     <S> 
@@ -1020,6 +1058,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <HEXA,val> : 
             "0x" <SEPO> @val
+            break ;
+        case <BINARY,val> : 
+            "0b" <SEPO> @val
             break ;
         case <LONG,val> : 
             @val <SEPO> "L";
@@ -1064,10 +1105,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             } else {
                 
                 // look if in func
-                exp =  paramTree ^ ;
+                exp = paramTree ^ ;
                 bool    inFunc = false ;
                 if ( exp == <FUNC> ) 
-                    inFunc =  true ;
+                    inFunc = true ;
                 
                 // display 
                 if ( ansiMode && !braceAlign || braceAlignNoFunc && inFunc ) 
@@ -1088,10 +1129,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     if ( ansiMode && braceAlign && !(braceAlignNoFunc && inFunc) ) {
                         "{" <NL>
                     }
-                    statementf =  1 ;
+                    statementf = 1 ;
                     while ( list == <LIST> ) {
-                        son         =  nextl(list);
-                        postComment =  son ;
+                        son = nextl(list);
+                        postComment = son ;
                         postComment == <ATTRIBUTS,postComment>;
                         @son
                         if ( !Sequence(son, sontree(list, 1)) ) {
@@ -1129,7 +1170,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     <NL>
                         <T>
                 }
-                postComment =  stat ;
+                postComment = stat ;
                 @stat
                 if ( !Sequence(stat, stat) ) {
                     control_stat1(stat);
@@ -1183,7 +1224,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             }
             statementf = 1 ;
             if ( stat != <COMPOUND> ) {
-                postComment =  stat ;
+                postComment = stat ;
                 <NL>
                     <T> {{
                             @stat
@@ -1237,7 +1278,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             /* for switch */
             // IsComm for comm on condition
             if ( stat1 != <COMPOUND> ) {
-                postComment =  stat1 ;
+                postComment = stat1 ;
                 <NL>
                     <T> {{
                             @stat1
@@ -1259,10 +1300,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 else 
                     <S> 
                 "else" <S>
-                if ( ansiMode && stat2 != <IF> || IsComm(stat1, PRE) && (IsComm(stat2, PRE) || stat2 != <IF>) || IsComm(stat2, PRE) ) 
+                if ( ansiMode && stat2 != <IF>
+                        || IsComm(stat1, PRE) && (IsComm(stat2, PRE) || stat2 != <IF>)
+                        || IsComm(stat2, PRE) ) 
                     <NL>
                 if ( stat2 != <COMPOUND> && stat2 != <IF> ) {
-                    postComment =  stat2 ;
+                    postComment = stat2 ;
                     <NL>
                         <T> {{
                                 @stat2
@@ -1274,7 +1317,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         <S>
                     }
                 } else {
-                    postComment =  stat2 ;
+                    postComment = stat2 ;
                     @stat2
                     if ( !Sequence(stat2, stat2) ) {
                         control_stat1(stat2);
@@ -1304,20 +1347,20 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <DEFAULT> : 
         case <CASE> : 
             {
-                son =  paramTree ;
+                son = paramTree ;
                 if ( son == <DEFAULT> || son == <CASE> ) {
                     if ( son == <DEFAULT,stat> ) {
                         "default :" <S>
                     } else if ( son == <CASE> ) {
-                        statementf =  0 ;
+                        statementf = 0 ;
                         son == <,exp,stat>;
                         "case " @exp <S> ":" <S>
-                        statementf =  oldStatement ;
+                        statementf = oldStatement ;
                     }
                     
                     // look if there is only one instruct after        
                     // the case in this case don't put a newline        
-                    son =  sontree(stat, 1);
+                    son = sontree(stat, 1);
                     if ( !sontree(stat, 2) && singleSwitchIndent ) {
                         switch ( son ) {
                             case <COMPOUND> : 
@@ -1347,12 +1390,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 // suivant qui met le texte au mileu    
                                 // de la page aligne sur le :    
                                 if ( son && !IsComm(son, PRE) ) 
-                                    oneInstruct =  1 ;
+                                    oneInstruct = 1 ;
                                 else 
-                                    oneInstruct =  0 ;
+                                    oneInstruct = 0 ;
                         }
                     } else 
-                        oneInstruct =  0 ;
+                        oneInstruct = 0 ;
                     if ( !oneInstruct ) {
                         <NL>
                         if ( !(ansiMode && braceAlign) || son != <COMPOUND> ) 
@@ -1360,8 +1403,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     }
                     {{
                         while ( stat == <LIST> ) {
-                            son         =  nextl(stat);
-                            postComment =  son ;
+                            son = nextl(stat);
+                            postComment = son ;
                             @son
                             if ( !Sequence(son, sontree(stat, 1)) ) {
                                 control_stat1(son);
@@ -1375,7 +1418,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             }
             break ;
         case <SWITCH,exp,list> : 
-            param      = paramTree ;
+            param = paramTree ;
             statementf = 0 ;
             "switch (" {{
                         <S> @exp <S>
@@ -1392,7 +1435,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                             "{" <NL>
                         }
                         while ( list == <LIST> ) {
-                            stat1 =  son = nextl(list);
+                            stat1 = son = nextl(list);
                             comm(son, PRE);
                             IntDecomp(son, 0);
                             comm(stat1, POST);
@@ -1413,7 +1456,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             ")" <S>
             statementf = 1 ;
             if ( stat != <COMPOUND> ) {
-                postComment =  stat ;
+                postComment = stat ;
                 <NL>
                     <T> {{
                             @stat
@@ -1431,7 +1474,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             {
                 "try";
                 if ( stat != <COMPOUND> ) {
-                    postComment =  stat ;
+                    postComment = stat ;
                     <NL>
                         <T> {{
                                 @stat
@@ -1460,7 +1503,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             ")" <S>
             statementf = 1 ;
             if ( stat != <COMPOUND> ) {
-                postComment =  stat ;
+                postComment = stat ;
                 <NL>
                     <T> {{
                             @stat
@@ -1533,7 +1576,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( param != () ) {
                     "(";
                     while ( param == <LIST> ) {
-                        son =  nextl(param);
+                        son = nextl(param);
                         @son
                         if ( param != () ) {
                             "," <S>
@@ -1549,7 +1592,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                         <NL>
                 } else {
                     while ( val == <LIST> ) {
-                        son =  nextl(val);
+                        son = nextl(val);
                         value(son)
                         comm(son, POST);
                         if ( val != () ) {
@@ -1610,13 +1653,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( tabDirective ) 
                     UnMark();
                 " " @exp " " @exp1
-#               if 0
-                    if ( exp2 == <LIST> ) {
-                        " ";
-                        while ( (elem = nextl(exp2)) ) 
-                            @exp2 
-                    }
-#               endif
+#if 0
+                if ( exp2 == <LIST> ) {
+                    " ";
+                    while ( (elem = nextl(exp2)) ) 
+                        @exp2 
+                }
+#endif
             }
             break ;
         case <CONFIG,exp> : 
@@ -1670,7 +1713,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             {{
                 "#pragma nopretty" <NL>
                 while ( list == <LIST> ) {
-                    son =  nextl(list);
+                    son = nextl(list);
                     @son <NL>
                 }
                 <NL>
@@ -1684,7 +1727,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             {{
                 "#pragma notmanaged" <NL>
                 while ( list == <LIST> ) {
-                    son =  nextl(list);
+                    son = nextl(list);
                     @son <NL>
                 }
                 <NL>
@@ -1721,8 +1764,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 Mark();
             }
             while ( stat1 == <LIST> ) {
-                son         =  nextl(stat1);
-                postComment =  son ;
+                son = nextl(stat1);
+                postComment = son ;
                 @son
                 if ( !Sequence(son, sontree(stat1, 1)) ) {
                     control_stat1(son);
@@ -1741,15 +1784,15 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <ATTRIBUTS,exp,list,list1> : 
             while ( list == <LIST> ) {
-                son =  nextl(list);
+                son = nextl(list);
                 TraitAttribut(son);
             }
             @exp
             while ( list1 == <LIST> ) {
-                son =  nextl(list1);
+                son = nextl(list1);
                 if ( son == <NEWLINE> ) {
                     comm(paramTree, POST);
-                    oldPostComment =  paramTree ;
+                    oldPostComment = paramTree ;
                 }
                 TraitAttribut(son);
             }
@@ -1823,7 +1866,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             if ( list != () ) {
                 <S> ":" <S>
                 while ( list == <LIST> ) {
-                    son =  nextl(list);
+                    son = nextl(list);
                     @son
                     if ( list != () ) {
                         "," <SEPA>
@@ -1837,7 +1880,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             <SEPB> "{" <NL,1>
             
             // for outline in class with emacs
-            if ( EString("struct") != Value(FatherTree(paramTree)) && EString("enum") != Value(FatherTree(paramTree)) && FlatFunct() ) {
+            if ( EString("struct") != Value(FatherTree(paramTree))
+                    && EString("enum") != Value(FatherTree(paramTree))
+                    && FlatFunct() ) {
                 gotocol(0);
                 {{
                     DecompilerListeExternSimp(stat1);
@@ -1901,7 +1946,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             if ( init != () ) {
                 "(";
                 while ( init == <LIST> ) {
-                    son =  nextl(init);
+                    son = nextl(init);
                     @son
                     if ( init != () ) {
                         "," <S>
@@ -1949,7 +1994,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             son = nextl(list);
             @son    <T> {{
                             while ( list == <LIST> ) {
-                                son =  nextl(list);
+                                son = nextl(list);
                                 @son
                             }
                         }}
@@ -1976,7 +2021,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     "END_CATCH_ALL" 
                 else 
                     "END_CATCH" 
-                oldPostComment =  paramTree ;
+                oldPostComment = paramTree ;
                 comm(paramTree, POST);
                 if ( LastInList(paramTree) ) 
                     <NL,1>
@@ -2019,18 +2064,27 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         default : break ;
     }
-    statementf =  oldStatement ;
-    inClass    =  oldInClass ;
+    statementf = oldStatement ;
+    inClass = oldInClass ;
     return oldPostComment ;
 }
 
+/// 
+/// @fn int DecompCplus::middleInList (PTREE exp) 
+/// 
+/// @brief middleInList
+/// 
+/// @param [in,out] exp
+/// 
+/// @returns  int
+/// 
 int DecompCplus::middleInList ( PTREE exp )
 {
     PTREE   exp1 ;
     
-    exp1 =  exp ^ ^ <LIST>;
+    exp1 = exp ^ ^ <LIST>;
     if ( exp1 == <LIST> ) {
-        exp1 =  exp1 ^ ;
+        exp1 = exp1 ^ ;
         if ( exp1 == <LIST> ) {
             return 1 ;
         }
@@ -2038,49 +2092,81 @@ int DecompCplus::middleInList ( PTREE exp )
     return 0 ;
 }
 
+/// 
+/// @fn int DecompCplus::LastInList (PTREE exp) 
+/// 
+/// @brief LastInList
+/// 
+/// @param [in,out] exp
+/// 
+/// @returns  int
+/// 
 int DecompCplus::LastInList ( PTREE exp )
 {
     PTREE   exp1 ;
     
-    exp1 =  exp ^ ^ <LIST>;
+    exp1 = exp ^ ^ <LIST>;
     if ( exp1 == <LIST,<>,()> ) 
         return 1 ;
     return 0 ;
 }
 
+/// 
+/// @fn int DecompCplus::LastInTopList (PTREE exp) 
+/// 
+/// @brief LastInTopList
+/// 
+/// @param [in,out] exp
+/// 
+/// @returns  int
+/// 
 int DecompCplus::LastInTopList ( PTREE exp )
 {
     PTREE   exp1 ;
     
-    exp1 =  exp ^ ^ <LIST>;
+    exp1 = exp ^ ^ <LIST>;
     if ( exp1 == <LIST,<>,()> ) {
         while ( exp1 == <LIST> ) 
-            exp1 =  exp1 ^ ;
+            exp1 = exp1 ^ ;
         if ( exp1 == <LANGUAGE> ) 
             return 1 ;
     }
     return 0 ;
 }
 
+/// 
+/// @fn void    DecompCplus::DecompilerListeExternSimp (PTREE list) 
+/// 
+/// @brief DecompilerListeExternSimp
+/// 
+/// @param [in,out] list
+/// 
 void DecompCplus::DecompilerListeExternSimp ( PTREE list )
 {
     PTREE   son, father ;
     int     typeBlock = -1, oldTypeBlock = -1 ;
     
     while ( list == <LIST> ) {
-        father    =  list ^ ;
-        son       =  nextl(list);
-        typeBlock =  TypeOfBlock(son);
+        father = list ^ ;
+        son = nextl(list);
+        typeBlock = TypeOfBlock(son);
         if ( typeBlock != oldTypeBlock && oldTypeBlock != -1 ) {
             <NL,2>
         } else if ( father != <LANGUAGE> ) {
             <NL,1>
         }
-        oldTypeBlock =  typeBlock ;
+        oldTypeBlock = typeBlock ;
         @son
     }
 }
 
+/// 
+/// @fn void    DecompCplus::DecompilerListeExtern (PTREE list) 
+/// 
+/// @brief DecompilerListeExtern
+/// 
+/// @param [in,out] list
+/// 
 void DecompCplus::DecompilerListeExtern ( PTREE list )
 {
         <T> {{
@@ -2088,6 +2174,14 @@ void DecompCplus::DecompilerListeExtern ( PTREE list )
             }}
 }
 
+/// 
+/// @fn void    DecompCplus::ChopTree (PTREE tree, int funcAlone) 
+/// 
+/// @brief ChopTree
+/// 
+/// @param [in,out] tree
+/// @param [in] funcAlone
+/// 
 /*************************************************************************/
 /*   ChopTree : chop the tree : here call decomp                         */
 /*************************************************************************/
@@ -2103,6 +2197,11 @@ void DecompCplus::ChopTree ( PTREE tree, int funcAlone )
     AddRef(tree);
 }
 
+/// 
+/// @fn void    DecompCplus::copy () 
+/// 
+/// @brief copy
+/// 
 /******************************************************************
      copy : copyright ;
    *******************************************************************/
@@ -2113,16 +2212,16 @@ void DecompCplus::copy ()
     if ( copyPrinted ) 
         return ;
     else 
-        copyPrinted =  true ;
-    str =  "\n\r C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere \n\r";
+        copyPrinted = true ;
+    str = "\n\r C++ prettyPrinter version 7.0.2, CopyRight(C) 1989-2026 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
-    str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
+    str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));
-    str =  " This is free software, and you are welcome to redistribute it \n\r";
+    str = " This is free software, and you are welcome to redistribute it \n\r";
     _write(2, str, strlen(str));
-    str =  " under certain conditions.\n\r";
+    str = " under certain conditions.\n\r";
     _write(2, str, strlen(str));
-    str =  " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
+    str = " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
     _write(2, str, strlen(str));
 }
 

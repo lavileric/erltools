@@ -13,7 +13,7 @@ all :
 	cp ./parser/unify $(INSTALL_DIR)
 	chmod u+rwx $(INSTALL_DIR)/unify
 	- cp ./cplusplu/c.set $(INSTALL_DIR)
-	$(MAKE) -j $(NUMBER_PROC) other_make
+	+ $(MAKE) -j $(NUMBER_PROC) other_make
 	$(MAKE) -j $(NUMBER_PROC) json_make
 
 ##	( cd chunkc; $(MAKE) -f makefile.uni all)

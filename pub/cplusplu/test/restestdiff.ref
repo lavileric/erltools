@@ -68,6 +68,10 @@ Reading bug.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+26c26
+<         ifstream    passwd("/etc/passwd");
+---
+>         ifstream    passwd ("/etc/passwd") ;
 
 call_funct.c_l
 
@@ -1104,6 +1108,10 @@ Reading ty.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+19c19
+< PTREE   (*ptFunction)() ;
+---
+> PTREE (*ptFunction) () ;
 
 typedef.c_l
 

@@ -14,9 +14,9 @@
 /* variables in declaration are aligned : on or off */
 #pragma config decl_align on
 /* assignment are aligned : on or off */
-#pragma config assign_align off
+#pragma config assign_align on
 /* set the right margin */
-#pragma config margin 120
+#pragma config margin 180
 /* set begining of comment */
 #pragma config comment start "/*"
 /* set middle of comment */
@@ -34,7 +34,7 @@
 /*  tabulate parameters of function declaration when they have comments : true or false */
 #pragma config parameters_under_tab true
 /* tabulate directive : true or false */
-#pragma config tab_directive false 
+#pragma config tab_directive true 
 /* space before & after arrow : true or false */
 #pragma config space_arrow true
 

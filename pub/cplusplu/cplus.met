@@ -480,6 +480,12 @@ lexdefine Lex;
                         default : return !HEXA
                     end;
                     end
+                takel in ['b','B'] :
+                    begin
+                    while seel in ['0'..'1'] do
+                        storel takel ;
+                    return !BINARY;
+                    end
                 seel in ['0'..'7'] :
                     begin
                     while seel in ['0'..'7'] do
@@ -2627,6 +2633,7 @@ define arg_declarator_base;
     return retTree;
 end;
 
+/* allow to take expression from second position for generation with containers */
 define arg_declarator;
     declare retTree;
     retTree = take arg_declarator_base;
@@ -2639,6 +2646,15 @@ define arg_declarator_strict;
     declare retTree;
     retTree = take arg_declarator_base_type;
     if not see ")" and not see "..." then
+        take ",";
+    return retTree;
+end;
+
+/* allow to take expression from second position for generation with containers */
+define arg_declarator_followed;
+    declare retTree;
+    retTree = take arg_declarator_base;
+    if not see "..." then
         take ",";
     return retTree;
 end;
@@ -3207,6 +3223,7 @@ define constan;
         see !ULINTEGER : return maketree(IUNLONG,maketree(INTEGER,take !ULINTEGER))
         see !ULLINTEGER : return maketree(IUNLONGLONG,maketree(INTEGER,take !ULINTEGER))
         see !HEXA : return maketree(HEXA,maketree(INTEGER,take !HEXA))
+        see !BINARY : return maketree(BINARY,maketree(INTEGER,take !BINARY))
         see !LHEXA : return maketree(LONG,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
         see !LLHEXA : return maketree(LONGLONG,maketree(HEXA,maketree(INTEGER,take !LHEXA)))
         see !UHEXA : return maketree(IUN,maketree(HEXA,maketree(INTEGER,take !UHEXA)))

@@ -267,8 +267,10 @@
             }
             
             operator PPTREE ( void ) const
-            {                return pt ;
-                    
+            {
+                return pt ;
+            }
+            
             unsigned int Size () const
             {
                 return TreeSize(pt);
@@ -372,7 +374,7 @@
             static  int CoarseDecodeInt ( char *&string )
             {
                 
-                int     result(0);  // the result
+                int     result (0) ; // the result
                 char    header = *string ;
                 
                 string++ ;
@@ -528,8 +530,8 @@
     
     // apply a method on a class
 #   define APPLY_CLASS(tree, type, meth) (NumberTree(tree) == CLASS_TREE? \
-                                                               		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
-                                                                                                    0)
+                                                                  		 (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) :\
+                                                                                                       0)
 #   define UNCHECKED_APPLY_CLASS(tree, type, meth) (((type *) (TreeClass *) SON_READ(PPTREE(tree),1)) -> meth) 
 #   define ALLOCATE_CLASS(meth) (MakeTreeClass( * (TreeClass *) new meth))
 #endif

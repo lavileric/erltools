@@ -488,6 +488,7 @@ int DecompCplus::OpPriority ( PTREE &tree )
         case <FLOAT> : 
         case <INTEGER> : 
         case <HEXA> : 
+        case <BINARY> : 
         case <OCTAL> : 
         case <STRING> : 
         case <CHAR> : return 18 ;
