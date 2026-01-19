@@ -13,24 +13,52 @@ language foo;
 void    ChopTree (PTREE) ;
 void    decomp (PTREE) ;
 
+void BadFileHandle ()
+{
+    char    name [50];
+    
+    sprintf(name, "Bad name for your source file \n");
+    _write(2, name, strlen(name));
+    exit(0);
+}
+
 int main ( int argc, char **argv )
 {
     PTREE   tree ;
-    char    name [50];
-    char    *ptName ;
+    char    *ptName = 0 ;
+    bool    dump (false) ;
+    int     filePos = 1 ;
     
+    // init 
     MetaInit();
     foo().AsLanguage();
-    if ( argc < 2 ) {
-        sprintf(name, "Bad name for your source file \n");
-        _write(2, name, strlen(name));
-        exit(0);
+    
+    // get file name 
+    if ( argc < filePos + 1 ) {
+        BadFileHandle();
     } else {
-        ptName =  *(argv + 1);
+        EString firstArg = *(argv + filePos);
+        if ( firstArg == "-dump" ) {
+            dump =  true ;
+            filePos++ ;
+        }
+        if ( argc >= filePos + 1 ) 
+            ptName =  *(argv + filePos);
+        else 
+            BadFileHandle();
     }
-    tree =  foo().ReadFile(ptName);
+    
+    // parse tree
+    tree =  calc().ReadFile(ptName);
     AddRef(tree);
-    ChopTree(tree);
+    
+    // treatement
+    if ( dump ) 
+        CLDumpTree(tree);
+    else 
+        ChopTree(tree);
+    
+    // -- 
     MetaEnd();
     if ( !firstError ) 
         return 1 ;
@@ -54,5 +82,4 @@ void decomp ( PTREE tree )
 {
     DumpTree(tree);
 }
-
 
