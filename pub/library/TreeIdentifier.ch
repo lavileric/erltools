@@ -15,7 +15,7 @@ language erlvalti;
 #include <string> // std::string
 #include <cstddef> // std::size_t
 
-static int64_t         poly = 0xC96C5795D7870F42 ;
+static int64_t  poly = 0xC96C5795D7870F42 ;
 static int64_t  table [256];
 static bool     generated = false ;
 
@@ -48,7 +48,7 @@ void AddTreeIdentifier ( long long &TreeIdentifier, long added )
     TreeIdentifier ^= lookup ;
 }
 
-void TreeIdentifier::ComputeTreeIdentifier ( long long &TreeIdentifier, PTREE tree, bool computeClass )
+void TreeIdentifier::ComputeTreeIdentifier ( TREE_IDENTIFIER_TYPE &TreeIdentifier, PTREE tree, bool computeClass )
 {
     unsigned int    arity ;
     unsigned int    pos ;
@@ -58,7 +58,7 @@ void TreeIdentifier::ComputeTreeIdentifier ( long long &TreeIdentifier, PTREE tr
     if ( tree == () || (PPTREE)tree == (PPTREE) -1 ) 
         return ;
     while ( next ) {
-        next       =  false ; // by default will stop
+        TREE_IDENTIFIER_TYPE    next = false ; // by default will stop
         arity      =  tree.TreeArity();
         numberTree =  tree.NumberTree();
         
@@ -89,5 +89,4 @@ void TreeIdentifier::ComputeTreeIdentifier ( long long &TreeIdentifier, PTREE tr
         }
     }
 }
-
 
