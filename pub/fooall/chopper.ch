@@ -49,7 +49,7 @@ int main ( int argc, char **argv )
     }
     
     // parse tree
-    tree =  calc().ReadFile(ptName);
+    tree =  foo().ReadFile(ptName);
     AddRef(tree);
     
     // treatement
