@@ -113,7 +113,7 @@ void                        DoxyFy (TreeStruct &treeStruct) ;
 /// 
 /// @brief FilePart
 /// 
-/// @param [in]     name 
+/// @param [in] name 
 /// 
 /// @returns  EString
 /// 
@@ -133,7 +133,7 @@ EString FilePart ( const char *name )
 /// 
 /// @brief DirectoryPart
 /// 
-/// @param [in]     name 
+/// @param [in] name 
 /// 
 /// @returns  EString
 /// 
@@ -670,6 +670,12 @@ PTREE GetParam ( PTREE &sParameter )
     PTREE   parameter (sParameter) ;
     int     genPos = 0 ;
     
+    // only void => no parameter
+    if ( parameter == <LIST,<ABST_DECLARATOR,<VOID>,()>> ) {
+        PTREE   nullTree ;
+        return nullTree ;
+    }
+    
     // extract 
     PTREE   aDeclarator, follower (parameter) ;
     EString rootString("_param");
@@ -912,7 +918,7 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
         
         // put this in a string 
         EString         nameString("@fn ");
-        Protector<int>  protector(output, -1);
+        Protector<int>  protector (output, -1) ;
         StartOutputString();
         (DecompChopb::ptDecomp) -> ChopTree(header);
         nameString << EndOutputString();
@@ -971,8 +977,8 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
                 if ( commData == <H> || commData == <C> ) {
                     std::string     comm (Value(commData)) ;
                     std::smatch     sm ;
-                    unsigned int    start =0;
-                    unsigned int    length =0;
+                    unsigned int    start = 0 ;
+                    unsigned int    length = 0 ;
                     unsigned int    found(0);
                     if ( regex_search(comm, sm, paramInOut) ) {
                         start  =  sm.position(0);
@@ -1057,7 +1063,7 @@ void DoxyAllFunctNormalize ( PTREE &tree, DoxyContent &doxy, PTREE &qualifier, F
             
             // construct string 
             EString         returnString("@returns ");
-            Protector<int>  protector(output, -1);
+            Protector<int>  protector (output, -1) ;
             StartOutputString();
             (DecompChopb::ptDecomp) -> ChopTree(type);
             returnString << EndOutputString();
@@ -1389,7 +1395,7 @@ void AlignParam ( DoxyContent &doxy, PTREE parameters )
                 // put spaces if needed
                 int diffSquare = basicLength + maxSquare - newString.length();
                 if ( diffSquare > 0 ) {
-                    std::string padding(diffSquare, ' ');
+                    std::string padding (diffSquare, ' ') ;
                     newString += padding.c_str();
                 }
                 
@@ -1400,7 +1406,7 @@ void AlignParam ( DoxyContent &doxy, PTREE parameters )
                 // add any space if necessary
                 int nbSpace = basicLength + maxSquare + maxName - newString.length();
                 if ( nbSpace > 0 ) {
-                    std::string padding(nbSpace, ' ');
+                    std::string padding (nbSpace, ' ') ;
                     newString += padding.c_str();
                 }
                 
@@ -1474,8 +1480,8 @@ FUNC_DESCRIPTOR DoxyFuncNormalize ( PTREE &tree, PTREE &qualifier, DoxyContent &
     
     // return empty descriptor 
     FUNC_DESCRIPTOR functDescriptor ;
-    functDescriptor.isDeclarator = false ;
     
+    functDescriptor.isDeclarator =  false ;
     return functDescriptor ;
 }
 
@@ -1571,7 +1577,7 @@ void DoxyClassNormalize ( PTREE &descriptor, PTREE &briefDescriptor, EString &ta
             
             // put this in a string 
             EString         nameString = tag + " ";
-            Protector<int>  protector(output, -1);
+            Protector<int>  protector (output, -1) ;
             StartOutputString();
             (DecompChopb::ptDecomp) -> ChopTree(className);
             classString =  EndOutputString();
@@ -2216,7 +2222,7 @@ void DoxyDeclaration ( PTREE &tree )
                 
                 // -- 
                 EString         typeString ;
-                Protector<int>  protector(output, -1);
+                Protector<int>  protector (output, -1) ;
                 StartOutputString();
                 (DecompChopb::ptDecomp) -> ChopTree(listDeclarator);
                 typeString << EndOutputString();
