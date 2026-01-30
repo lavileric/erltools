@@ -7,9 +7,9 @@ prettyprinter. Those programs are freeware in the GNU acceptance
 INSTALLATION
 ------------
 
-The makefiles are set for Linux. Changing the active flags in makefile.inc and
-makefile.der (comment out the correct lines), it has also been tested on SUN or 
-Unix Interactive (with g++ 2.7.2).
+For windows, python must be installed on target computer, and installation is done 
+inside a microsoft powershell session.
+
 
 1) Take the makefile.inc and makefile.der file and do the following :
 
@@ -22,7 +22,14 @@ Unix Interactive (with g++ 2.7.2).
 
 On linux instead it is also possible to use outils/tmake after setting right values at the beginning instead of make outils/tmake -parallel use all processors
 
-2) Do a make -f makefile.uni all install
+Then do some editing if not on linux.
+
+The makefiles are set for Linux. Active flags should be chaned in makefile.inc and
+makefile.der (comment out the correct lines), it has also been tested on SUN or 
+Unix Interactive (with g++ 2.7.2) in old time. For windows entry 2005 is correct.
+
+2) Do a make -f makefile.uni all install on linux or a 
+         nmake -f makefile.vis all install on windows
    (for a basic C++ prettyprinter installation you can use the command
      make -f makefile.uni prettyprinter
     for code norm checker you can use the command
@@ -86,7 +93,7 @@ LEXICAL/SYNTAXIC PARSER GENERATOR
 All documentation is to be found in doc directory as postscript files. A README
 describe the documentations available there.
 
-COMPILE WITH ELF
+COMPILE WITH ELF (on linux)
 ----------------
 
 Add the value of INSTALL_DIR in your LD_LIBRARY_PATH variable. In erltools directory enter 

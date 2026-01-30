@@ -31,7 +31,16 @@ chopper.cc : chopper.ch chop.exe
 
 chopper.obj : chopper.cc $(ERLTOOLS_DIR)\pub\library\token.h
 
-OBJECTS = json.obj json0.obj chopper.obj
+prettyJson.obj : prettyJson.cc $(ERLTOOLS_DIR)\pub\library\token.h
+
+EJson.obj : Ejson.cc chop.exe
+
+DecompJson.obj : DecompJson.cc chop.exe
+
+OBJECTS = json.obj json0.obj prettyJson.obj
+
+ALL_OBJECTS = $(OBJECTS) prettyJson.obj EJson.obj DecompJson.obj
+
 
 CPLUS_DIR=$(META_DIR)\pub\cplusplu
 

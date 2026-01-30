@@ -1,5 +1,5 @@
 !include ./makefile.win
 
-prettyJson.exe : $(OBJECTS)
-	link  $(LNK_FLAGS) /out:prettyJson.exe $(OBJECTS) $(CPLUS) $(LIBRARY)
+prettyJson.exe : $(ALL_OBJECTS)
+	link  $(LNK_FLAGS) /out:prettyJson.exe $(ALL_OBJECTS) $(CPLUS) $(LIBRARY)
 	 

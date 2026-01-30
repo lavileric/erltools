@@ -4,15 +4,18 @@ all : readyFirstCompile all_to_do
 
 readyFirstCompile :
 	@- if not exist "$(INSTALL_DIR)/metagen.exe" ( \
-		echo freezing source files... & \
-		for /r %%i in (*.cc *.h) do @copy /b "%%i" +,, >nul \
-	) else ( \
+		echo setting source files...  will take a while  & \
+		for /r %%i in (*m_done) do  python $(ERLTOOLS_DIR)\outils\touch.py %%i > nul \
+	)  else ( \
 		echo metagen is present. \
 	)
 	@- if not exist "$(INSTALL_DIR)/metagen.exe" ( \
-		echo freezing source files... & \
-		for /r %%i in (*m_done) do @copy /b "%%i" +,, >nul  \
-	)  
+		echo setting source files... will take a while & \
+		for /r %%i in (*.cc *.h) do python $(ERLTOOLS_DIR)\outils\touch.py %%i > nul \
+	) else ( \
+		echo metagen is present. \
+	)
+ 
 
 
 all_to_do :
