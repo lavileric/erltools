@@ -1,12 +1,10 @@
 
-all : m_done prettyJson.exe chop.exe
+all : m_done chop.exe prettyJson.exe 
 
-clean : clean_inc_appli
-	-del json.h 
-	-del json*.cc 
-	-del chopper.cc
-	-del json.exe 
-	-del chop.exe 
+clean : clean_inc_appli 
+	-del json.h json*.cc
+	-del chop.exe json.exe chopper.cc
+	-del prettyJson.cc EJson.cc
 	-deltree/y compile.dir
 
 !include ..\..\makefile.der

@@ -9,10 +9,14 @@
     /// 
     /// @brief  H_EJson
     /// 
+
+    # undef max
 #   define H_EJson 
 #   include "token.h"
 #   include "json.h"
 #   include <set>
+#   include <limits>
+
     
     /// 
     /// @class  EJson
