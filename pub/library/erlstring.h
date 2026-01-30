@@ -23,7 +23,7 @@
 #   include "Protector.h"
     extern unsigned int stringCount ;
 #   define LINT_SUPPRESS(errnumb) 
-    
+   
     /* LF 04/10/2000 */
 #   if 0
         extern "C" {

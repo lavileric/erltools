@@ -22,7 +22,6 @@ all :
 	$(MAKE) -f makefile.vis $(INSTALL_DIR)/metachop.exe
 	copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)
 	copy .\cplusplu\c.set  $(INSTALL_DIR_SKIMMED)
-	copy .\parser\diff.kee  $(INSTALL_DIR_SKIMMED)\diff.exe
 	copy .\cplusplu\cpb.bat $(INSTALL_DIR_SKIMMED)
 	cd java 
 	$(MAKE) -f makefile.vis all
@@ -31,6 +30,12 @@ all :
 	$(MAKE) -f makefile.vis all
 	cd ..
 	cd metab
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd json
+	$(MAKE) -f makefile.vis all
+	cd ..
+	cd doxy
 	$(MAKE) -f makefile.vis all
 	cd ..
 
@@ -92,6 +97,8 @@ install :
 	- copy .\chopb\chopb.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\cplusplu\cplus.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\java\pjava.exe.manifest $(INSTALL_DIR_SKIMMED)
+	- copy .\json\prettyJson.exe $(INSTALL_DIR_SKIMMED)
+	- copy .\doxy\doxy.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\config\configfo.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\metab\metab.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\cplusplu\c.set $(INSTALL_DIR_SKIMMED)

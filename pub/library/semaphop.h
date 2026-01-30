@@ -327,6 +327,19 @@
             return pTime ;
         }
 #   elif defined(ON_W)
+
+       /// 
+        /// @def  HANDLE_MARKER
+        /// 
+        /// @brief  HANDLE_MARKER
+        /// 
+#       define HANDLE_MARKER 31415927
+        /// 
+        /// @def  SEMAPHOP_ON
+        /// 
+        /// @brief  SEMAPHOP_ON
+        /// 
+#       define SEMAPHOP_ON (314159 + 62)
         /// 
         /// @def  WaitForSingleObjectU
         /// 

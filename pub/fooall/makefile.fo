@@ -1,5 +1,7 @@
 META_DIR=../..
 
+# OPT_FLAGS ?= -DERL_DEBUG
+
 all : chop
 
 include $(META_DIR)/makefile.der

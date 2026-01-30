@@ -1,0 +1,52 @@
+
+all : m_done doxy.exe chop.exe
+
+clean : clean_inc_appli
+	-del doxy.h 
+	-del doxy*.cc 
+	-del chopper.cc
+	-del doxy.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+!include ..\..\makefile.der
+
+#if your grammar becomes too big you will have to doxy1 ...
+m_done : doxy.met
+	-@ mkdir compile.dir
+	-@copy doxy.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\chopb\;$(META_DIR)\pub\library $(METAOPT) doxy.met 
+	@-unify doxy.h ..\doxy.h
+	@-unify doxy.cpp ..\doxy.cc
+	@-unify doxy0.cpp ..\doxy0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+doxy.obj : doxy.cc doxy.h
+
+doxy0.obj : doxy0.cc doxy.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.obj : chopper.cc $(ERLTOOLS_DIR)\pub\library\token.h
+
+OBJECTS = doxy.obj doxy0.obj chopper.obj
+
+CPLUS_DIR=$(META_DIR)\pub\cplusplu
+
+CPLUS=$(CPLUS_DIR)\cplus.lib 
+
+CHOPB_DIR=$(META_DIR)\pub\chopb
+
+CHOPB=$(CHOPB_DIR)\chopb.lib 
+
+METACHOP_DIR=$(META_DIR)\pub\metachop
+
+METACHOP=$(METACHOP_DIR)\metachop.lib 
+
+METAGEN= ../parser/verif.obj 
+
+chop.exe : 
+	nmake -f makefile.bch
+

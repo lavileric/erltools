@@ -1,5 +1,12 @@
 language json;
 
+global begin
+    {{
+        #undef FALSE
+        #undef  TRUE
+    }}
+end ;
+
 use "cplus.met";
 
 define main_entry;

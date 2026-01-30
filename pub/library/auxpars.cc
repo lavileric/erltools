@@ -1785,7 +1785,7 @@ void SemaphoreInit ( const char *name )
     mallocName << "_mallocCritical_" << nbInit ;
 #   if defined(VISUAL) || defined(BORLAND)
         
-        SECURITY_ATTRIBUTES security = 0 ; // security
+        SECURITY_ATTRIBUTES security ; // security
         
         security.nLength              =  sizeof(SECURITY_ATTRIBUTES);
         security.lpSecurityDescriptor =  0 ;

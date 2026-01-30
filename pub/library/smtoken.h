@@ -350,7 +350,15 @@
 #       define _getcwd getcwd
 #       define _open open
 #       define _close close
-#   endif
+# endif
+#ifdef ON_W
+#       include <fcntl.h>
+#       define O_CREAT _O_CREAT
+#       define O_RDWR _O_RDWR
+#       define O_TRUNC _O_TRUNC
+#       define O_RDWR _O_RDWR
+#       define ssize_t int 
+#endif
 #   define RIEN 
 #   define _fastcall 
 #   include "memges.h"

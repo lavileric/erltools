@@ -7,6 +7,8 @@ CXXFLAGS ?=
 LDFLAGS  ?= 
 SHARED ?= 
 
+NUMBER_PROC ?= 1
+
 # SANITIZE = -fsanitize=address,null,bounds-strict,return -fno-omit-frame-pointer
 
 C_PLUS ?= $(CXX) $(CXXFLAGS) $(SANITIZE)

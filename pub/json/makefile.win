@@ -1,0 +1,44 @@
+
+all : m_done prettyJson.exe chop.exe
+
+clean : clean_inc_appli
+	-del json.h 
+	-del json*.cc 
+	-del chopper.cc
+	-del json.exe 
+	-del chop.exe 
+	-deltree/y compile.dir
+
+!include ..\..\makefile.der
+
+#if your grammar becomes too big you will have to json1 ...
+m_done : json.met
+	-@ mkdir compile.dir
+	-@copy json.met compile.dir
+	@cd compile.dir
+	$(UTIL_DIR)metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) json.met 
+	-@unify json.h ..\json.h
+	-@unify json.cpp ..\json.cc
+	-@unify json0.cpp ..\json0.cc
+	@cd ..
+	@echo "ok" > m_done
+
+json.obj : json.cc json.h
+
+json0.obj : json0.cc json.h
+
+chopper.cc : chopper.ch chop.exe
+
+chopper.obj : chopper.cc $(ERLTOOLS_DIR)\pub\library\token.h
+
+OBJECTS = json.obj json0.obj chopper.obj
+
+CPLUS_DIR=$(META_DIR)\pub\cplusplu
+
+CPLUS=$(CPLUS_DIR)\cplus.lib \
+      $(CPLUS_DIR)\dchop.obj $(CPLUS_DIR)\dchop1.obj  \
+      $(CPLUS_DIR)\dchop0.obj
+
+chop.exe : 
+	nmake -f makefile.bch
+
