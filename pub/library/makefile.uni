@@ -14,7 +14,7 @@ library : $(LIB_OBJECTS)
 DOLIB : m_done
 	$(MAKE) -j $(NUMBER_PROC) library
 
-shared : $(LIB_OBJECTS)
+libshared : $(LIB_OBJECTS)
 	$(C_PLUS) -shared -o libmeta.so $(LIB_OBJECTS)
 
 clean : clean_inc

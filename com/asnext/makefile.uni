@@ -19,7 +19,7 @@ all : m_done
 	$(MAKE) objects
 	$(MAKE) asnext dasnext library
 
-shared : all 
+libshared : all 
 
 include ../../makefile.der
 

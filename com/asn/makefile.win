@@ -47,13 +47,13 @@ m_done : asn.met
 	-@ copy asn.met compile.dir\asn.met
 	@echo "metagen -c++ asn.met"
 	cd compile.dir
-    metagen -c++ $(METAOPT) -path $(META_DIR)\pub\library asn.met
-    unify asn.h ..\asn.h
-    unify asn.cpp ..\asn.cc
-    unify asn0.cpp ..\asn0.cc
-    unify asn1.cpp ..\asn1.cc
-    unify asn3.cpp ..\asn3.cc
-    unify asn2.cpp ..\asn2.cc
+    $(INSTALL_DIR)\metagen.exe -c++ $(METAOPT) -path $(META_DIR)\pub\library asn.met
+    $(INSTALL_DIR)\unify.bat asn.h ..\asn.h
+    uni$(INSTALL_DIR)\unify.bat fy asn.cpp ..\asn.cc
+    $(INSTALL_DIR)\unify.bat  asn0.cpp ..\asn0.cc
+    $(INSTALL_DIR)\unify.bat  asn1.cpp ..\asn1.cc
+    $(INSTALL_DIR)\unify.bat  asn3.cpp ..\asn3.cc
+    $(INSTALL_DIR)\unify.bat  asn2.cpp ..\asn2.cc
     cd ..
 	@echo "ok" > m_done
 

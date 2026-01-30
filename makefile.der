@@ -1,6 +1,6 @@
 # for unix ( in particular linux)
-ERLTOOLS_DIR ?= /home/lavil/erltools
-INSTALL_DIR ?= /home/lavil/outils
+ERLTOOLS_DIR ?= $(HOME)/erltools
+INSTALL_DIR ?= $(HOME)/bin
 #for borland or for visual
 #ERLTOOLS_DIR=d:\lavil\erltools
 #INSTALL_DIR=d:\lavil\util
@@ -44,7 +44,7 @@ include $(ERLTOOLS_DIR)$(SEP)makeref.com
 
 
 .ch.cc:
-	$(GO32) chop -c++ $*.ch > $*.cc
+	$(GO32) .$(SEP)chop -c++ $*.ch > $*.cc
 
 
 

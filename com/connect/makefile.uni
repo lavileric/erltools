@@ -20,7 +20,7 @@ all : objects
 
 
 
-shared : objects
+libshared : objects
 	$(MAKE) libconnect.so
 	$(MAKE) all
 

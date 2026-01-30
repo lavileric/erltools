@@ -25,6 +25,9 @@ install :
 	- cp ./erlms/erlscale $(INSTALL_DIR)
 	- chmod 770 $(INSTALL_DIR)/erlscale
 
+uninstall : 
+	-rm -f $(INSTALL_DIR)/erlms $(INSTALL_DIR)/erlmsch $(INSTALL_DIR)/erlscale
+
 erlscale : all install
 
 	   

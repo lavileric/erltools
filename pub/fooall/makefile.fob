@@ -4,6 +4,7 @@ all : chop.exe
 !include ..\..\makefile.der
 
 chop.obj : chop.cc $(ERLTOOLS_DIR)\pub\library\token.h
+	$(C_PLUS) $(OUT_O)chop.obj -c $(CCFLAGS) $*.cc
     	
 CPLUS=$(META_DIR)\pub\cplusplu\cplus.lib \
 	$(META_DIR)\pub\cplusplu\dchop.obj $(META_DIR)\pub\cplusplu\dchop1.obj \

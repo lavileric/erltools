@@ -23,4 +23,8 @@ install :
         - copy .\erlms\erlms.exe $(INSTALL_DIR_SKIMMED)
         - copy .\erlmsch\erlmsch.exe $(INSTALL_DIR_SKIMMED)
 
+uninstall :
+	-del $(INSTALL_DIR)\erlms.exe $(INSTALL_DIR)\erlmsch.exe
+
+
 erlscale : all install

@@ -19,7 +19,7 @@ all : quickcode
 	$(MAKE) library
 
 
-shared : quickcode
+libshared : quickcode
 	$(MAKE) objects
 	$(MAKE) libqconnect.so 
 	$(MAKE) all
@@ -72,7 +72,7 @@ ihm.o : ihm.cc ihm.h  quickasn.h
 ##### level2 #####
 
 level2.cc : level2.asn   quickcode
-	- quickcode level2.asn  
+	- ./quickcode level2.asn  
 	cpb level2.cc
 	cpb level2.h
 
@@ -93,6 +93,8 @@ quickasn.cc : quickasn.ch chop
 quickinetutil.cc : quickinetutil.ch chop
 
 quickconnect.cc : quickconnect.ch chop
+
+quickcode.cc :quickcode.ch chop 
 
 chop :
 	- cp  $(ERLTOOLS_DIR)/com/asnext/chop .

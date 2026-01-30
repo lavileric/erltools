@@ -2,6 +2,7 @@ rem echo off
 rem for main files
 configfo foo.dos %1 > makefile.dos
 configfo foo.bor %1 > makefile.bor
+configfo foo.vis %1 > makefile.vis
 configfo foo.uni %1 > makefile.uni
 configfo foo.met %1 > %1.met
 configfo chopper.ch %1 > toto

@@ -20,9 +20,7 @@ Unix Interactive (with g++ 2.7.2).
                              to be installed. The directory must exist and
                              must be in your PATH variable.
 
-   Put also . in your PATH variable
-
-Instead it is also possible to use outils/tmake after setting right values at the beginning instead of make outils/tmake -parallel use all processors
+On linux instead it is also possible to use outils/tmake after setting right values at the beginning instead of make outils/tmake -parallel use all processors
 
 2) Do a make -f makefile.uni all install
    (for a basic C++ prettyprinter installation you can use the command
@@ -41,6 +39,8 @@ Instead it is also possible to use outils/tmake after setting right values at th
    of the file)
 
 4) Verify that the installation directory is in your PATH
+
+5) To uninstall : make uninstall
 
 
 USAGE
@@ -66,7 +66,7 @@ USAGE
    Enter pjava 'name' for prettyprinting a java file.
    Enter erlms 'name' or erlmsch 'name' to verify a program.
 
-BORLAND
+BORLAND - not tested for a long time
 -------
 
 Files can be compiled with borland compiler. Put borland configuration in
@@ -90,10 +90,10 @@ COMPILE WITH ELF
 ----------------
 
 Add the value of INSTALL_DIR in your LD_LIBRARY_PATH variable. In erltools directory enter 
-'make clean solib soall install'.
+'make clean shared install'.
 
 
 EMAIL ADDRESS
 -------------
 
-lavileric@aol.com
+lavileric@gmail.com

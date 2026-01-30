@@ -1,6 +1,19 @@
-all : all_to_do
+all : readyFirstCompile all_to_do
 
 !include makefile.inc
+
+readyFirstCompile :
+	@- if not exist "$(INSTALL_DIR)/metagen.exe" ( \
+		echo freezing source files... & \
+		for /r %%i in (*.cc *.h) do @copy /b "%%i" +,, >nul \
+	) else ( \
+		echo metagen is present. \
+	)
+	@- if not exist "$(INSTALL_DIR)/metagen.exe" ( \
+		echo freezing source files... & \
+		for /r %%i in (*m_done) do @copy /b "%%i" +,, >nul  \
+	)  
+
 
 all_to_do :
 	@- mkdir $(INSTALL_DIR_SKIMMED) 
@@ -10,9 +23,10 @@ all_to_do :
 	cd misc
 	$(MAKE) -f makefile.vis all
 	cd ..
-	cd com
-	$(MAKE) -f makefile.vis all
-	cd ..
+
+# cd com
+# $(MAKE) -f makefile.vis all
+# cd ..
 
 
 clean : clean_inc
@@ -34,7 +48,21 @@ install :
 	cd misc 
 	$(MAKE) -f makefile.vis install
 	cd ..
+	cd com
+	$(MAKE) -f makefile.vis install
+	cd ..
 
+uninstall :
+	- mkdir $(INSTALL_DIR)  
+	cd pub 
+	$(MAKE) -f makefile.vis uninstall
+	cd ..
+	cd misc 
+	$(MAKE) -f makefile.vis uninstall
+	cd ..
+	cd com
+	$(MAKE) -f makefile.vis uninstall
+	cd ..
 
 prettyprinter :
 	- mkdir $(INSTALL_DIR)

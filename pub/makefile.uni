@@ -42,8 +42,8 @@ syndex_make :
 test : 
 	$(MAKE)-C cplusplu -f makefile.uni testall
 
-shared :
-	$(MAKE) -C library -f makefile.uni shared
+libshared :
+	$(MAKE) -C library -f makefile.uni libshared
 
 metageninstall :
 	cp ./parser/metagen $(INSTALL_DIR)
@@ -131,7 +131,6 @@ clean :
 	if [ -d ./calc ] ; then \
                (cd calc ; $(MAKE) -f makefile.uni clean) ; fi
 
-
 install : 
 	- mv ./parser/metagen $(INSTALL_DIR)
 	- strip $(INSTALL_DIR)/metagen
@@ -188,6 +187,19 @@ install :
 	if [ -f parser/libmetagen.so ] ; then\
 		(cp ./parser/libmetagen.so $(INSTALL_DIR));\
 	fi
+
+uninstall :
+	- rm -f $(INSTALL_DIR)/metagen $(INSTALL_DIR)/chop $(INSTALL_DIR)/metachop \
+		$(INSTALL_DIR)/chopb $(INSTALL_DIR)/cplus $(INSTALL_DIR)/configfo \
+		$(INSTALL_DIR)/metab $(INSTALL_DIR)/pjava $(INSTALL_DIR)/cpb \
+		$(INSTALL_DIR)/cpbem $(INSTALL_DIR)/cpbqem $(INSTALL_DIR)/pcpb \
+		$(INSTALL_DIR)/cpbq \
+		$(INSTALL_DIR)/cpb.py $(INSTALL_DIR)/cpbpretty $(INSTALL_DIR)/cpq \
+		$(INSTALL_DIR)/unify $(INSTALL_DIR)/doxy $(INSTALL_DIR)/doxyfy \
+		$(INSTALL_DIR)/prettyJson $(INSTALL_DIR)/libmeta.so \
+		$(INSTALL_DIR)/libcplus.co $(INSTALL_DIR)/libchopb.so \
+		$(INSTALL_DIR)/libmetachop.so $(INSTALL_DIR)/libmetagencore.so \
+		$(INSTALL_DIR)/libmetagen.so $(INSTALL_DIR)/libcplus.so
 
 
 

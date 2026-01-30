@@ -41,9 +41,16 @@ CHOPB=../chopb/chopb.a
 METACHOP=../metachop/metachop.a
 METAGEN= ../parser/verif.o 
 
+CPLUS_DIR=$(META_DIR)/pub/cplusplu
+CPLUS_OBJ=$(CPLUS_DIR)/chopper.o 
+SO_LIB = -L ../cplusplu -lcplus -L ../chopb -lchopb -L ../metachop -lmetachop -L ../library -lmeta 
 
 doxy : $(OBJECTS) $(LIBRARY)
-	$(C_PLUS) -o doxy $(OBJECTS)  $(CPLUS)  $(METAGEN)  $(METACHOP) $(CHOPB)  $(LIBRARY)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(CPLUS_OBJ)  $(METAGEN) $(SO_LIB);\
+	else\
+		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(CPLUS_OBJ) $(CPLUS)  $(METAGEN)  $(METACHOP) $(CHOPB) $(LIBRARY);\
+	fi
 
 chop : 
 	make -f makefile.cho

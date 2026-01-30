@@ -31,8 +31,10 @@ clean :
 	cd ..
 
 install :
+#	-copy connect\dispatcher.exe connect\spy.exe connect\killapp.exe $(INSTALL_DIR)
 
-   
+uninstall : 
+	-del $(INSTALL_DIR)\dispatcher.exe $(INSTALL_DIR)\killapp.exe $(INSTALL_DIR)\spy.exe
 
 
 

@@ -18,8 +18,8 @@ all :
 	cd metachop 
 	$(MAKE) -f makefile.vis all
 	cd ..
-	$(MAKE) -f makefile.vis $(INSTALL_DIR)/metagen.exe
-	$(MAKE) -f makefile.vis $(INSTALL_DIR)/metachop.exe
+	$(MAKE) -f makefile.vis $(INSTALL_DIR)\metagen.exe
+	$(MAKE) -f makefile.vis $(INSTALL_DIR)\metachop.exe
 	copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)
 	copy .\cplusplu\c.set  $(INSTALL_DIR_SKIMMED)
 	copy .\cplusplu\cpb.bat $(INSTALL_DIR_SKIMMED)
@@ -39,12 +39,12 @@ all :
 	$(MAKE) -f makefile.vis all
 	cd ..
 
-$(INSTALL_DIR)/metagen.exe : ./parser/metagen.exe
+$(INSTALL_DIR)\metagen.exe : ./parser/metagen.exe
 	copy .\parser\metagen.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\parser\metagen.exe.manifest $(INSTALL_DIR_SKIMMED)
 
 
-$(INSTALL_DIR)/metachop.exe : ./metachop/metachop.exe
+$(INSTALL_DIR)\metachop.exe : ./metachop/metachop.exe
 	copy .\metachop\metachop.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\metachop\metachop.exe.manifest $(INSTALL_DIR_SKIMMED)
 
@@ -84,15 +84,12 @@ clean :
 install :
 	- copy .\parser\metagen.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\metachop\metachop.exe $(INSTALL_DIR_SKIMMED)
-    - copy .\parser\diff.kee $(INSTALL_DIR_SKIMMED)\diff.exe
 	- copy .\parser\chop.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\chopb\chopb.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\cplusplu\cplus.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\java\pjava.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\config\configfo.exe $(INSTALL_DIR_SKIMMED)
 	- copy .\metab\metab.exe $(INSTALL_DIR_SKIMMED)
-	- copy .\parser\metagen.exe.manifest $(INSTALL_DIR_SKIMMED)
-	- copy .\metachop\metachop.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\parser\chop.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\chopb\chopb.exe.manifest $(INSTALL_DIR_SKIMMED)
 	- copy .\cplusplu\cplus.exe.manifest $(INSTALL_DIR_SKIMMED)
@@ -107,6 +104,13 @@ install :
 	- copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)
 	- copy .\cplusplu\pcpb.bat $(INSTALL_DIR)
 	- copy .\cplusplu\cpb.py $(INSTALL_DIR)
+
+uninstall :
+    - del  "$(INSTALL_DIR)\metagen.exe" "$(INSTALL_DIR)\chop.exe" "$(INSTALL_DIR)\metachop.exe" "$(INSTALL_DIR)\chopb.exe" 
+    - del "$(INSTALL_DIR)\cplus.exe" "$(INSTALL_DIR)\configfo.exe" "$(INSTALL_DIR)\metab.exe" "$(INSTALL_DIR)\pjava.exe" "$(INSTALL_DIR)\unify.bat" ^
+    - del "$(INSTALL_DIR)\doxy.exe" "$(INSTALL_DIR)\prettyJson.exe" "$(INSTALL_DIR)\cpb.bat" "$(INSTALL_DIR)\cpbch.bat" "$(INSTALL_DIR)\pcpb.bat" ^
+    - del "$(INSTALL_DIR)\cpb.py"
+
 
 basic :
 	cd library 
@@ -144,6 +148,6 @@ erlscale : prettyprinter
 	$(MAKE) -f makefile.vis all
 	cd ..
     - copy .\parser\diff.kee $(INSTALL_DIR_SKIMMED)\diff.exe
-	$(MAKE) -f makefile.vis $(INSTALL_DIR)/metagen.exe
-	$(MAKE) -f makefile.vis $(INSTALL_DIR)/metachop.exe
+	$(MAKE) -f makefile.vis $(INSTALL_DIR)\metagen.exe
+	$(MAKE) -f makefile.vis $(INSTALL_DIR)\metachop.exe
 	copy .\parser\unify.bat $(INSTALL_DIR_SKIMMED)

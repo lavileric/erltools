@@ -24,6 +24,8 @@ m_done : foo.met
 	  unify foo0.cpp ../foo0.cc;)
 	@echo "ok" > m_done
 
+SO_LIB = -L $(INSTALL_DIR) -lmeta 
+
 foo.o : foo.cc foo.h
 
 foo0.o : foo0.cc foo.h
@@ -34,8 +36,12 @@ chopper.o : chopper.cc $(META_DIR)/pub/library/token.h
 
 OBJECTS = foo.o foo0.o chopper.o 
 
-foo : $(OBJECTS) $(LIBRARY)
-	$(C_PLUS) -o foo $(OBJECTS) $(LIBRARY)
+foo : $(OBJECTS) 
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) $(OPTIM_FLAGS) -o foo $(OBJECTS)  $(SO_LIB);\
+	else\
+		$(C_PLUS) $(OPTIM_FLAGS) -o foo $(OBJECTS) $(LIBRARY);\
+	fi
 
 chop : 
 	make -f makefile.cho

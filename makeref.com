@@ -47,37 +47,9 @@ CCFLAGS= $(MACHFLAGS) $(OPTIM_FLAGS) $(MISC_C_FLAGS) $(C_WARNING) $(INCLUDE_DIR)
 # mettre -DI386 pour interactive
 
 clean_inc :
-	@-  $(RM) *.o 
-	@-  $(RM) *.obj
-	@-  $(RM) *.a
-	@-  $(RM) *.lib
-	@-  $(RM) *.so
-	@-  $(RM) *.dll
-	@-  $(RM) *.ll
-	@-  $(RM) res.*
-	@-  $(RM) *.exe
-	@-  $(RM) -r compile.dir
-	@-  $(RM) core
-	@-  $(RM) res.*
-	@-  $(RM) *.~*
-	@-  $(RM) *.pdb
-	@-  $(RM) *.*~
-	@-  $(RM) *.viv
-	@-  $(RM) libtmp*.*
-	@-  $(RM) *.tds
-	@-  $(RM) *.ilk
-	@-  $(RM) *.lst
-	@-  $(RM) *.bak
-	@-  $(RM) *.mbt
-	@-  $(RM) *.mrt
-	@-  $(RM) *.obr
-	@-  $(RM) *.ide
-	@-  $(RM) *.exe
-	@-  $(RM) *.obj
-	@-  sh -c $(RM_UNIX)
-	@-  $(RM) keep.erl
-	@-  $(RM) core.*
-	@-  $(RM) *.keep
+	@- $(RM) *.o *.obj *.a  *.lib *.so *.dll *.ll res.* *.exe  *.~* *.pdb *.*~ *.viv libtmp*.* *.tds *.ilk *.lst *.bak *.mbt *.mrt *.obr *.ide *.exe *.obj 	@-  $(RM) keep.erl core .* *.keep
+	@- $(RM) -r compile.dir core
+	@- sh -c $(RM_UNIX)
 
 clean_inc_appli : clean_inc
 	@-  $(RM) m_done
@@ -104,8 +76,11 @@ checker :
 check :
 	$(MAKE) all "OPTIM_FLAGS=-g" "LIB_SYS=-ldbmalloc" -f makefile.uni
 solib :
-	$(MAKE) shared "OPT_FLAGS_SYS=-fPIC" -f makefile.uni
+	$(MAKE) libshared "OPT_FLAGS_SYS=-fPIC" -f makefile.uni
 soall : 
 	$(MAKE) all "OPT_FLAGS_SYS=-fPIC" -f makefile.uni
+
+shared : solib soall
+
 METAOPT =
 

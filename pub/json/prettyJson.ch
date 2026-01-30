@@ -12,16 +12,15 @@ language json;
 
 #include "token.h"
 #include "json.h"
-#include "deccplus.h"
 #include "decjson.h"
 #include <sys/types.h>
 #include <fcntl.h>
 #include "Protector.h"
 
-char        *theFileName ;          ///< theFileName
-int         compiledLine = 0 ;      ///< compiledLine
-DecompJson  *DecompJson::ptDecomp ; ///< DecompJson
+char        *theFileName ;     ///< theFileName
+int         compiledLine = 0 ; ///< compiledLine
 extern void decomp (PTREE) ;
+DecompJson  *DecompJson::ptDecomp = 0 ;
 
 /// 
 /// @class  QuickProgErlms

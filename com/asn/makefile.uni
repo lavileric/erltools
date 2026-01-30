@@ -29,7 +29,7 @@ libasn.so : m_done
 	$(MAKE) objects
 	$(C_PLUS) -shared -o libasn.so $(OBJECTS)
 
-shared : libasn.so all
+libshared : libasn.so all
 
 include $(META_DIR)/makefile.inc
 

@@ -13,12 +13,12 @@ m_done : java.met $(META_DIR)\pub\cplusplu\cplus.met
 	-@mkdir compile.dir
 	-@copy java.met compile.dir
 	@cd compile.dir
-	metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) java.met
-	-@unify java.h ..\java.h
-	-@unify java.cpp ..\java.cc
-	-@unify java0.cpp ..\java0.cc
-	-@unify java1.cpp ..\java1.cc
-	-@unify java2.cpp ..\java2.cc
+	$(INSTALL_DIR)$(SEP)metagen -c++ -path $(META_DIR)\pub\cplusplu\;$(META_DIR)\pub\library $(METAOPT) java.met
+	-@$(INSTALL_DIR)$(SEP)unify java.h ..\java.h
+	-@$(INSTALL_DIR)$(SEP)unify java.cpp ..\java.cc
+	-@$(INSTALL_DIR)$(SEP)unify java0.cpp ..\java0.cc
+	-@$(INSTALL_DIR)$(SEP)unify java1.cpp ..\java1.cc
+	-@$(INSTALL_DIR)$(SEP)unify java2.cpp ..\java2.cc
 	cd ..
 	@echo "ok" > m_done
 

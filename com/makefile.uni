@@ -17,17 +17,17 @@ all :
 		(cp asnquick/libqconnect.so $(INSTALL_DIR));\
 	fi
 
-shared :
-	$(MAKE) -C asn -f makefile.uni shared
+libshared :
+	$(MAKE) -C asn -f makefile.uni libshared
 	if [ -f asn/libasn.so ] ; then \
 		(cp asn/libasn.so $(INSTALL_DIR));\
 	fi
-	$(MAKE) -C asnext -f makefile.uni shared
-	$(MAKE) -C connect  -f makefile.uni shared
+	$(MAKE) -C asnext -f makefile.uni libshared
+	$(MAKE) -C connect  -f makefile.uni libshared
 	if [ -f connect/libconnect.so ] ; then \
 		(cp connect/libconnect.so $(INSTALL_DIR));\
 	fi
-	$(MAKE) -C asnquick -f makefile.uni shared
+	$(MAKE) -C asnquick -f makefile.uni libshared
 	if [ -f asnquick/libqconect.so ] ; then \
 		(cp asnquick/libqconnect.so $(INSTALL_DIR));\
 	fi
@@ -54,5 +54,10 @@ install :
 	fi
 	- cp asnext/asnext $(INSTALL_DIR)
 	- strip $(INSTALL_DIR)/asnext
+
+uninstall : 
+	- rm -f $(INSTALL_DIR)/dispatcher $(INSTALL_DIR)/killapp $(INSTALL_DIR)/spy\
+	 $(INSTALL_DIR)/libasn.so $(INSTALL_DIR)/libconnect.so $(INSTALL_DIR)/libqconnect.so\
+	 $(INSTALL_DIR)/asnext
 
 

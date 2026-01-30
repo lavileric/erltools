@@ -8,21 +8,24 @@ include $(META_DIR)/makefile.der
 
 chop.o : chop.cc $(META_DIR)/pub/library/token.h
 
-CPLUS=$(META_DIR)/pub/cplusplu/chopper.o $(META_DIR)/pub/cplusplu/cplus.a
-
-CHOPB=$(META_DIR)/pub/chopb/chopb.a
-
-METACHOP=$(META_DIR)/pub/metachop/metachop.a
-
+CPLUS_OBJ=$(META_DIR)/pub/cplusplu/chopper.o
 CHOPCORE=$(META_DIR)/pub/parser/verif.o
 
-chop : chop.o foo.o foo0.o $(CPLUS) $(CHOPB) $(METACHOP) $(CHOPCORE)
-	$(C_PLUS) -o chop foo.o foo0.o chop.o $(CHOPCORE) $(CPLUS) $(CHOPB) $(METACHOP) $(LIBRARY)
+CPLUS=$(META_DIR)/pub/cplusplu/cplus.a
+CHOPB=$(META_DIR)/pub/chopb/chopb.a
+METACHOP=$(META_DIR)/pub/metachop/metachop.a
+
+SO_LIB = -L ../cplusplu -lcplus -L ../chopb -lchopb -L ../metachop -lmetachop -L ../library -lmeta 
+
+ALL_OBJECTS = foo.o foo0.o chop.o
+
+chop :  $(ALL_OBJECTS) $(CPLUS_OBJ) $(CHOPCORE)
+	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
+		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(CPLUS_OBJ) $(SO_LIB);\
+	else\
+		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(CPLUS_OBJ) $(CPLUS) $(METACHOP) $(CHOPB) $(LIBRARY);\
+	fi
 	strip chop
-
-
-
-
 
 
 

@@ -1,6 +1,6 @@
 
 
-all : checkpath
+all : checkpath checkinstall
 	@- mkdir $(INSTALL_DIR) 2>/dev/null
 	if [ ! -f makefile ] ; then \
 		chmod 770 outils/updatelinks ;\
@@ -21,17 +21,17 @@ misc_make :
 	if [ -d ./misc ] ; then \
 	       $(MAKE) -C misc -f makefile.uni all ; fi
 
-shared :
+libshared :
 	@- mkdir $(INSTALL_DIR) 2>/dev/null
 	if [ ! -f makefile ] ; then \
 		chmod 770 outils/updatelinks ;\
 		find . -name makefile.uni -exec outils/updatelinks {} \; -print ; fi
 	if [ -d ./optim ] ; then \
                $(MAKE) -C optim -f makefile.uni all ; fi
-	$(MAKE) -C pub -f makefile.uni shared all
+	$(MAKE) -C pub -f makefile.uni libshared all
 	if [ -d ./com ] ; then \
                 $(MAKE) -f makefile.uni install ;\
-				$(MAKE) -C com -f makefile.uni shared ; fi
+				$(MAKE) -C com -f makefile.uni libshared ; fi
 	-cp com/asn/libasn.so $(INSTALL_DIR)
 	-cp com/asnquick/libqconnect.so $(INSTALL_DIR)
 	-cp com/connect/libconnect.so $(INSTALL_DIR)
@@ -73,6 +73,16 @@ install : checkpath
 	if [ -d ./private ] ; then \
                (cd private ; $(MAKE) -f makefile.uni install) ; fi
 
+uninstall : checkpath 
+	- mkdir $(INSTALL_DIR) 2>/dev/null
+	( cd pub ; $(MAKE) -f makefile.uni uninstall)
+	if [ -d ./misc ] ; then \
+               (cd misc ; $(MAKE) -f makefile.uni uninstall) ; fi
+	if [ -d ./com ] ; then \
+               (cd com ; $(MAKE) -f makefile.uni uninstall) ; fi
+	if [ -d ./private ] ; then \
+               (cd private ; $(MAKE) -f makefile.uni uninstall) ; fi
+	- rm -f $(INSTALL_DIR)/check-erltools
 
 prettyprinter :
 	- mkdir $(INSTALL_DIR) 2>/dev/null
@@ -129,6 +139,13 @@ net-com : mv-files
 	- mv ../erltools.net/erltools/makefile.vis.com.net ../erltools.net/erltools/makefile.vis
 	(cd ../erltools.net ; tar cvf - ./erltools | xz -9e -c -T0 > erltools.txz )
 	(cd ../erltools.net ; zip -r erltools erltools)
+
+checkinstall :
+	@- if [ ! -f $(INSTALL_DIR)/metagen ] ; then \
+		for i in `find . -name "*.h"`; do touch $$i ; done ; \
+		for i in `find . -name "*.cc"`; do touch $$i ; done ; \
+		for i in `find . -name "*m_done"`; do touch $$i ; done ; \
+	fi
 
 checkpath : 
 	echo "-> create local checker file"

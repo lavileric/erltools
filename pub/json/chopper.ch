@@ -10,11 +10,13 @@ language json;
 #include "json.h"
 #include <fcntl.h>
 #include "deccplus.h"
+#include "decjson.h"
 
-char    *theFileName = (char *)0 ; ///< theFileName
-int     compiledLine = 0 ;         ///< compiledLine
-void    ChopTree (PTREE) ;
-void    decomp (PTREE) ;
+char        *theFileName = (char *)0 ; ///< theFileName
+int         compiledLine = 0 ;         ///< compiledLine
+void        ChopTree (PTREE) ;
+void        decomp (PTREE) ;
+DecompJson  *DecompJson::ptDecomp = 0 ;
 
 int main ( int argc, char **argv )
 {
@@ -22,11 +24,13 @@ int main ( int argc, char **argv )
     char        name [50];
     char        *ptName ;
     DecompCplus decomp ;
+    DecompJson  decompJson ;
     
     dumpCoord             =  0 ;
     
     // cplusGen              =  1 ;
-    DecompCplus::ptDecomp =  (DecompCplus *)(&decomp);
+    DecompCplus::ptDecomp =  (DecompCplus *)(&decompJson);
+    DecompJson::ptDecomp  =  (DecompJson *)(&decompJson);
     MetaInit();
     json().AsLanguage();
     ///  ReadIncludeS("c.set", 1);
@@ -64,5 +68,4 @@ void decomp ( PTREE tree )
 {
     DumpTree(tree);
 }
-
 

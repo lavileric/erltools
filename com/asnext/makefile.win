@@ -31,11 +31,11 @@ m_done : asnext.met ..\asn\asn.met
 	@copy asnext.met compile.dir\asnext.met
 	@echo "metagen -c++ asnext.met"
 	cd compile.dir 
-	  metagen -c++ $(METAOPT) -path ..\..\asn;$(META_DIR)\pub\library asnext.met
-          unify asnext.h ..\asnext.h
-          unify asnext.cpp ..\asnext.cc
-	  unify asnext0.cpp ..\asnext0.cc
-	  unify asnext1.cpp ..\asnext1.cc
+	$(INSTALL_DIR)\metagen.exe -c++ $(METAOPT) -path ..\..\asn;$(META_DIR)\pub\library asnext.met
+    $(INSTALL_DIR)\unify.bat  asnext.h ..\asnext.h
+    $(INSTALL_DIR)\unify.bat  asnext.cpp ..\asnext.cc
+	$(INSTALL_DIR)\unify.bat  asnext0.cpp ..\asnext0.cc
+	$(INSTALL_DIR)\unify.bat  asnext1.cpp ..\asnext1.cc
     cd ..
 	@echo "ok" > m_done
 
