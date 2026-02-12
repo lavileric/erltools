@@ -103,47 +103,29 @@ tail_recur :
         ReplaceTree(father, pos, res);
         SqueezeRec(res, father, pos);
     } else {
-#       if 1
-            {
-                if ( node_number == LIST && !SonTree(_current, 2) && NumberTree((res = SonTree(_current, 1))) == META && my_list_first && father ) 
-                    ReplaceTree(father, pos, res);
-                else {
-                    for ( for_slot = 1 ; for_slot <= arity ; for_slot++ ) {
-                        res =  SonTree(_current, for_slot);
-                        if ( node_number != LIST || for_slot == 1 ) {
-                            _list_first =  1 ;
-                            SqueezeRec(res, _current, for_slot);
-                        } else {
-                            
-                            /* 2nd of list*/
-                            _list_first   =  0 ;
-                            father        =  _current ;
-                            _current      =  res ;
-                            pos           =  for_slot ;
-			    res           =  (PPTREE) 0 ;
-                            my_list_first =  0 ;
-                            goto tail_recur ;
-                            
-                            // SqueezeRec(res, _current, for_slot);
-                        }
-                    }
-                }
-            }
-#       else 
-            {
-                for ( for_slot = 1 ; for_slot <= arity ; for_slot++ ) {
-                    res =  SonTree(_current, for_slot);
-                    if ( node_number == LIST && for_slot == 2 ) 
-                        /* 2nd of list*/
-                        _list_first =  0 ;
-                    else 
-                        _list_first =  1 ;
+        if ( node_number == LIST && !SonTree(_current, 2) && NumberTree((res = SonTree(_current, 1))) == META && my_list_first && father ) 
+            ReplaceTree(father, pos, res);
+        else {
+            for ( for_slot = 1 ; for_slot <= arity ; for_slot++ ) {
+                res =  SonTree(_current, for_slot);
+                if ( node_number != LIST || for_slot == 1 ) {
+                    _list_first =  1 ;
                     SqueezeRec(res, _current, for_slot);
+                } else {
+                    
+                    /* 2nd of list*/
+                    _list_first   =  0 ;
+                    father        =  _current ;
+                    _current      =  res ;
+                    pos           =  for_slot ;
+                    res           =  (PPTREE)0 ;
+                    my_list_first =  0 ;
+                    goto tail_recur ;
+                    
+                    // SqueezeRec(res, _current, for_slot);
                 }
-                if ( node_number == LIST && !SonTree(_current, 2) && NumberTree((res = SonTree(_current, 1))) == META && my_list_first && father ) 
-                    ReplaceTree(father, pos, res);
             }
-#       endif
+        }
     }
     _list_first =  my_list_first ;
 }
@@ -163,17 +145,6 @@ void _fastcall PullComment ( PPTREE _current )
 debut : 
     if ( !_current ) 
         return ;
-#   if 0
-        
-        /* frame all comments of the node */
-        comm =  COMM_SON_VALUE(_current);
-        while ( comm ) {
-            PPTREE  son = SonTree(SonTree(comm, 1), 1);
-            if ( SonTree(son, 2) ) 
-                Frame(son);
-            comm =  SonTree(comm, 2);
-        }
-#   endif
     if ( (node_number = NumberTree(_current)) == TERM_TREE ) {
         list_source =  SonTree(_current, 0);
         if ( list_source ) {

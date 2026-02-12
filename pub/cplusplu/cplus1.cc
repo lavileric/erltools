@@ -2792,14 +2792,14 @@ PPTREE cplus::deallocation_expression ( int error_free)
     PPTREE lastTree = _lastTree,_retValue ;
 #line 3021 "cplus.met"
 #line 3021 "cplus.met"
-    PPTREE retTree = (PPTREE) 0,expr = (PPTREE) 0;
+    PPTREE retTree = (PPTREE) 0,expr = (PPTREE) 0,nullTree = (PPTREE) 0;
 #line 3021 "cplus.met"
 #line 3023 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3023 "cplus.met"
     if (  !SEE_TOKEN( DELETE,"delete") || !(CommTerm(),1)) {
 #line 3023 "cplus.met"
-        MulFreeTree(2,expr,retTree);
+        MulFreeTree(3,expr,nullTree,retTree);
         TOKEN_EXIT(deallocation_expression_exit,"delete")
 #line 3023 "cplus.met"
     } else {
@@ -2824,17 +2824,20 @@ PPTREE cplus::deallocation_expression ( int error_free)
 #line 3025 "cplus.met"
 #line 3026 "cplus.met"
 #line 3029 "cplus.met"
-        if (NPUSH_CALL_AFF_VERIF(expr = ,_Tak(expression), 67, cplus)){
+        if (! (NPUSH_CALL_AFF_VERIF(expr = ,_Tak(expression), 67, cplus))){
 #line 3029 "cplus.met"
-#line 3029 "cplus.met"
+#line 3031 "cplus.met"
+            expr = nullTree ;
+#line 3031 "cplus.met"
+#line 3031 "cplus.met"
         }
-#line 3029 "cplus.met"
+#line 3031 "cplus.met"
 #line 3032 "cplus.met"
         (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3032 "cplus.met"
         if (  !SEE_TOKEN( CFER,"]") || !(CommTerm(),1)) {
 #line 3032 "cplus.met"
-            MulFreeTree(2,expr,retTree);
+            MulFreeTree(3,expr,nullTree,retTree);
             TOKEN_EXIT(deallocation_expression_exit,"]")
 #line 3032 "cplus.met"
         } else {
@@ -2879,7 +2882,7 @@ PPTREE cplus::deallocation_expression ( int error_free)
 #line 3035 "cplus.met"
             if ( (_ptTree1=NQUICK_CALL(_Tak(cast_expression)(error_free), 26, cplus))== (PPTREE) -1 ) {
 #line 3035 "cplus.met"
-                MulFreeTree(4,_ptTree1,_ptTree0,expr,retTree);
+                MulFreeTree(5,_ptTree1,_ptTree0,expr,nullTree,retTree);
                 PROG_EXIT(deallocation_expression_exit,"deallocation_expression")
 #line 3035 "cplus.met"
             }

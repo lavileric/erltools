@@ -3019,7 +3019,7 @@ define allocation_expression;
 end;
 
 define deallocation_expression;
-    declare retTree,expr;
+    declare retTree,expr,nullTree;
     take #"delete";
     retTree = maketree(DELETE,(),());
     if take "[" then
@@ -3027,8 +3027,8 @@ define deallocation_expression;
         
         /* for compatibility with obsolete compilators
           modified the 20/03/94 */
-        if expr = take expression then
-            ;
+        if not expr = take expression then
+            expr = nullTree;
         take "]";
         replacetree(retTree,1,maketree(TYP_ARRAY,(),expr));
         end;
