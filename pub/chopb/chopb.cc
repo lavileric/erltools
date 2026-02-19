@@ -155,268 +155,268 @@ assignment_expression_ret :
 #line 297 "chopb.met"
 
 #line 297 "chopb.met"
-#line 387 "chopb.met"
+#line 388 "chopb.met"
 PPTREE chopb::cast_expression_value ( int error_free)
-#line 387 "chopb.met"
+#line 388 "chopb.met"
 {
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     int  _oldinMakeTree = inMakeTree;
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     int _value,_nbPre = 0 ;
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     int _Debug = TRACE_RULE("cast_expression_value",TRACE_ENTER,(PPTREE)0);
-#line 387 "chopb.met"
+#line 388 "chopb.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 387 "chopb.met"
-#line 387 "chopb.met"
+#line 388 "chopb.met"
+#line 388 "chopb.met"
     PPTREE ret = (PPTREE) 0;
-#line 387 "chopb.met"
-#line 389 "chopb.met"
+#line 388 "chopb.met"
+#line 390 "chopb.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 389 "chopb.met"
+#line 390 "chopb.met"
     if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 389 "chopb.met"
+#line 390 "chopb.met"
         MulFreeTree(1,ret);
         TOKEN_EXIT(cast_expression_value_exit,"(")
-#line 389 "chopb.met"
+#line 390 "chopb.met"
     } else {
-#line 389 "chopb.met"
+#line 390 "chopb.met"
         tokenAhead = 0 ;
-#line 389 "chopb.met"
+#line 390 "chopb.met"
     }
-#line 389 "chopb.met"
 #line 390 "chopb.met"
+#line 391 "chopb.met"
     {
-#line 390 "chopb.met"
+#line 391 "chopb.met"
         inMakeTree = 0 ;
-#line 390 "chopb.met"
 #line 391 "chopb.met"
-        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 153, chopb))== (PPTREE) -1 ) {
-#line 391 "chopb.met"
+#line 392 "chopb.met"
+        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 154, chopb))== (PPTREE) -1 ) {
+#line 392 "chopb.met"
             MulFreeTree(1,ret);
             PROG_EXIT(cast_expression_value_exit,"cast_expression_value")
-#line 391 "chopb.met"
+#line 392 "chopb.met"
         }
-#line 391 "chopb.met"
+#line 392 "chopb.met"
         inMakeTree =  _oldinMakeTree;
-#line 391 "chopb.met"
+#line 392 "chopb.met"
     }
-#line 391 "chopb.met"
 #line 392 "chopb.met"
+#line 393 "chopb.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 392 "chopb.met"
+#line 393 "chopb.met"
     if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 392 "chopb.met"
+#line 393 "chopb.met"
         MulFreeTree(1,ret);
         TOKEN_EXIT(cast_expression_value_exit,")")
-#line 392 "chopb.met"
+#line 393 "chopb.met"
     } else {
-#line 392 "chopb.met"
+#line 393 "chopb.met"
         tokenAhead = 0 ;
-#line 392 "chopb.met"
+#line 393 "chopb.met"
     }
-#line 392 "chopb.met"
 #line 393 "chopb.met"
+#line 394 "chopb.met"
     {
-#line 393 "chopb.met"
+#line 394 "chopb.met"
         PPTREE _ptTree0=0;
-#line 393 "chopb.met"
+#line 394 "chopb.met"
         {
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             PPTREE _ptTree1=0,_ptRes1=0;
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             _ptRes1= MakeTree(CAST, 2);
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             ReplaceTree(_ptRes1, 1, ret );
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             if ( (_ptTree1=NQUICK_CALL(_Tak(cast_expression)(error_free), 26, chopb))== (PPTREE) -1 ) {
-#line 393 "chopb.met"
+#line 394 "chopb.met"
                 MulFreeTree(4,_ptRes1,_ptTree1,_ptTree0,ret);
                 PROG_EXIT(cast_expression_value_exit,"cast_expression_value")
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             }
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             ReplaceTree(_ptRes1, 2, _ptTree1);
-#line 393 "chopb.met"
+#line 394 "chopb.met"
             _ptTree0=_ptRes1;
-#line 393 "chopb.met"
+#line 394 "chopb.met"
         }
-#line 393 "chopb.met"
+#line 394 "chopb.met"
         _retValue =_ptTree0;
-#line 393 "chopb.met"
+#line 394 "chopb.met"
         goto cast_expression_value_ret;
-#line 393 "chopb.met"
+#line 394 "chopb.met"
     }
-#line 393 "chopb.met"
-#line 393 "chopb.met"
-#line 393 "chopb.met"
-
 #line 394 "chopb.met"
+#line 394 "chopb.met"
+#line 394 "chopb.met"
+
+#line 395 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 inMakeTree =  _oldinMakeTree;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 return((PPTREE) 0);
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 cast_expression_value_exit :
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     _Debug = TRACE_RULE("cast_expression_value",TRACE_EXIT,(PPTREE)0);
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     _funcLevel--;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     return((PPTREE) -1) ;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 cast_expression_value_ret :
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     _Debug = TRACE_RULE("cast_expression_value",TRACE_RETURN,_retValue);
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
     return _retValue ;
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 }
-#line 394 "chopb.met"
+#line 395 "chopb.met"
 
-#line 394 "chopb.met"
-#line 396 "chopb.met"
+#line 395 "chopb.met"
+#line 397 "chopb.met"
 PPTREE chopb::exclusive_or_expression ( int error_free)
-#line 396 "chopb.met"
+#line 397 "chopb.met"
 {
-#line 396 "chopb.met"
+#line 397 "chopb.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 396 "chopb.met"
+#line 397 "chopb.met"
     int _value,_nbPre = 0 ;
-#line 396 "chopb.met"
+#line 397 "chopb.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 396 "chopb.met"
+#line 397 "chopb.met"
     int _Debug = TRACE_RULE("exclusive_or_expression",TRACE_ENTER,(PPTREE)0);
-#line 396 "chopb.met"
+#line 397 "chopb.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 396 "chopb.met"
-#line 396 "chopb.met"
+#line 397 "chopb.met"
+#line 397 "chopb.met"
     PPTREE expTree = (PPTREE) 0,ret = (PPTREE) 0;
-#line 396 "chopb.met"
-#line 398 "chopb.met"
+#line 397 "chopb.met"
+#line 399 "chopb.met"
     if ( (expTree=NQUICK_CALL(_Tak(and_expression)(error_free), 6, chopb))== (PPTREE) -1 ) {
-#line 398 "chopb.met"
+#line 399 "chopb.met"
         MulFreeTree(2,expTree,ret);
         PROG_EXIT(exclusive_or_expression_exit,"exclusive_or_expression")
-#line 398 "chopb.met"
-    }
-#line 398 "chopb.met"
 #line 399 "chopb.met"
+    }
+#line 399 "chopb.met"
+#line 400 "chopb.met"
     while ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN(CHAP,"^") && (tokenAhead = 0,CommTerm(),1)) { 
-#line 399 "chopb.met"
 #line 400 "chopb.met"
+#line 401 "chopb.met"
         if (NPUSH_CALL_AFF_VERIF(ret = ,_Tak(and_expression), 6, chopb)){
-#line 400 "chopb.met"
 #line 401 "chopb.met"
+#line 402 "chopb.met"
             {
-#line 401 "chopb.met"
+#line 402 "chopb.met"
                 PPTREE _ptRes0=0;
-#line 401 "chopb.met"
+#line 402 "chopb.met"
                 _ptRes0= MakeTree(LXOR, 2);
-#line 401 "chopb.met"
+#line 402 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 401 "chopb.met"
+#line 402 "chopb.met"
                 ReplaceTree(_ptRes0, 2, ret );
-#line 401 "chopb.met"
+#line 402 "chopb.met"
                 expTree=_ptRes0;
-#line 401 "chopb.met"
+#line 402 "chopb.met"
             }
-#line 401 "chopb.met"
+#line 402 "chopb.met"
         } else {
-#line 401 "chopb.met"
-#line 403 "chopb.met"
+#line 402 "chopb.met"
+#line 404 "chopb.met"
             {
-#line 403 "chopb.met"
+#line 404 "chopb.met"
                 PPTREE _ptRes0=0;
-#line 403 "chopb.met"
+#line 404 "chopb.met"
                 _ptRes0= MakeTree(LXOR, 2);
-#line 403 "chopb.met"
+#line 404 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 403 "chopb.met"
+#line 404 "chopb.met"
                 expTree=_ptRes0;
-#line 403 "chopb.met"
+#line 404 "chopb.met"
             }
-#line 403 "chopb.met"
+#line 404 "chopb.met"
         }
-#line 403 "chopb.met"
+#line 404 "chopb.met"
     } 
-#line 403 "chopb.met"
 #line 404 "chopb.met"
+#line 405 "chopb.met"
     {
-#line 404 "chopb.met"
+#line 405 "chopb.met"
         _retValue = expTree ;
-#line 404 "chopb.met"
+#line 405 "chopb.met"
         goto exclusive_or_expression_ret;
-#line 404 "chopb.met"
+#line 405 "chopb.met"
         
-#line 404 "chopb.met"
+#line 405 "chopb.met"
     }
-#line 404 "chopb.met"
-#line 404 "chopb.met"
-#line 404 "chopb.met"
-
 #line 405 "chopb.met"
+#line 405 "chopb.met"
+#line 405 "chopb.met"
+
+#line 406 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 return((PPTREE) 0);
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 exclusive_or_expression_exit :
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     _Debug = TRACE_RULE("exclusive_or_expression",TRACE_EXIT,(PPTREE)0);
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     _funcLevel--;
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     return((PPTREE) -1) ;
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 exclusive_or_expression_ret :
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     _Debug = TRACE_RULE("exclusive_or_expression",TRACE_RETURN,_retValue);
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 405 "chopb.met"
+#line 406 "chopb.met"
     return _retValue ;
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 }
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 
-#line 405 "chopb.met"
+#line 406 "chopb.met"
 #line 269 "chopb.met"
 PPTREE chopb::expression ( int error_free)
 #line 269 "chopb.met"
@@ -595,7 +595,7 @@ PPTREE chopb::main_entry ( int error_free)
 #line 257 "chopb.met"
         PPTREE _ptTree0=0;
 #line 257 "chopb.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 171, chopb))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 172, chopb))== (PPTREE) -1 ) {
 #line 257 "chopb.met"
             MulFreeTree(1,_ptTree0);
             PROG_EXIT(main_entry_exit,"main_entry")
@@ -648,283 +648,283 @@ main_entry_ret :
 #line 258 "chopb.met"
 
 #line 258 "chopb.met"
-#line 372 "chopb.met"
+#line 373 "chopb.met"
 PPTREE chopb::multiplicative_expression ( int error_free)
-#line 372 "chopb.met"
+#line 373 "chopb.met"
 {
-#line 372 "chopb.met"
+#line 373 "chopb.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 372 "chopb.met"
+#line 373 "chopb.met"
     int _value,_nbPre = 0 ;
-#line 372 "chopb.met"
+#line 373 "chopb.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 372 "chopb.met"
+#line 373 "chopb.met"
     int _Debug = TRACE_RULE("multiplicative_expression",TRACE_ENTER,(PPTREE)0);
-#line 372 "chopb.met"
+#line 373 "chopb.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 372 "chopb.met"
-#line 372 "chopb.met"
+#line 373 "chopb.met"
+#line 373 "chopb.met"
     PPTREE expTree = (PPTREE) 0;
-#line 372 "chopb.met"
-#line 374 "chopb.met"
-    if ( (expTree=NQUICK_CALL(_Tak(pm_expression)(error_free), 113, chopb))== (PPTREE) -1 ) {
-#line 374 "chopb.met"
+#line 373 "chopb.met"
+#line 375 "chopb.met"
+    if ( (expTree=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+#line 375 "chopb.met"
         MulFreeTree(1,expTree);
         PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
-#line 374 "chopb.met"
+#line 375 "chopb.met"
     }
-#line 374 "chopb.met"
-#line 375 "chopb.met"
-    while (((((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&SEE_TOKEN( SIMP_ETOI,"SIMP_ETOI")) || 
-#line 375 "chopb.met"
-            ((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&SEE_TOKEN( ETOI_ETOI,"ETOI_ETOI"))) || 
-#line 375 "chopb.met"
-           ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( SLAS,"SLAS"))) || 
-#line 375 "chopb.met"
-          ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( POURC,"%"))) { 
 #line 375 "chopb.met"
 #line 376 "chopb.met"
+    while (((((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&SEE_TOKEN( SIMP_ETOI,"SIMP_ETOI")) || 
+#line 376 "chopb.met"
+            ((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&SEE_TOKEN( ETOI_ETOI,"ETOI_ETOI"))) || 
+#line 376 "chopb.met"
+           ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( SLAS,"SLAS"))) || 
+#line 376 "chopb.met"
+          ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( POURC,"%"))) { 
+#line 376 "chopb.met"
 #line 377 "chopb.met"
+#line 378 "chopb.met"
         if(((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&TERM_OR_META(ETOI_ETOI,"ETOI_ETOI") && (tokenAhead = 0,CommTerm(),1))){
-#line 377 "chopb.met"
-#line 377 "chopb.met"
+#line 378 "chopb.met"
+#line 378 "chopb.met"
             {
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 _ptRes0= MakeTree(EXPO, 2);
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 377 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 113, chopb))== (PPTREE) -1 ) {
-#line 377 "chopb.met"
+#line 378 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+#line 378 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 }
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 ReplaceTree(_ptRes0, 2, _ptTree0);
-#line 377 "chopb.met"
+#line 378 "chopb.met"
                 expTree=_ptRes0;
-#line 377 "chopb.met"
+#line 378 "chopb.met"
             }
-#line 377 "chopb.met"
+#line 378 "chopb.met"
         } else 
-#line 377 "chopb.met"
-#line 379 "chopb.met"
+#line 378 "chopb.met"
+#line 380 "chopb.met"
         if(((tokenAhead == 15|| (LexEtoiEtoi(),TRACE_LEX(1)))&&TERM_OR_META(SIMP_ETOI,"SIMP_ETOI") && (tokenAhead = 0,CommTerm(),1))){
-#line 379 "chopb.met"
-#line 379 "chopb.met"
+#line 380 "chopb.met"
+#line 380 "chopb.met"
             {
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 _ptRes0= MakeTree(MUL, 2);
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 379 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 113, chopb))== (PPTREE) -1 ) {
-#line 379 "chopb.met"
+#line 380 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+#line 380 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 }
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 ReplaceTree(_ptRes0, 2, _ptTree0);
-#line 379 "chopb.met"
+#line 380 "chopb.met"
                 expTree=_ptRes0;
-#line 379 "chopb.met"
+#line 380 "chopb.met"
             }
-#line 379 "chopb.met"
+#line 380 "chopb.met"
         } else 
-#line 379 "chopb.met"
-#line 381 "chopb.met"
+#line 380 "chopb.met"
+#line 382 "chopb.met"
         if(((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&TERM_OR_META(SLAS,"SLAS") && (tokenAhead = 0,CommTerm(),1))){
-#line 381 "chopb.met"
-#line 381 "chopb.met"
+#line 382 "chopb.met"
+#line 382 "chopb.met"
             {
-#line 381 "chopb.met"
+#line 382 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 381 "chopb.met"
+#line 382 "chopb.met"
                 _ptRes0= MakeTree(DIV, 2);
-#line 381 "chopb.met"
+#line 382 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 381 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 113, chopb))== (PPTREE) -1 ) {
-#line 381 "chopb.met"
+#line 382 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+#line 382 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
-#line 381 "chopb.met"
-                }
-#line 381 "chopb.met"
-                ReplaceTree(_ptRes0, 2, _ptTree0);
-#line 381 "chopb.met"
-                expTree=_ptRes0;
-#line 381 "chopb.met"
-            }
-#line 381 "chopb.met"
-        } else 
-#line 381 "chopb.met"
 #line 382 "chopb.met"
+                }
+#line 382 "chopb.met"
+                ReplaceTree(_ptRes0, 2, _ptTree0);
+#line 382 "chopb.met"
+                expTree=_ptRes0;
+#line 382 "chopb.met"
+            }
+#line 382 "chopb.met"
+        } else 
+#line 382 "chopb.met"
+#line 383 "chopb.met"
         if(((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN(POURC,"%") && (tokenAhead = 0,CommTerm(),1))){
-#line 382 "chopb.met"
-#line 382 "chopb.met"
+#line 383 "chopb.met"
+#line 383 "chopb.met"
             {
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 _ptRes0= MakeTree(REM, 2);
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
-#line 382 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 113, chopb))== (PPTREE) -1 ) {
-#line 382 "chopb.met"
+#line 383 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+#line 383 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 }
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 ReplaceTree(_ptRes0, 2, _ptTree0);
-#line 382 "chopb.met"
+#line 383 "chopb.met"
                 expTree=_ptRes0;
-#line 382 "chopb.met"
+#line 383 "chopb.met"
             }
-#line 382 "chopb.met"
+#line 383 "chopb.met"
         } else 
-#line 382 "chopb.met"
+#line 383 "chopb.met"
          ;
-#line 382 "chopb.met"
+#line 383 "chopb.met"
     } 
-#line 382 "chopb.met"
-#line 384 "chopb.met"
+#line 383 "chopb.met"
+#line 385 "chopb.met"
     {
-#line 384 "chopb.met"
+#line 385 "chopb.met"
         _retValue = expTree ;
-#line 384 "chopb.met"
+#line 385 "chopb.met"
         goto multiplicative_expression_ret;
-#line 384 "chopb.met"
+#line 385 "chopb.met"
         
-#line 384 "chopb.met"
+#line 385 "chopb.met"
     }
-#line 384 "chopb.met"
-#line 384 "chopb.met"
-#line 384 "chopb.met"
-
 #line 385 "chopb.met"
+#line 385 "chopb.met"
+#line 385 "chopb.met"
+
+#line 386 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 return((PPTREE) 0);
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 multiplicative_expression_exit :
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     _Debug = TRACE_RULE("multiplicative_expression",TRACE_EXIT,(PPTREE)0);
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     _funcLevel--;
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     return((PPTREE) -1) ;
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 multiplicative_expression_ret :
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     _Debug = TRACE_RULE("multiplicative_expression",TRACE_RETURN,_retValue);
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 385 "chopb.met"
+#line 386 "chopb.met"
     return _retValue ;
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 }
-#line 385 "chopb.met"
+#line 386 "chopb.met"
 
-#line 385 "chopb.met"
-#line 667 "chopb.met"
+#line 386 "chopb.met"
+#line 668 "chopb.met"
 PPTREE chopb::old ( int error_free)
-#line 667 "chopb.met"
+#line 668 "chopb.met"
 {
-#line 667 "chopb.met"
+#line 668 "chopb.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 667 "chopb.met"
+#line 668 "chopb.met"
     int _value,_nbPre = 0 ;
-#line 667 "chopb.met"
+#line 668 "chopb.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 667 "chopb.met"
+#line 668 "chopb.met"
     int _Debug = TRACE_RULE("old",TRACE_ENTER,(PPTREE)0);
-#line 667 "chopb.met"
+#line 668 "chopb.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 667 "chopb.met"
 #line 668 "chopb.met"
+#line 669 "chopb.met"
     {
-#line 668 "chopb.met"
+#line 669 "chopb.met"
         PPTREE _ptTree0=0;
-#line 668 "chopb.met"
+#line 669 "chopb.met"
         {
-#line 668 "chopb.met"
+#line 669 "chopb.met"
             PPTREE _ptRes1=0;
-#line 668 "chopb.met"
+#line 669 "chopb.met"
             _ptRes1= MakeTree(BOX, 1);
-#line 668 "chopb.met"
+#line 669 "chopb.met"
             _ptTree0=_ptRes1;
-#line 668 "chopb.met"
+#line 669 "chopb.met"
         }
-#line 668 "chopb.met"
+#line 669 "chopb.met"
         _retValue =_ptTree0;
-#line 668 "chopb.met"
+#line 669 "chopb.met"
         goto old_ret;
-#line 668 "chopb.met"
+#line 669 "chopb.met"
     }
-#line 668 "chopb.met"
-#line 668 "chopb.met"
-#line 668 "chopb.met"
-
 #line 669 "chopb.met"
+#line 669 "chopb.met"
+#line 669 "chopb.met"
+
+#line 670 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 return((PPTREE) 0);
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 old_exit :
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     _Debug = TRACE_RULE("old",TRACE_EXIT,(PPTREE)0);
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     _funcLevel--;
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     return((PPTREE) -1) ;
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 old_ret :
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     _Debug = TRACE_RULE("old",TRACE_RETURN,_retValue);
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 669 "chopb.met"
+#line 670 "chopb.met"
     return _retValue ;
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 }
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 
-#line 669 "chopb.met"
+#line 670 "chopb.met"
 #line 331 "chopb.met"
 PPTREE chopb::postfix_expression ( int error_free)
 #line 331 "chopb.met"
@@ -947,11 +947,11 @@ PPTREE chopb::postfix_expression ( int error_free)
     PPTREE expTree = (PPTREE) 0,expList = (PPTREE) 0;
 #line 331 "chopb.met"
 #line 333 "chopb.met"
-    if (! (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(primary_expression), 117, chopb))){
+    if (! (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(primary_expression), 118, chopb))){
 #line 333 "chopb.met"
 #line 334 "chopb.met"
 #line 335 "chopb.met"
-        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 138, chopb))== (PPTREE) -1 ) {
+        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 139, chopb))== (PPTREE) -1 ) {
 #line 335 "chopb.met"
             MulFreeTree(2,expList,expTree);
             PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1150,7 +1150,7 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 362 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 362 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 117, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 118, chopb))== (PPTREE) -1 ) {
 #line 362 "chopb.met"
                         MulFreeTree(4,_ptRes0,_ptTree0,expList,expTree);
                         PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1181,7 +1181,7 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 364 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 364 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 117, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 118, chopb))== (PPTREE) -1 ) {
 #line 364 "chopb.met"
                         MulFreeTree(4,_ptRes0,_ptTree0,expList,expTree);
                         PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1240,761 +1240,760 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 367 "chopb.met"
                 break;
 #line 367 "chopb.met"
-            default :
-#line 367 "chopb.met"
-                MulFreeTree(2,expList,expTree);
-                CASE_EXIT(postfix_expression_exit,"either ( or [ or POINT or -> or ++ or --")
-#line 367 "chopb.met"
+#line 368 "chopb.met"
+            case POINPOINPOIN : 
+#line 368 "chopb.met"
+                tokenAhead = 0 ;
+#line 368 "chopb.met"
+                CommTerm();
+#line 368 "chopb.met"
+#line 368 "chopb.met"
+                {
+#line 368 "chopb.met"
+                    PPTREE _ptRes0=0;
+#line 368 "chopb.met"
+                    _ptRes0= MakeTree(VARIADIC_EXPRESSION, 1);
+#line 368 "chopb.met"
+                    ReplaceTree(_ptRes0, 1, expTree );
+#line 368 "chopb.met"
+                    expTree=_ptRes0;
+#line 368 "chopb.met"
+                }
+#line 368 "chopb.met"
                 break;
-#line 367 "chopb.met"
+#line 368 "chopb.met"
+            default :
+#line 368 "chopb.met"
+                MulFreeTree(2,expList,expTree);
+                CASE_EXIT(postfix_expression_exit,"either ( or [ or POINT or -> or ++ or -- or ...")
+#line 368 "chopb.met"
+                break;
+#line 368 "chopb.met"
         }
-#line 367 "chopb.met"
+#line 368 "chopb.met"
     } 
-#line 367 "chopb.met"
-#line 369 "chopb.met"
+#line 368 "chopb.met"
+#line 370 "chopb.met"
     {
-#line 369 "chopb.met"
+#line 370 "chopb.met"
         _retValue = expTree ;
-#line 369 "chopb.met"
+#line 370 "chopb.met"
         goto postfix_expression_ret;
-#line 369 "chopb.met"
+#line 370 "chopb.met"
         
-#line 369 "chopb.met"
+#line 370 "chopb.met"
     }
-#line 369 "chopb.met"
-#line 369 "chopb.met"
-#line 369 "chopb.met"
-
 #line 370 "chopb.met"
+#line 370 "chopb.met"
+#line 370 "chopb.met"
+
+#line 371 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 inMakeTree =  _oldinMakeTree;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 return((PPTREE) 0);
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 postfix_expression_exit :
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     _Debug = TRACE_RULE("postfix_expression",TRACE_EXIT,(PPTREE)0);
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     _funcLevel--;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     return((PPTREE) -1) ;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 postfix_expression_ret :
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     _Debug = TRACE_RULE("postfix_expression",TRACE_RETURN,_retValue);
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
     return _retValue ;
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 }
-#line 370 "chopb.met"
+#line 371 "chopb.met"
 
-#line 370 "chopb.met"
-#line 407 "chopb.met"
+#line 371 "chopb.met"
+#line 408 "chopb.met"
 PPTREE chopb::primary_expression ( int error_free)
-#line 407 "chopb.met"
+#line 408 "chopb.met"
 {
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     int  _oldparse = parse;
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     int  _oldinMakeTree = inMakeTree;
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     int _value,_nbPre = 0 ;
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     int _Debug = TRACE_RULE("primary_expression",TRACE_ENTER,(PPTREE)0);
-#line 407 "chopb.met"
+#line 408 "chopb.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 407 "chopb.met"
-#line 407 "chopb.met"
+#line 408 "chopb.met"
+#line 408 "chopb.met"
     PPTREE _addlist1 = (PPTREE) 0;
-#line 407 "chopb.met"
-#line 407 "chopb.met"
+#line 408 "chopb.met"
+#line 408 "chopb.met"
     PPTREE result = (PPTREE) 0,expTree = (PPTREE) 0,list = (PPTREE) 0,statTree = (PPTREE) 0;
-#line 407 "chopb.met"
-#line 409 "chopb.met"
+#line 408 "chopb.met"
+#line 410 "chopb.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 409 "chopb.met"
+#line 410 "chopb.met"
     switch( lexEl.Value) {
-#line 409 "chopb.met"
 #line 410 "chopb.met"
+#line 411 "chopb.met"
         case INFESUPE : 
-#line 410 "chopb.met"
+#line 411 "chopb.met"
             tokenAhead = 0 ;
-#line 410 "chopb.met"
+#line 411 "chopb.met"
             CommTerm();
-#line 410 "chopb.met"
-#line 410 "chopb.met"
+#line 411 "chopb.met"
+#line 411 "chopb.met"
             {
-#line 410 "chopb.met"
+#line 411 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 410 "chopb.met"
+#line 411 "chopb.met"
                 {
-#line 410 "chopb.met"
+#line 411 "chopb.met"
                     PPTREE _ptRes1=0;
-#line 410 "chopb.met"
+#line 411 "chopb.met"
                     _ptRes1= MakeTree(DEF_IDENT, 0);
-#line 410 "chopb.met"
+#line 411 "chopb.met"
                     _ptTree0=_ptRes1;
-#line 410 "chopb.met"
-                }
-#line 410 "chopb.met"
-                _retValue =_ptTree0;
-#line 410 "chopb.met"
-                goto primary_expression_ret;
-#line 410 "chopb.met"
-            }
-#line 410 "chopb.met"
-            break;
-#line 410 "chopb.met"
 #line 411 "chopb.met"
+                }
+#line 411 "chopb.met"
+                _retValue =_ptTree0;
+#line 411 "chopb.met"
+                goto primary_expression_ret;
+#line 411 "chopb.met"
+            }
+#line 411 "chopb.met"
+            break;
+#line 411 "chopb.met"
+#line 412 "chopb.met"
         case INFE : 
-#line 411 "chopb.met"
-#line 411 "chopb.met"
+#line 412 "chopb.met"
+#line 412 "chopb.met"
             {
-#line 411 "chopb.met"
+#line 412 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 411 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 172, chopb))== (PPTREE) -1 ) {
-#line 411 "chopb.met"
+#line 412 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 173, chopb))== (PPTREE) -1 ) {
+#line 412 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 411 "chopb.met"
-                }
-#line 411 "chopb.met"
-                _retValue =_ptTree0;
-#line 411 "chopb.met"
-                goto primary_expression_ret;
-#line 411 "chopb.met"
-            }
-#line 411 "chopb.met"
-            break;
-#line 411 "chopb.met"
 #line 412 "chopb.met"
+                }
+#line 412 "chopb.met"
+                _retValue =_ptTree0;
+#line 412 "chopb.met"
+                goto primary_expression_ret;
+#line 412 "chopb.met"
+            }
+#line 412 "chopb.met"
+            break;
+#line 412 "chopb.met"
+#line 413 "chopb.met"
         case POINPOINPOIN : 
-#line 412 "chopb.met"
+#line 413 "chopb.met"
             tokenAhead = 0 ;
-#line 412 "chopb.met"
+#line 413 "chopb.met"
             CommTerm();
-#line 412 "chopb.met"
-#line 412 "chopb.met"
+#line 413 "chopb.met"
+#line 413 "chopb.met"
             {
-#line 412 "chopb.met"
+#line 413 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 412 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 173, chopb))== (PPTREE) -1 ) {
-#line 412 "chopb.met"
+#line 413 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 174, chopb))== (PPTREE) -1 ) {
+#line 413 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 412 "chopb.met"
+#line 413 "chopb.met"
                 }
-#line 412 "chopb.met"
+#line 413 "chopb.met"
                 _retValue =_ptTree0;
-#line 412 "chopb.met"
+#line 413 "chopb.met"
                 goto primary_expression_ret;
-#line 412 "chopb.met"
+#line 413 "chopb.met"
             }
-#line 412 "chopb.met"
+#line 413 "chopb.met"
             break;
-#line 412 "chopb.met"
-#line 413 "chopb.met"
-        case VALUE : 
-#line 413 "chopb.met"
-            tokenAhead = 0 ;
-#line 413 "chopb.met"
-            CommTerm();
 #line 413 "chopb.met"
 #line 414 "chopb.met"
+        case VALUE : 
+#line 414 "chopb.met"
+            tokenAhead = 0 ;
+#line 414 "chopb.met"
+            CommTerm();
+#line 414 "chopb.met"
 #line 415 "chopb.met"
+#line 416 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 415 "chopb.met"
+#line 416 "chopb.met"
             if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 415 "chopb.met"
+#line 416 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,"(")
-#line 415 "chopb.met"
+#line 416 "chopb.met"
             } else {
-#line 415 "chopb.met"
+#line 416 "chopb.met"
                 tokenAhead = 0 ;
-#line 415 "chopb.met"
+#line 416 "chopb.met"
             }
-#line 415 "chopb.met"
 #line 416 "chopb.met"
+#line 417 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 416 "chopb.met"
+#line 417 "chopb.met"
             switch( lexEl.Value) {
-#line 416 "chopb.met"
 #line 417 "chopb.met"
+#line 418 "chopb.met"
                 case META : 
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                 case IDENT : 
-#line 417 "chopb.met"
-#line 417 "chopb.met"
+#line 418 "chopb.met"
+#line 418 "chopb.met"
                     {
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         PPTREE _ptTree0=0,_ptRes0=0;
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         _ptRes0= MakeTree(VALUE, 1);
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         {
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             PPTREE _ptTree1=0,_ptRes1=0;
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             _ptRes1= MakeTree(IDENT, 1);
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             if ( ! TERM_OR_META(IDENT,"IDENT") || !(BUILD_TERM_META(_ptTree1))) {
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                                 MulFreeTree(9,_ptRes1,_ptTree1,_ptRes0,_ptTree0,_addlist1,expTree,list,result,statTree);
                                 TOKEN_EXIT(primary_expression_exit,"IDENT")
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             } else {
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                                 tokenAhead = 0 ;
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             }
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                             _ptTree0=_ptRes1;
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         }
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                         statTree=_ptRes0;
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                     }
-#line 417 "chopb.met"
+#line 418 "chopb.met"
                     break;
-#line 417 "chopb.met"
-#line 419 "chopb.met"
+#line 418 "chopb.met"
+#line 420 "chopb.met"
                 case INFESUPE : 
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     tokenAhead = 0 ;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     CommTerm();
-#line 419 "chopb.met"
-#line 419 "chopb.met"
+#line 420 "chopb.met"
+#line 420 "chopb.met"
                     {
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         PPTREE _ptTree0=0,_ptRes0=0;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         _ptRes0= MakeTree(VALUE, 1);
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         {
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                             PPTREE _ptRes1=0;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                             _ptRes1= MakeTree(DEF_IDENT, 0);
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                             _ptTree0=_ptRes1;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         }
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                         statTree=_ptRes0;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     }
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     break;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                 default :
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                     CASE_EXIT(primary_expression_exit,"either IDENT or <>")
-#line 419 "chopb.met"
+#line 420 "chopb.met"
                     break;
-#line 419 "chopb.met"
+#line 420 "chopb.met"
             }
-#line 419 "chopb.met"
-#line 421 "chopb.met"
+#line 420 "chopb.met"
+#line 422 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 421 "chopb.met"
+#line 422 "chopb.met"
             if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 421 "chopb.met"
+#line 422 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,")")
-#line 421 "chopb.met"
+#line 422 "chopb.met"
             } else {
-#line 421 "chopb.met"
+#line 422 "chopb.met"
                 tokenAhead = 0 ;
-#line 421 "chopb.met"
-            }
-#line 421 "chopb.met"
 #line 422 "chopb.met"
+            }
+#line 422 "chopb.met"
+#line 423 "chopb.met"
             {
-#line 422 "chopb.met"
+#line 423 "chopb.met"
                 _retValue = statTree ;
-#line 422 "chopb.met"
+#line 423 "chopb.met"
                 goto primary_expression_ret;
-#line 422 "chopb.met"
+#line 423 "chopb.met"
                 
-#line 422 "chopb.met"
+#line 423 "chopb.met"
             }
-#line 422 "chopb.met"
-#line 422 "chopb.met"
+#line 423 "chopb.met"
+#line 423 "chopb.met"
             break;
-#line 422 "chopb.met"
-#line 424 "chopb.met"
+#line 423 "chopb.met"
+#line 425 "chopb.met"
         case NEXTL : 
-#line 424 "chopb.met"
+#line 425 "chopb.met"
             tokenAhead = 0 ;
-#line 424 "chopb.met"
+#line 425 "chopb.met"
             CommTerm();
-#line 424 "chopb.met"
 #line 425 "chopb.met"
 #line 426 "chopb.met"
+#line 427 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 426 "chopb.met"
+#line 427 "chopb.met"
             if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 426 "chopb.met"
+#line 427 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,"(")
-#line 426 "chopb.met"
+#line 427 "chopb.met"
             } else {
-#line 426 "chopb.met"
+#line 427 "chopb.met"
                 tokenAhead = 0 ;
-#line 426 "chopb.met"
+#line 427 "chopb.met"
             }
-#line 426 "chopb.met"
 #line 427 "chopb.met"
+#line 428 "chopb.met"
             if ((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( IDENT,"IDENT")){
-#line 427 "chopb.met"
 #line 428 "chopb.met"
+#line 429 "chopb.met"
                 {
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     PPTREE _ptTree0=0,_ptRes0=0;
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     _ptRes0= MakeTree(NEXT, 1);
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     {
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         PPTREE _ptTree1=0,_ptRes1=0;
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         _ptRes1= MakeTree(IDENT, 1);
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         if ( ! TERM_OR_META(IDENT,"IDENT") || !(BUILD_TERM_META(_ptTree1))) {
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                             MulFreeTree(9,_ptRes1,_ptTree1,_ptRes0,_ptTree0,_addlist1,expTree,list,result,statTree);
                             TOKEN_EXIT(primary_expression_exit,"IDENT")
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         } else {
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                             tokenAhead = 0 ;
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         }
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                         _ptTree0=_ptRes1;
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     }
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                     statTree=_ptRes0;
-#line 428 "chopb.met"
+#line 429 "chopb.met"
                 }
-#line 428 "chopb.met"
+#line 429 "chopb.met"
             } else {
-#line 428 "chopb.met"
-#line 430 "chopb.met"
+#line 429 "chopb.met"
 #line 431 "chopb.met"
+#line 432 "chopb.met"
                 (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 431 "chopb.met"
+#line 432 "chopb.met"
                 if (  !SEE_TOKEN( INFESUPE,"<>") || !(CommTerm(),1)) {
-#line 431 "chopb.met"
+#line 432 "chopb.met"
                     MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                     TOKEN_EXIT(primary_expression_exit,"<>")
-#line 431 "chopb.met"
+#line 432 "chopb.met"
                 } else {
-#line 431 "chopb.met"
+#line 432 "chopb.met"
                     tokenAhead = 0 ;
-#line 431 "chopb.met"
-                }
-#line 431 "chopb.met"
 #line 432 "chopb.met"
+                }
+#line 432 "chopb.met"
+#line 433 "chopb.met"
                 {
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     PPTREE _ptTree0=0,_ptRes0=0;
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     _ptRes0= MakeTree(NEXT, 1);
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     {
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                         PPTREE _ptRes1=0;
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                         _ptRes1= MakeTree(DEF_IDENT, 0);
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                         _ptTree0=_ptRes1;
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     }
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                     statTree=_ptRes0;
-#line 432 "chopb.met"
+#line 433 "chopb.met"
                 }
-#line 432 "chopb.met"
-#line 432 "chopb.met"
+#line 433 "chopb.met"
+#line 433 "chopb.met"
             }
-#line 432 "chopb.met"
-#line 434 "chopb.met"
+#line 433 "chopb.met"
+#line 435 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 434 "chopb.met"
+#line 435 "chopb.met"
             if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 434 "chopb.met"
+#line 435 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,")")
-#line 434 "chopb.met"
+#line 435 "chopb.met"
             } else {
-#line 434 "chopb.met"
+#line 435 "chopb.met"
                 tokenAhead = 0 ;
-#line 434 "chopb.met"
-            }
-#line 434 "chopb.met"
 #line 435 "chopb.met"
+            }
+#line 435 "chopb.met"
+#line 436 "chopb.met"
             {
-#line 435 "chopb.met"
+#line 436 "chopb.met"
                 _retValue = statTree ;
-#line 435 "chopb.met"
+#line 436 "chopb.met"
                 goto primary_expression_ret;
-#line 435 "chopb.met"
+#line 436 "chopb.met"
                 
-#line 435 "chopb.met"
+#line 436 "chopb.met"
             }
-#line 435 "chopb.met"
-#line 435 "chopb.met"
+#line 436 "chopb.met"
+#line 436 "chopb.met"
             break;
-#line 435 "chopb.met"
-#line 437 "chopb.met"
+#line 436 "chopb.met"
+#line 438 "chopb.met"
         case PARSE : 
-#line 437 "chopb.met"
+#line 438 "chopb.met"
             tokenAhead = 0 ;
-#line 437 "chopb.met"
+#line 438 "chopb.met"
             CommTerm();
-#line 437 "chopb.met"
 #line 438 "chopb.met"
 #line 439 "chopb.met"
+#line 440 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 439 "chopb.met"
+#line 440 "chopb.met"
             if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 439 "chopb.met"
+#line 440 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,"(")
-#line 439 "chopb.met"
+#line 440 "chopb.met"
             } else {
-#line 439 "chopb.met"
+#line 440 "chopb.met"
                 tokenAhead = 0 ;
-#line 439 "chopb.met"
+#line 440 "chopb.met"
             }
-#line 439 "chopb.met"
 #line 440 "chopb.met"
+#line 441 "chopb.met"
              nb_par_parse = 1 ; 
-#line 440 "chopb.met"
 #line 441 "chopb.met"
+#line 442 "chopb.met"
             {
-#line 441 "chopb.met"
+#line 442 "chopb.met"
                 parse = 1 ;
-#line 441 "chopb.met"
 #line 442 "chopb.met"
-#line 442 "chopb.met"
+#line 443 "chopb.met"
+#line 443 "chopb.met"
                 _addlist1 = list ;
-#line 442 "chopb.met"
-#line 442 "chopb.met"
+#line 443 "chopb.met"
+#line 443 "chopb.met"
                 while ((tokenAhead == 16|| (LexParse(),TRACE_LEX(1)))&&SEE_TOKEN( PARSE_ELEM,"PARSE_ELEM")) { 
-#line 442 "chopb.met"
 #line 443 "chopb.met"
-#line 443 "chopb.met"
+#line 444 "chopb.met"
+#line 444 "chopb.met"
                     {
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                         PPTREE _ptTree0=0;
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                         {
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             PPTREE _ptTree1=0,_ptRes1=0;
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             _ptRes1= MakeTree(PARSE_ELEM, 1);
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             (tokenAhead == 16|| (LexParse(),TRACE_LEX(1)));
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             if ( ! TERM_OR_META(PARSE_ELEM,"PARSE_ELEM") || !(BUILD_TERM_META(_ptTree1))) {
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                                 MulFreeTree(8,_ptRes1,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                                 TOKEN_EXIT(primary_expression_exit,"PARSE_ELEM")
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             } else {
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                                 tokenAhead = 0 ;
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             }
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                             _ptTree0=_ptRes1;
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                         }
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                         _addlist1 =AddList(_addlist1 , _ptTree0);
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                     }
-#line 443 "chopb.met"
-#line 443 "chopb.met"
+#line 444 "chopb.met"
+#line 444 "chopb.met"
                     if (list){
-#line 443 "chopb.met"
-#line 443 "chopb.met"
+#line 444 "chopb.met"
+#line 444 "chopb.met"
                         _addlist1 = SonTree (_addlist1 ,2 );
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                     } else {
-#line 443 "chopb.met"
-#line 443 "chopb.met"
+#line 444 "chopb.met"
+#line 444 "chopb.met"
                         list = _addlist1 ;
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                     }
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                 } 
-#line 443 "chopb.met"
+#line 444 "chopb.met"
                 parse =  _oldparse;
-#line 443 "chopb.met"
-            }
-#line 443 "chopb.met"
 #line 444 "chopb.met"
+            }
+#line 444 "chopb.met"
+#line 445 "chopb.met"
             {
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                 {
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                     PPTREE _ptRes1=0;
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                     _ptRes1= MakeTree(PARSE, 1);
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                     ReplaceTree(_ptRes1, 1, list );
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                     _ptTree0=_ptRes1;
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                 }
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                 _retValue =_ptTree0;
-#line 444 "chopb.met"
+#line 445 "chopb.met"
                 goto primary_expression_ret;
-#line 444 "chopb.met"
+#line 445 "chopb.met"
             }
-#line 444 "chopb.met"
-#line 444 "chopb.met"
+#line 445 "chopb.met"
+#line 445 "chopb.met"
             break;
-#line 444 "chopb.met"
-#line 446 "chopb.met"
+#line 445 "chopb.met"
+#line 447 "chopb.met"
         case IN : 
-#line 446 "chopb.met"
+#line 447 "chopb.met"
             tokenAhead = 0 ;
-#line 446 "chopb.met"
+#line 447 "chopb.met"
             CommTerm();
-#line 446 "chopb.met"
 #line 447 "chopb.met"
 #line 448 "chopb.met"
+#line 449 "chopb.met"
             {
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 _ptRes0= MakeTree(IN_LANG, 2);
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 67, chopb))== (PPTREE) -1 ) {
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                     MulFreeTree(7,_ptRes0,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 }
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 448 "chopb.met"
+#line 449 "chopb.met"
                 statTree=_ptRes0;
-#line 448 "chopb.met"
+#line 449 "chopb.met"
             }
-#line 448 "chopb.met"
 #line 449 "chopb.met"
+#line 450 "chopb.met"
             {
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                 {
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                     PPTREE _ptTree1=0;
-#line 449 "chopb.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 145, chopb))== (PPTREE) -1 ) {
-#line 449 "chopb.met"
+#line 450 "chopb.met"
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 146, chopb))== (PPTREE) -1 ) {
+#line 450 "chopb.met"
                         MulFreeTree(7,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                     }
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                     _ptTree0=ReplaceTree(statTree , 2 , _ptTree1);
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                 }
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                 _retValue =_ptTree0;
-#line 449 "chopb.met"
+#line 450 "chopb.met"
                 goto primary_expression_ret;
-#line 449 "chopb.met"
+#line 450 "chopb.met"
             }
-#line 449 "chopb.met"
-#line 449 "chopb.met"
+#line 450 "chopb.met"
+#line 450 "chopb.met"
             break;
-#line 449 "chopb.met"
-#line 453 "chopb.met"
+#line 450 "chopb.met"
+#line 454 "chopb.met"
         case POUV : 
-#line 453 "chopb.met"
+#line 454 "chopb.met"
             tokenAhead = 0 ;
-#line 453 "chopb.met"
+#line 454 "chopb.met"
             CommTerm();
-#line 453 "chopb.met"
-#line 451 "chopb.met"
+#line 454 "chopb.met"
+#line 452 "chopb.met"
             {
-#line 451 "chopb.met"
+#line 452 "chopb.met"
                 inMakeTree = 0 ;
-#line 451 "chopb.met"
 #line 452 "chopb.met"
 #line 453 "chopb.met"
+#line 454 "chopb.met"
                 if (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(expression), 67, chopb)){
-#line 453 "chopb.met"
 #line 454 "chopb.met"
 #line 455 "chopb.met"
+#line 456 "chopb.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 455 "chopb.met"
+#line 456 "chopb.met"
                     if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 455 "chopb.met"
+#line 456 "chopb.met"
                         MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                         TOKEN_EXIT(primary_expression_exit,")")
-#line 455 "chopb.met"
+#line 456 "chopb.met"
                     } else {
-#line 455 "chopb.met"
+#line 456 "chopb.met"
                         tokenAhead = 0 ;
-#line 455 "chopb.met"
+#line 456 "chopb.met"
                     }
-#line 455 "chopb.met"
 #line 456 "chopb.met"
+#line 457 "chopb.met"
                     {
-#line 456 "chopb.met"
+#line 457 "chopb.met"
                         PPTREE _ptRes0=0;
-#line 456 "chopb.met"
+#line 457 "chopb.met"
                         _ptRes0= MakeTree(EXP, 1);
-#line 456 "chopb.met"
+#line 457 "chopb.met"
                         ReplaceTree(_ptRes0, 1, expTree );
-#line 456 "chopb.met"
+#line 457 "chopb.met"
                         expTree=_ptRes0;
-#line 456 "chopb.met"
+#line 457 "chopb.met"
                     }
-#line 456 "chopb.met"
-#line 456 "chopb.met"
-#line 456 "chopb.met"
+#line 457 "chopb.met"
+#line 457 "chopb.met"
+#line 457 "chopb.met"
                 } else {
-#line 456 "chopb.met"
-#line 459 "chopb.met"
+#line 457 "chopb.met"
 #line 460 "chopb.met"
+#line 461 "chopb.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 460 "chopb.met"
+#line 461 "chopb.met"
                     if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 460 "chopb.met"
+#line 461 "chopb.met"
                         MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                         TOKEN_EXIT(primary_expression_exit,")")
-#line 460 "chopb.met"
+#line 461 "chopb.met"
                     } else {
-#line 460 "chopb.met"
+#line 461 "chopb.met"
                         tokenAhead = 0 ;
-#line 460 "chopb.met"
-                    }
-#line 460 "chopb.met"
 #line 461 "chopb.met"
+                    }
+#line 461 "chopb.met"
+#line 462 "chopb.met"
                     {
-#line 461 "chopb.met"
+#line 462 "chopb.met"
                         PPTREE _ptRes0=0;
-#line 461 "chopb.met"
+#line 462 "chopb.met"
                         _ptRes0= MakeTree(NIL, 0);
-#line 461 "chopb.met"
+#line 462 "chopb.met"
                         expTree=_ptRes0;
-#line 461 "chopb.met"
+#line 462 "chopb.met"
                     }
-#line 461 "chopb.met"
-#line 461 "chopb.met"
+#line 462 "chopb.met"
+#line 462 "chopb.met"
                 }
-#line 461 "chopb.met"
-#line 463 "chopb.met"
+#line 462 "chopb.met"
+#line 464 "chopb.met"
                 {
-#line 463 "chopb.met"
+#line 464 "chopb.met"
                     _retValue = expTree ;
-#line 463 "chopb.met"
+#line 464 "chopb.met"
                     goto primary_expression_ret;
-#line 463 "chopb.met"
+#line 464 "chopb.met"
                     
-#line 463 "chopb.met"
+#line 464 "chopb.met"
                 }
-#line 463 "chopb.met"
-#line 463 "chopb.met"
+#line 464 "chopb.met"
+#line 464 "chopb.met"
                 inMakeTree =  _oldinMakeTree;
-#line 463 "chopb.met"
+#line 464 "chopb.met"
             }
-#line 463 "chopb.met"
+#line 464 "chopb.met"
             break;
-#line 463 "chopb.met"
-#line 465 "chopb.met"
+#line 464 "chopb.met"
+#line 466 "chopb.met"
         case OPERATOR : 
-#line 465 "chopb.met"
-#line 465 "chopb.met"
-            {
-#line 465 "chopb.met"
-                PPTREE _ptTree0=0;
-#line 465 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 109, chopb))== (PPTREE) -1 ) {
-#line 465 "chopb.met"
-                    MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
-                    PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 465 "chopb.met"
-                }
-#line 465 "chopb.met"
-                _retValue =_ptTree0;
-#line 465 "chopb.met"
-                goto primary_expression_ret;
-#line 465 "chopb.met"
-            }
-#line 465 "chopb.met"
-            break;
-#line 465 "chopb.met"
-#line 466 "chopb.met"
-        case TILD : 
 #line 466 "chopb.met"
 #line 466 "chopb.met"
             {
 #line 466 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 466 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 122, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 110, chopb))== (PPTREE) -1 ) {
 #line 466 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2010,421 +2009,444 @@ PPTREE chopb::primary_expression ( int error_free)
             break;
 #line 466 "chopb.met"
 #line 467 "chopb.met"
-        case META : 
+        case TILD : 
+#line 467 "chopb.met"
+#line 467 "chopb.met"
+            {
+#line 467 "chopb.met"
+                PPTREE _ptTree0=0;
+#line 467 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 123, chopb))== (PPTREE) -1 ) {
+#line 467 "chopb.met"
+                    MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
+                    PROG_EXIT(primary_expression_exit,"primary_expression")
+#line 467 "chopb.met"
+                }
+#line 467 "chopb.met"
+                _retValue =_ptTree0;
+#line 467 "chopb.met"
+                goto primary_expression_ret;
+#line 467 "chopb.met"
+            }
+#line 467 "chopb.met"
+            break;
 #line 467 "chopb.met"
 #line 468 "chopb.met"
+        case META : 
+#line 468 "chopb.met"
 #line 469 "chopb.met"
+#line 470 "chopb.met"
             {
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                 {
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     _ptRes1= MakeTree(META, 1);
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     (tokenAhead == 7|| (LexMeta(),TRACE_LEX(1)));
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     if ( ! TERM_OR_META(META,"META") || !(BUILD_TERM_META(_ptTree1))) {
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                         MulFreeTree(8,_ptRes1,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                         TOKEN_EXIT(primary_expression_exit,"META")
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     } else {
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                         tokenAhead = 0 ;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     }
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                     _ptTree0=_ptRes1;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                 }
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                 _retValue =_ptTree0;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
                 goto primary_expression_ret;
-#line 469 "chopb.met"
+#line 470 "chopb.met"
             }
-#line 469 "chopb.met"
-#line 469 "chopb.met"
+#line 470 "chopb.met"
+#line 470 "chopb.met"
             break;
-#line 469 "chopb.met"
-#line 471 "chopb.met"
-        case IDENT : 
-#line 471 "chopb.met"
+#line 470 "chopb.met"
 #line 472 "chopb.met"
-            if ((tokenAhead == 12|| (PushFunction(),TRACE_LEX(1)))&&TERM_OR_META(PUSH_FUNCTION,"PUSH_FUNCTION") && !(tokenAhead = 0) && ( BUILD_TERM_META(result))) {
+        case IDENT : 
 #line 472 "chopb.met"
 #line 473 "chopb.met"
+            if ((tokenAhead == 12|| (PushFunction(),TRACE_LEX(1)))&&TERM_OR_META(PUSH_FUNCTION,"PUSH_FUNCTION") && !(tokenAhead = 0) && ( BUILD_TERM_META(result))) {
+#line 473 "chopb.met"
 #line 474 "chopb.met"
+#line 475 "chopb.met"
                 (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 474 "chopb.met"
+#line 475 "chopb.met"
                 if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 474 "chopb.met"
+#line 475 "chopb.met"
                     MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                     TOKEN_EXIT(primary_expression_exit,"(")
-#line 474 "chopb.met"
+#line 475 "chopb.met"
                 } else {
-#line 474 "chopb.met"
+#line 475 "chopb.met"
                     tokenAhead = 0 ;
-#line 474 "chopb.met"
+#line 475 "chopb.met"
                 }
-#line 474 "chopb.met"
 #line 475 "chopb.met"
+#line 476 "chopb.met"
                 {
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                     PPTREE _ptTree0=0;
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                     {
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         PPTREE _ptTree1=0,_ptRes1=0;
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         _ptRes1= MakeTree(IDENT, 1);
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         (tokenAhead == 11|| (PushArgument(),TRACE_LEX(1)));
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         if ( ! TERM_OR_META(PUSH_ARGUMENT,"PUSH_ARGUMENT") || !(BUILD_TERM_META(_ptTree1))) {
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                             MulFreeTree(8,_ptRes1,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                             TOKEN_EXIT(primary_expression_exit,"PUSH_ARGUMENT")
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         } else {
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                             tokenAhead = 0 ;
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         }
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                         _ptTree0=_ptRes1;
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                     }
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                     list =AddList(list , _ptTree0);
-#line 475 "chopb.met"
+#line 476 "chopb.met"
                 }
-#line 475 "chopb.met"
 #line 476 "chopb.met"
+#line 477 "chopb.met"
                 (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 476 "chopb.met"
+#line 477 "chopb.met"
                 if (  !SEE_TOKEN( VIRG,",") || !(CommTerm(),1)) {
-#line 476 "chopb.met"
+#line 477 "chopb.met"
                     MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                     TOKEN_EXIT(primary_expression_exit,",")
-#line 476 "chopb.met"
+#line 477 "chopb.met"
                 } else {
-#line 476 "chopb.met"
+#line 477 "chopb.met"
                     tokenAhead = 0 ;
-#line 476 "chopb.met"
+#line 477 "chopb.met"
                 }
-#line 476 "chopb.met"
 #line 477 "chopb.met"
+#line 478 "chopb.met"
                 {
-#line 477 "chopb.met"
+#line 478 "chopb.met"
                     PPTREE _ptTree0=0;
-#line 477 "chopb.met"
+#line 478 "chopb.met"
                     if ( (_ptTree0=NQUICK_CALL(_Tak(expression)(error_free), 67, chopb))== (PPTREE) -1 ) {
-#line 477 "chopb.met"
+#line 478 "chopb.met"
                         MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 477 "chopb.met"
+#line 478 "chopb.met"
                     }
-#line 477 "chopb.met"
+#line 478 "chopb.met"
                     list =AddList(list , _ptTree0);
-#line 477 "chopb.met"
-                }
-#line 477 "chopb.met"
 #line 478 "chopb.met"
+                }
+#line 478 "chopb.met"
+#line 479 "chopb.met"
                 {
-#line 478 "chopb.met"
+#line 479 "chopb.met"
                     PPTREE _ptRes0=0;
-#line 478 "chopb.met"
+#line 479 "chopb.met"
                     _ptRes0= MakeTree(EXP_SEQ, 1);
-#line 478 "chopb.met"
+#line 479 "chopb.met"
                     ReplaceTree(_ptRes0, 1, list );
-#line 478 "chopb.met"
+#line 479 "chopb.met"
                     expTree=_ptRes0;
-#line 478 "chopb.met"
+#line 479 "chopb.met"
                 }
-#line 478 "chopb.met"
 #line 479 "chopb.met"
+#line 480 "chopb.met"
                 (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 479 "chopb.met"
+#line 480 "chopb.met"
                 if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 479 "chopb.met"
+#line 480 "chopb.met"
                     MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                     TOKEN_EXIT(primary_expression_exit,")")
-#line 479 "chopb.met"
+#line 480 "chopb.met"
                 } else {
-#line 479 "chopb.met"
+#line 480 "chopb.met"
                     tokenAhead = 0 ;
-#line 479 "chopb.met"
+#line 480 "chopb.met"
                 }
-#line 479 "chopb.met"
 #line 480 "chopb.met"
+#line 481 "chopb.met"
                 {
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                     PPTREE _ptTree0=0;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                     {
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         PPTREE _ptTree1=0,_ptRes1=0;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         _ptRes1= MakeTree(EXP_LIST, 2);
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         {
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                             PPTREE _ptRes2=0;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                             _ptRes2= MakeTree(IDENT, 1);
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                             ReplaceTree(_ptRes2, 1, result );
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                             _ptTree1=_ptRes2;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         }
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         ReplaceTree(_ptRes1, 2, expTree );
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                         _ptTree0=_ptRes1;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                     }
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                     _retValue =_ptTree0;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                     goto primary_expression_ret;
-#line 480 "chopb.met"
+#line 481 "chopb.met"
                 }
-#line 480 "chopb.met"
-#line 480 "chopb.met"
-#line 480 "chopb.met"
+#line 481 "chopb.met"
+#line 481 "chopb.met"
+#line 481 "chopb.met"
             } else {
-#line 480 "chopb.met"
-#line 483 "chopb.met"
+#line 481 "chopb.met"
+#line 484 "chopb.met"
                 {
-#line 483 "chopb.met"
+#line 484 "chopb.met"
                     PPTREE _ptTree0=0;
-#line 483 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 122, chopb))== (PPTREE) -1 ) {
-#line 483 "chopb.met"
+#line 484 "chopb.met"
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 123, chopb))== (PPTREE) -1 ) {
+#line 484 "chopb.met"
                         MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 483 "chopb.met"
+#line 484 "chopb.met"
                     }
-#line 483 "chopb.met"
+#line 484 "chopb.met"
                     _retValue =_ptTree0;
-#line 483 "chopb.met"
+#line 484 "chopb.met"
                     goto primary_expression_ret;
-#line 483 "chopb.met"
+#line 484 "chopb.met"
                 }
-#line 483 "chopb.met"
+#line 484 "chopb.met"
             }
-#line 483 "chopb.met"
+#line 484 "chopb.met"
             break;
-#line 483 "chopb.met"
 #line 484 "chopb.met"
+#line 485 "chopb.met"
         case STRING : 
-#line 484 "chopb.met"
-#line 484 "chopb.met"
+#line 485 "chopb.met"
+#line 485 "chopb.met"
             {
-#line 484 "chopb.met"
+#line 485 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 484 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 147, chopb))== (PPTREE) -1 ) {
-#line 484 "chopb.met"
+#line 485 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 148, chopb))== (PPTREE) -1 ) {
+#line 485 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 484 "chopb.met"
+#line 485 "chopb.met"
                 }
-#line 484 "chopb.met"
+#line 485 "chopb.met"
                 _retValue =_ptTree0;
-#line 484 "chopb.met"
+#line 485 "chopb.met"
                 goto primary_expression_ret;
-#line 484 "chopb.met"
+#line 485 "chopb.met"
             }
-#line 484 "chopb.met"
+#line 485 "chopb.met"
             break;
-#line 484 "chopb.met"
-#line 485 "chopb.met"
-        case VA_ARG : 
-#line 485 "chopb.met"
-            tokenAhead = 0 ;
-#line 485 "chopb.met"
-            CommTerm();
 #line 485 "chopb.met"
 #line 486 "chopb.met"
+        case VA_ARG : 
+#line 486 "chopb.met"
+            tokenAhead = 0 ;
+#line 486 "chopb.met"
+            CommTerm();
+#line 486 "chopb.met"
 #line 487 "chopb.met"
+#line 488 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 487 "chopb.met"
+#line 488 "chopb.met"
             if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
-#line 487 "chopb.met"
+#line 488 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,"(")
-#line 487 "chopb.met"
+#line 488 "chopb.met"
             } else {
-#line 487 "chopb.met"
+#line 488 "chopb.met"
                 tokenAhead = 0 ;
-#line 487 "chopb.met"
+#line 488 "chopb.met"
             }
-#line 487 "chopb.met"
 #line 488 "chopb.met"
+#line 489 "chopb.met"
             {
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 PPTREE _ptTree0=0,_ptRes0=0;
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 _ptRes0= MakeTree(VA_ARG, 2);
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 if ( (_ptTree0=NQUICK_CALL(_Tak(assignment_expression)(error_free), 21, chopb))== (PPTREE) -1 ) {
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                     MulFreeTree(7,_ptRes0,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 }
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 ReplaceTree(_ptRes0, 1, _ptTree0);
-#line 488 "chopb.met"
+#line 489 "chopb.met"
                 expTree=_ptRes0;
-#line 488 "chopb.met"
+#line 489 "chopb.met"
             }
-#line 488 "chopb.met"
 #line 489 "chopb.met"
+#line 490 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 489 "chopb.met"
+#line 490 "chopb.met"
             if (  !SEE_TOKEN( VIRG,",") || !(CommTerm(),1)) {
-#line 489 "chopb.met"
+#line 490 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,",")
-#line 489 "chopb.met"
+#line 490 "chopb.met"
             } else {
-#line 489 "chopb.met"
+#line 490 "chopb.met"
                 tokenAhead = 0 ;
-#line 489 "chopb.met"
+#line 490 "chopb.met"
             }
-#line 489 "chopb.met"
 #line 490 "chopb.met"
+#line 491 "chopb.met"
             {
-#line 490 "chopb.met"
+#line 491 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 490 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 153, chopb))== (PPTREE) -1 ) {
-#line 490 "chopb.met"
+#line 491 "chopb.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 154, chopb))== (PPTREE) -1 ) {
+#line 491 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 490 "chopb.met"
+#line 491 "chopb.met"
                 }
-#line 490 "chopb.met"
+#line 491 "chopb.met"
                 ReplaceTree(expTree , 2 , _ptTree0);
-#line 490 "chopb.met"
+#line 491 "chopb.met"
             }
-#line 490 "chopb.met"
 #line 491 "chopb.met"
+#line 492 "chopb.met"
             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 491 "chopb.met"
+#line 492 "chopb.met"
             if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
-#line 491 "chopb.met"
+#line 492 "chopb.met"
                 MulFreeTree(5,_addlist1,expTree,list,result,statTree);
                 TOKEN_EXIT(primary_expression_exit,")")
-#line 491 "chopb.met"
+#line 492 "chopb.met"
             } else {
-#line 491 "chopb.met"
+#line 492 "chopb.met"
                 tokenAhead = 0 ;
-#line 491 "chopb.met"
+#line 492 "chopb.met"
             }
-#line 491 "chopb.met"
 #line 492 "chopb.met"
+#line 493 "chopb.met"
             {
-#line 492 "chopb.met"
+#line 493 "chopb.met"
                 _retValue = expTree ;
-#line 492 "chopb.met"
+#line 493 "chopb.met"
                 goto primary_expression_ret;
-#line 492 "chopb.met"
+#line 493 "chopb.met"
                 
-#line 492 "chopb.met"
+#line 493 "chopb.met"
             }
-#line 492 "chopb.met"
-#line 492 "chopb.met"
+#line 493 "chopb.met"
+#line 493 "chopb.met"
             break;
-#line 492 "chopb.met"
-#line 494 "chopb.met"
+#line 493 "chopb.met"
+#line 495 "chopb.met"
         default : 
-#line 494 "chopb.met"
-#line 494 "chopb.met"
+#line 495 "chopb.met"
+#line 495 "chopb.met"
             {
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                 PPTREE _ptTree0=0;
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                 if ( (_ptTree0=NQUICK_CALL(_Tak(constan)(error_free), 36, chopb))== (PPTREE) -1 ) {
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                 }
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                 _retValue =_ptTree0;
-#line 494 "chopb.met"
+#line 495 "chopb.met"
                 goto primary_expression_ret;
-#line 494 "chopb.met"
+#line 495 "chopb.met"
             }
-#line 494 "chopb.met"
+#line 495 "chopb.met"
             break;
-#line 494 "chopb.met"
+#line 495 "chopb.met"
     }
-#line 494 "chopb.met"
-#line 494 "chopb.met"
 #line 495 "chopb.met"
+#line 495 "chopb.met"
+#line 496 "chopb.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 parse =  _oldparse;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 inMakeTree =  _oldinMakeTree;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 return((PPTREE) 0);
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 primary_expression_exit :
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     _Debug = TRACE_RULE("primary_expression",TRACE_EXIT,(PPTREE)0);
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     _funcLevel--;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     parse =  _oldparse;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     return((PPTREE) -1) ;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 primary_expression_ret :
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     _Debug = TRACE_RULE("primary_expression",TRACE_RETURN,_retValue);
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     parse =  _oldparse;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     inMakeTree =  _oldinMakeTree;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
     return _retValue ;
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 }
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 
-#line 495 "chopb.met"
+#line 496 "chopb.met"
 #line 260 "chopb.met"
 PPTREE chopb::prog ( int error_free)
 #line 260 "chopb.met"
@@ -2515,7 +2537,7 @@ PPTREE chopb::prog ( int error_free)
 #line 265 "chopb.met"
         PPTREE _ptTree0=0;
 #line 265 "chopb.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 118, chopb))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 119, chopb))== (PPTREE) -1 ) {
 #line 265 "chopb.met"
             MulFreeTree(2,_ptTree0,langTree);
             PROG_EXIT(prog_exit,"prog")
@@ -2597,7 +2619,7 @@ PPTREE chopb::relational_expression ( int error_free)
     PPTREE expTree = (PPTREE) 0;
 #line 299 "chopb.met"
 #line 301 "chopb.met"
-    if ( (expTree=NQUICK_CALL(_Tak(shift_expression)(error_free), 133, chopb))== (PPTREE) -1 ) {
+    if ( (expTree=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
 #line 301 "chopb.met"
         MulFreeTree(1,expTree);
         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2642,7 +2664,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 308 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 308 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 133, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
 #line 308 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2673,7 +2695,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 310 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 310 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 133, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
 #line 310 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2704,7 +2726,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 312 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 312 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 133, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
 #line 312 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2735,7 +2757,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 313 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 313 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 133, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
 #line 313 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")

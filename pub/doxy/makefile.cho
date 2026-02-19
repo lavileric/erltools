@@ -8,7 +8,6 @@ include $(META_DIR)/makefile.der
 
 chop.o : chop.cc $(META_DIR)/pub/library/token.h
 
-CPLUS_OBJ=$(META_DIR)/pub/cplusplu/chopper.o
 CHOPCORE=$(META_DIR)/pub/parser/verif.o
 
 CPLUS=$(META_DIR)/pub/cplusplu/cplus.a
@@ -21,9 +20,9 @@ ALL_OBJECTS = chop.o doxy.o doxy0.o
 
 chop :  $(ALL_OBJECTS) $(CPLUS_OBJ) $(CHOPCORE)
 	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
-		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(CPLUS_OBJ) $(SO_LIB);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(SO_LIB);\
 	else\
-		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(CPLUS_OBJ) $(CPLUS) $(METACHOP) $(CHOPB) $(LIBRARY);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o chop $(ALL_OBJECTS)  $(CHOPCORE) $(CPLUS) $(METACHOP) $(CHOPB) $(LIBRARY);\
 	fi
 	strip chop
 

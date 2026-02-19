@@ -47,9 +47,9 @@ SO_LIB = -L ../cplusplu -lcplus -L ../chopb -lchopb -L ../metachop -lmetachop -L
 
 doxy : $(OBJECTS) $(LIBRARY)
 	if [ -f $(META_DIR)/pub/library/libmeta.so ] ; then \
-		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(CPLUS_OBJ)  $(METAGEN) $(SO_LIB);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(METAGEN) $(SO_LIB);\
 	else\
-		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(CPLUS_OBJ) $(CPLUS)  $(METAGEN)  $(METACHOP) $(CHOPB) $(LIBRARY);\
+		$(C_PLUS) $(OPTIM_FLAGS) -o doxy $(OBJECTS) $(CPLUS)  $(METAGEN)  $(METACHOP) $(CHOPB) $(LIBRARY);\
 	fi
 
 chop : 

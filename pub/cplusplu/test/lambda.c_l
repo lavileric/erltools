@@ -1,0 +1,37 @@
+#include <utility>   // std::forward
+#include <functional> // std::invoke
+#include <iostream>
+#include <string>
+
+template <typename F, typename... Args>
+decltype(auto) call(F&& f, Args&&... args) {
+    // Perfectly forward the callable and its arguments
+      return std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
+ }
+
+int add(int a, int b) { return a + b; }
+
+struct Mult {
+    int operator()(int a, int b) const { return a * b; }
+};
+
+struct Obj {
+    std::string s;
+    void append(const std::string& x) { s += x; }
+};
+
+int main() {
+    // Free function
+    std::cout << call(add, 2, 5) << "\n"; // 7
+
+    // Lambda
+    std::cout << call([](int x, int y){ return x - y; }, 10, 3) << "\n"; // 7
+
+    // Functor
+    std::cout << call(Mult{}, 3, 4) << "\n"; // 12
+
+    // Member function pointer (obj + &Class::method + args)
+    Obj o{"hi"};
+    call(&Obj::append, o, " there");
+    std::cout << o.s << "\n"; // "hi there"
+}

@@ -177,8 +177,8 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         return ;
     
     if ( isVirtMod ) {
-                        xFather = currCol, yFather = currLine ;
-                        maxX = currCol ;
+                        xFather =  currCol, yFather =  currLine ;
+                        maxX =  currCol ;
                         
                       }
     (exp=paramTree);
@@ -336,10 +336,10 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     if ( funcAlone ) {
                         int oldIsVirtMod = isVirtMod ;
                         
-                        isVirtMod = 1 ;
+                        isVirtMod =  1 ;
                         LNewLine(3);
                         
-                        isVirtMod = oldIsVirtMod ;
+                        isVirtMod =  oldIsVirtMod ;
                         
                       }
     {
@@ -367,12 +367,12 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
     if ( isVirtMod && !(((_inter = (PPTREE)paramTree,1) && 
                             (NumberTree(_inter) == cplus::ATTRIBUTS) &&
                             1)) ) {
-                                    xFather = oldXFather, yFather = oldYFather ;
+                                    xFather =  oldXFather, yFather =  oldYFather ;
                                     if ( currCol > maxX ) 
-                                        maxX = currCol ;
+                                        maxX =  currCol ;
                                     PutCoord(paramTree, begCurrCol - xFather, currLine - begCurrLine > 0 ? 2 : 0, maxX - begCurrCol, theMark);
                                     if ( maxX < oldMaxX ) 
-                                        maxX = oldMaxX ;
+                                        maxX =  oldMaxX ;
                                     
                                   }
     
@@ -409,11 +409,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
     
     PTREE   deleteFunc ;
     
+    PTREE   capture ;
+    
     (oldPostComment=postComment);
     
     switch ( NumberTree(paramTree) ) {
         case LIST : 
-        _Case255 : 
+        _Case260 : 
             ;
             (list=paramTree);
             
@@ -431,10 +433,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::LANGUAGE : 
             (name=SonTree(paramTree, 1));
             
-        _Case256 : 
+        _Case261 : 
             ;
             {
-                inClass = 0 ;
+                inClass =  0 ;
                 (list=name);
                 
                 NoSep();
@@ -456,7 +458,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 5));
             
-        _Case257 : 
+        _Case262 : 
             ;
             {
                 if ( (!exp) ) {
@@ -517,7 +519,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 4));
             
-        _Case258 : 
+        _Case263 : 
             ;
             {
                 if ( (!exp) ) {
@@ -574,7 +576,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 5));
             
-        _Case259 : 
+        _Case264 : 
             ;
             {
                 PrintString("_typedef_protectedArray");
@@ -611,7 +613,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 4));
             
-        _Case260 : 
+        _Case265 : 
             ;
             {
                 PrintString("_typedef_protectedArray_s");
@@ -641,7 +643,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case261 : 
+        _Case266 : 
             ;
             if ( ((_inter = (PPTREE)type,1) && 
                     (NumberTree(_inter) == cplus::CLASS) &&
@@ -720,6 +722,81 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                 }
             break ;
             
+        case cplus::LAMBDA : 
+            (capture=SonTree(paramTree, 1));
+            
+            (param=SonTree(paramTree, 2));
+            
+            (type=SonTree(paramTree, 3));
+            
+            (exp1=SonTree(paramTree, 4));
+            
+            (stat=SonTree(paramTree, 5));
+            
+        _Case267 : 
+            ;
+            {
+                PrintString("[");
+                if ( ((_inter = (PPTREE)capture,1) && 
+                        (NumberTree(_inter) == cplus::CAPTURE_ALL) &&
+                        1) ) 
+                    PrintString("=");
+                else 
+                if ( ((_inter = (PPTREE)capture,1) && 
+                        (NumberTree(_inter) == LIST) &&
+                        1) ) {
+                                PTREE   elem ;
+                                
+                                bool    first = true ;
+                                
+                                while ( ((elem=(capture?capture.Nextl():(PPTREE)0))) ) {
+                                                                                                if ( !first ) 
+                                                                                                    PrintString(",");
+                                                                                                else 
+                                                                                                    first =  false ;
+                                                                                                
+                                                                                                decomp(elem);
+                                                                                                
+                                                                                                
+                                                                                            }
+                                
+                             }
+                PrintString("]");
+                {
+                    PrintString("(");
+                    PTREE   elem ;
+                    
+                    bool    first = true ;
+                    
+                    while ( ((elem=(param?param.Nextl():(PPTREE)0))) ) {
+                                                                                if ( !first ) 
+                                                                                    PrintString(",");
+                                                                                else 
+                                                                                    first =  false ;
+                                                                                
+                                                                                decomp(elem);
+                                                                                
+                                                                                
+                                                                            }
+                    PrintString(")");
+                    
+                }
+                
+                if ( !((!type)) ) 
+                    PrintString("->");
+                decomp(type);
+                
+                if ( ((_inter = (PPTREE)exp1,1) && 
+                        (NumberTree(_inter) == cplus::MUTABLE) &&
+                        1) ) 
+                    PrintString("mutable ");
+                decomp(stat);
+                
+                
+            }
+            
+            break ;
+            
         case cplus::FUNC : 
             (sc=SonTree(paramTree, 1));
             
@@ -741,7 +818,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (deleteFunc=SonTree(paramTree, 10));
             
-        _Case262 : 
+        _Case268 : 
             ;
             {
                 bool    withNewLine = false ;
@@ -762,7 +839,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                             ((exceptionList=SonTree(_inter,1)),1) &&
                                             1);
                                         ;
-                                        hasExceptionList = true ;
+                                        hasExceptionList =  true ;
                                         
                                       }
                 if ( !((!stat)) ) 
@@ -785,8 +862,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                 if ( !inClass || !((!stat1)) ) {
                                                                                                     if ( ( _inter = 
                                                                                                             FatherTree(exp1),((_inter = (PPTREE)_inter,1) && 
-                                                                                                                               (NumberTree(_inter) == cplus::TEMPLATE_DECL) &&
-                                                                                                                               1)) ) 
+                                                                                                                                (NumberTree(_inter) == cplus::TEMPLATE_DECL) &&
+                                                                                                                                1)) ) 
                                                                                                         LNewLine(2);
                                                                                                     
                                                                                                     else 
@@ -801,7 +878,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                 
                                                               }
                                         if ( indentFunctionType ) 
-                                            indentFuncFlag = 1 ;
+                                            indentFuncFlag =  1 ;
                                         
                                       }
                     
@@ -819,7 +896,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 
                 decomp(declarator);
                 
-                indentFuncFlag = 0 ;
+                indentFuncFlag =  0 ;
                 if ( parameterUnder ) {
                                         LNewLine(1);
                                         
@@ -833,7 +910,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 
                 PrintString("(");
                 if ( !((!param)) && parameterUnder ) {
-                                                            withNewLine = true ;
+                                                            withNewLine =  true ;
                                                             LNewLine(1);
                                                             
                                                             if ( parameterUnderTab ) 
@@ -895,7 +972,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                                 if ( ((_inter = (PPTREE)attr,1) && 
                                                                                                         (NumberTree(_inter) == cplus::NEWLINE) &&
                                                                                                         1) ) {
-                                                                                                                commDisp = true ;
+                                                                                                                commDisp =  true ;
                                                                                                                 comm(son, POST);
                                                                                                                 
                                                                                                              }
@@ -996,7 +1073,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                             
                                           } else 
                 {
-                    statementf = 0 ;
+                    statementf =  0 ;
                     if ( withNewLine ) {
                                             LNewLine(1);
                                             
@@ -1021,9 +1098,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( !LastInList(paramTree) ) {
                                                     if ( !inClass || !((!stat)) ) {
                                                                                         if ( !LastInList(paramTree) ) {
-                                                                                                                         LNewLine(2);
-                                                                                                                         
-                                                                                                                         
+                                                                                                                            LNewLine(2);
+                                                                                                                            
+                                                                                                                            
                                                                                                                          }
                                                                                         
                                                                                       } else 
@@ -1050,7 +1127,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case263 : 
+        _Case269 : 
             ;
             statementf = 0 ;
             decomp(declarator);
@@ -1070,7 +1147,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::CLASS_PARAM : 
             (son=SonTree(paramTree, 1));
             
-        _Case264 : 
+        _Case270 : 
             ;
             PrintString("class");
             decomp(son);
@@ -1082,7 +1159,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case265 : 
+        _Case271 : 
             ;
             PrintString("template");
             Space(1);
@@ -1109,7 +1186,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case266 : 
+        _Case272 : 
             ;
             decomp(exp1);
             
@@ -1141,9 +1218,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list_decl=SonTree(paramTree, 3));
             
-        _Case267 : 
+        _Case273 : 
             ;
-            goto _Case268 ;
+            goto _Case274 ;
             
         case cplus::DECLARATION : 
             (sc=SonTree(paramTree, 1));
@@ -1152,12 +1229,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list_decl=SonTree(paramTree, 3));
             
-        _Case268 : 
+        _Case274 : 
             ;
             {
                 int hasPutMark = 0 ;
                 
-                statementf = 0 ;
+                statementf =  0 ;
                 if ( ((_inter = (PPTREE)type,1) && 
                         (NumberTree(_inter) == cplus::CLASS) &&
                         ((exp=SonTree(_inter,4)),1) &&
@@ -1249,7 +1326,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (implementation=SonTree(paramTree, 4));
             
-        _Case269 : 
+        _Case275 : 
             ;
             {
                 IsVerticalDecl(list_decl);
@@ -1280,7 +1357,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 bool    alignVert = false ;
                 
                 if ( enumVert ) 
-                    alignVert = true ;
+                    alignVert =  true ;
                 else 
                 {
                     (list=list_decl);
@@ -1291,7 +1368,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                         (son=list [1]);
                                         
                                         if ( IsComm(son, POST) ) {
-                                                                        alignVert = true ;
+                                                                        alignVert =  true ;
                                                                         break ;
                                                                         
                                                                         
@@ -1365,12 +1442,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                                                         (attr=(list1?list1.Nextl():(PPTREE)0));
                                                                                                                         
                                                                                                                         if ( ((_inter = (PPTREE)attr,1) && 
-                                                                                                                               (NumberTree(_inter) == cplus::NEWLINE) &&
-                                                                                                                               1) ) {
-                                                                                                                                    commDisp = true ;
-                                                                                                                                    comm(son, POST);
-                                                                                                                                    
-                                                                                                                                    }
+                                                                                                                                (NumberTree(_inter) == cplus::NEWLINE) &&
+                                                                                                                                1) ) {
+                                                                                                                                        commDisp =  true ;
+                                                                                                                                        comm(son, POST);
+                                                                                                                                        
+                                                                                                                                     }
                                                                                                                         TraitAttribut(attr);
                                                                                                                         
                                                                                                                      }
@@ -1407,37 +1484,37 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::TDOUBLE : 
-        _Case270 : 
+        _Case276 : 
             ;
             PrintString("double");
             break ;
             
         case cplus::TSHORT : 
-        _Case271 : 
+        _Case277 : 
             ;
             PrintString("short");
             break ;
             
         case cplus::TINT : 
-        _Case272 : 
+        _Case278 : 
             ;
             PrintString("int");
             break ;
             
         case cplus::TCHAR : 
-        _Case273 : 
+        _Case279 : 
             ;
             PrintString("char");
             break ;
             
         case cplus::TFLOAT : 
-        _Case274 : 
+        _Case280 : 
             ;
             PrintString("float");
             break ;
             
         case cplus::VOID : 
-        _Case275 : 
+        _Case281 : 
             ;
             PrintString("void");
             break ;
@@ -1445,7 +1522,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TLONG : 
             (type=SonTree(paramTree, 1));
             
-        _Case276 : 
+        _Case282 : 
             ;
             PrintString("long");
             decomp(type);
@@ -1455,7 +1532,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TSIGNED : 
             (type=SonTree(paramTree, 1));
             
-        _Case277 : 
+        _Case283 : 
             ;
             PrintString("signed");
             decomp(type);
@@ -1465,7 +1542,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TUNSIGNED : 
             (type=SonTree(paramTree, 1));
             
-        _Case278 : 
+        _Case284 : 
             ;
             PrintString("unsigned");
             decomp(type);
@@ -1477,7 +1554,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case279 : 
+        _Case285 : 
             ;
             if ( ((_inter = (PPTREE)val,1) && 
                     (NumberTree(_inter) == cplus::ATTRIBUTE_CALL) &&
@@ -1498,7 +1575,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ATTRIBUTE_CALL : 
             (val=SonTree(paramTree, 1));
             
-        _Case280 : 
+        _Case286 : 
             ;
             while ( ((_inter = (PPTREE)val,1) && 
                         (NumberTree(_inter) == cplus::EXP) &&
@@ -1514,7 +1591,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ASM_CALL : 
             (val=SonTree(paramTree, 1));
             
-        _Case281 : 
+        _Case287 : 
             ;
             {
                 PrintString("__asm__(");
@@ -1555,7 +1632,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::EXTENSION : 
             (val=SonTree(paramTree, 1));
             
-        _Case282 : 
+        _Case288 : 
             ;
             PrintString("__extension__");
             SepAfter();
@@ -1567,7 +1644,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TYP_ADDR : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case283 : 
+        _Case289 : 
             ;
             SepBefore();
             
@@ -1576,10 +1653,34 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             break ;
             
+        case cplus::TYP_VARIADIC : 
+            (declarator=SonTree(paramTree, 1));
+            
+        _Case290 : 
+            ;
+            PrintString("...");
+            Space(1);
+            
+            decomp(declarator);
+            
+            break ;
+            
+        case cplus::VARIADIC_EXPRESSION : 
+            (exp1=SonTree(paramTree, 1));
+            
+        _Case291 : 
+            ;
+            decomp(exp1);
+            
+            PrintString("...");
+            Space(1);
+            
+            break ;
+            
         case cplus::TYP : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case284 : 
+        _Case292 : 
             ;
             PrintString("(");
             decomp(declarator);
@@ -1590,20 +1691,20 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case META : 
             (ident=SonTree(paramTree, 1));
             
-        _Case285 : 
+        _Case293 : 
             ;
             PrintString("$");
-            goto _Case286 ;
+            goto _Case294 ;
             
         case cplus::IDENT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case286 : 
+        _Case294 : 
             ;
             if ( indentFuncFlag ) {
                                     LNewLine(1);
                                     
-                                    indentFuncFlag = 0 ;
+                                    indentFuncFlag =  0 ;
                                     
                                    }
             DumpBrainyValue(ident);
@@ -1615,7 +1716,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp_list=SonTree(paramTree, 2));
             
-        _Case287 : 
+        _Case295 : 
             ;
             decomp(declarator);
             
@@ -1637,7 +1738,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (except=SonTree(paramTree, 4));
             
-        _Case288 : 
+        _Case296 : 
             ;
             {
                 bool    putPar = false ;
@@ -1655,7 +1756,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     if ( ((_inter = (PPTREE)inside,1) && 
                             (NumberTree(_inter) == cplus::TYP_ADDR) &&
                             1) ) 
-                        putPar = true ;
+                        putPar =  true ;
                     
                 }
                 
@@ -1717,7 +1818,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::INITIALIZER : 
             (init=SonTree(paramTree, 1));
             
-        _Case289 : 
+        _Case297 : 
             ;
             if ( ((_inter = (PPTREE)init,1) && 
                     (NumberTree(_inter) == LIST) &&
@@ -1755,7 +1856,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case290 : 
+        _Case298 : 
             ;
             decomp(type);
             
@@ -1768,7 +1869,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case291 : 
+        _Case299 : 
             ;
             decomp(type);
             
@@ -1781,7 +1882,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (declarator=SonTree(paramTree, 2));
             
-        _Case292 : 
+        _Case300 : 
             ;
             decomp(type);
             
@@ -1794,7 +1895,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case293 : 
+        _Case301 : 
             ;
             decomp(ident);
             
@@ -1810,7 +1911,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::EXP_SEQ : 
             (list=SonTree(paramTree, 1));
             
-        _Case294 : 
+        _Case302 : 
             ;
             statementf = 0 ;
             while ( ((_inter = (PPTREE)list,1) && 
@@ -1835,7 +1936,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case295 : 
+        _Case303 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1865,7 +1966,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case296 : 
+        _Case304 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1890,7 +1991,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case297 : 
+        _Case305 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1915,7 +2016,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case298 : 
+        _Case306 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1940,7 +2041,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case299 : 
+        _Case307 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1965,7 +2066,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case300 : 
+        _Case308 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -1990,7 +2091,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case301 : 
+        _Case309 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2015,7 +2116,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case302 : 
+        _Case310 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2040,7 +2141,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case303 : 
+        _Case311 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2065,7 +2166,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case304 : 
+        _Case312 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2090,7 +2191,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case305 : 
+        _Case313 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2117,7 +2218,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp3=SonTree(paramTree, 3));
             
-        _Case306 : 
+        _Case314 : 
             ;
             statementf = 0 ;
             decomp(exp1);
@@ -2149,7 +2250,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case307 : 
+        _Case315 : 
             ;
             decomp(exp1);
             
@@ -2167,7 +2268,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case308 : 
+        _Case316 : 
             ;
             decomp(exp1);
             
@@ -2185,7 +2286,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case309 : 
+        _Case317 : 
             ;
             decomp(exp1);
             
@@ -2203,7 +2304,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case310 : 
+        _Case318 : 
             ;
             decomp(exp1);
             
@@ -2221,7 +2322,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case311 : 
+        _Case319 : 
             ;
             decomp(exp1);
             
@@ -2239,7 +2340,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case312 : 
+        _Case320 : 
             ;
             decomp(exp1);
             
@@ -2257,7 +2358,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case313 : 
+        _Case321 : 
             ;
             decomp(exp1);
             
@@ -2275,7 +2376,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case314 : 
+        _Case322 : 
             ;
             decomp(exp1);
             
@@ -2293,7 +2394,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case315 : 
+        _Case323 : 
             ;
             decomp(exp1);
             
@@ -2311,7 +2412,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case316 : 
+        _Case324 : 
             ;
             decomp(exp1);
             
@@ -2329,7 +2430,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case317 : 
+        _Case325 : 
             ;
             decomp(exp1);
             
@@ -2347,7 +2448,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case318 : 
+        _Case326 : 
             ;
             decomp(exp1);
             
@@ -2365,7 +2466,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case319 : 
+        _Case327 : 
             ;
             decomp(exp1);
             
@@ -2383,7 +2484,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case320 : 
+        _Case328 : 
             ;
             decomp(exp1);
             
@@ -2401,7 +2502,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case321 : 
+        _Case329 : 
             ;
             decomp(exp1);
             
@@ -2419,7 +2520,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case322 : 
+        _Case330 : 
             ;
             decomp(exp1);
             
@@ -2437,7 +2538,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case323 : 
+        _Case331 : 
             ;
             decomp(exp1);
             
@@ -2455,7 +2556,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case324 : 
+        _Case332 : 
             ;
             decomp(exp1);
             
@@ -2471,7 +2572,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::NEG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case325 : 
+        _Case333 : 
             ;
             Space(1);
             
@@ -2483,7 +2584,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::POS : 
             (exp=SonTree(paramTree, 1));
             
-        _Case326 : 
+        _Case334 : 
             ;
             Space(1);
             
@@ -2497,7 +2598,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::LNEG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case327 : 
+        _Case335 : 
             ;
             SepBefore();
             
@@ -2509,7 +2610,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::NOT : 
             (exp=SonTree(paramTree, 1));
             
-        _Case328 : 
+        _Case336 : 
             ;
             SepBefore();
             
@@ -2521,7 +2622,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::POINT : 
             (exp=SonTree(paramTree, 1));
             
-        _Case329 : 
+        _Case337 : 
             ;
             SepBefore();
             
@@ -2533,7 +2634,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ADDR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case330 : 
+        _Case338 : 
             ;
             SepBefore();
             
@@ -2545,7 +2646,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::BINCR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case331 : 
+        _Case339 : 
             ;
             SepBefore();
             
@@ -2557,7 +2658,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::BDECR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case332 : 
+        _Case340 : 
             ;
             SepBefore();
             
@@ -2569,7 +2670,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::AINCR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case333 : 
+        _Case341 : 
             ;
             decomp(exp);
             
@@ -2581,7 +2682,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ADECR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case334 : 
+        _Case342 : 
             ;
             decomp(exp);
             
@@ -2593,7 +2694,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::EXP : 
             (exp=SonTree(paramTree, 1));
             
-        _Case335 : 
+        _Case343 : 
             ;
             statementf = 0 ;
             PrintString("(");
@@ -2607,7 +2708,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case336 : 
+        _Case344 : 
             ;
             statementf = 0 ;
             decomp(exp);
@@ -2623,7 +2724,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case337 : 
+        _Case345 : 
             ;
             statementf = 0 ;
             PrintString("va_arg(");
@@ -2635,12 +2736,18 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             PrintString(")");
             break ;
             
+        case cplus::ELIPSIS_EXPRESSION : 
+        _Case346 : 
+            ;
+            PrintString("...");
+            break ;
+            
         case cplus::FUNC_SPEC : 
             (exp=SonTree(paramTree, 1));
             
             (list=SonTree(paramTree, 2));
             
-        _Case338 : 
+        _Case347 : 
             ;
             statementf = 0 ;
             decomp(exp);
@@ -2656,7 +2763,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case339 : 
+        _Case348 : 
             ;
             statementf = 0 ;
             PrintString("forallsons");
@@ -2676,7 +2783,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case340 : 
+        _Case349 : 
             ;
             decomp(exp);
             
@@ -2693,7 +2800,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case341 : 
+        _Case350 : 
             ;
             decomp(exp);
             
@@ -2710,7 +2817,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case342 : 
+        _Case351 : 
             ;
             decomp(exp1);
             
@@ -2724,7 +2831,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case343 : 
+        _Case352 : 
             ;
             decomp(exp1);
             
@@ -2746,7 +2853,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::STRING_LIST : 
             (list=SonTree(paramTree, 1));
             
-        _Case344 : 
+        _Case353 : 
             ;
             while ( ((_inter = (PPTREE)list,1) && 
                         (NumberTree(_inter) == LIST) &&
@@ -2765,7 +2872,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::STRING : 
             (val=SonTree(paramTree, 1));
             
-        _Case345 : 
+        _Case354 : 
             ;
             PrintString("\"");
             DumpBrainyValue(val);
@@ -2776,7 +2883,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::INTEGER : 
             (val=SonTree(paramTree, 1));
             
-        _Case346 : 
+        _Case355 : 
             ;
             DumpBrainyValue(val);
             
@@ -2785,7 +2892,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::HEXA : 
             (val=SonTree(paramTree, 1));
             
-        _Case347 : 
+        _Case356 : 
             ;
             PrintString("0x");
             NoSep();
@@ -2797,7 +2904,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::BINARY : 
             (val=SonTree(paramTree, 1));
             
-        _Case348 : 
+        _Case357 : 
             ;
             PrintString("0b");
             NoSep();
@@ -2809,7 +2916,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::LONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case349 : 
+        _Case358 : 
             ;
             decomp(val);
             
@@ -2821,7 +2928,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::LONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case350 : 
+        _Case359 : 
             ;
             decomp(val);
             
@@ -2833,7 +2940,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::OCTAL : 
             (val=SonTree(paramTree, 1));
             
-        _Case351 : 
+        _Case360 : 
             ;
             PrintString("0");
             NoSep();
@@ -2845,7 +2952,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::IUN : 
             (val=SonTree(paramTree, 1));
             
-        _Case352 : 
+        _Case361 : 
             ;
             decomp(val);
             
@@ -2857,7 +2964,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::IUNLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case353 : 
+        _Case362 : 
             ;
             decomp(val);
             
@@ -2869,7 +2976,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::IUNLONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case354 : 
+        _Case363 : 
             ;
             decomp(val);
             
@@ -2881,7 +2988,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ILONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case355 : 
+        _Case364 : 
             ;
             decomp(val);
             
@@ -2893,7 +3000,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ILONGLONG : 
             (val=SonTree(paramTree, 1));
             
-        _Case356 : 
+        _Case365 : 
             ;
             decomp(val);
             
@@ -2905,7 +3012,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::FLOAT : 
             (val=SonTree(paramTree, 1));
             
-        _Case357 : 
+        _Case366 : 
             ;
             DumpBrainyValue(val);
             
@@ -2914,7 +3021,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::CHAR : 
             (val=SonTree(paramTree, 1));
             
-        _Case358 : 
+        _Case367 : 
             ;
             PrintString("'");
             DumpBrainyValue(val);
@@ -2923,12 +3030,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::EXCEPT_ANSI_ALL : 
-        _Case359 : 
+        _Case368 : 
             ;
-            goto _Case360 ;
+            goto _Case369 ;
             
         case cplus::VAR_LIST : 
-        _Case360 : 
+        _Case369 : 
             ;
             PrintString("...");
             break ;
@@ -2936,7 +3043,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::COMPOUND : 
             (list=SonTree(paramTree, 1));
             
-        _Case361 : 
+        _Case370 : 
             ;
             if ( (!list) ) {
                                 SepBefore();
@@ -2961,7 +3068,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( ((_inter = (PPTREE)exp,1) && 
                         (NumberTree(_inter) == cplus::FUNC) &&
                         1) ) 
-                    inFunc = true ;
+                    inFunc =  true ;
                 if ( ansiMode && !braceAlign || braceAlignNoFunc && inFunc ) 
                     LNewLine(1);
                 
@@ -2976,12 +3083,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 if ( ansiMode && braceAlign ) {
                                                     if ( !inFunc || braceAlignTabFunc || braceAlignNoFunc ) {
                                                                                                                     if ( !(((_inter = (PPTREE)exp,1) && 
-                                                                                                                             (NumberTree(_inter) == LIST) &&
-                                                                                                                             1)) ) {
-                                                                                                                                   Tab();
-                                                                                                                                   
-                                                                                                                                   
-                                                                                                                                   }
+                                                                                                                                (NumberTree(_inter) == LIST) &&
+                                                                                                                                1)) ) {
+                                                                                                                                        Tab();
+                                                                                                                                        
+                                                                                                                                        
+                                                                                                                                      }
                                                                                                                     
                                                                                                                 }
                                                     
@@ -2996,7 +3103,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                                                         
                                                                                         
                                                                                      }
-                statementf = 1 ;
+                statementf =  1 ;
                 while ( ((_inter = (PPTREE)list,1) && 
                             (NumberTree(_inter) == LIST) &&
                             1) ) {
@@ -3045,7 +3152,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::BREAK : 
-        _Case362 : 
+        _Case371 : 
             ;
             PrintString("break ;");
             (oldPostComment=paramTree);
@@ -3056,7 +3163,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::CONTINUE : 
-        _Case363 : 
+        _Case372 : 
             ;
             PrintString("continue ;");
             (oldPostComment=paramTree);
@@ -3071,7 +3178,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case364 : 
+        _Case373 : 
             ;
             PrintString("do");
             if ( !(((_inter = (PPTREE)stat,1) && 
@@ -3145,7 +3252,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat=SonTree(paramTree, 4));
             
-        _Case365 : 
+        _Case374 : 
             ;
             statementf = 0 ;
             if ( !(((_inter = (PPTREE)exp1,1) && 
@@ -3270,7 +3377,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::GOTO : 
             (ident=SonTree(paramTree, 1));
             
-        _Case366 : 
+        _Case375 : 
             ;
             PrintString("goto");
             DumpBrainyValue(ident);
@@ -3286,7 +3393,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::NONE : 
-        _Case367 : 
+        _Case376 : 
             ;
             (oldPostComment=paramTree);
             
@@ -3300,7 +3407,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat=SonTree(paramTree, 2));
             
-        _Case368 : 
+        _Case377 : 
             ;
             (postComment=stat);
             
@@ -3341,7 +3448,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case369 : 
+        _Case378 : 
             ;
             statementf = 0 ;
             PrintString("if (");
@@ -3410,8 +3517,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                     if ( ansiMode && !(((_inter = (PPTREE)stat2,1) && 
                                                             (NumberTree(_inter) == cplus::IF) &&
                                                             1)) || IsComm(stat1, PRE) && (IsComm(stat2, PRE) || !(((_inter = (PPTREE)stat2,1) && 
-                                                                                                                           (NumberTree(_inter) == cplus::IF) &&
-                                                                                                                           1))) || IsComm(stat2, PRE) ) 
+                                                                                                                            (NumberTree(_inter) == cplus::IF) &&
+                                                                                                                            1))) || IsComm(stat2, PRE) ) 
                                         LNewLine(1);
                                     
                                     if ( !(((_inter = (PPTREE)stat2,1) && 
@@ -3467,7 +3574,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::STAT_VOID : 
-        _Case370 : 
+        _Case379 : 
             ;
             {
                 SepBefore();
@@ -3484,7 +3591,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::RETURN : 
             (exp=SonTree(paramTree, 1));
             
-        _Case371 : 
+        _Case380 : 
             ;
             statementf = 0 ;
             PrintString("return");
@@ -3507,12 +3614,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::DEFAULT : 
-        _Case372 : 
+        _Case381 : 
             ;
-            goto _Case373 ;
+            goto _Case382 ;
             
         case cplus::CASE : 
-        _Case373 : 
+        _Case382 : 
             ;
             {
                 (son=paramTree);
@@ -3534,7 +3641,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                             if ( ((_inter = (PPTREE)son,1) && 
                                                     (NumberTree(_inter) == cplus::CASE) &&
                                                     1) ) {
-                                                            statementf = 0 ;
+                                                            statementf =  0 ;
                                                             ((_inter = (PPTREE)son,1) && 
                                                                 ((exp=SonTree(_inter,1)),1) &&
                                                                 ((stat=SonTree(_inter,2)),1) &&
@@ -3548,7 +3655,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                                             PrintString(":");
                                                             Space(1);
                                                             
-                                                            statementf = oldStatement ;
+                                                            statementf =  oldStatement ;
                                                             
                                                          }
                                             (son=sontree(stat, 1));
@@ -3556,104 +3663,104 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                             if ( !sontree(stat, 2) && singleSwitchIndent ) {
                                                                                                     switch ( NumberTree(son) ) {
                                                                                                         case cplus::COMPOUND : 
-                                                                                                        _Case407 : 
-                                                                                                            ;
-                                                                                                            goto _Case408 ;
-                                                                                                            
-                                                                                                        case cplus::CASE : 
-                                                                                                        _Case408 : 
-                                                                                                            ;
-                                                                                                            goto _Case409 ;
-                                                                                                            
-                                                                                                        case cplus::DEFAULT : 
-                                                                                                        _Case409 : 
-                                                                                                            ;
-                                                                                                            goto _Case410 ;
-                                                                                                            
-                                                                                                        case cplus::IF : 
-                                                                                                        _Case410 : 
-                                                                                                            ;
-                                                                                                            goto _Case411 ;
-                                                                                                            
-                                                                                                        case cplus::WHILE : 
-                                                                                                        _Case411 : 
-                                                                                                            ;
-                                                                                                            goto _Case412 ;
-                                                                                                            
-                                                                                                        case cplus::FOR : 
-                                                                                                        _Case412 : 
-                                                                                                            ;
-                                                                                                            goto _Case413 ;
-                                                                                                            
-                                                                                                        case cplus::DO : 
-                                                                                                        _Case413 : 
-                                                                                                            ;
-                                                                                                            goto _Case414 ;
-                                                                                                            
-                                                                                                        case cplus::SWITCH : 
-                                                                                                        _Case414 : 
-                                                                                                            ;
-                                                                                                            goto _Case415 ;
-                                                                                                            
-                                                                                                        case cplus::IF_DIR : 
-                                                                                                        _Case415 : 
-                                                                                                            ;
-                                                                                                            goto _Case416 ;
-                                                                                                            
-                                                                                                        case cplus::IFDEF_DIR : 
                                                                                                         _Case416 : 
                                                                                                             ;
                                                                                                             goto _Case417 ;
                                                                                                             
-                                                                                                        case cplus::IFNDEF_DIR : 
+                                                                                                        case cplus::CASE : 
                                                                                                         _Case417 : 
                                                                                                             ;
                                                                                                             goto _Case418 ;
                                                                                                             
-                                                                                                        case cplus::NOT_MANAGED : 
+                                                                                                        case cplus::DEFAULT : 
                                                                                                         _Case418 : 
                                                                                                             ;
                                                                                                             goto _Case419 ;
                                                                                                             
-                                                                                                        case cplus::NO_PRETTY : 
+                                                                                                        case cplus::IF : 
                                                                                                         _Case419 : 
                                                                                                             ;
                                                                                                             goto _Case420 ;
                                                                                                             
-                                                                                                        case cplus::ATTRIBUTS : 
+                                                                                                        case cplus::WHILE : 
                                                                                                         _Case420 : 
                                                                                                             ;
                                                                                                             goto _Case421 ;
                                                                                                             
-                                                                                                        case cplus::EXCEPTION : 
+                                                                                                        case cplus::FOR : 
                                                                                                         _Case421 : 
                                                                                                             ;
                                                                                                             goto _Case422 ;
                                                                                                             
-                                                                                                        case cplus::EXCEPTION_ANSI : 
+                                                                                                        case cplus::DO : 
                                                                                                         _Case422 : 
                                                                                                             ;
                                                                                                             goto _Case423 ;
                                                                                                             
-                                                                                                        case cplus::CATCH_ANSI : 
+                                                                                                        case cplus::SWITCH : 
                                                                                                         _Case423 : 
+                                                                                                            ;
+                                                                                                            goto _Case424 ;
+                                                                                                            
+                                                                                                        case cplus::IF_DIR : 
+                                                                                                        _Case424 : 
+                                                                                                            ;
+                                                                                                            goto _Case425 ;
+                                                                                                            
+                                                                                                        case cplus::IFDEF_DIR : 
+                                                                                                        _Case425 : 
+                                                                                                            ;
+                                                                                                            goto _Case426 ;
+                                                                                                            
+                                                                                                        case cplus::IFNDEF_DIR : 
+                                                                                                        _Case426 : 
+                                                                                                            ;
+                                                                                                            goto _Case427 ;
+                                                                                                            
+                                                                                                        case cplus::NOT_MANAGED : 
+                                                                                                        _Case427 : 
+                                                                                                            ;
+                                                                                                            goto _Case428 ;
+                                                                                                            
+                                                                                                        case cplus::NO_PRETTY : 
+                                                                                                        _Case428 : 
+                                                                                                            ;
+                                                                                                            goto _Case429 ;
+                                                                                                            
+                                                                                                        case cplus::ATTRIBUTS : 
+                                                                                                        _Case429 : 
+                                                                                                            ;
+                                                                                                            goto _Case430 ;
+                                                                                                            
+                                                                                                        case cplus::EXCEPTION : 
+                                                                                                        _Case430 : 
+                                                                                                            ;
+                                                                                                            goto _Case431 ;
+                                                                                                            
+                                                                                                        case cplus::EXCEPTION_ANSI : 
+                                                                                                        _Case431 : 
+                                                                                                            ;
+                                                                                                            goto _Case432 ;
+                                                                                                            
+                                                                                                        case cplus::CATCH_ANSI : 
+                                                                                                        _Case432 : 
                                                                                                             ;
                                                                                                             oneInstruct = 0 ;
                                                                                                             break ;
                                                                                                             
                                                                                                         default : 
-                                                                                                        _Case424 : 
+                                                                                                        _Case433 : 
                                                                                                             ;
                                                                                                             if ( son && !IsComm(son, PRE) ) 
-                                                                                                                oneInstruct = 1 ;
+                                                                                                                oneInstruct =  1 ;
                                                                                                             else 
-                                                                                                                oneInstruct = 0 ;
+                                                                                                                oneInstruct =  0 ;
                                                                                                             
                                                                                                     }
                                                                                                     
                                                                                                     
                                                                                                 } else 
-                                                oneInstruct = 0 ;
+                                                oneInstruct =  0 ;
                                             
                                             if ( !oneInstruct ) {
                                                                     LNewLine(1);
@@ -3703,7 +3810,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case374 : 
+        _Case383 : 
             ;
             (param=paramTree);
             
@@ -3771,7 +3878,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat=SonTree(paramTree, 2));
             
-        _Case375 : 
+        _Case384 : 
             ;
             statementf = 0 ;
             PrintString("while (");
@@ -3827,7 +3934,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case376 : 
+        _Case385 : 
             ;
             {
                 PrintString("try");
@@ -3883,7 +3990,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat=SonTree(paramTree, 2));
             
-        _Case377 : 
+        _Case386 : 
             ;
             statementf = 0 ;
             PrintString("catch (");
@@ -3937,7 +4044,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::THROW_ANSI : 
             (exp=SonTree(paramTree, 1));
             
-        _Case378 : 
+        _Case387 : 
             ;
             statementf = 0 ;
             PrintString("throw");
@@ -3962,7 +4069,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TIDENT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case379 : 
+        _Case388 : 
             ;
             decomp(ident);
             
@@ -3971,7 +4078,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TYPENAME : 
             (ident=SonTree(paramTree, 1));
             
-        _Case380 : 
+        _Case389 : 
             ;
             PrintString("typename");
             decomp(ident);
@@ -3981,7 +4088,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::CLASSNAME : 
             (ident=SonTree(paramTree, 1));
             
-        _Case381 : 
+        _Case390 : 
             ;
             PrintString("class");
             decomp(ident);
@@ -3991,7 +4098,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::DECL_TYPE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case382 : 
+        _Case391 : 
             ;
             PrintString("decltype(");
             decomp(exp);
@@ -4000,7 +4107,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::AUTO : 
-        _Case383 : 
+        _Case392 : 
             ;
             PrintString("auto");
             break ;
@@ -4008,7 +4115,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::INCLUDE_DIR : 
             (param=SonTree(paramTree, 1));
             
-        _Case384 : 
+        _Case393 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4051,7 +4158,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (val=SonTree(paramTree, 3));
             
-        _Case385 : 
+        _Case394 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4135,7 +4242,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::UNDEF : 
             (exp=SonTree(paramTree, 1));
             
-        _Case386 : 
+        _Case395 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4155,7 +4262,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::PRAGMA : 
             (exp=SonTree(paramTree, 1));
             
-        _Case387 : 
+        _Case396 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4177,7 +4284,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp1=SonTree(paramTree, 2));
             
-        _Case388 : 
+        _Case397 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4204,7 +4311,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 3));
             
-        _Case389 : 
+        _Case398 : 
             ;
             {
                 PTREE   elem ;
@@ -4232,7 +4339,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                                 
                              }
                 
-#endif
+#               endif
                 
                 
             }
@@ -4242,7 +4349,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::CONFIG : 
             (exp=SonTree(paramTree, 1));
             
-        _Case390 : 
+        _Case399 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4262,7 +4369,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::SIMPLIFY : 
             (exp=SonTree(paramTree, 1));
             
-        _Case391 : 
+        _Case400 : 
             ;
             gotocol(0);
             PrintString("#pragma simplify ");
@@ -4273,7 +4380,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TAB_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case392 : 
+        _Case401 : 
             ;
             PrintString("tab ");
             DumpBrainyValue(exp);
@@ -4283,7 +4390,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::MODE_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case393 : 
+        _Case402 : 
             ;
             PrintString("mode ");
             DumpBrainyValue(exp);
@@ -4293,7 +4400,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::BRACE_ALIGN_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case394 : 
+        _Case403 : 
             ;
             PrintString("brace_align ");
             DumpBrainyValue(exp);
@@ -4303,7 +4410,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::SINGLE_SWITCH_INDENT_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case395 : 
+        _Case404 : 
             ;
             PrintString("single_switch_indent ");
             DumpBrainyValue(exp);
@@ -4313,7 +4420,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::MARGIN_VALUE : 
             (exp=SonTree(paramTree, 1));
             
-        _Case396 : 
+        _Case405 : 
             ;
             PrintString("margin ");
             DumpBrainyValue(exp);
@@ -4323,7 +4430,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ERROR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case397 : 
+        _Case406 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4341,7 +4448,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         case cplus::ALINE : 
-        _Case398 : 
+        _Case407 : 
             ;
             {
                 DumpBrainyValue(paramTree);
@@ -4354,7 +4461,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::NO_PRETTY : 
             (list=SonTree(paramTree, 1));
             
-        _Case399 : 
+        _Case408 : 
             ;
             GotoCol(0);
             Mark();
@@ -4385,7 +4492,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::NOT_MANAGED : 
             (list=SonTree(paramTree, 1));
             
-        _Case400 : 
+        _Case409 : 
             ;
             GotoCol(0);
             Mark();
@@ -4420,9 +4527,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case401 : 
+        _Case410 : 
             ;
-            goto _Case402 ;
+            goto _Case411 ;
             
         case cplus::IFNDEF_DIR : 
             (exp=SonTree(paramTree, 1));
@@ -4431,9 +4538,9 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case402 : 
+        _Case411 : 
             ;
-            goto _Case403 ;
+            goto _Case412 ;
             
         case cplus::IF_DIR : 
             (exp=SonTree(paramTree, 1));
@@ -4442,7 +4549,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat2=SonTree(paramTree, 3));
             
-        _Case403 : 
+        _Case412 : 
             ;
             {
                 if ( tabDirective ) 
@@ -4456,19 +4563,19 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             switch ( NumberTree(paramTree) ) {
                 case cplus::IFDEF_DIR : 
-                _Case425 : 
+                _Case434 : 
                     ;
                     PrintString("ifdef ");
                     break ;
                     
                 case cplus::IFNDEF_DIR : 
-                _Case426 : 
+                _Case435 : 
                     ;
                     PrintString("ifndef ");
                     break ;
                     
                 case cplus::IF_DIR : 
-                _Case427 : 
+                _Case436 : 
                     ;
                     PrintString("if ");
                     break ;
@@ -4520,7 +4627,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case404 : 
+        _Case413 : 
             ;
             PrintString("(");
             decomp(type);
@@ -4537,7 +4644,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list1=SonTree(paramTree, 3));
             
-        _Case405 : 
+        _Case414 : 
             ;
             while ( ((_inter = (PPTREE)list,1) && 
                         (NumberTree(_inter) == LIST) &&
@@ -4568,7 +4675,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         default : 
-        _Case406 : 
+        _Case415 : 
             ;
             break ;
             
@@ -4583,7 +4690,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat1=SonTree(paramTree, 2));
             
-        _Case428 : 
+        _Case437 : 
             ;
             PrintString("extern ");
             decomp(exp1);
@@ -4597,7 +4704,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::ASM : 
             (exp1=SonTree(paramTree, 1));
             
-        _Case429 : 
+        _Case438 : 
             ;
             PrintString("asm(");
             decomp(exp1);
@@ -4610,7 +4717,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case430 : 
+        _Case439 : 
             ;
             statementf = 0 ;
             decomp(declarator);
@@ -4626,7 +4733,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case431 : 
+        _Case440 : 
             ;
             statementf = 0 ;
             decomp(declarator);
@@ -4640,7 +4747,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::DESTRUCT : 
             (ident=SonTree(paramTree, 1));
             
-        _Case432 : 
+        _Case441 : 
             ;
             SepBefore();
             
@@ -4654,7 +4761,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case433 : 
+        _Case442 : 
             ;
             if ( !((!ident)) ) {
                                     decomp(ident);
@@ -4677,7 +4784,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case434 : 
+        _Case443 : 
             ;
             DumpBrainyValue(name);
             
@@ -4690,7 +4797,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case435 : 
+        _Case444 : 
             ;
             {
                 LNewLine(2);
@@ -4732,12 +4839,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 
             }
             
-            goto _Case436 ;
+            goto _Case445 ;
             
         case cplus::COMPOUND_EXT : 
             (list=SonTree(paramTree, 1));
             
-        _Case436 : 
+        _Case445 : 
             ;
             if ( ansiMode ) 
                 LNewLine(1);
@@ -4759,7 +4866,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::BASE_LIST : 
             (list=SonTree(paramTree, 1));
             
-        _Case437 : 
+        _Case446 : 
             ;
             if ( !((!list)) ) {
                                     Space(1);
@@ -4789,7 +4896,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::CLASS_DECL : 
             (stat1=SonTree(paramTree, 1));
             
-        _Case438 : 
+        _Case447 : 
             ;
             if ( ansiMode ) 
                 LNewLine(1);
@@ -4800,12 +4907,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             LNewLine(1);
             
             if ( EString("struct") != Value(FatherTree(paramTree)) && EString("enum") != Value(FatherTree(paramTree)) && FlatFunct() ) {
-                                                                                                                                                  gotocol(0);
-                                                                                                                                                  Mark();
-                                                                                                                                                  DecompilerListeExternSimp(stat1);
-                                                                                                                                                  UnMark();
-                                                                                                                                                  
-                                                                                                                                                  
+                                                                                                                                                    gotocol(0);
+                                                                                                                                                    Mark();
+                                                                                                                                                    DecompilerListeExternSimp(stat1);
+                                                                                                                                                    UnMark();
+                                                                                                                                                    
+                                                                                                                                                    
                                                                                                                                                   } else 
                 DecompilerListeExtern(stat1);
             
@@ -4823,7 +4930,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat1=SonTree(paramTree, 4));
             
-        _Case439 : 
+        _Case448 : 
             ;
             inClass = 1 ;
             DumpBrainyValue(name);
@@ -4851,7 +4958,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case440 : 
+        _Case449 : 
             ;
             decomp(name);
             
@@ -4865,11 +4972,23 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::TYP_REF : 
             (declarator=SonTree(paramTree, 1));
             
-        _Case441 : 
+        _Case450 : 
             ;
             SepBefore();
             
             PrintString("&");
+            decomp(declarator);
+            
+            break ;
+            
+        case cplus::TYP_MOV : 
+            (declarator=SonTree(paramTree, 1));
+            
+        _Case451 : 
+            ;
+            SepBefore();
+            
+            PrintString("&&");
             decomp(declarator);
             
             break ;
@@ -4879,7 +4998,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case442 : 
+        _Case452 : 
             ;
             decomp(exp1);
             
@@ -4903,7 +5022,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case443 : 
+        _Case453 : 
             ;
             decomp(exp1);
             
@@ -4929,7 +5048,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (init=SonTree(paramTree, 3));
             
-        _Case444 : 
+        _Case454 : 
             ;
             if ( init ) 
                 ((_inter = (PPTREE)init,1) && 
@@ -4991,7 +5110,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp2=SonTree(paramTree, 2));
             
-        _Case445 : 
+        _Case455 : 
             ;
             PrintString("delete");
             if ( !((!exp1)) ) {
@@ -5016,7 +5135,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::OPERATOR : 
             (exp=SonTree(paramTree, 1));
             
-        _Case446 : 
+        _Case456 : 
             ;
             PrintString("operator");
             if ( !(((_inter = (PPTREE)exp,1) && 
@@ -5043,7 +5162,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (type=SonTree(paramTree, 3));
             
-        _Case447 : 
+        _Case457 : 
             ;
             decomp(ident);
             
@@ -5069,7 +5188,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case448 : 
+        _Case458 : 
             ;
             decomp(ident);
             
@@ -5088,7 +5207,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::MESSAGE_MAP : 
             (list=SonTree(paramTree, 1));
             
-        _Case449 : 
+        _Case459 : 
             ;
             (son=(list?list.Nextl():(PPTREE)0));
             
@@ -5121,7 +5240,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (stat=SonTree(paramTree, 2));
             
-        _Case450 : 
+        _Case460 : 
             ;
             decomp(exp);
             
@@ -5141,7 +5260,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (list=SonTree(paramTree, 2));
             
-        _Case451 : 
+        _Case461 : 
             ;
             {
                 if ( !IsComm(paramTree, PRE) ) 
@@ -5179,7 +5298,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::INLINE_NAMESPACE : 
             (val=SonTree(paramTree, 1));
             
-        _Case452 : 
+        _Case462 : 
             ;
             {
                 PrintString("inline");
@@ -5199,7 +5318,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (att=SonTree(paramTree, 3));
             
-        _Case453 : 
+        _Case463 : 
             ;
             {
                 PrintString("namespace");
@@ -5228,7 +5347,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (exp=SonTree(paramTree, 2));
             
-        _Case454 : 
+        _Case464 : 
             ;
             {
                 PrintString("namespace");
@@ -5252,7 +5371,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case cplus::USING : 
             (ident=SonTree(paramTree, 1));
             
-        _Case455 : 
+        _Case465 : 
             ;
             {
                 PrintString("using");
@@ -5271,7 +5390,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             
             (att=SonTree(paramTree, 2));
             
-        _Case456 : 
+        _Case466 : 
             ;
             {
                 PrintString("using namespace");
@@ -5293,14 +5412,14 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
             
         default : 
-        _Case457 : 
+        _Case467 : 
             ;
             break ;
             
     }
     
-    statementf = oldStatement ;
-    inClass = oldInClass ;
+    statementf =  oldStatement ;
+    inClass =  oldInClass ;
     return oldPostComment ;
     
     
@@ -5412,7 +5531,7 @@ void DecompCplus::DecompilerListeExternSimp ( PTREE list )
                         
                         (son=(list?list.Nextl():(PPTREE)0));
                         
-                        typeBlock = TypeOfBlock(son);
+                        typeBlock =  TypeOfBlock(son);
                         if ( typeBlock != oldTypeBlock && oldTypeBlock != -1 ) {
                                                                                         LNewLine(2);
                                                                                         
@@ -5425,7 +5544,7 @@ void DecompCplus::DecompilerListeExternSimp ( PTREE list )
                                             
                                             
                                           }
-                        oldTypeBlock = typeBlock ;
+                        oldTypeBlock =  typeBlock ;
                         decomp(son);
                         
                         
@@ -5473,17 +5592,17 @@ void DecompCplus::copy ()
         return ;
     
     else 
-        copyPrinted = true ;
+        copyPrinted =  true ;
     
-    str = "\n\r C++ prettyPrinter version 7.0.1, CopyRight(C) 1989-2023 Eric Lavillonniere \n\r";
+    str =  "\n\r C++ prettyPrinter version 7.0.2, CopyRight(C) 1989-2026 Eric Lavillonniere \n\r";
     _write(2, str, strlen(str));
-    str = " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
+    str =  " C++ prettyPrinter comes with ABSOLUTELY NO WARRANTY.\n\r";
     _write(2, str, strlen(str));
-    str = " This is free software, and you are welcome to redistribute it \n\r";
+    str =  " This is free software, and you are welcome to redistribute it \n\r";
     _write(2, str, strlen(str));
-    str = " under certain conditions.\n\r";
+    str =  " under certain conditions.\n\r";
     _write(2, str, strlen(str));
-    str = " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
+    str =  " For details see file COPYING.LESSER in C++ prettyPrinter directory.\n\r\n\r";
     _write(2, str, strlen(str));
     
 }

@@ -150,6 +150,7 @@ class cplus: public pretty,public virtual Parser {
     virtual PPTREE inside_declaration2 ( int error_free) ;
     virtual PPTREE inside_declaration_extension ( int error_free) ;
     virtual PPTREE label_beg ( int error_free) ;
+    virtual PPTREE lambda ( int error_free) ;
     virtual PPTREE linkage_specification ( int error_free) ;
     virtual PPTREE logical_and_expression ( int error_free) ;
     virtual PPTREE logical_or_expression ( int error_free) ;
@@ -225,246 +226,253 @@ class cplus: public pretty,public virtual Parser {
     int inside_long;
     int switchContext;
     int noString;
-    static signed char * _tokenArray [159];
-    static int (cplus::*(_tokenFuncArray [159])) ();
-    static int _tokenNbFuncArray [159];
+    static signed char * _tokenArray [160];
+    static int (cplus::*(_tokenFuncArray [160])) ();
+    static int _tokenNbFuncArray [160];
 
     virtual int SortKeyWord (int ret);
     virtual int UpSortKeyWord (int ret); 
     virtual void InitConst ();
     
     enum constants {
-        TUNSIGNED =     369 ,
-        BDECR =     368 ,
-        BINCR =     367 ,
-        ADDR =  366 ,
-        NOT =   365 ,
-        LNEG =  364 ,
-        POS =   363 ,
-        NEG =   362 ,
-        PARAM_TYPE =    361 ,
-        STRING_LIST =   360 ,
-        LABEL =     359 ,
-        THROW_ANSI =    358 ,
-        ELSE =  357 ,
-        DECL_TYPE =     356 ,
-        CLASSNAME =     355 ,
-        TIDENT =    354 ,
-        TSIGNED =   353 ,
-        TSHORT =    352 ,
-        TCHAR =     351 ,
-        TINT =  350 ,
-        RSHI =  349 ,
-        LSHI =  348 ,
-        LT =    347 ,
-        GT =    346 ,
-        GEQU =  345 ,
-        LEQU =  344 ,
-        SPACE_ARROW =   343 ,
-        TAB_DIRECTIVE =     342 ,
-        ENUM_PARAMETERS_UNDER =     341 ,
-        ENUM_VERT_VALUE =   340 ,
-        PROTECTED_ARRAY_S_TYPEDEF =     339 ,
-        PROTECTED_ARRAY_TYPEDEF =   338 ,
-        PROTECTED_ARRAY_S =     337 ,
-        PROTECTED_ARRAY =   336 ,
-        PROTECT_MEMB =  335 ,
-        LANGUAGE =  334 ,
-        EXP =   333 ,
-        ADECR =     332 ,
-        AINCR =     331 ,
-        ARROW =     330 ,
-        REF =   329 ,
-        EXP_BRA =   328 ,
-        EXP_LIST =  327 ,
-        ARROW_MEMB =    326 ,
-        DOT_MEMB =  325 ,
-        POINETOI =  324 ,
-        TIRESUPEETOI =  323 ,
-        TIRESUPE =  322 ,
-        SUPESUPE =  321 ,
-        INFEINFE =  320 ,
-        SUPEEGAL =  319 ,
-        INFEEGAL =  318 ,
-        NONE =  317 ,
-        NEW_DECLARATOR =    316 ,
-        USING_NAMESPACE =   315 ,
-        NAMESPACE_ALIAS =   314 ,
-        REM =   313 ,
-        DIV =   312 ,
-        MUL =   311 ,
-        POURC =     310 ,
-        MESSAGE_MAP =   309 ,
-        MACRO =     308 ,
-        TDOUBLE =   307 ,
-        TFLOAT =    306 ,
-        TLONG =     305 ,
-        OR =    304 ,
-        VBARVBAR =  303 ,
-        AND =   302 ,
-        ETCOETCO =  301 ,
-        COMPOUND_EXT =  300 ,
-        EXTERNAL =  299 ,
-        INLINE_NAMESPACE =  298 ,
-        INITIALIZER =   297 ,
-        LOR =   296 ,
-        VBAR =  295 ,
-        DELETE_FUNCTION =   294 ,
-        FUNC =  293 ,
-        ALL_OF =    292 ,
-        EXTENSION =     291 ,
-        __EXTENSION__ =     290 ,
-        STAT_VOID =     289 ,
-        TYPEDEF =   288 ,
-        TEMPLATE_DECL =     287 ,
-        SUPE =  286 ,
-        CLASS_PARAM =   285 ,
-        TEMPLATE =  284 ,
-        EXP_SEQ =   283 ,
-        LXOR =  282 ,
-        CHAP =  281 ,
-        EXCEPTION_LIST =    280 ,
-        EXCEPTION_ANSI =    279 ,
-        EXCEPTION =     278 ,
-        NEQU =  277 ,
-        EQU =   276 ,
-        EXCLEGAL =  275 ,
-        EGALEGAL =  274 ,
-        ENUM_CLASS =    273 ,
-        PRAGMA =    272 ,
-        PARAMETERS =    271 ,
-        FUNC_HEADER =   270 ,
-        INDENT_FUNCTION_TYPE =  269 ,
-        COMMENT_PLUS =  268 ,
-        COMMENT_END =   267 ,
-        COMMENT_MIDDLE =    266 ,
-        COMMENT_START =     265 ,
-        MARGIN_VALUE =  264 ,
-        BRACE_ALIGN_VALUE =     263 ,
-        DECL_ALIGN =    262 ,
-        ASSIGN_ALIGN =  261 ,
-        SINGLE_SWITCH_INDENT_VALUE =    260 ,
-        SIMPLIFY_VALUE =    259 ,
-        SIMPLIFY =  258 ,
-        MODE_VALUE =    257 ,
-        TAB_VALUE =     256 ,
-        CONFIG =    255 ,
-        NOT_MANAGED =   254 ,
-        NO_PRETTY =     253 ,
-        ALINE =     252 ,
-        ERROR =     251 ,
-        UNDEF =     250 ,
-        TYP_AFF_BRA =   249 ,
-        TYP_AFF_CALL =  248 ,
-        MEMBER_DECLARATOR =     247 ,
-        TYP_ARRAY =     246 ,
-        COUV =  245 ,
-        FOR_DECLARATION =   244 ,
-        DECLARATION =   243 ,
-        CTOR_INITIALIZER =  242 ,
-        BRACE_MARKER =  241 ,
-        CTOR_INIT =     240 ,
-        LONGLONG =  239 ,
-        IUNLONGLONG =   238 ,
-        IUNLONG =   237 ,
-        IUN =   236 ,
-        ILONGLONG =     235 ,
-        ILONG =     234 ,
-        RANGE_MODIFIER =    233 ,
-        COND_AFF =  232 ,
-        INTE =  231 ,
-        COMPOUND =  230 ,
-        CLASS_DECL =    229 ,
-        AFER =  228 ,
-        CATCH_ANSI =    227 ,
-        EXCEPT_ANSI_ALL =   226 ,
-        CAST =  225 ,
-        TYP_BIT =   224 ,
-        PROTECT =   223 ,
-        BASE_LIST =     222 ,
-        ATTRIBUTE_CALL =    221 ,
-        XOR_AFF =   220 ,
-        OR_AFF =    219 ,
-        AND_AFF =   218 ,
-        RSH_AFF =   217 ,
-        LSH_AFF =   216 ,
-        MIN_AFF =   215 ,
-        PLU_AFF =   214 ,
-        REM_AFF =   213 ,
-        DIV_AFF =   212 ,
-        MUL_AFF =   211 ,
-        AFF =   210 ,
-        ASM_CALL =  209 ,
-        EXP_ARRAY =     208 ,
-        VAR_LIST =  207 ,
-        TYP_LIST =  206 ,
-        TYP_AFF =   205 ,
-        ABST_DECLARATOR =   204 ,
-        DECLARATOR =    203 ,
-        LAND =  202 ,
-        INIT_NEW =  201 ,
-        VIRG =  200 ,
-        QUALIFIED =     199 ,
-        MINUS =     198 ,
-        TYP =   197 ,
-        PFER =  196 ,
-        DESTRUCT =  195 ,
-        TYP_REF =   194 ,
-        TYP_ADDR =  193 ,
-        INFE =  192 ,
-        _TYPEDEF_PROTECTEDARRAY_S =     191 ,
-        _TYPEDEF_PROTECTEDARRAY =   190 ,
-        _PROTECTEDPOINTER_S =   189 ,
-        _PROTECTEDPOINTER =     188 ,
-        _PROTECTEDARRAY_S =     187 ,
-        _PROTECTEDARRAY =   186 ,
-        USING =     185 ,
-        NAMESPACE =     184 ,
-        CATCH =     183 ,
-        DPOI =  182 ,
-        PUBLIC =    181 ,
-        PROTECTED =     180 ,
-        PRIVATE =   179 ,
-        CHAPEGAL =  178 ,
-        VBAREGAL =  177 ,
-        ETCOEGAL =  176 ,
-        SUPESUPEEGAL =  175 ,
-        INFEINFEEGAL =  174 ,
-        TIREEGAL =  173 ,
-        PLUSEGAL =  172 ,
-        POURCEGAL =     171 ,
-        ETOIEGAL =  170 ,
-        EGAL =  169 ,
-        ASM =   168 ,
-        CFER =  167 ,
-        POINPOINPOIN =  166 ,
-        VA_ARG =    165 ,
-        DELETE =    164 ,
-        NEW =   163 ,
-        SIZEOF =    162 ,
-        TIRETIRE =  161 ,
-        PLUSPLUS =  160 ,
-        EXCL =  159 ,
-        PLUS =  158 ,
-        TIRE =  157 ,
-        DEFAULT =   156 ,
-        CASE =  155 ,
-        TRY =   154 ,
-        THROW =     153 ,
-        FORALLSONS =    152 ,
-        WHILE =     151 ,
-        SWITCH =    150 ,
-        RETURN =    149 ,
-        PVIR =  148 ,
-        IF =    147 ,
-        FOR =   146 ,
-        AOUV =  145 ,
-        DO =    144 ,
-        CONTINUE =  143 ,
-        BREAK =     142 ,
-        OPERATOR =  141 ,
-        TILD =  140 ,
-        ETCO =  139 ,
+        TUNSIGNED =     376 ,
+        BDECR =     375 ,
+        BINCR =     374 ,
+        ADDR =  373 ,
+        NOT =   372 ,
+        LNEG =  371 ,
+        POS =   370 ,
+        NEG =   369 ,
+        PARAM_TYPE =    368 ,
+        STRING_LIST =   367 ,
+        LABEL =     366 ,
+        THROW_ANSI =    365 ,
+        ELSE =  364 ,
+        DECL_TYPE =     363 ,
+        CLASSNAME =     362 ,
+        TIDENT =    361 ,
+        TSIGNED =   360 ,
+        TSHORT =    359 ,
+        TCHAR =     358 ,
+        TINT =  357 ,
+        RSHI =  356 ,
+        LSHI =  355 ,
+        LT =    354 ,
+        GT =    353 ,
+        GEQU =  352 ,
+        LEQU =  351 ,
+        SPACE_ARROW =   350 ,
+        TAB_DIRECTIVE =     349 ,
+        ENUM_PARAMETERS_UNDER =     348 ,
+        ENUM_VERT_VALUE =   347 ,
+        PROTECTED_ARRAY_S_TYPEDEF =     346 ,
+        PROTECTED_ARRAY_TYPEDEF =   345 ,
+        PROTECTED_ARRAY_S =     344 ,
+        PROTECTED_ARRAY =   343 ,
+        PROTECT_MEMB =  342 ,
+        LANGUAGE =  341 ,
+        ELIPSIS_EXPRESSION =    340 ,
+        EXP =   339 ,
+        ADECR =     338 ,
+        AINCR =     337 ,
+        ARROW =     336 ,
+        REF =   335 ,
+        VARIADIC_EXPRESSION =   334 ,
+        EXP_BRA =   333 ,
+        EXP_LIST =  332 ,
+        ARROW_MEMB =    331 ,
+        DOT_MEMB =  330 ,
+        POINETOI =  329 ,
+        TIRESUPEETOI =  328 ,
+        SUPESUPE =  327 ,
+        INFEINFE =  326 ,
+        SUPEEGAL =  325 ,
+        INFEEGAL =  324 ,
+        NONE =  323 ,
+        NEW_DECLARATOR =    322 ,
+        USING_NAMESPACE =   321 ,
+        NAMESPACE_ALIAS =   320 ,
+        REM =   319 ,
+        DIV =   318 ,
+        MUL =   317 ,
+        POURC =     316 ,
+        MESSAGE_MAP =   315 ,
+        MACRO =     314 ,
+        TDOUBLE =   313 ,
+        TFLOAT =    312 ,
+        TLONG =     311 ,
+        OR =    310 ,
+        VBARVBAR =  309 ,
+        AND =   308 ,
+        COMPOUND_EXT =  307 ,
+        EXTERNAL =  306 ,
+        MUTABLE =   305 ,
+        TIRESUPE =  304 ,
+        CAPTURE_ALL =   303 ,
+        LAMBDA =    302 ,
+        INLINE_NAMESPACE =  301 ,
+        INITIALIZER =   300 ,
+        LOR =   299 ,
+        VBAR =  298 ,
+        DELETE_FUNCTION =   297 ,
+        FUNC =  296 ,
+        ALL_OF =    295 ,
+        EXTENSION =     294 ,
+        __EXTENSION__ =     293 ,
+        STAT_VOID =     292 ,
+        TYPEDEF =   291 ,
+        TEMPLATE_DECL =     290 ,
+        SUPE =  289 ,
+        CLASS_PARAM =   288 ,
+        TEMPLATE =  287 ,
+        EXP_SEQ =   286 ,
+        LXOR =  285 ,
+        CHAP =  284 ,
+        EXCEPTION_LIST =    283 ,
+        EXCEPTION_ANSI =    282 ,
+        EXCEPTION =     281 ,
+        NEQU =  280 ,
+        EQU =   279 ,
+        EXCLEGAL =  278 ,
+        EGALEGAL =  277 ,
+        ENUM_CLASS =    276 ,
+        PRAGMA =    275 ,
+        PARAMETERS =    274 ,
+        FUNC_HEADER =   273 ,
+        INDENT_FUNCTION_TYPE =  272 ,
+        COMMENT_PLUS =  271 ,
+        COMMENT_END =   270 ,
+        COMMENT_MIDDLE =    269 ,
+        COMMENT_START =     268 ,
+        MARGIN_VALUE =  267 ,
+        BRACE_ALIGN_VALUE =     266 ,
+        DECL_ALIGN =    265 ,
+        ASSIGN_ALIGN =  264 ,
+        SINGLE_SWITCH_INDENT_VALUE =    263 ,
+        SIMPLIFY_VALUE =    262 ,
+        SIMPLIFY =  261 ,
+        MODE_VALUE =    260 ,
+        TAB_VALUE =     259 ,
+        CONFIG =    258 ,
+        NOT_MANAGED =   257 ,
+        NO_PRETTY =     256 ,
+        ALINE =     255 ,
+        ERROR =     254 ,
+        UNDEF =     253 ,
+        TYP_AFF_BRA =   252 ,
+        TYP_AFF_CALL =  251 ,
+        MEMBER_DECLARATOR =     250 ,
+        TYP_ARRAY =     249 ,
+        FOR_DECLARATION =   248 ,
+        DECLARATION =   247 ,
+        CTOR_INITIALIZER =  246 ,
+        BRACE_MARKER =  245 ,
+        CTOR_INIT =     244 ,
+        LONGLONG =  243 ,
+        IUNLONGLONG =   242 ,
+        IUNLONG =   241 ,
+        IUN =   240 ,
+        ILONGLONG =     239 ,
+        ILONG =     238 ,
+        RANGE_MODIFIER =    237 ,
+        COND_AFF =  236 ,
+        INTE =  235 ,
+        COMPOUND =  234 ,
+        CLASS_DECL =    233 ,
+        AFER =  232 ,
+        CATCH_ANSI =    231 ,
+        EXCEPT_ANSI_ALL =   230 ,
+        CAST =  229 ,
+        TYP_BIT =   228 ,
+        PROTECT =   227 ,
+        BASE_LIST =     226 ,
+        ATTRIBUTE_CALL =    225 ,
+        XOR_AFF =   224 ,
+        OR_AFF =    223 ,
+        AND_AFF =   222 ,
+        RSH_AFF =   221 ,
+        LSH_AFF =   220 ,
+        MIN_AFF =   219 ,
+        PLU_AFF =   218 ,
+        REM_AFF =   217 ,
+        DIV_AFF =   216 ,
+        MUL_AFF =   215 ,
+        AFF =   214 ,
+        ASM_CALL =  213 ,
+        EXP_ARRAY =     212 ,
+        VAR_LIST =  211 ,
+        TYP_LIST =  210 ,
+        TYP_AFF =   209 ,
+        ABST_DECLARATOR =   208 ,
+        DECLARATOR =    207 ,
+        LAND =  206 ,
+        INIT_NEW =  205 ,
+        VIRG =  204 ,
+        QUALIFIED =     203 ,
+        MINUS =     202 ,
+        TYP =   201 ,
+        PFER =  200 ,
+        DESTRUCT =  199 ,
+        TYP_REF =   198 ,
+        TYP_VARIADIC =  197 ,
+        TYP_MOV =   196 ,
+        TYP_ADDR =  195 ,
+        INFE =  194 ,
+        _TYPEDEF_PROTECTEDARRAY_S =     193 ,
+        _TYPEDEF_PROTECTEDARRAY =   192 ,
+        _PROTECTEDPOINTER_S =   191 ,
+        _PROTECTEDPOINTER =     190 ,
+        _PROTECTEDARRAY_S =     189 ,
+        _PROTECTEDARRAY =   188 ,
+        USING =     187 ,
+        NAMESPACE =     186 ,
+        CATCH =     185 ,
+        DPOI =  184 ,
+        PUBLIC =    183 ,
+        PROTECTED =     182 ,
+        PRIVATE =   181 ,
+        CHAPEGAL =  180 ,
+        VBAREGAL =  179 ,
+        ETCOEGAL =  178 ,
+        SUPESUPEEGAL =  177 ,
+        INFEINFEEGAL =  176 ,
+        TIREEGAL =  175 ,
+        PLUSEGAL =  174 ,
+        POURCEGAL =     173 ,
+        ETOIEGAL =  172 ,
+        EGAL =  171 ,
+        ASM =   170 ,
+        CFER =  169 ,
+        COUV =  168 ,
+        VA_ARG =    167 ,
+        DELETE =    166 ,
+        NEW =   165 ,
+        SIZEOF =    164 ,
+        TIRETIRE =  163 ,
+        PLUSPLUS =  162 ,
+        EXCL =  161 ,
+        PLUS =  160 ,
+        TIRE =  159 ,
+        DEFAULT =   158 ,
+        CASE =  157 ,
+        TRY =   156 ,
+        THROW =     155 ,
+        FORALLSONS =    154 ,
+        WHILE =     153 ,
+        SWITCH =    152 ,
+        RETURN =    151 ,
+        PVIR =  150 ,
+        IF =    149 ,
+        FOR =   148 ,
+        AOUV =  147 ,
+        DO =    146 ,
+        CONTINUE =  145 ,
+        BREAK =     144 ,
+        OPERATOR =  143 ,
+        TILD =  142 ,
+        ETCO =  141 ,
+        POINPOINPOIN =  140 ,
+        ETCOETCO =  139 ,
         ETOI =  138 ,
         POUV =  137 ,
         UNSIGNED =  136 ,
@@ -605,237 +613,244 @@ class cplus: public pretty,public virtual Parser {
 extern cplus * parser_cplus;
 
 #endif
-#define TUNSIGNED_cplus     369
-#define BDECR_cplus     368
-#define BINCR_cplus     367
-#define ADDR_cplus  366
-#define NOT_cplus   365
-#define LNEG_cplus  364
-#define POS_cplus   363
-#define NEG_cplus   362
-#define PARAM_TYPE_cplus    361
-#define STRING_LIST_cplus   360
-#define LABEL_cplus     359
-#define THROW_ANSI_cplus    358
-#define ELSE_cplus  357
-#define DECL_TYPE_cplus     356
-#define CLASSNAME_cplus     355
-#define TIDENT_cplus    354
-#define TSIGNED_cplus   353
-#define TSHORT_cplus    352
-#define TCHAR_cplus     351
-#define TINT_cplus  350
-#define RSHI_cplus  349
-#define LSHI_cplus  348
-#define LT_cplus    347
-#define GT_cplus    346
-#define GEQU_cplus  345
-#define LEQU_cplus  344
-#define SPACE_ARROW_cplus   343
-#define TAB_DIRECTIVE_cplus     342
-#define ENUM_PARAMETERS_UNDER_cplus     341
-#define ENUM_VERT_VALUE_cplus   340
-#define PROTECTED_ARRAY_S_TYPEDEF_cplus     339
-#define PROTECTED_ARRAY_TYPEDEF_cplus   338
-#define PROTECTED_ARRAY_S_cplus     337
-#define PROTECTED_ARRAY_cplus   336
-#define PROTECT_MEMB_cplus  335
-#define LANGUAGE_cplus  334
-#define EXP_cplus   333
-#define ADECR_cplus     332
-#define AINCR_cplus     331
-#define ARROW_cplus     330
-#define REF_cplus   329
-#define EXP_BRA_cplus   328
-#define EXP_LIST_cplus  327
-#define ARROW_MEMB_cplus    326
-#define DOT_MEMB_cplus  325
-#define POINETOI_cplus  324
-#define TIRESUPEETOI_cplus  323
-#define TIRESUPE_cplus  322
-#define SUPESUPE_cplus  321
-#define INFEINFE_cplus  320
-#define SUPEEGAL_cplus  319
-#define INFEEGAL_cplus  318
-#define NONE_cplus  317
-#define NEW_DECLARATOR_cplus    316
-#define USING_NAMESPACE_cplus   315
-#define NAMESPACE_ALIAS_cplus   314
-#define REM_cplus   313
-#define DIV_cplus   312
-#define MUL_cplus   311
-#define POURC_cplus     310
-#define MESSAGE_MAP_cplus   309
-#define MACRO_cplus     308
-#define TDOUBLE_cplus   307
-#define TFLOAT_cplus    306
-#define TLONG_cplus     305
-#define OR_cplus    304
-#define VBARVBAR_cplus  303
-#define AND_cplus   302
-#define ETCOETCO_cplus  301
-#define COMPOUND_EXT_cplus  300
-#define EXTERNAL_cplus  299
-#define INLINE_NAMESPACE_cplus  298
-#define INITIALIZER_cplus   297
-#define LOR_cplus   296
-#define VBAR_cplus  295
-#define DELETE_FUNCTION_cplus   294
-#define FUNC_cplus  293
-#define ALL_OF_cplus    292
-#define EXTENSION_cplus     291
-#define __EXTENSION___cplus     290
-#define STAT_VOID_cplus     289
-#define TYPEDEF_cplus   288
-#define TEMPLATE_DECL_cplus     287
-#define SUPE_cplus  286
-#define CLASS_PARAM_cplus   285
-#define TEMPLATE_cplus  284
-#define EXP_SEQ_cplus   283
-#define LXOR_cplus  282
-#define CHAP_cplus  281
-#define EXCEPTION_LIST_cplus    280
-#define EXCEPTION_ANSI_cplus    279
-#define EXCEPTION_cplus     278
-#define NEQU_cplus  277
-#define EQU_cplus   276
-#define EXCLEGAL_cplus  275
-#define EGALEGAL_cplus  274
-#define ENUM_CLASS_cplus    273
-#define PRAGMA_cplus    272
-#define PARAMETERS_cplus    271
-#define FUNC_HEADER_cplus   270
-#define INDENT_FUNCTION_TYPE_cplus  269
-#define COMMENT_PLUS_cplus  268
-#define COMMENT_END_cplus   267
-#define COMMENT_MIDDLE_cplus    266
-#define COMMENT_START_cplus     265
-#define MARGIN_VALUE_cplus  264
-#define BRACE_ALIGN_VALUE_cplus     263
-#define DECL_ALIGN_cplus    262
-#define ASSIGN_ALIGN_cplus  261
-#define SINGLE_SWITCH_INDENT_VALUE_cplus    260
-#define SIMPLIFY_VALUE_cplus    259
-#define SIMPLIFY_cplus  258
-#define MODE_VALUE_cplus    257
-#define TAB_VALUE_cplus     256
-#define CONFIG_cplus    255
-#define NOT_MANAGED_cplus   254
-#define NO_PRETTY_cplus     253
-#define ALINE_cplus     252
-#define ERROR_cplus     251
-#define UNDEF_cplus     250
-#define TYP_AFF_BRA_cplus   249
-#define TYP_AFF_CALL_cplus  248
-#define MEMBER_DECLARATOR_cplus     247
-#define TYP_ARRAY_cplus     246
-#define COUV_cplus  245
-#define FOR_DECLARATION_cplus   244
-#define DECLARATION_cplus   243
-#define CTOR_INITIALIZER_cplus  242
-#define BRACE_MARKER_cplus  241
-#define CTOR_INIT_cplus     240
-#define LONGLONG_cplus  239
-#define IUNLONGLONG_cplus   238
-#define IUNLONG_cplus   237
-#define IUN_cplus   236
-#define ILONGLONG_cplus     235
-#define ILONG_cplus     234
-#define RANGE_MODIFIER_cplus    233
-#define COND_AFF_cplus  232
-#define INTE_cplus  231
-#define COMPOUND_cplus  230
-#define CLASS_DECL_cplus    229
-#define AFER_cplus  228
-#define CATCH_ANSI_cplus    227
-#define EXCEPT_ANSI_ALL_cplus   226
-#define CAST_cplus  225
-#define TYP_BIT_cplus   224
-#define PROTECT_cplus   223
-#define BASE_LIST_cplus     222
-#define ATTRIBUTE_CALL_cplus    221
-#define XOR_AFF_cplus   220
-#define OR_AFF_cplus    219
-#define AND_AFF_cplus   218
-#define RSH_AFF_cplus   217
-#define LSH_AFF_cplus   216
-#define MIN_AFF_cplus   215
-#define PLU_AFF_cplus   214
-#define REM_AFF_cplus   213
-#define DIV_AFF_cplus   212
-#define MUL_AFF_cplus   211
-#define AFF_cplus   210
-#define ASM_CALL_cplus  209
-#define EXP_ARRAY_cplus     208
-#define VAR_LIST_cplus  207
-#define TYP_LIST_cplus  206
-#define TYP_AFF_cplus   205
-#define ABST_DECLARATOR_cplus   204
-#define DECLARATOR_cplus    203
-#define LAND_cplus  202
-#define INIT_NEW_cplus  201
-#define VIRG_cplus  200
-#define QUALIFIED_cplus     199
-#define MINUS_cplus     198
-#define TYP_cplus   197
-#define PFER_cplus  196
-#define DESTRUCT_cplus  195
-#define TYP_REF_cplus   194
-#define TYP_ADDR_cplus  193
-#define INFE_cplus  192
-#define _TYPEDEF_PROTECTEDARRAY_S_cplus     191
-#define _TYPEDEF_PROTECTEDARRAY_cplus   190
-#define _PROTECTEDPOINTER_S_cplus   189
-#define _PROTECTEDPOINTER_cplus     188
-#define _PROTECTEDARRAY_S_cplus     187
-#define _PROTECTEDARRAY_cplus   186
-#define USING_cplus     185
-#define NAMESPACE_cplus     184
-#define CATCH_cplus     183
-#define DPOI_cplus  182
-#define PUBLIC_cplus    181
-#define PROTECTED_cplus     180
-#define PRIVATE_cplus   179
-#define CHAPEGAL_cplus  178
-#define VBAREGAL_cplus  177
-#define ETCOEGAL_cplus  176
-#define SUPESUPEEGAL_cplus  175
-#define INFEINFEEGAL_cplus  174
-#define TIREEGAL_cplus  173
-#define PLUSEGAL_cplus  172
-#define POURCEGAL_cplus     171
-#define ETOIEGAL_cplus  170
-#define EGAL_cplus  169
-#define ASM_cplus   168
-#define CFER_cplus  167
-#define POINPOINPOIN_cplus  166
-#define VA_ARG_cplus    165
-#define DELETE_cplus    164
-#define NEW_cplus   163
-#define SIZEOF_cplus    162
-#define TIRETIRE_cplus  161
-#define PLUSPLUS_cplus  160
-#define EXCL_cplus  159
-#define PLUS_cplus  158
-#define TIRE_cplus  157
-#define DEFAULT_cplus   156
-#define CASE_cplus  155
-#define TRY_cplus   154
-#define THROW_cplus     153
-#define FORALLSONS_cplus    152
-#define WHILE_cplus     151
-#define SWITCH_cplus    150
-#define RETURN_cplus    149
-#define PVIR_cplus  148
-#define IF_cplus    147
-#define FOR_cplus   146
-#define AOUV_cplus  145
-#define DO_cplus    144
-#define CONTINUE_cplus  143
-#define BREAK_cplus     142
-#define OPERATOR_cplus  141
-#define TILD_cplus  140
-#define ETCO_cplus  139
+#define TUNSIGNED_cplus     376
+#define BDECR_cplus     375
+#define BINCR_cplus     374
+#define ADDR_cplus  373
+#define NOT_cplus   372
+#define LNEG_cplus  371
+#define POS_cplus   370
+#define NEG_cplus   369
+#define PARAM_TYPE_cplus    368
+#define STRING_LIST_cplus   367
+#define LABEL_cplus     366
+#define THROW_ANSI_cplus    365
+#define ELSE_cplus  364
+#define DECL_TYPE_cplus     363
+#define CLASSNAME_cplus     362
+#define TIDENT_cplus    361
+#define TSIGNED_cplus   360
+#define TSHORT_cplus    359
+#define TCHAR_cplus     358
+#define TINT_cplus  357
+#define RSHI_cplus  356
+#define LSHI_cplus  355
+#define LT_cplus    354
+#define GT_cplus    353
+#define GEQU_cplus  352
+#define LEQU_cplus  351
+#define SPACE_ARROW_cplus   350
+#define TAB_DIRECTIVE_cplus     349
+#define ENUM_PARAMETERS_UNDER_cplus     348
+#define ENUM_VERT_VALUE_cplus   347
+#define PROTECTED_ARRAY_S_TYPEDEF_cplus     346
+#define PROTECTED_ARRAY_TYPEDEF_cplus   345
+#define PROTECTED_ARRAY_S_cplus     344
+#define PROTECTED_ARRAY_cplus   343
+#define PROTECT_MEMB_cplus  342
+#define LANGUAGE_cplus  341
+#define ELIPSIS_EXPRESSION_cplus    340
+#define EXP_cplus   339
+#define ADECR_cplus     338
+#define AINCR_cplus     337
+#define ARROW_cplus     336
+#define REF_cplus   335
+#define VARIADIC_EXPRESSION_cplus   334
+#define EXP_BRA_cplus   333
+#define EXP_LIST_cplus  332
+#define ARROW_MEMB_cplus    331
+#define DOT_MEMB_cplus  330
+#define POINETOI_cplus  329
+#define TIRESUPEETOI_cplus  328
+#define SUPESUPE_cplus  327
+#define INFEINFE_cplus  326
+#define SUPEEGAL_cplus  325
+#define INFEEGAL_cplus  324
+#define NONE_cplus  323
+#define NEW_DECLARATOR_cplus    322
+#define USING_NAMESPACE_cplus   321
+#define NAMESPACE_ALIAS_cplus   320
+#define REM_cplus   319
+#define DIV_cplus   318
+#define MUL_cplus   317
+#define POURC_cplus     316
+#define MESSAGE_MAP_cplus   315
+#define MACRO_cplus     314
+#define TDOUBLE_cplus   313
+#define TFLOAT_cplus    312
+#define TLONG_cplus     311
+#define OR_cplus    310
+#define VBARVBAR_cplus  309
+#define AND_cplus   308
+#define COMPOUND_EXT_cplus  307
+#define EXTERNAL_cplus  306
+#define MUTABLE_cplus   305
+#define TIRESUPE_cplus  304
+#define CAPTURE_ALL_cplus   303
+#define LAMBDA_cplus    302
+#define INLINE_NAMESPACE_cplus  301
+#define INITIALIZER_cplus   300
+#define LOR_cplus   299
+#define VBAR_cplus  298
+#define DELETE_FUNCTION_cplus   297
+#define FUNC_cplus  296
+#define ALL_OF_cplus    295
+#define EXTENSION_cplus     294
+#define __EXTENSION___cplus     293
+#define STAT_VOID_cplus     292
+#define TYPEDEF_cplus   291
+#define TEMPLATE_DECL_cplus     290
+#define SUPE_cplus  289
+#define CLASS_PARAM_cplus   288
+#define TEMPLATE_cplus  287
+#define EXP_SEQ_cplus   286
+#define LXOR_cplus  285
+#define CHAP_cplus  284
+#define EXCEPTION_LIST_cplus    283
+#define EXCEPTION_ANSI_cplus    282
+#define EXCEPTION_cplus     281
+#define NEQU_cplus  280
+#define EQU_cplus   279
+#define EXCLEGAL_cplus  278
+#define EGALEGAL_cplus  277
+#define ENUM_CLASS_cplus    276
+#define PRAGMA_cplus    275
+#define PARAMETERS_cplus    274
+#define FUNC_HEADER_cplus   273
+#define INDENT_FUNCTION_TYPE_cplus  272
+#define COMMENT_PLUS_cplus  271
+#define COMMENT_END_cplus   270
+#define COMMENT_MIDDLE_cplus    269
+#define COMMENT_START_cplus     268
+#define MARGIN_VALUE_cplus  267
+#define BRACE_ALIGN_VALUE_cplus     266
+#define DECL_ALIGN_cplus    265
+#define ASSIGN_ALIGN_cplus  264
+#define SINGLE_SWITCH_INDENT_VALUE_cplus    263
+#define SIMPLIFY_VALUE_cplus    262
+#define SIMPLIFY_cplus  261
+#define MODE_VALUE_cplus    260
+#define TAB_VALUE_cplus     259
+#define CONFIG_cplus    258
+#define NOT_MANAGED_cplus   257
+#define NO_PRETTY_cplus     256
+#define ALINE_cplus     255
+#define ERROR_cplus     254
+#define UNDEF_cplus     253
+#define TYP_AFF_BRA_cplus   252
+#define TYP_AFF_CALL_cplus  251
+#define MEMBER_DECLARATOR_cplus     250
+#define TYP_ARRAY_cplus     249
+#define FOR_DECLARATION_cplus   248
+#define DECLARATION_cplus   247
+#define CTOR_INITIALIZER_cplus  246
+#define BRACE_MARKER_cplus  245
+#define CTOR_INIT_cplus     244
+#define LONGLONG_cplus  243
+#define IUNLONGLONG_cplus   242
+#define IUNLONG_cplus   241
+#define IUN_cplus   240
+#define ILONGLONG_cplus     239
+#define ILONG_cplus     238
+#define RANGE_MODIFIER_cplus    237
+#define COND_AFF_cplus  236
+#define INTE_cplus  235
+#define COMPOUND_cplus  234
+#define CLASS_DECL_cplus    233
+#define AFER_cplus  232
+#define CATCH_ANSI_cplus    231
+#define EXCEPT_ANSI_ALL_cplus   230
+#define CAST_cplus  229
+#define TYP_BIT_cplus   228
+#define PROTECT_cplus   227
+#define BASE_LIST_cplus     226
+#define ATTRIBUTE_CALL_cplus    225
+#define XOR_AFF_cplus   224
+#define OR_AFF_cplus    223
+#define AND_AFF_cplus   222
+#define RSH_AFF_cplus   221
+#define LSH_AFF_cplus   220
+#define MIN_AFF_cplus   219
+#define PLU_AFF_cplus   218
+#define REM_AFF_cplus   217
+#define DIV_AFF_cplus   216
+#define MUL_AFF_cplus   215
+#define AFF_cplus   214
+#define ASM_CALL_cplus  213
+#define EXP_ARRAY_cplus     212
+#define VAR_LIST_cplus  211
+#define TYP_LIST_cplus  210
+#define TYP_AFF_cplus   209
+#define ABST_DECLARATOR_cplus   208
+#define DECLARATOR_cplus    207
+#define LAND_cplus  206
+#define INIT_NEW_cplus  205
+#define VIRG_cplus  204
+#define QUALIFIED_cplus     203
+#define MINUS_cplus     202
+#define TYP_cplus   201
+#define PFER_cplus  200
+#define DESTRUCT_cplus  199
+#define TYP_REF_cplus   198
+#define TYP_VARIADIC_cplus  197
+#define TYP_MOV_cplus   196
+#define TYP_ADDR_cplus  195
+#define INFE_cplus  194
+#define _TYPEDEF_PROTECTEDARRAY_S_cplus     193
+#define _TYPEDEF_PROTECTEDARRAY_cplus   192
+#define _PROTECTEDPOINTER_S_cplus   191
+#define _PROTECTEDPOINTER_cplus     190
+#define _PROTECTEDARRAY_S_cplus     189
+#define _PROTECTEDARRAY_cplus   188
+#define USING_cplus     187
+#define NAMESPACE_cplus     186
+#define CATCH_cplus     185
+#define DPOI_cplus  184
+#define PUBLIC_cplus    183
+#define PROTECTED_cplus     182
+#define PRIVATE_cplus   181
+#define CHAPEGAL_cplus  180
+#define VBAREGAL_cplus  179
+#define ETCOEGAL_cplus  178
+#define SUPESUPEEGAL_cplus  177
+#define INFEINFEEGAL_cplus  176
+#define TIREEGAL_cplus  175
+#define PLUSEGAL_cplus  174
+#define POURCEGAL_cplus     173
+#define ETOIEGAL_cplus  172
+#define EGAL_cplus  171
+#define ASM_cplus   170
+#define CFER_cplus  169
+#define COUV_cplus  168
+#define VA_ARG_cplus    167
+#define DELETE_cplus    166
+#define NEW_cplus   165
+#define SIZEOF_cplus    164
+#define TIRETIRE_cplus  163
+#define PLUSPLUS_cplus  162
+#define EXCL_cplus  161
+#define PLUS_cplus  160
+#define TIRE_cplus  159
+#define DEFAULT_cplus   158
+#define CASE_cplus  157
+#define TRY_cplus   156
+#define THROW_cplus     155
+#define FORALLSONS_cplus    154
+#define WHILE_cplus     153
+#define SWITCH_cplus    152
+#define RETURN_cplus    151
+#define PVIR_cplus  150
+#define IF_cplus    149
+#define FOR_cplus   148
+#define AOUV_cplus  147
+#define DO_cplus    146
+#define CONTINUE_cplus  145
+#define BREAK_cplus     144
+#define OPERATOR_cplus  143
+#define TILD_cplus  142
+#define ETCO_cplus  141
+#define POINPOINPOIN_cplus  140
+#define ETCOETCO_cplus  139
 #define ETOI_cplus  138
 #define POUV_cplus  137
 #define UNSIGNED_cplus  136

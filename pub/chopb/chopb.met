@@ -284,8 +284,7 @@ define assignment_expression;
     declare expTree,expFollow[2];
     expTree = take conditional_expression;
     case
-        take "**=" : return maketree(EXPO_AFF,expTree
-            ,take assignment_expression)
+        take "**=" : return maketree(EXPO_AFF,expTree,take assignment_expression)
         default :
             if expFollow = take assignment_end then
                 begin
@@ -299,16 +298,10 @@ end;
 define relational_expression;
     declare expTree;
     expTree = take shift_expression;
-    while see "<="
-            or see ">="
-            or (see ">" and not in context inMakeTree)
-            or (see "<"
-                    and not (see !SPACE_BEG or see !TAB_BEG or see !NL_BEG)) do
+    while see "<=" or see ">=" or (see ">" and not in context inMakeTree) or (see "<" and not (see !SPACE_BEG or see !TAB_BEG or see !NL_BEG)) do
         case
-            take "<=" : expTree
-                = maketree(LEQU,expTree,take shift_expression)
-            take ">=" : expTree
-                = maketree(GEQU,expTree,take shift_expression)
+            take "<=" : expTree = maketree(LEQU,expTree,take shift_expression)
+            take ">=" : expTree = maketree(GEQU,expTree,take shift_expression)
             take ">" : expTree = maketree(GT,expTree,take shift_expression)
             take "<" : expTree = maketree(LT,expTree,take shift_expression)
         end;
@@ -320,10 +313,8 @@ define shift_expression;
     expTree = take additive_expression;
     while see "<<" or (not in context inMakeTree and see ">>") do
         case
-            take "<<" : expTree
-                = maketree(LSHI,expTree,take additive_expression)
-            take ">>" : expTree
-                = maketree(RSHI,expTree,take additive_expression)
+            take "<<" : expTree = maketree(LSHI,expTree,take additive_expression)
+            take ">>" : expTree = maketree(RSHI,expTree,take additive_expression)
         end;
     return expTree;
 end;
@@ -336,12 +327,7 @@ define postfix_expression;
         if not see "(" then
             break;
         end;
-    while see "("
-            or see "["
-            or see !POINT
-            or see "->"
-            or see "++"
-            or see "--" do
+    while see "(" or see "[" or see !POINT or see "->" or see "++" or see "--" or see "..." do
         case
             take "(" : without context inMakeTree do
                 begin
@@ -359,12 +345,11 @@ define postfix_expression;
                     expTree = maketree(EXP_ARRAY,expTree,());
                 take "]";
                 end
-            take !POINT : expTree
-                = maketree(REF,expTree,take primary_expression)
-            take "->" : expTree
-                = maketree(ARROW,expTree,take primary_expression)
+            take !POINT : expTree = maketree(REF,expTree,take primary_expression)
+            take "->" : expTree = maketree(ARROW,expTree,take primary_expression)
             take "++" : expTree = maketree(AINCR,expTree)
             take "--" : expTree = maketree(ADECR,expTree)
+            take "..." : expTree = maketree(VARIADIC_EXPRESSION,expTree)
         end;
     return expTree;
 end;
@@ -374,10 +359,8 @@ define multiplicative_expression;
     expTree = take pm_expression;
     while see !SIMP_ETOI or see !ETOI_ETOI or see !SLAS or see "%" do
         case
-            take !ETOI_ETOI : expTree
-                = maketree(EXPO,expTree,take pm_expression)
-            take !SIMP_ETOI : expTree
-                = maketree(MUL,expTree,take pm_expression)
+            take !ETOI_ETOI : expTree = maketree(EXPO,expTree,take pm_expression)
+            take !SIMP_ETOI : expTree = maketree(MUL,expTree,take pm_expression)
             take !SLAS : expTree = maketree(DIV,expTree,take pm_expression)
             take "%" : expTree = maketree(REM,expTree,take pm_expression)
         end;
@@ -414,8 +397,7 @@ define primary_expression;
             begin
             take "(";
             case
-                see !IDENT : statTree
-                    = maketree(VALUE,maketree(IDENT,take !IDENT))
+                see !IDENT : statTree = maketree(VALUE,maketree(IDENT,take !IDENT))
                 take "<>" : statTree = maketree(VALUE,maketree(DEF_IDENT))
             end;
             take ")";
@@ -526,9 +508,7 @@ define statement;
                         take ">" : statTree = maketree(SPACE,())
                         take "," :
                             begin
-                            statTree
-                                = maketree(SPACE
-                                    ,maketree(INTEGER,take !INTEGER));
+                            statTree = maketree(SPACE,maketree(INTEGER,take !INTEGER));
                             take ">";
                             end
                     end
@@ -537,9 +517,7 @@ define statement;
                         take ">" : statTree = maketree(TAB,())
                         take "," :
                             begin
-                            statTree
-                                = maketree(TAB
-                                    ,maketree(INTEGER,take !INTEGER));
+                            statTree = maketree(TAB,maketree(INTEGER,take !INTEGER));
                             take ">";
                             end
                     end
@@ -548,9 +526,7 @@ define statement;
                         take ">" : statTree = maketree(NEWLINE,())
                         take "," :
                             begin
-                            statTree
-                                = maketree(NEWLINE
-                                    ,maketree(INTEGER,take !INTEGER));
+                            statTree = maketree(NEWLINE,maketree(INTEGER,take !INTEGER));
                             take ">";
                             end
                     end
@@ -667,4 +643,3 @@ end;
 define old;
     return maketree(BOX,());
 end.
-

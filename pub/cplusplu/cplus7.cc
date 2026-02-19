@@ -10,74 +10,32 @@
 #include "cplus.h"
 
 
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
 PPTREE cplus::ptr_operator ( int error_free)
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
 {
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
     int _value,_nbPre = 0 ;
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
     int _Debug = TRACE_RULE("ptr_operator",TRACE_ENTER,(PPTREE)0);
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 2292 "cplus.met"
-#line 2292 "cplus.met"
+#line 2299 "cplus.met"
+#line 2299 "cplus.met"
     PPTREE retTree = (PPTREE) 0,valTree = (PPTREE) 0,retour = (PPTREE) 0;
-#line 2292 "cplus.met"
-#line 2294 "cplus.met"
+#line 2299 "cplus.met"
+#line 2301 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2294 "cplus.met"
+#line 2301 "cplus.met"
     switch( lexEl.Value) {
-#line 2294 "cplus.met"
-#line 2297 "cplus.met"
-        case ETOI : 
-#line 2297 "cplus.met"
-            tokenAhead = 0 ;
-#line 2297 "cplus.met"
-            CommTerm();
-#line 2297 "cplus.met"
-#line 2296 "cplus.met"
-#line 2297 "cplus.met"
-            {
-#line 2297 "cplus.met"
-                PPTREE _ptRes0=0;
-#line 2297 "cplus.met"
-                _ptRes0= MakeTree(TYP_ADDR, 1);
-#line 2297 "cplus.met"
-                retTree=_ptRes0;
-#line 2297 "cplus.met"
-            }
-#line 2297 "cplus.met"
-#line 2298 "cplus.met"
-            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 35, cplus)){
-#line 2298 "cplus.met"
-#line 2299 "cplus.met"
-                ReplaceTree(retTree ,1 ,valTree );
-#line 2299 "cplus.met"
-#line 2299 "cplus.met"
-            }
-#line 2299 "cplus.met"
-#line 2300 "cplus.met"
-            {
-#line 2300 "cplus.met"
-                _retValue = retTree ;
-#line 2300 "cplus.met"
-                goto ptr_operator_ret;
-#line 2300 "cplus.met"
-                
-#line 2300 "cplus.met"
-            }
-#line 2300 "cplus.met"
-#line 2300 "cplus.met"
-            break;
-#line 2300 "cplus.met"
+#line 2301 "cplus.met"
 #line 2304 "cplus.met"
-        case ETCO : 
+        case ETOI : 
 #line 2304 "cplus.met"
             tokenAhead = 0 ;
 #line 2304 "cplus.met"
@@ -89,7 +47,7 @@ PPTREE cplus::ptr_operator ( int error_free)
 #line 2304 "cplus.met"
                 PPTREE _ptRes0=0;
 #line 2304 "cplus.met"
-                _ptRes0= MakeTree(TYP_REF, 1);
+                _ptRes0= MakeTree(TYP_ADDR, 1);
 #line 2304 "cplus.met"
                 retTree=_ptRes0;
 #line 2304 "cplus.met"
@@ -119,106 +77,148 @@ PPTREE cplus::ptr_operator ( int error_free)
             break;
 #line 2307 "cplus.met"
 #line 2311 "cplus.met"
-        case DPOIDPOI : 
+        case ETCO : 
+#line 2311 "cplus.met"
+            tokenAhead = 0 ;
+#line 2311 "cplus.met"
+            CommTerm();
 #line 2311 "cplus.met"
 #line 2310 "cplus.met"
 #line 2311 "cplus.met"
-            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 100, cplus))== (PPTREE) -1 ) {
+            {
 #line 2311 "cplus.met"
-                MulFreeTree(3,retTree,retour,valTree);
-                PROG_EXIT(ptr_operator_exit,"ptr_operator")
+                PPTREE _ptRes0=0;
+#line 2311 "cplus.met"
+                _ptRes0= MakeTree(TYP_REF, 1);
+#line 2311 "cplus.met"
+                retTree=_ptRes0;
 #line 2311 "cplus.met"
             }
 #line 2311 "cplus.met"
-#line 2311 "cplus.met"
-            break;
-#line 2311 "cplus.met"
+#line 2312 "cplus.met"
+            if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 35, cplus)){
+#line 2312 "cplus.met"
 #line 2313 "cplus.met"
-        case META : 
+                ReplaceTree(retTree ,1 ,valTree );
 #line 2313 "cplus.met"
-        case IDENT : 
+#line 2313 "cplus.met"
+            }
 #line 2313 "cplus.met"
 #line 2314 "cplus.met"
-#line 2315 "cplus.met"
-            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 100, cplus))== (PPTREE) -1 ) {
-#line 2315 "cplus.met"
+            {
+#line 2314 "cplus.met"
+                _retValue = retTree ;
+#line 2314 "cplus.met"
+                goto ptr_operator_ret;
+#line 2314 "cplus.met"
+                
+#line 2314 "cplus.met"
+            }
+#line 2314 "cplus.met"
+#line 2314 "cplus.met"
+            break;
+#line 2314 "cplus.met"
+#line 2318 "cplus.met"
+        case DPOIDPOI : 
+#line 2318 "cplus.met"
+#line 2317 "cplus.met"
+#line 2318 "cplus.met"
+            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 101, cplus))== (PPTREE) -1 ) {
+#line 2318 "cplus.met"
                 MulFreeTree(3,retTree,retour,valTree);
                 PROG_EXIT(ptr_operator_exit,"ptr_operator")
-#line 2315 "cplus.met"
+#line 2318 "cplus.met"
             }
-#line 2315 "cplus.met"
-#line 2315 "cplus.met"
+#line 2318 "cplus.met"
+#line 2318 "cplus.met"
             break;
-#line 2315 "cplus.met"
+#line 2318 "cplus.met"
+#line 2320 "cplus.met"
+        case META : 
+#line 2320 "cplus.met"
+        case IDENT : 
+#line 2320 "cplus.met"
+#line 2321 "cplus.met"
+#line 2322 "cplus.met"
+            if ( (retour=NQUICK_CALL(_Tak(member_declarator)(error_free), 101, cplus))== (PPTREE) -1 ) {
+#line 2322 "cplus.met"
+                MulFreeTree(3,retTree,retour,valTree);
+                PROG_EXIT(ptr_operator_exit,"ptr_operator")
+#line 2322 "cplus.met"
+            }
+#line 2322 "cplus.met"
+#line 2322 "cplus.met"
+            break;
+#line 2322 "cplus.met"
         default :
-#line 2315 "cplus.met"
+#line 2322 "cplus.met"
             MulFreeTree(3,retTree,retour,valTree);
             CASE_EXIT(ptr_operator_exit,"either * or & or :: or IDENT")
-#line 2315 "cplus.met"
+#line 2322 "cplus.met"
             break;
-#line 2315 "cplus.met"
+#line 2322 "cplus.met"
     }
-#line 2315 "cplus.met"
-#line 2318 "cplus.met"
+#line 2322 "cplus.met"
+#line 2325 "cplus.met"
     if (NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(const_or_volatile), 35, cplus)){
-#line 2318 "cplus.met"
-#line 2319 "cplus.met"
+#line 2325 "cplus.met"
+#line 2326 "cplus.met"
         ReplaceTree(retour ,2 ,valTree );
-#line 2319 "cplus.met"
-#line 2319 "cplus.met"
+#line 2326 "cplus.met"
+#line 2326 "cplus.met"
     }
-#line 2319 "cplus.met"
-#line 2320 "cplus.met"
+#line 2326 "cplus.met"
+#line 2327 "cplus.met"
     {
-#line 2320 "cplus.met"
+#line 2327 "cplus.met"
         _retValue = retour ;
-#line 2320 "cplus.met"
+#line 2327 "cplus.met"
         goto ptr_operator_ret;
-#line 2320 "cplus.met"
+#line 2327 "cplus.met"
         
-#line 2320 "cplus.met"
+#line 2327 "cplus.met"
     }
-#line 2320 "cplus.met"
-#line 2320 "cplus.met"
-#line 2320 "cplus.met"
+#line 2327 "cplus.met"
+#line 2327 "cplus.met"
+#line 2327 "cplus.met"
 
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 return((PPTREE) 0);
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 ptr_operator_exit :
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     _Debug = TRACE_RULE("ptr_operator",TRACE_EXIT,(PPTREE)0);
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     _funcLevel--;
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     return((PPTREE) -1) ;
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 ptr_operator_ret :
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     _Debug = TRACE_RULE("ptr_operator",TRACE_RETURN,_retValue);
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
     return _retValue ;
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 }
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 
-#line 2321 "cplus.met"
+#line 2328 "cplus.met"
 #line 1902 "cplus.met"
 PPTREE cplus::qualified_name ( int error_free)
 #line 1902 "cplus.met"
@@ -282,7 +282,7 @@ PPTREE cplus::qualified_name ( int error_free)
     } else {
 #line 1905 "cplus.met"
 #line 1907 "cplus.met"
-        if ( (retTree=NQUICK_CALL(_Tak(simple_ident)(error_free), 136, cplus))== (PPTREE) -1 ) {
+        if ( (retTree=NQUICK_CALL(_Tak(simple_ident)(error_free), 137, cplus))== (PPTREE) -1 ) {
 #line 1907 "cplus.met"
             MulFreeTree(4,inter,retTree,templateVal,val);
             PROG_EXIT(qualified_name_exit,"qualified_name")
@@ -314,7 +314,7 @@ PPTREE cplus::qualified_name ( int error_free)
 #line 1912 "cplus.met"
         while (((tokenAhead == 1|| (Lex(),TRACE_LEX(1)))&&SEE_TOKEN( DPOIDPOI,"::")) && 
 #line 1912 "cplus.met"
-              (NPUSH_CALL_AFF_VERIF(val = ,_Tak(qualified_name_elem), 123, cplus))) { 
+              (NPUSH_CALL_AFF_VERIF(val = ,_Tak(qualified_name_elem), 124, cplus))) { 
 #line 1912 "cplus.met"
 #line 1913 "cplus.met"
 #line 1914 "cplus.met"
@@ -349,7 +349,7 @@ PPTREE cplus::qualified_name ( int error_free)
     }
 #line 1918 "cplus.met"
 #line 1920 "cplus.met"
-    if (NPUSH_CALL_AFF_VERIF(templateVal = ,_Tak(template_type), 150, cplus)){
+    if (NPUSH_CALL_AFF_VERIF(templateVal = ,_Tak(template_type), 151, cplus)){
 #line 1920 "cplus.met"
 #line 1921 "cplus.met"
 #line 1922 "cplus.met"
@@ -374,7 +374,7 @@ PPTREE cplus::qualified_name ( int error_free)
 #line 1925 "cplus.met"
                     ReplaceTree(_ptRes1, 1, retTree );
 #line 1925 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(qualified_name)(error_free), 122, cplus))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(qualified_name)(error_free), 123, cplus))== (PPTREE) -1 ) {
 #line 1925 "cplus.met"
                         MulFreeTree(7,_ptRes1,_ptTree1,_ptTree0,inter,retTree,templateVal,val);
                         PROG_EXIT(qualified_name_exit,"qualified_name")
@@ -564,7 +564,7 @@ PPTREE cplus::qualified_name_elem ( int error_free)
 #line 1880 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 1880 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(simple_ident)(error_free), 136, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(simple_ident)(error_free), 137, cplus))== (PPTREE) -1 ) {
 #line 1880 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(qualified_name_elem_exit,"qualified_name_elem")
@@ -587,7 +587,7 @@ PPTREE cplus::qualified_name_elem ( int error_free)
 #line 1881 "cplus.met"
                 PPTREE _ptTree0=0;
 #line 1881 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 109, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 110, cplus))== (PPTREE) -1 ) {
 #line 1881 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(qualified_name_elem_exit,"qualified_name_elem")
@@ -668,7 +668,7 @@ PPTREE cplus::quick_prog ( int error_free)
     PPTREE list = (PPTREE) 0,valTree = (PPTREE) 0;
 #line 809 "cplus.met"
 #line 811 "cplus.met"
-    while ((NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(quick_prog_elem), 125, cplus)) && 
+    while ((NPUSH_CALL_AFF_VERIF(valTree = ,_Tak(quick_prog_elem), 126, cplus)) && 
 #line 811 "cplus.met"
           (! (valTree == (PPTREE) 0))) { 
 #line 811 "cplus.met"
@@ -707,7 +707,7 @@ PPTREE cplus::quick_prog ( int error_free)
     if ((tokenAhead && tokenAhead != -1)|| (c != EOF)){
 #line 817 "cplus.met"
 #line 818 "cplus.met"
-        if ( (NQUICK_CALL(_Tak(quick_prog_elem)(error_free), 125, cplus))== (PPTREE) -1 ) {
+        if ( (NQUICK_CALL(_Tak(quick_prog_elem)(error_free), 126, cplus))== (PPTREE) -1 ) {
 #line 818 "cplus.met"
             MulFreeTree(2,list,valTree);
             PROG_EXIT(quick_prog_exit,"quick_prog")
@@ -828,7 +828,7 @@ PPTREE cplus::quick_prog_elem ( int error_free)
 #line 847 "cplus.met"
 #line 848 "cplus.met"
 #line 849 "cplus.met"
-            if (NPUSH_CALL_VERIF(_Tak(range_pragma), 130, cplus)){
+            if (NPUSH_CALL_VERIF(_Tak(range_pragma), 131, cplus)){
 #line 849 "cplus.met"
 #line 849 "cplus.met"
             }
@@ -2060,7 +2060,7 @@ PPTREE cplus::quick_prog_elem ( int error_free)
 #line 969 "cplus.met"
                                 PPTREE _ptTree0=0;
 #line 969 "cplus.met"
-                                if ( (_ptTree0=NQUICK_CALL(_Tak(other_config)(error_free), 110, cplus))== (PPTREE) -1 ) {
+                                if ( (_ptTree0=NQUICK_CALL(_Tak(other_config)(error_free), 111, cplus))== (PPTREE) -1 ) {
 #line 969 "cplus.met"
                                     MulFreeTree(2,_ptTree0,retTree);
                                     PROG_EXIT(quick_prog_elem_exit,"quick_prog_elem")
@@ -2201,286 +2201,207 @@ quick_prog_elem_ret :
 #line 986 "cplus.met"
 
 #line 986 "cplus.met"
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
 PPTREE cplus::range_in_liste ( int error_free)
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
 {
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
     int _value,_nbPre = 0 ;
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
     int _Debug = TRACE_RULE("range_in_liste",TRACE_ENTER,(PPTREE)0);
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 2223 "cplus.met"
-#line 2223 "cplus.met"
+#line 2230 "cplus.met"
+#line 2230 "cplus.met"
     PPTREE retTree = (PPTREE) 0;
-#line 2223 "cplus.met"
-#line 2225 "cplus.met"
+#line 2230 "cplus.met"
+#line 2232 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2225 "cplus.met"
+#line 2232 "cplus.met"
     if ( ! TERM_OR_META(IDENT,"IDENT") || !(BUILD_TERM_META(retTree))) {
-#line 2225 "cplus.met"
+#line 2232 "cplus.met"
         MulFreeTree(1,retTree);
         TOKEN_EXIT(range_in_liste_exit,"IDENT")
-#line 2225 "cplus.met"
+#line 2232 "cplus.met"
     } else {
-#line 2225 "cplus.met"
+#line 2232 "cplus.met"
         tokenAhead = 0 ;
-#line 2225 "cplus.met"
+#line 2232 "cplus.met"
     }
-#line 2225 "cplus.met"
-#line 2226 "cplus.met"
+#line 2232 "cplus.met"
+#line 2233 "cplus.met"
     if ( IsRange(lexEl.string())){
-#line 2226 "cplus.met"
-#line 2227 "cplus.met"
+#line 2233 "cplus.met"
+#line 2234 "cplus.met"
         {
-#line 2227 "cplus.met"
+#line 2234 "cplus.met"
             _retValue = retTree ;
-#line 2227 "cplus.met"
+#line 2234 "cplus.met"
             goto range_in_liste_ret;
-#line 2227 "cplus.met"
+#line 2234 "cplus.met"
             
-#line 2227 "cplus.met"
+#line 2234 "cplus.met"
         }
-#line 2227 "cplus.met"
+#line 2234 "cplus.met"
     } else {
-#line 2227 "cplus.met"
-#line 2229 "cplus.met"
+#line 2234 "cplus.met"
+#line 2236 "cplus.met"
         
-#line 2229 "cplus.met"
+#line 2236 "cplus.met"
         MulFreeTree(1,retTree);
         LEX_EXIT ("",0);
-#line 2229 "cplus.met"
+#line 2236 "cplus.met"
         goto range_in_liste_exit;
-#line 2229 "cplus.met"
+#line 2236 "cplus.met"
     }
-#line 2229 "cplus.met"
-#line 2229 "cplus.met"
-#line 2229 "cplus.met"
+#line 2236 "cplus.met"
+#line 2236 "cplus.met"
+#line 2236 "cplus.met"
 
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 return((PPTREE) 0);
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 range_in_liste_exit :
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     _Debug = TRACE_RULE("range_in_liste",TRACE_EXIT,(PPTREE)0);
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     _funcLevel--;
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     return((PPTREE) -1) ;
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 range_in_liste_ret :
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     _Debug = TRACE_RULE("range_in_liste",TRACE_RETURN,_retValue);
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
     return _retValue ;
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 }
-#line 2230 "cplus.met"
+#line 2237 "cplus.met"
 
-#line 2230 "cplus.met"
-#line 2267 "cplus.met"
+#line 2237 "cplus.met"
+#line 2274 "cplus.met"
 PPTREE cplus::range_modifier ( int error_free)
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
 {
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
     int _value,_nbPre = 0 ;
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
     int _Debug = TRACE_RULE("range_modifier",TRACE_ENTER,(PPTREE)0);
-#line 2267 "cplus.met"
+#line 2274 "cplus.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 2267 "cplus.met"
-#line 2268 "cplus.met"
+#line 2274 "cplus.met"
+#line 2275 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2268 "cplus.met"
+#line 2275 "cplus.met"
     switch( lexEl.Value) {
-#line 2268 "cplus.met"
-#line 2269 "cplus.met"
-        case META : 
-#line 2269 "cplus.met"
-        case IDENT : 
-#line 2269 "cplus.met"
-#line 2269 "cplus.met"
-            {
-#line 2269 "cplus.met"
-                PPTREE _ptTree0=0;
-#line 2269 "cplus.met"
-                {
-#line 2269 "cplus.met"
-                    PPTREE _ptTree1=0,_ptRes1=0;
-#line 2269 "cplus.met"
-                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2269 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(range_in_liste)(error_free), 126, cplus))== (PPTREE) -1 ) {
-#line 2269 "cplus.met"
-                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
-                        PROG_EXIT(range_modifier_exit,"range_modifier")
-#line 2269 "cplus.met"
-                    }
-#line 2269 "cplus.met"
-                    ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2269 "cplus.met"
-                    _ptTree0=_ptRes1;
-#line 2269 "cplus.met"
-                }
-#line 2269 "cplus.met"
-                _retValue =_ptTree0;
-#line 2269 "cplus.met"
-                goto range_modifier_ret;
-#line 2269 "cplus.met"
-            }
-#line 2269 "cplus.met"
-            break;
-#line 2269 "cplus.met"
-#line 2270 "cplus.met"
-        case VOLATILE : 
-#line 2270 "cplus.met"
-#line 2270 "cplus.met"
-            {
-#line 2270 "cplus.met"
-                PPTREE _ptTree0=0;
-#line 2270 "cplus.met"
-                {
-#line 2270 "cplus.met"
-                    PPTREE _ptTree1=0,_ptRes1=0;
-#line 2270 "cplus.met"
-                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2270 "cplus.met"
-                    (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2270 "cplus.met"
-                    if (  !SEE_TOKEN( VOLATILE,"volatile") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2270 "cplus.met"
-                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
-                        TOKEN_EXIT(range_modifier_exit,"volatile")
-#line 2270 "cplus.met"
-                    } else {
-#line 2270 "cplus.met"
-                        tokenAhead = 0 ;
-#line 2270 "cplus.met"
-                    }
-#line 2270 "cplus.met"
-                    ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2270 "cplus.met"
-                    _ptTree0=_ptRes1;
-#line 2270 "cplus.met"
-                }
-#line 2270 "cplus.met"
-                _retValue =_ptTree0;
-#line 2270 "cplus.met"
-                goto range_modifier_ret;
-#line 2270 "cplus.met"
-            }
-#line 2270 "cplus.met"
-            break;
-#line 2270 "cplus.met"
-#line 2271 "cplus.met"
-        case REGISTER : 
-#line 2271 "cplus.met"
-#line 2271 "cplus.met"
-            {
-#line 2271 "cplus.met"
-                PPTREE _ptTree0=0;
-#line 2271 "cplus.met"
-                {
-#line 2271 "cplus.met"
-                    PPTREE _ptTree1=0,_ptRes1=0;
-#line 2271 "cplus.met"
-                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2271 "cplus.met"
-                    (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2271 "cplus.met"
-                    if (  !SEE_TOKEN( REGISTER,"register") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2271 "cplus.met"
-                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
-                        TOKEN_EXIT(range_modifier_exit,"register")
-#line 2271 "cplus.met"
-                    } else {
-#line 2271 "cplus.met"
-                        tokenAhead = 0 ;
-#line 2271 "cplus.met"
-                    }
-#line 2271 "cplus.met"
-                    ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2271 "cplus.met"
-                    _ptTree0=_ptRes1;
-#line 2271 "cplus.met"
-                }
-#line 2271 "cplus.met"
-                _retValue =_ptTree0;
-#line 2271 "cplus.met"
-                goto range_modifier_ret;
-#line 2271 "cplus.met"
-            }
-#line 2271 "cplus.met"
-            break;
-#line 2271 "cplus.met"
-#line 2272 "cplus.met"
-        case __ATTRIBUTE__ : 
-#line 2272 "cplus.met"
-#line 2273 "cplus.met"
-#line 2274 "cplus.met"
-            {
-#line 2274 "cplus.met"
-                PPTREE _ptTree0=0;
-#line 2274 "cplus.met"
-                {
-#line 2274 "cplus.met"
-                    PPTREE _ptTree1=0,_ptRes1=0;
-#line 2274 "cplus.met"
-                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2274 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(attribute_call)(error_free), 22, cplus))== (PPTREE) -1 ) {
-#line 2274 "cplus.met"
-                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
-                        PROG_EXIT(range_modifier_exit,"range_modifier")
-#line 2274 "cplus.met"
-                    }
-#line 2274 "cplus.met"
-                    ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2274 "cplus.met"
-                    _ptTree0=_ptRes1;
-#line 2274 "cplus.met"
-                }
-#line 2274 "cplus.met"
-                _retValue =_ptTree0;
-#line 2274 "cplus.met"
-                goto range_modifier_ret;
-#line 2274 "cplus.met"
-            }
-#line 2274 "cplus.met"
-#line 2274 "cplus.met"
-            break;
-#line 2274 "cplus.met"
+#line 2275 "cplus.met"
 #line 2276 "cplus.met"
-        case __ASM__ : 
+        case META : 
+#line 2276 "cplus.met"
+        case IDENT : 
+#line 2276 "cplus.met"
+#line 2276 "cplus.met"
+            {
+#line 2276 "cplus.met"
+                PPTREE _ptTree0=0;
+#line 2276 "cplus.met"
+                {
+#line 2276 "cplus.met"
+                    PPTREE _ptTree1=0,_ptRes1=0;
+#line 2276 "cplus.met"
+                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
+#line 2276 "cplus.met"
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(range_in_liste)(error_free), 127, cplus))== (PPTREE) -1 ) {
+#line 2276 "cplus.met"
+                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
+                        PROG_EXIT(range_modifier_exit,"range_modifier")
+#line 2276 "cplus.met"
+                    }
+#line 2276 "cplus.met"
+                    ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 2276 "cplus.met"
+                    _ptTree0=_ptRes1;
+#line 2276 "cplus.met"
+                }
+#line 2276 "cplus.met"
+                _retValue =_ptTree0;
+#line 2276 "cplus.met"
+                goto range_modifier_ret;
+#line 2276 "cplus.met"
+            }
+#line 2276 "cplus.met"
+            break;
 #line 2276 "cplus.met"
 #line 2277 "cplus.met"
+        case VOLATILE : 
+#line 2277 "cplus.met"
+#line 2277 "cplus.met"
+            {
+#line 2277 "cplus.met"
+                PPTREE _ptTree0=0;
+#line 2277 "cplus.met"
+                {
+#line 2277 "cplus.met"
+                    PPTREE _ptTree1=0,_ptRes1=0;
+#line 2277 "cplus.met"
+                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
+#line 2277 "cplus.met"
+                    (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
+#line 2277 "cplus.met"
+                    if (  !SEE_TOKEN( VOLATILE,"volatile") || !(_ptTree1 = CommString(lexEl.string()))) {
+#line 2277 "cplus.met"
+                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
+                        TOKEN_EXIT(range_modifier_exit,"volatile")
+#line 2277 "cplus.met"
+                    } else {
+#line 2277 "cplus.met"
+                        tokenAhead = 0 ;
+#line 2277 "cplus.met"
+                    }
+#line 2277 "cplus.met"
+                    ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 2277 "cplus.met"
+                    _ptTree0=_ptRes1;
+#line 2277 "cplus.met"
+                }
+#line 2277 "cplus.met"
+                _retValue =_ptTree0;
+#line 2277 "cplus.met"
+                goto range_modifier_ret;
+#line 2277 "cplus.met"
+            }
+#line 2277 "cplus.met"
+            break;
+#line 2277 "cplus.met"
+#line 2278 "cplus.met"
+        case REGISTER : 
+#line 2278 "cplus.met"
 #line 2278 "cplus.met"
             {
 #line 2278 "cplus.met"
@@ -2492,363 +2413,442 @@ PPTREE cplus::range_modifier ( int error_free)
 #line 2278 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
 #line 2278 "cplus.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(asm_call)(error_free), 18, cplus))== (PPTREE) -1 ) {
+                    (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 2278 "cplus.met"
+                    if (  !SEE_TOKEN( REGISTER,"register") || !(_ptTree1 = CommString(lexEl.string()))) {
+#line 2278 "cplus.met"
+                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
+                        TOKEN_EXIT(range_modifier_exit,"register")
+#line 2278 "cplus.met"
+                    } else {
+#line 2278 "cplus.met"
+                        tokenAhead = 0 ;
+#line 2278 "cplus.met"
+                    }
+#line 2278 "cplus.met"
+                    ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 2278 "cplus.met"
+                    _ptTree0=_ptRes1;
+#line 2278 "cplus.met"
+                }
+#line 2278 "cplus.met"
+                _retValue =_ptTree0;
+#line 2278 "cplus.met"
+                goto range_modifier_ret;
+#line 2278 "cplus.met"
+            }
+#line 2278 "cplus.met"
+            break;
+#line 2278 "cplus.met"
+#line 2279 "cplus.met"
+        case __ATTRIBUTE__ : 
+#line 2279 "cplus.met"
+#line 2280 "cplus.met"
+#line 2281 "cplus.met"
+            {
+#line 2281 "cplus.met"
+                PPTREE _ptTree0=0;
+#line 2281 "cplus.met"
+                {
+#line 2281 "cplus.met"
+                    PPTREE _ptTree1=0,_ptRes1=0;
+#line 2281 "cplus.met"
+                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
+#line 2281 "cplus.met"
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(attribute_call)(error_free), 22, cplus))== (PPTREE) -1 ) {
+#line 2281 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         PROG_EXIT(range_modifier_exit,"range_modifier")
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                     }
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                 }
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                 _retValue =_ptTree0;
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
                 goto range_modifier_ret;
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
             }
-#line 2278 "cplus.met"
-#line 2278 "cplus.met"
+#line 2281 "cplus.met"
+#line 2281 "cplus.met"
             break;
-#line 2278 "cplus.met"
-#line 2280 "cplus.met"
-        default : 
-#line 2280 "cplus.met"
-#line 2280 "cplus.met"
+#line 2281 "cplus.met"
+#line 2283 "cplus.met"
+        case __ASM__ : 
+#line 2283 "cplus.met"
+#line 2284 "cplus.met"
+#line 2285 "cplus.met"
             {
-#line 2280 "cplus.met"
+#line 2285 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2280 "cplus.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(range_modifier_function)(error_free), 128, cplus))== (PPTREE) -1 ) {
-#line 2280 "cplus.met"
+#line 2285 "cplus.met"
+                {
+#line 2285 "cplus.met"
+                    PPTREE _ptTree1=0,_ptRes1=0;
+#line 2285 "cplus.met"
+                    _ptRes1= MakeTree(RANGE_MODIFIER, 2);
+#line 2285 "cplus.met"
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(asm_call)(error_free), 18, cplus))== (PPTREE) -1 ) {
+#line 2285 "cplus.met"
+                        MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
+                        PROG_EXIT(range_modifier_exit,"range_modifier")
+#line 2285 "cplus.met"
+                    }
+#line 2285 "cplus.met"
+                    ReplaceTree(_ptRes1, 1, _ptTree1);
+#line 2285 "cplus.met"
+                    _ptTree0=_ptRes1;
+#line 2285 "cplus.met"
+                }
+#line 2285 "cplus.met"
+                _retValue =_ptTree0;
+#line 2285 "cplus.met"
+                goto range_modifier_ret;
+#line 2285 "cplus.met"
+            }
+#line 2285 "cplus.met"
+#line 2285 "cplus.met"
+            break;
+#line 2285 "cplus.met"
+#line 2287 "cplus.met"
+        default : 
+#line 2287 "cplus.met"
+#line 2287 "cplus.met"
+            {
+#line 2287 "cplus.met"
+                PPTREE _ptTree0=0;
+#line 2287 "cplus.met"
+                if ( (_ptTree0=NQUICK_CALL(_Tak(range_modifier_function)(error_free), 129, cplus))== (PPTREE) -1 ) {
+#line 2287 "cplus.met"
                     MulFreeTree(1,_ptTree0);
                     PROG_EXIT(range_modifier_exit,"range_modifier")
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
                 }
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
                 _retValue =_ptTree0;
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
                 goto range_modifier_ret;
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
             }
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
             break;
-#line 2280 "cplus.met"
+#line 2287 "cplus.met"
     }
-#line 2280 "cplus.met"
-#line 2280 "cplus.met"
-#line 2281 "cplus.met"
+#line 2287 "cplus.met"
+#line 2287 "cplus.met"
+#line 2288 "cplus.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 return((PPTREE) 0);
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 range_modifier_exit :
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     _Debug = TRACE_RULE("range_modifier",TRACE_EXIT,(PPTREE)0);
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     _funcLevel--;
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     return((PPTREE) -1) ;
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 range_modifier_ret :
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     _Debug = TRACE_RULE("range_modifier",TRACE_RETURN,_retValue);
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
     return _retValue ;
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 }
-#line 2281 "cplus.met"
+#line 2288 "cplus.met"
 
-#line 2281 "cplus.met"
-#line 2239 "cplus.met"
+#line 2288 "cplus.met"
+#line 2246 "cplus.met"
 PPTREE cplus::range_modifier_function ( int error_free)
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
 {
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
     int _value,_nbPre = 0 ;
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
     int _Debug = TRACE_RULE("range_modifier_function",TRACE_ENTER,(PPTREE)0);
-#line 2239 "cplus.met"
+#line 2246 "cplus.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 2239 "cplus.met"
-#line 2240 "cplus.met"
+#line 2246 "cplus.met"
+#line 2247 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2240 "cplus.met"
+#line 2247 "cplus.met"
     switch( lexEl.Value) {
-#line 2240 "cplus.met"
-#line 2241 "cplus.met"
+#line 2247 "cplus.met"
+#line 2248 "cplus.met"
         case INLINE : 
-#line 2241 "cplus.met"
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
+#line 2248 "cplus.met"
             {
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                 {
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     if (  !SEE_TOKEN( INLINE,"inline") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         TOKEN_EXIT(range_modifier_function_exit,"inline")
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     } else {
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                         tokenAhead = 0 ;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     }
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                 }
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                 _retValue =_ptTree0;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
                 goto range_modifier_function_ret;
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
             }
-#line 2241 "cplus.met"
+#line 2248 "cplus.met"
             break;
-#line 2241 "cplus.met"
-#line 2242 "cplus.met"
+#line 2248 "cplus.met"
+#line 2249 "cplus.met"
         case VIRTUAL : 
-#line 2242 "cplus.met"
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
+#line 2249 "cplus.met"
             {
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                 {
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     if (  !SEE_TOKEN( VIRTUAL,"virtual") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         TOKEN_EXIT(range_modifier_function_exit,"virtual")
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     } else {
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                         tokenAhead = 0 ;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     }
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                 }
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                 _retValue =_ptTree0;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
                 goto range_modifier_function_ret;
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
             }
-#line 2242 "cplus.met"
+#line 2249 "cplus.met"
             break;
-#line 2242 "cplus.met"
-#line 2243 "cplus.met"
+#line 2249 "cplus.met"
+#line 2250 "cplus.met"
         case FRIEND : 
-#line 2243 "cplus.met"
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
+#line 2250 "cplus.met"
             {
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                 {
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     if (  !SEE_TOKEN( FRIEND,"friend") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         TOKEN_EXIT(range_modifier_function_exit,"friend")
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     } else {
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                         tokenAhead = 0 ;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     }
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                 }
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                 _retValue =_ptTree0;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
                 goto range_modifier_function_ret;
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
             }
-#line 2243 "cplus.met"
+#line 2250 "cplus.met"
             break;
-#line 2243 "cplus.met"
-#line 2244 "cplus.met"
+#line 2250 "cplus.met"
+#line 2251 "cplus.met"
         case CONST : 
-#line 2244 "cplus.met"
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
+#line 2251 "cplus.met"
             {
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                 {
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     if (  !SEE_TOKEN( CONST,"const") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         TOKEN_EXIT(range_modifier_function_exit,"const")
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     } else {
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                         tokenAhead = 0 ;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     }
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                 }
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                 _retValue =_ptTree0;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
                 goto range_modifier_function_ret;
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
             }
-#line 2244 "cplus.met"
+#line 2251 "cplus.met"
             break;
-#line 2244 "cplus.met"
-#line 2245 "cplus.met"
+#line 2251 "cplus.met"
+#line 2252 "cplus.met"
         case CONSTEXPR : 
-#line 2245 "cplus.met"
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
+#line 2252 "cplus.met"
             {
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                 PPTREE _ptTree0=0;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                 {
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     PPTREE _ptTree1=0,_ptRes1=0;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     _ptRes1= MakeTree(RANGE_MODIFIER, 2);
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     if (  !SEE_TOKEN( CONSTEXPR,"constexpr") || !(_ptTree1 = CommString(lexEl.string()))) {
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                         MulFreeTree(3,_ptRes1,_ptTree1,_ptTree0);
                         TOKEN_EXIT(range_modifier_function_exit,"constexpr")
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     } else {
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                         tokenAhead = 0 ;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     }
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     ReplaceTree(_ptRes1, 1, _ptTree1);
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                     _ptTree0=_ptRes1;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                 }
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                 _retValue =_ptTree0;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
                 goto range_modifier_function_ret;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
             }
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
             break;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
         default :
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
             CASE_EXIT(range_modifier_function_exit,"either inline or virtual or friend or const or constexpr")
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
             break;
-#line 2245 "cplus.met"
+#line 2252 "cplus.met"
     }
-#line 2245 "cplus.met"
-#line 2245 "cplus.met"
-#line 2246 "cplus.met"
+#line 2252 "cplus.met"
+#line 2252 "cplus.met"
+#line 2253 "cplus.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 return((PPTREE) 0);
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 range_modifier_function_exit :
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     _Debug = TRACE_RULE("range_modifier_function",TRACE_EXIT,(PPTREE)0);
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     _funcLevel--;
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     return((PPTREE) -1) ;
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 range_modifier_function_ret :
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     _Debug = TRACE_RULE("range_modifier_function",TRACE_RETURN,_retValue);
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
     return _retValue ;
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 }
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 
-#line 2246 "cplus.met"
+#line 2253 "cplus.met"
 #line 2086 "cplus.met"
 PPTREE cplus::range_modifier_ident ( int error_free)
 #line 2086 "cplus.met"
@@ -2869,7 +2869,7 @@ PPTREE cplus::range_modifier_ident ( int error_free)
     PPTREE retTree = (PPTREE) 0,completeName = (PPTREE) 0;
 #line 2086 "cplus.met"
 #line 2088 "cplus.met"
-    if (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(range_modifier), 127, cplus)){
+    if (NPUSH_CALL_AFF_VERIF(retTree = ,_Tak(range_modifier), 128, cplus)){
 #line 2088 "cplus.met"
 #line 2089 "cplus.met"
         {
@@ -2880,7 +2880,7 @@ PPTREE cplus::range_modifier_ident ( int error_free)
 #line 2089 "cplus.met"
                 PPTREE _ptTree1=0;
 #line 2089 "cplus.met"
-                if ( (_ptTree1=NQUICK_CALL(_Tak(range_modifier_ident)(error_free), 129, cplus))== (PPTREE) -1 ) {
+                if ( (_ptTree1=NQUICK_CALL(_Tak(range_modifier_ident)(error_free), 130, cplus))== (PPTREE) -1 ) {
 #line 2089 "cplus.met"
                     MulFreeTree(4,_ptTree1,_ptTree0,completeName,retTree);
                     PROG_EXIT(range_modifier_ident_exit,"range_modifier_ident")

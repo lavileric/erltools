@@ -2126,12 +2126,19 @@ end;
 define simple_type;
     declare valTree;
     case
-        take #"typename" : return maketree(TYPENAME,maketree(TIDENT,take complete_class_name))
+        take #"typename" :
+            if take "..." then
+                return maketree(TYPENAME,maketree(TYP_VARIADIC,maketree(TIDENT,take complete_class_name)))
+            else
+                return maketree(TYPENAME,maketree(TIDENT,take complete_class_name))
         take #"class" : return maketree(CLASSNAME,maketree(TIDENT,take complete_class_name))
         take #"decltype" :
             begin
             take "(";
-            valTree = maketree(DECL_TYPE,take postfix_expression);
+            if take #"auto" then
+                valTree = maketree(DECL_TYPE,maketree(AUTO))
+            else
+                valTree = maketree(DECL_TYPE,take postfix_expression);
             take ")";
             return valTree;
             end
@@ -2373,6 +2380,8 @@ define declarator;
         case
             take "*" : return maketree(TYP_ADDR,take declarator)
             take "&" : return maketree(TYP_REF,take declarator)
+            take "&&" : return maketree(TYP_MOV,take declarator)
+            take "..." : return maketree(TYP_VARIADIC,take declarator)
             take "~" : return maketree(DESTRUCT,take declarator)
             take "(" :
                 begin
@@ -2459,6 +2468,8 @@ define func_declarator;
             return funcDecl;
             end
         take "*" : return maketree(TYP_ADDR,take func_declarator)
+        take "&&" : return maketree(TYP_MOV,take func_declarator)
+        take "..." : return maketree(TYP_VARIADIC,take func_declarator)
         take "&" : return maketree(TYP_REF,take func_declarator)
         see "~" : return take qualified_name
         see !IDENT : return take qualified_name
@@ -2473,6 +2484,8 @@ define abstract_declarator;
     retTree = ();
     case
         take "*" : return maketree(TYP_ADDR,take abstract_declarator)
+        take "&&" : return maketree(TYP_MOV,take abstract_declarator)
+        take "..." : return maketree(TYP_VARIADIC,take abstract_declarator)
         take "&" : return maketree(TYP_REF,take abstract_declarator)
         take "~" : return maketree(DESTRUCT,take abstract_declarator)
         take "(" :
@@ -3060,7 +3073,7 @@ define postfix_expression;
         if not see "(" then
             break;
         end;
-    while see "(" or see "[" or see !POINT or see "->" or see "++" or see "--" or see "{" do
+    while see "(" or see "[" or see !POINT or see "->" or see "++" or see "--" or see "{" or see "..." do
         case
             take "(" :
                 begin
@@ -3084,6 +3097,7 @@ define postfix_expression;
                 replacetree(expArray,1,expTree);
                 expTree = expArray;
                 end
+            take "..." : expTree = maketree(VARIADIC_EXPRESSION,expTree)
             take !POINT : expTree = maketree(REF,expTree,take primary_expression)
             take "->" : expTree = maketree(ARROW,expTree,take primary_expression)
             take "++" : expTree = maketree(AINCR,expTree)
@@ -3134,6 +3148,7 @@ define primary_expression;
             else
                 return take qualified_name
         see !STRING : return take string_list
+        take "..." : return maketree(ELIPSIS_EXPRESSION)
         take #"va_arg" :
             begin
             take "(";
@@ -3143,6 +3158,7 @@ define primary_expression;
             take ")";
             return expTree;
             end
+        see "[" : return take lambda
         default : return take constan
     end;
 end;
@@ -3426,6 +3442,47 @@ define func_declaration;
         end;
 end;
 
+define lambda;
+    declare retTree,listCapture,listDecl,arg;
+    take "[";
+    if take "=" then
+        begin
+        retTree = maketree(LAMBDA,maketree(CAPTURE_ALL),(),(),(),());
+        end
+    else
+        begin
+        if not see "]" then
+            begin
+            repeat
+                begin
+                case
+                    take "&" : addlist(listCapture,maketree(TYP_REF,maketree(IDENT,take !IDENT)))
+                    default : addlist(listCapture,maketree(IDENT,take !IDENT))
+                end;
+                end;
+            until not take ",";
+            retTree = maketree(LAMBDA,listCapture,(),(),(),());
+            end
+        else
+            retTree = maketree(LAMBDA,(),(),(),(),());
+        end;
+    take "]";
+    take "(";
+    if not see ")" then
+        begin
+        addlist(listDecl,take arg_declarator_type);
+        while take "," do
+            addlist(listDecl,take arg_declarator_type);
+        replacetree(retTree,2,listDecl);
+        end;
+    take ")";
+    if take "->" then
+        replacetree(retTree,3,take type_specifier);
+    if take #"mutable" then
+        replacetree(retTree,4,maketree(MUTABLE));
+    return replacetree(retTree,5,take compound_statement);
+end;
+
 define none_statement;
     return maketree(NONE);
 end;
@@ -3473,14 +3530,19 @@ end;
 
 define for_statement;
     declare statTree,opt;
+    {{ bool isDecl = false ;}};
     take "(";
-    statTree = maketree(FOR,(),(),(),());
     if opt = take expression_for then
-        replacetree(statTree,1,opt)
+        statTree = maketree(FOR,opt,(),(),())
     else
         if opt = take data_declaration_for then
-            replacetree(statTree,1,opt);
-    if take ":" then
+            begin
+            statTree = maketree(FOR,opt,(),(),());
+            {{ isDecl = true ;}};
+            end
+        else
+            statTree = maketree(FOR,(),(),(),());
+    if {{ isDecl }} and take ":" then
         begin
         replacetree(statTree,1,maketree(ALL_OF,opt,take expression));
         end

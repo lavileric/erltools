@@ -5,7 +5,7 @@ for i in $listFile  ; do
     echo $i;
     name=`echo $i | sed 's/_l$//'`;
     echo;
-    ../cplus $i > $name.res;
+    export PATH=.:$PATH ; ../cplus $i > $name.res;
     diff $name.res $name.res.ref
     echo
 done
