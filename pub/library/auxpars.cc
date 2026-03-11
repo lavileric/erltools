@@ -1914,7 +1914,7 @@ static  PFILE_POSITION AllocateContextPos ()
         return inter ;
     } else {
         PFILE_POSITION  pFilePosition = (PFILE_POSITION)malloc(sizeof(FILE_POSITION));
-        memset((char*)pFilePosition,0,sizeof(PFILE_POSITION));
+        memset((char *)pFilePosition, 0, sizeof(PFILE_POSITION));
         pFilePosition -> marker =  FILE_POSITION_MARKER ;
         return pFilePosition ;
     }
@@ -2323,7 +2323,7 @@ debut :
 PPTREE _fastcall CopyTree ( const PPTREE tree )
 {
     int     arity ;
-    PPTREE  myTree ;
+    PPTREE  myTree, current, newTree, lastTree ;
     
     if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
         return (PPTREE)0 ;
@@ -2356,6 +2356,23 @@ PPTREE _fastcall CopyTree ( const PPTREE tree )
             SON_WRITE(myTree, 2, SON_READ(tree, 2));
             SON_WRITE(myTree, 1, SON_READ(tree, 1));
             ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
+            return myTree ;
+        case LIST : 
+            myTree  = (PPTREE)0 ;
+            current = tree ;
+            while ( NumberTree(current) == LIST ) {
+                newTree =  MakeTree(LIST, 2);
+                CacheWrite(newTree, CacheRead(current));
+                ReplaceTree(newTree, 0, CopyTree((PPTREE)SON_READ(current, 0)));
+                ReplaceTree(newTree, 1, CopyTree((PPTREE)SON_READ(current, 1)));
+                if ( myTree == (PPTREE)0 ) 
+                    myTree =  newTree ;
+                else 
+                    ReplaceTree(lastTree, 2, newTree);
+                lastTree =  newTree ;
+                current  =  (PPTREE)SON_READ(current, 2);
+            }
+            ReplaceTree(lastTree, 2, CopyTree(current));
             return myTree ;
         default : 
             
@@ -2413,7 +2430,7 @@ unsigned int TreeSize ( PPTREE tree )
 PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
 {
     int     arity ;
-    PPTREE  myTree ;
+    PPTREE  myTree, current,newTree,lastTree ;
     
     if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
         return (PPTREE)0 ;
@@ -2442,6 +2459,22 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
             myTree = MakeTree(GEO, 2);
             SON_WRITE(myTree, 2, SON_READ(tree, 2));
             SON_WRITE(myTree, 1, SON_READ(tree, 1));
+            return myTree ;
+        case LIST : 
+            myTree  = (PPTREE)0 ;
+            current = tree ;
+            while ( NumberTree(current) == LIST ) {
+                newTree =  MakeTree(LIST, 2);
+                CacheWrite(newTree, CacheRead(current));
+                ReplaceTree(newTree, 1, CopyTree((PPTREE)SON_READ(current, 1)));
+                if ( myTree == (PPTREE)0 ) 
+                    myTree =  newTree ;
+                else 
+                    ReplaceTree(lastTree, 2, newTree);
+                lastTree =  newTree ;
+                current  =  (PPTREE)SON_READ(current, 2);
+            }
+            ReplaceTree(lastTree, 2, CopyTree(current));
             return myTree ;
         default : 
             
