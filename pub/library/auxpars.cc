@@ -2474,7 +2474,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
                 lastTree =  newTree ;
                 current  =  (PPTREE)SON_READ(current, 2);
             }
-            ReplaceTree(lastTree, 2, CopyTree(current));
+            ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
             return myTree ;
         default : 
             
