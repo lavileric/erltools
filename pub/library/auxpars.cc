@@ -2466,7 +2466,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
             while ( NumberTree(current) == LIST ) {
                 newTree =  MakeTree(LIST, 2);
                 CacheWrite(newTree, CacheRead(current));
-                ReplaceTree(newTree, 1, CopyTree((PPTREE)SON_READ(current, 1)));
+                ReplaceTree(newTree, 1, NoCommentCopyTree((PPTREE)SON_READ(current, 1)));
                 if ( myTree == (PPTREE)0 ) 
                     myTree =  newTree ;
                 else 
