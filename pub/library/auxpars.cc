@@ -2372,7 +2372,10 @@ PPTREE _fastcall CopyTree ( const PPTREE tree )
                 lastTree =  newTree ;
                 current  =  (PPTREE)SON_READ(current, 2);
             }
-            ReplaceTree(lastTree, 2, CopyTree(current));
+           if (current != (PPTREE)0)
+                ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
+            else
+                ReplaceTree(lastTree,2,(PPTREE)0);
             return myTree ;
         default : 
             
@@ -2466,6 +2469,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
             while ( NumberTree(current) == LIST ) {
                 newTree =  MakeTree(LIST, 2);
                 CacheWrite(newTree, CacheRead(current));
+                ReplaceTree(newTree, 0, (PPTREE)0);
                 ReplaceTree(newTree, 1, NoCommentCopyTree((PPTREE)SON_READ(current, 1)));
                 if ( myTree == (PPTREE)0 ) 
                     myTree =  newTree ;
@@ -2474,7 +2478,10 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
                 lastTree =  newTree ;
                 current  =  (PPTREE)SON_READ(current, 2);
             }
-            ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
+            if (current != (PPTREE)0)
+                ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
+            else
+                ReplaceTree(lastTree,2,(PPTREE)0);
             return myTree ;
         default : 
             
@@ -2487,6 +2494,7 @@ PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
             for (; arity > 0 ; arity-- ) {
                 ReplaceTree(myTree, arity, NoCommentCopyTree((PPTREE)SON_READ(tree, arity)));
             }
+            ReplaceTree(myTree, 0, (PPTREE)0);
             return myTree ;
     }
 }
