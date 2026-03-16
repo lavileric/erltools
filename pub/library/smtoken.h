@@ -350,15 +350,15 @@
 #       define _getcwd getcwd
 #       define _open open
 #       define _close close
-# endif
-#ifdef ON_W
+#   endif
+#   ifdef ON_W
 #       include <fcntl.h>
 #       define O_CREAT _O_CREAT
 #       define O_RDWR _O_RDWR
 #       define O_TRUNC _O_TRUNC
 #       define O_RDWR _O_RDWR
 #       define ssize_t int 
-#endif
+#   endif
 #   define RIEN 
 #   define _fastcall 
 #   include "memges.h"
@@ -465,8 +465,13 @@
     PPTREE  ReadInString (char *) ;
     void    SwitchLang (const char *) ;
     void    EqualTree (const char *, const char *, int, PPTREE, int) ;
-    PPTREE  _fastcall CopyTree (const PPTREE) ;
-    PPTREE  _fastcall NoCommentCopyTree (const PPTREE) ;
+    PPTREE  _fastcall CopyTree (const PPTREE, bool withComment = true) ;
+    
+    inline PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
+    {
+        return CopyTree(tree, false);
+    }
+    
     void    LDumpTree (PPTREE treeParam) ;
     void    DumpTree (PPTREE) ;
     void    CLDumpTree (PPTREE) ;

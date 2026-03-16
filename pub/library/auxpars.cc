@@ -2317,82 +2317,6 @@ debut :
 }
 
 /**************************************************************
-      CopyTree : copy a tree
-   ***********************************/
-/******************************/
-PPTREE _fastcall CopyTree ( const PPTREE tree )
-{
-    int     arity ;
-    PPTREE  myTree, current, newTree, lastTree ;
-    
-    if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
-        return (PPTREE)0 ;
-    switch ( NumberTree(tree) ) {
-        case TERM_TREE : 
-            
-            /* terminal tree */
-            myTree = LCopyString(tree);
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
-            return myTree ;
-        case REF_TREE : 
-            myTree = MakeTree(REF_TREE, 1);
-            CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide reference*/ 
-            SON_WRITE(myTree, 1, SON_READ(tree, 1));
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
-            return myTree ;
-        case CLASS_TREE : 
-            myTree = MakeTree(CLASS_TREE, 1);
-            CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide class*/ 
-            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
-            return myTree ;
-        case GEO : 
-            
-            /* geo tree */
-            myTree = MakeTree(GEO, 2);
-            SON_WRITE(myTree, 2, SON_READ(tree, 2));
-            SON_WRITE(myTree, 1, SON_READ(tree, 1));
-            ReplaceTree(myTree, 0, CopyTree((PPTREE)SON_READ(tree, 0)));
-            return myTree ;
-        case LIST : 
-            myTree  = (PPTREE)0 ;
-            current = tree ;
-            while ( NumberTree(current) == LIST ) {
-                newTree =  MakeTree(LIST, 2);
-                CacheWrite(newTree, CacheRead(current));
-                ReplaceTree(newTree, 0, CopyTree((PPTREE)SON_READ(current, 0)));
-                ReplaceTree(newTree, 1, CopyTree((PPTREE)SON_READ(current, 1)));
-                if ( myTree == (PPTREE)0 ) 
-                    myTree =  newTree ;
-                else 
-                    ReplaceTree(lastTree, 2, newTree);
-                lastTree =  newTree ;
-                current  =  (PPTREE)SON_READ(current, 2);
-            }
-           if (current != (PPTREE)0)
-                ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
-            else
-                ReplaceTree(lastTree,2,(PPTREE)0);
-            return myTree ;
-        default : 
-            
-            /* a tree node */
-            arity  = treearity(tree);
-            myTree = MakeTree(NumberTree(tree), arity);
-            
-            /* put good language mask */
-            CacheWrite(myTree, CacheRead(tree));
-            for (; arity >= 0 ; arity-- ) {
-                ReplaceTree(myTree, arity, CopyTree((PPTREE)SON_READ(tree, arity)));
-            }
-            return myTree ;
-    }
-}
-
-/**************************************************************
       TreeSize : gives size of a tree
    **************************/
 /***************************************/
@@ -2430,72 +2354,121 @@ unsigned int TreeSize ( PPTREE tree )
     }
 }
 
-PPTREE _fastcall NoCommentCopyTree ( const PPTREE tree )
+PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
 {
     int     arity ;
-    PPTREE  myTree, current,newTree,lastTree ;
+    PPTREE  newTree ;
+    PPTREE  topTree = (PPTREE)0, tree = rootTree, commentTree ,lastFather;
+    int     topPos = 0 ;
     
-    if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
-        return (PPTREE)0 ;
-    switch ( NumberTree(tree) ) {
-        case TERM_TREE : 
-            
-            /* terminal tree */
-            myTree = LCopyString(tree);
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            return myTree ;
-        case REF_TREE : 
-            myTree = MakeTree(REF_TREE, 1);
-            CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide reference*/ 
-            SON_WRITE(myTree, 1, SON_READ(tree, 1));
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            return myTree ;
-        case CLASS_TREE : 
-            myTree = MakeTree(CLASS_TREE, 1);
-            CacheWrite((char *)myTree + sizeof(int), 0); /* arity is 0 to hide class */ 
-            SON_WRITE(myTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
-            CacheWrite(myTree, CacheRead(tree)); /* language is free */ 
-            return myTree ;
-        case GEO : 
-            
-            /* geo tree */
-            myTree = MakeTree(GEO, 2);
-            SON_WRITE(myTree, 2, SON_READ(tree, 2));
-            SON_WRITE(myTree, 1, SON_READ(tree, 1));
-            return myTree ;
-        case LIST : 
-            myTree  = (PPTREE)0 ;
-            current = tree ;
-            while ( NumberTree(current) == LIST ) {
-                newTree =  MakeTree(LIST, 2);
-                CacheWrite(newTree, CacheRead(current));
-                ReplaceTree(newTree, 0, (PPTREE)0);
-                ReplaceTree(newTree, 1, NoCommentCopyTree((PPTREE)SON_READ(current, 1)));
-                if ( myTree == (PPTREE)0 ) 
-                    myTree =  newTree ;
+    while ( true ) {
+        if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
+            newTree =  (PPTREE)0 ;
+        else {
+            commentTree =  (PPTREE)SON_READ(tree, 0);
+            switch ( NumberTree(tree) ) {
+                case TERM_TREE : 
+                    
+                    /* terminal tree */
+                    newTree = LCopyString(tree);
+                    CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
+                    
+                    /* comment */
+                    if ( withComment && commentTree != (PPTREE)0 ) 
+                        ReplaceTree(newTree, 0, CopyTree(commentTree));
+                    else 
+                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    break ;
+                case REF_TREE : 
+                    newTree = MakeTree(REF_TREE, 1);
+                    CacheWrite((char *)newTree + sizeof(int), 0); /* arity is 0 to hide reference*/ 
+                    SON_WRITE(newTree, 1, SON_READ(tree, 1));
+                    CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
+                    
+                    /* comment */
+                    if ( withComment && commentTree != (PPTREE)0 ) 
+                        ReplaceTree(newTree, 0, CopyTree(commentTree));
+                    else 
+                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    break ;
+                case CLASS_TREE : 
+                    newTree = MakeTree(CLASS_TREE, 1);
+                    CacheWrite((char *)newTree + sizeof(int), 0); /* arity is 0 to hide class */ 
+                    SON_WRITE(newTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
+                    CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
+                    
+                    /* comment */
+                    if ( withComment && commentTree != (PPTREE)0 ) 
+                        ReplaceTree(newTree, 0, CopyTree(commentTree));
+                    else 
+                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    break ;
+                case GEO : 
+                    
+                    /* geo tree */
+                    newTree = MakeTree(GEO, 2);
+                    SON_WRITE(newTree, 2, SON_READ(tree, 2));
+                    SON_WRITE(newTree, 1, SON_READ(tree, 1));
+                    
+                    /* comment */
+                    if ( withComment && commentTree != (PPTREE)0 ) 
+                        ReplaceTree(newTree, 0, CopyTree(commentTree));
+                    else 
+                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    break ;
+                default : 
+                    
+                    /* a tree node */
+                    arity   = treearity(tree);
+                    newTree = MakeTree(NumberTree(tree), arity);
+                    
+                    /* put good language mask */
+                    CacheWrite(newTree, CacheRead(tree));
+                    
+                    /* comment */
+                    if ( withComment && commentTree != (PPTREE)0 ) 
+                        ReplaceTree(newTree, 0, CopyTree(commentTree));
+                    else 
+                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    
+                    /* fill the tree*/
+                    if ( arity > 0 ) {
+                        if ( topTree ) 
+                            ReplaceTree(topTree, topPos, newTree);
+                        topTree =  newTree ;
+                        topPos  =  1 ;
+                        lastFather = tree ;
+                        tree    =  (PPTREE) SON_READ(tree, 1);
+                        continue ;
+                    } else 
+                        break ;
+            }
+        }
+        if ( topTree == (PPTREE)0 ) 
+            return newTree ;
+        else {
+            ReplaceTree(topTree, topPos, newTree);
+            while ( true ) {
+                if (tree != (PPTREE) 0)
+                    tree  =   (PPTREE)SON_READ(tree, -1);
                 else 
-                    ReplaceTree(lastTree, 2, newTree);
-                lastTree =  newTree ;
-                current  =  (PPTREE)SON_READ(current, 2);
+                    tree = lastFather ;
+                arity =  treearity(topTree);
+                if ( topPos < arity ) {
+                    topPos =  topPos + 1 ;
+                    lastFather = tree ;
+                    tree   =   (PPTREE)SON_READ(tree, topPos);
+                    break ;
+                } else {
+                    if ( tree == rootTree ) 
+                        return topTree ;
+                    else {
+                        topPos  =  ranktree(topTree);
+                        topTree =   (PPTREE)SON_READ(topTree, -1);
+                    }
+                }
             }
-            if (current != (PPTREE)0)
-                ReplaceTree(lastTree, 2, NoCommentCopyTree(current));
-            else
-                ReplaceTree(lastTree,2,(PPTREE)0);
-            return myTree ;
-        default : 
-            
-            /* a tree node */
-            arity  = treearity(tree);
-            myTree = MakeTree(NumberTree(tree), arity);
-            
-            /* put good language mask */
-            CacheWrite(myTree, CacheRead(tree));
-            for (; arity > 0 ; arity-- ) {
-                ReplaceTree(myTree, arity, NoCommentCopyTree((PPTREE)SON_READ(tree, arity)));
-            }
-            ReplaceTree(myTree, 0, (PPTREE)0);
-            return myTree ;
+        }
     }
 }
 
