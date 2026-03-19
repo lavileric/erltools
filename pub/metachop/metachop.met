@@ -33,8 +33,7 @@ define primary_expression;
             begin
             take "(";
             case
-                see !IDENT : statTree
-                    = maketree(VALUE,maketree(IDENT,take !IDENT))
+                see !IDENT : statTree = maketree(VALUE,maketree(IDENT,take !IDENT))
                 take "<>" : statTree = maketree(VALUE,maketree(DEF_IDENT))
             end;
             take ")";
@@ -131,7 +130,7 @@ define primary_expression;
             take ")";
             return expTree;
             end
+        see "[" : return take lambda
         default : return take constan
     end;
 end.
-

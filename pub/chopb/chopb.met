@@ -473,6 +473,7 @@ define primary_expression;
             take ")";
             return expTree;
             end
+        see "[" : return take lambda
         default : return take constan
     end;
 end;
