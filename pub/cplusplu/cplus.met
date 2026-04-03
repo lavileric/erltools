@@ -3433,7 +3433,7 @@ define func_declaration;
         return replacetree(funcTree,10,maketree(DELETE_FUNCTION));
         end
     else
-        begin
+        begin 
         while opt = take data_declaration do
             addlist(decList,opt);
         replacetree(funcTree,6,decList);
@@ -3456,7 +3456,11 @@ define lambda;
             repeat
                 begin
                 case
-                    take "&" : addlist(listCapture,maketree(TYP_REF,maketree(IDENT,take !IDENT)))
+                    take "&" :
+                        if see !IDENT then
+                            addlist(listCapture,maketree(TYP_REF,maketree(IDENT,take !IDENT)))
+                        else
+                            addlist(listCapture,maketree(TYP_REF,maketree(IDENT,"")))
                     default : addlist(listCapture,maketree(IDENT,take !IDENT))
                 end;
                 end;
