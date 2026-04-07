@@ -2358,14 +2358,13 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
 {
     int     arity ;
     PPTREE  newTree ;
-    PPTREE  topTree = (PPTREE)0, tree = rootTree, commentTree ,lastFather;
+    PPTREE  topTree = (PPTREE)0, tree = rootTree, commentTree, lastFather ;
     int     topPos = 0 ;
     
     while ( true ) {
         if ( !tree /* not allocated tree */ || tree == (PPTREE) -1 /* error tree */ ) 
             newTree =  (PPTREE)0 ;
         else {
-            commentTree =  (PPTREE)SON_READ(tree, 0);
             switch ( NumberTree(tree) ) {
                 case TERM_TREE : 
                     
@@ -2373,11 +2372,8 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
                     newTree = LCopyString(tree);
                     CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
                     
-                    /* comment */
-                    if ( withComment && commentTree != (PPTREE)0 ) 
-                        ReplaceTree(newTree, 0, CopyTree(commentTree));
-                    else 
-                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    /* no comment on this node*/
+                    ReplaceTree(newTree, 0, (PPTREE)0);
                     break ;
                 case REF_TREE : 
                     newTree = MakeTree(REF_TREE, 1);
@@ -2385,11 +2381,8 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
                     SON_WRITE(newTree, 1, SON_READ(tree, 1));
                     CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
                     
-                    /* comment */
-                    if ( withComment && commentTree != (PPTREE)0 ) 
-                        ReplaceTree(newTree, 0, CopyTree(commentTree));
-                    else 
-                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    /* no comment on this node */
+                    ReplaceTree(newTree, 0, (PPTREE)0);
                     break ;
                 case CLASS_TREE : 
                     newTree = MakeTree(CLASS_TREE, 1);
@@ -2397,11 +2390,8 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
                     SON_WRITE(newTree, 1, (void *)(((TreeClass *)SON_READ(tree, 1)) -> Copy()));
                     CacheWrite(newTree, CacheRead(tree)); /* language is free */ 
                     
-                    /* comment */
-                    if ( withComment && commentTree != (PPTREE)0 ) 
-                        ReplaceTree(newTree, 0, CopyTree(commentTree));
-                    else 
-                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    /* no comment on this node*/
+                    ReplaceTree(newTree, 0, (PPTREE)0);
                     break ;
                 case GEO : 
                     
@@ -2410,17 +2400,15 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
                     SON_WRITE(newTree, 2, SON_READ(tree, 2));
                     SON_WRITE(newTree, 1, SON_READ(tree, 1));
                     
-                    /* comment */
-                    if ( withComment && commentTree != (PPTREE)0 ) 
-                        ReplaceTree(newTree, 0, CopyTree(commentTree));
-                    else 
-                        ReplaceTree(newTree, 0, (PPTREE)0);
+                    /* no comment on this node*/
+                    ReplaceTree(newTree, 0, (PPTREE)0);
                     break ;
                 default : 
+                    commentTree = (PPTREE)SON_READ(tree, 0);
                     
                     /* a tree node */
-                    arity   = treearity(tree);
-                    newTree = MakeTree(NumberTree(tree), arity);
+                    arity       = treearity(tree);
+                    newTree     = MakeTree(NumberTree(tree), arity);
                     
                     /* put good language mask */
                     CacheWrite(newTree, CacheRead(tree));
@@ -2435,10 +2423,10 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
                     if ( arity > 0 ) {
                         if ( topTree ) 
                             ReplaceTree(topTree, topPos, newTree);
-                        topTree =  newTree ;
-                        topPos  =  1 ;
-                        lastFather = tree ;
-                        tree    =  (PPTREE) SON_READ(tree, 1);
+                        topTree    =  newTree ;
+                        topPos     =  1 ;
+                        lastFather =  tree ;
+                        tree       =  (PPTREE)SON_READ(tree, 1);
                         continue ;
                     } else 
                         break ;
@@ -2449,22 +2437,22 @@ PPTREE _fastcall CopyTree ( const PPTREE rootTree, bool withComment )
         else {
             ReplaceTree(topTree, topPos, newTree);
             while ( true ) {
-                if (tree != (PPTREE) 0)
-                    tree  =   (PPTREE)SON_READ(tree, -1);
+                if ( tree != (PPTREE)0 ) 
+                    tree =  (PPTREE)SON_READ(tree, -1);
                 else 
-                    tree = lastFather ;
+                    tree =  lastFather ;
                 arity =  treearity(topTree);
                 if ( topPos < arity ) {
-                    topPos =  topPos + 1 ;
-                    lastFather = tree ;
-                    tree   =   (PPTREE)SON_READ(tree, topPos);
+                    topPos     =  topPos + 1 ;
+                    lastFather =  tree ;
+                    tree       =  (PPTREE)SON_READ(tree, topPos);
                     break ;
                 } else {
                     if ( tree == rootTree ) 
                         return topTree ;
                     else {
                         topPos  =  ranktree(topTree);
-                        topTree =   (PPTREE)SON_READ(topTree, -1);
+                        topTree =  (PPTREE)SON_READ(topTree, -1);
                     }
                 }
             }
