@@ -538,10 +538,10 @@ PPTREE cplus::constan ( int error_free)
 #line 3244 "cplus.met"
                             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3244 "cplus.met"
-                            if ( ! TERM_OR_META(LHEXA,"LHEXA") || !(BUILD_TERM_META(_ptTree3))) {
+                            if ( ! TERM_OR_META(LLHEXA,"LLHEXA") || !(BUILD_TERM_META(_ptTree3))) {
 #line 3244 "cplus.met"
                                 MulFreeTree(7,_ptRes3,_ptTree3,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0);
-                                TOKEN_EXIT(constan_exit,"LHEXA")
+                                TOKEN_EXIT(constan_exit,"LLHEXA")
 #line 3244 "cplus.met"
                             } else {
 #line 3244 "cplus.met"
@@ -733,10 +733,10 @@ PPTREE cplus::constan ( int error_free)
 #line 3247 "cplus.met"
                             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3247 "cplus.met"
-                            if ( ! TERM_OR_META(ULHEXA,"ULHEXA") || !(BUILD_TERM_META(_ptTree3))) {
+                            if ( ! TERM_OR_META(ULLHEXA,"ULLHEXA") || !(BUILD_TERM_META(_ptTree3))) {
 #line 3247 "cplus.met"
                                 MulFreeTree(7,_ptRes3,_ptTree3,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0);
-                                TOKEN_EXIT(constan_exit,"ULHEXA")
+                                TOKEN_EXIT(constan_exit,"ULLHEXA")
 #line 3247 "cplus.met"
                             } else {
 #line 3247 "cplus.met"
@@ -916,10 +916,10 @@ PPTREE cplus::constan ( int error_free)
 #line 3250 "cplus.met"
                             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3250 "cplus.met"
-                            if ( ! TERM_OR_META(LOCTAL,"LOCTAL") || !(BUILD_TERM_META(_ptTree3))) {
+                            if ( ! TERM_OR_META(LLOCTAL,"LLOCTAL") || !(BUILD_TERM_META(_ptTree3))) {
 #line 3250 "cplus.met"
                                 MulFreeTree(7,_ptRes3,_ptTree3,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0);
-                                TOKEN_EXIT(constan_exit,"LOCTAL")
+                                TOKEN_EXIT(constan_exit,"LLOCTAL")
 #line 3250 "cplus.met"
                             } else {
 #line 3250 "cplus.met"
@@ -1111,10 +1111,10 @@ PPTREE cplus::constan ( int error_free)
 #line 3253 "cplus.met"
                             (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3253 "cplus.met"
-                            if ( ! TERM_OR_META(ULOCTAL,"ULOCTAL") || !(BUILD_TERM_META(_ptTree3))) {
+                            if ( ! TERM_OR_META(ULLOCTAL,"ULLOCTAL") || !(BUILD_TERM_META(_ptTree3))) {
 #line 3253 "cplus.met"
                                 MulFreeTree(7,_ptRes3,_ptTree3,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0);
-                                TOKEN_EXIT(constan_exit,"ULOCTAL")
+                                TOKEN_EXIT(constan_exit,"ULLOCTAL")
 #line 3253 "cplus.met"
                             } else {
 #line 3253 "cplus.met"
