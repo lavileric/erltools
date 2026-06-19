@@ -72,6 +72,8 @@ install : checkpath
                (cd com ; $(MAKE) -f makefile.uni install) ; fi
 	if [ -d ./private ] ; then \
                (cd private ; $(MAKE) -f makefile.uni install) ; fi
+	- cp outils/cpbms $(INSTALL_DIR)
+	- chmod 550 $(INSTALL_DIR)/cpbms
 
 uninstall : checkpath 
 	- mkdir $(INSTALL_DIR) 2>/dev/null

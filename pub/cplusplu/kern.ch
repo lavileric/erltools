@@ -37,6 +37,55 @@ language cplus;
 
 PPTREE  parse_cplus (int) ;
 
+PTREE GetIdent ( const PTREE &elem, bool noAff = false, bool getTrailer = false )
+{
+    
+    // search the name of the declared variable
+    PTREE   name = elem ;
+    PTREE   trailer ;
+    
+    while ( name && name != <IDENT> && name != <TIDENT> && name != <DESTRUCT> ) {
+        trailer =  name ;
+        switch ( name ) {
+            case <TYP_LIST,name> : break ;
+            case <CAST,<>,name> : 
+            case <QUALIFIED,<>,name> : break ;
+            case <RANGE_MODIFIER,<>,name> : break ;
+            case <EXP_ARRAY,name> : break ;
+            case <EXP,name> : break ;
+            case <REF,name> : break ;
+            case <ARROW,name> : break ;
+            case <ADDR,name> : break ;
+            case <TYP_BIT,name> : break ;
+            case <POINT,name> : break ;
+            case <TYP_AFF,name> : 
+                {
+                    if ( noAff ) 
+                        name =  ();
+                    break ;
+                }
+                break ;
+            case <TYP_ADDR,name> : break ;
+            case <TYP_ARRAY,name> : break ;
+            case <TYP,name> : break ;
+            case <TYP_REF,name> : break ;
+            case <DECLARATOR,<>,name> : break ;
+            case <EXP_LIST> : 
+                {
+                    name == <,name>;
+                }
+                break ;
+            default : 
+                {
+                    name =  ();
+                }
+        }
+    }
+    if ( name == () && getTrailer ) 
+        return trailer ;
+    return name ;
+}
+
 /// 
 /// @fn int main (int argc, char **argv) 
 /// 
@@ -56,6 +105,7 @@ int main ( int argc, char **argv )
     DecompCplus decompObj ;
     bool        dumpTree = false ;
     bool        counter = false ;
+    bool        counterLoop = false ;
     
     dumpCoord             =  0 ;
     DecompCplus::ptDecomp =  &decompObj ;
@@ -65,10 +115,9 @@ int main ( int argc, char **argv )
     EString setFile = "c.set";
     int     offset = 0 ;
     int     theMargin = -1 ;
-
-    erltoolsStorageKeeper = true ;
-    SetSingleThread(true);
     
+    erltoolsStorageKeeper =  true ;
+    SetSingleThread(true);
     while ( true ) {
         if ( argc - offset < 2 ) {
         help : 
@@ -90,9 +139,9 @@ int main ( int argc, char **argv )
                 goto help ;
             } else if ( EString("-help") == ptName ) {
                 goto help ;
-            }  else if ( EString("-tableString") == ptName ) {
-                symbString = true ; ;
-            }else if ( EString("-emacs") == ptName ) {
+            } else if ( EString("-tableString") == ptName ) {
+                symbString =  true ;
+            } else if ( EString("-emacs") == ptName ) {
                 emacsCompatibleError =  1 ;
             } else if ( EString("-set") == ptName ) {
                 if ( argc - offset < 3 ) {
@@ -105,6 +154,8 @@ int main ( int argc, char **argv )
                 dumpTree =  true ;
             } else if ( EString("-count") == ptName ) {
                 counter =  true ;
+            } else if ( EString("-countLoop") == ptName ) {
+                counterLoop =  true ;
             } else if ( EString("-rightMargin") == ptName ) {
                 if ( argc - offset >= 3 ) {
                     theMargin =  atoi(ptName + 1);
@@ -116,6 +167,12 @@ int main ( int argc, char **argv )
         }
     }
     ReadIncludeS(setFile.c_str(), 1);
+    
+    // countLoop => get coord
+    if ( counterLoop ) 
+        dumpCoord =  1 ;
+    
+    // -- 
     tree =  cplus().ReadFile(ptName);
     AddRef(tree);
     SwitchLang("cplus");
@@ -149,22 +206,92 @@ int main ( int argc, char **argv )
     if ( dumpTree ) {
         DumpTree(tree);
         <NL>
-    } else if ( counter ) {
+    } else if ( counter || counterLoop ) {
         
         // count number of functions
         unsigned int    counterFunct = 0 ;
         EString         fileName (ptName) ;
         {
-            foreach (<FUNC>,tree,
-                counterFunct++
-            )
+            foreach (<FUNC>,tree,{
+                counterFunct++ ;
+                if ( counterLoop ) {
+                    PTREE   name, funct (for_elem) ;
+                    
+                    // get name 
+                    funct == <,<>,<>,name>;
+                    name =  GetIdent(name);
+                    
+                    // get beg and end lines
+                    int line, col, lineEnd, colEnd ;
+                    SearchPos(funct, &line, &col);
+                    SearchEndPos(funct, &lineEnd, &colEnd);
+                    int nbLine = 0 ;
+                    if ( lineEnd > line ) 
+                        nbLine =  lineEnd - line ;
+                    else {
+                        int maxLineEnd = 0 ;
+                        
+                        // look on the sons
+                        forallsons (funct,{
+                            PTREE   elem (for_elem) ;
+                            SearchEndPos(elem, &lineEnd, &colEnd);
+                            if ( lineEnd > line && lineEnd > maxLineEnd ) {
+                                nbLine     =  lineEnd - line ;
+                                maxLineEnd =  lineEnd ;
+                            }
+                        })
+                    }
+                    
+                    // --
+                    unsigned int    nbLinesMax = 0 ;
+                    unsigned int    nbLoopMax = 0 ;
+                    unsigned int    nbLoop = 0 ;
+                    
+                    // get number of loops, size 
+                    foreach ((),funct,{
+                        PTREE   elem (for_elem) ;
+                        if ( elem == <FOR> || elem == <WHILE> || elem == <DO> ) {
+                            nbLoop++ ;
+                            
+                            //
+                            int line, col, lineEnd, colEnd ;
+                            SearchPos(elem, &line, &col);
+                            SearchEndPos(elem, &lineEnd, &colEnd);
+                            int diffLine = lineEnd - line ;
+                            if ( diffLine > (int)nbLinesMax ) 
+                                nbLinesMax =  diffLine ;
+                            
+                            // -- 
+                            unsigned int    nbLoopI = -1 ;
+                            foreach (<FOR>,elem,
+                                nbLoopI++
+                            )
+                            foreach (<WHILE>,elem,
+                                nbLoopI++
+                            )
+                            foreach (<DO>,elem,
+                                nbLoopI++
+                            )
+                            if ( nbLoopI > nbLoopMax ) 
+                                nbLoopMax =  nbLoopI ;
+                            
+                            // --
+                            goto for_continue ;
+                        }
+                    })
+                    
+                    // display
+                    PrintString(fileName) ": Function : " PrintString(Value(name)) " : lines : " PrintString(EString(nbLine)) " number of loops : " PrintString(EString(nbLoop)) 
+                        " : number of inside loop max : " PrintString(EString(nbLoopMax)) ": size max lines of loop : " PrintString(EString(nbLinesMax)) <NL>
+                }
+            })
             PrintString(fileName) ":  Number of Func : " PrintString(EString((int)counterFunct)) <NL>
         }
         
         // count number of non  commented lines
         unsigned int    nbLine = 0 ;
         {
-            Protector<int>  protector(output, -1);
+            Protector<int>  protector (output, -1) ;
             StartOutputString();
             decompObj.ChopTree(tree);
             EString dString = EndOutputString();
@@ -185,7 +312,7 @@ int main ( int argc, char **argv )
         nbLine =  0 ;
         {
             PTREE           nocTree = NoCommentCopyTree(tree);
-            Protector<int>  protector(output, -1);
+            Protector<int>  protector (output, -1) ;
             StartOutputString();
             decompObj.ChopTree(nocTree);
             EString dString = EndOutputString();
@@ -209,5 +336,4 @@ int main ( int argc, char **argv )
     else 
         return 0 ;
 }
-
 
