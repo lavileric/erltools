@@ -53,3 +53,11 @@ namespace toto {
 
     // one comment
 }
+
+using UNSIGNED_INT = unsigned int ;
+
+class aClass : public oClass {
+    public :
+
+    aMethod (int)  override;
+};

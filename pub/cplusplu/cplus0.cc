@@ -1111,79 +1111,79 @@ base_specifier_elem_ret :
 #line 1952 "cplus.met"
 
 #line 1952 "cplus.met"
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
 PPTREE cplus::bidon ( int error_free)
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
 {
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     int  _oldnoString = noString;
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     PFILE_POSITION _filePosition = (PFILE_POSITION) 0;
 
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     int _value,_nbPre = 0 ;
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     PCOMM_ELEM _ptPreComm = ((tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1))),listComm?LookComm(&_nbPre):(_funcLevel++,(PCOMM_ELEM)0));
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     int _Debug = TRACE_RULE("bidon",TRACE_ENTER,(PPTREE)0);
-#line 3827 "cplus.met"
+#line 3835 "cplus.met"
     PPTREE lastTree = _lastTree,_retValue ;
-#line 3827 "cplus.met"
-#line 3828 "cplus.met"
+#line 3835 "cplus.met"
+#line 3836 "cplus.met"
     {
-#line 3828 "cplus.met"
+#line 3836 "cplus.met"
         noString = 1 ;
-#line 3828 "cplus.met"
-#line 3829 "cplus.met"
-#line 3829 "cplus.met"
+#line 3836 "cplus.met"
+#line 3837 "cplus.met"
+#line 3837 "cplus.met"
         noString =  _oldnoString;
-#line 3829 "cplus.met"
+#line 3837 "cplus.met"
     }
-#line 3829 "cplus.met"
-#line 3829 "cplus.met"
-#line 3830 "cplus.met"
+#line 3837 "cplus.met"
+#line 3837 "cplus.met"
+#line 3838 "cplus.met"
 (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,(PPTREE) 0,lastTree); else {_lastTree=(PPTREE)0;_funcLevel--;}
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 noString =  _oldnoString;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 return((PPTREE) 0);
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 bidon_exit :
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     _Debug = TRACE_RULE("bidon",TRACE_EXIT,(PPTREE)0);
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     _funcLevel--;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     noString =  _oldnoString;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     return((PPTREE) -1) ;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 bidon_ret :
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     _Debug = TRACE_RULE("bidon",TRACE_RETURN,_retValue);
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     (tokenAhead|| (LexComment(),tokenAhead=-1,TRACE_LEX(1)));
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     if (_nbPre || listComm) AddComm(_ptPreComm,_nbPre,_retValue,lastTree); else {_lastTree=_retValue;_funcLevel--;}
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     noString =  _oldnoString;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
     return _retValue ;
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 }
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 
-#line 3830 "cplus.met"
+#line 3838 "cplus.met"
 #line 2723 "cplus.met"
 PPTREE cplus::bit_field_decl ( int error_free)
 #line 2723 "cplus.met"

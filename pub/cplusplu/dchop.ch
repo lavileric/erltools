@@ -133,6 +133,7 @@ void DecompCplus::DecompCommCtrl ( const PTREE &paramTree, int funcAlone, bool n
         case <INLINE_NAMESPACE> : 
         case <USING> : 
         case <USING_NAMESPACE> : 
+        case <USING_TYPE> : 
             if ( (exp ^ ) == <TEMPLATE_DECL> ) 
                 exp =  exp ^ ;
             if ( middleInList(exp) ) {
@@ -245,7 +246,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
     int     oneInstruct ; // one instruction in a case  
     PTREE   except ;
     PTREE   implementation ;
-    PTREE   deleteFunc ;PTREE capture ;
+    PTREE   deleteFunc ;
+    PTREE   capture ;
     
     // the decompilation itself   
     switch ( paramTree ) {
@@ -334,7 +336,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                     "=" 
                 else if ( capture == <LIST> ) {
                     PTREE   elem ;
-                    bool     first = true ;
+                    bool    first = true ;
                     while ( (elem = nextl(capture)) ) {
                         if ( !first ) 
                             "," 
@@ -347,13 +349,13 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 {
                     "(";
                     PTREE   elem ;
-                    bool     first = true ;
+                    bool    first = true ;
                     while ( (elem = nextl(param)) ) {
                         if ( !first ) 
                             "," 
                         else 
                             first =  false ;
-                        @elem;
+                        @elem
                     }
                     ")";
                 }
@@ -2092,6 +2094,11 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <USING,ident> : 
             {
                 "using" @ident <S> ";";
+            }
+            break ;
+        case <USING_TYPE,ident,type> : 
+            {
+                "using" @ident <S> "=" <S> @type <S> ";";
             }
             break ;
         case <USING_NAMESPACE,ident,att> : 

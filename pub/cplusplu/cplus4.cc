@@ -2146,14 +2146,14 @@ PPTREE cplus::lambda ( int error_free)
     PPTREE _addlist1 = (PPTREE) 0,_addlist2 = (PPTREE) 0;
 #line 3445 "cplus.met"
 #line 3445 "cplus.met"
-    PPTREE retTree = (PPTREE) 0,listCapture = (PPTREE) 0,listDecl = (PPTREE) 0,arg = (PPTREE) 0;
+    PPTREE retTree = (PPTREE) 0,listCapture = (PPTREE) 0,listDecl = (PPTREE) 0;
 #line 3445 "cplus.met"
 #line 3447 "cplus.met"
     (tokenAhead == 1|| (Lex(),TRACE_LEX(1)));
 #line 3447 "cplus.met"
     if (  !SEE_TOKEN( COUV,"[") || !(CommTerm(),1)) {
 #line 3447 "cplus.met"
-        MulFreeTree(6,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+        MulFreeTree(5,_addlist1,_addlist2,listCapture,listDecl,retTree);
         TOKEN_EXIT(lambda_exit,"[")
 #line 3447 "cplus.met"
     } else {
@@ -2242,7 +2242,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3461 "cplus.met"
                                         if ( ! TERM_OR_META(IDENT,"IDENT") || !(BUILD_TERM_META(_ptTree2))) {
 #line 3461 "cplus.met"
-                                            MulFreeTree(11,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                                            MulFreeTree(10,_ptRes2,_ptTree2,_ptRes1,_ptTree1,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                                             TOKEN_EXIT(lambda_exit,"IDENT")
 #line 3461 "cplus.met"
                                         } else {
@@ -2352,7 +2352,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3464 "cplus.met"
                                 if ( ! TERM_OR_META(IDENT,"IDENT") || !(BUILD_TERM_META(_ptTree1))) {
 #line 3464 "cplus.met"
-                                    MulFreeTree(9,_ptRes1,_ptTree1,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                                    MulFreeTree(8,_ptRes1,_ptTree1,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                                     TOKEN_EXIT(lambda_exit,"IDENT")
 #line 3464 "cplus.met"
                                 } else {
@@ -2431,7 +2431,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3473 "cplus.met"
     if (  !SEE_TOKEN( CFER,"]") || !(CommTerm(),1)) {
 #line 3473 "cplus.met"
-        MulFreeTree(6,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+        MulFreeTree(5,_addlist1,_addlist2,listCapture,listDecl,retTree);
         TOKEN_EXIT(lambda_exit,"]")
 #line 3473 "cplus.met"
     } else {
@@ -2445,7 +2445,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3474 "cplus.met"
     if (  !SEE_TOKEN( POUV,"(") || !(CommTerm(),1)) {
 #line 3474 "cplus.met"
-        MulFreeTree(6,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+        MulFreeTree(5,_addlist1,_addlist2,listCapture,listDecl,retTree);
         TOKEN_EXIT(lambda_exit,"(")
 #line 3474 "cplus.met"
     } else {
@@ -2465,7 +2465,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3477 "cplus.met"
             if ( (_ptTree0=NQUICK_CALL(_Tak(arg_declarator_type)(error_free), 14, cplus))== (PPTREE) -1 ) {
 #line 3477 "cplus.met"
-                MulFreeTree(7,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                MulFreeTree(6,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                 PROG_EXIT(lambda_exit,"lambda")
 #line 3477 "cplus.met"
             }
@@ -2488,7 +2488,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3479 "cplus.met"
                 if ( (_ptTree0=NQUICK_CALL(_Tak(arg_declarator_type)(error_free), 14, cplus))== (PPTREE) -1 ) {
 #line 3479 "cplus.met"
-                    MulFreeTree(7,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                    MulFreeTree(6,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                     PROG_EXIT(lambda_exit,"lambda")
 #line 3479 "cplus.met"
                 }
@@ -2524,7 +2524,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3482 "cplus.met"
     if (  !SEE_TOKEN( PFER,")") || !(CommTerm(),1)) {
 #line 3482 "cplus.met"
-        MulFreeTree(6,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+        MulFreeTree(5,_addlist1,_addlist2,listCapture,listDecl,retTree);
         TOKEN_EXIT(lambda_exit,")")
 #line 3482 "cplus.met"
     } else {
@@ -2543,7 +2543,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3484 "cplus.met"
             if ( (_ptTree0=NQUICK_CALL(_Tak(type_specifier)(error_free), 155, cplus))== (PPTREE) -1 ) {
 #line 3484 "cplus.met"
-                MulFreeTree(7,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                MulFreeTree(6,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                 PROG_EXIT(lambda_exit,"lambda")
 #line 3484 "cplus.met"
             }
@@ -2591,7 +2591,7 @@ PPTREE cplus::lambda ( int error_free)
 #line 3487 "cplus.met"
             if ( (_ptTree1=NQUICK_CALL(_Tak(compound_statement)(error_free), 33, cplus))== (PPTREE) -1 ) {
 #line 3487 "cplus.met"
-                MulFreeTree(8,_ptTree1,_ptTree0,_addlist1,_addlist2,arg,listCapture,listDecl,retTree);
+                MulFreeTree(7,_ptTree1,_ptTree0,_addlist1,_addlist2,listCapture,listDecl,retTree);
                 PROG_EXIT(lambda_exit,"lambda")
 #line 3487 "cplus.met"
             }

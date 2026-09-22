@@ -180,6 +180,7 @@ void DecompCplus::control_stat1 ( PTREE paramTree ) /* on expression write ; <NL
         case <NAMESPACE_ALIAS> : return ;
         case <USING> : return ;
         case <USING_NAMESPACE> : return ;
+        case <USING_TYPE> : return ;
         case <INCLUDE_DIR> : return ;
         case <ERROR> : return ;
         case <PRAGMA> : return ;
@@ -648,13 +649,13 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                     PTREE   father = for_elem ^ ;
                     if ( father == <CAST> || (father ^ ) == <PARAM_TYPE> || father == <LIST> || father == () ) 
                         break ;
-
+                    
                     // protect parenthesis for a cast
-                    if ( father == <EXP_LIST> && ranktree(for_elem)==1)
-                       break;
+                    if ( father == <EXP_LIST> && ranktree(for_elem) == 1 ) 
+                        break ;
                     PTREE   son = for_elem ;
                     son =  son [1];
-
+                    
                     // keep parenthesis around = since norm
                     // keep parenthesis around cast, since it could be something else (a) & x for example for logical and
                     if ( IsAff(son) || son == <CAST> ) 
@@ -668,8 +669,7 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
                         PTREE   keep = father ;
                         switch ( treearity(keep) ) {
                             case 2 : 
-                                if ( ranktree(for_elem) == 1 && OpAssociativity(keep) == LEFT_TO_RIGHT
-                                        || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
+                                if ( ranktree(for_elem) == 1 && OpAssociativity(keep) == LEFT_TO_RIGHT || ranktree(for_elem) == 2 && OpAssociativity(keep) == RIGHT_TO_LEFT ) {
                                     replacetree(keep, ranktree(for_elem), sontree(for_elem, 1));
                                     it.Current(keep);
                                     modified =  true ;
@@ -754,5 +754,4 @@ bool DecompCplus::clean_tree ( PTREE tree, bool ignoreAff )
     }
     return modified ;
 }
-
 

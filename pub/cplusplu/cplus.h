@@ -235,61 +235,62 @@ class cplus: public pretty,public virtual Parser {
     virtual void InitConst ();
     
     enum constants {
-        TUNSIGNED =     376 ,
-        BDECR =     375 ,
-        BINCR =     374 ,
-        ADDR =  373 ,
-        NOT =   372 ,
-        LNEG =  371 ,
-        POS =   370 ,
-        NEG =   369 ,
-        PARAM_TYPE =    368 ,
-        STRING_LIST =   367 ,
-        LABEL =     366 ,
-        THROW_ANSI =    365 ,
-        ELSE =  364 ,
-        DECL_TYPE =     363 ,
-        CLASSNAME =     362 ,
-        TIDENT =    361 ,
-        TSIGNED =   360 ,
-        TSHORT =    359 ,
-        TCHAR =     358 ,
-        TINT =  357 ,
-        RSHI =  356 ,
-        LSHI =  355 ,
-        LT =    354 ,
-        GT =    353 ,
-        GEQU =  352 ,
-        LEQU =  351 ,
-        SPACE_ARROW =   350 ,
-        TAB_DIRECTIVE =     349 ,
-        ENUM_PARAMETERS_UNDER =     348 ,
-        ENUM_VERT_VALUE =   347 ,
-        PROTECTED_ARRAY_S_TYPEDEF =     346 ,
-        PROTECTED_ARRAY_TYPEDEF =   345 ,
-        PROTECTED_ARRAY_S =     344 ,
-        PROTECTED_ARRAY =   343 ,
-        PROTECT_MEMB =  342 ,
-        LANGUAGE =  341 ,
-        ELIPSIS_EXPRESSION =    340 ,
-        EXP =   339 ,
-        ADECR =     338 ,
-        AINCR =     337 ,
-        ARROW =     336 ,
-        REF =   335 ,
-        VARIADIC_EXPRESSION =   334 ,
-        EXP_BRA =   333 ,
-        EXP_LIST =  332 ,
-        ARROW_MEMB =    331 ,
-        DOT_MEMB =  330 ,
-        POINETOI =  329 ,
-        TIRESUPEETOI =  328 ,
-        SUPESUPE =  327 ,
-        INFEINFE =  326 ,
-        SUPEEGAL =  325 ,
-        INFEEGAL =  324 ,
-        NONE =  323 ,
-        NEW_DECLARATOR =    322 ,
+        TUNSIGNED =     377 ,
+        BDECR =     376 ,
+        BINCR =     375 ,
+        ADDR =  374 ,
+        NOT =   373 ,
+        LNEG =  372 ,
+        POS =   371 ,
+        NEG =   370 ,
+        PARAM_TYPE =    369 ,
+        STRING_LIST =   368 ,
+        LABEL =     367 ,
+        THROW_ANSI =    366 ,
+        ELSE =  365 ,
+        DECL_TYPE =     364 ,
+        CLASSNAME =     363 ,
+        TIDENT =    362 ,
+        TSIGNED =   361 ,
+        TSHORT =    360 ,
+        TCHAR =     359 ,
+        TINT =  358 ,
+        RSHI =  357 ,
+        LSHI =  356 ,
+        LT =    355 ,
+        GT =    354 ,
+        GEQU =  353 ,
+        LEQU =  352 ,
+        SPACE_ARROW =   351 ,
+        TAB_DIRECTIVE =     350 ,
+        ENUM_PARAMETERS_UNDER =     349 ,
+        ENUM_VERT_VALUE =   348 ,
+        PROTECTED_ARRAY_S_TYPEDEF =     347 ,
+        PROTECTED_ARRAY_TYPEDEF =   346 ,
+        PROTECTED_ARRAY_S =     345 ,
+        PROTECTED_ARRAY =   344 ,
+        PROTECT_MEMB =  343 ,
+        LANGUAGE =  342 ,
+        ELIPSIS_EXPRESSION =    341 ,
+        EXP =   340 ,
+        ADECR =     339 ,
+        AINCR =     338 ,
+        ARROW =     337 ,
+        REF =   336 ,
+        VARIADIC_EXPRESSION =   335 ,
+        EXP_BRA =   334 ,
+        EXP_LIST =  333 ,
+        ARROW_MEMB =    332 ,
+        DOT_MEMB =  331 ,
+        POINETOI =  330 ,
+        TIRESUPEETOI =  329 ,
+        SUPESUPE =  328 ,
+        INFEINFE =  327 ,
+        SUPEEGAL =  326 ,
+        INFEEGAL =  325 ,
+        NONE =  324 ,
+        NEW_DECLARATOR =    323 ,
+        USING_TYPE =    322 ,
         USING_NAMESPACE =   321 ,
         NAMESPACE_ALIAS =   320 ,
         REM =   319 ,
@@ -613,61 +614,62 @@ class cplus: public pretty,public virtual Parser {
 extern cplus * parser_cplus;
 
 #endif
-#define TUNSIGNED_cplus     376
-#define BDECR_cplus     375
-#define BINCR_cplus     374
-#define ADDR_cplus  373
-#define NOT_cplus   372
-#define LNEG_cplus  371
-#define POS_cplus   370
-#define NEG_cplus   369
-#define PARAM_TYPE_cplus    368
-#define STRING_LIST_cplus   367
-#define LABEL_cplus     366
-#define THROW_ANSI_cplus    365
-#define ELSE_cplus  364
-#define DECL_TYPE_cplus     363
-#define CLASSNAME_cplus     362
-#define TIDENT_cplus    361
-#define TSIGNED_cplus   360
-#define TSHORT_cplus    359
-#define TCHAR_cplus     358
-#define TINT_cplus  357
-#define RSHI_cplus  356
-#define LSHI_cplus  355
-#define LT_cplus    354
-#define GT_cplus    353
-#define GEQU_cplus  352
-#define LEQU_cplus  351
-#define SPACE_ARROW_cplus   350
-#define TAB_DIRECTIVE_cplus     349
-#define ENUM_PARAMETERS_UNDER_cplus     348
-#define ENUM_VERT_VALUE_cplus   347
-#define PROTECTED_ARRAY_S_TYPEDEF_cplus     346
-#define PROTECTED_ARRAY_TYPEDEF_cplus   345
-#define PROTECTED_ARRAY_S_cplus     344
-#define PROTECTED_ARRAY_cplus   343
-#define PROTECT_MEMB_cplus  342
-#define LANGUAGE_cplus  341
-#define ELIPSIS_EXPRESSION_cplus    340
-#define EXP_cplus   339
-#define ADECR_cplus     338
-#define AINCR_cplus     337
-#define ARROW_cplus     336
-#define REF_cplus   335
-#define VARIADIC_EXPRESSION_cplus   334
-#define EXP_BRA_cplus   333
-#define EXP_LIST_cplus  332
-#define ARROW_MEMB_cplus    331
-#define DOT_MEMB_cplus  330
-#define POINETOI_cplus  329
-#define TIRESUPEETOI_cplus  328
-#define SUPESUPE_cplus  327
-#define INFEINFE_cplus  326
-#define SUPEEGAL_cplus  325
-#define INFEEGAL_cplus  324
-#define NONE_cplus  323
-#define NEW_DECLARATOR_cplus    322
+#define TUNSIGNED_cplus     377
+#define BDECR_cplus     376
+#define BINCR_cplus     375
+#define ADDR_cplus  374
+#define NOT_cplus   373
+#define LNEG_cplus  372
+#define POS_cplus   371
+#define NEG_cplus   370
+#define PARAM_TYPE_cplus    369
+#define STRING_LIST_cplus   368
+#define LABEL_cplus     367
+#define THROW_ANSI_cplus    366
+#define ELSE_cplus  365
+#define DECL_TYPE_cplus     364
+#define CLASSNAME_cplus     363
+#define TIDENT_cplus    362
+#define TSIGNED_cplus   361
+#define TSHORT_cplus    360
+#define TCHAR_cplus     359
+#define TINT_cplus  358
+#define RSHI_cplus  357
+#define LSHI_cplus  356
+#define LT_cplus    355
+#define GT_cplus    354
+#define GEQU_cplus  353
+#define LEQU_cplus  352
+#define SPACE_ARROW_cplus   351
+#define TAB_DIRECTIVE_cplus     350
+#define ENUM_PARAMETERS_UNDER_cplus     349
+#define ENUM_VERT_VALUE_cplus   348
+#define PROTECTED_ARRAY_S_TYPEDEF_cplus     347
+#define PROTECTED_ARRAY_TYPEDEF_cplus   346
+#define PROTECTED_ARRAY_S_cplus     345
+#define PROTECTED_ARRAY_cplus   344
+#define PROTECT_MEMB_cplus  343
+#define LANGUAGE_cplus  342
+#define ELIPSIS_EXPRESSION_cplus    341
+#define EXP_cplus   340
+#define ADECR_cplus     339
+#define AINCR_cplus     338
+#define ARROW_cplus     337
+#define REF_cplus   336
+#define VARIADIC_EXPRESSION_cplus   335
+#define EXP_BRA_cplus   334
+#define EXP_LIST_cplus  333
+#define ARROW_MEMB_cplus    332
+#define DOT_MEMB_cplus  331
+#define POINETOI_cplus  330
+#define TIRESUPEETOI_cplus  329
+#define SUPESUPE_cplus  328
+#define INFEINFE_cplus  327
+#define SUPEEGAL_cplus  326
+#define INFEEGAL_cplus  325
+#define NONE_cplus  324
+#define NEW_DECLARATOR_cplus    323
+#define USING_TYPE_cplus    322
 #define USING_NAMESPACE_cplus   321
 #define NAMESPACE_ALIAS_cplus   320
 #define REM_cplus   319

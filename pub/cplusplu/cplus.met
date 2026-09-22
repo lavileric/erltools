@@ -3433,7 +3433,7 @@ define func_declaration;
         return replacetree(funcTree,10,maketree(DELETE_FUNCTION));
         end
     else
-        begin 
+        begin
         while opt = take data_declaration do
             addlist(decList,opt);
         replacetree(funcTree,6,decList);
@@ -3443,7 +3443,7 @@ define func_declaration;
 end;
 
 define lambda;
-    declare retTree,listCapture,listDecl,arg;
+    declare retTree,listCapture,listDecl;
     take "[";
     if take "=" then
         begin
@@ -3817,7 +3817,15 @@ define name_space;
                 retTree = maketree(USING_NAMESPACE,take complete_class_name,attrib);
                 end
             else
-                retTree = maketree(USING,take complete_class_name);
+                begin
+                ident = take complete_class_name;
+                if take "=" then
+                    begin
+                    retTree = maketree(USING_TYPE,ident,take type_specifier);
+                    end
+                else
+                    retTree = maketree(USING,ident);
+                end;
             take ";";
             end
     end;

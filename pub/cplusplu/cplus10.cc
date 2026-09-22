@@ -10610,12 +10610,12 @@ int _arityNode_cplus[] = {   2 , 1 , 1 , 1 , 1 , 2 , -1 , 3 , 1 , 1 , 1 , 0
                            , -1 , 1 , -1 , 2 , 2 , 0 , -1 , 1 , 2 , 11 , 0
                            , -1 , 2 , 1 , 1 , 5 , 0 , -1 , 0 , 2 , 1 , 2
                            , -1 , 2 , 1 , 0 , 0 , 2 , 1 , -1 , 2 , 2 , 2
-                           , 2 , 2 , 2 , 0 , -1 , -1 , -1 , -1 , -1 , -1 , 2
-                           , 2 , 2 , 2 , 1 , 2 , 2 , 1 , 1 , 1 , 0 , 1
-                           , 2 , 5 , 4 , 5 , 4 , 1 , 1 , 1 , 1 , 2 , 2
-                           , 2 , 2 , 2 , 2 , 0 , 0 , 1 , 1 , 1 , 1 , 1
-                           , -1 , 1 , 2 , 1 , 2 , 1 , 1 , 1 , 1 , 1 , 1
-                           , 1 , 1 };
+                           , 2 , 2 , 2 , 2 , 0 , -1 , -1 , -1 , -1 , -1 , -1
+                           , 2 , 2 , 2 , 2 , 1 , 2 , 2 , 1 , 1 , 1 , 0
+                           , 1 , 2 , 5 , 4 , 5 , 4 , 1 , 1 , 1 , 1 , 2
+                           , 2 , 2 , 2 , 2 , 2 , 0 , 0 , 1 , 1 , 1 , 1
+                           , 1 , -1 , 1 , 2 , 1 , 2 , 1 , 1 , 1 , 1 , 1
+                           , 1 , 1 , 1 };
 
     
 STRINGELEM * listConst_cplus;
@@ -10632,61 +10632,62 @@ void cplus::InitConst()
         
         STRINGELEM * inter = listConst;
         listConst = (STRINGELEM *) 0;
-        AddConstVal("cplus::TUNSIGNED", 376);
-        AddConstVal("cplus::BDECR", 375);
-        AddConstVal("cplus::BINCR", 374);
-        AddConstVal("cplus::ADDR", 373);
-        AddConstVal("cplus::NOT", 372);
-        AddConstVal("cplus::LNEG", 371);
-        AddConstVal("cplus::POS", 370);
-        AddConstVal("cplus::NEG", 369);
-        AddConstVal("cplus::PARAM_TYPE", 368);
-        AddConstVal("cplus::STRING_LIST", 367);
-        AddConstVal("cplus::LABEL", 366);
-        AddConstVal("cplus::THROW_ANSI", 365);
-        AddConstVal("cplus::ELSE", 364);
-        AddConstVal("cplus::DECL_TYPE", 363);
-        AddConstVal("cplus::CLASSNAME", 362);
-        AddConstVal("cplus::TIDENT", 361);
-        AddConstVal("cplus::TSIGNED", 360);
-        AddConstVal("cplus::TSHORT", 359);
-        AddConstVal("cplus::TCHAR", 358);
-        AddConstVal("cplus::TINT", 357);
-        AddConstVal("cplus::RSHI", 356);
-        AddConstVal("cplus::LSHI", 355);
-        AddConstVal("cplus::LT", 354);
-        AddConstVal("cplus::GT", 353);
-        AddConstVal("cplus::GEQU", 352);
-        AddConstVal("cplus::LEQU", 351);
-        AddConstVal("cplus::SPACE_ARROW", 350);
-        AddConstVal("cplus::TAB_DIRECTIVE", 349);
-        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 348);
-        AddConstVal("cplus::ENUM_VERT_VALUE", 347);
-        AddConstVal("cplus::PROTECTED_ARRAY_S_TYPEDEF", 346);
-        AddConstVal("cplus::PROTECTED_ARRAY_TYPEDEF", 345);
-        AddConstVal("cplus::PROTECTED_ARRAY_S", 344);
-        AddConstVal("cplus::PROTECTED_ARRAY", 343);
-        AddConstVal("cplus::PROTECT_MEMB", 342);
-        AddConstVal("cplus::LANGUAGE", 341);
-        AddConstVal("cplus::ELIPSIS_EXPRESSION", 340);
-        AddConstVal("cplus::EXP", 339);
-        AddConstVal("cplus::ADECR", 338);
-        AddConstVal("cplus::AINCR", 337);
-        AddConstVal("cplus::ARROW", 336);
-        AddConstVal("cplus::REF", 335);
-        AddConstVal("cplus::VARIADIC_EXPRESSION", 334);
-        AddConstVal("cplus::EXP_BRA", 333);
-        AddConstVal("cplus::EXP_LIST", 332);
-        AddConstVal("cplus::ARROW_MEMB", 331);
-        AddConstVal("cplus::DOT_MEMB", 330);
-        AddConstVal("cplus::POINETOI", 329);
-        AddConstVal("cplus::TIRESUPEETOI", 328);
-        AddConstVal("cplus::SUPESUPE", 327);
-        AddConstVal("cplus::INFEINFE", 326);
-        AddConstVal("cplus::SUPEEGAL", 325);
-        AddConstVal("cplus::INFEEGAL", 324);
-        AddConstVal("cplus::NONE", 323);
-        AddConstVal("cplus::NEW_DECLARATOR", 322);
+        AddConstVal("cplus::TUNSIGNED", 377);
+        AddConstVal("cplus::BDECR", 376);
+        AddConstVal("cplus::BINCR", 375);
+        AddConstVal("cplus::ADDR", 374);
+        AddConstVal("cplus::NOT", 373);
+        AddConstVal("cplus::LNEG", 372);
+        AddConstVal("cplus::POS", 371);
+        AddConstVal("cplus::NEG", 370);
+        AddConstVal("cplus::PARAM_TYPE", 369);
+        AddConstVal("cplus::STRING_LIST", 368);
+        AddConstVal("cplus::LABEL", 367);
+        AddConstVal("cplus::THROW_ANSI", 366);
+        AddConstVal("cplus::ELSE", 365);
+        AddConstVal("cplus::DECL_TYPE", 364);
+        AddConstVal("cplus::CLASSNAME", 363);
+        AddConstVal("cplus::TIDENT", 362);
+        AddConstVal("cplus::TSIGNED", 361);
+        AddConstVal("cplus::TSHORT", 360);
+        AddConstVal("cplus::TCHAR", 359);
+        AddConstVal("cplus::TINT", 358);
+        AddConstVal("cplus::RSHI", 357);
+        AddConstVal("cplus::LSHI", 356);
+        AddConstVal("cplus::LT", 355);
+        AddConstVal("cplus::GT", 354);
+        AddConstVal("cplus::GEQU", 353);
+        AddConstVal("cplus::LEQU", 352);
+        AddConstVal("cplus::SPACE_ARROW", 351);
+        AddConstVal("cplus::TAB_DIRECTIVE", 350);
+        AddConstVal("cplus::ENUM_PARAMETERS_UNDER", 349);
+        AddConstVal("cplus::ENUM_VERT_VALUE", 348);
+        AddConstVal("cplus::PROTECTED_ARRAY_S_TYPEDEF", 347);
+        AddConstVal("cplus::PROTECTED_ARRAY_TYPEDEF", 346);
+        AddConstVal("cplus::PROTECTED_ARRAY_S", 345);
+        AddConstVal("cplus::PROTECTED_ARRAY", 344);
+        AddConstVal("cplus::PROTECT_MEMB", 343);
+        AddConstVal("cplus::LANGUAGE", 342);
+        AddConstVal("cplus::ELIPSIS_EXPRESSION", 341);
+        AddConstVal("cplus::EXP", 340);
+        AddConstVal("cplus::ADECR", 339);
+        AddConstVal("cplus::AINCR", 338);
+        AddConstVal("cplus::ARROW", 337);
+        AddConstVal("cplus::REF", 336);
+        AddConstVal("cplus::VARIADIC_EXPRESSION", 335);
+        AddConstVal("cplus::EXP_BRA", 334);
+        AddConstVal("cplus::EXP_LIST", 333);
+        AddConstVal("cplus::ARROW_MEMB", 332);
+        AddConstVal("cplus::DOT_MEMB", 331);
+        AddConstVal("cplus::POINETOI", 330);
+        AddConstVal("cplus::TIRESUPEETOI", 329);
+        AddConstVal("cplus::SUPESUPE", 328);
+        AddConstVal("cplus::INFEINFE", 327);
+        AddConstVal("cplus::SUPEEGAL", 326);
+        AddConstVal("cplus::INFEEGAL", 325);
+        AddConstVal("cplus::NONE", 324);
+        AddConstVal("cplus::NEW_DECLARATOR", 323);
+        AddConstVal("cplus::USING_TYPE", 322);
         AddConstVal("cplus::USING_NAMESPACE", 321);
         AddConstVal("cplus::NAMESPACE_ALIAS", 320);
         AddConstVal("cplus::REM", 319);
@@ -11011,7 +11012,7 @@ void cplus::InitConst()
         AddConstVal("LIST",0);
         listConst_cplus = listConst;
         listConst = inter;
-        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,376,(OVER_LANG *) 0);
+        AddLang("cplus",_arityNode_cplus,listConst_cplus,bri_parse_entry_cplus,377,(OVER_LANG *) 0);
         }
 }
 

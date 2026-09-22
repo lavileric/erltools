@@ -674,6 +674,15 @@ Reading namespace.c_l ...
  under certain conditions.
  For details see file COPYING.LESSER in C++ prettyPrinter directory.
 
+70,77d69
+< using UNSIGNED_INT = unsigned int ;
+< 
+< class aClass : public oClass {
+<     
+<     public :
+<     
+<         aMethod (int) override ;
+< };
 
 newc++.c_l
 
