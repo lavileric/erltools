@@ -196,7 +196,7 @@ PPTREE chopb::cast_expression_value ( int error_free)
         inMakeTree = 0 ;
 #line 373 "chopb.met"
 #line 374 "chopb.met"
-        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 154, chopb))== (PPTREE) -1 ) {
+        if ( (ret=NQUICK_CALL(_Tak(type_name)(error_free), 155, chopb))== (PPTREE) -1 ) {
 #line 374 "chopb.met"
             MulFreeTree(1,ret);
             PROG_EXIT(cast_expression_value_exit,"cast_expression_value")
@@ -595,7 +595,7 @@ PPTREE chopb::main_entry ( int error_free)
 #line 257 "chopb.met"
         PPTREE _ptTree0=0;
 #line 257 "chopb.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 172, chopb))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(prog)(error_free), 173, chopb))== (PPTREE) -1 ) {
 #line 257 "chopb.met"
             MulFreeTree(1,_ptTree0);
             PROG_EXIT(main_entry_exit,"main_entry")
@@ -668,7 +668,7 @@ PPTREE chopb::multiplicative_expression ( int error_free)
     PPTREE expTree = (PPTREE) 0;
 #line 357 "chopb.met"
 #line 359 "chopb.met"
-    if ( (expTree=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+    if ( (expTree=NQUICK_CALL(_Tak(pm_expression)(error_free), 115, chopb))== (PPTREE) -1 ) {
 #line 359 "chopb.met"
         MulFreeTree(1,expTree);
         PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
@@ -697,7 +697,7 @@ PPTREE chopb::multiplicative_expression ( int error_free)
 #line 362 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
 #line 362 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 115, chopb))== (PPTREE) -1 ) {
 #line 362 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
@@ -724,7 +724,7 @@ PPTREE chopb::multiplicative_expression ( int error_free)
 #line 363 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
 #line 363 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 115, chopb))== (PPTREE) -1 ) {
 #line 363 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
@@ -751,7 +751,7 @@ PPTREE chopb::multiplicative_expression ( int error_free)
 #line 364 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
 #line 364 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 115, chopb))== (PPTREE) -1 ) {
 #line 364 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
@@ -778,7 +778,7 @@ PPTREE chopb::multiplicative_expression ( int error_free)
 #line 365 "chopb.met"
                 ReplaceTree(_ptRes0, 1, expTree );
 #line 365 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 114, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(pm_expression)(error_free), 115, chopb))== (PPTREE) -1 ) {
 #line 365 "chopb.met"
                     MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                     PROG_EXIT(multiplicative_expression_exit,"multiplicative_expression")
@@ -947,11 +947,11 @@ PPTREE chopb::postfix_expression ( int error_free)
     PPTREE expTree = (PPTREE) 0,expList = (PPTREE) 0;
 #line 322 "chopb.met"
 #line 324 "chopb.met"
-    if (! (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(primary_expression), 118, chopb))){
+    if (! (NPUSH_CALL_AFF_VERIF(expTree = ,_Tak(primary_expression), 119, chopb))){
 #line 324 "chopb.met"
 #line 325 "chopb.met"
 #line 326 "chopb.met"
-        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 139, chopb))== (PPTREE) -1 ) {
+        if ( (expTree=NQUICK_CALL(_Tak(simple_type_name)(error_free), 140, chopb))== (PPTREE) -1 ) {
 #line 326 "chopb.met"
             MulFreeTree(2,expList,expTree);
             PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1152,7 +1152,7 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 348 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 348 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 118, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 119, chopb))== (PPTREE) -1 ) {
 #line 348 "chopb.met"
                         MulFreeTree(4,_ptRes0,_ptTree0,expList,expTree);
                         PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1183,7 +1183,7 @@ PPTREE chopb::postfix_expression ( int error_free)
 #line 349 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 349 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 118, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(primary_expression)(error_free), 119, chopb))== (PPTREE) -1 ) {
 #line 349 "chopb.met"
                         MulFreeTree(4,_ptRes0,_ptTree0,expList,expTree);
                         PROG_EXIT(postfix_expression_exit,"postfix_expression")
@@ -1401,7 +1401,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 394 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 394 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 173, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow)(error_free), 174, chopb))== (PPTREE) -1 ) {
 #line 394 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1428,7 +1428,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 395 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 395 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 174, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 175, chopb))== (PPTREE) -1 ) {
 #line 395 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1872,7 +1872,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 431 "chopb.met"
                     PPTREE _ptTree1=0;
 #line 431 "chopb.met"
-                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 146, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree1=NQUICK_CALL(_Tak(statement)(error_free), 147, chopb))== (PPTREE) -1 ) {
 #line 431 "chopb.met"
                         MulFreeTree(7,_ptTree1,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -1995,7 +1995,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 447 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 447 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 110, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(operator_function_name)(error_free), 111, chopb))== (PPTREE) -1 ) {
 #line 447 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2018,7 +2018,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 448 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 448 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 123, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 124, chopb))== (PPTREE) -1 ) {
 #line 448 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2234,7 +2234,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 465 "chopb.met"
                     PPTREE _ptTree0=0;
 #line 465 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 123, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(qualified_name)(error_free), 124, chopb))== (PPTREE) -1 ) {
 #line 465 "chopb.met"
                         MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                         PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2259,7 +2259,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 466 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 466 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 148, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(string_list)(error_free), 149, chopb))== (PPTREE) -1 ) {
 #line 466 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2335,7 +2335,7 @@ PPTREE chopb::primary_expression ( int error_free)
 #line 472 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 472 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 154, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(type_name)(error_free), 155, chopb))== (PPTREE) -1 ) {
 #line 472 "chopb.met"
                     MulFreeTree(6,_ptTree0,_addlist1,expTree,list,result,statTree);
                     PROG_EXIT(primary_expression_exit,"primary_expression")
@@ -2562,7 +2562,7 @@ PPTREE chopb::prog ( int error_free)
 #line 265 "chopb.met"
         PPTREE _ptTree0=0;
 #line 265 "chopb.met"
-        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 119, chopb))== (PPTREE) -1 ) {
+        if ( (_ptTree0=NQUICK_CALL(_Tak(program)(error_free), 120, chopb))== (PPTREE) -1 ) {
 #line 265 "chopb.met"
             MulFreeTree(2,_ptTree0,langTree);
             PROG_EXIT(prog_exit,"prog")
@@ -2644,7 +2644,7 @@ PPTREE chopb::relational_expression ( int error_free)
     PPTREE expTree = (PPTREE) 0;
 #line 298 "chopb.met"
 #line 300 "chopb.met"
-    if ( (expTree=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
+    if ( (expTree=NQUICK_CALL(_Tak(shift_expression)(error_free), 135, chopb))== (PPTREE) -1 ) {
 #line 300 "chopb.met"
         MulFreeTree(1,expTree);
         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2689,7 +2689,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 303 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 303 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 135, chopb))== (PPTREE) -1 ) {
 #line 303 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2720,7 +2720,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 304 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 304 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 135, chopb))== (PPTREE) -1 ) {
 #line 304 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2751,7 +2751,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 305 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 305 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 135, chopb))== (PPTREE) -1 ) {
 #line 305 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")
@@ -2782,7 +2782,7 @@ PPTREE chopb::relational_expression ( int error_free)
 #line 306 "chopb.met"
                     ReplaceTree(_ptRes0, 1, expTree );
 #line 306 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 134, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(shift_expression)(error_free), 135, chopb))== (PPTREE) -1 ) {
 #line 306 "chopb.met"
                         MulFreeTree(3,_ptRes0,_ptTree0,expTree);
                         PROG_EXIT(relational_expression_exit,"relational_expression")

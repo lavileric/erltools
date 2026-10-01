@@ -2933,7 +2933,7 @@ void DecompCplus::Treat ( PTREE tree )
     TraiterSequence(tree);
 #line 345 "dchop1.ch"
 #line 348 "dchop1.ch"
-    nbTab = 0 ;
+    nbTab =  0 ;
 #line 348 "dchop1.ch"
 #line 349 "dchop1.ch"
     if ( FatherTree(tree) ) {
@@ -2956,7 +2956,7 @@ void DecompCplus::Treat ( PTREE tree )
     
 #line 353 "dchop1.ch"
 #line 356 "dchop1.ch"
-    nbTab = oldNbTab ;
+    nbTab =  oldNbTab ;
 #line 356 "dchop1.ch"
 #line 358 "dchop1.ch"
     {
@@ -3648,7 +3648,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                                                                                 1) ) {
 #line 469 "dchop1.ch"
 #line 470 "dchop1.ch"
-                                                                                        ok = 1 ;
+                                                                                        ok =  1 ;
 #line 470 "dchop1.ch"
 #line 471 "dchop1.ch"
                                                                                         break ;
@@ -3728,7 +3728,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                                                         GetCoord(son, &x, &y, &dx, &dy);
 #line 489 "dchop1.ch"
 #line 494 "dchop1.ch"
-                                                        x = x0 + dx + 3 + deltaLoop ;
+                                                        x =  x0 + dx + 3 + deltaLoop ;
 #line 494 "dchop1.ch"
 #line 497 "dchop1.ch"
                                                         if ( !enumVert ) 
@@ -3740,7 +3740,7 @@ int DecompCplus::ComputeTabEnum ( PTREE list, int tabMax, int realign )
                                                         if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
 #line 501 "dchop1.ch"
 #line 502 "dchop1.ch"
-                                                            tabMax = x ;
+                                                            tabMax =  x ;
 #line 502 "dchop1.ch"
                                                         else 
 #line 503 "dchop1.ch"
@@ -3921,7 +3921,7 @@ void DecompCplus::TraiterDeclAlignEnum ( PTREE start )
     if ( enumVert ) 
 #line 537 "dchop1.ch"
 #line 538 "dchop1.ch"
-        indent = true ;
+        indent =  true ;
 #line 538 "dchop1.ch"
     else 
 #line 538 "dchop1.ch"
@@ -3937,7 +3937,7 @@ void DecompCplus::TraiterDeclAlignEnum ( PTREE start )
                                 if ( IsComm(son, POST) ) {
 #line 542 "dchop1.ch"
 #line 543 "dchop1.ch"
-                                                                indent = true ;
+                                                                indent =  true ;
 #line 543 "dchop1.ch"
 #line 544 "dchop1.ch"
                                                                 break ;
@@ -3995,7 +3995,7 @@ void DecompCplus::TraiterDeclAlignEnum ( PTREE start )
                                                                                                         
 #line 559 "dchop1.ch"
 #line 560 "dchop1.ch"
-                                                                                                        found = 1 ;
+                                                                                                        found =  1 ;
 #line 560 "dchop1.ch"
 #line 566 "dchop1.ch"
                                                                                                         {
@@ -4099,7 +4099,7 @@ void DecompCplus::TraiterDeclAlignEnum ( PTREE start )
                                             ComputeTabEnum(start, ComputeTabEnum(start, 0, 0), 1);
 #line 579 "dchop1.ch"
 #line 580 "dchop1.ch"
-                                            found = 0 ;
+                                            found =  0 ;
 #line 580 "dchop1.ch"
 #line 581 "dchop1.ch"
                                             
@@ -4203,7 +4203,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                                                                                 1) ) {
 #line 603 "dchop1.ch"
 #line 604 "dchop1.ch"
-                                                                                        ok = 1 ;
+                                                                                        ok =  1 ;
 #line 604 "dchop1.ch"
 #line 605 "dchop1.ch"
                                                                                         break ;
@@ -4327,7 +4327,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                                                         GetCoord(son, &x, &y, &dx, &dy);
 #line 633 "dchop1.ch"
 #line 638 "dchop1.ch"
-                                                        x = x0 + dx + 3 + deltaLoop ;
+                                                        x =  x0 + dx + 3 + deltaLoop ;
 #line 638 "dchop1.ch"
 #line 641 "dchop1.ch"
                                                         if ( !declAlign ) 
@@ -4339,7 +4339,7 @@ int DecompCplus::ComputeTab ( PTREE list, int tabMax, int realign )
                                                         if ( !realign && x > tabMax && x <= MAX_REALIGN ) 
 #line 645 "dchop1.ch"
 #line 646 "dchop1.ch"
-                                                            tabMax = x ;
+                                                            tabMax =  x ;
 #line 646 "dchop1.ch"
                                                         else 
 #line 647 "dchop1.ch"
@@ -4519,7 +4519,7 @@ void DecompCplus::TraiterDeclAlign ( PTREE start, PTREE end, bool declarator )
                                                                                                         
 #line 678 "dchop1.ch"
 #line 679 "dchop1.ch"
-                                                                                                        found = 1 ;
+                                                                                                        found =  1 ;
 #line 679 "dchop1.ch"
 #line 685 "dchop1.ch"
                                                                                                         {
@@ -4623,7 +4623,7 @@ void DecompCplus::TraiterDeclAlign ( PTREE start, PTREE end, bool declarator )
                                             ComputeTab(start, ComputeTab(start, 0, 0), 1);
 #line 698 "dchop1.ch"
 #line 699 "dchop1.ch"
-                                            found = 0 ;
+                                            found =  0 ;
 #line 699 "dchop1.ch"
 #line 700 "dchop1.ch"
                                             
@@ -4746,12 +4746,12 @@ void DecompCplus::TraiterDeclAlign ( PTREE start, PTREE end, bool declarator )
                                         1) ) 
 #line 727 "dchop1.ch"
 #line 728 "dchop1.ch"
-                                    ok = 0 ;
+                                    ok =  0 ;
 #line 728 "dchop1.ch"
                                 else 
 #line 728 "dchop1.ch"
 #line 730 "dchop1.ch"
-                                    ok = 1 ;
+                                    ok =  1 ;
 #line 730 "dchop1.ch"
                                 
 #line 730 "dchop1.ch"
@@ -5204,7 +5204,7 @@ bool DecompCplus::IsVerticalDecl ( PTREE father )
                                                                             if ( IsComm(oneElem, POST) ) 
 #line 799 "dchop1.ch"
 #line 800 "dchop1.ch"
-                                                                                vertical = true ;
+                                                                                vertical =  true ;
 #line 800 "dchop1.ch"
                                                                             else 
 #line 803 "dchop1.ch"
@@ -5232,174 +5232,174 @@ bool DecompCplus::IsVerticalDecl ( PTREE father )
                                                                                 while ( search && (arity = currElem.TreeArity()) >= 1 ) {
 #line 807 "dchop1.ch"
 #line 808 "dchop1.ch"
-                                                                                                                                              search = false ;
+                                                                                                                                                search =  false ;
 #line 808 "dchop1.ch"
 #line 809 "dchop1.ch"
 #line 809 "dchop1.ch"
-                                                                                                                                              for (; arity > 0 ; arity-- ) {
+                                                                                                                                                for (; arity > 0 ; arity-- ) {
 #line 809 "dchop1.ch"
 #line 810 "dchop1.ch"
-                                                                                                                                                                              PTREE son = (PTREE)0 ;
+                                                                                                                                                                                    PTREE son = (PTREE)0 ;
 #line 810 "dchop1.ch"
-                                                                                                                                                                              
+                                                                                                                                                                                    
 #line 810 "dchop1.ch"
 #line 810 "dchop1.ch"
-                                                                                                                                                                              (son=SonTree(currElem, arity));
+                                                                                                                                                                                    (son=SonTree(currElem, arity));
 #line 810 "dchop1.ch"
-                                                                                                                                                                              
+                                                                                                                                                                                    
 #line 810 "dchop1.ch"
 #line 811 "dchop1.ch"
-                                                                                                                                                                              if ( !((!son)) ) {
+                                                                                                                                                                                    if ( !((!son)) ) {
 #line 811 "dchop1.ch"
 #line 812 "dchop1.ch"
-                                                                                                                                                                                                 if ( IsComm(son, POST) ) {
+                                                                                                                                                                                                       if ( IsComm(son, POST) ) {
 #line 812 "dchop1.ch"
 #line 813 "dchop1.ch"
-                                                                                                                                                                                                                             PTREE listComm, comm ;
+                                                                                                                                                                                                                                   PTREE listComm, comm ;
 #line 813 "dchop1.ch"
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   
 #line 813 "dchop1.ch"
 #line 814 "dchop1.ch"
-                                                                                                                                                                                                                             while ( ((comm=NextComm(son, POST, 0))) ) {
+                                                                                                                                                                                                                                   while ( ((comm=NextComm(son, POST, 0))) ) {
 #line 814 "dchop1.ch"
 #line 815 "dchop1.ch"
-                                                                                                                                                                                                                                                                             PTREE nextComm ;
+                                                                                                                                                                                                                                                                                   PTREE nextComm ;
 #line 815 "dchop1.ch"
-                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                   
 #line 815 "dchop1.ch"
 #line 816 "dchop1.ch"
-                                                                                                                                                                                                                                                                             PTREE elemComm = (PTREE)0 ;
+                                                                                                                                                                                                                                                                                   PTREE elemComm = (PTREE)0 ;
 #line 816 "dchop1.ch"
-                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                   
 #line 816 "dchop1.ch"
 #line 816 "dchop1.ch"
-                                                                                                                                                                                                                                                                             (elemComm=comm);
+                                                                                                                                                                                                                                                                                   (elemComm=comm);
 #line 816 "dchop1.ch"
-                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                   
 #line 816 "dchop1.ch"
 #line 817 "dchop1.ch"
-                                                                                                                                                                                                                                                                             if ( ((_inter = (PPTREE)comm,1) && 
+                                                                                                                                                                                                                                                                                   if ( ((_inter = (PPTREE)comm,1) && 
 #line 817 "dchop1.ch"
-                                                                                                                                                                                                                                                                                    (NumberTree(_inter) == LIST) &&
+                                                                                                                                                                                                                                                                                          (NumberTree(_inter) == LIST) &&
 #line 817 "dchop1.ch"
-                                                                                                                                                                                                                                                                                    ((nextComm=SonTree(_inter,2)),1) &&
+                                                                                                                                                                                                                                                                                          ((nextComm=SonTree(_inter,2)),1) &&
 #line 817 "dchop1.ch"
-                                                                                                                                                                                                                                                                                    1) ) {
+                                                                                                                                                                                                                                                                                          1) ) {
 #line 817 "dchop1.ch"
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         {
+                                                                                                                                                                                                                                                                                               {
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
+                                                                                                                                                                                                                                                                                               PPTREE _ptTree0= (PPTREE) 0,_sonTree0= (PPTREE) 0 ;
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         if (_ptTree0= fathertree(comm)) {
+                                                                                                                                                                                                                                                                                               if (_ptTree0= fathertree(comm)) {
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         int rank = ranktree(comm);
+                                                                                                                                                                                                                                                                                               int rank = ranktree(comm);
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         ReplaceTree(_ptTree0,rank,nextComm);
+                                                                                                                                                                                                                                                                                               ReplaceTree(_ptTree0,rank,nextComm);
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                                                               }
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                                                               }
 #line 818 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                               
 #line 818 "dchop1.ch"
 #line 819 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         (listComm=AddListList(listComm, elemComm));
+                                                                                                                                                                                                                                                                                               (listComm=AddListList(listComm, elemComm));
 #line 819 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                               
 #line 819 "dchop1.ch"
 #line 820 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                               
 #line 820 "dchop1.ch"
 #line 820 "dchop1.ch"
-                                                                                                                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                                                               }
 #line 820 "dchop1.ch"
 #line 821 "dchop1.ch"
-                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                   
 #line 821 "dchop1.ch"
 #line 821 "dchop1.ch"
-                                                                                                                                                                                                                                                                             }
+                                                                                                                                                                                                                                                                                   }
 #line 821 "dchop1.ch"
 #line 822 "dchop1.ch"
-                                                                                                                                                                                                                             (comm=COMM_SON_VALUE((PPTREE)oneElem));
+                                                                                                                                                                                                                                   (comm=COMM_SON_VALUE((PPTREE)oneElem));
 #line 822 "dchop1.ch"
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   
 #line 822 "dchop1.ch"
 #line 823 "dchop1.ch"
-                                                                                                                                                                                                                             if ( (!comm) ) 
+                                                                                                                                                                                                                                   if ( (!comm) ) 
 #line 823 "dchop1.ch"
 #line 824 "dchop1.ch"
-                                                                                                                                                                                                                             PutComm(COMM_FATHER_VALUE((PPTREE)oneElem), listComm);
+                                                                                                                                                                                                                                   PutComm(COMM_FATHER_VALUE((PPTREE)oneElem), listComm);
 #line 824 "dchop1.ch"
-                                                                                                                                                                                                                             else 
+                                                                                                                                                                                                                                   else 
 #line 825 "dchop1.ch"
-                                                                                                                                                                                                                             {
+                                                                                                                                                                                                                                   {
 #line 825 "dchop1.ch"
 #line 826 "dchop1.ch"
-                                                                                                                                                                                                                             (listComm=AddListList(listComm, comm));
+                                                                                                                                                                                                                                   (listComm=AddListList(listComm, comm));
 #line 826 "dchop1.ch"
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   
 #line 826 "dchop1.ch"
 #line 827 "dchop1.ch"
-                                                                                                                                                                                                                             PutComm(COMM_FATHER_VALUE((PPTREE)oneElem), listComm);
+                                                                                                                                                                                                                                   PutComm(COMM_FATHER_VALUE((PPTREE)oneElem), listComm);
 #line 827 "dchop1.ch"
 #line 828 "dchop1.ch"
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   
 #line 828 "dchop1.ch"
 #line 828 "dchop1.ch"
-                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                   
 #line 828 "dchop1.ch"
 #line 829 "dchop1.ch"
-                                                                                                                                                                                                                             vertical = true ;
+                                                                                                                                                                                                                                   vertical =  true ;
 #line 829 "dchop1.ch"
 #line 830 "dchop1.ch"
-                                                                                                                                                                                                                             break ;
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   break ;
+                                                                                                                                                                                                                                   
 #line 830 "dchop1.ch"
 #line 831 "dchop1.ch"
-                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                   
 #line 831 "dchop1.ch"
 #line 831 "dchop1.ch"
-                                                                                                                                                                                                                             } else 
+                                                                                                                                                                                                                                   } else 
 #line 831 "dchop1.ch"
-                                                                                                                                                                                                 {
+                                                                                                                                                                                                       {
 #line 831 "dchop1.ch"
 #line 832 "dchop1.ch"
-                                                                                                                                                                                                 (currElem=son);
+                                                                                                                                                                                                       (currElem=son);
 #line 832 "dchop1.ch"
-                                                                                                                                                                                                 
+                                                                                                                                                                                                       
 #line 832 "dchop1.ch"
 #line 833 "dchop1.ch"
-                                                                                                                                                                                                 search = true ;
+                                                                                                                                                                                                       search =  true ;
 #line 833 "dchop1.ch"
 #line 834 "dchop1.ch"
-                                                                                                                                                                                                 break ;
-                                                                                                                                                                                                 
+                                                                                                                                                                                                       break ;
+                                                                                                                                                                                                       
 #line 834 "dchop1.ch"
 #line 835 "dchop1.ch"
-                                                                                                                                                                                                 
+                                                                                                                                                                                                       
 #line 835 "dchop1.ch"
 #line 835 "dchop1.ch"
-                                                                                                                                                                                                 }
-                                                                                                                                                                                                 
+                                                                                                                                                                                                       }
+                                                                                                                                                                                                       
 #line 835 "dchop1.ch"
 #line 836 "dchop1.ch"
-                                                                                                                                                                                                 
+                                                                                                                                                                                                       
 #line 836 "dchop1.ch"
 #line 836 "dchop1.ch"
-                                                                                                                                                                                                 }
+                                                                                                                                                                                                       }
 #line 836 "dchop1.ch"
 #line 837 "dchop1.ch"
-                                                                                                                                                                              
+                                                                                                                                                                                    
 #line 837 "dchop1.ch"
 #line 837 "dchop1.ch"
-                                                                                                                                                                              }
+                                                                                                                                                                                }
 #line 837 "dchop1.ch"
-                                                                                                                                              
+                                                                                                                                                
 #line 837 "dchop1.ch"
 #line 838 "dchop1.ch"
-                                                                                                                                              
+                                                                                                                                                
 #line 838 "dchop1.ch"
 #line 838 "dchop1.ch"
                                                                                                                                               }
@@ -5651,7 +5651,7 @@ int DecompCplus::ComputeStart ( PTREE start, PTREE end )
                                                         if ( x > maxPos && x + x0 <= MAX_REALIGN ) 
 #line 899 "dchop1.ch"
 #line 900 "dchop1.ch"
-                                                            maxPos = x ;
+                                                            maxPos =  x ;
 #line 900 "dchop1.ch"
 #line 901 "dchop1.ch"
                                                         
@@ -5805,12 +5805,12 @@ void DecompCplus::SetStart ( PTREE start, PTREE end, int pos )
                                                                                                         if ( first ) {
 #line 938 "dchop1.ch"
 #line 938 "dchop1.ch"
-                                                                                                                        PTREE _Baum0 ;
+                                                                                                                        PTREE   _Baum0 ;
 #line 938 "dchop1.ch"
                                                                                                                         
 #line 938 "dchop1.ch"
 #line 939 "dchop1.ch"
-                                                                                                                        first = 0 ;
+                                                                                                                        first =  0 ;
 #line 939 "dchop1.ch"
 #line 940 "dchop1.ch"
                                                                                                                         _Baum0 = (PPTREE) 0 ;
@@ -5884,13 +5884,13 @@ void DecompCplus::SetStart ( PTREE start, PTREE end, int pos )
                                                                                                         while ( ((decl=(list?list.Nextl():(PPTREE)0))) ) {
 #line 950 "dchop1.ch"
 #line 951 "dchop1.ch"
-                                                                                                                                                              GetCoord(decl, &x, &y, &dx, &dy);
+                                                                                                                                                                GetCoord(decl, &x, &y, &dx, &dy);
 #line 951 "dchop1.ch"
 #line 952 "dchop1.ch"
-                                                                                                                                                              PutCoord(decl, x + delta, y, dx, dy);
+                                                                                                                                                                PutCoord(decl, x + delta, y, dx, dy);
 #line 952 "dchop1.ch"
 #line 953 "dchop1.ch"
-                                                                                                                                                              
+                                                                                                                                                                
 #line 953 "dchop1.ch"
 #line 953 "dchop1.ch"
                                                                                                                                                               }
@@ -6166,7 +6166,7 @@ int DecompCplus::ComputeStartAff ( PTREE start, PTREE end )
                                                         if ( x + dx > maxPos && x + dx + x0 <= MAX_REALIGN ) 
 #line 1019 "dchop1.ch"
 #line 1020 "dchop1.ch"
-                                                            maxPos = x + dx ;
+                                                            maxPos =  x + dx ;
 #line 1020 "dchop1.ch"
 #line 1021 "dchop1.ch"
                                                         
@@ -6299,12 +6299,12 @@ void DecompCplus::SetStartAff ( PTREE start, PTREE end, int pos )
                                                                                                     if ( first ) {
 #line 1057 "dchop1.ch"
 #line 1057 "dchop1.ch"
-                                                                                                                    PTREE _Baum0 ;
+                                                                                                                    PTREE   _Baum0 ;
 #line 1057 "dchop1.ch"
                                                                                                                     
 #line 1057 "dchop1.ch"
 #line 1058 "dchop1.ch"
-                                                                                                                    first = 0 ;
+                                                                                                                    first =  0 ;
 #line 1058 "dchop1.ch"
 #line 1059 "dchop1.ch"
                                                                                                                     _Baum0 = (PPTREE) 0 ;
@@ -6460,7 +6460,7 @@ void DecompCplus::TraiterAlignAff ( PTREE tree )
                     if ( (!father) ) 
 #line 1094 "dchop1.ch"
 #line 1095 "dchop1.ch"
-                        align = true ;
+                        align =  true ;
 #line 1095 "dchop1.ch"
 #line 1098 "dchop1.ch"
                     if ( ((_inter = (PPTREE)father,1) && 

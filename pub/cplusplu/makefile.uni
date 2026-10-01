@@ -1,6 +1,6 @@
 THE_LIB= ./cplus.a
 
-LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o cplus10.o
+LIB_OBJECTS=chopper.o cplus.o cplus0.o cplus1.o cplus2.o cplus3.o cplus4.o cplus5.o cplus6.o cplus7.o dchop.o dchop1.o dchop0.o cplus8.o cplus9.o cplus10.o cplus11.o 
 
 libcplus.so : $(LIB_OBJECTS)
 	$(C_PLUS) -shared -o libcplus.so $(LIB_OBJECTS) ; 
@@ -46,6 +46,8 @@ cplus9.o : cplus9.cc cplus.h ../library/token.h
 
 cplus10.o : cplus10.cc cplus.h ../library/token.h
 
+cplus11.o : cplus10.cc cplus.h ../library/token.h
+
 m_done : cplus.met
 	-@ mkdir compile.dir
 	@cp cplus.met compile.dir
@@ -63,7 +65,8 @@ m_done : cplus.met
 		  unify cplus6.cpp ../cplus6.cc;\
 		  unify cplus8.cpp ../cplus8.cc;\
 		  unify cplus9.cpp ../cplus9.cc;\
-		    unify cplus10.cpp ../cplus10.cc;\
+	          unify cplus10.cpp ../cplus10.cc;\
+	          unify cplus11.cpp ../cplus11.cc;\
 		  unify cplus7.cpp ../cplus7.cc)
 	@echo "ok" > m_done
 

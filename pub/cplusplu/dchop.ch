@@ -736,7 +736,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             "unsigned" @type
             break ;
         case <RANGE_MODIFIER,val,declarator> : 
-            if ( val == <ATTRIBUTE_CALL> || val == <ASM_CALL> ) 
+            if ( val == <ATTRIBUTE_CALL> || val == <ASM_CALL> || val == <NOEXCEPT> ) 
                 @val 
             else 
                 value(val) 
@@ -767,6 +767,12 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <EXTENSION,val> : 
             "__extension__" <SEPA> @val
+            break ;
+        case <NOEXCEPT,val> : 
+            "noexcept" <SEPA>
+            if ( val != () ) {
+                "(" @val ")";
+            }
             break ;
         case <TYP_ADDR,declarator> : 
             <SEPB> "*" @declarator

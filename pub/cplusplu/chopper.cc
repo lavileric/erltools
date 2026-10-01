@@ -140,13 +140,13 @@ void AllocTypDef ( char *name )
     
 #line 65 "chopper.ch"
 #line 67 "chopper.ch"
-    point -> next = listTypDef ;
+    point -> next =  listTypDef ;
 #line 67 "chopper.ch"
 #line 68 "chopper.ch"
-    point -> name = AllocString(name);
+    point -> name =  AllocString(name);
 #line 68 "chopper.ch"
 #line 69 "chopper.ch"
-    listTypDef = point ;
+    listTypDef =  point ;
 #line 69 "chopper.ch"
 #line 70 "chopper.ch"
     
@@ -182,7 +182,7 @@ int IsTypDef ( char *name )
                         
 #line 81 "chopper.ch"
 #line 82 "chopper.ch"
-                        point = point -> next ;
+                        point =  point -> next ;
 #line 82 "chopper.ch"
 #line 83 "chopper.ch"
                         
@@ -311,13 +311,13 @@ static  void AllocRange ( char *name )
     
 #line 117 "chopper.ch"
 #line 119 "chopper.ch"
-    point -> next = listRangeModifier ;
+    point -> next =  listRangeModifier ;
 #line 119 "chopper.ch"
 #line 120 "chopper.ch"
-    point -> name = AllocString(name);
+    point -> name =  AllocString(name);
 #line 120 "chopper.ch"
 #line 121 "chopper.ch"
-    listRangeModifier = point ;
+    listRangeModifier =  point ;
 #line 121 "chopper.ch"
 #line 122 "chopper.ch"
     
@@ -353,7 +353,7 @@ int IsRange ( char *name )
                         
 #line 133 "chopper.ch"
 #line 134 "chopper.ch"
-                        point = point -> next ;
+                        point =  point -> next ;
 #line 134 "chopper.ch"
 #line 135 "chopper.ch"
                         
@@ -434,7 +434,7 @@ void AnalyzeTab ( PPTREE tree )
     sscanf(BrainyValue(tree), "%d", &i);
 #line 162 "chopper.ch"
 #line 163 "chopper.ch"
-    tabValue = i ;
+    tabValue =  i ;
 #line 163 "chopper.ch"
 #line 164 "chopper.ch"
     
@@ -463,7 +463,7 @@ void AnalyzeMargin ( PPTREE tree )
     sscanf(BrainyValue(tree), "%d", &i);
 #line 173 "chopper.ch"
 #line 174 "chopper.ch"
-    rightMargin = i ;
+    rightMargin =  i ;
 #line 174 "chopper.ch"
 #line 175 "chopper.ch"
     
@@ -486,7 +486,7 @@ void AnalyzeMode ( PPTREE tree )
     
 #line 182 "chopper.ch"
 #line 184 "chopper.ch"
-    ansiMode = !strcmp(BrainyValue(tree), "ansi");
+    ansiMode =  !strcmp(BrainyValue(tree), "ansi");
 #line 184 "chopper.ch"
 #line 185 "chopper.ch"
     
@@ -514,7 +514,7 @@ void AnalyzeEnumVert ( PPTREE tree )
     
 #line 194 "chopper.ch"
 #line 196 "chopper.ch"
-    enumVert = mode == "TRUE";
+    enumVert =  mode == "TRUE";
 #line 196 "chopper.ch"
 #line 197 "chopper.ch"
     
@@ -542,7 +542,7 @@ void AnalyzeParameterFunctUnd ( PPTREE tree )
     
 #line 206 "chopper.ch"
 #line 208 "chopper.ch"
-    parameterUnderTab = mode == "TRUE";
+    parameterUnderTab =  mode == "TRUE";
 #line 208 "chopper.ch"
 #line 209 "chopper.ch"
     
@@ -570,7 +570,7 @@ void AnalyzeTabDirective ( PPTREE tree )
     
 #line 218 "chopper.ch"
 #line 220 "chopper.ch"
-    tabDirective = mode == "TRUE";
+    tabDirective =  mode == "TRUE";
 #line 220 "chopper.ch"
 #line 221 "chopper.ch"
     
@@ -598,7 +598,7 @@ void AnalyzeSpaceArrow ( PPTREE tree )
     
 #line 230 "chopper.ch"
 #line 232 "chopper.ch"
-    spaceArrow = mode == "TRUE";
+    spaceArrow =  mode == "TRUE";
 #line 232 "chopper.ch"
 #line 233 "chopper.ch"
     
@@ -623,22 +623,22 @@ void AnalyzeBraceAlign ( PPTREE tree )
     
 #line 242 "chopper.ch"
 #line 244 "chopper.ch"
-    braceAlign = !strcmp(BrainyValue(tree), "code");
+    braceAlign =  !strcmp(BrainyValue(tree), "code");
 #line 244 "chopper.ch"
 #line 245 "chopper.ch"
-    braceAlignTabFunc = !strcmp(BrainyValue(tree), "code_tab_func");
+    braceAlignTabFunc =  !strcmp(BrainyValue(tree), "code_tab_func");
 #line 245 "chopper.ch"
 #line 246 "chopper.ch"
-    braceAlignNoFunc = !strcmp(BrainyValue(tree), "code_no_func");
+    braceAlignNoFunc =  !strcmp(BrainyValue(tree), "code_no_func");
 #line 246 "chopper.ch"
 #line 247 "chopper.ch"
     if ( braceAlignTabFunc ) {
 #line 247 "chopper.ch"
 #line 248 "chopper.ch"
-                                braceAlign = true ;
+                                braceAlign =  true ;
 #line 248 "chopper.ch"
 #line 249 "chopper.ch"
-                                braceAlignNoFunc = false ;
+                                braceAlignNoFunc =  false ;
 #line 249 "chopper.ch"
 #line 250 "chopper.ch"
                                 
@@ -650,10 +650,10 @@ void AnalyzeBraceAlign ( PPTREE tree )
     if ( braceAlignNoFunc ) {
 #line 251 "chopper.ch"
 #line 252 "chopper.ch"
-                                braceAlign = true ;
+                                braceAlign =  true ;
 #line 252 "chopper.ch"
 #line 253 "chopper.ch"
-                                braceAlignTabFunc = false ;
+                                braceAlignTabFunc =  false ;
 #line 253 "chopper.ch"
 #line 254 "chopper.ch"
                                 
@@ -665,7 +665,7 @@ void AnalyzeBraceAlign ( PPTREE tree )
     if ( braceAlign || braceAlignTabFunc || braceAlignNoFunc ) 
 #line 255 "chopper.ch"
 #line 256 "chopper.ch"
-        ansiMode = 1 ;
+        ansiMode =  1 ;
 #line 256 "chopper.ch"
 #line 257 "chopper.ch"
     
@@ -688,7 +688,7 @@ void AnalyzeIndentFunctionType ( PPTREE tree )
     
 #line 264 "chopper.ch"
 #line 266 "chopper.ch"
-    indentFunctionType = !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
+    indentFunctionType =  !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
 #line 266 "chopper.ch"
 #line 267 "chopper.ch"
     
@@ -711,7 +711,7 @@ void AnalyzeAssignAlign ( PPTREE tree )
     
 #line 274 "chopper.ch"
 #line 276 "chopper.ch"
-    assignAlign = !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
+    assignAlign =  !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
 #line 276 "chopper.ch"
 #line 277 "chopper.ch"
     
@@ -734,7 +734,7 @@ void AnalyzeDeclAlign ( PPTREE tree )
     
 #line 284 "chopper.ch"
 #line 286 "chopper.ch"
-    declAlign = !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
+    declAlign =  !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
 #line 286 "chopper.ch"
 #line 287 "chopper.ch"
     
@@ -755,7 +755,7 @@ void AnalyzeSimplify ( PPTREE tree )
     
 #line 291 "chopper.ch"
 #line 294 "chopper.ch"
-    DecompCplus::ptDecomp -> simplifyExpression = !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
+    DecompCplus::ptDecomp -> simplifyExpression =  !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
 #line 294 "chopper.ch"
 #line 295 "chopper.ch"
     
@@ -778,7 +778,7 @@ void AnalyzeSingleSwitchIndent ( PPTREE tree )
     
 #line 303 "chopper.ch"
 #line 305 "chopper.ch"
-    singleSwitchIndent = !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
+    singleSwitchIndent =  !strcmp(BrainyValue(tree), "On") || !strcmp(BrainyValue(tree), "ON") || !strcmp(BrainyValue(tree), "on");
 #line 305 "chopper.ch"
 #line 306 "chopper.ch"
     
@@ -799,7 +799,7 @@ void AnalyzeComment ( PPTREE tree )
     
 #line 312 "chopper.ch"
 #line 315 "chopper.ch"
-    tree = sontree(tree, 1);
+    tree =  sontree(tree, 1);
 #line 315 "chopper.ch"
 #line 316 "chopper.ch"
     switch ( NumberTree(tree) ) {
@@ -921,7 +921,7 @@ void AnalyzeFuncHeader ( PPTREE tree )
     
 #line 355 "chopper.ch"
 #line 358 "chopper.ch"
-    DecompCplus::ptDecomp -> funcHeader = AllocString(BrainyValue(tree));
+    DecompCplus::ptDecomp -> funcHeader =  AllocString(BrainyValue(tree));
 #line 358 "chopper.ch"
 #line 359 "chopper.ch"
     
@@ -942,7 +942,7 @@ void AnalyzeParameters ( PPTREE tree )
     
 #line 363 "chopper.ch"
 #line 366 "chopper.ch"
-    DecompCplus::ptDecomp -> parameters = AllocString(BrainyValue(tree));
+    DecompCplus::ptDecomp -> parameters =  AllocString(BrainyValue(tree));
 #line 366 "chopper.ch"
 #line 367 "chopper.ch"
     

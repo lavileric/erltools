@@ -264,7 +264,7 @@ PPTREE chopb::statement ( int error_free)
 #line 492 "chopb.met"
 #line 491 "chopb.met"
 #line 492 "chopb.met"
-            if ( (inter=NQUICK_CALL(_Tak(statement)(error_free), 146, chopb))== (PPTREE) -1 ) {
+            if ( (inter=NQUICK_CALL(_Tak(statement)(error_free), 147, chopb))== (PPTREE) -1 ) {
 #line 492 "chopb.met"
                 MulFreeTree(4,_addlist1,inter,list,statTree);
                 PROG_EXIT(statement_exit,"statement")
@@ -301,7 +301,7 @@ PPTREE chopb::statement ( int error_free)
 #line 495 "chopb.met"
 #line 495 "chopb.met"
 #line 497 "chopb.met"
-            } while ( !(! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 146, chopb)))) ;
+            } while ( !(! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 147, chopb)))) ;
 #line 497 "chopb.met"
 #line 498 "chopb.met"
             {
@@ -834,7 +834,7 @@ PPTREE chopb::statement ( int error_free)
             }
 #line 545 "chopb.met"
 #line 549 "chopb.met"
-            if (! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 146, chopb))){
+            if (! (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(statement), 147, chopb))){
 #line 549 "chopb.met"
 #line 551 "chopb.met"
                 if ( (inter=NQUICK_CALL(_Tak(expression)(error_free), 67, chopb))== (PPTREE) -1 ) {
@@ -940,7 +940,7 @@ PPTREE chopb::statement ( int error_free)
 #line 563 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 563 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 146, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(statement)(error_free), 147, chopb))== (PPTREE) -1 ) {
 #line 563 "chopb.met"
                     MulFreeTree(5,_ptTree0,_addlist1,inter,list,statTree);
                     PROG_EXIT(statement_exit,"statement")
@@ -978,7 +978,7 @@ PPTREE chopb::statement ( int error_free)
         default : 
 #line 569 "chopb.met"
 #line 569 "chopb.met"
-            if (NPUSH_CALL_AFF_VERIF(statTree = ,_Tak(cplus::statement), 170, chopb)){
+            if (NPUSH_CALL_AFF_VERIF(statTree = ,_Tak(cplus::statement), 171, chopb)){
 #line 569 "chopb.met"
 #line 570 "chopb.met"
                 {
@@ -1142,7 +1142,7 @@ PPTREE chopb::take_follow ( int error_free)
         }
 #line 629 "chopb.met"
 #line 630 "chopb.met"
-        if (NPUSH_CALL_AFF_VERIF(name = ,_Tak(qualified_name), 123, chopb)){
+        if (NPUSH_CALL_AFF_VERIF(name = ,_Tak(qualified_name), 124, chopb)){
 #line 630 "chopb.met"
 #line 631 "chopb.met"
             list =AddList(list ,name );
@@ -1173,7 +1173,7 @@ PPTREE chopb::take_follow ( int error_free)
 #line 636 "chopb.met"
                     PPTREE _ptTree0=0;
 #line 636 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 175, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 176, chopb))== (PPTREE) -1 ) {
 #line 636 "chopb.met"
                         MulFreeTree(5,_ptTree0,_addlist1,list,name,statTree);
                         PROG_EXIT(take_follow_exit,"take_follow")
@@ -1323,7 +1323,7 @@ PPTREE chopb::take_follow_list ( int error_free)
         }
 #line 610 "chopb.met"
 #line 611 "chopb.met"
-        if (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(take_follow_super), 175, chopb)){
+        if (NPUSH_CALL_AFF_VERIF(inter = ,_Tak(take_follow_super), 176, chopb)){
 #line 611 "chopb.met"
 #line 612 "chopb.met"
 #line 613 "chopb.met"
@@ -1341,7 +1341,7 @@ PPTREE chopb::take_follow_list ( int error_free)
 #line 615 "chopb.met"
                     PPTREE _ptTree0=0;
 #line 615 "chopb.met"
-                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 175, chopb))== (PPTREE) -1 ) {
+                    if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_super)(error_free), 176, chopb))== (PPTREE) -1 ) {
 #line 615 "chopb.met"
                         MulFreeTree(5,_ptTree0,_addlist1,inter,list,statTree);
                         PROG_EXIT(take_follow_list_exit,"take_follow_list")
@@ -1472,7 +1472,7 @@ PPTREE chopb::take_follow_super ( int error_free)
 #line 592 "chopb.met"
                 PPTREE _ptTree0=0;
 #line 592 "chopb.met"
-                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 174, chopb))== (PPTREE) -1 ) {
+                if ( (_ptTree0=NQUICK_CALL(_Tak(take_follow_list)(error_free), 175, chopb))== (PPTREE) -1 ) {
 #line 592 "chopb.met"
                     MulFreeTree(2,_ptTree0,identTree);
                     PROG_EXIT(take_follow_super_exit,"take_follow_super")

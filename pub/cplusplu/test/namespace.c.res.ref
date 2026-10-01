@@ -75,3 +75,5 @@ class aClass : public oClass {
     
         aMethod (int) override ;
 };
+void    f (int i) const noexcept ;
+void    f (int i) noexcept(1);

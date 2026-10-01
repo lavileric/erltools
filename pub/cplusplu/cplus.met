@@ -2243,6 +2243,18 @@ define const_or_volatile;
     end;
 end;
 
+define noexcept_call;
+    declare retTree;
+    take #"noexcept";
+    retTree = maketree(NOEXCEPT,());
+    if take "(" then
+        begin
+        replacetree(retTree,1,take expression);
+        take ")";
+        end;
+    return retTree;
+end;
+
 define range_modifier_function;
     case
         see #"inline" : return maketree(RANGE_MODIFIER,take #"inline",())
@@ -2250,6 +2262,9 @@ define range_modifier_function;
         see #"friend" : return maketree(RANGE_MODIFIER,take #"friend",())
         see #"const" : return maketree(RANGE_MODIFIER,take #"const",())
         see #"constexpr" : return maketree(RANGE_MODIFIER,take #"constexpr",())
+        see #"noexcept" : return maketree(RANGE_MODIFIER,take noexcept_call,())
+        see #"__attribute__" : return maketree(RANGE_MODIFIER,take attribute_call,())
+        see #"__asm__" : return maketree(RANGE_MODIFIER,take asm_call,())
     end;
 end;
 
@@ -2276,14 +2291,8 @@ define range_modifier;
         see !IDENT : return maketree(RANGE_MODIFIER,take range_in_liste,())
         see #"volatile" : return maketree(RANGE_MODIFIER,take #"volatile",())
         see #"register" : return maketree(RANGE_MODIFIER,take #"register",())
-        see #"__attribute__" :
-            begin
-            return maketree(RANGE_MODIFIER,take attribute_call,());
-            end
-        see #"__asm__" :
-            begin
-            return maketree(RANGE_MODIFIER,take asm_call,());
-            end
+        see #"__attribute__" : return maketree(RANGE_MODIFIER,take attribute_call,())
+        see #"__asm__" : return maketree(RANGE_MODIFIER,take asm_call,())
         default : return take range_modifier_function
     end;
 end;
@@ -3412,7 +3421,7 @@ define exception_list;
 end;
 
 define func_declaration;
-    declare funcTree,opt,decList,range,exception;
+    declare funcTree,opt,decList,range,exception,listRange;
     
     /* pour eviter les pbs du a la confusion entre
       le nom de la fonction et un type */
@@ -3424,6 +3433,13 @@ define func_declaration;
     replacetree(funcTree,4,take parameter_list_extended);
     if range = take range_modifier_function then
         replacetree(funcTree,5,range);
+    
+    /*     begin
+      addlist(listRange,range);
+      while range = take range_modifier_function do
+          addlist(listRange,range);
+      replacetree(funcTree,5,listRange);
+      end;*/
     if exception = take exception_list then
         replacetree(funcTree,9,exception);
     if take "=" then
