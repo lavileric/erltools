@@ -64,3 +64,17 @@ class aClass : public oClass {
 
 void f ( int i ) const noexcept ;
 void f ( int i ) noexcept (1) ;
+
+constexpr int f ()
+{
+    if consteval {
+        return 1 ;
+    } else {
+        return 0 ;
+    }
+}
+
+consteval int f ()
+{
+    return 1 ;
+}

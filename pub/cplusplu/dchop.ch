@@ -774,6 +774,11 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
                 "(" @val ")";
             }
             break ;
+        case <CONSTEVAL> : 
+            {
+                <SEPB> "consteval" <SEPA>
+            }
+            break ;
         case <TYP_ADDR,declarator> : 
             <SEPB> "*" @declarator
             break ;
@@ -1317,10 +1322,14 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <IF,exp,stat1,stat2> : 
             statementf = 0 ;
-            "if (" {{
-                    <S> @exp <S>
-                   }}
-            ")" <S>
+            if ( exp == <CONSTEVAL> ) {
+                "if " @exp ;
+            } else {
+                "if (" {{
+                        <S> @exp <S>
+                       }}
+                ")" <S>
+            }
             statementf = 1 ;
             if ( IsComm(stat1, PRE) || IsComm(stat2, PRE) ) 
                 <NL>

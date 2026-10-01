@@ -2262,6 +2262,7 @@ define range_modifier_function;
         see #"friend" : return maketree(RANGE_MODIFIER,take #"friend",())
         see #"const" : return maketree(RANGE_MODIFIER,take #"const",())
         see #"constexpr" : return maketree(RANGE_MODIFIER,take #"constexpr",())
+        see #"consteval" : return maketree(RANGE_MODIFIER,take #"consteval",())
         see #"noexcept" : return maketree(RANGE_MODIFIER,take noexcept_call,())
         see #"__attribute__" : return maketree(RANGE_MODIFIER,take attribute_call,())
         see #"__asm__" : return maketree(RANGE_MODIFIER,take asm_call,())
@@ -3620,9 +3621,14 @@ define statement;
             end
         take #"if" :
             begin
-            take "(";
-            statTree = maketree(IF,take expression,(),());
-            take ")";
+            if take #"consteval" then
+                statTree = maketree(IF,maketree(CONSTEVAL),(),())
+            else
+                begin
+                take "(";
+                statTree = maketree(IF,take expression,(),());
+                take ")";
+                end;
             without context switchContext do
                 replacetree(statTree,2,take statement);
             if take #"else" then

@@ -43,300 +43,301 @@ class metachop: public chopb,public virtual Parser {
     virtual void InitConst ();
     
     enum constants {
-        NODE_LIST =     414 ,
-        NODE_TREE =     413 ,
-        SPACE =     412 ,
-        SEP_OMIT =  411 ,
-        SEP_BEFORE =    410 ,
-        SEP_AFTER =     409 ,
-        AFERAFER =  408 ,
-        ALINEA =    407 ,
-        CHOP_DEF =  406 ,
-        NIL =   405 ,
-        IN_LANG =   404 ,
-        NEXT =  403 ,
-        DEF_IDENT =     402 ,
-        BOX =   401 ,
-        EXPO =  400 ,
-        EXPO_AFF =  399 ,
-        ETOIETOIEGAL =  398 ,
-        IN =    397 ,
-        PARSE =     396 ,
-        NEXTL =     395 ,
-        VALUE =     394 ,
-        INFESUPE =  393 ,
-        FOREACH =   392 ,
-        INFESEPOSUPE =  391 ,
-        INFESEPBSUPE =  390 ,
-        INFESEPASUPE =  389 ,
-        AOUVAOUV =  388 ,
-        ARRO =  387 ,
-        NL_BEG =    386 ,
-        TAB_BEG =   385 ,
-        SPACE_BEG =     384 ,
-        MAKETREE_SUP =  383 ,
-        MAKETREE_INF =  382 ,
-        PARSE_ELEM =    381 ,
-        SIMP_ETOI =     380 ,
-        ETOI_ETOI =     379 ,
-        TUNSIGNED =     378 ,
-        BDECR =     377 ,
-        BINCR =     376 ,
-        ADDR =  375 ,
-        NOT =   374 ,
-        LNEG =  373 ,
-        POS =   372 ,
-        NEG =   371 ,
-        PARAM_TYPE =    370 ,
-        STRING_LIST =   369 ,
-        LABEL =     368 ,
-        THROW_ANSI =    367 ,
-        ELSE =  366 ,
-        DECL_TYPE =     365 ,
-        CLASSNAME =     364 ,
-        TIDENT =    363 ,
-        TSIGNED =   362 ,
-        TSHORT =    361 ,
-        TCHAR =     360 ,
-        TINT =  359 ,
-        RSHI =  358 ,
-        LSHI =  357 ,
-        LT =    356 ,
-        GT =    355 ,
-        GEQU =  354 ,
-        LEQU =  353 ,
-        SPACE_ARROW =   352 ,
-        TAB_DIRECTIVE =     351 ,
-        ENUM_PARAMETERS_UNDER =     350 ,
-        ENUM_VERT_VALUE =   349 ,
-        PROTECTED_ARRAY_S_TYPEDEF =     348 ,
-        PROTECTED_ARRAY_TYPEDEF =   347 ,
-        PROTECTED_ARRAY_S =     346 ,
-        PROTECTED_ARRAY =   345 ,
-        PROTECT_MEMB =  344 ,
-        LANGUAGE =  343 ,
-        ELIPSIS_EXPRESSION =    342 ,
-        EXP =   341 ,
-        ADECR =     340 ,
-        AINCR =     339 ,
-        ARROW =     338 ,
-        REF =   337 ,
-        VARIADIC_EXPRESSION =   336 ,
-        EXP_BRA =   335 ,
-        EXP_LIST =  334 ,
-        ARROW_MEMB =    333 ,
-        DOT_MEMB =  332 ,
-        POINETOI =  331 ,
-        TIRESUPEETOI =  330 ,
-        SUPESUPE =  329 ,
-        INFEINFE =  328 ,
-        SUPEEGAL =  327 ,
-        INFEEGAL =  326 ,
-        NONE =  325 ,
-        NEW_DECLARATOR =    324 ,
-        USING_TYPE =    323 ,
-        USING_NAMESPACE =   322 ,
-        NAMESPACE_ALIAS =   321 ,
-        REM =   320 ,
-        DIV =   319 ,
-        MUL =   318 ,
-        POURC =     317 ,
-        MESSAGE_MAP =   316 ,
-        MACRO =     315 ,
-        TDOUBLE =   314 ,
-        TFLOAT =    313 ,
-        TLONG =     312 ,
-        OR =    311 ,
-        VBARVBAR =  310 ,
-        AND =   309 ,
-        COMPOUND_EXT =  308 ,
-        EXTERNAL =  307 ,
-        MUTABLE =   306 ,
-        TIRESUPE =  305 ,
-        CAPTURE_ALL =   304 ,
-        LAMBDA =    303 ,
-        INLINE_NAMESPACE =  302 ,
-        INITIALIZER =   301 ,
-        LOR =   300 ,
-        VBAR =  299 ,
-        DELETE_FUNCTION =   298 ,
-        FUNC =  297 ,
-        ALL_OF =    296 ,
-        EXTENSION =     295 ,
-        __EXTENSION__ =     294 ,
-        STAT_VOID =     293 ,
-        TYPEDEF =   292 ,
-        TEMPLATE_DECL =     291 ,
-        SUPE =  290 ,
-        CLASS_PARAM =   289 ,
-        TEMPLATE =  288 ,
-        EXP_SEQ =   287 ,
-        LXOR =  286 ,
-        CHAP =  285 ,
-        EXCEPTION_LIST =    284 ,
-        EXCEPTION_ANSI =    283 ,
-        EXCEPTION =     282 ,
-        NEQU =  281 ,
-        EQU =   280 ,
-        EXCLEGAL =  279 ,
-        EGALEGAL =  278 ,
-        ENUM_CLASS =    277 ,
-        PRAGMA =    276 ,
-        PARAMETERS =    275 ,
-        FUNC_HEADER =   274 ,
-        INDENT_FUNCTION_TYPE =  273 ,
-        COMMENT_PLUS =  272 ,
-        COMMENT_END =   271 ,
-        COMMENT_MIDDLE =    270 ,
-        COMMENT_START =     269 ,
-        MARGIN_VALUE =  268 ,
-        BRACE_ALIGN_VALUE =     267 ,
-        DECL_ALIGN =    266 ,
-        ASSIGN_ALIGN =  265 ,
-        SINGLE_SWITCH_INDENT_VALUE =    264 ,
-        SIMPLIFY_VALUE =    263 ,
-        SIMPLIFY =  262 ,
-        MODE_VALUE =    261 ,
-        TAB_VALUE =     260 ,
-        CONFIG =    259 ,
-        NOT_MANAGED =   258 ,
-        NO_PRETTY =     257 ,
-        ALINE =     256 ,
-        ERROR =     255 ,
-        UNDEF =     254 ,
-        TYP_AFF_BRA =   253 ,
-        TYP_AFF_CALL =  252 ,
-        MEMBER_DECLARATOR =     251 ,
-        TYP_ARRAY =     250 ,
-        FOR_DECLARATION =   249 ,
-        DECLARATION =   248 ,
-        CTOR_INITIALIZER =  247 ,
-        BRACE_MARKER =  246 ,
-        CTOR_INIT =     245 ,
-        LONGLONG =  244 ,
-        IUNLONGLONG =   243 ,
-        IUNLONG =   242 ,
-        IUN =   241 ,
-        ILONGLONG =     240 ,
-        ILONG =     239 ,
-        RANGE_MODIFIER =    238 ,
-        COND_AFF =  237 ,
-        INTE =  236 ,
-        COMPOUND =  235 ,
-        CLASS_DECL =    234 ,
-        AFER =  233 ,
-        CATCH_ANSI =    232 ,
-        EXCEPT_ANSI_ALL =   231 ,
-        CAST =  230 ,
-        TYP_BIT =   229 ,
-        PROTECT =   228 ,
-        BASE_LIST =     227 ,
-        ATTRIBUTE_CALL =    226 ,
-        XOR_AFF =   225 ,
-        OR_AFF =    224 ,
-        AND_AFF =   223 ,
-        RSH_AFF =   222 ,
-        LSH_AFF =   221 ,
-        MIN_AFF =   220 ,
-        PLU_AFF =   219 ,
-        REM_AFF =   218 ,
-        DIV_AFF =   217 ,
-        MUL_AFF =   216 ,
-        AFF =   215 ,
-        ASM_CALL =  214 ,
-        EXP_ARRAY =     213 ,
-        VAR_LIST =  212 ,
-        TYP_LIST =  211 ,
-        TYP_AFF =   210 ,
-        ABST_DECLARATOR =   209 ,
-        DECLARATOR =    208 ,
-        LAND =  207 ,
-        INIT_NEW =  206 ,
-        VIRG =  205 ,
-        QUALIFIED =     204 ,
-        MINUS =     203 ,
-        TYP =   202 ,
-        PFER =  201 ,
-        DESTRUCT =  200 ,
-        TYP_REF =   199 ,
-        TYP_VARIADIC =  198 ,
-        TYP_MOV =   197 ,
-        TYP_ADDR =  196 ,
-        INFE =  195 ,
-        _TYPEDEF_PROTECTEDARRAY_S =     194 ,
-        _TYPEDEF_PROTECTEDARRAY =   193 ,
-        _PROTECTEDPOINTER_S =   192 ,
-        _PROTECTEDPOINTER =     191 ,
-        _PROTECTEDARRAY_S =     190 ,
-        _PROTECTEDARRAY =   189 ,
-        USING =     188 ,
-        NAMESPACE =     187 ,
-        CATCH =     186 ,
-        DPOI =  185 ,
-        PUBLIC =    184 ,
-        PROTECTED =     183 ,
-        PRIVATE =   182 ,
-        CHAPEGAL =  181 ,
-        VBAREGAL =  180 ,
-        ETCOEGAL =  179 ,
-        SUPESUPEEGAL =  178 ,
-        INFEINFEEGAL =  177 ,
-        TIREEGAL =  176 ,
-        PLUSEGAL =  175 ,
-        POURCEGAL =     174 ,
-        ETOIEGAL =  173 ,
-        EGAL =  172 ,
-        ASM =   171 ,
-        CFER =  170 ,
-        COUV =  169 ,
-        VA_ARG =    168 ,
-        DELETE =    167 ,
-        NEW =   166 ,
-        SIZEOF =    165 ,
-        TIRETIRE =  164 ,
-        PLUSPLUS =  163 ,
-        EXCL =  162 ,
-        PLUS =  161 ,
-        TIRE =  160 ,
-        DEFAULT =   159 ,
-        CASE =  158 ,
-        TRY =   157 ,
-        THROW =     156 ,
-        FORALLSONS =    155 ,
-        WHILE =     154 ,
-        SWITCH =    153 ,
-        RETURN =    152 ,
-        PVIR =  151 ,
-        IF =    150 ,
-        FOR =   149 ,
-        AOUV =  148 ,
-        DO =    147 ,
-        CONTINUE =  146 ,
-        BREAK =     145 ,
-        OPERATOR =  144 ,
-        TILD =  143 ,
-        ETCO =  142 ,
-        POINPOINPOIN =  141 ,
-        ETCOETCO =  140 ,
-        ETOI =  139 ,
-        POUV =  138 ,
-        UNSIGNED =  137 ,
-        SIGNED =    136 ,
-        SHORT =     135 ,
-        LONG =  134 ,
-        CHAR =  133 ,
-        INT =   132 ,
-        DPOIDPOI =  131 ,
-        VOID =  130 ,
-        FLOAT =     129 ,
-        DOUBLE =    128 ,
-        DECLTYPE =  127 ,
-        TYPENAME =  126 ,
-        CLASS =     125 ,
-        UNION =     124 ,
-        STRUCT =    123 ,
-        ENUM =  122 ,
-        NOEXCEPT =  121 ,
+        NODE_LIST =     415 ,
+        NODE_TREE =     414 ,
+        SPACE =     413 ,
+        SEP_OMIT =  412 ,
+        SEP_BEFORE =    411 ,
+        SEP_AFTER =     410 ,
+        AFERAFER =  409 ,
+        ALINEA =    408 ,
+        CHOP_DEF =  407 ,
+        NIL =   406 ,
+        IN_LANG =   405 ,
+        NEXT =  404 ,
+        DEF_IDENT =     403 ,
+        BOX =   402 ,
+        EXPO =  401 ,
+        EXPO_AFF =  400 ,
+        ETOIETOIEGAL =  399 ,
+        IN =    398 ,
+        PARSE =     397 ,
+        NEXTL =     396 ,
+        VALUE =     395 ,
+        INFESUPE =  394 ,
+        FOREACH =   393 ,
+        INFESEPOSUPE =  392 ,
+        INFESEPBSUPE =  391 ,
+        INFESEPASUPE =  390 ,
+        AOUVAOUV =  389 ,
+        ARRO =  388 ,
+        NL_BEG =    387 ,
+        TAB_BEG =   386 ,
+        SPACE_BEG =     385 ,
+        MAKETREE_SUP =  384 ,
+        MAKETREE_INF =  383 ,
+        PARSE_ELEM =    382 ,
+        SIMP_ETOI =     381 ,
+        ETOI_ETOI =     380 ,
+        TUNSIGNED =     379 ,
+        BDECR =     378 ,
+        BINCR =     377 ,
+        ADDR =  376 ,
+        NOT =   375 ,
+        LNEG =  374 ,
+        POS =   373 ,
+        NEG =   372 ,
+        PARAM_TYPE =    371 ,
+        STRING_LIST =   370 ,
+        LABEL =     369 ,
+        THROW_ANSI =    368 ,
+        ELSE =  367 ,
+        DECL_TYPE =     366 ,
+        CLASSNAME =     365 ,
+        TIDENT =    364 ,
+        TSIGNED =   363 ,
+        TSHORT =    362 ,
+        TCHAR =     361 ,
+        TINT =  360 ,
+        RSHI =  359 ,
+        LSHI =  358 ,
+        LT =    357 ,
+        GT =    356 ,
+        GEQU =  355 ,
+        LEQU =  354 ,
+        SPACE_ARROW =   353 ,
+        TAB_DIRECTIVE =     352 ,
+        ENUM_PARAMETERS_UNDER =     351 ,
+        ENUM_VERT_VALUE =   350 ,
+        PROTECTED_ARRAY_S_TYPEDEF =     349 ,
+        PROTECTED_ARRAY_TYPEDEF =   348 ,
+        PROTECTED_ARRAY_S =     347 ,
+        PROTECTED_ARRAY =   346 ,
+        PROTECT_MEMB =  345 ,
+        LANGUAGE =  344 ,
+        ELIPSIS_EXPRESSION =    343 ,
+        EXP =   342 ,
+        ADECR =     341 ,
+        AINCR =     340 ,
+        ARROW =     339 ,
+        REF =   338 ,
+        VARIADIC_EXPRESSION =   337 ,
+        EXP_BRA =   336 ,
+        EXP_LIST =  335 ,
+        ARROW_MEMB =    334 ,
+        DOT_MEMB =  333 ,
+        POINETOI =  332 ,
+        TIRESUPEETOI =  331 ,
+        SUPESUPE =  330 ,
+        INFEINFE =  329 ,
+        SUPEEGAL =  328 ,
+        INFEEGAL =  327 ,
+        NONE =  326 ,
+        NEW_DECLARATOR =    325 ,
+        USING_TYPE =    324 ,
+        USING_NAMESPACE =   323 ,
+        NAMESPACE_ALIAS =   322 ,
+        REM =   321 ,
+        DIV =   320 ,
+        MUL =   319 ,
+        POURC =     318 ,
+        MESSAGE_MAP =   317 ,
+        MACRO =     316 ,
+        TDOUBLE =   315 ,
+        TFLOAT =    314 ,
+        TLONG =     313 ,
+        OR =    312 ,
+        VBARVBAR =  311 ,
+        AND =   310 ,
+        COMPOUND_EXT =  309 ,
+        EXTERNAL =  308 ,
+        MUTABLE =   307 ,
+        TIRESUPE =  306 ,
+        CAPTURE_ALL =   305 ,
+        LAMBDA =    304 ,
+        INLINE_NAMESPACE =  303 ,
+        INITIALIZER =   302 ,
+        LOR =   301 ,
+        VBAR =  300 ,
+        DELETE_FUNCTION =   299 ,
+        FUNC =  298 ,
+        ALL_OF =    297 ,
+        EXTENSION =     296 ,
+        __EXTENSION__ =     295 ,
+        STAT_VOID =     294 ,
+        TYPEDEF =   293 ,
+        TEMPLATE_DECL =     292 ,
+        SUPE =  291 ,
+        CLASS_PARAM =   290 ,
+        TEMPLATE =  289 ,
+        EXP_SEQ =   288 ,
+        LXOR =  287 ,
+        CHAP =  286 ,
+        EXCEPTION_LIST =    285 ,
+        EXCEPTION_ANSI =    284 ,
+        EXCEPTION =     283 ,
+        NEQU =  282 ,
+        EQU =   281 ,
+        EXCLEGAL =  280 ,
+        EGALEGAL =  279 ,
+        ENUM_CLASS =    278 ,
+        PRAGMA =    277 ,
+        PARAMETERS =    276 ,
+        FUNC_HEADER =   275 ,
+        INDENT_FUNCTION_TYPE =  274 ,
+        COMMENT_PLUS =  273 ,
+        COMMENT_END =   272 ,
+        COMMENT_MIDDLE =    271 ,
+        COMMENT_START =     270 ,
+        MARGIN_VALUE =  269 ,
+        BRACE_ALIGN_VALUE =     268 ,
+        DECL_ALIGN =    267 ,
+        ASSIGN_ALIGN =  266 ,
+        SINGLE_SWITCH_INDENT_VALUE =    265 ,
+        SIMPLIFY_VALUE =    264 ,
+        SIMPLIFY =  263 ,
+        MODE_VALUE =    262 ,
+        TAB_VALUE =     261 ,
+        CONFIG =    260 ,
+        NOT_MANAGED =   259 ,
+        NO_PRETTY =     258 ,
+        ALINE =     257 ,
+        ERROR =     256 ,
+        UNDEF =     255 ,
+        TYP_AFF_BRA =   254 ,
+        TYP_AFF_CALL =  253 ,
+        MEMBER_DECLARATOR =     252 ,
+        TYP_ARRAY =     251 ,
+        FOR_DECLARATION =   250 ,
+        DECLARATION =   249 ,
+        CTOR_INITIALIZER =  248 ,
+        BRACE_MARKER =  247 ,
+        CTOR_INIT =     246 ,
+        LONGLONG =  245 ,
+        IUNLONGLONG =   244 ,
+        IUNLONG =   243 ,
+        IUN =   242 ,
+        ILONGLONG =     241 ,
+        ILONG =     240 ,
+        RANGE_MODIFIER =    239 ,
+        COND_AFF =  238 ,
+        INTE =  237 ,
+        COMPOUND =  236 ,
+        CLASS_DECL =    235 ,
+        AFER =  234 ,
+        CATCH_ANSI =    233 ,
+        EXCEPT_ANSI_ALL =   232 ,
+        CAST =  231 ,
+        TYP_BIT =   230 ,
+        PROTECT =   229 ,
+        BASE_LIST =     228 ,
+        ATTRIBUTE_CALL =    227 ,
+        XOR_AFF =   226 ,
+        OR_AFF =    225 ,
+        AND_AFF =   224 ,
+        RSH_AFF =   223 ,
+        LSH_AFF =   222 ,
+        MIN_AFF =   221 ,
+        PLU_AFF =   220 ,
+        REM_AFF =   219 ,
+        DIV_AFF =   218 ,
+        MUL_AFF =   217 ,
+        AFF =   216 ,
+        ASM_CALL =  215 ,
+        EXP_ARRAY =     214 ,
+        VAR_LIST =  213 ,
+        TYP_LIST =  212 ,
+        TYP_AFF =   211 ,
+        ABST_DECLARATOR =   210 ,
+        DECLARATOR =    209 ,
+        LAND =  208 ,
+        INIT_NEW =  207 ,
+        VIRG =  206 ,
+        QUALIFIED =     205 ,
+        MINUS =     204 ,
+        TYP =   203 ,
+        PFER =  202 ,
+        DESTRUCT =  201 ,
+        TYP_REF =   200 ,
+        TYP_VARIADIC =  199 ,
+        TYP_MOV =   198 ,
+        TYP_ADDR =  197 ,
+        INFE =  196 ,
+        _TYPEDEF_PROTECTEDARRAY_S =     195 ,
+        _TYPEDEF_PROTECTEDARRAY =   194 ,
+        _PROTECTEDPOINTER_S =   193 ,
+        _PROTECTEDPOINTER =     192 ,
+        _PROTECTEDARRAY_S =     191 ,
+        _PROTECTEDARRAY =   190 ,
+        USING =     189 ,
+        NAMESPACE =     188 ,
+        CATCH =     187 ,
+        DPOI =  186 ,
+        PUBLIC =    185 ,
+        PROTECTED =     184 ,
+        PRIVATE =   183 ,
+        CHAPEGAL =  182 ,
+        VBAREGAL =  181 ,
+        ETCOEGAL =  180 ,
+        SUPESUPEEGAL =  179 ,
+        INFEINFEEGAL =  178 ,
+        TIREEGAL =  177 ,
+        PLUSEGAL =  176 ,
+        POURCEGAL =     175 ,
+        ETOIEGAL =  174 ,
+        EGAL =  173 ,
+        ASM =   172 ,
+        CFER =  171 ,
+        COUV =  170 ,
+        VA_ARG =    169 ,
+        DELETE =    168 ,
+        NEW =   167 ,
+        SIZEOF =    166 ,
+        TIRETIRE =  165 ,
+        PLUSPLUS =  164 ,
+        EXCL =  163 ,
+        PLUS =  162 ,
+        TIRE =  161 ,
+        DEFAULT =   160 ,
+        CASE =  159 ,
+        TRY =   158 ,
+        THROW =     157 ,
+        FORALLSONS =    156 ,
+        WHILE =     155 ,
+        SWITCH =    154 ,
+        RETURN =    153 ,
+        PVIR =  152 ,
+        IF =    151 ,
+        FOR =   150 ,
+        AOUV =  149 ,
+        DO =    148 ,
+        CONTINUE =  147 ,
+        BREAK =     146 ,
+        OPERATOR =  145 ,
+        TILD =  144 ,
+        ETCO =  143 ,
+        POINPOINPOIN =  142 ,
+        ETCOETCO =  141 ,
+        ETOI =  140 ,
+        POUV =  139 ,
+        UNSIGNED =  138 ,
+        SIGNED =    137 ,
+        SHORT =     136 ,
+        LONG =  135 ,
+        CHAR =  134 ,
+        INT =   133 ,
+        DPOIDPOI =  132 ,
+        VOID =  131 ,
+        FLOAT =     130 ,
+        DOUBLE =    129 ,
+        DECLTYPE =  128 ,
+        TYPENAME =  127 ,
+        CLASS =     126 ,
+        UNION =     125 ,
+        STRUCT =    124 ,
+        ENUM =  123 ,
+        NOEXCEPT =  122 ,
+        CONSTEVAL =     121 ,
         CONSTEXPR =     120 ,
         CONST =     119 ,
         FRIEND =    118 ,
@@ -459,300 +460,301 @@ class metachop: public chopb,public virtual Parser {
 extern metachop * parser_metachop;
 
 #endif
-#define NODE_LIST_metachop  414
-#define NODE_TREE_metachop  413
-#define SPACE_metachop  412
-#define SEP_OMIT_metachop   411
-#define SEP_BEFORE_metachop     410
-#define SEP_AFTER_metachop  409
-#define AFERAFER_metachop   408
-#define ALINEA_metachop     407
-#define CHOP_DEF_metachop   406
-#define NIL_metachop    405
-#define IN_LANG_metachop    404
-#define NEXT_metachop   403
-#define DEF_IDENT_metachop  402
-#define BOX_metachop    401
-#define EXPO_metachop   400
-#define EXPO_AFF_metachop   399
-#define ETOIETOIEGAL_metachop   398
-#define IN_metachop     397
-#define PARSE_metachop  396
-#define NEXTL_metachop  395
-#define VALUE_metachop  394
-#define INFESUPE_metachop   393
-#define FOREACH_metachop    392
-#define INFESEPOSUPE_metachop   391
-#define INFESEPBSUPE_metachop   390
-#define INFESEPASUPE_metachop   389
-#define AOUVAOUV_metachop   388
-#define ARRO_metachop   387
-#define NL_BEG_metachop     386
-#define TAB_BEG_metachop    385
-#define SPACE_BEG_metachop  384
-#define MAKETREE_SUP_metachop   383
-#define MAKETREE_INF_metachop   382
-#define PARSE_ELEM_metachop     381
-#define SIMP_ETOI_metachop  380
-#define ETOI_ETOI_metachop  379
-#define TUNSIGNED_metachop  378
-#define BDECR_metachop  377
-#define BINCR_metachop  376
-#define ADDR_metachop   375
-#define NOT_metachop    374
-#define LNEG_metachop   373
-#define POS_metachop    372
-#define NEG_metachop    371
-#define PARAM_TYPE_metachop     370
-#define STRING_LIST_metachop    369
-#define LABEL_metachop  368
-#define THROW_ANSI_metachop     367
-#define ELSE_metachop   366
-#define DECL_TYPE_metachop  365
-#define CLASSNAME_metachop  364
-#define TIDENT_metachop     363
-#define TSIGNED_metachop    362
-#define TSHORT_metachop     361
-#define TCHAR_metachop  360
-#define TINT_metachop   359
-#define RSHI_metachop   358
-#define LSHI_metachop   357
-#define LT_metachop     356
-#define GT_metachop     355
-#define GEQU_metachop   354
-#define LEQU_metachop   353
-#define SPACE_ARROW_metachop    352
-#define TAB_DIRECTIVE_metachop  351
-#define ENUM_PARAMETERS_UNDER_metachop  350
-#define ENUM_VERT_VALUE_metachop    349
-#define PROTECTED_ARRAY_S_TYPEDEF_metachop  348
-#define PROTECTED_ARRAY_TYPEDEF_metachop    347
-#define PROTECTED_ARRAY_S_metachop  346
-#define PROTECTED_ARRAY_metachop    345
-#define PROTECT_MEMB_metachop   344
-#define LANGUAGE_metachop   343
-#define ELIPSIS_EXPRESSION_metachop     342
-#define EXP_metachop    341
-#define ADECR_metachop  340
-#define AINCR_metachop  339
-#define ARROW_metachop  338
-#define REF_metachop    337
-#define VARIADIC_EXPRESSION_metachop    336
-#define EXP_BRA_metachop    335
-#define EXP_LIST_metachop   334
-#define ARROW_MEMB_metachop     333
-#define DOT_MEMB_metachop   332
-#define POINETOI_metachop   331
-#define TIRESUPEETOI_metachop   330
-#define SUPESUPE_metachop   329
-#define INFEINFE_metachop   328
-#define SUPEEGAL_metachop   327
-#define INFEEGAL_metachop   326
-#define NONE_metachop   325
-#define NEW_DECLARATOR_metachop     324
-#define USING_TYPE_metachop     323
-#define USING_NAMESPACE_metachop    322
-#define NAMESPACE_ALIAS_metachop    321
-#define REM_metachop    320
-#define DIV_metachop    319
-#define MUL_metachop    318
-#define POURC_metachop  317
-#define MESSAGE_MAP_metachop    316
-#define MACRO_metachop  315
-#define TDOUBLE_metachop    314
-#define TFLOAT_metachop     313
-#define TLONG_metachop  312
-#define OR_metachop     311
-#define VBARVBAR_metachop   310
-#define AND_metachop    309
-#define COMPOUND_EXT_metachop   308
-#define EXTERNAL_metachop   307
-#define MUTABLE_metachop    306
-#define TIRESUPE_metachop   305
-#define CAPTURE_ALL_metachop    304
-#define LAMBDA_metachop     303
-#define INLINE_NAMESPACE_metachop   302
-#define INITIALIZER_metachop    301
-#define LOR_metachop    300
-#define VBAR_metachop   299
-#define DELETE_FUNCTION_metachop    298
-#define FUNC_metachop   297
-#define ALL_OF_metachop     296
-#define EXTENSION_metachop  295
-#define __EXTENSION___metachop  294
-#define STAT_VOID_metachop  293
-#define TYPEDEF_metachop    292
-#define TEMPLATE_DECL_metachop  291
-#define SUPE_metachop   290
-#define CLASS_PARAM_metachop    289
-#define TEMPLATE_metachop   288
-#define EXP_SEQ_metachop    287
-#define LXOR_metachop   286
-#define CHAP_metachop   285
-#define EXCEPTION_LIST_metachop     284
-#define EXCEPTION_ANSI_metachop     283
-#define EXCEPTION_metachop  282
-#define NEQU_metachop   281
-#define EQU_metachop    280
-#define EXCLEGAL_metachop   279
-#define EGALEGAL_metachop   278
-#define ENUM_CLASS_metachop     277
-#define PRAGMA_metachop     276
-#define PARAMETERS_metachop     275
-#define FUNC_HEADER_metachop    274
-#define INDENT_FUNCTION_TYPE_metachop   273
-#define COMMENT_PLUS_metachop   272
-#define COMMENT_END_metachop    271
-#define COMMENT_MIDDLE_metachop     270
-#define COMMENT_START_metachop  269
-#define MARGIN_VALUE_metachop   268
-#define BRACE_ALIGN_VALUE_metachop  267
-#define DECL_ALIGN_metachop     266
-#define ASSIGN_ALIGN_metachop   265
-#define SINGLE_SWITCH_INDENT_VALUE_metachop     264
-#define SIMPLIFY_VALUE_metachop     263
-#define SIMPLIFY_metachop   262
-#define MODE_VALUE_metachop     261
-#define TAB_VALUE_metachop  260
-#define CONFIG_metachop     259
-#define NOT_MANAGED_metachop    258
-#define NO_PRETTY_metachop  257
-#define ALINE_metachop  256
-#define ERROR_metachop  255
-#define UNDEF_metachop  254
-#define TYP_AFF_BRA_metachop    253
-#define TYP_AFF_CALL_metachop   252
-#define MEMBER_DECLARATOR_metachop  251
-#define TYP_ARRAY_metachop  250
-#define FOR_DECLARATION_metachop    249
-#define DECLARATION_metachop    248
-#define CTOR_INITIALIZER_metachop   247
-#define BRACE_MARKER_metachop   246
-#define CTOR_INIT_metachop  245
-#define LONGLONG_metachop   244
-#define IUNLONGLONG_metachop    243
-#define IUNLONG_metachop    242
-#define IUN_metachop    241
-#define ILONGLONG_metachop  240
-#define ILONG_metachop  239
-#define RANGE_MODIFIER_metachop     238
-#define COND_AFF_metachop   237
-#define INTE_metachop   236
-#define COMPOUND_metachop   235
-#define CLASS_DECL_metachop     234
-#define AFER_metachop   233
-#define CATCH_ANSI_metachop     232
-#define EXCEPT_ANSI_ALL_metachop    231
-#define CAST_metachop   230
-#define TYP_BIT_metachop    229
-#define PROTECT_metachop    228
-#define BASE_LIST_metachop  227
-#define ATTRIBUTE_CALL_metachop     226
-#define XOR_AFF_metachop    225
-#define OR_AFF_metachop     224
-#define AND_AFF_metachop    223
-#define RSH_AFF_metachop    222
-#define LSH_AFF_metachop    221
-#define MIN_AFF_metachop    220
-#define PLU_AFF_metachop    219
-#define REM_AFF_metachop    218
-#define DIV_AFF_metachop    217
-#define MUL_AFF_metachop    216
-#define AFF_metachop    215
-#define ASM_CALL_metachop   214
-#define EXP_ARRAY_metachop  213
-#define VAR_LIST_metachop   212
-#define TYP_LIST_metachop   211
-#define TYP_AFF_metachop    210
-#define ABST_DECLARATOR_metachop    209
-#define DECLARATOR_metachop     208
-#define LAND_metachop   207
-#define INIT_NEW_metachop   206
-#define VIRG_metachop   205
-#define QUALIFIED_metachop  204
-#define MINUS_metachop  203
-#define TYP_metachop    202
-#define PFER_metachop   201
-#define DESTRUCT_metachop   200
-#define TYP_REF_metachop    199
-#define TYP_VARIADIC_metachop   198
-#define TYP_MOV_metachop    197
-#define TYP_ADDR_metachop   196
-#define INFE_metachop   195
-#define _TYPEDEF_PROTECTEDARRAY_S_metachop  194
-#define _TYPEDEF_PROTECTEDARRAY_metachop    193
-#define _PROTECTEDPOINTER_S_metachop    192
-#define _PROTECTEDPOINTER_metachop  191
-#define _PROTECTEDARRAY_S_metachop  190
-#define _PROTECTEDARRAY_metachop    189
-#define USING_metachop  188
-#define NAMESPACE_metachop  187
-#define CATCH_metachop  186
-#define DPOI_metachop   185
-#define PUBLIC_metachop     184
-#define PROTECTED_metachop  183
-#define PRIVATE_metachop    182
-#define CHAPEGAL_metachop   181
-#define VBAREGAL_metachop   180
-#define ETCOEGAL_metachop   179
-#define SUPESUPEEGAL_metachop   178
-#define INFEINFEEGAL_metachop   177
-#define TIREEGAL_metachop   176
-#define PLUSEGAL_metachop   175
-#define POURCEGAL_metachop  174
-#define ETOIEGAL_metachop   173
-#define EGAL_metachop   172
-#define ASM_metachop    171
-#define CFER_metachop   170
-#define COUV_metachop   169
-#define VA_ARG_metachop     168
-#define DELETE_metachop     167
-#define NEW_metachop    166
-#define SIZEOF_metachop     165
-#define TIRETIRE_metachop   164
-#define PLUSPLUS_metachop   163
-#define EXCL_metachop   162
-#define PLUS_metachop   161
-#define TIRE_metachop   160
-#define DEFAULT_metachop    159
-#define CASE_metachop   158
-#define TRY_metachop    157
-#define THROW_metachop  156
-#define FORALLSONS_metachop     155
-#define WHILE_metachop  154
-#define SWITCH_metachop     153
-#define RETURN_metachop     152
-#define PVIR_metachop   151
-#define IF_metachop     150
-#define FOR_metachop    149
-#define AOUV_metachop   148
-#define DO_metachop     147
-#define CONTINUE_metachop   146
-#define BREAK_metachop  145
-#define OPERATOR_metachop   144
-#define TILD_metachop   143
-#define ETCO_metachop   142
-#define POINPOINPOIN_metachop   141
-#define ETCOETCO_metachop   140
-#define ETOI_metachop   139
-#define POUV_metachop   138
-#define UNSIGNED_metachop   137
-#define SIGNED_metachop     136
-#define SHORT_metachop  135
-#define LONG_metachop   134
-#define CHAR_metachop   133
-#define INT_metachop    132
-#define DPOIDPOI_metachop   131
-#define VOID_metachop   130
-#define FLOAT_metachop  129
-#define DOUBLE_metachop     128
-#define DECLTYPE_metachop   127
-#define TYPENAME_metachop   126
-#define CLASS_metachop  125
-#define UNION_metachop  124
-#define STRUCT_metachop     123
-#define ENUM_metachop   122
-#define NOEXCEPT_metachop   121
+#define NODE_LIST_metachop  415
+#define NODE_TREE_metachop  414
+#define SPACE_metachop  413
+#define SEP_OMIT_metachop   412
+#define SEP_BEFORE_metachop     411
+#define SEP_AFTER_metachop  410
+#define AFERAFER_metachop   409
+#define ALINEA_metachop     408
+#define CHOP_DEF_metachop   407
+#define NIL_metachop    406
+#define IN_LANG_metachop    405
+#define NEXT_metachop   404
+#define DEF_IDENT_metachop  403
+#define BOX_metachop    402
+#define EXPO_metachop   401
+#define EXPO_AFF_metachop   400
+#define ETOIETOIEGAL_metachop   399
+#define IN_metachop     398
+#define PARSE_metachop  397
+#define NEXTL_metachop  396
+#define VALUE_metachop  395
+#define INFESUPE_metachop   394
+#define FOREACH_metachop    393
+#define INFESEPOSUPE_metachop   392
+#define INFESEPBSUPE_metachop   391
+#define INFESEPASUPE_metachop   390
+#define AOUVAOUV_metachop   389
+#define ARRO_metachop   388
+#define NL_BEG_metachop     387
+#define TAB_BEG_metachop    386
+#define SPACE_BEG_metachop  385
+#define MAKETREE_SUP_metachop   384
+#define MAKETREE_INF_metachop   383
+#define PARSE_ELEM_metachop     382
+#define SIMP_ETOI_metachop  381
+#define ETOI_ETOI_metachop  380
+#define TUNSIGNED_metachop  379
+#define BDECR_metachop  378
+#define BINCR_metachop  377
+#define ADDR_metachop   376
+#define NOT_metachop    375
+#define LNEG_metachop   374
+#define POS_metachop    373
+#define NEG_metachop    372
+#define PARAM_TYPE_metachop     371
+#define STRING_LIST_metachop    370
+#define LABEL_metachop  369
+#define THROW_ANSI_metachop     368
+#define ELSE_metachop   367
+#define DECL_TYPE_metachop  366
+#define CLASSNAME_metachop  365
+#define TIDENT_metachop     364
+#define TSIGNED_metachop    363
+#define TSHORT_metachop     362
+#define TCHAR_metachop  361
+#define TINT_metachop   360
+#define RSHI_metachop   359
+#define LSHI_metachop   358
+#define LT_metachop     357
+#define GT_metachop     356
+#define GEQU_metachop   355
+#define LEQU_metachop   354
+#define SPACE_ARROW_metachop    353
+#define TAB_DIRECTIVE_metachop  352
+#define ENUM_PARAMETERS_UNDER_metachop  351
+#define ENUM_VERT_VALUE_metachop    350
+#define PROTECTED_ARRAY_S_TYPEDEF_metachop  349
+#define PROTECTED_ARRAY_TYPEDEF_metachop    348
+#define PROTECTED_ARRAY_S_metachop  347
+#define PROTECTED_ARRAY_metachop    346
+#define PROTECT_MEMB_metachop   345
+#define LANGUAGE_metachop   344
+#define ELIPSIS_EXPRESSION_metachop     343
+#define EXP_metachop    342
+#define ADECR_metachop  341
+#define AINCR_metachop  340
+#define ARROW_metachop  339
+#define REF_metachop    338
+#define VARIADIC_EXPRESSION_metachop    337
+#define EXP_BRA_metachop    336
+#define EXP_LIST_metachop   335
+#define ARROW_MEMB_metachop     334
+#define DOT_MEMB_metachop   333
+#define POINETOI_metachop   332
+#define TIRESUPEETOI_metachop   331
+#define SUPESUPE_metachop   330
+#define INFEINFE_metachop   329
+#define SUPEEGAL_metachop   328
+#define INFEEGAL_metachop   327
+#define NONE_metachop   326
+#define NEW_DECLARATOR_metachop     325
+#define USING_TYPE_metachop     324
+#define USING_NAMESPACE_metachop    323
+#define NAMESPACE_ALIAS_metachop    322
+#define REM_metachop    321
+#define DIV_metachop    320
+#define MUL_metachop    319
+#define POURC_metachop  318
+#define MESSAGE_MAP_metachop    317
+#define MACRO_metachop  316
+#define TDOUBLE_metachop    315
+#define TFLOAT_metachop     314
+#define TLONG_metachop  313
+#define OR_metachop     312
+#define VBARVBAR_metachop   311
+#define AND_metachop    310
+#define COMPOUND_EXT_metachop   309
+#define EXTERNAL_metachop   308
+#define MUTABLE_metachop    307
+#define TIRESUPE_metachop   306
+#define CAPTURE_ALL_metachop    305
+#define LAMBDA_metachop     304
+#define INLINE_NAMESPACE_metachop   303
+#define INITIALIZER_metachop    302
+#define LOR_metachop    301
+#define VBAR_metachop   300
+#define DELETE_FUNCTION_metachop    299
+#define FUNC_metachop   298
+#define ALL_OF_metachop     297
+#define EXTENSION_metachop  296
+#define __EXTENSION___metachop  295
+#define STAT_VOID_metachop  294
+#define TYPEDEF_metachop    293
+#define TEMPLATE_DECL_metachop  292
+#define SUPE_metachop   291
+#define CLASS_PARAM_metachop    290
+#define TEMPLATE_metachop   289
+#define EXP_SEQ_metachop    288
+#define LXOR_metachop   287
+#define CHAP_metachop   286
+#define EXCEPTION_LIST_metachop     285
+#define EXCEPTION_ANSI_metachop     284
+#define EXCEPTION_metachop  283
+#define NEQU_metachop   282
+#define EQU_metachop    281
+#define EXCLEGAL_metachop   280
+#define EGALEGAL_metachop   279
+#define ENUM_CLASS_metachop     278
+#define PRAGMA_metachop     277
+#define PARAMETERS_metachop     276
+#define FUNC_HEADER_metachop    275
+#define INDENT_FUNCTION_TYPE_metachop   274
+#define COMMENT_PLUS_metachop   273
+#define COMMENT_END_metachop    272
+#define COMMENT_MIDDLE_metachop     271
+#define COMMENT_START_metachop  270
+#define MARGIN_VALUE_metachop   269
+#define BRACE_ALIGN_VALUE_metachop  268
+#define DECL_ALIGN_metachop     267
+#define ASSIGN_ALIGN_metachop   266
+#define SINGLE_SWITCH_INDENT_VALUE_metachop     265
+#define SIMPLIFY_VALUE_metachop     264
+#define SIMPLIFY_metachop   263
+#define MODE_VALUE_metachop     262
+#define TAB_VALUE_metachop  261
+#define CONFIG_metachop     260
+#define NOT_MANAGED_metachop    259
+#define NO_PRETTY_metachop  258
+#define ALINE_metachop  257
+#define ERROR_metachop  256
+#define UNDEF_metachop  255
+#define TYP_AFF_BRA_metachop    254
+#define TYP_AFF_CALL_metachop   253
+#define MEMBER_DECLARATOR_metachop  252
+#define TYP_ARRAY_metachop  251
+#define FOR_DECLARATION_metachop    250
+#define DECLARATION_metachop    249
+#define CTOR_INITIALIZER_metachop   248
+#define BRACE_MARKER_metachop   247
+#define CTOR_INIT_metachop  246
+#define LONGLONG_metachop   245
+#define IUNLONGLONG_metachop    244
+#define IUNLONG_metachop    243
+#define IUN_metachop    242
+#define ILONGLONG_metachop  241
+#define ILONG_metachop  240
+#define RANGE_MODIFIER_metachop     239
+#define COND_AFF_metachop   238
+#define INTE_metachop   237
+#define COMPOUND_metachop   236
+#define CLASS_DECL_metachop     235
+#define AFER_metachop   234
+#define CATCH_ANSI_metachop     233
+#define EXCEPT_ANSI_ALL_metachop    232
+#define CAST_metachop   231
+#define TYP_BIT_metachop    230
+#define PROTECT_metachop    229
+#define BASE_LIST_metachop  228
+#define ATTRIBUTE_CALL_metachop     227
+#define XOR_AFF_metachop    226
+#define OR_AFF_metachop     225
+#define AND_AFF_metachop    224
+#define RSH_AFF_metachop    223
+#define LSH_AFF_metachop    222
+#define MIN_AFF_metachop    221
+#define PLU_AFF_metachop    220
+#define REM_AFF_metachop    219
+#define DIV_AFF_metachop    218
+#define MUL_AFF_metachop    217
+#define AFF_metachop    216
+#define ASM_CALL_metachop   215
+#define EXP_ARRAY_metachop  214
+#define VAR_LIST_metachop   213
+#define TYP_LIST_metachop   212
+#define TYP_AFF_metachop    211
+#define ABST_DECLARATOR_metachop    210
+#define DECLARATOR_metachop     209
+#define LAND_metachop   208
+#define INIT_NEW_metachop   207
+#define VIRG_metachop   206
+#define QUALIFIED_metachop  205
+#define MINUS_metachop  204
+#define TYP_metachop    203
+#define PFER_metachop   202
+#define DESTRUCT_metachop   201
+#define TYP_REF_metachop    200
+#define TYP_VARIADIC_metachop   199
+#define TYP_MOV_metachop    198
+#define TYP_ADDR_metachop   197
+#define INFE_metachop   196
+#define _TYPEDEF_PROTECTEDARRAY_S_metachop  195
+#define _TYPEDEF_PROTECTEDARRAY_metachop    194
+#define _PROTECTEDPOINTER_S_metachop    193
+#define _PROTECTEDPOINTER_metachop  192
+#define _PROTECTEDARRAY_S_metachop  191
+#define _PROTECTEDARRAY_metachop    190
+#define USING_metachop  189
+#define NAMESPACE_metachop  188
+#define CATCH_metachop  187
+#define DPOI_metachop   186
+#define PUBLIC_metachop     185
+#define PROTECTED_metachop  184
+#define PRIVATE_metachop    183
+#define CHAPEGAL_metachop   182
+#define VBAREGAL_metachop   181
+#define ETCOEGAL_metachop   180
+#define SUPESUPEEGAL_metachop   179
+#define INFEINFEEGAL_metachop   178
+#define TIREEGAL_metachop   177
+#define PLUSEGAL_metachop   176
+#define POURCEGAL_metachop  175
+#define ETOIEGAL_metachop   174
+#define EGAL_metachop   173
+#define ASM_metachop    172
+#define CFER_metachop   171
+#define COUV_metachop   170
+#define VA_ARG_metachop     169
+#define DELETE_metachop     168
+#define NEW_metachop    167
+#define SIZEOF_metachop     166
+#define TIRETIRE_metachop   165
+#define PLUSPLUS_metachop   164
+#define EXCL_metachop   163
+#define PLUS_metachop   162
+#define TIRE_metachop   161
+#define DEFAULT_metachop    160
+#define CASE_metachop   159
+#define TRY_metachop    158
+#define THROW_metachop  157
+#define FORALLSONS_metachop     156
+#define WHILE_metachop  155
+#define SWITCH_metachop     154
+#define RETURN_metachop     153
+#define PVIR_metachop   152
+#define IF_metachop     151
+#define FOR_metachop    150
+#define AOUV_metachop   149
+#define DO_metachop     148
+#define CONTINUE_metachop   147
+#define BREAK_metachop  146
+#define OPERATOR_metachop   145
+#define TILD_metachop   144
+#define ETCO_metachop   143
+#define POINPOINPOIN_metachop   142
+#define ETCOETCO_metachop   141
+#define ETOI_metachop   140
+#define POUV_metachop   139
+#define UNSIGNED_metachop   138
+#define SIGNED_metachop     137
+#define SHORT_metachop  136
+#define LONG_metachop   135
+#define CHAR_metachop   134
+#define INT_metachop    133
+#define DPOIDPOI_metachop   132
+#define VOID_metachop   131
+#define FLOAT_metachop  130
+#define DOUBLE_metachop     129
+#define DECLTYPE_metachop   128
+#define TYPENAME_metachop   127
+#define CLASS_metachop  126
+#define UNION_metachop  125
+#define STRUCT_metachop     124
+#define ENUM_metachop   123
+#define NOEXCEPT_metachop   122
+#define CONSTEVAL_metachop  121
 #define CONSTEXPR_metachop  120
 #define CONST_metachop  119
 #define FRIEND_metachop     118
