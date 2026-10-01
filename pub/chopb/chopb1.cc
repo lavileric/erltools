@@ -2674,34 +2674,7 @@ int chopb::Lex ()
 #line 413 "chopb.met"
                         case 'f' :
 #line 413 "chopb.met"
-#line 413 "chopb.met"
-                            {
-#line 413 "chopb.met"
-                                lexEl . AddChar(c);
-#line 413 "chopb.met"
-                                NextChar();
-#line 413 "chopb.met"
-                            }
-#line 413 "chopb.met"
-                            break ;
-#line 413 "chopb.met"
 #line 414 "chopb.met"
-                        case 'F' :
-#line 414 "chopb.met"
-#line 414 "chopb.met"
-                            {
-#line 414 "chopb.met"
-                                lexEl . AddChar(c);
-#line 414 "chopb.met"
-                                NextChar();
-#line 414 "chopb.met"
-                            }
-#line 414 "chopb.met"
-                            break ;
-#line 414 "chopb.met"
-#line 415 "chopb.met"
-                        case 'l' :
-#line 415 "chopb.met"
 #line 415 "chopb.met"
                             {
 #line 415 "chopb.met"
@@ -2711,1785 +2684,2466 @@ int chopb::Lex ()
 #line 415 "chopb.met"
                             }
 #line 415 "chopb.met"
-                            break ;
-#line 415 "chopb.met"
 #line 416 "chopb.met"
-                        case 'L' :
+                            switch (c) {
 #line 416 "chopb.met"
-#line 416 "chopb.met"
-                            {
-#line 416 "chopb.met"
-                                lexEl . AddChar(c);
-#line 416 "chopb.met"
-                                NextChar();
-#line 416 "chopb.met"
-                            }
-#line 416 "chopb.met"
-                            break ;
-#line 416 "chopb.met"
-                    }
-#line 416 "chopb.met"
+#line 417 "chopb.met"
+                                case '1' :
+#line 417 "chopb.met"
 #line 418 "chopb.met"
-                    {
-#line 418 "chopb.met"
-                        firstOnLine = 0 ; 
-#line 418 "chopb.met"
-                        tokenAhead =1;
-#line 418 "chopb.met"
-                        lexEl.Value=FLOATVAL;
-#line 418 "chopb.met"
-                        PUT_COORD_CALL;
-#line 418 "chopb.met"
-                        return(1);
-#line 418 "chopb.met"
-                    }
-#line 418 "chopb.met"
-#line 418 "chopb.met"
-                    break ;
-#line 418 "chopb.met"
+#line 419 "chopb.met"
+                                    {
+#line 419 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 419 "chopb.met"
+                                        NextChar();
+#line 419 "chopb.met"
+                                    }
+#line 419 "chopb.met"
 #line 420 "chopb.met"
-                case '.' :
+                                    switch (c) {
 #line 420 "chopb.met"
 #line 421 "chopb.met"
+                                        case '6' :
+#line 421 "chopb.met"
+#line 421 "chopb.met"
+                                            {
+#line 421 "chopb.met"
+                                                lexEl . AddChar(c);
+#line 421 "chopb.met"
+                                                NextChar();
+#line 421 "chopb.met"
+                                            }
+#line 421 "chopb.met"
+                                            break ;
+#line 421 "chopb.met"
 #line 422 "chopb.met"
-                    {
-#line 422 "chopb.met"
-                        lexEl . AddChar(c);
-#line 422 "chopb.met"
-                        NextChar();
-#line 422 "chopb.met"
-                    }
+                                        case '2' :
 #line 422 "chopb.met"
 #line 423 "chopb.met"
-                    while ((('0' <= c && c <= '9'))) { 
-#line 423 "chopb.met"
 #line 424 "chopb.met"
-                        {
-#line 424 "chopb.met"
-                            lexEl . AddChar(c);
-#line 424 "chopb.met"
-                            NextChar();
-#line 424 "chopb.met"
-                        }
-#line 424 "chopb.met"
-                    } 
+                                            switch (c) {
 #line 424 "chopb.met"
 #line 425 "chopb.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                                case '8' :
+#line 425 "chopb.met"
+#line 425 "chopb.met"
+                                                    {
+#line 425 "chopb.met"
+                                                        lexEl . AddChar(c);
+#line 425 "chopb.met"
+                                                        NextChar();
+#line 425 "chopb.met"
+                                                    }
+#line 425 "chopb.met"
+                                                    break ;
 #line 425 "chopb.met"
 #line 426 "chopb.met"
-#line 427 "chopb.met"
-                        {
-#line 427 "chopb.met"
-                            lexEl.AddString("e");
-#line 427 "chopb.met"
-                        }
-#line 427 "chopb.met"
-#line 428 "chopb.met"
-                        if (((c == '+')||(c == '-'))){
-#line 428 "chopb.met"
+                                                default : 
+#line 426 "chopb.met"
+                                                     if (c!= EOF) {
+#line 426 "chopb.met"
+#line 426 "chopb.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 426 "chopb.met"
+                                                    }
+#line 426 "chopb.met"
+                                                    break ;
+#line 426 "chopb.met"
+                                            }
+#line 426 "chopb.met"
+#line 426 "chopb.met"
+                                            break ;
+#line 426 "chopb.met"
 #line 429 "chopb.met"
-                            {
+                                        default : 
 #line 429 "chopb.met"
-                                lexEl . AddChar(c);
+                                             if (c!= EOF) {
 #line 429 "chopb.met"
-                                NextChar();
 #line 429 "chopb.met"
-                            }
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 429 "chopb.met"
-                        }
+                                            }
 #line 429 "chopb.met"
-#line 430 "chopb.met"
-                        while ((('0' <= c && c <= '9'))) { 
-#line 430 "chopb.met"
-#line 431 "chopb.met"
-                            {
-#line 431 "chopb.met"
-                                lexEl . AddChar(c);
-#line 431 "chopb.met"
-                                NextChar();
-#line 431 "chopb.met"
-                            }
-#line 431 "chopb.met"
-                        } 
-#line 431 "chopb.met"
-#line 431 "chopb.met"
-#line 431 "chopb.met"
-                    }
-#line 431 "chopb.met"
-#line 433 "chopb.met"
-                    switch (c) {
+                                            break ;
+#line 429 "chopb.met"
+                                    }
+#line 429 "chopb.met"
+#line 429 "chopb.met"
+                                    break ;
+#line 429 "chopb.met"
+#line 432 "chopb.met"
+                                case '6' :
+#line 432 "chopb.met"
 #line 433 "chopb.met"
 #line 434 "chopb.met"
-                        case 'f' :
+                                    {
 #line 434 "chopb.met"
+                                        lexEl . AddChar(c);
 #line 434 "chopb.met"
-                            {
+                                        NextChar();
 #line 434 "chopb.met"
-                                lexEl . AddChar(c);
+                                    }
 #line 434 "chopb.met"
-                                NextChar();
-#line 434 "chopb.met"
+#line 435 "chopb.met"
+                                    if (((c == '4'))){
+#line 435 "chopb.met"
+#line 436 "chopb.met"
+                                        {
+#line 436 "chopb.met"
+                                            lexEl . AddChar(c);
+#line 436 "chopb.met"
+                                            NextChar();
+#line 436 "chopb.met"
+                                        }
+#line 436 "chopb.met"
+                                    } else {
+#line 436 "chopb.met"
+#line 438 "chopb.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 438 "chopb.met"
+                                    }
+#line 438 "chopb.met"
+#line 438 "chopb.met"
+                                    break ;
+#line 438 "chopb.met"
                             }
-#line 434 "chopb.met"
+#line 438 "chopb.met"
+#line 438 "chopb.met"
                             break ;
-#line 434 "chopb.met"
-#line 435 "chopb.met"
-                        case 'F' :
-#line 435 "chopb.met"
-#line 435 "chopb.met"
-                            {
-#line 435 "chopb.met"
-                                lexEl . AddChar(c);
-#line 435 "chopb.met"
-                                NextChar();
-#line 435 "chopb.met"
-                            }
-#line 435 "chopb.met"
-                            break ;
-#line 435 "chopb.met"
-#line 436 "chopb.met"
-                        case 'l' :
-#line 436 "chopb.met"
-#line 436 "chopb.met"
-                            {
-#line 436 "chopb.met"
-                                lexEl . AddChar(c);
-#line 436 "chopb.met"
-                                NextChar();
-#line 436 "chopb.met"
-                            }
-#line 436 "chopb.met"
-                            break ;
-#line 436 "chopb.met"
-#line 437 "chopb.met"
-                        case 'L' :
-#line 437 "chopb.met"
-#line 437 "chopb.met"
-                            {
-#line 437 "chopb.met"
-                                lexEl . AddChar(c);
-#line 437 "chopb.met"
-                                NextChar();
-#line 437 "chopb.met"
-                            }
-#line 437 "chopb.met"
-                            break ;
-#line 437 "chopb.met"
-                    }
-#line 437 "chopb.met"
-#line 439 "chopb.met"
-                    {
-#line 439 "chopb.met"
-                        firstOnLine = 0 ; 
-#line 439 "chopb.met"
-                        tokenAhead =1;
-#line 439 "chopb.met"
-                        lexEl.Value=FLOATVAL;
-#line 439 "chopb.met"
-                        PUT_COORD_CALL;
-#line 439 "chopb.met"
-                        return(1);
-#line 439 "chopb.met"
-                    }
-#line 439 "chopb.met"
-#line 439 "chopb.met"
-                    break ;
-#line 439 "chopb.met"
-#line 441 "chopb.met"
-                default : 
-#line 441 "chopb.met"
-                     if (c!= EOF) {
-#line 441 "chopb.met"
-#line 441 "chopb.met"
-                        {
-#line 441 "chopb.met"
-                            firstOnLine = 0 ; 
-#line 441 "chopb.met"
-                            tokenAhead =1;
-#line 441 "chopb.met"
-                            lexEl.Value=INTEGER;
-#line 441 "chopb.met"
-                            PUT_COORD_CALL;
-#line 441 "chopb.met"
-                            return(1);
-#line 441 "chopb.met"
-                        }
-#line 441 "chopb.met"
-                    }
-#line 441 "chopb.met"
-                    break ;
-#line 441 "chopb.met"
-            }
-#line 441 "chopb.met"
-#line 441 "chopb.met"
-            break ;
-#line 441 "chopb.met"
+#line 438 "chopb.met"
+#line 442 "chopb.met"
+                        case 'b' :
+#line 442 "chopb.met"
+#line 443 "chopb.met"
 #line 444 "chopb.met"
-        case '0' :
+                            {
 #line 444 "chopb.met"
-            NextChar();
+                                lexEl . AddChar(c);
+#line 444 "chopb.met"
+                                NextChar();
+#line 444 "chopb.met"
+                            }
 #line 444 "chopb.met"
 #line 445 "chopb.met"
+                            if (! (((c == 'f')))){
+#line 445 "chopb.met"
 #line 446 "chopb.met"
-            if (! (c != EOF)){
+                                if (!(((c == 'f'))&& NextChar())) ;
 #line 446 "chopb.met"
-#line 447 "chopb.met"
+                            } else {
+#line 446 "chopb.met"
 #line 448 "chopb.met"
-                {
+                                {
 #line 448 "chopb.met"
-                    lexEl.AddString("0");
+                                    lexEl . AddChar(c);
 #line 448 "chopb.met"
-                }
+                                    NextChar();
+#line 448 "chopb.met"
+                                }
+#line 448 "chopb.met"
+                            }
 #line 448 "chopb.met"
 #line 449 "chopb.met"
-                {
+                            if (! (((c == '1')))){
 #line 449 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 449 "chopb.met"
-                    tokenAhead =1;
-#line 449 "chopb.met"
-                    lexEl.Value=INTEGER;
-#line 449 "chopb.met"
-                    PUT_COORD_CALL;
-#line 449 "chopb.met"
-                    return(1);
-#line 449 "chopb.met"
-                }
-#line 449 "chopb.met"
-#line 449 "chopb.met"
-#line 449 "chopb.met"
-            }
-#line 449 "chopb.met"
-#line 451 "chopb.met"
-            switch (c) {
-#line 451 "chopb.met"
+#line 450 "chopb.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 450 "chopb.met"
+                            } else {
+#line 450 "chopb.met"
 #line 452 "chopb.met"
-                case 'x' :
+                                {
 #line 452 "chopb.met"
-                case 'X' :
+                                    lexEl . AddChar(c);
 #line 452 "chopb.met"
-                    NextChar();
+                                    NextChar();
+#line 452 "chopb.met"
+                                }
+#line 452 "chopb.met"
+                            }
 #line 452 "chopb.met"
 #line 453 "chopb.met"
+                            if (! (((c == '6')))){
+#line 453 "chopb.met"
 #line 454 "chopb.met"
-                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 454 "chopb.met"
-#line 455 "chopb.met"
-                        {
-#line 455 "chopb.met"
-                            lexEl . AddChar(c);
-#line 455 "chopb.met"
-                            NextChar();
-#line 455 "chopb.met"
-                        }
-#line 455 "chopb.met"
-                    } 
-#line 455 "chopb.met"
+                            } else {
+#line 454 "chopb.met"
 #line 456 "chopb.met"
-                    switch (c) {
+                                {
 #line 456 "chopb.met"
-#line 457 "chopb.met"
-                        case 'l' :
-#line 457 "chopb.met"
-                        case 'L' :
-#line 457 "chopb.met"
-                            NextChar();
-#line 457 "chopb.met"
+                                    lexEl . AddChar(c);
+#line 456 "chopb.met"
+                                    NextChar();
+#line 456 "chopb.met"
+                                }
+#line 456 "chopb.met"
+                            }
+#line 456 "chopb.met"
+#line 456 "chopb.met"
+                            break ;
+#line 456 "chopb.met"
 #line 458 "chopb.met"
-                            switch (c) {
+                        case 'F' :
 #line 458 "chopb.met"
 #line 459 "chopb.met"
-                                case 'u' :
-#line 459 "chopb.met"
-                                case 'U' :
-#line 459 "chopb.met"
-                                    NextChar();
-#line 459 "chopb.met"
-#line 459 "chopb.met"
-                                    {
-#line 459 "chopb.met"
-                                        firstOnLine = 0 ; 
-#line 459 "chopb.met"
-                                        tokenAhead =1;
-#line 459 "chopb.met"
-                                        lexEl.Value=ULHEXA;
-#line 459 "chopb.met"
-                                        PUT_COORD_CALL;
-#line 459 "chopb.met"
-                                        return(1);
-#line 459 "chopb.met"
-                                    }
-#line 459 "chopb.met"
-                                    break ;
-#line 459 "chopb.met"
 #line 460 "chopb.met"
-                                case 'L' :
+                            {
 #line 460 "chopb.met"
-                                case 'l' :
+                                lexEl . AddChar(c);
 #line 460 "chopb.met"
-                                    NextChar();
+                                NextChar();
+#line 460 "chopb.met"
+                            }
 #line 460 "chopb.met"
 #line 461 "chopb.met"
-#line 462 "chopb.met"
-                                    switch (c) {
-#line 462 "chopb.met"
-#line 463 "chopb.met"
-                                        case 'u' :
-#line 463 "chopb.met"
-                                        case 'U' :
-#line 463 "chopb.met"
-                                            NextChar();
-#line 463 "chopb.met"
-#line 463 "chopb.met"
-                                            {
-#line 463 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 463 "chopb.met"
-                                                tokenAhead =1;
-#line 463 "chopb.met"
-                                                lexEl.Value=ULLHEXA;
-#line 463 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 463 "chopb.met"
-                                                return(1);
-#line 463 "chopb.met"
-                                            }
-#line 463 "chopb.met"
-                                            break ;
-#line 463 "chopb.met"
-#line 464 "chopb.met"
-                                        default : 
-#line 464 "chopb.met"
-                                             if (c!= EOF) {
-#line 464 "chopb.met"
-#line 464 "chopb.met"
-                                                {
-#line 464 "chopb.met"
-                                                    firstOnLine = 0 ; 
-#line 464 "chopb.met"
-                                                    tokenAhead =1;
-#line 464 "chopb.met"
-                                                    lexEl.Value=LLHEXA;
-#line 464 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 464 "chopb.met"
-                                                    return(1);
-#line 464 "chopb.met"
-                                                }
-#line 464 "chopb.met"
-                                            }
-#line 464 "chopb.met"
-                                            break ;
-#line 464 "chopb.met"
-                                    }
-#line 464 "chopb.met"
-#line 464 "chopb.met"
-                                    break ;
-#line 464 "chopb.met"
-#line 467 "chopb.met"
-                                default : 
-#line 467 "chopb.met"
-                                     if (c!= EOF) {
-#line 467 "chopb.met"
-#line 467 "chopb.met"
-                                        {
-#line 467 "chopb.met"
-                                            firstOnLine = 0 ; 
-#line 467 "chopb.met"
-                                            tokenAhead =1;
-#line 467 "chopb.met"
-                                            lexEl.Value=LHEXA;
-#line 467 "chopb.met"
-                                            PUT_COORD_CALL;
-#line 467 "chopb.met"
-                                            return(1);
-#line 467 "chopb.met"
-                                        }
-#line 467 "chopb.met"
-                                    }
-#line 467 "chopb.met"
-                                    break ;
-#line 467 "chopb.met"
-                            }
-#line 467 "chopb.met"
-                            break ;
-#line 467 "chopb.met"
-#line 469 "chopb.met"
-                        case 'u' :
-#line 469 "chopb.met"
-                        case 'U' :
-#line 469 "chopb.met"
-                            NextChar();
-#line 469 "chopb.met"
-#line 470 "chopb.met"
                             switch (c) {
+#line 461 "chopb.met"
+#line 462 "chopb.met"
+                                case '1' :
+#line 462 "chopb.met"
+#line 463 "chopb.met"
+#line 464 "chopb.met"
+                                    {
+#line 464 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 464 "chopb.met"
+                                        NextChar();
+#line 464 "chopb.met"
+                                    }
+#line 464 "chopb.met"
+#line 465 "chopb.met"
+                                    switch (c) {
+#line 465 "chopb.met"
+#line 466 "chopb.met"
+                                        case '6' :
+#line 466 "chopb.met"
+#line 466 "chopb.met"
+                                            {
+#line 466 "chopb.met"
+                                                lexEl . AddChar(c);
+#line 466 "chopb.met"
+                                                NextChar();
+#line 466 "chopb.met"
+                                            }
+#line 466 "chopb.met"
+                                            break ;
+#line 466 "chopb.met"
+#line 467 "chopb.met"
+                                        case '2' :
+#line 467 "chopb.met"
+#line 468 "chopb.met"
+#line 469 "chopb.met"
+                                            switch (c) {
+#line 469 "chopb.met"
+#line 470 "chopb.met"
+                                                case '8' :
+#line 470 "chopb.met"
+#line 470 "chopb.met"
+                                                    {
+#line 470 "chopb.met"
+                                                        lexEl . AddChar(c);
+#line 470 "chopb.met"
+                                                        NextChar();
+#line 470 "chopb.met"
+                                                    }
+#line 470 "chopb.met"
+                                                    break ;
 #line 470 "chopb.met"
 #line 471 "chopb.met"
-                                case 'l' :
+                                                default : 
 #line 471 "chopb.met"
-                                case 'L' :
+                                                     if (c!= EOF) {
 #line 471 "chopb.met"
-                                    NextChar();
 #line 471 "chopb.met"
-#line 472 "chopb.met"
-#line 473 "chopb.met"
-                                    switch (c) {
-#line 473 "chopb.met"
-#line 474 "chopb.met"
-                                        case 'L' :
-#line 474 "chopb.met"
-                                        case 'l' :
-#line 474 "chopb.met"
-                                            NextChar();
-#line 474 "chopb.met"
-#line 474 "chopb.met"
-                                            {
-#line 474 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 474 "chopb.met"
-                                                tokenAhead =1;
-#line 474 "chopb.met"
-                                                lexEl.Value=ULLHEXA;
-#line 474 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 474 "chopb.met"
-                                                return(1);
-#line 474 "chopb.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 471 "chopb.met"
+                                                    }
+#line 471 "chopb.met"
+                                                    break ;
+#line 471 "chopb.met"
                                             }
-#line 474 "chopb.met"
+#line 471 "chopb.met"
+#line 471 "chopb.met"
                                             break ;
+#line 471 "chopb.met"
 #line 474 "chopb.met"
-#line 475 "chopb.met"
                                         default : 
-#line 475 "chopb.met"
+#line 474 "chopb.met"
                                              if (c!= EOF) {
-#line 475 "chopb.met"
-#line 475 "chopb.met"
-                                                {
-#line 475 "chopb.met"
-                                                    firstOnLine = 0 ; 
-#line 475 "chopb.met"
-                                                    tokenAhead =1;
-#line 475 "chopb.met"
-                                                    lexEl.Value=ULHEXA;
-#line 475 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 475 "chopb.met"
-                                                    return(1);
-#line 475 "chopb.met"
-                                                }
-#line 475 "chopb.met"
+#line 474 "chopb.met"
+#line 474 "chopb.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 474 "chopb.met"
                                             }
-#line 475 "chopb.met"
+#line 474 "chopb.met"
                                             break ;
-#line 475 "chopb.met"
+#line 474 "chopb.met"
                                     }
-#line 475 "chopb.met"
-#line 475 "chopb.met"
+#line 474 "chopb.met"
+#line 474 "chopb.met"
                                     break ;
-#line 475 "chopb.met"
+#line 474 "chopb.met"
+#line 477 "chopb.met"
+                                case '6' :
+#line 477 "chopb.met"
 #line 478 "chopb.met"
-                                default : 
-#line 478 "chopb.met"
-                                     if (c!= EOF) {
-#line 478 "chopb.met"
-#line 478 "chopb.met"
+#line 479 "chopb.met"
+                                    {
+#line 479 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 479 "chopb.met"
+                                        NextChar();
+#line 479 "chopb.met"
+                                    }
+#line 479 "chopb.met"
+#line 480 "chopb.met"
+                                    if (((c == '4'))){
+#line 480 "chopb.met"
+#line 481 "chopb.met"
                                         {
-#line 478 "chopb.met"
-                                            firstOnLine = 0 ; 
-#line 478 "chopb.met"
-                                            tokenAhead =1;
-#line 478 "chopb.met"
-                                            lexEl.Value=UHEXA;
-#line 478 "chopb.met"
-                                            PUT_COORD_CALL;
-#line 478 "chopb.met"
-                                            return(1);
-#line 478 "chopb.met"
+#line 481 "chopb.met"
+                                            lexEl . AddChar(c);
+#line 481 "chopb.met"
+                                            NextChar();
+#line 481 "chopb.met"
                                         }
-#line 478 "chopb.met"
+#line 481 "chopb.met"
+                                    } else {
+#line 481 "chopb.met"
+#line 483 "chopb.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 483 "chopb.met"
                                     }
-#line 478 "chopb.met"
+#line 483 "chopb.met"
+#line 483 "chopb.met"
                                     break ;
-#line 478 "chopb.met"
+#line 483 "chopb.met"
                             }
-#line 478 "chopb.met"
+#line 483 "chopb.met"
+#line 483 "chopb.met"
                             break ;
-#line 478 "chopb.met"
-#line 480 "chopb.met"
-                        default : 
-#line 480 "chopb.met"
-                             if (c!= EOF) {
-#line 480 "chopb.met"
-#line 480 "chopb.met"
-                                {
-#line 480 "chopb.met"
-                                    firstOnLine = 0 ; 
-#line 480 "chopb.met"
-                                    tokenAhead =1;
-#line 480 "chopb.met"
-                                    lexEl.Value=HEXA;
-#line 480 "chopb.met"
-                                    PUT_COORD_CALL;
-#line 480 "chopb.met"
-                                    return(1);
-#line 480 "chopb.met"
-                                }
-#line 480 "chopb.met"
+#line 483 "chopb.met"
+#line 487 "chopb.met"
+                        case 'B' :
+#line 487 "chopb.met"
+#line 488 "chopb.met"
+#line 489 "chopb.met"
+                            {
+#line 489 "chopb.met"
+                                lexEl . AddChar(c);
+#line 489 "chopb.met"
+                                NextChar();
+#line 489 "chopb.met"
                             }
-#line 480 "chopb.met"
-                            break ;
-#line 480 "chopb.met"
-                    }
-#line 480 "chopb.met"
-#line 480 "chopb.met"
-                    break ;
-#line 480 "chopb.met"
-#line 483 "chopb.met"
-                case 'b' :
-#line 483 "chopb.met"
-                case 'B' :
-#line 483 "chopb.met"
-                    NextChar();
-#line 483 "chopb.met"
-#line 484 "chopb.met"
-#line 485 "chopb.met"
-                    while ((('0' <= c && c <= '1'))) { 
-#line 485 "chopb.met"
-#line 486 "chopb.met"
-                        {
-#line 486 "chopb.met"
-                            lexEl . AddChar(c);
-#line 486 "chopb.met"
-                            NextChar();
-#line 486 "chopb.met"
-                        }
-#line 486 "chopb.met"
-                    } 
-#line 486 "chopb.met"
-#line 487 "chopb.met"
-                    {
-#line 487 "chopb.met"
-                        firstOnLine = 0 ; 
-#line 487 "chopb.met"
-                        tokenAhead =1;
-#line 487 "chopb.met"
-                        lexEl.Value=BINARY;
-#line 487 "chopb.met"
-                        PUT_COORD_CALL;
-#line 487 "chopb.met"
-                        return(1);
-#line 487 "chopb.met"
-                    }
-#line 487 "chopb.met"
-#line 487 "chopb.met"
-                    break ;
-#line 487 "chopb.met"
-#line 489 "chopb.met"
-                case '0' :
-#line 489 "chopb.met"
-                case '1' :
-#line 489 "chopb.met"
-                case '2' :
-#line 489 "chopb.met"
-                case '3' :
-#line 489 "chopb.met"
-                case '4' :
-#line 489 "chopb.met"
-                case '5' :
-#line 489 "chopb.met"
-                case '6' :
-#line 489 "chopb.met"
-                case '7' :
 #line 489 "chopb.met"
 #line 490 "chopb.met"
+                            if (! (((c == 'F')))){
+#line 490 "chopb.met"
 #line 491 "chopb.met"
-                    while ((('0' <= c && c <= '7'))) { 
+                                if (!(((c == 'F'))&& NextChar())) ;
 #line 491 "chopb.met"
-#line 492 "chopb.met"
-                        {
-#line 492 "chopb.met"
-                            lexEl . AddChar(c);
-#line 492 "chopb.met"
-                            NextChar();
-#line 492 "chopb.met"
-                        }
-#line 492 "chopb.met"
-                    } 
-#line 492 "chopb.met"
+                            } else {
+#line 491 "chopb.met"
 #line 493 "chopb.met"
-                    switch (c) {
+                                {
 #line 493 "chopb.met"
-#line 494 "chopb.met"
-                        case 'l' :
-#line 494 "chopb.met"
-                        case 'L' :
-#line 494 "chopb.met"
-                            NextChar();
-#line 494 "chopb.met"
-#line 495 "chopb.met"
-                            switch (c) {
-#line 495 "chopb.met"
-#line 496 "chopb.met"
-                                case 'L' :
-#line 496 "chopb.met"
-                                case 'l' :
-#line 496 "chopb.met"
+                                    lexEl . AddChar(c);
+#line 493 "chopb.met"
                                     NextChar();
-#line 496 "chopb.met"
+#line 493 "chopb.met"
+                                }
+#line 493 "chopb.met"
+                            }
+#line 493 "chopb.met"
+#line 494 "chopb.met"
+                            if (! (((c == '1')))){
+#line 494 "chopb.met"
+#line 495 "chopb.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 495 "chopb.met"
+                            } else {
+#line 495 "chopb.met"
+#line 497 "chopb.met"
+                                {
+#line 497 "chopb.met"
+                                    lexEl . AddChar(c);
+#line 497 "chopb.met"
+                                    NextChar();
+#line 497 "chopb.met"
+                                }
+#line 497 "chopb.met"
+                            }
 #line 497 "chopb.met"
 #line 498 "chopb.met"
-                                    switch (c) {
+                            if (! (((c == '6')))){
 #line 498 "chopb.met"
 #line 499 "chopb.met"
-                                        case 'u' :
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 499 "chopb.met"
-                                        case 'U' :
+                            } else {
 #line 499 "chopb.met"
-                                            NextChar();
-#line 499 "chopb.met"
-#line 499 "chopb.met"
-                                            {
-#line 499 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 499 "chopb.met"
-                                                tokenAhead =1;
-#line 499 "chopb.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 499 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 499 "chopb.met"
-                                                return(1);
-#line 499 "chopb.met"
-                                            }
-#line 499 "chopb.met"
-                                            break ;
-#line 499 "chopb.met"
-#line 500 "chopb.met"
-                                        default : 
-#line 500 "chopb.met"
-                                             if (c!= EOF) {
-#line 500 "chopb.met"
-#line 500 "chopb.met"
-                                                {
-#line 500 "chopb.met"
-                                                    firstOnLine = 0 ; 
-#line 500 "chopb.met"
-                                                    tokenAhead =1;
-#line 500 "chopb.met"
-                                                    lexEl.Value=LLOCTAL;
-#line 500 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 500 "chopb.met"
-                                                    return(1);
-#line 500 "chopb.met"
-                                                }
-#line 500 "chopb.met"
-                                            }
-#line 500 "chopb.met"
-                                            break ;
-#line 500 "chopb.met"
-                                    }
-#line 500 "chopb.met"
-#line 500 "chopb.met"
-                                    break ;
-#line 500 "chopb.met"
-#line 503 "chopb.met"
-                                case 'u' :
-#line 503 "chopb.met"
-                                case 'U' :
-#line 503 "chopb.met"
+#line 501 "chopb.met"
+                                {
+#line 501 "chopb.met"
+                                    lexEl . AddChar(c);
+#line 501 "chopb.met"
                                     NextChar();
+#line 501 "chopb.met"
+                                }
+#line 501 "chopb.met"
+                            }
+#line 501 "chopb.met"
+#line 501 "chopb.met"
+                            break ;
+#line 501 "chopb.met"
+#line 503 "chopb.met"
+                        case 'l' :
 #line 503 "chopb.met"
 #line 503 "chopb.met"
-                                    {
+                            {
 #line 503 "chopb.met"
-                                        firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 503 "chopb.met"
-                                        tokenAhead =1;
+                                NextChar();
 #line 503 "chopb.met"
-                                        lexEl.Value=ULOCTAL;
+                            }
 #line 503 "chopb.met"
-                                        PUT_COORD_CALL;
-#line 503 "chopb.met"
-                                        return(1);
-#line 503 "chopb.met"
-                                    }
-#line 503 "chopb.met"
-                                    break ;
+                            break ;
 #line 503 "chopb.met"
 #line 504 "chopb.met"
-                                default : 
-#line 504 "chopb.met"
-                                     if (c!= EOF) {
+                        case 'L' :
 #line 504 "chopb.met"
 #line 504 "chopb.met"
-                                        {
+                            {
 #line 504 "chopb.met"
-                                            firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 504 "chopb.met"
-                                            tokenAhead =1;
-#line 504 "chopb.met"
-                                            lexEl.Value=LOCTAL;
-#line 504 "chopb.met"
-                                            PUT_COORD_CALL;
-#line 504 "chopb.met"
-                                            return(1);
-#line 504 "chopb.met"
-                                        }
-#line 504 "chopb.met"
-                                    }
-#line 504 "chopb.met"
-                                    break ;
+                                NextChar();
 #line 504 "chopb.met"
                             }
 #line 504 "chopb.met"
                             break ;
 #line 504 "chopb.met"
+                    }
+#line 504 "chopb.met"
 #line 506 "chopb.met"
-                        case 'u' :
+                    {
 #line 506 "chopb.met"
-                        case 'U' :
+                        firstOnLine = 0 ; 
 #line 506 "chopb.met"
-                            NextChar();
+                        tokenAhead =1;
 #line 506 "chopb.met"
-#line 507 "chopb.met"
-                            switch (c) {
-#line 507 "chopb.met"
+                        lexEl.Value=FLOATVAL;
+#line 506 "chopb.met"
+                        PUT_COORD_CALL;
+#line 506 "chopb.met"
+                        return(1);
+#line 506 "chopb.met"
+                    }
+#line 506 "chopb.met"
+#line 506 "chopb.met"
+                    break ;
+#line 506 "chopb.met"
 #line 508 "chopb.met"
-                                case 'l' :
-#line 508 "chopb.met"
-                                case 'L' :
-#line 508 "chopb.met"
-                                    NextChar();
+                case '.' :
 #line 508 "chopb.met"
 #line 509 "chopb.met"
 #line 510 "chopb.met"
-                                    switch (c) {
+                    {
+#line 510 "chopb.met"
+                        lexEl . AddChar(c);
+#line 510 "chopb.met"
+                        NextChar();
+#line 510 "chopb.met"
+                    }
 #line 510 "chopb.met"
 #line 511 "chopb.met"
-                                        case 'L' :
-#line 511 "chopb.met"
-                                        case 'l' :
-#line 511 "chopb.met"
-                                            NextChar();
-#line 511 "chopb.met"
-#line 511 "chopb.met"
-                                            {
-#line 511 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 511 "chopb.met"
-                                                tokenAhead =1;
-#line 511 "chopb.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 511 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 511 "chopb.met"
-                                                return(1);
-#line 511 "chopb.met"
-                                            }
-#line 511 "chopb.met"
-                                            break ;
+                    while ((('0' <= c && c <= '9'))) { 
 #line 511 "chopb.met"
 #line 512 "chopb.met"
-                                        default : 
+                        {
 #line 512 "chopb.met"
-                                             if (c!= EOF) {
+                            lexEl . AddChar(c);
 #line 512 "chopb.met"
+                            NextChar();
 #line 512 "chopb.met"
-                                                {
+                        }
 #line 512 "chopb.met"
-                                                    firstOnLine = 0 ; 
+                    } 
 #line 512 "chopb.met"
-                                                    tokenAhead =1;
-#line 512 "chopb.met"
-                                                    lexEl.Value=ULOCTAL;
-#line 512 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 512 "chopb.met"
-                                                    return(1);
-#line 512 "chopb.met"
-                                                }
-#line 512 "chopb.met"
-                                            }
-#line 512 "chopb.met"
-                                            break ;
-#line 512 "chopb.met"
-                                    }
-#line 512 "chopb.met"
-#line 512 "chopb.met"
-                                    break ;
-#line 512 "chopb.met"
+#line 513 "chopb.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 513 "chopb.met"
+#line 514 "chopb.met"
 #line 515 "chopb.met"
-                                default : 
+                        {
 #line 515 "chopb.met"
-                                     if (c!= EOF) {
+                            lexEl.AddString("e");
 #line 515 "chopb.met"
+                        }
 #line 515 "chopb.met"
-                                        {
-#line 515 "chopb.met"
-                                            firstOnLine = 0 ; 
-#line 515 "chopb.met"
-                                            tokenAhead =1;
-#line 515 "chopb.met"
-                                            lexEl.Value=UOCTAL;
-#line 515 "chopb.met"
-                                            PUT_COORD_CALL;
-#line 515 "chopb.met"
-                                            return(1);
-#line 515 "chopb.met"
-                                        }
-#line 515 "chopb.met"
-                                    }
-#line 515 "chopb.met"
-                                    break ;
-#line 515 "chopb.met"
-                            }
-#line 515 "chopb.met"
-                            break ;
-#line 515 "chopb.met"
+#line 516 "chopb.met"
+                        if (((c == '+')||(c == '-'))){
+#line 516 "chopb.met"
 #line 517 "chopb.met"
-                        default : 
+                            {
 #line 517 "chopb.met"
-                             if (c!= EOF) {
+                                lexEl . AddChar(c);
 #line 517 "chopb.met"
-#line 517 "chopb.met"
-                                {
-#line 517 "chopb.met"
-                                    firstOnLine = 0 ; 
-#line 517 "chopb.met"
-                                    tokenAhead =1;
-#line 517 "chopb.met"
-                                    lexEl.Value=OCTAL;
-#line 517 "chopb.met"
-                                    PUT_COORD_CALL;
-#line 517 "chopb.met"
-                                    return(1);
-#line 517 "chopb.met"
-                                }
+                                NextChar();
 #line 517 "chopb.met"
                             }
 #line 517 "chopb.met"
-                            break ;
+                        }
 #line 517 "chopb.met"
+#line 518 "chopb.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 518 "chopb.met"
+#line 519 "chopb.met"
+                            {
+#line 519 "chopb.met"
+                                lexEl . AddChar(c);
+#line 519 "chopb.met"
+                                NextChar();
+#line 519 "chopb.met"
+                            }
+#line 519 "chopb.met"
+                        } 
+#line 519 "chopb.met"
+#line 519 "chopb.met"
+#line 519 "chopb.met"
                     }
-#line 517 "chopb.met"
-#line 517 "chopb.met"
-                    break ;
-#line 517 "chopb.met"
-#line 520 "chopb.met"
-                case '.' :
-#line 520 "chopb.met"
+#line 519 "chopb.met"
+#line 521 "chopb.met"
+                    switch (c) {
 #line 521 "chopb.met"
 #line 522 "chopb.met"
-                    {
+                        case 'f' :
 #line 522 "chopb.met"
-                        lexEl.AddString("0");
-#line 522 "chopb.met"
-                    }
-#line 522 "chopb.met"
-#line 523 "chopb.met"
-                    {
-#line 523 "chopb.met"
-                        lexEl . AddChar(c);
-#line 523 "chopb.met"
-                        NextChar();
-#line 523 "chopb.met"
-                    }
 #line 523 "chopb.met"
 #line 524 "chopb.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                            {
+#line 524 "chopb.met"
+                                lexEl . AddChar(c);
+#line 524 "chopb.met"
+                                NextChar();
+#line 524 "chopb.met"
+                            }
 #line 524 "chopb.met"
 #line 525 "chopb.met"
-                        {
-#line 525 "chopb.met"
-                            lexEl . AddChar(c);
-#line 525 "chopb.met"
-                            NextChar();
-#line 525 "chopb.met"
-                        }
-#line 525 "chopb.met"
-                    } 
+                            switch (c) {
 #line 525 "chopb.met"
 #line 526 "chopb.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                case '1' :
 #line 526 "chopb.met"
 #line 527 "chopb.met"
 #line 528 "chopb.met"
-                        {
+                                    {
 #line 528 "chopb.met"
-                            lexEl.AddString("e");
+                                        lexEl . AddChar(c);
 #line 528 "chopb.met"
-                        }
+                                        NextChar();
+#line 528 "chopb.met"
+                                    }
 #line 528 "chopb.met"
 #line 529 "chopb.met"
-                        if (((c == '+')||(c == '-'))){
+                                    switch (c) {
 #line 529 "chopb.met"
 #line 530 "chopb.met"
-                            {
+                                        case '6' :
 #line 530 "chopb.met"
-                                lexEl . AddChar(c);
 #line 530 "chopb.met"
-                                NextChar();
+                                            {
 #line 530 "chopb.met"
-                            }
+                                                lexEl . AddChar(c);
 #line 530 "chopb.met"
-                        }
+                                                NextChar();
+#line 530 "chopb.met"
+                                            }
+#line 530 "chopb.met"
+                                            break ;
 #line 530 "chopb.met"
 #line 531 "chopb.met"
-                        while ((('0' <= c && c <= '9'))) { 
+                                        case '2' :
 #line 531 "chopb.met"
 #line 532 "chopb.met"
-                            {
-#line 532 "chopb.met"
-                                lexEl . AddChar(c);
-#line 532 "chopb.met"
-                                NextChar();
-#line 532 "chopb.met"
-                            }
-#line 532 "chopb.met"
-                        } 
-#line 532 "chopb.met"
-#line 532 "chopb.met"
-#line 532 "chopb.met"
-                    }
-#line 532 "chopb.met"
+#line 533 "chopb.met"
+                                            switch (c) {
+#line 533 "chopb.met"
 #line 534 "chopb.met"
-                    switch (c) {
+                                                case '8' :
+#line 534 "chopb.met"
+#line 534 "chopb.met"
+                                                    {
+#line 534 "chopb.met"
+                                                        lexEl . AddChar(c);
+#line 534 "chopb.met"
+                                                        NextChar();
+#line 534 "chopb.met"
+                                                    }
+#line 534 "chopb.met"
+                                                    break ;
 #line 534 "chopb.met"
 #line 535 "chopb.met"
-                        case 'f' :
+                                                default : 
+#line 535 "chopb.met"
+                                                     if (c!= EOF) {
 #line 535 "chopb.met"
 #line 535 "chopb.met"
-                            {
+                                                        if (!(((c == '8'))&& NextChar())) ;
 #line 535 "chopb.met"
-                                lexEl . AddChar(c);
+                                                    }
 #line 535 "chopb.met"
-                                NextChar();
+                                                    break ;
 #line 535 "chopb.met"
-                            }
+                                            }
 #line 535 "chopb.met"
-                            break ;
 #line 535 "chopb.met"
-#line 536 "chopb.met"
-                        case 'F' :
-#line 536 "chopb.met"
-#line 536 "chopb.met"
-                            {
-#line 536 "chopb.met"
-                                lexEl . AddChar(c);
-#line 536 "chopb.met"
-                                NextChar();
-#line 536 "chopb.met"
-                            }
-#line 536 "chopb.met"
-                            break ;
-#line 536 "chopb.met"
-#line 537 "chopb.met"
-                        case 'l' :
-#line 537 "chopb.met"
-#line 537 "chopb.met"
-                            {
-#line 537 "chopb.met"
-                                lexEl . AddChar(c);
-#line 537 "chopb.met"
-                                NextChar();
-#line 537 "chopb.met"
-                            }
-#line 537 "chopb.met"
-                            break ;
-#line 537 "chopb.met"
+                                            break ;
+#line 535 "chopb.met"
 #line 538 "chopb.met"
-                        case 'L' :
+                                        default : 
+#line 538 "chopb.met"
+                                             if (c!= EOF) {
 #line 538 "chopb.met"
 #line 538 "chopb.met"
-                            {
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 538 "chopb.met"
-                                lexEl . AddChar(c);
+                                            }
 #line 538 "chopb.met"
-                                NextChar();
+                                            break ;
 #line 538 "chopb.met"
-                            }
+                                    }
 #line 538 "chopb.met"
-                            break ;
 #line 538 "chopb.met"
-                    }
+                                    break ;
 #line 538 "chopb.met"
-#line 540 "chopb.met"
-                    {
-#line 540 "chopb.met"
-                        firstOnLine = 0 ; 
-#line 540 "chopb.met"
-                        tokenAhead =1;
-#line 540 "chopb.met"
-                        lexEl.Value=FLOATVAL;
-#line 540 "chopb.met"
-                        PUT_COORD_CALL;
-#line 540 "chopb.met"
-                        return(1);
-#line 540 "chopb.met"
-                    }
-#line 540 "chopb.met"
-#line 540 "chopb.met"
-                    break ;
-#line 540 "chopb.met"
-#line 546 "chopb.met"
-                default : 
-#line 546 "chopb.met"
-                     if (c!= EOF) {
-#line 546 "chopb.met"
+#line 541 "chopb.met"
+                                case '6' :
+#line 541 "chopb.met"
+#line 542 "chopb.met"
+#line 543 "chopb.met"
+                                    {
+#line 543 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 543 "chopb.met"
+                                        NextChar();
+#line 543 "chopb.met"
+                                    }
 #line 543 "chopb.met"
 #line 544 "chopb.met"
-                        if (c != EOF){
+                                    if (((c == '4'))){
 #line 544 "chopb.met"
 #line 545 "chopb.met"
-#line 546 "chopb.met"
-                            {
-#line 546 "chopb.met"
-                                lexEl.AddString("0");
-#line 546 "chopb.met"
-                            }
-#line 546 "chopb.met"
-#line 547 "chopb.met"
-                            switch (c) {
-#line 547 "chopb.met"
-#line 548 "chopb.met"
-                                case 'l' :
-#line 548 "chopb.met"
-                                case 'L' :
-#line 548 "chopb.met"
-                                    NextChar();
-#line 548 "chopb.met"
-#line 549 "chopb.met"
-                                    switch (c) {
-#line 549 "chopb.met"
-#line 550 "chopb.met"
-                                        case 'u' :
-#line 550 "chopb.met"
-                                        case 'U' :
-#line 550 "chopb.met"
-                                            NextChar();
-#line 550 "chopb.met"
-#line 550 "chopb.met"
-                                            {
-#line 550 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 550 "chopb.met"
-                                                tokenAhead =1;
-#line 550 "chopb.met"
-                                                lexEl.Value=ULINTEGER;
-#line 550 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 550 "chopb.met"
-                                                return(1);
-#line 550 "chopb.met"
-                                            }
-#line 550 "chopb.met"
-                                            break ;
-#line 550 "chopb.met"
-#line 551 "chopb.met"
-                                        default : 
-#line 551 "chopb.met"
-                                             if (c!= EOF) {
-#line 551 "chopb.met"
-#line 551 "chopb.met"
-                                                {
-#line 551 "chopb.met"
-                                                    firstOnLine = 0 ; 
-#line 551 "chopb.met"
-                                                    tokenAhead =1;
-#line 551 "chopb.met"
-                                                    lexEl.Value=LINTEGER;
-#line 551 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 551 "chopb.met"
-                                                    return(1);
-#line 551 "chopb.met"
-                                                }
-#line 551 "chopb.met"
-                                            }
-#line 551 "chopb.met"
-                                            break ;
-#line 551 "chopb.met"
-                                    }
-#line 551 "chopb.met"
-                                    break ;
-#line 551 "chopb.met"
-#line 553 "chopb.met"
-                                case 'u' :
-#line 553 "chopb.met"
-                                case 'U' :
-#line 553 "chopb.met"
-                                    NextChar();
-#line 553 "chopb.met"
-#line 554 "chopb.met"
-                                    switch (c) {
-#line 554 "chopb.met"
-#line 555 "chopb.met"
-                                        case 'l' :
-#line 555 "chopb.met"
-                                        case 'L' :
-#line 555 "chopb.met"
-                                            NextChar();
-#line 555 "chopb.met"
-#line 555 "chopb.met"
-                                            {
-#line 555 "chopb.met"
-                                                firstOnLine = 0 ; 
-#line 555 "chopb.met"
-                                                tokenAhead =1;
-#line 555 "chopb.met"
-                                                lexEl.Value=ULINTEGER;
-#line 555 "chopb.met"
-                                                PUT_COORD_CALL;
-#line 555 "chopb.met"
-                                                return(1);
-#line 555 "chopb.met"
-                                            }
-#line 555 "chopb.met"
-                                            break ;
-#line 555 "chopb.met"
-#line 556 "chopb.met"
-                                        default : 
-#line 556 "chopb.met"
-                                             if (c!= EOF) {
-#line 556 "chopb.met"
-#line 556 "chopb.met"
-                                                {
-#line 556 "chopb.met"
-                                                    firstOnLine = 0 ; 
-#line 556 "chopb.met"
-                                                    tokenAhead =1;
-#line 556 "chopb.met"
-                                                    lexEl.Value=UINTEGER;
-#line 556 "chopb.met"
-                                                    PUT_COORD_CALL;
-#line 556 "chopb.met"
-                                                    return(1);
-#line 556 "chopb.met"
-                                                }
-#line 556 "chopb.met"
-                                            }
-#line 556 "chopb.met"
-                                            break ;
-#line 556 "chopb.met"
-                                    }
-#line 556 "chopb.met"
-                                    break ;
-#line 556 "chopb.met"
-#line 558 "chopb.met"
-                                default : 
-#line 558 "chopb.met"
-                                     if (c!= EOF) {
-#line 558 "chopb.met"
-#line 558 "chopb.met"
                                         {
-#line 558 "chopb.met"
-                                            firstOnLine = 0 ; 
-#line 558 "chopb.met"
-                                            tokenAhead =1;
-#line 558 "chopb.met"
-                                            lexEl.Value=INTEGER;
-#line 558 "chopb.met"
-                                            PUT_COORD_CALL;
-#line 558 "chopb.met"
-                                            return(1);
-#line 558 "chopb.met"
+#line 545 "chopb.met"
+                                            lexEl . AddChar(c);
+#line 545 "chopb.met"
+                                            NextChar();
+#line 545 "chopb.met"
                                         }
-#line 558 "chopb.met"
+#line 545 "chopb.met"
+                                    } else {
+#line 545 "chopb.met"
+#line 547 "chopb.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 547 "chopb.met"
                                     }
-#line 558 "chopb.met"
+#line 547 "chopb.met"
+#line 547 "chopb.met"
                                     break ;
-#line 558 "chopb.met"
+#line 547 "chopb.met"
                             }
+#line 547 "chopb.met"
+#line 547 "chopb.met"
+                            break ;
+#line 547 "chopb.met"
+#line 551 "chopb.met"
+                        case 'F' :
+#line 551 "chopb.met"
+#line 552 "chopb.met"
+#line 553 "chopb.met"
+                            {
+#line 553 "chopb.met"
+                                lexEl . AddChar(c);
+#line 553 "chopb.met"
+                                NextChar();
+#line 553 "chopb.met"
+                            }
+#line 553 "chopb.met"
+#line 554 "chopb.met"
+                            switch (c) {
+#line 554 "chopb.met"
+#line 555 "chopb.met"
+                                case '1' :
+#line 555 "chopb.met"
+#line 556 "chopb.met"
+#line 557 "chopb.met"
+                                    {
+#line 557 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 557 "chopb.met"
+                                        NextChar();
+#line 557 "chopb.met"
+                                    }
+#line 557 "chopb.met"
 #line 558 "chopb.met"
+                                    switch (c) {
 #line 558 "chopb.met"
 #line 559 "chopb.met"
-                        }
+                                        case '6' :
 #line 559 "chopb.met"
 #line 559 "chopb.met"
+                                            {
+#line 559 "chopb.met"
+                                                lexEl . AddChar(c);
+#line 559 "chopb.met"
+                                                NextChar();
+#line 559 "chopb.met"
+                                            }
+#line 559 "chopb.met"
+                                            break ;
+#line 559 "chopb.met"
+#line 560 "chopb.met"
+                                        case '2' :
+#line 560 "chopb.met"
+#line 561 "chopb.met"
+#line 562 "chopb.met"
+                                            switch (c) {
+#line 562 "chopb.met"
+#line 563 "chopb.met"
+                                                case '8' :
+#line 563 "chopb.met"
+#line 563 "chopb.met"
+                                                    {
+#line 563 "chopb.met"
+                                                        lexEl . AddChar(c);
+#line 563 "chopb.met"
+                                                        NextChar();
+#line 563 "chopb.met"
+                                                    }
+#line 563 "chopb.met"
+                                                    break ;
+#line 563 "chopb.met"
+#line 564 "chopb.met"
+                                                default : 
+#line 564 "chopb.met"
+                                                     if (c!= EOF) {
+#line 564 "chopb.met"
+#line 564 "chopb.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 564 "chopb.met"
+                                                    }
+#line 564 "chopb.met"
+                                                    break ;
+#line 564 "chopb.met"
+                                            }
+#line 564 "chopb.met"
+#line 564 "chopb.met"
+                                            break ;
+#line 564 "chopb.met"
+#line 567 "chopb.met"
+                                        default : 
+#line 567 "chopb.met"
+                                             if (c!= EOF) {
+#line 567 "chopb.met"
+#line 567 "chopb.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 567 "chopb.met"
+                                            }
+#line 567 "chopb.met"
+                                            break ;
+#line 567 "chopb.met"
+                                    }
+#line 567 "chopb.met"
+#line 567 "chopb.met"
+                                    break ;
+#line 567 "chopb.met"
+#line 570 "chopb.met"
+                                case '6' :
+#line 570 "chopb.met"
+#line 571 "chopb.met"
+#line 572 "chopb.met"
+                                    {
+#line 572 "chopb.met"
+                                        lexEl . AddChar(c);
+#line 572 "chopb.met"
+                                        NextChar();
+#line 572 "chopb.met"
+                                    }
+#line 572 "chopb.met"
+#line 573 "chopb.met"
+                                    if (((c == '4'))){
+#line 573 "chopb.met"
+#line 574 "chopb.met"
+                                        {
+#line 574 "chopb.met"
+                                            lexEl . AddChar(c);
+#line 574 "chopb.met"
+                                            NextChar();
+#line 574 "chopb.met"
+                                        }
+#line 574 "chopb.met"
+                                    } else {
+#line 574 "chopb.met"
+#line 576 "chopb.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 576 "chopb.met"
+                                    }
+#line 576 "chopb.met"
+#line 576 "chopb.met"
+                                    break ;
+#line 576 "chopb.met"
+                            }
+#line 576 "chopb.met"
+#line 576 "chopb.met"
+                            break ;
+#line 576 "chopb.met"
+#line 580 "chopb.met"
+                        case 'l' :
+#line 580 "chopb.met"
+#line 580 "chopb.met"
+                            {
+#line 580 "chopb.met"
+                                lexEl . AddChar(c);
+#line 580 "chopb.met"
+                                NextChar();
+#line 580 "chopb.met"
+                            }
+#line 580 "chopb.met"
+                            break ;
+#line 580 "chopb.met"
+#line 581 "chopb.met"
+                        case 'L' :
+#line 581 "chopb.met"
+#line 581 "chopb.met"
+                            {
+#line 581 "chopb.met"
+                                lexEl . AddChar(c);
+#line 581 "chopb.met"
+                                NextChar();
+#line 581 "chopb.met"
+                            }
+#line 581 "chopb.met"
+                            break ;
+#line 581 "chopb.met"
                     }
-#line 559 "chopb.met"
-                    break ;
-#line 559 "chopb.met"
-            }
-#line 559 "chopb.met"
-#line 559 "chopb.met"
-            break ;
-#line 559 "chopb.met"
-#line 564 "chopb.met"
-        case '#' :
-#line 564 "chopb.met"
-            NextChar();
-#line 564 "chopb.met"
-#line 565 "chopb.met"
-#line 566 "chopb.met"
-            while (((c == ' ')||(c == '\t'))) { 
-#line 566 "chopb.met"
-#line 567 "chopb.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 567 "chopb.met"
-            } 
-#line 567 "chopb.met"
-#line 568 "chopb.met"
-#line 569 "chopb.met"
-            if((GetString("include",1)&& NextChar())){
-#line 569 "chopb.met"
-#line 569 "chopb.met"
-                {
-#line 569 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 569 "chopb.met"
-                    tokenAhead =1;
-#line 569 "chopb.met"
-                    lexEl.Value=INCLUDE_DIR;
-#line 569 "chopb.met"
-                    PUT_COORD_CALL;
-#line 569 "chopb.met"
-                    return(1);
-#line 569 "chopb.met"
-                }
-#line 569 "chopb.met"
-            } else 
-#line 569 "chopb.met"
-#line 570 "chopb.met"
-            if((GetString("ifdef",1)&& NextChar())){
-#line 570 "chopb.met"
-#line 570 "chopb.met"
-                {
-#line 570 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 570 "chopb.met"
-                    tokenAhead =1;
-#line 570 "chopb.met"
-                    lexEl.Value=IFDEF_DIR;
-#line 570 "chopb.met"
-                    PUT_COORD_CALL;
-#line 570 "chopb.met"
-                    return(1);
-#line 570 "chopb.met"
-                }
-#line 570 "chopb.met"
-            } else 
-#line 570 "chopb.met"
-#line 571 "chopb.met"
-            if((GetString("ifndef",1)&& NextChar())){
-#line 571 "chopb.met"
-#line 571 "chopb.met"
-                {
-#line 571 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 571 "chopb.met"
-                    tokenAhead =1;
-#line 571 "chopb.met"
-                    lexEl.Value=IFNDEF_DIR;
-#line 571 "chopb.met"
-                    PUT_COORD_CALL;
-#line 571 "chopb.met"
-                    return(1);
-#line 571 "chopb.met"
-                }
-#line 571 "chopb.met"
-            } else 
-#line 571 "chopb.met"
-#line 572 "chopb.met"
-            if((GetString("if",1)&& NextChar())){
-#line 572 "chopb.met"
-#line 572 "chopb.met"
-                {
-#line 572 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 572 "chopb.met"
-                    tokenAhead =1;
-#line 572 "chopb.met"
-                    lexEl.Value=IF_DIR;
-#line 572 "chopb.met"
-                    PUT_COORD_CALL;
-#line 572 "chopb.met"
-                    return(1);
-#line 572 "chopb.met"
-                }
-#line 572 "chopb.met"
-            } else 
-#line 572 "chopb.met"
-#line 573 "chopb.met"
-            if((GetString("else",1)&& NextChar())){
-#line 573 "chopb.met"
-#line 573 "chopb.met"
-                {
-#line 573 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 573 "chopb.met"
-                    tokenAhead =1;
-#line 573 "chopb.met"
-                    lexEl.Value=ELSE_DIR;
-#line 573 "chopb.met"
-                    PUT_COORD_CALL;
-#line 573 "chopb.met"
-                    return(1);
-#line 573 "chopb.met"
-                }
-#line 573 "chopb.met"
-            } else 
-#line 573 "chopb.met"
-#line 574 "chopb.met"
-            if((GetString("elif",1)&& NextChar())){
-#line 574 "chopb.met"
-#line 574 "chopb.met"
-                {
-#line 574 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 574 "chopb.met"
-                    tokenAhead =1;
-#line 574 "chopb.met"
-                    lexEl.Value=ELIF_DIR;
-#line 574 "chopb.met"
-                    PUT_COORD_CALL;
-#line 574 "chopb.met"
-                    return(1);
-#line 574 "chopb.met"
-                }
-#line 574 "chopb.met"
-            } else 
-#line 574 "chopb.met"
-#line 575 "chopb.met"
-            if((GetString("endif",1)&& NextChar())){
-#line 575 "chopb.met"
-#line 575 "chopb.met"
-                {
-#line 575 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 575 "chopb.met"
-                    tokenAhead =1;
-#line 575 "chopb.met"
-                    lexEl.Value=ENDIF_DIR;
-#line 575 "chopb.met"
-                    PUT_COORD_CALL;
-#line 575 "chopb.met"
-                    return(1);
-#line 575 "chopb.met"
-                }
-#line 575 "chopb.met"
-            } else 
-#line 575 "chopb.met"
-#line 576 "chopb.met"
-            if((GetString("line",1)&& NextChar())){
-#line 576 "chopb.met"
-#line 576 "chopb.met"
-                {
-#line 576 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 576 "chopb.met"
-                    tokenAhead =1;
-#line 576 "chopb.met"
-                    lexEl.Value=LINE_DIR;
-#line 576 "chopb.met"
-                    PUT_COORD_CALL;
-#line 576 "chopb.met"
-                    return(1);
-#line 576 "chopb.met"
-                }
-#line 576 "chopb.met"
-            } else 
-#line 576 "chopb.met"
-#line 577 "chopb.met"
-            if((GetString("pragma",1)&& NextChar())){
-#line 577 "chopb.met"
-#line 577 "chopb.met"
-                {
-#line 577 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 577 "chopb.met"
-                    tokenAhead =1;
-#line 577 "chopb.met"
-                    lexEl.Value=PRAGMA_DIR;
-#line 577 "chopb.met"
-                    PUT_COORD_CALL;
-#line 577 "chopb.met"
-                    return(1);
-#line 577 "chopb.met"
-                }
-#line 577 "chopb.met"
-            } else 
-#line 577 "chopb.met"
-#line 578 "chopb.met"
-            if((GetString("error",1)&& NextChar())){
-#line 578 "chopb.met"
-#line 578 "chopb.met"
-                {
-#line 578 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 578 "chopb.met"
-                    tokenAhead =1;
-#line 578 "chopb.met"
-                    lexEl.Value=ERROR_DIR;
-#line 578 "chopb.met"
-                    PUT_COORD_CALL;
-#line 578 "chopb.met"
-                    return(1);
-#line 578 "chopb.met"
-                }
-#line 578 "chopb.met"
-            } else 
-#line 578 "chopb.met"
-#line 579 "chopb.met"
-            if((GetString("define",1)&& NextChar())){
-#line 579 "chopb.met"
-#line 579 "chopb.met"
-                {
-#line 579 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 579 "chopb.met"
-                    tokenAhead =1;
-#line 579 "chopb.met"
-                    lexEl.Value=DEFINE_DIR;
-#line 579 "chopb.met"
-                    PUT_COORD_CALL;
-#line 579 "chopb.met"
-                    return(1);
-#line 579 "chopb.met"
-                }
-#line 579 "chopb.met"
-            } else 
-#line 579 "chopb.met"
-#line 580 "chopb.met"
-            if((GetString("undef",1)&& NextChar())){
-#line 580 "chopb.met"
-#line 580 "chopb.met"
-                {
-#line 580 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 580 "chopb.met"
-                    tokenAhead =1;
-#line 580 "chopb.met"
-                    lexEl.Value=UNDEF_DIR;
-#line 580 "chopb.met"
-                    PUT_COORD_CALL;
-#line 580 "chopb.met"
-                    return(1);
-#line 580 "chopb.met"
-                }
-#line 580 "chopb.met"
-            } else 
-#line 580 "chopb.met"
 #line 581 "chopb.met"
-            if(((('0' <= c && c <= '9')))){
-#line 581 "chopb.met"
-#line 581 "chopb.met"
-                {
-#line 581 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 581 "chopb.met"
-                    tokenAhead =1;
-#line 581 "chopb.met"
-                    lexEl.Value=LINE_REFERENCE_DIR;
-#line 581 "chopb.met"
-                    PUT_COORD_CALL;
-#line 581 "chopb.met"
-                    return(1);
-#line 581 "chopb.met"
-                }
-#line 581 "chopb.met"
-            } else 
-#line 581 "chopb.met"
-#line 584 "chopb.met"
-            if((c != EOF)){
-#line 584 "chopb.met"
 #line 583 "chopb.met"
-#line 584 "chopb.met"
-                {
-#line 584 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 584 "chopb.met"
-                    tokenAhead =1;
-#line 584 "chopb.met"
-                    lexEl.Value=SHARP_VAL;
-#line 584 "chopb.met"
-                    PUT_COORD_CALL;
-#line 584 "chopb.met"
-                    return(1);
-#line 584 "chopb.met"
-                }
-#line 584 "chopb.met"
-#line 584 "chopb.met"
-            } else 
-#line 584 "chopb.met"
-             ;
-#line 584 "chopb.met"
-#line 584 "chopb.met"
-            break ;
-#line 584 "chopb.met"
-#line 588 "chopb.met"
-        case '\r' :
-#line 588 "chopb.met"
-        case '\n' :
-#line 588 "chopb.met"
-            NextChar();
-#line 588 "chopb.met"
-#line 588 "chopb.met"
-            {
-#line 588 "chopb.met"
-                firstOnLine = 0 ; 
-#line 588 "chopb.met"
-                tokenAhead =1;
-#line 588 "chopb.met"
-                lexEl.Value=CARRIAGE_RETURN;
-#line 588 "chopb.met"
-                firstOnLine = 1 ; 
-#line 588 "chopb.met"
-                PUT_COORD_CALL;
-#line 588 "chopb.met"
-                return(1);
-#line 588 "chopb.met"
+                    {
+#line 583 "chopb.met"
+                        firstOnLine = 0 ; 
+#line 583 "chopb.met"
+                        tokenAhead =1;
+#line 583 "chopb.met"
+                        lexEl.Value=FLOATVAL;
+#line 583 "chopb.met"
+                        PUT_COORD_CALL;
+#line 583 "chopb.met"
+                        return(1);
+#line 583 "chopb.met"
+                    }
+#line 583 "chopb.met"
+#line 583 "chopb.met"
+                    break ;
+#line 583 "chopb.met"
+#line 585 "chopb.met"
+                default : 
+#line 585 "chopb.met"
+                     if (c!= EOF) {
+#line 585 "chopb.met"
+#line 585 "chopb.met"
+                        {
+#line 585 "chopb.met"
+                            firstOnLine = 0 ; 
+#line 585 "chopb.met"
+                            tokenAhead =1;
+#line 585 "chopb.met"
+                            lexEl.Value=INTEGER;
+#line 585 "chopb.met"
+                            PUT_COORD_CALL;
+#line 585 "chopb.met"
+                            return(1);
+#line 585 "chopb.met"
+                        }
+#line 585 "chopb.met"
+                    }
+#line 585 "chopb.met"
+                    break ;
+#line 585 "chopb.met"
             }
-#line 588 "chopb.met"
+#line 585 "chopb.met"
+#line 585 "chopb.met"
             break ;
+#line 585 "chopb.met"
 #line 588 "chopb.met"
-#line 589 "chopb.met"
-        case '/' :
-#line 589 "chopb.met"
+        case '0' :
+#line 588 "chopb.met"
             NextChar();
+#line 588 "chopb.met"
 #line 589 "chopb.met"
 #line 590 "chopb.met"
-#line 591 "chopb.met"
-            if (((c == '='))){
+            if (! (c != EOF)){
+#line 590 "chopb.met"
 #line 591 "chopb.met"
 #line 592 "chopb.met"
-#line 593 "chopb.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 593 "chopb.met"
-#line 594 "chopb.met"
                 {
-#line 594 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 594 "chopb.met"
-                    tokenAhead =1;
-#line 594 "chopb.met"
-                    lexEl.Value=SLASEGAL;
-#line 594 "chopb.met"
-                    PUT_COORD_CALL;
-#line 594 "chopb.met"
-                    return(1);
-#line 594 "chopb.met"
+#line 592 "chopb.met"
+                    lexEl.AddString("0");
+#line 592 "chopb.met"
                 }
-#line 594 "chopb.met"
-#line 594 "chopb.met"
-#line 594 "chopb.met"
-            } else {
-#line 594 "chopb.met"
-#line 597 "chopb.met"
+#line 592 "chopb.met"
+#line 593 "chopb.met"
                 {
-#line 597 "chopb.met"
+#line 593 "chopb.met"
                     firstOnLine = 0 ; 
-#line 597 "chopb.met"
+#line 593 "chopb.met"
                     tokenAhead =1;
-#line 597 "chopb.met"
-                    lexEl.Value=SLAS;
-#line 597 "chopb.met"
+#line 593 "chopb.met"
+                    lexEl.Value=INTEGER;
+#line 593 "chopb.met"
                     PUT_COORD_CALL;
-#line 597 "chopb.met"
+#line 593 "chopb.met"
                     return(1);
-#line 597 "chopb.met"
+#line 593 "chopb.met"
                 }
-#line 597 "chopb.met"
+#line 593 "chopb.met"
+#line 593 "chopb.met"
+#line 593 "chopb.met"
             }
+#line 593 "chopb.met"
+#line 595 "chopb.met"
+            switch (c) {
+#line 595 "chopb.met"
+#line 596 "chopb.met"
+                case 'x' :
+#line 596 "chopb.met"
+                case 'X' :
+#line 596 "chopb.met"
+                    NextChar();
+#line 596 "chopb.met"
 #line 597 "chopb.met"
-#line 597 "chopb.met"
-            break ;
-#line 597 "chopb.met"
+#line 598 "chopb.met"
+                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+#line 598 "chopb.met"
 #line 599 "chopb.met"
-        case '.' :
+                        {
+#line 599 "chopb.met"
+                            lexEl . AddChar(c);
+#line 599 "chopb.met"
+                            NextChar();
+#line 599 "chopb.met"
+                        }
+#line 599 "chopb.met"
+                    } 
 #line 599 "chopb.met"
 #line 600 "chopb.met"
+                    switch (c) {
+#line 600 "chopb.met"
 #line 601 "chopb.met"
-            {
+                        case 'l' :
 #line 601 "chopb.met"
-                lexEl . AddChar(c);
+                        case 'L' :
 #line 601 "chopb.met"
-                NextChar();
-#line 601 "chopb.met"
-            }
+                            NextChar();
 #line 601 "chopb.met"
 #line 602 "chopb.met"
-            if ((('0' <= c && c <= '9'))){
+                            switch (c) {
 #line 602 "chopb.met"
 #line 603 "chopb.met"
+                                case 'u' :
+#line 603 "chopb.met"
+                                case 'U' :
+#line 603 "chopb.met"
+                                    NextChar();
+#line 603 "chopb.met"
+#line 603 "chopb.met"
+                                    {
+#line 603 "chopb.met"
+                                        firstOnLine = 0 ; 
+#line 603 "chopb.met"
+                                        tokenAhead =1;
+#line 603 "chopb.met"
+                                        lexEl.Value=ULHEXA;
+#line 603 "chopb.met"
+                                        PUT_COORD_CALL;
+#line 603 "chopb.met"
+                                        return(1);
+#line 603 "chopb.met"
+                                    }
+#line 603 "chopb.met"
+                                    break ;
+#line 603 "chopb.met"
 #line 604 "chopb.met"
-                while ((('0' <= c && c <= '9'))) { 
+                                case 'L' :
 #line 604 "chopb.met"
-#line 605 "chopb.met"
-                    {
-#line 605 "chopb.met"
-                        lexEl . AddChar(c);
-#line 605 "chopb.met"
-                        NextChar();
-#line 605 "chopb.met"
-                    }
-#line 605 "chopb.met"
-                } 
+                                case 'l' :
+#line 604 "chopb.met"
+                                    NextChar();
+#line 604 "chopb.met"
 #line 605 "chopb.met"
 #line 606 "chopb.met"
-                if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                    switch (c) {
 #line 606 "chopb.met"
 #line 607 "chopb.met"
+                                        case 'u' :
+#line 607 "chopb.met"
+                                        case 'U' :
+#line 607 "chopb.met"
+                                            NextChar();
+#line 607 "chopb.met"
+#line 607 "chopb.met"
+                                            {
+#line 607 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 607 "chopb.met"
+                                                tokenAhead =1;
+#line 607 "chopb.met"
+                                                lexEl.Value=ULLHEXA;
+#line 607 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 607 "chopb.met"
+                                                return(1);
+#line 607 "chopb.met"
+                                            }
+#line 607 "chopb.met"
+                                            break ;
+#line 607 "chopb.met"
 #line 608 "chopb.met"
-                    {
+                                        default : 
 #line 608 "chopb.met"
-                        lexEl.AddString("e");
+                                             if (c!= EOF) {
 #line 608 "chopb.met"
-                    }
 #line 608 "chopb.met"
-#line 609 "chopb.met"
-                    if (((c == '+')||(c == '-'))){
-#line 609 "chopb.met"
-#line 610 "chopb.met"
-                        {
-#line 610 "chopb.met"
-                            lexEl . AddChar(c);
-#line 610 "chopb.met"
-                            NextChar();
-#line 610 "chopb.met"
-                        }
-#line 610 "chopb.met"
-                    }
-#line 610 "chopb.met"
+                                                {
+#line 608 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 608 "chopb.met"
+                                                    tokenAhead =1;
+#line 608 "chopb.met"
+                                                    lexEl.Value=LLHEXA;
+#line 608 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 608 "chopb.met"
+                                                    return(1);
+#line 608 "chopb.met"
+                                                }
+#line 608 "chopb.met"
+                                            }
+#line 608 "chopb.met"
+                                            break ;
+#line 608 "chopb.met"
+                                    }
+#line 608 "chopb.met"
+#line 608 "chopb.met"
+                                    break ;
+#line 608 "chopb.met"
 #line 611 "chopb.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                                default : 
 #line 611 "chopb.met"
-#line 612 "chopb.met"
-                        {
-#line 612 "chopb.met"
-                            lexEl . AddChar(c);
-#line 612 "chopb.met"
+                                     if (c!= EOF) {
+#line 611 "chopb.met"
+#line 611 "chopb.met"
+                                        {
+#line 611 "chopb.met"
+                                            firstOnLine = 0 ; 
+#line 611 "chopb.met"
+                                            tokenAhead =1;
+#line 611 "chopb.met"
+                                            lexEl.Value=LHEXA;
+#line 611 "chopb.met"
+                                            PUT_COORD_CALL;
+#line 611 "chopb.met"
+                                            return(1);
+#line 611 "chopb.met"
+                                        }
+#line 611 "chopb.met"
+                                    }
+#line 611 "chopb.met"
+                                    break ;
+#line 611 "chopb.met"
+                            }
+#line 611 "chopb.met"
+                            break ;
+#line 611 "chopb.met"
+#line 613 "chopb.met"
+                        case 'u' :
+#line 613 "chopb.met"
+                        case 'U' :
+#line 613 "chopb.met"
                             NextChar();
-#line 612 "chopb.met"
+#line 613 "chopb.met"
+#line 614 "chopb.met"
+                            switch (c) {
+#line 614 "chopb.met"
+#line 615 "chopb.met"
+                                case 'l' :
+#line 615 "chopb.met"
+                                case 'L' :
+#line 615 "chopb.met"
+                                    NextChar();
+#line 615 "chopb.met"
+#line 616 "chopb.met"
+#line 617 "chopb.met"
+                                    switch (c) {
+#line 617 "chopb.met"
+#line 618 "chopb.met"
+                                        case 'L' :
+#line 618 "chopb.met"
+                                        case 'l' :
+#line 618 "chopb.met"
+                                            NextChar();
+#line 618 "chopb.met"
+#line 618 "chopb.met"
+                                            {
+#line 618 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 618 "chopb.met"
+                                                tokenAhead =1;
+#line 618 "chopb.met"
+                                                lexEl.Value=ULLHEXA;
+#line 618 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 618 "chopb.met"
+                                                return(1);
+#line 618 "chopb.met"
+                                            }
+#line 618 "chopb.met"
+                                            break ;
+#line 618 "chopb.met"
+#line 619 "chopb.met"
+                                        default : 
+#line 619 "chopb.met"
+                                             if (c!= EOF) {
+#line 619 "chopb.met"
+#line 619 "chopb.met"
+                                                {
+#line 619 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 619 "chopb.met"
+                                                    tokenAhead =1;
+#line 619 "chopb.met"
+                                                    lexEl.Value=ULHEXA;
+#line 619 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 619 "chopb.met"
+                                                    return(1);
+#line 619 "chopb.met"
+                                                }
+#line 619 "chopb.met"
+                                            }
+#line 619 "chopb.met"
+                                            break ;
+#line 619 "chopb.met"
+                                    }
+#line 619 "chopb.met"
+#line 619 "chopb.met"
+                                    break ;
+#line 619 "chopb.met"
+#line 622 "chopb.met"
+                                default : 
+#line 622 "chopb.met"
+                                     if (c!= EOF) {
+#line 622 "chopb.met"
+#line 622 "chopb.met"
+                                        {
+#line 622 "chopb.met"
+                                            firstOnLine = 0 ; 
+#line 622 "chopb.met"
+                                            tokenAhead =1;
+#line 622 "chopb.met"
+                                            lexEl.Value=UHEXA;
+#line 622 "chopb.met"
+                                            PUT_COORD_CALL;
+#line 622 "chopb.met"
+                                            return(1);
+#line 622 "chopb.met"
+                                        }
+#line 622 "chopb.met"
+                                    }
+#line 622 "chopb.met"
+                                    break ;
+#line 622 "chopb.met"
+                            }
+#line 622 "chopb.met"
+                            break ;
+#line 622 "chopb.met"
+#line 624 "chopb.met"
+                        default : 
+#line 624 "chopb.met"
+                             if (c!= EOF) {
+#line 624 "chopb.met"
+#line 624 "chopb.met"
+                                {
+#line 624 "chopb.met"
+                                    firstOnLine = 0 ; 
+#line 624 "chopb.met"
+                                    tokenAhead =1;
+#line 624 "chopb.met"
+                                    lexEl.Value=HEXA;
+#line 624 "chopb.met"
+                                    PUT_COORD_CALL;
+#line 624 "chopb.met"
+                                    return(1);
+#line 624 "chopb.met"
+                                }
+#line 624 "chopb.met"
+                            }
+#line 624 "chopb.met"
+                            break ;
+#line 624 "chopb.met"
+                    }
+#line 624 "chopb.met"
+#line 624 "chopb.met"
+                    break ;
+#line 624 "chopb.met"
+#line 627 "chopb.met"
+                case 'b' :
+#line 627 "chopb.met"
+                case 'B' :
+#line 627 "chopb.met"
+                    NextChar();
+#line 627 "chopb.met"
+#line 628 "chopb.met"
+#line 629 "chopb.met"
+                    while ((('0' <= c && c <= '1'))) { 
+#line 629 "chopb.met"
+#line 630 "chopb.met"
+                        {
+#line 630 "chopb.met"
+                            lexEl . AddChar(c);
+#line 630 "chopb.met"
+                            NextChar();
+#line 630 "chopb.met"
                         }
-#line 612 "chopb.met"
+#line 630 "chopb.met"
                     } 
-#line 612 "chopb.met"
-#line 612 "chopb.met"
-#line 612 "chopb.met"
-                }
-#line 612 "chopb.met"
-#line 614 "chopb.met"
-                switch (c) {
-#line 614 "chopb.met"
-#line 615 "chopb.met"
-                    case 'f' :
-#line 615 "chopb.met"
-#line 615 "chopb.met"
+#line 630 "chopb.met"
+#line 631 "chopb.met"
+                    {
+#line 631 "chopb.met"
+                        firstOnLine = 0 ; 
+#line 631 "chopb.met"
+                        tokenAhead =1;
+#line 631 "chopb.met"
+                        lexEl.Value=BINARY;
+#line 631 "chopb.met"
+                        PUT_COORD_CALL;
+#line 631 "chopb.met"
+                        return(1);
+#line 631 "chopb.met"
+                    }
+#line 631 "chopb.met"
+#line 631 "chopb.met"
+                    break ;
+#line 631 "chopb.met"
+#line 633 "chopb.met"
+                case '0' :
+#line 633 "chopb.met"
+                case '1' :
+#line 633 "chopb.met"
+                case '2' :
+#line 633 "chopb.met"
+                case '3' :
+#line 633 "chopb.met"
+                case '4' :
+#line 633 "chopb.met"
+                case '5' :
+#line 633 "chopb.met"
+                case '6' :
+#line 633 "chopb.met"
+                case '7' :
+#line 633 "chopb.met"
+#line 634 "chopb.met"
+#line 635 "chopb.met"
+                    while ((('0' <= c && c <= '7'))) { 
+#line 635 "chopb.met"
+#line 636 "chopb.met"
                         {
-#line 615 "chopb.met"
+#line 636 "chopb.met"
                             lexEl . AddChar(c);
-#line 615 "chopb.met"
+#line 636 "chopb.met"
                             NextChar();
-#line 615 "chopb.met"
+#line 636 "chopb.met"
                         }
-#line 615 "chopb.met"
-                        break ;
-#line 615 "chopb.met"
-#line 616 "chopb.met"
-                    case 'F' :
-#line 616 "chopb.met"
-#line 616 "chopb.met"
+#line 636 "chopb.met"
+                    } 
+#line 636 "chopb.met"
+#line 637 "chopb.met"
+                    switch (c) {
+#line 637 "chopb.met"
+#line 638 "chopb.met"
+                        case 'l' :
+#line 638 "chopb.met"
+                        case 'L' :
+#line 638 "chopb.met"
+                            NextChar();
+#line 638 "chopb.met"
+#line 639 "chopb.met"
+                            switch (c) {
+#line 639 "chopb.met"
+#line 640 "chopb.met"
+                                case 'L' :
+#line 640 "chopb.met"
+                                case 'l' :
+#line 640 "chopb.met"
+                                    NextChar();
+#line 640 "chopb.met"
+#line 641 "chopb.met"
+#line 642 "chopb.met"
+                                    switch (c) {
+#line 642 "chopb.met"
+#line 643 "chopb.met"
+                                        case 'u' :
+#line 643 "chopb.met"
+                                        case 'U' :
+#line 643 "chopb.met"
+                                            NextChar();
+#line 643 "chopb.met"
+#line 643 "chopb.met"
+                                            {
+#line 643 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 643 "chopb.met"
+                                                tokenAhead =1;
+#line 643 "chopb.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 643 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 643 "chopb.met"
+                                                return(1);
+#line 643 "chopb.met"
+                                            }
+#line 643 "chopb.met"
+                                            break ;
+#line 643 "chopb.met"
+#line 644 "chopb.met"
+                                        default : 
+#line 644 "chopb.met"
+                                             if (c!= EOF) {
+#line 644 "chopb.met"
+#line 644 "chopb.met"
+                                                {
+#line 644 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 644 "chopb.met"
+                                                    tokenAhead =1;
+#line 644 "chopb.met"
+                                                    lexEl.Value=LLOCTAL;
+#line 644 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 644 "chopb.met"
+                                                    return(1);
+#line 644 "chopb.met"
+                                                }
+#line 644 "chopb.met"
+                                            }
+#line 644 "chopb.met"
+                                            break ;
+#line 644 "chopb.met"
+                                    }
+#line 644 "chopb.met"
+#line 644 "chopb.met"
+                                    break ;
+#line 644 "chopb.met"
+#line 647 "chopb.met"
+                                case 'u' :
+#line 647 "chopb.met"
+                                case 'U' :
+#line 647 "chopb.met"
+                                    NextChar();
+#line 647 "chopb.met"
+#line 647 "chopb.met"
+                                    {
+#line 647 "chopb.met"
+                                        firstOnLine = 0 ; 
+#line 647 "chopb.met"
+                                        tokenAhead =1;
+#line 647 "chopb.met"
+                                        lexEl.Value=ULOCTAL;
+#line 647 "chopb.met"
+                                        PUT_COORD_CALL;
+#line 647 "chopb.met"
+                                        return(1);
+#line 647 "chopb.met"
+                                    }
+#line 647 "chopb.met"
+                                    break ;
+#line 647 "chopb.met"
+#line 648 "chopb.met"
+                                default : 
+#line 648 "chopb.met"
+                                     if (c!= EOF) {
+#line 648 "chopb.met"
+#line 648 "chopb.met"
+                                        {
+#line 648 "chopb.met"
+                                            firstOnLine = 0 ; 
+#line 648 "chopb.met"
+                                            tokenAhead =1;
+#line 648 "chopb.met"
+                                            lexEl.Value=LOCTAL;
+#line 648 "chopb.met"
+                                            PUT_COORD_CALL;
+#line 648 "chopb.met"
+                                            return(1);
+#line 648 "chopb.met"
+                                        }
+#line 648 "chopb.met"
+                                    }
+#line 648 "chopb.met"
+                                    break ;
+#line 648 "chopb.met"
+                            }
+#line 648 "chopb.met"
+                            break ;
+#line 648 "chopb.met"
+#line 650 "chopb.met"
+                        case 'u' :
+#line 650 "chopb.met"
+                        case 'U' :
+#line 650 "chopb.met"
+                            NextChar();
+#line 650 "chopb.met"
+#line 651 "chopb.met"
+                            switch (c) {
+#line 651 "chopb.met"
+#line 652 "chopb.met"
+                                case 'l' :
+#line 652 "chopb.met"
+                                case 'L' :
+#line 652 "chopb.met"
+                                    NextChar();
+#line 652 "chopb.met"
+#line 653 "chopb.met"
+#line 654 "chopb.met"
+                                    switch (c) {
+#line 654 "chopb.met"
+#line 655 "chopb.met"
+                                        case 'L' :
+#line 655 "chopb.met"
+                                        case 'l' :
+#line 655 "chopb.met"
+                                            NextChar();
+#line 655 "chopb.met"
+#line 655 "chopb.met"
+                                            {
+#line 655 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 655 "chopb.met"
+                                                tokenAhead =1;
+#line 655 "chopb.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 655 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 655 "chopb.met"
+                                                return(1);
+#line 655 "chopb.met"
+                                            }
+#line 655 "chopb.met"
+                                            break ;
+#line 655 "chopb.met"
+#line 656 "chopb.met"
+                                        default : 
+#line 656 "chopb.met"
+                                             if (c!= EOF) {
+#line 656 "chopb.met"
+#line 656 "chopb.met"
+                                                {
+#line 656 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 656 "chopb.met"
+                                                    tokenAhead =1;
+#line 656 "chopb.met"
+                                                    lexEl.Value=ULOCTAL;
+#line 656 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 656 "chopb.met"
+                                                    return(1);
+#line 656 "chopb.met"
+                                                }
+#line 656 "chopb.met"
+                                            }
+#line 656 "chopb.met"
+                                            break ;
+#line 656 "chopb.met"
+                                    }
+#line 656 "chopb.met"
+#line 656 "chopb.met"
+                                    break ;
+#line 656 "chopb.met"
+#line 659 "chopb.met"
+                                default : 
+#line 659 "chopb.met"
+                                     if (c!= EOF) {
+#line 659 "chopb.met"
+#line 659 "chopb.met"
+                                        {
+#line 659 "chopb.met"
+                                            firstOnLine = 0 ; 
+#line 659 "chopb.met"
+                                            tokenAhead =1;
+#line 659 "chopb.met"
+                                            lexEl.Value=UOCTAL;
+#line 659 "chopb.met"
+                                            PUT_COORD_CALL;
+#line 659 "chopb.met"
+                                            return(1);
+#line 659 "chopb.met"
+                                        }
+#line 659 "chopb.met"
+                                    }
+#line 659 "chopb.met"
+                                    break ;
+#line 659 "chopb.met"
+                            }
+#line 659 "chopb.met"
+                            break ;
+#line 659 "chopb.met"
+#line 661 "chopb.met"
+                        default : 
+#line 661 "chopb.met"
+                             if (c!= EOF) {
+#line 661 "chopb.met"
+#line 661 "chopb.met"
+                                {
+#line 661 "chopb.met"
+                                    firstOnLine = 0 ; 
+#line 661 "chopb.met"
+                                    tokenAhead =1;
+#line 661 "chopb.met"
+                                    lexEl.Value=OCTAL;
+#line 661 "chopb.met"
+                                    PUT_COORD_CALL;
+#line 661 "chopb.met"
+                                    return(1);
+#line 661 "chopb.met"
+                                }
+#line 661 "chopb.met"
+                            }
+#line 661 "chopb.met"
+                            break ;
+#line 661 "chopb.met"
+                    }
+#line 661 "chopb.met"
+#line 661 "chopb.met"
+                    break ;
+#line 661 "chopb.met"
+#line 664 "chopb.met"
+                case '.' :
+#line 664 "chopb.met"
+#line 665 "chopb.met"
+#line 666 "chopb.met"
+                    {
+#line 666 "chopb.met"
+                        lexEl.AddString("0");
+#line 666 "chopb.met"
+                    }
+#line 666 "chopb.met"
+#line 667 "chopb.met"
+                    {
+#line 667 "chopb.met"
+                        lexEl . AddChar(c);
+#line 667 "chopb.met"
+                        NextChar();
+#line 667 "chopb.met"
+                    }
+#line 667 "chopb.met"
+#line 668 "chopb.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 668 "chopb.met"
+#line 669 "chopb.met"
                         {
-#line 616 "chopb.met"
+#line 669 "chopb.met"
                             lexEl . AddChar(c);
-#line 616 "chopb.met"
+#line 669 "chopb.met"
                             NextChar();
-#line 616 "chopb.met"
+#line 669 "chopb.met"
                         }
-#line 616 "chopb.met"
-                        break ;
-#line 616 "chopb.met"
-#line 617 "chopb.met"
-                    case 'l' :
-#line 617 "chopb.met"
-#line 617 "chopb.met"
+#line 669 "chopb.met"
+                    } 
+#line 669 "chopb.met"
+#line 670 "chopb.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 670 "chopb.met"
+#line 671 "chopb.met"
+#line 672 "chopb.met"
                         {
-#line 617 "chopb.met"
-                            lexEl . AddChar(c);
-#line 617 "chopb.met"
-                            NextChar();
-#line 617 "chopb.met"
+#line 672 "chopb.met"
+                            lexEl.AddString("e");
+#line 672 "chopb.met"
                         }
-#line 617 "chopb.met"
-                        break ;
-#line 617 "chopb.met"
-#line 618 "chopb.met"
-                    case 'L' :
-#line 618 "chopb.met"
-#line 618 "chopb.met"
-                        {
-#line 618 "chopb.met"
-                            lexEl . AddChar(c);
-#line 618 "chopb.met"
-                            NextChar();
-#line 618 "chopb.met"
+#line 672 "chopb.met"
+#line 673 "chopb.met"
+                        if (((c == '+')||(c == '-'))){
+#line 673 "chopb.met"
+#line 674 "chopb.met"
+                            {
+#line 674 "chopb.met"
+                                lexEl . AddChar(c);
+#line 674 "chopb.met"
+                                NextChar();
+#line 674 "chopb.met"
+                            }
+#line 674 "chopb.met"
                         }
-#line 618 "chopb.met"
-                        break ;
-#line 618 "chopb.met"
-                }
-#line 618 "chopb.met"
-#line 620 "chopb.met"
-                {
-#line 620 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 620 "chopb.met"
-                    tokenAhead =1;
-#line 620 "chopb.met"
-                    lexEl.Value=FLOATVAL;
-#line 620 "chopb.met"
-                    PUT_COORD_CALL;
-#line 620 "chopb.met"
-                    return(1);
-#line 620 "chopb.met"
-                }
-#line 620 "chopb.met"
-#line 620 "chopb.met"
-#line 620 "chopb.met"
-            } else {
-#line 620 "chopb.met"
-#line 623 "chopb.met"
-#line 624 "chopb.met"
-                {
-#line 624 "chopb.met"
-                    firstOnLine = 0 ; 
-#line 624 "chopb.met"
-                    tokenAhead =1;
-#line 624 "chopb.met"
-                    lexEl.Value=POINT;
-#line 624 "chopb.met"
-                    PUT_COORD_CALL;
-#line 624 "chopb.met"
-                    return(1);
-#line 624 "chopb.met"
-                }
-#line 624 "chopb.met"
-#line 624 "chopb.met"
+#line 674 "chopb.met"
+#line 675 "chopb.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 675 "chopb.met"
+#line 676 "chopb.met"
+                            {
+#line 676 "chopb.met"
+                                lexEl . AddChar(c);
+#line 676 "chopb.met"
+                                NextChar();
+#line 676 "chopb.met"
+                            }
+#line 676 "chopb.met"
+                        } 
+#line 676 "chopb.met"
+#line 676 "chopb.met"
+#line 676 "chopb.met"
+                    }
+#line 676 "chopb.met"
+#line 678 "chopb.met"
+                    switch (c) {
+#line 678 "chopb.met"
+#line 679 "chopb.met"
+                        case 'f' :
+#line 679 "chopb.met"
+#line 679 "chopb.met"
+                            {
+#line 679 "chopb.met"
+                                lexEl . AddChar(c);
+#line 679 "chopb.met"
+                                NextChar();
+#line 679 "chopb.met"
+                            }
+#line 679 "chopb.met"
+                            break ;
+#line 679 "chopb.met"
+#line 680 "chopb.met"
+                        case 'F' :
+#line 680 "chopb.met"
+#line 680 "chopb.met"
+                            {
+#line 680 "chopb.met"
+                                lexEl . AddChar(c);
+#line 680 "chopb.met"
+                                NextChar();
+#line 680 "chopb.met"
+                            }
+#line 680 "chopb.met"
+                            break ;
+#line 680 "chopb.met"
+#line 681 "chopb.met"
+                        case 'l' :
+#line 681 "chopb.met"
+#line 681 "chopb.met"
+                            {
+#line 681 "chopb.met"
+                                lexEl . AddChar(c);
+#line 681 "chopb.met"
+                                NextChar();
+#line 681 "chopb.met"
+                            }
+#line 681 "chopb.met"
+                            break ;
+#line 681 "chopb.met"
+#line 682 "chopb.met"
+                        case 'L' :
+#line 682 "chopb.met"
+#line 682 "chopb.met"
+                            {
+#line 682 "chopb.met"
+                                lexEl . AddChar(c);
+#line 682 "chopb.met"
+                                NextChar();
+#line 682 "chopb.met"
+                            }
+#line 682 "chopb.met"
+                            break ;
+#line 682 "chopb.met"
+                    }
+#line 682 "chopb.met"
+#line 684 "chopb.met"
+                    {
+#line 684 "chopb.met"
+                        firstOnLine = 0 ; 
+#line 684 "chopb.met"
+                        tokenAhead =1;
+#line 684 "chopb.met"
+                        lexEl.Value=FLOATVAL;
+#line 684 "chopb.met"
+                        PUT_COORD_CALL;
+#line 684 "chopb.met"
+                        return(1);
+#line 684 "chopb.met"
+                    }
+#line 684 "chopb.met"
+#line 684 "chopb.met"
+                    break ;
+#line 684 "chopb.met"
+#line 690 "chopb.met"
+                default : 
+#line 690 "chopb.met"
+                     if (c!= EOF) {
+#line 690 "chopb.met"
+#line 687 "chopb.met"
+#line 688 "chopb.met"
+                        if (c != EOF){
+#line 688 "chopb.met"
+#line 689 "chopb.met"
+#line 690 "chopb.met"
+                            {
+#line 690 "chopb.met"
+                                lexEl.AddString("0");
+#line 690 "chopb.met"
+                            }
+#line 690 "chopb.met"
+#line 691 "chopb.met"
+                            switch (c) {
+#line 691 "chopb.met"
+#line 692 "chopb.met"
+                                case 'l' :
+#line 692 "chopb.met"
+                                case 'L' :
+#line 692 "chopb.met"
+                                    NextChar();
+#line 692 "chopb.met"
+#line 693 "chopb.met"
+                                    switch (c) {
+#line 693 "chopb.met"
+#line 694 "chopb.met"
+                                        case 'u' :
+#line 694 "chopb.met"
+                                        case 'U' :
+#line 694 "chopb.met"
+                                            NextChar();
+#line 694 "chopb.met"
+#line 694 "chopb.met"
+                                            {
+#line 694 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 694 "chopb.met"
+                                                tokenAhead =1;
+#line 694 "chopb.met"
+                                                lexEl.Value=ULINTEGER;
+#line 694 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 694 "chopb.met"
+                                                return(1);
+#line 694 "chopb.met"
+                                            }
+#line 694 "chopb.met"
+                                            break ;
+#line 694 "chopb.met"
+#line 695 "chopb.met"
+                                        default : 
+#line 695 "chopb.met"
+                                             if (c!= EOF) {
+#line 695 "chopb.met"
+#line 695 "chopb.met"
+                                                {
+#line 695 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 695 "chopb.met"
+                                                    tokenAhead =1;
+#line 695 "chopb.met"
+                                                    lexEl.Value=LINTEGER;
+#line 695 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 695 "chopb.met"
+                                                    return(1);
+#line 695 "chopb.met"
+                                                }
+#line 695 "chopb.met"
+                                            }
+#line 695 "chopb.met"
+                                            break ;
+#line 695 "chopb.met"
+                                    }
+#line 695 "chopb.met"
+                                    break ;
+#line 695 "chopb.met"
+#line 697 "chopb.met"
+                                case 'u' :
+#line 697 "chopb.met"
+                                case 'U' :
+#line 697 "chopb.met"
+                                    NextChar();
+#line 697 "chopb.met"
+#line 698 "chopb.met"
+                                    switch (c) {
+#line 698 "chopb.met"
+#line 699 "chopb.met"
+                                        case 'l' :
+#line 699 "chopb.met"
+                                        case 'L' :
+#line 699 "chopb.met"
+                                            NextChar();
+#line 699 "chopb.met"
+#line 699 "chopb.met"
+                                            {
+#line 699 "chopb.met"
+                                                firstOnLine = 0 ; 
+#line 699 "chopb.met"
+                                                tokenAhead =1;
+#line 699 "chopb.met"
+                                                lexEl.Value=ULINTEGER;
+#line 699 "chopb.met"
+                                                PUT_COORD_CALL;
+#line 699 "chopb.met"
+                                                return(1);
+#line 699 "chopb.met"
+                                            }
+#line 699 "chopb.met"
+                                            break ;
+#line 699 "chopb.met"
+#line 700 "chopb.met"
+                                        default : 
+#line 700 "chopb.met"
+                                             if (c!= EOF) {
+#line 700 "chopb.met"
+#line 700 "chopb.met"
+                                                {
+#line 700 "chopb.met"
+                                                    firstOnLine = 0 ; 
+#line 700 "chopb.met"
+                                                    tokenAhead =1;
+#line 700 "chopb.met"
+                                                    lexEl.Value=UINTEGER;
+#line 700 "chopb.met"
+                                                    PUT_COORD_CALL;
+#line 700 "chopb.met"
+                                                    return(1);
+#line 700 "chopb.met"
+                                                }
+#line 700 "chopb.met"
+                                            }
+#line 700 "chopb.met"
+                                            break ;
+#line 700 "chopb.met"
+                                    }
+#line 700 "chopb.met"
+                                    break ;
+#line 700 "chopb.met"
+#line 702 "chopb.met"
+                                default : 
+#line 702 "chopb.met"
+                                     if (c!= EOF) {
+#line 702 "chopb.met"
+#line 702 "chopb.met"
+                                        {
+#line 702 "chopb.met"
+                                            firstOnLine = 0 ; 
+#line 702 "chopb.met"
+                                            tokenAhead =1;
+#line 702 "chopb.met"
+                                            lexEl.Value=INTEGER;
+#line 702 "chopb.met"
+                                            PUT_COORD_CALL;
+#line 702 "chopb.met"
+                                            return(1);
+#line 702 "chopb.met"
+                                        }
+#line 702 "chopb.met"
+                                    }
+#line 702 "chopb.met"
+                                    break ;
+#line 702 "chopb.met"
+                            }
+#line 702 "chopb.met"
+#line 702 "chopb.met"
+#line 703 "chopb.met"
+                        }
+#line 703 "chopb.met"
+#line 703 "chopb.met"
+                    }
+#line 703 "chopb.met"
+                    break ;
+#line 703 "chopb.met"
             }
-#line 624 "chopb.met"
-#line 624 "chopb.met"
+#line 703 "chopb.met"
+#line 703 "chopb.met"
             break ;
-#line 624 "chopb.met"
+#line 703 "chopb.met"
+#line 708 "chopb.met"
+        case '#' :
+#line 708 "chopb.met"
+            NextChar();
+#line 708 "chopb.met"
+#line 709 "chopb.met"
+#line 710 "chopb.met"
+            while (((c == ' ')||(c == '\t'))) { 
+#line 710 "chopb.met"
+#line 711 "chopb.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 711 "chopb.met"
+            } 
+#line 711 "chopb.met"
+#line 712 "chopb.met"
+#line 713 "chopb.met"
+            if((GetString("include",1)&& NextChar())){
+#line 713 "chopb.met"
+#line 713 "chopb.met"
+                {
+#line 713 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 713 "chopb.met"
+                    tokenAhead =1;
+#line 713 "chopb.met"
+                    lexEl.Value=INCLUDE_DIR;
+#line 713 "chopb.met"
+                    PUT_COORD_CALL;
+#line 713 "chopb.met"
+                    return(1);
+#line 713 "chopb.met"
+                }
+#line 713 "chopb.met"
+            } else 
+#line 713 "chopb.met"
+#line 714 "chopb.met"
+            if((GetString("ifdef",1)&& NextChar())){
+#line 714 "chopb.met"
+#line 714 "chopb.met"
+                {
+#line 714 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 714 "chopb.met"
+                    tokenAhead =1;
+#line 714 "chopb.met"
+                    lexEl.Value=IFDEF_DIR;
+#line 714 "chopb.met"
+                    PUT_COORD_CALL;
+#line 714 "chopb.met"
+                    return(1);
+#line 714 "chopb.met"
+                }
+#line 714 "chopb.met"
+            } else 
+#line 714 "chopb.met"
+#line 715 "chopb.met"
+            if((GetString("ifndef",1)&& NextChar())){
+#line 715 "chopb.met"
+#line 715 "chopb.met"
+                {
+#line 715 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 715 "chopb.met"
+                    tokenAhead =1;
+#line 715 "chopb.met"
+                    lexEl.Value=IFNDEF_DIR;
+#line 715 "chopb.met"
+                    PUT_COORD_CALL;
+#line 715 "chopb.met"
+                    return(1);
+#line 715 "chopb.met"
+                }
+#line 715 "chopb.met"
+            } else 
+#line 715 "chopb.met"
+#line 716 "chopb.met"
+            if((GetString("if",1)&& NextChar())){
+#line 716 "chopb.met"
+#line 716 "chopb.met"
+                {
+#line 716 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 716 "chopb.met"
+                    tokenAhead =1;
+#line 716 "chopb.met"
+                    lexEl.Value=IF_DIR;
+#line 716 "chopb.met"
+                    PUT_COORD_CALL;
+#line 716 "chopb.met"
+                    return(1);
+#line 716 "chopb.met"
+                }
+#line 716 "chopb.met"
+            } else 
+#line 716 "chopb.met"
+#line 717 "chopb.met"
+            if((GetString("else",1)&& NextChar())){
+#line 717 "chopb.met"
+#line 717 "chopb.met"
+                {
+#line 717 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 717 "chopb.met"
+                    tokenAhead =1;
+#line 717 "chopb.met"
+                    lexEl.Value=ELSE_DIR;
+#line 717 "chopb.met"
+                    PUT_COORD_CALL;
+#line 717 "chopb.met"
+                    return(1);
+#line 717 "chopb.met"
+                }
+#line 717 "chopb.met"
+            } else 
+#line 717 "chopb.met"
+#line 718 "chopb.met"
+            if((GetString("elif",1)&& NextChar())){
+#line 718 "chopb.met"
+#line 718 "chopb.met"
+                {
+#line 718 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 718 "chopb.met"
+                    tokenAhead =1;
+#line 718 "chopb.met"
+                    lexEl.Value=ELIF_DIR;
+#line 718 "chopb.met"
+                    PUT_COORD_CALL;
+#line 718 "chopb.met"
+                    return(1);
+#line 718 "chopb.met"
+                }
+#line 718 "chopb.met"
+            } else 
+#line 718 "chopb.met"
+#line 719 "chopb.met"
+            if((GetString("endif",1)&& NextChar())){
+#line 719 "chopb.met"
+#line 719 "chopb.met"
+                {
+#line 719 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 719 "chopb.met"
+                    tokenAhead =1;
+#line 719 "chopb.met"
+                    lexEl.Value=ENDIF_DIR;
+#line 719 "chopb.met"
+                    PUT_COORD_CALL;
+#line 719 "chopb.met"
+                    return(1);
+#line 719 "chopb.met"
+                }
+#line 719 "chopb.met"
+            } else 
+#line 719 "chopb.met"
+#line 720 "chopb.met"
+            if((GetString("line",1)&& NextChar())){
+#line 720 "chopb.met"
+#line 720 "chopb.met"
+                {
+#line 720 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 720 "chopb.met"
+                    tokenAhead =1;
+#line 720 "chopb.met"
+                    lexEl.Value=LINE_DIR;
+#line 720 "chopb.met"
+                    PUT_COORD_CALL;
+#line 720 "chopb.met"
+                    return(1);
+#line 720 "chopb.met"
+                }
+#line 720 "chopb.met"
+            } else 
+#line 720 "chopb.met"
+#line 721 "chopb.met"
+            if((GetString("pragma",1)&& NextChar())){
+#line 721 "chopb.met"
+#line 721 "chopb.met"
+                {
+#line 721 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 721 "chopb.met"
+                    tokenAhead =1;
+#line 721 "chopb.met"
+                    lexEl.Value=PRAGMA_DIR;
+#line 721 "chopb.met"
+                    PUT_COORD_CALL;
+#line 721 "chopb.met"
+                    return(1);
+#line 721 "chopb.met"
+                }
+#line 721 "chopb.met"
+            } else 
+#line 721 "chopb.met"
+#line 722 "chopb.met"
+            if((GetString("error",1)&& NextChar())){
+#line 722 "chopb.met"
+#line 722 "chopb.met"
+                {
+#line 722 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 722 "chopb.met"
+                    tokenAhead =1;
+#line 722 "chopb.met"
+                    lexEl.Value=ERROR_DIR;
+#line 722 "chopb.met"
+                    PUT_COORD_CALL;
+#line 722 "chopb.met"
+                    return(1);
+#line 722 "chopb.met"
+                }
+#line 722 "chopb.met"
+            } else 
+#line 722 "chopb.met"
+#line 723 "chopb.met"
+            if((GetString("define",1)&& NextChar())){
+#line 723 "chopb.met"
+#line 723 "chopb.met"
+                {
+#line 723 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 723 "chopb.met"
+                    tokenAhead =1;
+#line 723 "chopb.met"
+                    lexEl.Value=DEFINE_DIR;
+#line 723 "chopb.met"
+                    PUT_COORD_CALL;
+#line 723 "chopb.met"
+                    return(1);
+#line 723 "chopb.met"
+                }
+#line 723 "chopb.met"
+            } else 
+#line 723 "chopb.met"
+#line 724 "chopb.met"
+            if((GetString("undef",1)&& NextChar())){
+#line 724 "chopb.met"
+#line 724 "chopb.met"
+                {
+#line 724 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 724 "chopb.met"
+                    tokenAhead =1;
+#line 724 "chopb.met"
+                    lexEl.Value=UNDEF_DIR;
+#line 724 "chopb.met"
+                    PUT_COORD_CALL;
+#line 724 "chopb.met"
+                    return(1);
+#line 724 "chopb.met"
+                }
+#line 724 "chopb.met"
+            } else 
+#line 724 "chopb.met"
+#line 725 "chopb.met"
+            if(((('0' <= c && c <= '9')))){
+#line 725 "chopb.met"
+#line 725 "chopb.met"
+                {
+#line 725 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 725 "chopb.met"
+                    tokenAhead =1;
+#line 725 "chopb.met"
+                    lexEl.Value=LINE_REFERENCE_DIR;
+#line 725 "chopb.met"
+                    PUT_COORD_CALL;
+#line 725 "chopb.met"
+                    return(1);
+#line 725 "chopb.met"
+                }
+#line 725 "chopb.met"
+            } else 
+#line 725 "chopb.met"
+#line 728 "chopb.met"
+            if((c != EOF)){
+#line 728 "chopb.met"
+#line 727 "chopb.met"
+#line 728 "chopb.met"
+                {
+#line 728 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 728 "chopb.met"
+                    tokenAhead =1;
+#line 728 "chopb.met"
+                    lexEl.Value=SHARP_VAL;
+#line 728 "chopb.met"
+                    PUT_COORD_CALL;
+#line 728 "chopb.met"
+                    return(1);
+#line 728 "chopb.met"
+                }
+#line 728 "chopb.met"
+#line 728 "chopb.met"
+            } else 
+#line 728 "chopb.met"
+             ;
+#line 728 "chopb.met"
+#line 728 "chopb.met"
+            break ;
+#line 728 "chopb.met"
+#line 732 "chopb.met"
+        case '\r' :
+#line 732 "chopb.met"
+        case '\n' :
+#line 732 "chopb.met"
+            NextChar();
+#line 732 "chopb.met"
+#line 732 "chopb.met"
+            {
+#line 732 "chopb.met"
+                firstOnLine = 0 ; 
+#line 732 "chopb.met"
+                tokenAhead =1;
+#line 732 "chopb.met"
+                lexEl.Value=CARRIAGE_RETURN;
+#line 732 "chopb.met"
+                firstOnLine = 1 ; 
+#line 732 "chopb.met"
+                PUT_COORD_CALL;
+#line 732 "chopb.met"
+                return(1);
+#line 732 "chopb.met"
+            }
+#line 732 "chopb.met"
+            break ;
+#line 732 "chopb.met"
+#line 733 "chopb.met"
+        case '/' :
+#line 733 "chopb.met"
+            NextChar();
+#line 733 "chopb.met"
+#line 734 "chopb.met"
+#line 735 "chopb.met"
+            if (((c == '='))){
+#line 735 "chopb.met"
+#line 736 "chopb.met"
+#line 737 "chopb.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 737 "chopb.met"
+#line 738 "chopb.met"
+                {
+#line 738 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 738 "chopb.met"
+                    tokenAhead =1;
+#line 738 "chopb.met"
+                    lexEl.Value=SLASEGAL;
+#line 738 "chopb.met"
+                    PUT_COORD_CALL;
+#line 738 "chopb.met"
+                    return(1);
+#line 738 "chopb.met"
+                }
+#line 738 "chopb.met"
+#line 738 "chopb.met"
+#line 738 "chopb.met"
+            } else {
+#line 738 "chopb.met"
+#line 741 "chopb.met"
+                {
+#line 741 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 741 "chopb.met"
+                    tokenAhead =1;
+#line 741 "chopb.met"
+                    lexEl.Value=SLAS;
+#line 741 "chopb.met"
+                    PUT_COORD_CALL;
+#line 741 "chopb.met"
+                    return(1);
+#line 741 "chopb.met"
+                }
+#line 741 "chopb.met"
+            }
+#line 741 "chopb.met"
+#line 741 "chopb.met"
+            break ;
+#line 741 "chopb.met"
+#line 743 "chopb.met"
+        case '.' :
+#line 743 "chopb.met"
+#line 744 "chopb.met"
+#line 745 "chopb.met"
+            {
+#line 745 "chopb.met"
+                lexEl . AddChar(c);
+#line 745 "chopb.met"
+                NextChar();
+#line 745 "chopb.met"
+            }
+#line 745 "chopb.met"
+#line 746 "chopb.met"
+            if ((('0' <= c && c <= '9'))){
+#line 746 "chopb.met"
+#line 747 "chopb.met"
+#line 748 "chopb.met"
+                while ((('0' <= c && c <= '9'))) { 
+#line 748 "chopb.met"
+#line 749 "chopb.met"
+                    {
+#line 749 "chopb.met"
+                        lexEl . AddChar(c);
+#line 749 "chopb.met"
+                        NextChar();
+#line 749 "chopb.met"
+                    }
+#line 749 "chopb.met"
+                } 
+#line 749 "chopb.met"
+#line 750 "chopb.met"
+                if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 750 "chopb.met"
+#line 751 "chopb.met"
+#line 752 "chopb.met"
+                    {
+#line 752 "chopb.met"
+                        lexEl.AddString("e");
+#line 752 "chopb.met"
+                    }
+#line 752 "chopb.met"
+#line 753 "chopb.met"
+                    if (((c == '+')||(c == '-'))){
+#line 753 "chopb.met"
+#line 754 "chopb.met"
+                        {
+#line 754 "chopb.met"
+                            lexEl . AddChar(c);
+#line 754 "chopb.met"
+                            NextChar();
+#line 754 "chopb.met"
+                        }
+#line 754 "chopb.met"
+                    }
+#line 754 "chopb.met"
+#line 755 "chopb.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 755 "chopb.met"
+#line 756 "chopb.met"
+                        {
+#line 756 "chopb.met"
+                            lexEl . AddChar(c);
+#line 756 "chopb.met"
+                            NextChar();
+#line 756 "chopb.met"
+                        }
+#line 756 "chopb.met"
+                    } 
+#line 756 "chopb.met"
+#line 756 "chopb.met"
+#line 756 "chopb.met"
+                }
+#line 756 "chopb.met"
+#line 758 "chopb.met"
+                switch (c) {
+#line 758 "chopb.met"
+#line 759 "chopb.met"
+                    case 'f' :
+#line 759 "chopb.met"
+#line 759 "chopb.met"
+                        {
+#line 759 "chopb.met"
+                            lexEl . AddChar(c);
+#line 759 "chopb.met"
+                            NextChar();
+#line 759 "chopb.met"
+                        }
+#line 759 "chopb.met"
+                        break ;
+#line 759 "chopb.met"
+#line 760 "chopb.met"
+                    case 'F' :
+#line 760 "chopb.met"
+#line 760 "chopb.met"
+                        {
+#line 760 "chopb.met"
+                            lexEl . AddChar(c);
+#line 760 "chopb.met"
+                            NextChar();
+#line 760 "chopb.met"
+                        }
+#line 760 "chopb.met"
+                        break ;
+#line 760 "chopb.met"
+#line 761 "chopb.met"
+                    case 'l' :
+#line 761 "chopb.met"
+#line 761 "chopb.met"
+                        {
+#line 761 "chopb.met"
+                            lexEl . AddChar(c);
+#line 761 "chopb.met"
+                            NextChar();
+#line 761 "chopb.met"
+                        }
+#line 761 "chopb.met"
+                        break ;
+#line 761 "chopb.met"
+#line 762 "chopb.met"
+                    case 'L' :
+#line 762 "chopb.met"
+#line 762 "chopb.met"
+                        {
+#line 762 "chopb.met"
+                            lexEl . AddChar(c);
+#line 762 "chopb.met"
+                            NextChar();
+#line 762 "chopb.met"
+                        }
+#line 762 "chopb.met"
+                        break ;
+#line 762 "chopb.met"
+                }
+#line 762 "chopb.met"
+#line 764 "chopb.met"
+                {
+#line 764 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 764 "chopb.met"
+                    tokenAhead =1;
+#line 764 "chopb.met"
+                    lexEl.Value=FLOATVAL;
+#line 764 "chopb.met"
+                    PUT_COORD_CALL;
+#line 764 "chopb.met"
+                    return(1);
+#line 764 "chopb.met"
+                }
+#line 764 "chopb.met"
+#line 764 "chopb.met"
+#line 764 "chopb.met"
+            } else {
+#line 764 "chopb.met"
+#line 767 "chopb.met"
+#line 768 "chopb.met"
+                {
+#line 768 "chopb.met"
+                    firstOnLine = 0 ; 
+#line 768 "chopb.met"
+                    tokenAhead =1;
+#line 768 "chopb.met"
+                    lexEl.Value=POINT;
+#line 768 "chopb.met"
+                    PUT_COORD_CALL;
+#line 768 "chopb.met"
+                    return(1);
+#line 768 "chopb.met"
+                }
+#line 768 "chopb.met"
+#line 768 "chopb.met"
+            }
+#line 768 "chopb.met"
+#line 768 "chopb.met"
+            break ;
+#line 768 "chopb.met"
     }
-#line 624 "chopb.met"
-#line 624 "chopb.met"
-#line 627 "chopb.met"
+#line 768 "chopb.met"
+#line 768 "chopb.met"
+#line 771 "chopb.met"
     line = oldLine;
-#line 627 "chopb.met"
+#line 771 "chopb.met"
     LEX_EXIT(0,"")
-#line 627 "chopb.met"
+#line 771 "chopb.met"
     lexEl.Value = -1 ;
-#line 627 "chopb.met"
+#line 771 "chopb.met"
     return -1 ; 
-#line 627 "chopb.met"
+#line 771 "chopb.met"
 }
-#line 627 "chopb.met"
+#line 771 "chopb.met"
 
-#line 627 "chopb.met"
+#line 771 "chopb.met"
 #line 14 "chopb.met"
 int chopb::LexComment ()
 #line 14 "chopb.met"

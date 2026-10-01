@@ -11,571 +11,571 @@
 
 
 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 int cplus::SortKeyWord (int defaultValue)
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     register int Value;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     Value = strcmp(lexEl.string(),"if");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         Value = strcmp(lexEl.string(),"static");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             Value = strcmp(lexEl.string(),"union");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"virtual");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"volatile");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"while")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(WHILE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"void")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(VOID) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(VOLATILE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"using");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"va_arg")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(VA_ARG) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"unsigned")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(UNSIGNED) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(USING);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(VIRTUAL);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"throw");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"typedef");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"typename")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(TYPENAME) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"try")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(TRY) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(TYPEDEF);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"switch");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"template")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(TEMPLATE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"struct")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(STRUCT) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(SWITCH);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(THROW);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 return(UNION);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             Value = strcmp(lexEl.string(),"private");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"return");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"signed");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"sizeof")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(SIZEOF) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"short")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(SHORT) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(SIGNED);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"public");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"register")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(REGISTER) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"protected")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(PROTECTED) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(PUBLIC);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(RETURN);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"namespace");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"noexcept");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"operator")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(OPERATOR) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"new")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(NEW) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(NOEXCEPT);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"long");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"mutable")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(MUTABLE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         Value = strcmp(lexEl.string(),"int");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(defaultValue);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             if(!strcmp(lexEl.string(),"inline")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                                 return(INLINE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(INT);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(LONG);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(NAMESPACE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 return(PRIVATE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             return(STATIC);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         Value = strcmp(lexEl.string(),"const");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             Value = strcmp(lexEl.string(),"else");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"for");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"friend");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"goto")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(GOTO) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"forallsons")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(FORALLSONS) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(FRIEND);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"extern");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"float")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(FLOAT) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"enum")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(ENUM) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(EXTERN);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(FOR);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"default");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"do");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"double")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(DOUBLE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"delete")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(DELETE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(DO);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"continue");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"decltype")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(DECLTYPE) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         Value = strcmp(lexEl.string(),"constexpr");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(defaultValue);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             if(!strcmp(lexEl.string(),"consteval")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                                 return(CONSTEVAL) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(CONSTEXPR);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(CONTINUE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(DEFAULT);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 return(ELSE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             Value = strcmp(lexEl.string(),"_typedef_protectedArray_s");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"case");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"char");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"class")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(CLASS) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"catch")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(CATCH) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(CHAR);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"auto");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"break")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(BREAK) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"asm")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(ASM) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(AUTO);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(CASE);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 Value = strcmp(lexEl.string(),"_protectedArray_s");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"_protectedPointer_s");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"_typedef_protectedArray")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(_TYPEDEF_PROTECTEDARRAY) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"_protectedPointer")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(_PROTECTEDPOINTER) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(_PROTECTEDPOINTER_S);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     Value = strcmp(lexEl.string(),"__attribute__");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if(!strcmp(lexEl.string(),"_protectedArray")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(_PROTECTEDARRAY) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         Value = strcmp(lexEl.string(),"__asm__");
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         if (Value > 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(defaultValue);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else if (Value < 0) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             if(!strcmp(lexEl.string(),"+____------____")) {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                                 return(PLUS____TIRETIRETIRETIRETIRETIRE____) ;
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                             return(__ASM__);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                         return(__ATTRIBUTE__);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                     return(_PROTECTEDARRAY_S);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
                 return(_TYPEDEF_PROTECTEDARRAY_S);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
             return(CONST);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     } else 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
         return(IF);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     return(defaultValue);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 int cplus::UpSortKeyWord(int value) 
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 {
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     register char * ptSource=lexEl.string();
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     for (;*ptSource;ptSource++) *ptSource = toupper(*ptSource);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
     return SortKeyWord (value);
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 }
-#line 2196 "cplus.met"
+#line 2340 "cplus.met"
 #line 303 "cplus.met"
 int cplus::Lex ()
 #line 303 "cplus.met"
@@ -2360,34 +2360,7 @@ int cplus::Lex ()
 #line 413 "cplus.met"
                         case 'f' :
 #line 413 "cplus.met"
-#line 413 "cplus.met"
-                            {
-#line 413 "cplus.met"
-                                lexEl . AddChar(c);
-#line 413 "cplus.met"
-                                NextChar();
-#line 413 "cplus.met"
-                            }
-#line 413 "cplus.met"
-                            break ;
-#line 413 "cplus.met"
 #line 414 "cplus.met"
-                        case 'F' :
-#line 414 "cplus.met"
-#line 414 "cplus.met"
-                            {
-#line 414 "cplus.met"
-                                lexEl . AddChar(c);
-#line 414 "cplus.met"
-                                NextChar();
-#line 414 "cplus.met"
-                            }
-#line 414 "cplus.met"
-                            break ;
-#line 414 "cplus.met"
-#line 415 "cplus.met"
-                        case 'l' :
-#line 415 "cplus.met"
 #line 415 "cplus.met"
                             {
 #line 415 "cplus.met"
@@ -2397,1785 +2370,2466 @@ int cplus::Lex ()
 #line 415 "cplus.met"
                             }
 #line 415 "cplus.met"
-                            break ;
-#line 415 "cplus.met"
 #line 416 "cplus.met"
-                        case 'L' :
+                            switch (c) {
 #line 416 "cplus.met"
-#line 416 "cplus.met"
-                            {
-#line 416 "cplus.met"
-                                lexEl . AddChar(c);
-#line 416 "cplus.met"
-                                NextChar();
-#line 416 "cplus.met"
-                            }
-#line 416 "cplus.met"
-                            break ;
-#line 416 "cplus.met"
-                    }
-#line 416 "cplus.met"
+#line 417 "cplus.met"
+                                case '1' :
+#line 417 "cplus.met"
 #line 418 "cplus.met"
-                    {
-#line 418 "cplus.met"
-                        firstOnLine = 0 ; 
-#line 418 "cplus.met"
-                        tokenAhead =1;
-#line 418 "cplus.met"
-                        lexEl.Value=FLOATVAL;
-#line 418 "cplus.met"
-                        PUT_COORD_CALL;
-#line 418 "cplus.met"
-                        return(1);
-#line 418 "cplus.met"
-                    }
-#line 418 "cplus.met"
-#line 418 "cplus.met"
-                    break ;
-#line 418 "cplus.met"
+#line 419 "cplus.met"
+                                    {
+#line 419 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 419 "cplus.met"
+                                        NextChar();
+#line 419 "cplus.met"
+                                    }
+#line 419 "cplus.met"
 #line 420 "cplus.met"
-                case '.' :
+                                    switch (c) {
 #line 420 "cplus.met"
 #line 421 "cplus.met"
+                                        case '6' :
+#line 421 "cplus.met"
+#line 421 "cplus.met"
+                                            {
+#line 421 "cplus.met"
+                                                lexEl . AddChar(c);
+#line 421 "cplus.met"
+                                                NextChar();
+#line 421 "cplus.met"
+                                            }
+#line 421 "cplus.met"
+                                            break ;
+#line 421 "cplus.met"
 #line 422 "cplus.met"
-                    {
-#line 422 "cplus.met"
-                        lexEl . AddChar(c);
-#line 422 "cplus.met"
-                        NextChar();
-#line 422 "cplus.met"
-                    }
+                                        case '2' :
 #line 422 "cplus.met"
 #line 423 "cplus.met"
-                    while ((('0' <= c && c <= '9'))) { 
-#line 423 "cplus.met"
 #line 424 "cplus.met"
-                        {
-#line 424 "cplus.met"
-                            lexEl . AddChar(c);
-#line 424 "cplus.met"
-                            NextChar();
-#line 424 "cplus.met"
-                        }
-#line 424 "cplus.met"
-                    } 
+                                            switch (c) {
 #line 424 "cplus.met"
 #line 425 "cplus.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                                case '8' :
+#line 425 "cplus.met"
+#line 425 "cplus.met"
+                                                    {
+#line 425 "cplus.met"
+                                                        lexEl . AddChar(c);
+#line 425 "cplus.met"
+                                                        NextChar();
+#line 425 "cplus.met"
+                                                    }
+#line 425 "cplus.met"
+                                                    break ;
 #line 425 "cplus.met"
 #line 426 "cplus.met"
-#line 427 "cplus.met"
-                        {
-#line 427 "cplus.met"
-                            lexEl.AddString("e");
-#line 427 "cplus.met"
-                        }
-#line 427 "cplus.met"
-#line 428 "cplus.met"
-                        if (((c == '+')||(c == '-'))){
-#line 428 "cplus.met"
+                                                default : 
+#line 426 "cplus.met"
+                                                     if (c!= EOF) {
+#line 426 "cplus.met"
+#line 426 "cplus.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 426 "cplus.met"
+                                                    }
+#line 426 "cplus.met"
+                                                    break ;
+#line 426 "cplus.met"
+                                            }
+#line 426 "cplus.met"
+#line 426 "cplus.met"
+                                            break ;
+#line 426 "cplus.met"
 #line 429 "cplus.met"
-                            {
+                                        default : 
 #line 429 "cplus.met"
-                                lexEl . AddChar(c);
+                                             if (c!= EOF) {
 #line 429 "cplus.met"
-                                NextChar();
 #line 429 "cplus.met"
-                            }
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 429 "cplus.met"
-                        }
+                                            }
 #line 429 "cplus.met"
-#line 430 "cplus.met"
-                        while ((('0' <= c && c <= '9'))) { 
-#line 430 "cplus.met"
-#line 431 "cplus.met"
-                            {
-#line 431 "cplus.met"
-                                lexEl . AddChar(c);
-#line 431 "cplus.met"
-                                NextChar();
-#line 431 "cplus.met"
-                            }
-#line 431 "cplus.met"
-                        } 
-#line 431 "cplus.met"
-#line 431 "cplus.met"
-#line 431 "cplus.met"
-                    }
-#line 431 "cplus.met"
-#line 433 "cplus.met"
-                    switch (c) {
+                                            break ;
+#line 429 "cplus.met"
+                                    }
+#line 429 "cplus.met"
+#line 429 "cplus.met"
+                                    break ;
+#line 429 "cplus.met"
+#line 432 "cplus.met"
+                                case '6' :
+#line 432 "cplus.met"
 #line 433 "cplus.met"
 #line 434 "cplus.met"
-                        case 'f' :
+                                    {
 #line 434 "cplus.met"
+                                        lexEl . AddChar(c);
 #line 434 "cplus.met"
-                            {
+                                        NextChar();
 #line 434 "cplus.met"
-                                lexEl . AddChar(c);
+                                    }
 #line 434 "cplus.met"
-                                NextChar();
-#line 434 "cplus.met"
+#line 435 "cplus.met"
+                                    if (((c == '4'))){
+#line 435 "cplus.met"
+#line 436 "cplus.met"
+                                        {
+#line 436 "cplus.met"
+                                            lexEl . AddChar(c);
+#line 436 "cplus.met"
+                                            NextChar();
+#line 436 "cplus.met"
+                                        }
+#line 436 "cplus.met"
+                                    } else {
+#line 436 "cplus.met"
+#line 438 "cplus.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 438 "cplus.met"
+                                    }
+#line 438 "cplus.met"
+#line 438 "cplus.met"
+                                    break ;
+#line 438 "cplus.met"
                             }
-#line 434 "cplus.met"
+#line 438 "cplus.met"
+#line 438 "cplus.met"
                             break ;
-#line 434 "cplus.met"
-#line 435 "cplus.met"
-                        case 'F' :
-#line 435 "cplus.met"
-#line 435 "cplus.met"
-                            {
-#line 435 "cplus.met"
-                                lexEl . AddChar(c);
-#line 435 "cplus.met"
-                                NextChar();
-#line 435 "cplus.met"
-                            }
-#line 435 "cplus.met"
-                            break ;
-#line 435 "cplus.met"
-#line 436 "cplus.met"
-                        case 'l' :
-#line 436 "cplus.met"
-#line 436 "cplus.met"
-                            {
-#line 436 "cplus.met"
-                                lexEl . AddChar(c);
-#line 436 "cplus.met"
-                                NextChar();
-#line 436 "cplus.met"
-                            }
-#line 436 "cplus.met"
-                            break ;
-#line 436 "cplus.met"
-#line 437 "cplus.met"
-                        case 'L' :
-#line 437 "cplus.met"
-#line 437 "cplus.met"
-                            {
-#line 437 "cplus.met"
-                                lexEl . AddChar(c);
-#line 437 "cplus.met"
-                                NextChar();
-#line 437 "cplus.met"
-                            }
-#line 437 "cplus.met"
-                            break ;
-#line 437 "cplus.met"
-                    }
-#line 437 "cplus.met"
-#line 439 "cplus.met"
-                    {
-#line 439 "cplus.met"
-                        firstOnLine = 0 ; 
-#line 439 "cplus.met"
-                        tokenAhead =1;
-#line 439 "cplus.met"
-                        lexEl.Value=FLOATVAL;
-#line 439 "cplus.met"
-                        PUT_COORD_CALL;
-#line 439 "cplus.met"
-                        return(1);
-#line 439 "cplus.met"
-                    }
-#line 439 "cplus.met"
-#line 439 "cplus.met"
-                    break ;
-#line 439 "cplus.met"
-#line 441 "cplus.met"
-                default : 
-#line 441 "cplus.met"
-                     if (c!= EOF) {
-#line 441 "cplus.met"
-#line 441 "cplus.met"
-                        {
-#line 441 "cplus.met"
-                            firstOnLine = 0 ; 
-#line 441 "cplus.met"
-                            tokenAhead =1;
-#line 441 "cplus.met"
-                            lexEl.Value=INTEGER;
-#line 441 "cplus.met"
-                            PUT_COORD_CALL;
-#line 441 "cplus.met"
-                            return(1);
-#line 441 "cplus.met"
-                        }
-#line 441 "cplus.met"
-                    }
-#line 441 "cplus.met"
-                    break ;
-#line 441 "cplus.met"
-            }
-#line 441 "cplus.met"
-#line 441 "cplus.met"
-            break ;
-#line 441 "cplus.met"
+#line 438 "cplus.met"
+#line 442 "cplus.met"
+                        case 'b' :
+#line 442 "cplus.met"
+#line 443 "cplus.met"
 #line 444 "cplus.met"
-        case '0' :
+                            {
 #line 444 "cplus.met"
-            NextChar();
+                                lexEl . AddChar(c);
+#line 444 "cplus.met"
+                                NextChar();
+#line 444 "cplus.met"
+                            }
 #line 444 "cplus.met"
 #line 445 "cplus.met"
+                            if (! (((c == 'f')))){
+#line 445 "cplus.met"
 #line 446 "cplus.met"
-            if (! (c != EOF)){
+                                if (!(((c == 'f'))&& NextChar())) ;
 #line 446 "cplus.met"
-#line 447 "cplus.met"
+                            } else {
+#line 446 "cplus.met"
 #line 448 "cplus.met"
-                {
+                                {
 #line 448 "cplus.met"
-                    lexEl.AddString("0");
+                                    lexEl . AddChar(c);
 #line 448 "cplus.met"
-                }
+                                    NextChar();
+#line 448 "cplus.met"
+                                }
+#line 448 "cplus.met"
+                            }
 #line 448 "cplus.met"
 #line 449 "cplus.met"
-                {
+                            if (! (((c == '1')))){
 #line 449 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 449 "cplus.met"
-                    tokenAhead =1;
-#line 449 "cplus.met"
-                    lexEl.Value=INTEGER;
-#line 449 "cplus.met"
-                    PUT_COORD_CALL;
-#line 449 "cplus.met"
-                    return(1);
-#line 449 "cplus.met"
-                }
-#line 449 "cplus.met"
-#line 449 "cplus.met"
-#line 449 "cplus.met"
-            }
-#line 449 "cplus.met"
-#line 451 "cplus.met"
-            switch (c) {
-#line 451 "cplus.met"
+#line 450 "cplus.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 450 "cplus.met"
+                            } else {
+#line 450 "cplus.met"
 #line 452 "cplus.met"
-                case 'x' :
+                                {
 #line 452 "cplus.met"
-                case 'X' :
+                                    lexEl . AddChar(c);
 #line 452 "cplus.met"
-                    NextChar();
+                                    NextChar();
+#line 452 "cplus.met"
+                                }
+#line 452 "cplus.met"
+                            }
 #line 452 "cplus.met"
 #line 453 "cplus.met"
+                            if (! (((c == '6')))){
+#line 453 "cplus.met"
 #line 454 "cplus.met"
-                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 454 "cplus.met"
-#line 455 "cplus.met"
-                        {
-#line 455 "cplus.met"
-                            lexEl . AddChar(c);
-#line 455 "cplus.met"
-                            NextChar();
-#line 455 "cplus.met"
-                        }
-#line 455 "cplus.met"
-                    } 
-#line 455 "cplus.met"
+                            } else {
+#line 454 "cplus.met"
 #line 456 "cplus.met"
-                    switch (c) {
+                                {
 #line 456 "cplus.met"
-#line 457 "cplus.met"
-                        case 'l' :
-#line 457 "cplus.met"
-                        case 'L' :
-#line 457 "cplus.met"
-                            NextChar();
-#line 457 "cplus.met"
+                                    lexEl . AddChar(c);
+#line 456 "cplus.met"
+                                    NextChar();
+#line 456 "cplus.met"
+                                }
+#line 456 "cplus.met"
+                            }
+#line 456 "cplus.met"
+#line 456 "cplus.met"
+                            break ;
+#line 456 "cplus.met"
 #line 458 "cplus.met"
-                            switch (c) {
+                        case 'F' :
 #line 458 "cplus.met"
 #line 459 "cplus.met"
-                                case 'u' :
-#line 459 "cplus.met"
-                                case 'U' :
-#line 459 "cplus.met"
-                                    NextChar();
-#line 459 "cplus.met"
-#line 459 "cplus.met"
-                                    {
-#line 459 "cplus.met"
-                                        firstOnLine = 0 ; 
-#line 459 "cplus.met"
-                                        tokenAhead =1;
-#line 459 "cplus.met"
-                                        lexEl.Value=ULHEXA;
-#line 459 "cplus.met"
-                                        PUT_COORD_CALL;
-#line 459 "cplus.met"
-                                        return(1);
-#line 459 "cplus.met"
-                                    }
-#line 459 "cplus.met"
-                                    break ;
-#line 459 "cplus.met"
 #line 460 "cplus.met"
-                                case 'L' :
+                            {
 #line 460 "cplus.met"
-                                case 'l' :
+                                lexEl . AddChar(c);
 #line 460 "cplus.met"
-                                    NextChar();
+                                NextChar();
+#line 460 "cplus.met"
+                            }
 #line 460 "cplus.met"
 #line 461 "cplus.met"
-#line 462 "cplus.met"
-                                    switch (c) {
-#line 462 "cplus.met"
-#line 463 "cplus.met"
-                                        case 'u' :
-#line 463 "cplus.met"
-                                        case 'U' :
-#line 463 "cplus.met"
-                                            NextChar();
-#line 463 "cplus.met"
-#line 463 "cplus.met"
-                                            {
-#line 463 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 463 "cplus.met"
-                                                tokenAhead =1;
-#line 463 "cplus.met"
-                                                lexEl.Value=ULLHEXA;
-#line 463 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 463 "cplus.met"
-                                                return(1);
-#line 463 "cplus.met"
-                                            }
-#line 463 "cplus.met"
-                                            break ;
-#line 463 "cplus.met"
-#line 464 "cplus.met"
-                                        default : 
-#line 464 "cplus.met"
-                                             if (c!= EOF) {
-#line 464 "cplus.met"
-#line 464 "cplus.met"
-                                                {
-#line 464 "cplus.met"
-                                                    firstOnLine = 0 ; 
-#line 464 "cplus.met"
-                                                    tokenAhead =1;
-#line 464 "cplus.met"
-                                                    lexEl.Value=LLHEXA;
-#line 464 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 464 "cplus.met"
-                                                    return(1);
-#line 464 "cplus.met"
-                                                }
-#line 464 "cplus.met"
-                                            }
-#line 464 "cplus.met"
-                                            break ;
-#line 464 "cplus.met"
-                                    }
-#line 464 "cplus.met"
-#line 464 "cplus.met"
-                                    break ;
-#line 464 "cplus.met"
-#line 467 "cplus.met"
-                                default : 
-#line 467 "cplus.met"
-                                     if (c!= EOF) {
-#line 467 "cplus.met"
-#line 467 "cplus.met"
-                                        {
-#line 467 "cplus.met"
-                                            firstOnLine = 0 ; 
-#line 467 "cplus.met"
-                                            tokenAhead =1;
-#line 467 "cplus.met"
-                                            lexEl.Value=LHEXA;
-#line 467 "cplus.met"
-                                            PUT_COORD_CALL;
-#line 467 "cplus.met"
-                                            return(1);
-#line 467 "cplus.met"
-                                        }
-#line 467 "cplus.met"
-                                    }
-#line 467 "cplus.met"
-                                    break ;
-#line 467 "cplus.met"
-                            }
-#line 467 "cplus.met"
-                            break ;
-#line 467 "cplus.met"
-#line 469 "cplus.met"
-                        case 'u' :
-#line 469 "cplus.met"
-                        case 'U' :
-#line 469 "cplus.met"
-                            NextChar();
-#line 469 "cplus.met"
-#line 470 "cplus.met"
                             switch (c) {
+#line 461 "cplus.met"
+#line 462 "cplus.met"
+                                case '1' :
+#line 462 "cplus.met"
+#line 463 "cplus.met"
+#line 464 "cplus.met"
+                                    {
+#line 464 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 464 "cplus.met"
+                                        NextChar();
+#line 464 "cplus.met"
+                                    }
+#line 464 "cplus.met"
+#line 465 "cplus.met"
+                                    switch (c) {
+#line 465 "cplus.met"
+#line 466 "cplus.met"
+                                        case '6' :
+#line 466 "cplus.met"
+#line 466 "cplus.met"
+                                            {
+#line 466 "cplus.met"
+                                                lexEl . AddChar(c);
+#line 466 "cplus.met"
+                                                NextChar();
+#line 466 "cplus.met"
+                                            }
+#line 466 "cplus.met"
+                                            break ;
+#line 466 "cplus.met"
+#line 467 "cplus.met"
+                                        case '2' :
+#line 467 "cplus.met"
+#line 468 "cplus.met"
+#line 469 "cplus.met"
+                                            switch (c) {
+#line 469 "cplus.met"
+#line 470 "cplus.met"
+                                                case '8' :
+#line 470 "cplus.met"
+#line 470 "cplus.met"
+                                                    {
+#line 470 "cplus.met"
+                                                        lexEl . AddChar(c);
+#line 470 "cplus.met"
+                                                        NextChar();
+#line 470 "cplus.met"
+                                                    }
+#line 470 "cplus.met"
+                                                    break ;
 #line 470 "cplus.met"
 #line 471 "cplus.met"
-                                case 'l' :
+                                                default : 
 #line 471 "cplus.met"
-                                case 'L' :
+                                                     if (c!= EOF) {
 #line 471 "cplus.met"
-                                    NextChar();
 #line 471 "cplus.met"
-#line 472 "cplus.met"
-#line 473 "cplus.met"
-                                    switch (c) {
-#line 473 "cplus.met"
-#line 474 "cplus.met"
-                                        case 'L' :
-#line 474 "cplus.met"
-                                        case 'l' :
-#line 474 "cplus.met"
-                                            NextChar();
-#line 474 "cplus.met"
-#line 474 "cplus.met"
-                                            {
-#line 474 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 474 "cplus.met"
-                                                tokenAhead =1;
-#line 474 "cplus.met"
-                                                lexEl.Value=ULLHEXA;
-#line 474 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 474 "cplus.met"
-                                                return(1);
-#line 474 "cplus.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 471 "cplus.met"
+                                                    }
+#line 471 "cplus.met"
+                                                    break ;
+#line 471 "cplus.met"
                                             }
-#line 474 "cplus.met"
+#line 471 "cplus.met"
+#line 471 "cplus.met"
                                             break ;
+#line 471 "cplus.met"
 #line 474 "cplus.met"
-#line 475 "cplus.met"
                                         default : 
-#line 475 "cplus.met"
+#line 474 "cplus.met"
                                              if (c!= EOF) {
-#line 475 "cplus.met"
-#line 475 "cplus.met"
-                                                {
-#line 475 "cplus.met"
-                                                    firstOnLine = 0 ; 
-#line 475 "cplus.met"
-                                                    tokenAhead =1;
-#line 475 "cplus.met"
-                                                    lexEl.Value=ULHEXA;
-#line 475 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 475 "cplus.met"
-                                                    return(1);
-#line 475 "cplus.met"
-                                                }
-#line 475 "cplus.met"
+#line 474 "cplus.met"
+#line 474 "cplus.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 474 "cplus.met"
                                             }
-#line 475 "cplus.met"
+#line 474 "cplus.met"
                                             break ;
-#line 475 "cplus.met"
+#line 474 "cplus.met"
                                     }
-#line 475 "cplus.met"
-#line 475 "cplus.met"
+#line 474 "cplus.met"
+#line 474 "cplus.met"
                                     break ;
-#line 475 "cplus.met"
+#line 474 "cplus.met"
+#line 477 "cplus.met"
+                                case '6' :
+#line 477 "cplus.met"
 #line 478 "cplus.met"
-                                default : 
-#line 478 "cplus.met"
-                                     if (c!= EOF) {
-#line 478 "cplus.met"
-#line 478 "cplus.met"
+#line 479 "cplus.met"
+                                    {
+#line 479 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 479 "cplus.met"
+                                        NextChar();
+#line 479 "cplus.met"
+                                    }
+#line 479 "cplus.met"
+#line 480 "cplus.met"
+                                    if (((c == '4'))){
+#line 480 "cplus.met"
+#line 481 "cplus.met"
                                         {
-#line 478 "cplus.met"
-                                            firstOnLine = 0 ; 
-#line 478 "cplus.met"
-                                            tokenAhead =1;
-#line 478 "cplus.met"
-                                            lexEl.Value=UHEXA;
-#line 478 "cplus.met"
-                                            PUT_COORD_CALL;
-#line 478 "cplus.met"
-                                            return(1);
-#line 478 "cplus.met"
+#line 481 "cplus.met"
+                                            lexEl . AddChar(c);
+#line 481 "cplus.met"
+                                            NextChar();
+#line 481 "cplus.met"
                                         }
-#line 478 "cplus.met"
+#line 481 "cplus.met"
+                                    } else {
+#line 481 "cplus.met"
+#line 483 "cplus.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 483 "cplus.met"
                                     }
-#line 478 "cplus.met"
+#line 483 "cplus.met"
+#line 483 "cplus.met"
                                     break ;
-#line 478 "cplus.met"
+#line 483 "cplus.met"
                             }
-#line 478 "cplus.met"
+#line 483 "cplus.met"
+#line 483 "cplus.met"
                             break ;
-#line 478 "cplus.met"
-#line 480 "cplus.met"
-                        default : 
-#line 480 "cplus.met"
-                             if (c!= EOF) {
-#line 480 "cplus.met"
-#line 480 "cplus.met"
-                                {
-#line 480 "cplus.met"
-                                    firstOnLine = 0 ; 
-#line 480 "cplus.met"
-                                    tokenAhead =1;
-#line 480 "cplus.met"
-                                    lexEl.Value=HEXA;
-#line 480 "cplus.met"
-                                    PUT_COORD_CALL;
-#line 480 "cplus.met"
-                                    return(1);
-#line 480 "cplus.met"
-                                }
-#line 480 "cplus.met"
+#line 483 "cplus.met"
+#line 487 "cplus.met"
+                        case 'B' :
+#line 487 "cplus.met"
+#line 488 "cplus.met"
+#line 489 "cplus.met"
+                            {
+#line 489 "cplus.met"
+                                lexEl . AddChar(c);
+#line 489 "cplus.met"
+                                NextChar();
+#line 489 "cplus.met"
                             }
-#line 480 "cplus.met"
-                            break ;
-#line 480 "cplus.met"
-                    }
-#line 480 "cplus.met"
-#line 480 "cplus.met"
-                    break ;
-#line 480 "cplus.met"
-#line 483 "cplus.met"
-                case 'b' :
-#line 483 "cplus.met"
-                case 'B' :
-#line 483 "cplus.met"
-                    NextChar();
-#line 483 "cplus.met"
-#line 484 "cplus.met"
-#line 485 "cplus.met"
-                    while ((('0' <= c && c <= '1'))) { 
-#line 485 "cplus.met"
-#line 486 "cplus.met"
-                        {
-#line 486 "cplus.met"
-                            lexEl . AddChar(c);
-#line 486 "cplus.met"
-                            NextChar();
-#line 486 "cplus.met"
-                        }
-#line 486 "cplus.met"
-                    } 
-#line 486 "cplus.met"
-#line 487 "cplus.met"
-                    {
-#line 487 "cplus.met"
-                        firstOnLine = 0 ; 
-#line 487 "cplus.met"
-                        tokenAhead =1;
-#line 487 "cplus.met"
-                        lexEl.Value=BINARY;
-#line 487 "cplus.met"
-                        PUT_COORD_CALL;
-#line 487 "cplus.met"
-                        return(1);
-#line 487 "cplus.met"
-                    }
-#line 487 "cplus.met"
-#line 487 "cplus.met"
-                    break ;
-#line 487 "cplus.met"
-#line 489 "cplus.met"
-                case '0' :
-#line 489 "cplus.met"
-                case '1' :
-#line 489 "cplus.met"
-                case '2' :
-#line 489 "cplus.met"
-                case '3' :
-#line 489 "cplus.met"
-                case '4' :
-#line 489 "cplus.met"
-                case '5' :
-#line 489 "cplus.met"
-                case '6' :
-#line 489 "cplus.met"
-                case '7' :
 #line 489 "cplus.met"
 #line 490 "cplus.met"
+                            if (! (((c == 'F')))){
+#line 490 "cplus.met"
 #line 491 "cplus.met"
-                    while ((('0' <= c && c <= '7'))) { 
+                                if (!(((c == 'F'))&& NextChar())) ;
 #line 491 "cplus.met"
-#line 492 "cplus.met"
-                        {
-#line 492 "cplus.met"
-                            lexEl . AddChar(c);
-#line 492 "cplus.met"
-                            NextChar();
-#line 492 "cplus.met"
-                        }
-#line 492 "cplus.met"
-                    } 
-#line 492 "cplus.met"
+                            } else {
+#line 491 "cplus.met"
 #line 493 "cplus.met"
-                    switch (c) {
+                                {
 #line 493 "cplus.met"
-#line 494 "cplus.met"
-                        case 'l' :
-#line 494 "cplus.met"
-                        case 'L' :
-#line 494 "cplus.met"
-                            NextChar();
-#line 494 "cplus.met"
-#line 495 "cplus.met"
-                            switch (c) {
-#line 495 "cplus.met"
-#line 496 "cplus.met"
-                                case 'L' :
-#line 496 "cplus.met"
-                                case 'l' :
-#line 496 "cplus.met"
+                                    lexEl . AddChar(c);
+#line 493 "cplus.met"
                                     NextChar();
-#line 496 "cplus.met"
+#line 493 "cplus.met"
+                                }
+#line 493 "cplus.met"
+                            }
+#line 493 "cplus.met"
+#line 494 "cplus.met"
+                            if (! (((c == '1')))){
+#line 494 "cplus.met"
+#line 495 "cplus.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 495 "cplus.met"
+                            } else {
+#line 495 "cplus.met"
+#line 497 "cplus.met"
+                                {
+#line 497 "cplus.met"
+                                    lexEl . AddChar(c);
+#line 497 "cplus.met"
+                                    NextChar();
+#line 497 "cplus.met"
+                                }
+#line 497 "cplus.met"
+                            }
 #line 497 "cplus.met"
 #line 498 "cplus.met"
-                                    switch (c) {
+                            if (! (((c == '6')))){
 #line 498 "cplus.met"
 #line 499 "cplus.met"
-                                        case 'u' :
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 499 "cplus.met"
-                                        case 'U' :
+                            } else {
 #line 499 "cplus.met"
-                                            NextChar();
-#line 499 "cplus.met"
-#line 499 "cplus.met"
-                                            {
-#line 499 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 499 "cplus.met"
-                                                tokenAhead =1;
-#line 499 "cplus.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 499 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 499 "cplus.met"
-                                                return(1);
-#line 499 "cplus.met"
-                                            }
-#line 499 "cplus.met"
-                                            break ;
-#line 499 "cplus.met"
-#line 500 "cplus.met"
-                                        default : 
-#line 500 "cplus.met"
-                                             if (c!= EOF) {
-#line 500 "cplus.met"
-#line 500 "cplus.met"
-                                                {
-#line 500 "cplus.met"
-                                                    firstOnLine = 0 ; 
-#line 500 "cplus.met"
-                                                    tokenAhead =1;
-#line 500 "cplus.met"
-                                                    lexEl.Value=LLOCTAL;
-#line 500 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 500 "cplus.met"
-                                                    return(1);
-#line 500 "cplus.met"
-                                                }
-#line 500 "cplus.met"
-                                            }
-#line 500 "cplus.met"
-                                            break ;
-#line 500 "cplus.met"
-                                    }
-#line 500 "cplus.met"
-#line 500 "cplus.met"
-                                    break ;
-#line 500 "cplus.met"
-#line 503 "cplus.met"
-                                case 'u' :
-#line 503 "cplus.met"
-                                case 'U' :
-#line 503 "cplus.met"
+#line 501 "cplus.met"
+                                {
+#line 501 "cplus.met"
+                                    lexEl . AddChar(c);
+#line 501 "cplus.met"
                                     NextChar();
+#line 501 "cplus.met"
+                                }
+#line 501 "cplus.met"
+                            }
+#line 501 "cplus.met"
+#line 501 "cplus.met"
+                            break ;
+#line 501 "cplus.met"
+#line 503 "cplus.met"
+                        case 'l' :
 #line 503 "cplus.met"
 #line 503 "cplus.met"
-                                    {
+                            {
 #line 503 "cplus.met"
-                                        firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 503 "cplus.met"
-                                        tokenAhead =1;
+                                NextChar();
 #line 503 "cplus.met"
-                                        lexEl.Value=ULOCTAL;
+                            }
 #line 503 "cplus.met"
-                                        PUT_COORD_CALL;
-#line 503 "cplus.met"
-                                        return(1);
-#line 503 "cplus.met"
-                                    }
-#line 503 "cplus.met"
-                                    break ;
+                            break ;
 #line 503 "cplus.met"
 #line 504 "cplus.met"
-                                default : 
-#line 504 "cplus.met"
-                                     if (c!= EOF) {
+                        case 'L' :
 #line 504 "cplus.met"
 #line 504 "cplus.met"
-                                        {
+                            {
 #line 504 "cplus.met"
-                                            firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 504 "cplus.met"
-                                            tokenAhead =1;
-#line 504 "cplus.met"
-                                            lexEl.Value=LOCTAL;
-#line 504 "cplus.met"
-                                            PUT_COORD_CALL;
-#line 504 "cplus.met"
-                                            return(1);
-#line 504 "cplus.met"
-                                        }
-#line 504 "cplus.met"
-                                    }
-#line 504 "cplus.met"
-                                    break ;
+                                NextChar();
 #line 504 "cplus.met"
                             }
 #line 504 "cplus.met"
                             break ;
 #line 504 "cplus.met"
+                    }
+#line 504 "cplus.met"
 #line 506 "cplus.met"
-                        case 'u' :
+                    {
 #line 506 "cplus.met"
-                        case 'U' :
+                        firstOnLine = 0 ; 
 #line 506 "cplus.met"
-                            NextChar();
+                        tokenAhead =1;
 #line 506 "cplus.met"
-#line 507 "cplus.met"
-                            switch (c) {
-#line 507 "cplus.met"
+                        lexEl.Value=FLOATVAL;
+#line 506 "cplus.met"
+                        PUT_COORD_CALL;
+#line 506 "cplus.met"
+                        return(1);
+#line 506 "cplus.met"
+                    }
+#line 506 "cplus.met"
+#line 506 "cplus.met"
+                    break ;
+#line 506 "cplus.met"
 #line 508 "cplus.met"
-                                case 'l' :
-#line 508 "cplus.met"
-                                case 'L' :
-#line 508 "cplus.met"
-                                    NextChar();
+                case '.' :
 #line 508 "cplus.met"
 #line 509 "cplus.met"
 #line 510 "cplus.met"
-                                    switch (c) {
+                    {
+#line 510 "cplus.met"
+                        lexEl . AddChar(c);
+#line 510 "cplus.met"
+                        NextChar();
+#line 510 "cplus.met"
+                    }
 #line 510 "cplus.met"
 #line 511 "cplus.met"
-                                        case 'L' :
-#line 511 "cplus.met"
-                                        case 'l' :
-#line 511 "cplus.met"
-                                            NextChar();
-#line 511 "cplus.met"
-#line 511 "cplus.met"
-                                            {
-#line 511 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 511 "cplus.met"
-                                                tokenAhead =1;
-#line 511 "cplus.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 511 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 511 "cplus.met"
-                                                return(1);
-#line 511 "cplus.met"
-                                            }
-#line 511 "cplus.met"
-                                            break ;
+                    while ((('0' <= c && c <= '9'))) { 
 #line 511 "cplus.met"
 #line 512 "cplus.met"
-                                        default : 
+                        {
 #line 512 "cplus.met"
-                                             if (c!= EOF) {
+                            lexEl . AddChar(c);
 #line 512 "cplus.met"
+                            NextChar();
 #line 512 "cplus.met"
-                                                {
+                        }
 #line 512 "cplus.met"
-                                                    firstOnLine = 0 ; 
+                    } 
 #line 512 "cplus.met"
-                                                    tokenAhead =1;
-#line 512 "cplus.met"
-                                                    lexEl.Value=ULOCTAL;
-#line 512 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 512 "cplus.met"
-                                                    return(1);
-#line 512 "cplus.met"
-                                                }
-#line 512 "cplus.met"
-                                            }
-#line 512 "cplus.met"
-                                            break ;
-#line 512 "cplus.met"
-                                    }
-#line 512 "cplus.met"
-#line 512 "cplus.met"
-                                    break ;
-#line 512 "cplus.met"
+#line 513 "cplus.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 513 "cplus.met"
+#line 514 "cplus.met"
 #line 515 "cplus.met"
-                                default : 
+                        {
 #line 515 "cplus.met"
-                                     if (c!= EOF) {
+                            lexEl.AddString("e");
 #line 515 "cplus.met"
+                        }
 #line 515 "cplus.met"
-                                        {
-#line 515 "cplus.met"
-                                            firstOnLine = 0 ; 
-#line 515 "cplus.met"
-                                            tokenAhead =1;
-#line 515 "cplus.met"
-                                            lexEl.Value=UOCTAL;
-#line 515 "cplus.met"
-                                            PUT_COORD_CALL;
-#line 515 "cplus.met"
-                                            return(1);
-#line 515 "cplus.met"
-                                        }
-#line 515 "cplus.met"
-                                    }
-#line 515 "cplus.met"
-                                    break ;
-#line 515 "cplus.met"
-                            }
-#line 515 "cplus.met"
-                            break ;
-#line 515 "cplus.met"
+#line 516 "cplus.met"
+                        if (((c == '+')||(c == '-'))){
+#line 516 "cplus.met"
 #line 517 "cplus.met"
-                        default : 
+                            {
 #line 517 "cplus.met"
-                             if (c!= EOF) {
+                                lexEl . AddChar(c);
 #line 517 "cplus.met"
-#line 517 "cplus.met"
-                                {
-#line 517 "cplus.met"
-                                    firstOnLine = 0 ; 
-#line 517 "cplus.met"
-                                    tokenAhead =1;
-#line 517 "cplus.met"
-                                    lexEl.Value=OCTAL;
-#line 517 "cplus.met"
-                                    PUT_COORD_CALL;
-#line 517 "cplus.met"
-                                    return(1);
-#line 517 "cplus.met"
-                                }
+                                NextChar();
 #line 517 "cplus.met"
                             }
 #line 517 "cplus.met"
-                            break ;
+                        }
 #line 517 "cplus.met"
+#line 518 "cplus.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 518 "cplus.met"
+#line 519 "cplus.met"
+                            {
+#line 519 "cplus.met"
+                                lexEl . AddChar(c);
+#line 519 "cplus.met"
+                                NextChar();
+#line 519 "cplus.met"
+                            }
+#line 519 "cplus.met"
+                        } 
+#line 519 "cplus.met"
+#line 519 "cplus.met"
+#line 519 "cplus.met"
                     }
-#line 517 "cplus.met"
-#line 517 "cplus.met"
-                    break ;
-#line 517 "cplus.met"
-#line 520 "cplus.met"
-                case '.' :
-#line 520 "cplus.met"
+#line 519 "cplus.met"
+#line 521 "cplus.met"
+                    switch (c) {
 #line 521 "cplus.met"
 #line 522 "cplus.met"
-                    {
+                        case 'f' :
 #line 522 "cplus.met"
-                        lexEl.AddString("0");
-#line 522 "cplus.met"
-                    }
-#line 522 "cplus.met"
-#line 523 "cplus.met"
-                    {
-#line 523 "cplus.met"
-                        lexEl . AddChar(c);
-#line 523 "cplus.met"
-                        NextChar();
-#line 523 "cplus.met"
-                    }
 #line 523 "cplus.met"
 #line 524 "cplus.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                            {
+#line 524 "cplus.met"
+                                lexEl . AddChar(c);
+#line 524 "cplus.met"
+                                NextChar();
+#line 524 "cplus.met"
+                            }
 #line 524 "cplus.met"
 #line 525 "cplus.met"
-                        {
-#line 525 "cplus.met"
-                            lexEl . AddChar(c);
-#line 525 "cplus.met"
-                            NextChar();
-#line 525 "cplus.met"
-                        }
-#line 525 "cplus.met"
-                    } 
+                            switch (c) {
 #line 525 "cplus.met"
 #line 526 "cplus.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                case '1' :
 #line 526 "cplus.met"
 #line 527 "cplus.met"
 #line 528 "cplus.met"
-                        {
+                                    {
 #line 528 "cplus.met"
-                            lexEl.AddString("e");
+                                        lexEl . AddChar(c);
 #line 528 "cplus.met"
-                        }
+                                        NextChar();
+#line 528 "cplus.met"
+                                    }
 #line 528 "cplus.met"
 #line 529 "cplus.met"
-                        if (((c == '+')||(c == '-'))){
+                                    switch (c) {
 #line 529 "cplus.met"
 #line 530 "cplus.met"
-                            {
+                                        case '6' :
 #line 530 "cplus.met"
-                                lexEl . AddChar(c);
 #line 530 "cplus.met"
-                                NextChar();
+                                            {
 #line 530 "cplus.met"
-                            }
+                                                lexEl . AddChar(c);
 #line 530 "cplus.met"
-                        }
+                                                NextChar();
+#line 530 "cplus.met"
+                                            }
+#line 530 "cplus.met"
+                                            break ;
 #line 530 "cplus.met"
 #line 531 "cplus.met"
-                        while ((('0' <= c && c <= '9'))) { 
+                                        case '2' :
 #line 531 "cplus.met"
 #line 532 "cplus.met"
-                            {
-#line 532 "cplus.met"
-                                lexEl . AddChar(c);
-#line 532 "cplus.met"
-                                NextChar();
-#line 532 "cplus.met"
-                            }
-#line 532 "cplus.met"
-                        } 
-#line 532 "cplus.met"
-#line 532 "cplus.met"
-#line 532 "cplus.met"
-                    }
-#line 532 "cplus.met"
+#line 533 "cplus.met"
+                                            switch (c) {
+#line 533 "cplus.met"
 #line 534 "cplus.met"
-                    switch (c) {
+                                                case '8' :
+#line 534 "cplus.met"
+#line 534 "cplus.met"
+                                                    {
+#line 534 "cplus.met"
+                                                        lexEl . AddChar(c);
+#line 534 "cplus.met"
+                                                        NextChar();
+#line 534 "cplus.met"
+                                                    }
+#line 534 "cplus.met"
+                                                    break ;
 #line 534 "cplus.met"
 #line 535 "cplus.met"
-                        case 'f' :
+                                                default : 
+#line 535 "cplus.met"
+                                                     if (c!= EOF) {
 #line 535 "cplus.met"
 #line 535 "cplus.met"
-                            {
+                                                        if (!(((c == '8'))&& NextChar())) ;
 #line 535 "cplus.met"
-                                lexEl . AddChar(c);
+                                                    }
 #line 535 "cplus.met"
-                                NextChar();
+                                                    break ;
 #line 535 "cplus.met"
-                            }
+                                            }
 #line 535 "cplus.met"
-                            break ;
 #line 535 "cplus.met"
-#line 536 "cplus.met"
-                        case 'F' :
-#line 536 "cplus.met"
-#line 536 "cplus.met"
-                            {
-#line 536 "cplus.met"
-                                lexEl . AddChar(c);
-#line 536 "cplus.met"
-                                NextChar();
-#line 536 "cplus.met"
-                            }
-#line 536 "cplus.met"
-                            break ;
-#line 536 "cplus.met"
-#line 537 "cplus.met"
-                        case 'l' :
-#line 537 "cplus.met"
-#line 537 "cplus.met"
-                            {
-#line 537 "cplus.met"
-                                lexEl . AddChar(c);
-#line 537 "cplus.met"
-                                NextChar();
-#line 537 "cplus.met"
-                            }
-#line 537 "cplus.met"
-                            break ;
-#line 537 "cplus.met"
+                                            break ;
+#line 535 "cplus.met"
 #line 538 "cplus.met"
-                        case 'L' :
+                                        default : 
+#line 538 "cplus.met"
+                                             if (c!= EOF) {
 #line 538 "cplus.met"
 #line 538 "cplus.met"
-                            {
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 538 "cplus.met"
-                                lexEl . AddChar(c);
+                                            }
 #line 538 "cplus.met"
-                                NextChar();
+                                            break ;
 #line 538 "cplus.met"
-                            }
+                                    }
 #line 538 "cplus.met"
-                            break ;
 #line 538 "cplus.met"
-                    }
+                                    break ;
 #line 538 "cplus.met"
-#line 540 "cplus.met"
-                    {
-#line 540 "cplus.met"
-                        firstOnLine = 0 ; 
-#line 540 "cplus.met"
-                        tokenAhead =1;
-#line 540 "cplus.met"
-                        lexEl.Value=FLOATVAL;
-#line 540 "cplus.met"
-                        PUT_COORD_CALL;
-#line 540 "cplus.met"
-                        return(1);
-#line 540 "cplus.met"
-                    }
-#line 540 "cplus.met"
-#line 540 "cplus.met"
-                    break ;
-#line 540 "cplus.met"
-#line 546 "cplus.met"
-                default : 
-#line 546 "cplus.met"
-                     if (c!= EOF) {
-#line 546 "cplus.met"
+#line 541 "cplus.met"
+                                case '6' :
+#line 541 "cplus.met"
+#line 542 "cplus.met"
+#line 543 "cplus.met"
+                                    {
+#line 543 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 543 "cplus.met"
+                                        NextChar();
+#line 543 "cplus.met"
+                                    }
 #line 543 "cplus.met"
 #line 544 "cplus.met"
-                        if (c != EOF){
+                                    if (((c == '4'))){
 #line 544 "cplus.met"
 #line 545 "cplus.met"
-#line 546 "cplus.met"
-                            {
-#line 546 "cplus.met"
-                                lexEl.AddString("0");
-#line 546 "cplus.met"
-                            }
-#line 546 "cplus.met"
-#line 547 "cplus.met"
-                            switch (c) {
-#line 547 "cplus.met"
-#line 548 "cplus.met"
-                                case 'l' :
-#line 548 "cplus.met"
-                                case 'L' :
-#line 548 "cplus.met"
-                                    NextChar();
-#line 548 "cplus.met"
-#line 549 "cplus.met"
-                                    switch (c) {
-#line 549 "cplus.met"
-#line 550 "cplus.met"
-                                        case 'u' :
-#line 550 "cplus.met"
-                                        case 'U' :
-#line 550 "cplus.met"
-                                            NextChar();
-#line 550 "cplus.met"
-#line 550 "cplus.met"
-                                            {
-#line 550 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 550 "cplus.met"
-                                                tokenAhead =1;
-#line 550 "cplus.met"
-                                                lexEl.Value=ULINTEGER;
-#line 550 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 550 "cplus.met"
-                                                return(1);
-#line 550 "cplus.met"
-                                            }
-#line 550 "cplus.met"
-                                            break ;
-#line 550 "cplus.met"
-#line 551 "cplus.met"
-                                        default : 
-#line 551 "cplus.met"
-                                             if (c!= EOF) {
-#line 551 "cplus.met"
-#line 551 "cplus.met"
-                                                {
-#line 551 "cplus.met"
-                                                    firstOnLine = 0 ; 
-#line 551 "cplus.met"
-                                                    tokenAhead =1;
-#line 551 "cplus.met"
-                                                    lexEl.Value=LINTEGER;
-#line 551 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 551 "cplus.met"
-                                                    return(1);
-#line 551 "cplus.met"
-                                                }
-#line 551 "cplus.met"
-                                            }
-#line 551 "cplus.met"
-                                            break ;
-#line 551 "cplus.met"
-                                    }
-#line 551 "cplus.met"
-                                    break ;
-#line 551 "cplus.met"
-#line 553 "cplus.met"
-                                case 'u' :
-#line 553 "cplus.met"
-                                case 'U' :
-#line 553 "cplus.met"
-                                    NextChar();
-#line 553 "cplus.met"
-#line 554 "cplus.met"
-                                    switch (c) {
-#line 554 "cplus.met"
-#line 555 "cplus.met"
-                                        case 'l' :
-#line 555 "cplus.met"
-                                        case 'L' :
-#line 555 "cplus.met"
-                                            NextChar();
-#line 555 "cplus.met"
-#line 555 "cplus.met"
-                                            {
-#line 555 "cplus.met"
-                                                firstOnLine = 0 ; 
-#line 555 "cplus.met"
-                                                tokenAhead =1;
-#line 555 "cplus.met"
-                                                lexEl.Value=ULINTEGER;
-#line 555 "cplus.met"
-                                                PUT_COORD_CALL;
-#line 555 "cplus.met"
-                                                return(1);
-#line 555 "cplus.met"
-                                            }
-#line 555 "cplus.met"
-                                            break ;
-#line 555 "cplus.met"
-#line 556 "cplus.met"
-                                        default : 
-#line 556 "cplus.met"
-                                             if (c!= EOF) {
-#line 556 "cplus.met"
-#line 556 "cplus.met"
-                                                {
-#line 556 "cplus.met"
-                                                    firstOnLine = 0 ; 
-#line 556 "cplus.met"
-                                                    tokenAhead =1;
-#line 556 "cplus.met"
-                                                    lexEl.Value=UINTEGER;
-#line 556 "cplus.met"
-                                                    PUT_COORD_CALL;
-#line 556 "cplus.met"
-                                                    return(1);
-#line 556 "cplus.met"
-                                                }
-#line 556 "cplus.met"
-                                            }
-#line 556 "cplus.met"
-                                            break ;
-#line 556 "cplus.met"
-                                    }
-#line 556 "cplus.met"
-                                    break ;
-#line 556 "cplus.met"
-#line 558 "cplus.met"
-                                default : 
-#line 558 "cplus.met"
-                                     if (c!= EOF) {
-#line 558 "cplus.met"
-#line 558 "cplus.met"
                                         {
-#line 558 "cplus.met"
-                                            firstOnLine = 0 ; 
-#line 558 "cplus.met"
-                                            tokenAhead =1;
-#line 558 "cplus.met"
-                                            lexEl.Value=INTEGER;
-#line 558 "cplus.met"
-                                            PUT_COORD_CALL;
-#line 558 "cplus.met"
-                                            return(1);
-#line 558 "cplus.met"
+#line 545 "cplus.met"
+                                            lexEl . AddChar(c);
+#line 545 "cplus.met"
+                                            NextChar();
+#line 545 "cplus.met"
                                         }
-#line 558 "cplus.met"
+#line 545 "cplus.met"
+                                    } else {
+#line 545 "cplus.met"
+#line 547 "cplus.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 547 "cplus.met"
                                     }
-#line 558 "cplus.met"
+#line 547 "cplus.met"
+#line 547 "cplus.met"
                                     break ;
-#line 558 "cplus.met"
+#line 547 "cplus.met"
                             }
+#line 547 "cplus.met"
+#line 547 "cplus.met"
+                            break ;
+#line 547 "cplus.met"
+#line 551 "cplus.met"
+                        case 'F' :
+#line 551 "cplus.met"
+#line 552 "cplus.met"
+#line 553 "cplus.met"
+                            {
+#line 553 "cplus.met"
+                                lexEl . AddChar(c);
+#line 553 "cplus.met"
+                                NextChar();
+#line 553 "cplus.met"
+                            }
+#line 553 "cplus.met"
+#line 554 "cplus.met"
+                            switch (c) {
+#line 554 "cplus.met"
+#line 555 "cplus.met"
+                                case '1' :
+#line 555 "cplus.met"
+#line 556 "cplus.met"
+#line 557 "cplus.met"
+                                    {
+#line 557 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 557 "cplus.met"
+                                        NextChar();
+#line 557 "cplus.met"
+                                    }
+#line 557 "cplus.met"
 #line 558 "cplus.met"
+                                    switch (c) {
 #line 558 "cplus.met"
 #line 559 "cplus.met"
-                        }
+                                        case '6' :
 #line 559 "cplus.met"
 #line 559 "cplus.met"
+                                            {
+#line 559 "cplus.met"
+                                                lexEl . AddChar(c);
+#line 559 "cplus.met"
+                                                NextChar();
+#line 559 "cplus.met"
+                                            }
+#line 559 "cplus.met"
+                                            break ;
+#line 559 "cplus.met"
+#line 560 "cplus.met"
+                                        case '2' :
+#line 560 "cplus.met"
+#line 561 "cplus.met"
+#line 562 "cplus.met"
+                                            switch (c) {
+#line 562 "cplus.met"
+#line 563 "cplus.met"
+                                                case '8' :
+#line 563 "cplus.met"
+#line 563 "cplus.met"
+                                                    {
+#line 563 "cplus.met"
+                                                        lexEl . AddChar(c);
+#line 563 "cplus.met"
+                                                        NextChar();
+#line 563 "cplus.met"
+                                                    }
+#line 563 "cplus.met"
+                                                    break ;
+#line 563 "cplus.met"
+#line 564 "cplus.met"
+                                                default : 
+#line 564 "cplus.met"
+                                                     if (c!= EOF) {
+#line 564 "cplus.met"
+#line 564 "cplus.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 564 "cplus.met"
+                                                    }
+#line 564 "cplus.met"
+                                                    break ;
+#line 564 "cplus.met"
+                                            }
+#line 564 "cplus.met"
+#line 564 "cplus.met"
+                                            break ;
+#line 564 "cplus.met"
+#line 567 "cplus.met"
+                                        default : 
+#line 567 "cplus.met"
+                                             if (c!= EOF) {
+#line 567 "cplus.met"
+#line 567 "cplus.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 567 "cplus.met"
+                                            }
+#line 567 "cplus.met"
+                                            break ;
+#line 567 "cplus.met"
+                                    }
+#line 567 "cplus.met"
+#line 567 "cplus.met"
+                                    break ;
+#line 567 "cplus.met"
+#line 570 "cplus.met"
+                                case '6' :
+#line 570 "cplus.met"
+#line 571 "cplus.met"
+#line 572 "cplus.met"
+                                    {
+#line 572 "cplus.met"
+                                        lexEl . AddChar(c);
+#line 572 "cplus.met"
+                                        NextChar();
+#line 572 "cplus.met"
+                                    }
+#line 572 "cplus.met"
+#line 573 "cplus.met"
+                                    if (((c == '4'))){
+#line 573 "cplus.met"
+#line 574 "cplus.met"
+                                        {
+#line 574 "cplus.met"
+                                            lexEl . AddChar(c);
+#line 574 "cplus.met"
+                                            NextChar();
+#line 574 "cplus.met"
+                                        }
+#line 574 "cplus.met"
+                                    } else {
+#line 574 "cplus.met"
+#line 576 "cplus.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 576 "cplus.met"
+                                    }
+#line 576 "cplus.met"
+#line 576 "cplus.met"
+                                    break ;
+#line 576 "cplus.met"
+                            }
+#line 576 "cplus.met"
+#line 576 "cplus.met"
+                            break ;
+#line 576 "cplus.met"
+#line 580 "cplus.met"
+                        case 'l' :
+#line 580 "cplus.met"
+#line 580 "cplus.met"
+                            {
+#line 580 "cplus.met"
+                                lexEl . AddChar(c);
+#line 580 "cplus.met"
+                                NextChar();
+#line 580 "cplus.met"
+                            }
+#line 580 "cplus.met"
+                            break ;
+#line 580 "cplus.met"
+#line 581 "cplus.met"
+                        case 'L' :
+#line 581 "cplus.met"
+#line 581 "cplus.met"
+                            {
+#line 581 "cplus.met"
+                                lexEl . AddChar(c);
+#line 581 "cplus.met"
+                                NextChar();
+#line 581 "cplus.met"
+                            }
+#line 581 "cplus.met"
+                            break ;
+#line 581 "cplus.met"
                     }
-#line 559 "cplus.met"
-                    break ;
-#line 559 "cplus.met"
-            }
-#line 559 "cplus.met"
-#line 559 "cplus.met"
-            break ;
-#line 559 "cplus.met"
-#line 564 "cplus.met"
-        case '#' :
-#line 564 "cplus.met"
-            NextChar();
-#line 564 "cplus.met"
-#line 565 "cplus.met"
-#line 566 "cplus.met"
-            while (((c == ' ')||(c == '\t'))) { 
-#line 566 "cplus.met"
-#line 567 "cplus.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 567 "cplus.met"
-            } 
-#line 567 "cplus.met"
-#line 568 "cplus.met"
-#line 569 "cplus.met"
-            if((GetString("include",1)&& NextChar())){
-#line 569 "cplus.met"
-#line 569 "cplus.met"
-                {
-#line 569 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 569 "cplus.met"
-                    tokenAhead =1;
-#line 569 "cplus.met"
-                    lexEl.Value=INCLUDE_DIR;
-#line 569 "cplus.met"
-                    PUT_COORD_CALL;
-#line 569 "cplus.met"
-                    return(1);
-#line 569 "cplus.met"
-                }
-#line 569 "cplus.met"
-            } else 
-#line 569 "cplus.met"
-#line 570 "cplus.met"
-            if((GetString("ifdef",1)&& NextChar())){
-#line 570 "cplus.met"
-#line 570 "cplus.met"
-                {
-#line 570 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 570 "cplus.met"
-                    tokenAhead =1;
-#line 570 "cplus.met"
-                    lexEl.Value=IFDEF_DIR;
-#line 570 "cplus.met"
-                    PUT_COORD_CALL;
-#line 570 "cplus.met"
-                    return(1);
-#line 570 "cplus.met"
-                }
-#line 570 "cplus.met"
-            } else 
-#line 570 "cplus.met"
-#line 571 "cplus.met"
-            if((GetString("ifndef",1)&& NextChar())){
-#line 571 "cplus.met"
-#line 571 "cplus.met"
-                {
-#line 571 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 571 "cplus.met"
-                    tokenAhead =1;
-#line 571 "cplus.met"
-                    lexEl.Value=IFNDEF_DIR;
-#line 571 "cplus.met"
-                    PUT_COORD_CALL;
-#line 571 "cplus.met"
-                    return(1);
-#line 571 "cplus.met"
-                }
-#line 571 "cplus.met"
-            } else 
-#line 571 "cplus.met"
-#line 572 "cplus.met"
-            if((GetString("if",1)&& NextChar())){
-#line 572 "cplus.met"
-#line 572 "cplus.met"
-                {
-#line 572 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 572 "cplus.met"
-                    tokenAhead =1;
-#line 572 "cplus.met"
-                    lexEl.Value=IF_DIR;
-#line 572 "cplus.met"
-                    PUT_COORD_CALL;
-#line 572 "cplus.met"
-                    return(1);
-#line 572 "cplus.met"
-                }
-#line 572 "cplus.met"
-            } else 
-#line 572 "cplus.met"
-#line 573 "cplus.met"
-            if((GetString("else",1)&& NextChar())){
-#line 573 "cplus.met"
-#line 573 "cplus.met"
-                {
-#line 573 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 573 "cplus.met"
-                    tokenAhead =1;
-#line 573 "cplus.met"
-                    lexEl.Value=ELSE_DIR;
-#line 573 "cplus.met"
-                    PUT_COORD_CALL;
-#line 573 "cplus.met"
-                    return(1);
-#line 573 "cplus.met"
-                }
-#line 573 "cplus.met"
-            } else 
-#line 573 "cplus.met"
-#line 574 "cplus.met"
-            if((GetString("elif",1)&& NextChar())){
-#line 574 "cplus.met"
-#line 574 "cplus.met"
-                {
-#line 574 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 574 "cplus.met"
-                    tokenAhead =1;
-#line 574 "cplus.met"
-                    lexEl.Value=ELIF_DIR;
-#line 574 "cplus.met"
-                    PUT_COORD_CALL;
-#line 574 "cplus.met"
-                    return(1);
-#line 574 "cplus.met"
-                }
-#line 574 "cplus.met"
-            } else 
-#line 574 "cplus.met"
-#line 575 "cplus.met"
-            if((GetString("endif",1)&& NextChar())){
-#line 575 "cplus.met"
-#line 575 "cplus.met"
-                {
-#line 575 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 575 "cplus.met"
-                    tokenAhead =1;
-#line 575 "cplus.met"
-                    lexEl.Value=ENDIF_DIR;
-#line 575 "cplus.met"
-                    PUT_COORD_CALL;
-#line 575 "cplus.met"
-                    return(1);
-#line 575 "cplus.met"
-                }
-#line 575 "cplus.met"
-            } else 
-#line 575 "cplus.met"
-#line 576 "cplus.met"
-            if((GetString("line",1)&& NextChar())){
-#line 576 "cplus.met"
-#line 576 "cplus.met"
-                {
-#line 576 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 576 "cplus.met"
-                    tokenAhead =1;
-#line 576 "cplus.met"
-                    lexEl.Value=LINE_DIR;
-#line 576 "cplus.met"
-                    PUT_COORD_CALL;
-#line 576 "cplus.met"
-                    return(1);
-#line 576 "cplus.met"
-                }
-#line 576 "cplus.met"
-            } else 
-#line 576 "cplus.met"
-#line 577 "cplus.met"
-            if((GetString("pragma",1)&& NextChar())){
-#line 577 "cplus.met"
-#line 577 "cplus.met"
-                {
-#line 577 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 577 "cplus.met"
-                    tokenAhead =1;
-#line 577 "cplus.met"
-                    lexEl.Value=PRAGMA_DIR;
-#line 577 "cplus.met"
-                    PUT_COORD_CALL;
-#line 577 "cplus.met"
-                    return(1);
-#line 577 "cplus.met"
-                }
-#line 577 "cplus.met"
-            } else 
-#line 577 "cplus.met"
-#line 578 "cplus.met"
-            if((GetString("error",1)&& NextChar())){
-#line 578 "cplus.met"
-#line 578 "cplus.met"
-                {
-#line 578 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 578 "cplus.met"
-                    tokenAhead =1;
-#line 578 "cplus.met"
-                    lexEl.Value=ERROR_DIR;
-#line 578 "cplus.met"
-                    PUT_COORD_CALL;
-#line 578 "cplus.met"
-                    return(1);
-#line 578 "cplus.met"
-                }
-#line 578 "cplus.met"
-            } else 
-#line 578 "cplus.met"
-#line 579 "cplus.met"
-            if((GetString("define",1)&& NextChar())){
-#line 579 "cplus.met"
-#line 579 "cplus.met"
-                {
-#line 579 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 579 "cplus.met"
-                    tokenAhead =1;
-#line 579 "cplus.met"
-                    lexEl.Value=DEFINE_DIR;
-#line 579 "cplus.met"
-                    PUT_COORD_CALL;
-#line 579 "cplus.met"
-                    return(1);
-#line 579 "cplus.met"
-                }
-#line 579 "cplus.met"
-            } else 
-#line 579 "cplus.met"
-#line 580 "cplus.met"
-            if((GetString("undef",1)&& NextChar())){
-#line 580 "cplus.met"
-#line 580 "cplus.met"
-                {
-#line 580 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 580 "cplus.met"
-                    tokenAhead =1;
-#line 580 "cplus.met"
-                    lexEl.Value=UNDEF_DIR;
-#line 580 "cplus.met"
-                    PUT_COORD_CALL;
-#line 580 "cplus.met"
-                    return(1);
-#line 580 "cplus.met"
-                }
-#line 580 "cplus.met"
-            } else 
-#line 580 "cplus.met"
 #line 581 "cplus.met"
-            if(((('0' <= c && c <= '9')))){
-#line 581 "cplus.met"
-#line 581 "cplus.met"
-                {
-#line 581 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 581 "cplus.met"
-                    tokenAhead =1;
-#line 581 "cplus.met"
-                    lexEl.Value=LINE_REFERENCE_DIR;
-#line 581 "cplus.met"
-                    PUT_COORD_CALL;
-#line 581 "cplus.met"
-                    return(1);
-#line 581 "cplus.met"
-                }
-#line 581 "cplus.met"
-            } else 
-#line 581 "cplus.met"
-#line 584 "cplus.met"
-            if((c != EOF)){
-#line 584 "cplus.met"
 #line 583 "cplus.met"
-#line 584 "cplus.met"
-                {
-#line 584 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 584 "cplus.met"
-                    tokenAhead =1;
-#line 584 "cplus.met"
-                    lexEl.Value=SHARP_VAL;
-#line 584 "cplus.met"
-                    PUT_COORD_CALL;
-#line 584 "cplus.met"
-                    return(1);
-#line 584 "cplus.met"
-                }
-#line 584 "cplus.met"
-#line 584 "cplus.met"
-            } else 
-#line 584 "cplus.met"
-             ;
-#line 584 "cplus.met"
-#line 584 "cplus.met"
-            break ;
-#line 584 "cplus.met"
-#line 588 "cplus.met"
-        case '\r' :
-#line 588 "cplus.met"
-        case '\n' :
-#line 588 "cplus.met"
-            NextChar();
-#line 588 "cplus.met"
-#line 588 "cplus.met"
-            {
-#line 588 "cplus.met"
-                firstOnLine = 0 ; 
-#line 588 "cplus.met"
-                tokenAhead =1;
-#line 588 "cplus.met"
-                lexEl.Value=CARRIAGE_RETURN;
-#line 588 "cplus.met"
-                firstOnLine = 1 ; 
-#line 588 "cplus.met"
-                PUT_COORD_CALL;
-#line 588 "cplus.met"
-                return(1);
-#line 588 "cplus.met"
+                    {
+#line 583 "cplus.met"
+                        firstOnLine = 0 ; 
+#line 583 "cplus.met"
+                        tokenAhead =1;
+#line 583 "cplus.met"
+                        lexEl.Value=FLOATVAL;
+#line 583 "cplus.met"
+                        PUT_COORD_CALL;
+#line 583 "cplus.met"
+                        return(1);
+#line 583 "cplus.met"
+                    }
+#line 583 "cplus.met"
+#line 583 "cplus.met"
+                    break ;
+#line 583 "cplus.met"
+#line 585 "cplus.met"
+                default : 
+#line 585 "cplus.met"
+                     if (c!= EOF) {
+#line 585 "cplus.met"
+#line 585 "cplus.met"
+                        {
+#line 585 "cplus.met"
+                            firstOnLine = 0 ; 
+#line 585 "cplus.met"
+                            tokenAhead =1;
+#line 585 "cplus.met"
+                            lexEl.Value=INTEGER;
+#line 585 "cplus.met"
+                            PUT_COORD_CALL;
+#line 585 "cplus.met"
+                            return(1);
+#line 585 "cplus.met"
+                        }
+#line 585 "cplus.met"
+                    }
+#line 585 "cplus.met"
+                    break ;
+#line 585 "cplus.met"
             }
-#line 588 "cplus.met"
+#line 585 "cplus.met"
+#line 585 "cplus.met"
             break ;
+#line 585 "cplus.met"
 #line 588 "cplus.met"
-#line 589 "cplus.met"
-        case '/' :
-#line 589 "cplus.met"
+        case '0' :
+#line 588 "cplus.met"
             NextChar();
+#line 588 "cplus.met"
 #line 589 "cplus.met"
 #line 590 "cplus.met"
-#line 591 "cplus.met"
-            if (((c == '='))){
+            if (! (c != EOF)){
+#line 590 "cplus.met"
 #line 591 "cplus.met"
 #line 592 "cplus.met"
-#line 593 "cplus.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 593 "cplus.met"
-#line 594 "cplus.met"
                 {
-#line 594 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 594 "cplus.met"
-                    tokenAhead =1;
-#line 594 "cplus.met"
-                    lexEl.Value=SLASEGAL;
-#line 594 "cplus.met"
-                    PUT_COORD_CALL;
-#line 594 "cplus.met"
-                    return(1);
-#line 594 "cplus.met"
+#line 592 "cplus.met"
+                    lexEl.AddString("0");
+#line 592 "cplus.met"
                 }
-#line 594 "cplus.met"
-#line 594 "cplus.met"
-#line 594 "cplus.met"
-            } else {
-#line 594 "cplus.met"
-#line 597 "cplus.met"
+#line 592 "cplus.met"
+#line 593 "cplus.met"
                 {
-#line 597 "cplus.met"
+#line 593 "cplus.met"
                     firstOnLine = 0 ; 
-#line 597 "cplus.met"
+#line 593 "cplus.met"
                     tokenAhead =1;
-#line 597 "cplus.met"
-                    lexEl.Value=SLAS;
-#line 597 "cplus.met"
+#line 593 "cplus.met"
+                    lexEl.Value=INTEGER;
+#line 593 "cplus.met"
                     PUT_COORD_CALL;
-#line 597 "cplus.met"
+#line 593 "cplus.met"
                     return(1);
-#line 597 "cplus.met"
+#line 593 "cplus.met"
                 }
-#line 597 "cplus.met"
+#line 593 "cplus.met"
+#line 593 "cplus.met"
+#line 593 "cplus.met"
             }
+#line 593 "cplus.met"
+#line 595 "cplus.met"
+            switch (c) {
+#line 595 "cplus.met"
+#line 596 "cplus.met"
+                case 'x' :
+#line 596 "cplus.met"
+                case 'X' :
+#line 596 "cplus.met"
+                    NextChar();
+#line 596 "cplus.met"
 #line 597 "cplus.met"
-#line 597 "cplus.met"
-            break ;
-#line 597 "cplus.met"
+#line 598 "cplus.met"
+                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+#line 598 "cplus.met"
 #line 599 "cplus.met"
-        case '.' :
+                        {
+#line 599 "cplus.met"
+                            lexEl . AddChar(c);
+#line 599 "cplus.met"
+                            NextChar();
+#line 599 "cplus.met"
+                        }
+#line 599 "cplus.met"
+                    } 
 #line 599 "cplus.met"
 #line 600 "cplus.met"
+                    switch (c) {
+#line 600 "cplus.met"
 #line 601 "cplus.met"
-            {
+                        case 'l' :
 #line 601 "cplus.met"
-                lexEl . AddChar(c);
+                        case 'L' :
 #line 601 "cplus.met"
-                NextChar();
-#line 601 "cplus.met"
-            }
+                            NextChar();
 #line 601 "cplus.met"
 #line 602 "cplus.met"
-            if ((('0' <= c && c <= '9'))){
+                            switch (c) {
 #line 602 "cplus.met"
 #line 603 "cplus.met"
+                                case 'u' :
+#line 603 "cplus.met"
+                                case 'U' :
+#line 603 "cplus.met"
+                                    NextChar();
+#line 603 "cplus.met"
+#line 603 "cplus.met"
+                                    {
+#line 603 "cplus.met"
+                                        firstOnLine = 0 ; 
+#line 603 "cplus.met"
+                                        tokenAhead =1;
+#line 603 "cplus.met"
+                                        lexEl.Value=ULHEXA;
+#line 603 "cplus.met"
+                                        PUT_COORD_CALL;
+#line 603 "cplus.met"
+                                        return(1);
+#line 603 "cplus.met"
+                                    }
+#line 603 "cplus.met"
+                                    break ;
+#line 603 "cplus.met"
 #line 604 "cplus.met"
-                while ((('0' <= c && c <= '9'))) { 
+                                case 'L' :
 #line 604 "cplus.met"
-#line 605 "cplus.met"
-                    {
-#line 605 "cplus.met"
-                        lexEl . AddChar(c);
-#line 605 "cplus.met"
-                        NextChar();
-#line 605 "cplus.met"
-                    }
-#line 605 "cplus.met"
-                } 
+                                case 'l' :
+#line 604 "cplus.met"
+                                    NextChar();
+#line 604 "cplus.met"
 #line 605 "cplus.met"
 #line 606 "cplus.met"
-                if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                    switch (c) {
 #line 606 "cplus.met"
 #line 607 "cplus.met"
+                                        case 'u' :
+#line 607 "cplus.met"
+                                        case 'U' :
+#line 607 "cplus.met"
+                                            NextChar();
+#line 607 "cplus.met"
+#line 607 "cplus.met"
+                                            {
+#line 607 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 607 "cplus.met"
+                                                tokenAhead =1;
+#line 607 "cplus.met"
+                                                lexEl.Value=ULLHEXA;
+#line 607 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 607 "cplus.met"
+                                                return(1);
+#line 607 "cplus.met"
+                                            }
+#line 607 "cplus.met"
+                                            break ;
+#line 607 "cplus.met"
 #line 608 "cplus.met"
-                    {
+                                        default : 
 #line 608 "cplus.met"
-                        lexEl.AddString("e");
+                                             if (c!= EOF) {
 #line 608 "cplus.met"
-                    }
 #line 608 "cplus.met"
-#line 609 "cplus.met"
-                    if (((c == '+')||(c == '-'))){
-#line 609 "cplus.met"
-#line 610 "cplus.met"
-                        {
-#line 610 "cplus.met"
-                            lexEl . AddChar(c);
-#line 610 "cplus.met"
-                            NextChar();
-#line 610 "cplus.met"
-                        }
-#line 610 "cplus.met"
-                    }
-#line 610 "cplus.met"
+                                                {
+#line 608 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 608 "cplus.met"
+                                                    tokenAhead =1;
+#line 608 "cplus.met"
+                                                    lexEl.Value=LLHEXA;
+#line 608 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 608 "cplus.met"
+                                                    return(1);
+#line 608 "cplus.met"
+                                                }
+#line 608 "cplus.met"
+                                            }
+#line 608 "cplus.met"
+                                            break ;
+#line 608 "cplus.met"
+                                    }
+#line 608 "cplus.met"
+#line 608 "cplus.met"
+                                    break ;
+#line 608 "cplus.met"
 #line 611 "cplus.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                                default : 
 #line 611 "cplus.met"
-#line 612 "cplus.met"
-                        {
-#line 612 "cplus.met"
-                            lexEl . AddChar(c);
-#line 612 "cplus.met"
+                                     if (c!= EOF) {
+#line 611 "cplus.met"
+#line 611 "cplus.met"
+                                        {
+#line 611 "cplus.met"
+                                            firstOnLine = 0 ; 
+#line 611 "cplus.met"
+                                            tokenAhead =1;
+#line 611 "cplus.met"
+                                            lexEl.Value=LHEXA;
+#line 611 "cplus.met"
+                                            PUT_COORD_CALL;
+#line 611 "cplus.met"
+                                            return(1);
+#line 611 "cplus.met"
+                                        }
+#line 611 "cplus.met"
+                                    }
+#line 611 "cplus.met"
+                                    break ;
+#line 611 "cplus.met"
+                            }
+#line 611 "cplus.met"
+                            break ;
+#line 611 "cplus.met"
+#line 613 "cplus.met"
+                        case 'u' :
+#line 613 "cplus.met"
+                        case 'U' :
+#line 613 "cplus.met"
                             NextChar();
-#line 612 "cplus.met"
+#line 613 "cplus.met"
+#line 614 "cplus.met"
+                            switch (c) {
+#line 614 "cplus.met"
+#line 615 "cplus.met"
+                                case 'l' :
+#line 615 "cplus.met"
+                                case 'L' :
+#line 615 "cplus.met"
+                                    NextChar();
+#line 615 "cplus.met"
+#line 616 "cplus.met"
+#line 617 "cplus.met"
+                                    switch (c) {
+#line 617 "cplus.met"
+#line 618 "cplus.met"
+                                        case 'L' :
+#line 618 "cplus.met"
+                                        case 'l' :
+#line 618 "cplus.met"
+                                            NextChar();
+#line 618 "cplus.met"
+#line 618 "cplus.met"
+                                            {
+#line 618 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 618 "cplus.met"
+                                                tokenAhead =1;
+#line 618 "cplus.met"
+                                                lexEl.Value=ULLHEXA;
+#line 618 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 618 "cplus.met"
+                                                return(1);
+#line 618 "cplus.met"
+                                            }
+#line 618 "cplus.met"
+                                            break ;
+#line 618 "cplus.met"
+#line 619 "cplus.met"
+                                        default : 
+#line 619 "cplus.met"
+                                             if (c!= EOF) {
+#line 619 "cplus.met"
+#line 619 "cplus.met"
+                                                {
+#line 619 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 619 "cplus.met"
+                                                    tokenAhead =1;
+#line 619 "cplus.met"
+                                                    lexEl.Value=ULHEXA;
+#line 619 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 619 "cplus.met"
+                                                    return(1);
+#line 619 "cplus.met"
+                                                }
+#line 619 "cplus.met"
+                                            }
+#line 619 "cplus.met"
+                                            break ;
+#line 619 "cplus.met"
+                                    }
+#line 619 "cplus.met"
+#line 619 "cplus.met"
+                                    break ;
+#line 619 "cplus.met"
+#line 622 "cplus.met"
+                                default : 
+#line 622 "cplus.met"
+                                     if (c!= EOF) {
+#line 622 "cplus.met"
+#line 622 "cplus.met"
+                                        {
+#line 622 "cplus.met"
+                                            firstOnLine = 0 ; 
+#line 622 "cplus.met"
+                                            tokenAhead =1;
+#line 622 "cplus.met"
+                                            lexEl.Value=UHEXA;
+#line 622 "cplus.met"
+                                            PUT_COORD_CALL;
+#line 622 "cplus.met"
+                                            return(1);
+#line 622 "cplus.met"
+                                        }
+#line 622 "cplus.met"
+                                    }
+#line 622 "cplus.met"
+                                    break ;
+#line 622 "cplus.met"
+                            }
+#line 622 "cplus.met"
+                            break ;
+#line 622 "cplus.met"
+#line 624 "cplus.met"
+                        default : 
+#line 624 "cplus.met"
+                             if (c!= EOF) {
+#line 624 "cplus.met"
+#line 624 "cplus.met"
+                                {
+#line 624 "cplus.met"
+                                    firstOnLine = 0 ; 
+#line 624 "cplus.met"
+                                    tokenAhead =1;
+#line 624 "cplus.met"
+                                    lexEl.Value=HEXA;
+#line 624 "cplus.met"
+                                    PUT_COORD_CALL;
+#line 624 "cplus.met"
+                                    return(1);
+#line 624 "cplus.met"
+                                }
+#line 624 "cplus.met"
+                            }
+#line 624 "cplus.met"
+                            break ;
+#line 624 "cplus.met"
+                    }
+#line 624 "cplus.met"
+#line 624 "cplus.met"
+                    break ;
+#line 624 "cplus.met"
+#line 627 "cplus.met"
+                case 'b' :
+#line 627 "cplus.met"
+                case 'B' :
+#line 627 "cplus.met"
+                    NextChar();
+#line 627 "cplus.met"
+#line 628 "cplus.met"
+#line 629 "cplus.met"
+                    while ((('0' <= c && c <= '1'))) { 
+#line 629 "cplus.met"
+#line 630 "cplus.met"
+                        {
+#line 630 "cplus.met"
+                            lexEl . AddChar(c);
+#line 630 "cplus.met"
+                            NextChar();
+#line 630 "cplus.met"
                         }
-#line 612 "cplus.met"
+#line 630 "cplus.met"
                     } 
-#line 612 "cplus.met"
-#line 612 "cplus.met"
-#line 612 "cplus.met"
-                }
-#line 612 "cplus.met"
-#line 614 "cplus.met"
-                switch (c) {
-#line 614 "cplus.met"
-#line 615 "cplus.met"
-                    case 'f' :
-#line 615 "cplus.met"
-#line 615 "cplus.met"
+#line 630 "cplus.met"
+#line 631 "cplus.met"
+                    {
+#line 631 "cplus.met"
+                        firstOnLine = 0 ; 
+#line 631 "cplus.met"
+                        tokenAhead =1;
+#line 631 "cplus.met"
+                        lexEl.Value=BINARY;
+#line 631 "cplus.met"
+                        PUT_COORD_CALL;
+#line 631 "cplus.met"
+                        return(1);
+#line 631 "cplus.met"
+                    }
+#line 631 "cplus.met"
+#line 631 "cplus.met"
+                    break ;
+#line 631 "cplus.met"
+#line 633 "cplus.met"
+                case '0' :
+#line 633 "cplus.met"
+                case '1' :
+#line 633 "cplus.met"
+                case '2' :
+#line 633 "cplus.met"
+                case '3' :
+#line 633 "cplus.met"
+                case '4' :
+#line 633 "cplus.met"
+                case '5' :
+#line 633 "cplus.met"
+                case '6' :
+#line 633 "cplus.met"
+                case '7' :
+#line 633 "cplus.met"
+#line 634 "cplus.met"
+#line 635 "cplus.met"
+                    while ((('0' <= c && c <= '7'))) { 
+#line 635 "cplus.met"
+#line 636 "cplus.met"
                         {
-#line 615 "cplus.met"
+#line 636 "cplus.met"
                             lexEl . AddChar(c);
-#line 615 "cplus.met"
+#line 636 "cplus.met"
                             NextChar();
-#line 615 "cplus.met"
+#line 636 "cplus.met"
                         }
-#line 615 "cplus.met"
-                        break ;
-#line 615 "cplus.met"
-#line 616 "cplus.met"
-                    case 'F' :
-#line 616 "cplus.met"
-#line 616 "cplus.met"
+#line 636 "cplus.met"
+                    } 
+#line 636 "cplus.met"
+#line 637 "cplus.met"
+                    switch (c) {
+#line 637 "cplus.met"
+#line 638 "cplus.met"
+                        case 'l' :
+#line 638 "cplus.met"
+                        case 'L' :
+#line 638 "cplus.met"
+                            NextChar();
+#line 638 "cplus.met"
+#line 639 "cplus.met"
+                            switch (c) {
+#line 639 "cplus.met"
+#line 640 "cplus.met"
+                                case 'L' :
+#line 640 "cplus.met"
+                                case 'l' :
+#line 640 "cplus.met"
+                                    NextChar();
+#line 640 "cplus.met"
+#line 641 "cplus.met"
+#line 642 "cplus.met"
+                                    switch (c) {
+#line 642 "cplus.met"
+#line 643 "cplus.met"
+                                        case 'u' :
+#line 643 "cplus.met"
+                                        case 'U' :
+#line 643 "cplus.met"
+                                            NextChar();
+#line 643 "cplus.met"
+#line 643 "cplus.met"
+                                            {
+#line 643 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 643 "cplus.met"
+                                                tokenAhead =1;
+#line 643 "cplus.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 643 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 643 "cplus.met"
+                                                return(1);
+#line 643 "cplus.met"
+                                            }
+#line 643 "cplus.met"
+                                            break ;
+#line 643 "cplus.met"
+#line 644 "cplus.met"
+                                        default : 
+#line 644 "cplus.met"
+                                             if (c!= EOF) {
+#line 644 "cplus.met"
+#line 644 "cplus.met"
+                                                {
+#line 644 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 644 "cplus.met"
+                                                    tokenAhead =1;
+#line 644 "cplus.met"
+                                                    lexEl.Value=LLOCTAL;
+#line 644 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 644 "cplus.met"
+                                                    return(1);
+#line 644 "cplus.met"
+                                                }
+#line 644 "cplus.met"
+                                            }
+#line 644 "cplus.met"
+                                            break ;
+#line 644 "cplus.met"
+                                    }
+#line 644 "cplus.met"
+#line 644 "cplus.met"
+                                    break ;
+#line 644 "cplus.met"
+#line 647 "cplus.met"
+                                case 'u' :
+#line 647 "cplus.met"
+                                case 'U' :
+#line 647 "cplus.met"
+                                    NextChar();
+#line 647 "cplus.met"
+#line 647 "cplus.met"
+                                    {
+#line 647 "cplus.met"
+                                        firstOnLine = 0 ; 
+#line 647 "cplus.met"
+                                        tokenAhead =1;
+#line 647 "cplus.met"
+                                        lexEl.Value=ULOCTAL;
+#line 647 "cplus.met"
+                                        PUT_COORD_CALL;
+#line 647 "cplus.met"
+                                        return(1);
+#line 647 "cplus.met"
+                                    }
+#line 647 "cplus.met"
+                                    break ;
+#line 647 "cplus.met"
+#line 648 "cplus.met"
+                                default : 
+#line 648 "cplus.met"
+                                     if (c!= EOF) {
+#line 648 "cplus.met"
+#line 648 "cplus.met"
+                                        {
+#line 648 "cplus.met"
+                                            firstOnLine = 0 ; 
+#line 648 "cplus.met"
+                                            tokenAhead =1;
+#line 648 "cplus.met"
+                                            lexEl.Value=LOCTAL;
+#line 648 "cplus.met"
+                                            PUT_COORD_CALL;
+#line 648 "cplus.met"
+                                            return(1);
+#line 648 "cplus.met"
+                                        }
+#line 648 "cplus.met"
+                                    }
+#line 648 "cplus.met"
+                                    break ;
+#line 648 "cplus.met"
+                            }
+#line 648 "cplus.met"
+                            break ;
+#line 648 "cplus.met"
+#line 650 "cplus.met"
+                        case 'u' :
+#line 650 "cplus.met"
+                        case 'U' :
+#line 650 "cplus.met"
+                            NextChar();
+#line 650 "cplus.met"
+#line 651 "cplus.met"
+                            switch (c) {
+#line 651 "cplus.met"
+#line 652 "cplus.met"
+                                case 'l' :
+#line 652 "cplus.met"
+                                case 'L' :
+#line 652 "cplus.met"
+                                    NextChar();
+#line 652 "cplus.met"
+#line 653 "cplus.met"
+#line 654 "cplus.met"
+                                    switch (c) {
+#line 654 "cplus.met"
+#line 655 "cplus.met"
+                                        case 'L' :
+#line 655 "cplus.met"
+                                        case 'l' :
+#line 655 "cplus.met"
+                                            NextChar();
+#line 655 "cplus.met"
+#line 655 "cplus.met"
+                                            {
+#line 655 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 655 "cplus.met"
+                                                tokenAhead =1;
+#line 655 "cplus.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 655 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 655 "cplus.met"
+                                                return(1);
+#line 655 "cplus.met"
+                                            }
+#line 655 "cplus.met"
+                                            break ;
+#line 655 "cplus.met"
+#line 656 "cplus.met"
+                                        default : 
+#line 656 "cplus.met"
+                                             if (c!= EOF) {
+#line 656 "cplus.met"
+#line 656 "cplus.met"
+                                                {
+#line 656 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 656 "cplus.met"
+                                                    tokenAhead =1;
+#line 656 "cplus.met"
+                                                    lexEl.Value=ULOCTAL;
+#line 656 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 656 "cplus.met"
+                                                    return(1);
+#line 656 "cplus.met"
+                                                }
+#line 656 "cplus.met"
+                                            }
+#line 656 "cplus.met"
+                                            break ;
+#line 656 "cplus.met"
+                                    }
+#line 656 "cplus.met"
+#line 656 "cplus.met"
+                                    break ;
+#line 656 "cplus.met"
+#line 659 "cplus.met"
+                                default : 
+#line 659 "cplus.met"
+                                     if (c!= EOF) {
+#line 659 "cplus.met"
+#line 659 "cplus.met"
+                                        {
+#line 659 "cplus.met"
+                                            firstOnLine = 0 ; 
+#line 659 "cplus.met"
+                                            tokenAhead =1;
+#line 659 "cplus.met"
+                                            lexEl.Value=UOCTAL;
+#line 659 "cplus.met"
+                                            PUT_COORD_CALL;
+#line 659 "cplus.met"
+                                            return(1);
+#line 659 "cplus.met"
+                                        }
+#line 659 "cplus.met"
+                                    }
+#line 659 "cplus.met"
+                                    break ;
+#line 659 "cplus.met"
+                            }
+#line 659 "cplus.met"
+                            break ;
+#line 659 "cplus.met"
+#line 661 "cplus.met"
+                        default : 
+#line 661 "cplus.met"
+                             if (c!= EOF) {
+#line 661 "cplus.met"
+#line 661 "cplus.met"
+                                {
+#line 661 "cplus.met"
+                                    firstOnLine = 0 ; 
+#line 661 "cplus.met"
+                                    tokenAhead =1;
+#line 661 "cplus.met"
+                                    lexEl.Value=OCTAL;
+#line 661 "cplus.met"
+                                    PUT_COORD_CALL;
+#line 661 "cplus.met"
+                                    return(1);
+#line 661 "cplus.met"
+                                }
+#line 661 "cplus.met"
+                            }
+#line 661 "cplus.met"
+                            break ;
+#line 661 "cplus.met"
+                    }
+#line 661 "cplus.met"
+#line 661 "cplus.met"
+                    break ;
+#line 661 "cplus.met"
+#line 664 "cplus.met"
+                case '.' :
+#line 664 "cplus.met"
+#line 665 "cplus.met"
+#line 666 "cplus.met"
+                    {
+#line 666 "cplus.met"
+                        lexEl.AddString("0");
+#line 666 "cplus.met"
+                    }
+#line 666 "cplus.met"
+#line 667 "cplus.met"
+                    {
+#line 667 "cplus.met"
+                        lexEl . AddChar(c);
+#line 667 "cplus.met"
+                        NextChar();
+#line 667 "cplus.met"
+                    }
+#line 667 "cplus.met"
+#line 668 "cplus.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 668 "cplus.met"
+#line 669 "cplus.met"
                         {
-#line 616 "cplus.met"
+#line 669 "cplus.met"
                             lexEl . AddChar(c);
-#line 616 "cplus.met"
+#line 669 "cplus.met"
                             NextChar();
-#line 616 "cplus.met"
+#line 669 "cplus.met"
                         }
-#line 616 "cplus.met"
-                        break ;
-#line 616 "cplus.met"
-#line 617 "cplus.met"
-                    case 'l' :
-#line 617 "cplus.met"
-#line 617 "cplus.met"
+#line 669 "cplus.met"
+                    } 
+#line 669 "cplus.met"
+#line 670 "cplus.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 670 "cplus.met"
+#line 671 "cplus.met"
+#line 672 "cplus.met"
                         {
-#line 617 "cplus.met"
-                            lexEl . AddChar(c);
-#line 617 "cplus.met"
-                            NextChar();
-#line 617 "cplus.met"
+#line 672 "cplus.met"
+                            lexEl.AddString("e");
+#line 672 "cplus.met"
                         }
-#line 617 "cplus.met"
-                        break ;
-#line 617 "cplus.met"
-#line 618 "cplus.met"
-                    case 'L' :
-#line 618 "cplus.met"
-#line 618 "cplus.met"
-                        {
-#line 618 "cplus.met"
-                            lexEl . AddChar(c);
-#line 618 "cplus.met"
-                            NextChar();
-#line 618 "cplus.met"
+#line 672 "cplus.met"
+#line 673 "cplus.met"
+                        if (((c == '+')||(c == '-'))){
+#line 673 "cplus.met"
+#line 674 "cplus.met"
+                            {
+#line 674 "cplus.met"
+                                lexEl . AddChar(c);
+#line 674 "cplus.met"
+                                NextChar();
+#line 674 "cplus.met"
+                            }
+#line 674 "cplus.met"
                         }
-#line 618 "cplus.met"
-                        break ;
-#line 618 "cplus.met"
-                }
-#line 618 "cplus.met"
-#line 620 "cplus.met"
-                {
-#line 620 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 620 "cplus.met"
-                    tokenAhead =1;
-#line 620 "cplus.met"
-                    lexEl.Value=FLOATVAL;
-#line 620 "cplus.met"
-                    PUT_COORD_CALL;
-#line 620 "cplus.met"
-                    return(1);
-#line 620 "cplus.met"
-                }
-#line 620 "cplus.met"
-#line 620 "cplus.met"
-#line 620 "cplus.met"
-            } else {
-#line 620 "cplus.met"
-#line 623 "cplus.met"
-#line 624 "cplus.met"
-                {
-#line 624 "cplus.met"
-                    firstOnLine = 0 ; 
-#line 624 "cplus.met"
-                    tokenAhead =1;
-#line 624 "cplus.met"
-                    lexEl.Value=POINT;
-#line 624 "cplus.met"
-                    PUT_COORD_CALL;
-#line 624 "cplus.met"
-                    return(1);
-#line 624 "cplus.met"
-                }
-#line 624 "cplus.met"
-#line 624 "cplus.met"
+#line 674 "cplus.met"
+#line 675 "cplus.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 675 "cplus.met"
+#line 676 "cplus.met"
+                            {
+#line 676 "cplus.met"
+                                lexEl . AddChar(c);
+#line 676 "cplus.met"
+                                NextChar();
+#line 676 "cplus.met"
+                            }
+#line 676 "cplus.met"
+                        } 
+#line 676 "cplus.met"
+#line 676 "cplus.met"
+#line 676 "cplus.met"
+                    }
+#line 676 "cplus.met"
+#line 678 "cplus.met"
+                    switch (c) {
+#line 678 "cplus.met"
+#line 679 "cplus.met"
+                        case 'f' :
+#line 679 "cplus.met"
+#line 679 "cplus.met"
+                            {
+#line 679 "cplus.met"
+                                lexEl . AddChar(c);
+#line 679 "cplus.met"
+                                NextChar();
+#line 679 "cplus.met"
+                            }
+#line 679 "cplus.met"
+                            break ;
+#line 679 "cplus.met"
+#line 680 "cplus.met"
+                        case 'F' :
+#line 680 "cplus.met"
+#line 680 "cplus.met"
+                            {
+#line 680 "cplus.met"
+                                lexEl . AddChar(c);
+#line 680 "cplus.met"
+                                NextChar();
+#line 680 "cplus.met"
+                            }
+#line 680 "cplus.met"
+                            break ;
+#line 680 "cplus.met"
+#line 681 "cplus.met"
+                        case 'l' :
+#line 681 "cplus.met"
+#line 681 "cplus.met"
+                            {
+#line 681 "cplus.met"
+                                lexEl . AddChar(c);
+#line 681 "cplus.met"
+                                NextChar();
+#line 681 "cplus.met"
+                            }
+#line 681 "cplus.met"
+                            break ;
+#line 681 "cplus.met"
+#line 682 "cplus.met"
+                        case 'L' :
+#line 682 "cplus.met"
+#line 682 "cplus.met"
+                            {
+#line 682 "cplus.met"
+                                lexEl . AddChar(c);
+#line 682 "cplus.met"
+                                NextChar();
+#line 682 "cplus.met"
+                            }
+#line 682 "cplus.met"
+                            break ;
+#line 682 "cplus.met"
+                    }
+#line 682 "cplus.met"
+#line 684 "cplus.met"
+                    {
+#line 684 "cplus.met"
+                        firstOnLine = 0 ; 
+#line 684 "cplus.met"
+                        tokenAhead =1;
+#line 684 "cplus.met"
+                        lexEl.Value=FLOATVAL;
+#line 684 "cplus.met"
+                        PUT_COORD_CALL;
+#line 684 "cplus.met"
+                        return(1);
+#line 684 "cplus.met"
+                    }
+#line 684 "cplus.met"
+#line 684 "cplus.met"
+                    break ;
+#line 684 "cplus.met"
+#line 690 "cplus.met"
+                default : 
+#line 690 "cplus.met"
+                     if (c!= EOF) {
+#line 690 "cplus.met"
+#line 687 "cplus.met"
+#line 688 "cplus.met"
+                        if (c != EOF){
+#line 688 "cplus.met"
+#line 689 "cplus.met"
+#line 690 "cplus.met"
+                            {
+#line 690 "cplus.met"
+                                lexEl.AddString("0");
+#line 690 "cplus.met"
+                            }
+#line 690 "cplus.met"
+#line 691 "cplus.met"
+                            switch (c) {
+#line 691 "cplus.met"
+#line 692 "cplus.met"
+                                case 'l' :
+#line 692 "cplus.met"
+                                case 'L' :
+#line 692 "cplus.met"
+                                    NextChar();
+#line 692 "cplus.met"
+#line 693 "cplus.met"
+                                    switch (c) {
+#line 693 "cplus.met"
+#line 694 "cplus.met"
+                                        case 'u' :
+#line 694 "cplus.met"
+                                        case 'U' :
+#line 694 "cplus.met"
+                                            NextChar();
+#line 694 "cplus.met"
+#line 694 "cplus.met"
+                                            {
+#line 694 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 694 "cplus.met"
+                                                tokenAhead =1;
+#line 694 "cplus.met"
+                                                lexEl.Value=ULINTEGER;
+#line 694 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 694 "cplus.met"
+                                                return(1);
+#line 694 "cplus.met"
+                                            }
+#line 694 "cplus.met"
+                                            break ;
+#line 694 "cplus.met"
+#line 695 "cplus.met"
+                                        default : 
+#line 695 "cplus.met"
+                                             if (c!= EOF) {
+#line 695 "cplus.met"
+#line 695 "cplus.met"
+                                                {
+#line 695 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 695 "cplus.met"
+                                                    tokenAhead =1;
+#line 695 "cplus.met"
+                                                    lexEl.Value=LINTEGER;
+#line 695 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 695 "cplus.met"
+                                                    return(1);
+#line 695 "cplus.met"
+                                                }
+#line 695 "cplus.met"
+                                            }
+#line 695 "cplus.met"
+                                            break ;
+#line 695 "cplus.met"
+                                    }
+#line 695 "cplus.met"
+                                    break ;
+#line 695 "cplus.met"
+#line 697 "cplus.met"
+                                case 'u' :
+#line 697 "cplus.met"
+                                case 'U' :
+#line 697 "cplus.met"
+                                    NextChar();
+#line 697 "cplus.met"
+#line 698 "cplus.met"
+                                    switch (c) {
+#line 698 "cplus.met"
+#line 699 "cplus.met"
+                                        case 'l' :
+#line 699 "cplus.met"
+                                        case 'L' :
+#line 699 "cplus.met"
+                                            NextChar();
+#line 699 "cplus.met"
+#line 699 "cplus.met"
+                                            {
+#line 699 "cplus.met"
+                                                firstOnLine = 0 ; 
+#line 699 "cplus.met"
+                                                tokenAhead =1;
+#line 699 "cplus.met"
+                                                lexEl.Value=ULINTEGER;
+#line 699 "cplus.met"
+                                                PUT_COORD_CALL;
+#line 699 "cplus.met"
+                                                return(1);
+#line 699 "cplus.met"
+                                            }
+#line 699 "cplus.met"
+                                            break ;
+#line 699 "cplus.met"
+#line 700 "cplus.met"
+                                        default : 
+#line 700 "cplus.met"
+                                             if (c!= EOF) {
+#line 700 "cplus.met"
+#line 700 "cplus.met"
+                                                {
+#line 700 "cplus.met"
+                                                    firstOnLine = 0 ; 
+#line 700 "cplus.met"
+                                                    tokenAhead =1;
+#line 700 "cplus.met"
+                                                    lexEl.Value=UINTEGER;
+#line 700 "cplus.met"
+                                                    PUT_COORD_CALL;
+#line 700 "cplus.met"
+                                                    return(1);
+#line 700 "cplus.met"
+                                                }
+#line 700 "cplus.met"
+                                            }
+#line 700 "cplus.met"
+                                            break ;
+#line 700 "cplus.met"
+                                    }
+#line 700 "cplus.met"
+                                    break ;
+#line 700 "cplus.met"
+#line 702 "cplus.met"
+                                default : 
+#line 702 "cplus.met"
+                                     if (c!= EOF) {
+#line 702 "cplus.met"
+#line 702 "cplus.met"
+                                        {
+#line 702 "cplus.met"
+                                            firstOnLine = 0 ; 
+#line 702 "cplus.met"
+                                            tokenAhead =1;
+#line 702 "cplus.met"
+                                            lexEl.Value=INTEGER;
+#line 702 "cplus.met"
+                                            PUT_COORD_CALL;
+#line 702 "cplus.met"
+                                            return(1);
+#line 702 "cplus.met"
+                                        }
+#line 702 "cplus.met"
+                                    }
+#line 702 "cplus.met"
+                                    break ;
+#line 702 "cplus.met"
+                            }
+#line 702 "cplus.met"
+#line 702 "cplus.met"
+#line 703 "cplus.met"
+                        }
+#line 703 "cplus.met"
+#line 703 "cplus.met"
+                    }
+#line 703 "cplus.met"
+                    break ;
+#line 703 "cplus.met"
             }
-#line 624 "cplus.met"
-#line 624 "cplus.met"
+#line 703 "cplus.met"
+#line 703 "cplus.met"
             break ;
-#line 624 "cplus.met"
+#line 703 "cplus.met"
+#line 708 "cplus.met"
+        case '#' :
+#line 708 "cplus.met"
+            NextChar();
+#line 708 "cplus.met"
+#line 709 "cplus.met"
+#line 710 "cplus.met"
+            while (((c == ' ')||(c == '\t'))) { 
+#line 710 "cplus.met"
+#line 711 "cplus.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 711 "cplus.met"
+            } 
+#line 711 "cplus.met"
+#line 712 "cplus.met"
+#line 713 "cplus.met"
+            if((GetString("include",1)&& NextChar())){
+#line 713 "cplus.met"
+#line 713 "cplus.met"
+                {
+#line 713 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 713 "cplus.met"
+                    tokenAhead =1;
+#line 713 "cplus.met"
+                    lexEl.Value=INCLUDE_DIR;
+#line 713 "cplus.met"
+                    PUT_COORD_CALL;
+#line 713 "cplus.met"
+                    return(1);
+#line 713 "cplus.met"
+                }
+#line 713 "cplus.met"
+            } else 
+#line 713 "cplus.met"
+#line 714 "cplus.met"
+            if((GetString("ifdef",1)&& NextChar())){
+#line 714 "cplus.met"
+#line 714 "cplus.met"
+                {
+#line 714 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 714 "cplus.met"
+                    tokenAhead =1;
+#line 714 "cplus.met"
+                    lexEl.Value=IFDEF_DIR;
+#line 714 "cplus.met"
+                    PUT_COORD_CALL;
+#line 714 "cplus.met"
+                    return(1);
+#line 714 "cplus.met"
+                }
+#line 714 "cplus.met"
+            } else 
+#line 714 "cplus.met"
+#line 715 "cplus.met"
+            if((GetString("ifndef",1)&& NextChar())){
+#line 715 "cplus.met"
+#line 715 "cplus.met"
+                {
+#line 715 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 715 "cplus.met"
+                    tokenAhead =1;
+#line 715 "cplus.met"
+                    lexEl.Value=IFNDEF_DIR;
+#line 715 "cplus.met"
+                    PUT_COORD_CALL;
+#line 715 "cplus.met"
+                    return(1);
+#line 715 "cplus.met"
+                }
+#line 715 "cplus.met"
+            } else 
+#line 715 "cplus.met"
+#line 716 "cplus.met"
+            if((GetString("if",1)&& NextChar())){
+#line 716 "cplus.met"
+#line 716 "cplus.met"
+                {
+#line 716 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 716 "cplus.met"
+                    tokenAhead =1;
+#line 716 "cplus.met"
+                    lexEl.Value=IF_DIR;
+#line 716 "cplus.met"
+                    PUT_COORD_CALL;
+#line 716 "cplus.met"
+                    return(1);
+#line 716 "cplus.met"
+                }
+#line 716 "cplus.met"
+            } else 
+#line 716 "cplus.met"
+#line 717 "cplus.met"
+            if((GetString("else",1)&& NextChar())){
+#line 717 "cplus.met"
+#line 717 "cplus.met"
+                {
+#line 717 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 717 "cplus.met"
+                    tokenAhead =1;
+#line 717 "cplus.met"
+                    lexEl.Value=ELSE_DIR;
+#line 717 "cplus.met"
+                    PUT_COORD_CALL;
+#line 717 "cplus.met"
+                    return(1);
+#line 717 "cplus.met"
+                }
+#line 717 "cplus.met"
+            } else 
+#line 717 "cplus.met"
+#line 718 "cplus.met"
+            if((GetString("elif",1)&& NextChar())){
+#line 718 "cplus.met"
+#line 718 "cplus.met"
+                {
+#line 718 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 718 "cplus.met"
+                    tokenAhead =1;
+#line 718 "cplus.met"
+                    lexEl.Value=ELIF_DIR;
+#line 718 "cplus.met"
+                    PUT_COORD_CALL;
+#line 718 "cplus.met"
+                    return(1);
+#line 718 "cplus.met"
+                }
+#line 718 "cplus.met"
+            } else 
+#line 718 "cplus.met"
+#line 719 "cplus.met"
+            if((GetString("endif",1)&& NextChar())){
+#line 719 "cplus.met"
+#line 719 "cplus.met"
+                {
+#line 719 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 719 "cplus.met"
+                    tokenAhead =1;
+#line 719 "cplus.met"
+                    lexEl.Value=ENDIF_DIR;
+#line 719 "cplus.met"
+                    PUT_COORD_CALL;
+#line 719 "cplus.met"
+                    return(1);
+#line 719 "cplus.met"
+                }
+#line 719 "cplus.met"
+            } else 
+#line 719 "cplus.met"
+#line 720 "cplus.met"
+            if((GetString("line",1)&& NextChar())){
+#line 720 "cplus.met"
+#line 720 "cplus.met"
+                {
+#line 720 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 720 "cplus.met"
+                    tokenAhead =1;
+#line 720 "cplus.met"
+                    lexEl.Value=LINE_DIR;
+#line 720 "cplus.met"
+                    PUT_COORD_CALL;
+#line 720 "cplus.met"
+                    return(1);
+#line 720 "cplus.met"
+                }
+#line 720 "cplus.met"
+            } else 
+#line 720 "cplus.met"
+#line 721 "cplus.met"
+            if((GetString("pragma",1)&& NextChar())){
+#line 721 "cplus.met"
+#line 721 "cplus.met"
+                {
+#line 721 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 721 "cplus.met"
+                    tokenAhead =1;
+#line 721 "cplus.met"
+                    lexEl.Value=PRAGMA_DIR;
+#line 721 "cplus.met"
+                    PUT_COORD_CALL;
+#line 721 "cplus.met"
+                    return(1);
+#line 721 "cplus.met"
+                }
+#line 721 "cplus.met"
+            } else 
+#line 721 "cplus.met"
+#line 722 "cplus.met"
+            if((GetString("error",1)&& NextChar())){
+#line 722 "cplus.met"
+#line 722 "cplus.met"
+                {
+#line 722 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 722 "cplus.met"
+                    tokenAhead =1;
+#line 722 "cplus.met"
+                    lexEl.Value=ERROR_DIR;
+#line 722 "cplus.met"
+                    PUT_COORD_CALL;
+#line 722 "cplus.met"
+                    return(1);
+#line 722 "cplus.met"
+                }
+#line 722 "cplus.met"
+            } else 
+#line 722 "cplus.met"
+#line 723 "cplus.met"
+            if((GetString("define",1)&& NextChar())){
+#line 723 "cplus.met"
+#line 723 "cplus.met"
+                {
+#line 723 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 723 "cplus.met"
+                    tokenAhead =1;
+#line 723 "cplus.met"
+                    lexEl.Value=DEFINE_DIR;
+#line 723 "cplus.met"
+                    PUT_COORD_CALL;
+#line 723 "cplus.met"
+                    return(1);
+#line 723 "cplus.met"
+                }
+#line 723 "cplus.met"
+            } else 
+#line 723 "cplus.met"
+#line 724 "cplus.met"
+            if((GetString("undef",1)&& NextChar())){
+#line 724 "cplus.met"
+#line 724 "cplus.met"
+                {
+#line 724 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 724 "cplus.met"
+                    tokenAhead =1;
+#line 724 "cplus.met"
+                    lexEl.Value=UNDEF_DIR;
+#line 724 "cplus.met"
+                    PUT_COORD_CALL;
+#line 724 "cplus.met"
+                    return(1);
+#line 724 "cplus.met"
+                }
+#line 724 "cplus.met"
+            } else 
+#line 724 "cplus.met"
+#line 725 "cplus.met"
+            if(((('0' <= c && c <= '9')))){
+#line 725 "cplus.met"
+#line 725 "cplus.met"
+                {
+#line 725 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 725 "cplus.met"
+                    tokenAhead =1;
+#line 725 "cplus.met"
+                    lexEl.Value=LINE_REFERENCE_DIR;
+#line 725 "cplus.met"
+                    PUT_COORD_CALL;
+#line 725 "cplus.met"
+                    return(1);
+#line 725 "cplus.met"
+                }
+#line 725 "cplus.met"
+            } else 
+#line 725 "cplus.met"
+#line 728 "cplus.met"
+            if((c != EOF)){
+#line 728 "cplus.met"
+#line 727 "cplus.met"
+#line 728 "cplus.met"
+                {
+#line 728 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 728 "cplus.met"
+                    tokenAhead =1;
+#line 728 "cplus.met"
+                    lexEl.Value=SHARP_VAL;
+#line 728 "cplus.met"
+                    PUT_COORD_CALL;
+#line 728 "cplus.met"
+                    return(1);
+#line 728 "cplus.met"
+                }
+#line 728 "cplus.met"
+#line 728 "cplus.met"
+            } else 
+#line 728 "cplus.met"
+             ;
+#line 728 "cplus.met"
+#line 728 "cplus.met"
+            break ;
+#line 728 "cplus.met"
+#line 732 "cplus.met"
+        case '\r' :
+#line 732 "cplus.met"
+        case '\n' :
+#line 732 "cplus.met"
+            NextChar();
+#line 732 "cplus.met"
+#line 732 "cplus.met"
+            {
+#line 732 "cplus.met"
+                firstOnLine = 0 ; 
+#line 732 "cplus.met"
+                tokenAhead =1;
+#line 732 "cplus.met"
+                lexEl.Value=CARRIAGE_RETURN;
+#line 732 "cplus.met"
+                firstOnLine = 1 ; 
+#line 732 "cplus.met"
+                PUT_COORD_CALL;
+#line 732 "cplus.met"
+                return(1);
+#line 732 "cplus.met"
+            }
+#line 732 "cplus.met"
+            break ;
+#line 732 "cplus.met"
+#line 733 "cplus.met"
+        case '/' :
+#line 733 "cplus.met"
+            NextChar();
+#line 733 "cplus.met"
+#line 734 "cplus.met"
+#line 735 "cplus.met"
+            if (((c == '='))){
+#line 735 "cplus.met"
+#line 736 "cplus.met"
+#line 737 "cplus.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 737 "cplus.met"
+#line 738 "cplus.met"
+                {
+#line 738 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 738 "cplus.met"
+                    tokenAhead =1;
+#line 738 "cplus.met"
+                    lexEl.Value=SLASEGAL;
+#line 738 "cplus.met"
+                    PUT_COORD_CALL;
+#line 738 "cplus.met"
+                    return(1);
+#line 738 "cplus.met"
+                }
+#line 738 "cplus.met"
+#line 738 "cplus.met"
+#line 738 "cplus.met"
+            } else {
+#line 738 "cplus.met"
+#line 741 "cplus.met"
+                {
+#line 741 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 741 "cplus.met"
+                    tokenAhead =1;
+#line 741 "cplus.met"
+                    lexEl.Value=SLAS;
+#line 741 "cplus.met"
+                    PUT_COORD_CALL;
+#line 741 "cplus.met"
+                    return(1);
+#line 741 "cplus.met"
+                }
+#line 741 "cplus.met"
+            }
+#line 741 "cplus.met"
+#line 741 "cplus.met"
+            break ;
+#line 741 "cplus.met"
+#line 743 "cplus.met"
+        case '.' :
+#line 743 "cplus.met"
+#line 744 "cplus.met"
+#line 745 "cplus.met"
+            {
+#line 745 "cplus.met"
+                lexEl . AddChar(c);
+#line 745 "cplus.met"
+                NextChar();
+#line 745 "cplus.met"
+            }
+#line 745 "cplus.met"
+#line 746 "cplus.met"
+            if ((('0' <= c && c <= '9'))){
+#line 746 "cplus.met"
+#line 747 "cplus.met"
+#line 748 "cplus.met"
+                while ((('0' <= c && c <= '9'))) { 
+#line 748 "cplus.met"
+#line 749 "cplus.met"
+                    {
+#line 749 "cplus.met"
+                        lexEl . AddChar(c);
+#line 749 "cplus.met"
+                        NextChar();
+#line 749 "cplus.met"
+                    }
+#line 749 "cplus.met"
+                } 
+#line 749 "cplus.met"
+#line 750 "cplus.met"
+                if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 750 "cplus.met"
+#line 751 "cplus.met"
+#line 752 "cplus.met"
+                    {
+#line 752 "cplus.met"
+                        lexEl.AddString("e");
+#line 752 "cplus.met"
+                    }
+#line 752 "cplus.met"
+#line 753 "cplus.met"
+                    if (((c == '+')||(c == '-'))){
+#line 753 "cplus.met"
+#line 754 "cplus.met"
+                        {
+#line 754 "cplus.met"
+                            lexEl . AddChar(c);
+#line 754 "cplus.met"
+                            NextChar();
+#line 754 "cplus.met"
+                        }
+#line 754 "cplus.met"
+                    }
+#line 754 "cplus.met"
+#line 755 "cplus.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 755 "cplus.met"
+#line 756 "cplus.met"
+                        {
+#line 756 "cplus.met"
+                            lexEl . AddChar(c);
+#line 756 "cplus.met"
+                            NextChar();
+#line 756 "cplus.met"
+                        }
+#line 756 "cplus.met"
+                    } 
+#line 756 "cplus.met"
+#line 756 "cplus.met"
+#line 756 "cplus.met"
+                }
+#line 756 "cplus.met"
+#line 758 "cplus.met"
+                switch (c) {
+#line 758 "cplus.met"
+#line 759 "cplus.met"
+                    case 'f' :
+#line 759 "cplus.met"
+#line 759 "cplus.met"
+                        {
+#line 759 "cplus.met"
+                            lexEl . AddChar(c);
+#line 759 "cplus.met"
+                            NextChar();
+#line 759 "cplus.met"
+                        }
+#line 759 "cplus.met"
+                        break ;
+#line 759 "cplus.met"
+#line 760 "cplus.met"
+                    case 'F' :
+#line 760 "cplus.met"
+#line 760 "cplus.met"
+                        {
+#line 760 "cplus.met"
+                            lexEl . AddChar(c);
+#line 760 "cplus.met"
+                            NextChar();
+#line 760 "cplus.met"
+                        }
+#line 760 "cplus.met"
+                        break ;
+#line 760 "cplus.met"
+#line 761 "cplus.met"
+                    case 'l' :
+#line 761 "cplus.met"
+#line 761 "cplus.met"
+                        {
+#line 761 "cplus.met"
+                            lexEl . AddChar(c);
+#line 761 "cplus.met"
+                            NextChar();
+#line 761 "cplus.met"
+                        }
+#line 761 "cplus.met"
+                        break ;
+#line 761 "cplus.met"
+#line 762 "cplus.met"
+                    case 'L' :
+#line 762 "cplus.met"
+#line 762 "cplus.met"
+                        {
+#line 762 "cplus.met"
+                            lexEl . AddChar(c);
+#line 762 "cplus.met"
+                            NextChar();
+#line 762 "cplus.met"
+                        }
+#line 762 "cplus.met"
+                        break ;
+#line 762 "cplus.met"
+                }
+#line 762 "cplus.met"
+#line 764 "cplus.met"
+                {
+#line 764 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 764 "cplus.met"
+                    tokenAhead =1;
+#line 764 "cplus.met"
+                    lexEl.Value=FLOATVAL;
+#line 764 "cplus.met"
+                    PUT_COORD_CALL;
+#line 764 "cplus.met"
+                    return(1);
+#line 764 "cplus.met"
+                }
+#line 764 "cplus.met"
+#line 764 "cplus.met"
+#line 764 "cplus.met"
+            } else {
+#line 764 "cplus.met"
+#line 767 "cplus.met"
+#line 768 "cplus.met"
+                {
+#line 768 "cplus.met"
+                    firstOnLine = 0 ; 
+#line 768 "cplus.met"
+                    tokenAhead =1;
+#line 768 "cplus.met"
+                    lexEl.Value=POINT;
+#line 768 "cplus.met"
+                    PUT_COORD_CALL;
+#line 768 "cplus.met"
+                    return(1);
+#line 768 "cplus.met"
+                }
+#line 768 "cplus.met"
+#line 768 "cplus.met"
+            }
+#line 768 "cplus.met"
+#line 768 "cplus.met"
+            break ;
+#line 768 "cplus.met"
     }
-#line 624 "cplus.met"
-#line 624 "cplus.met"
-#line 627 "cplus.met"
+#line 768 "cplus.met"
+#line 768 "cplus.met"
+#line 771 "cplus.met"
     line = oldLine;
-#line 627 "cplus.met"
+#line 771 "cplus.met"
     LEX_EXIT(0,"")
-#line 627 "cplus.met"
+#line 771 "cplus.met"
     lexEl.Value = -1 ;
-#line 627 "cplus.met"
+#line 771 "cplus.met"
     return -1 ; 
-#line 627 "cplus.met"
+#line 771 "cplus.met"
 }
-#line 627 "cplus.met"
+#line 771 "cplus.met"
 
-#line 627 "cplus.met"
+#line 771 "cplus.met"
 #line 162 "cplus.met"
 int cplus::LexComment ()
 #line 162 "cplus.met"
@@ -4605,565 +5259,565 @@ int cplus::LexComment ()
 #line 248 "cplus.met"
 
 #line 248 "cplus.met"
-#line 708 "cplus.met"
+#line 852 "cplus.met"
 int cplus::LexDefine ()
-#line 708 "cplus.met"
+#line 852 "cplus.met"
 {
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 708 "cplus.met"
+#line 852 "cplus.met"
         FreePos(lastContextPos);
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 708 "cplus.met"
+#line 852 "cplus.met"
         ExtUnputBuf();
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     #ifdef DUMP_COORD
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     #endif
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     tokenAhead = 0;
-#line 708 "cplus.met"
+#line 852 "cplus.met"
     if(LexMeta() != -1){tokenAhead =3; return 1;}
-#line 708 "cplus.met"
-#line 709 "cplus.met"
+#line 852 "cplus.met"
+#line 853 "cplus.met"
     ptStockBuf = -1;
-#line 709 "cplus.met"
+#line 853 "cplus.met"
     lexEl.Erase();
-#line 709 "cplus.met"
+#line 853 "cplus.met"
     tokenAhead = 0;
-#line 709 "cplus.met"
+#line 853 "cplus.met"
     if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
-#line 709 "cplus.met"
+#line 853 "cplus.met"
     lastContextPos = (PFILE_POSITION) 0 ;
-#line 709 "cplus.met"
-#line 710 "cplus.met"
+#line 853 "cplus.met"
+#line 854 "cplus.met"
     if (c != EOF){
-#line 710 "cplus.met"
-#line 711 "cplus.met"
-#line 712 "cplus.met"
+#line 854 "cplus.met"
+#line 855 "cplus.met"
+#line 856 "cplus.met"
         while (c != EOF) { 
-#line 712 "cplus.met"
-#line 713 "cplus.met"
-#line 714 "cplus.met"
+#line 856 "cplus.met"
+#line 857 "cplus.met"
+#line 858 "cplus.met"
             while ((c != EOF) && 
-#line 714 "cplus.met"
+#line 858 "cplus.met"
                   (! (((c == '\n')||(c == '\r')||(c == '\\'))))) { 
-#line 714 "cplus.met"
-#line 715 "cplus.met"
-#line 716 "cplus.met"
+#line 858 "cplus.met"
+#line 859 "cplus.met"
+#line 860 "cplus.met"
                 if((GetString("/*",1)&& NextChar())){
-#line 716 "cplus.met"
-#line 717 "cplus.met"
-#line 718 "cplus.met"
+#line 860 "cplus.met"
+#line 861 "cplus.met"
+#line 862 "cplus.met"
                      nbOpenComment+= 1;
-#line 718 "cplus.met"
-#line 719 "cplus.met"
+#line 862 "cplus.met"
+#line 863 "cplus.met"
                     {
-#line 719 "cplus.met"
+#line 863 "cplus.met"
                         lexEl.AddString("/*");
-#line 719 "cplus.met"
+#line 863 "cplus.met"
                     }
-#line 719 "cplus.met"
-#line 719 "cplus.met"
+#line 863 "cplus.met"
+#line 863 "cplus.met"
                 } else 
-#line 719 "cplus.met"
-#line 721 "cplus.met"
+#line 863 "cplus.met"
+#line 865 "cplus.met"
                 if((GetString("*/",1)&& NextChar())){
-#line 721 "cplus.met"
-#line 722 "cplus.met"
-#line 723 "cplus.met"
+#line 865 "cplus.met"
+#line 866 "cplus.met"
+#line 867 "cplus.met"
                      if (nbOpenComment > 0) nbOpenComment-= 1;
-#line 723 "cplus.met"
-#line 724 "cplus.met"
+#line 867 "cplus.met"
+#line 868 "cplus.met"
                     {
-#line 724 "cplus.met"
+#line 868 "cplus.met"
                         lexEl.AddString("*/");
-#line 724 "cplus.met"
+#line 868 "cplus.met"
                     }
-#line 724 "cplus.met"
-#line 724 "cplus.met"
+#line 868 "cplus.met"
+#line 868 "cplus.met"
                 } else 
-#line 724 "cplus.met"
-#line 726 "cplus.met"
+#line 868 "cplus.met"
+#line 870 "cplus.met"
                 if((c != EOF)){
-#line 726 "cplus.met"
-#line 726 "cplus.met"
+#line 870 "cplus.met"
+#line 870 "cplus.met"
                     {
-#line 726 "cplus.met"
+#line 870 "cplus.met"
                         lexEl . AddChar(c);
-#line 726 "cplus.met"
+#line 870 "cplus.met"
                         NextChar();
-#line 726 "cplus.met"
+#line 870 "cplus.met"
                     }
-#line 726 "cplus.met"
+#line 870 "cplus.met"
                 } else 
-#line 726 "cplus.met"
+#line 870 "cplus.met"
                  ;
-#line 726 "cplus.met"
+#line 870 "cplus.met"
             } 
-#line 726 "cplus.met"
-#line 728 "cplus.met"
+#line 870 "cplus.met"
+#line 872 "cplus.met"
             if ((((c == '\\'))) || 
-#line 728 "cplus.met"
+#line 872 "cplus.met"
                nbOpenComment ){
-#line 728 "cplus.met"
-#line 729 "cplus.met"
-#line 730 "cplus.met"
+#line 872 "cplus.met"
+#line 873 "cplus.met"
+#line 874 "cplus.met"
                 if (((c == '\\'))){
-#line 730 "cplus.met"
-#line 731 "cplus.met"
-#line 732 "cplus.met"
+#line 874 "cplus.met"
+#line 875 "cplus.met"
+#line 876 "cplus.met"
                     {
-#line 732 "cplus.met"
+#line 876 "cplus.met"
                         lexEl . AddChar(c);
-#line 732 "cplus.met"
+#line 876 "cplus.met"
                         NextChar();
-#line 732 "cplus.met"
+#line 876 "cplus.met"
                     }
-#line 732 "cplus.met"
-#line 732 "cplus.met"
-#line 732 "cplus.met"
+#line 876 "cplus.met"
+#line 876 "cplus.met"
+#line 876 "cplus.met"
                 }
-#line 732 "cplus.met"
-#line 734 "cplus.met"
+#line 876 "cplus.met"
+#line 878 "cplus.met"
                 if (((c == '\n')||(c == '\r'))){
-#line 734 "cplus.met"
-#line 735 "cplus.met"
-#line 736 "cplus.met"
+#line 878 "cplus.met"
+#line 879 "cplus.met"
+#line 880 "cplus.met"
                     while (((c == '\n')||(c == '\r'))) { 
-#line 736 "cplus.met"
-#line 737 "cplus.met"
+#line 880 "cplus.met"
+#line 881 "cplus.met"
                         if (!(c != EOF&& NextChar())) ;
-#line 737 "cplus.met"
+#line 881 "cplus.met"
                     } 
-#line 737 "cplus.met"
-#line 738 "cplus.met"
+#line 881 "cplus.met"
+#line 882 "cplus.met"
                     {
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                         firstOnLine = 0 ; 
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                         tokenAhead =3;
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                         lexEl.Value=DEFINED_CONTINUED;
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                         PUT_COORD_CALL;
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                         return(1);
-#line 738 "cplus.met"
+#line 882 "cplus.met"
                     }
-#line 738 "cplus.met"
-#line 738 "cplus.met"
-#line 738 "cplus.met"
+#line 882 "cplus.met"
+#line 882 "cplus.met"
+#line 882 "cplus.met"
                 }
-#line 738 "cplus.met"
-#line 738 "cplus.met"
-#line 739 "cplus.met"
+#line 882 "cplus.met"
+#line 882 "cplus.met"
+#line 883 "cplus.met"
             } else {
-#line 739 "cplus.met"
-#line 742 "cplus.met"
-#line 745 "cplus.met"
+#line 883 "cplus.met"
+#line 886 "cplus.met"
+#line 889 "cplus.met"
                 {
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                     firstOnLine = 0 ; 
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                     tokenAhead =3;
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                     lexEl.Value=DEFINED_NOT_CONTINUED;
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                     PUT_COORD_CALL;
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                     return(1);
-#line 745 "cplus.met"
+#line 889 "cplus.met"
                 }
-#line 745 "cplus.met"
-#line 745 "cplus.met"
+#line 889 "cplus.met"
+#line 889 "cplus.met"
             }
-#line 745 "cplus.met"
-#line 745 "cplus.met"
+#line 889 "cplus.met"
+#line 889 "cplus.met"
         } 
-#line 745 "cplus.met"
-#line 745 "cplus.met"
-#line 748 "cplus.met"
+#line 889 "cplus.met"
+#line 889 "cplus.met"
+#line 892 "cplus.met"
     }
-#line 748 "cplus.met"
-#line 748 "cplus.met"
-#line 749 "cplus.met"
+#line 892 "cplus.met"
+#line 892 "cplus.met"
+#line 893 "cplus.met"
     line = oldLine;
-#line 749 "cplus.met"
+#line 893 "cplus.met"
     LEX_EXIT(0,"")
-#line 749 "cplus.met"
+#line 893 "cplus.met"
     lexEl.Value = -1 ;
-#line 749 "cplus.met"
+#line 893 "cplus.met"
     return -1 ; 
-#line 749 "cplus.met"
+#line 893 "cplus.met"
 }
-#line 749 "cplus.met"
+#line 893 "cplus.met"
 
-#line 749 "cplus.met"
-#line 651 "cplus.met"
+#line 893 "cplus.met"
+#line 795 "cplus.met"
 int cplus::LexDefineName ()
-#line 651 "cplus.met"
+#line 795 "cplus.met"
 {
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 651 "cplus.met"
+#line 795 "cplus.met"
         FreePos(lastContextPos);
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 651 "cplus.met"
+#line 795 "cplus.met"
         ExtUnputBuf();
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     #ifdef DUMP_COORD
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     #endif
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     tokenAhead = 0;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     if(LexMeta() != -1){tokenAhead =4; return 1;}
-#line 651 "cplus.met"
-#line 651 "cplus.met"
+#line 795 "cplus.met"
+#line 795 "cplus.met"
     ptStockBuf = -1;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     while ((c == ' ')||(c == '\t')||(c == ''))
-#line 651 "cplus.met"
+#line 795 "cplus.met"
         NextChar() ;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     ptStockBuf = -1;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     lexEl.Erase();
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     tokenAhead = 0;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     oldLine=line,oldCol=col;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     if ( !lexCallLex) {
-#line 651 "cplus.met"
+#line 795 "cplus.met"
         PUT_COORD_CALL;
-#line 651 "cplus.met"
+#line 795 "cplus.met"
     }
-#line 651 "cplus.met"
-#line 653 "cplus.met"
+#line 795 "cplus.met"
+#line 797 "cplus.met"
     while ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9'))) { 
-#line 653 "cplus.met"
-#line 654 "cplus.met"
+#line 797 "cplus.met"
+#line 798 "cplus.met"
         {
-#line 654 "cplus.met"
+#line 798 "cplus.met"
             lexEl . AddChar(c);
-#line 654 "cplus.met"
+#line 798 "cplus.met"
             NextChar();
-#line 654 "cplus.met"
+#line 798 "cplus.met"
         }
-#line 654 "cplus.met"
+#line 798 "cplus.met"
     } 
-#line 654 "cplus.met"
-#line 655 "cplus.met"
+#line 798 "cplus.met"
+#line 799 "cplus.met"
     {
-#line 655 "cplus.met"
+#line 799 "cplus.met"
         firstOnLine = 0 ; 
-#line 655 "cplus.met"
+#line 799 "cplus.met"
         tokenAhead =4;
-#line 655 "cplus.met"
+#line 799 "cplus.met"
         lexEl.Value=DEFINE_NAME;
-#line 655 "cplus.met"
+#line 799 "cplus.met"
         PUT_COORD_CALL;
-#line 655 "cplus.met"
+#line 799 "cplus.met"
         return(1);
-#line 655 "cplus.met"
+#line 799 "cplus.met"
     }
-#line 655 "cplus.met"
-#line 655 "cplus.met"
-#line 655 "cplus.met"
+#line 799 "cplus.met"
+#line 799 "cplus.met"
+#line 799 "cplus.met"
     
-#line 656 "cplus.met"
+#line 800 "cplus.met"
     line = oldLine;
-#line 656 "cplus.met"
+#line 800 "cplus.met"
     LEX_EXIT(0,"")
-#line 656 "cplus.met"
+#line 800 "cplus.met"
     lexEl.Value = -1 ;
-#line 656 "cplus.met"
+#line 800 "cplus.met"
     return -1 ; 
-#line 656 "cplus.met"
+#line 800 "cplus.met"
 }
-#line 656 "cplus.met"
+#line 800 "cplus.met"
 
-#line 656 "cplus.met"
-#line 630 "cplus.met"
+#line 800 "cplus.met"
+#line 774 "cplus.met"
 int cplus::LexEndLine ()
-#line 630 "cplus.met"
+#line 774 "cplus.met"
 {
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 630 "cplus.met"
+#line 774 "cplus.met"
         FreePos(lastContextPos);
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 630 "cplus.met"
+#line 774 "cplus.met"
         ExtUnputBuf();
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     #ifdef DUMP_COORD
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     #endif
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     tokenAhead = 0;
-#line 630 "cplus.met"
+#line 774 "cplus.met"
     if(LexMeta() != -1){tokenAhead =5; return 1;}
-#line 630 "cplus.met"
-#line 631 "cplus.met"
+#line 774 "cplus.met"
+#line 775 "cplus.met"
     ptStockBuf = -1;
-#line 631 "cplus.met"
+#line 775 "cplus.met"
     lexEl.Erase();
-#line 631 "cplus.met"
+#line 775 "cplus.met"
     tokenAhead = 0;
-#line 631 "cplus.met"
+#line 775 "cplus.met"
     if ( lastContextPos && !lastContextPos->nbRef) FreePos(lastContextPos);
-#line 631 "cplus.met"
+#line 775 "cplus.met"
     lastContextPos = (PFILE_POSITION) 0 ;
-#line 631 "cplus.met"
-#line 632 "cplus.met"
+#line 775 "cplus.met"
+#line 776 "cplus.met"
     if (c != EOF){
-#line 632 "cplus.met"
-#line 633 "cplus.met"
-#line 634 "cplus.met"
+#line 776 "cplus.met"
+#line 777 "cplus.met"
+#line 778 "cplus.met"
         while ((c != EOF) && 
-#line 634 "cplus.met"
+#line 778 "cplus.met"
               (! (((c == '\n')||(c == '\r'))))) { 
-#line 634 "cplus.met"
-#line 635 "cplus.met"
+#line 778 "cplus.met"
+#line 779 "cplus.met"
             {
-#line 635 "cplus.met"
+#line 779 "cplus.met"
                 lexEl . AddChar(c);
-#line 635 "cplus.met"
+#line 779 "cplus.met"
                 NextChar();
-#line 635 "cplus.met"
+#line 779 "cplus.met"
             }
-#line 635 "cplus.met"
+#line 779 "cplus.met"
         } 
-#line 635 "cplus.met"
-#line 636 "cplus.met"
+#line 779 "cplus.met"
+#line 780 "cplus.met"
         while (((c == '\n')||(c == '\r'))) { 
-#line 636 "cplus.met"
-#line 637 "cplus.met"
+#line 780 "cplus.met"
+#line 781 "cplus.met"
             if (!(c != EOF&& NextChar())) ;
-#line 637 "cplus.met"
+#line 781 "cplus.met"
         } 
-#line 637 "cplus.met"
-#line 638 "cplus.met"
+#line 781 "cplus.met"
+#line 782 "cplus.met"
         {
-#line 638 "cplus.met"
+#line 782 "cplus.met"
             firstOnLine = 0 ; 
-#line 638 "cplus.met"
+#line 782 "cplus.met"
             tokenAhead =5;
-#line 638 "cplus.met"
+#line 782 "cplus.met"
             lexEl.Value=END_LINE;
-#line 638 "cplus.met"
+#line 782 "cplus.met"
             PUT_COORD_CALL;
-#line 638 "cplus.met"
+#line 782 "cplus.met"
             return(1);
-#line 638 "cplus.met"
+#line 782 "cplus.met"
         }
-#line 638 "cplus.met"
-#line 638 "cplus.met"
-#line 638 "cplus.met"
+#line 782 "cplus.met"
+#line 782 "cplus.met"
+#line 782 "cplus.met"
     }
-#line 638 "cplus.met"
-#line 638 "cplus.met"
-#line 639 "cplus.met"
+#line 782 "cplus.met"
+#line 782 "cplus.met"
+#line 783 "cplus.met"
     line = oldLine;
-#line 639 "cplus.met"
+#line 783 "cplus.met"
     LEX_EXIT(0,"")
-#line 639 "cplus.met"
+#line 783 "cplus.met"
     lexEl.Value = -1 ;
-#line 639 "cplus.met"
+#line 783 "cplus.met"
     return -1 ; 
-#line 639 "cplus.met"
+#line 783 "cplus.met"
 }
-#line 639 "cplus.met"
+#line 783 "cplus.met"
 
-#line 639 "cplus.met"
-#line 752 "cplus.met"
+#line 783 "cplus.met"
+#line 896 "cplus.met"
 int cplus::LexInclude ()
-#line 752 "cplus.met"
+#line 896 "cplus.met"
 {
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 752 "cplus.met"
+#line 896 "cplus.met"
         FreePos(lastContextPos);
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 752 "cplus.met"
+#line 896 "cplus.met"
         ExtUnputBuf();
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     #ifdef DUMP_COORD
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     #endif
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     tokenAhead = 0;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     if(LexMeta() != -1){tokenAhead =6; return 1;}
-#line 752 "cplus.met"
-#line 752 "cplus.met"
+#line 896 "cplus.met"
+#line 896 "cplus.met"
     ptStockBuf = -1;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     while ((c == ' ')||(c == '\t'))
-#line 752 "cplus.met"
+#line 896 "cplus.met"
         NextChar() ;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     ptStockBuf = -1;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     lexEl.Erase();
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     tokenAhead = 0;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     oldLine=line,oldCol=col;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     if ( !lexCallLex) {
-#line 752 "cplus.met"
+#line 896 "cplus.met"
         PUT_COORD_CALL;
-#line 752 "cplus.met"
+#line 896 "cplus.met"
     }
-#line 752 "cplus.met"
-#line 754 "cplus.met"
+#line 896 "cplus.met"
+#line 898 "cplus.met"
     switch (c) {
-#line 754 "cplus.met"
-#line 755 "cplus.met"
+#line 898 "cplus.met"
+#line 899 "cplus.met"
         case '<' :
-#line 755 "cplus.met"
+#line 899 "cplus.met"
             NextChar();
-#line 755 "cplus.met"
-#line 756 "cplus.met"
-#line 757 "cplus.met"
+#line 899 "cplus.met"
+#line 900 "cplus.met"
+#line 901 "cplus.met"
             while (! (((c == '>')||(c == '\r')||(c == '\n')))) { 
-#line 757 "cplus.met"
-#line 758 "cplus.met"
+#line 901 "cplus.met"
+#line 902 "cplus.met"
                 {
-#line 758 "cplus.met"
+#line 902 "cplus.met"
                     lexEl . AddChar(c);
-#line 758 "cplus.met"
+#line 902 "cplus.met"
                     NextChar();
-#line 758 "cplus.met"
+#line 902 "cplus.met"
                 }
-#line 758 "cplus.met"
+#line 902 "cplus.met"
             } 
-#line 758 "cplus.met"
-#line 759 "cplus.met"
+#line 902 "cplus.met"
+#line 903 "cplus.met"
             if (!(c != EOF&& NextChar())) ;
-#line 759 "cplus.met"
-#line 760 "cplus.met"
+#line 903 "cplus.met"
+#line 904 "cplus.met"
             {
-#line 760 "cplus.met"
+#line 904 "cplus.met"
                 firstOnLine = 0 ; 
-#line 760 "cplus.met"
+#line 904 "cplus.met"
                 tokenAhead =6;
-#line 760 "cplus.met"
+#line 904 "cplus.met"
                 lexEl.Value=INCLUDE_SYS;
-#line 760 "cplus.met"
+#line 904 "cplus.met"
                 PUT_COORD_CALL;
-#line 760 "cplus.met"
+#line 904 "cplus.met"
                 return(1);
-#line 760 "cplus.met"
+#line 904 "cplus.met"
             }
-#line 760 "cplus.met"
-#line 760 "cplus.met"
+#line 904 "cplus.met"
+#line 904 "cplus.met"
             break ;
-#line 760 "cplus.met"
-#line 762 "cplus.met"
+#line 904 "cplus.met"
+#line 906 "cplus.met"
         case '"' :
-#line 762 "cplus.met"
+#line 906 "cplus.met"
             NextChar();
-#line 762 "cplus.met"
-#line 763 "cplus.met"
-#line 764 "cplus.met"
+#line 906 "cplus.met"
+#line 907 "cplus.met"
+#line 908 "cplus.met"
             while (! (((c == '"')||(c == '\r')||(c == '\n')))) { 
-#line 764 "cplus.met"
-#line 765 "cplus.met"
+#line 908 "cplus.met"
+#line 909 "cplus.met"
                 {
-#line 765 "cplus.met"
+#line 909 "cplus.met"
                     lexEl . AddChar(c);
-#line 765 "cplus.met"
+#line 909 "cplus.met"
                     NextChar();
-#line 765 "cplus.met"
+#line 909 "cplus.met"
                 }
-#line 765 "cplus.met"
+#line 909 "cplus.met"
             } 
-#line 765 "cplus.met"
-#line 766 "cplus.met"
+#line 909 "cplus.met"
+#line 910 "cplus.met"
             if (!(c != EOF&& NextChar())) ;
-#line 766 "cplus.met"
-#line 767 "cplus.met"
+#line 910 "cplus.met"
+#line 911 "cplus.met"
             {
-#line 767 "cplus.met"
+#line 911 "cplus.met"
                 firstOnLine = 0 ; 
-#line 767 "cplus.met"
+#line 911 "cplus.met"
                 tokenAhead =6;
-#line 767 "cplus.met"
+#line 911 "cplus.met"
                 lexEl.Value=INCLUDE_LOCAL;
-#line 767 "cplus.met"
+#line 911 "cplus.met"
                 PUT_COORD_CALL;
-#line 767 "cplus.met"
+#line 911 "cplus.met"
                 return(1);
-#line 767 "cplus.met"
+#line 911 "cplus.met"
             }
-#line 767 "cplus.met"
-#line 767 "cplus.met"
+#line 911 "cplus.met"
+#line 911 "cplus.met"
             break ;
-#line 767 "cplus.met"
+#line 911 "cplus.met"
     }
-#line 767 "cplus.met"
-#line 767 "cplus.met"
-#line 769 "cplus.met"
+#line 911 "cplus.met"
+#line 911 "cplus.met"
+#line 913 "cplus.met"
     line = oldLine;
-#line 769 "cplus.met"
+#line 913 "cplus.met"
     LEX_EXIT(0,"")
-#line 769 "cplus.met"
+#line 913 "cplus.met"
     lexEl.Value = -1 ;
-#line 769 "cplus.met"
+#line 913 "cplus.met"
     return -1 ; 
-#line 769 "cplus.met"
+#line 913 "cplus.met"
 }
-#line 769 "cplus.met"
+#line 913 "cplus.met"
 
-#line 769 "cplus.met"
+#line 913 "cplus.met"
 #line 251 "cplus.met"
 int cplus::LexMeta ()
 #line 251 "cplus.met"
@@ -5446,850 +6100,850 @@ int cplus::LexMeta ()
 #line 300 "cplus.met"
 
 #line 300 "cplus.met"
-#line 658 "cplus.met"
+#line 802 "cplus.met"
 int cplus::LexPragma ()
-#line 658 "cplus.met"
+#line 802 "cplus.met"
 {
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 658 "cplus.met"
+#line 802 "cplus.met"
         FreePos(lastContextPos);
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 658 "cplus.met"
+#line 802 "cplus.met"
         ExtUnputBuf();
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     #ifdef DUMP_COORD
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     #endif
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     tokenAhead = 0;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     if(LexMeta() != -1){tokenAhead =8; return 1;}
-#line 658 "cplus.met"
-#line 658 "cplus.met"
+#line 802 "cplus.met"
+#line 802 "cplus.met"
     ptStockBuf = -1;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     while ((c == '\t')||(c == ' ')||(c == ''))
-#line 658 "cplus.met"
+#line 802 "cplus.met"
         NextChar() ;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     ptStockBuf = -1;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     lexEl.Erase();
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     tokenAhead = 0;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     oldLine=line,oldCol=col;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     if ( !lexCallLex) {
-#line 658 "cplus.met"
+#line 802 "cplus.met"
         PUT_COORD_CALL;
-#line 658 "cplus.met"
+#line 802 "cplus.met"
     }
-#line 658 "cplus.met"
-#line 660 "cplus.met"
-#line 661 "cplus.met"
+#line 802 "cplus.met"
+#line 804 "cplus.met"
+#line 805 "cplus.met"
     if((GetString("pretty",1)&& NextChar())){
-#line 661 "cplus.met"
-#line 661 "cplus.met"
+#line 805 "cplus.met"
+#line 805 "cplus.met"
         {
-#line 661 "cplus.met"
+#line 805 "cplus.met"
             firstOnLine = 0 ; 
-#line 661 "cplus.met"
+#line 805 "cplus.met"
             tokenAhead =8;
-#line 661 "cplus.met"
+#line 805 "cplus.met"
             lexEl.Value=PRAGMA_PRETTY;
-#line 661 "cplus.met"
+#line 805 "cplus.met"
             PUT_COORD_CALL;
-#line 661 "cplus.met"
+#line 805 "cplus.met"
             return(1);
-#line 661 "cplus.met"
+#line 805 "cplus.met"
         }
-#line 661 "cplus.met"
+#line 805 "cplus.met"
     } else 
-#line 661 "cplus.met"
-#line 662 "cplus.met"
+#line 805 "cplus.met"
+#line 806 "cplus.met"
     if((GetString("nopretty",1)&& NextChar())){
-#line 662 "cplus.met"
-#line 662 "cplus.met"
+#line 806 "cplus.met"
+#line 806 "cplus.met"
         {
-#line 662 "cplus.met"
+#line 806 "cplus.met"
             firstOnLine = 0 ; 
-#line 662 "cplus.met"
+#line 806 "cplus.met"
             tokenAhead =8;
-#line 662 "cplus.met"
+#line 806 "cplus.met"
             lexEl.Value=PRAGMA_NOPRETTY;
-#line 662 "cplus.met"
+#line 806 "cplus.met"
             PUT_COORD_CALL;
-#line 662 "cplus.met"
+#line 806 "cplus.met"
             return(1);
-#line 662 "cplus.met"
+#line 806 "cplus.met"
         }
-#line 662 "cplus.met"
+#line 806 "cplus.met"
     } else 
-#line 662 "cplus.met"
-#line 663 "cplus.met"
+#line 806 "cplus.met"
+#line 807 "cplus.met"
     if((GetString("managed",1)&& NextChar())){
-#line 663 "cplus.met"
-#line 663 "cplus.met"
+#line 807 "cplus.met"
+#line 807 "cplus.met"
         {
-#line 663 "cplus.met"
+#line 807 "cplus.met"
             firstOnLine = 0 ; 
-#line 663 "cplus.met"
+#line 807 "cplus.met"
             tokenAhead =8;
-#line 663 "cplus.met"
+#line 807 "cplus.met"
             lexEl.Value=PRAGMA_MANAGED;
-#line 663 "cplus.met"
+#line 807 "cplus.met"
             PUT_COORD_CALL;
-#line 663 "cplus.met"
+#line 807 "cplus.met"
             return(1);
-#line 663 "cplus.met"
+#line 807 "cplus.met"
         }
-#line 663 "cplus.met"
+#line 807 "cplus.met"
     } else 
-#line 663 "cplus.met"
-#line 664 "cplus.met"
+#line 807 "cplus.met"
+#line 808 "cplus.met"
     if((GetString("notmanaged",1)&& NextChar())){
-#line 664 "cplus.met"
-#line 664 "cplus.met"
+#line 808 "cplus.met"
+#line 808 "cplus.met"
         {
-#line 664 "cplus.met"
+#line 808 "cplus.met"
             firstOnLine = 0 ; 
-#line 664 "cplus.met"
+#line 808 "cplus.met"
             tokenAhead =8;
-#line 664 "cplus.met"
+#line 808 "cplus.met"
             lexEl.Value=PRAGMA_NOT_MANAGED;
-#line 664 "cplus.met"
+#line 808 "cplus.met"
             PUT_COORD_CALL;
-#line 664 "cplus.met"
+#line 808 "cplus.met"
             return(1);
-#line 664 "cplus.met"
+#line 808 "cplus.met"
         }
-#line 664 "cplus.met"
+#line 808 "cplus.met"
     } else 
-#line 664 "cplus.met"
-#line 665 "cplus.met"
+#line 808 "cplus.met"
+#line 809 "cplus.met"
     if((GetString("config",1)&& NextChar())){
-#line 665 "cplus.met"
-#line 665 "cplus.met"
+#line 809 "cplus.met"
+#line 809 "cplus.met"
         {
-#line 665 "cplus.met"
+#line 809 "cplus.met"
             firstOnLine = 0 ; 
-#line 665 "cplus.met"
+#line 809 "cplus.met"
             tokenAhead =8;
-#line 665 "cplus.met"
+#line 809 "cplus.met"
             lexEl.Value=PRAGMA_CONFIG;
-#line 665 "cplus.met"
+#line 809 "cplus.met"
             PUT_COORD_CALL;
-#line 665 "cplus.met"
+#line 809 "cplus.met"
             return(1);
-#line 665 "cplus.met"
+#line 809 "cplus.met"
         }
-#line 665 "cplus.met"
+#line 809 "cplus.met"
     } else 
-#line 665 "cplus.met"
-#line 666 "cplus.met"
+#line 809 "cplus.met"
+#line 810 "cplus.met"
     if((GetString("tab_directive",1)&& NextChar())){
-#line 666 "cplus.met"
-#line 666 "cplus.met"
+#line 810 "cplus.met"
+#line 810 "cplus.met"
         {
-#line 666 "cplus.met"
+#line 810 "cplus.met"
             firstOnLine = 0 ; 
-#line 666 "cplus.met"
+#line 810 "cplus.met"
             tokenAhead =8;
-#line 666 "cplus.met"
+#line 810 "cplus.met"
             lexEl.Value=PRAGMA_TAB_DIRECTIVE;
-#line 666 "cplus.met"
+#line 810 "cplus.met"
             PUT_COORD_CALL;
-#line 666 "cplus.met"
+#line 810 "cplus.met"
             return(1);
-#line 666 "cplus.met"
+#line 810 "cplus.met"
         }
-#line 666 "cplus.met"
+#line 810 "cplus.met"
     } else 
-#line 666 "cplus.met"
-#line 667 "cplus.met"
+#line 810 "cplus.met"
+#line 811 "cplus.met"
     if((GetString("tab",1)&& NextChar())){
-#line 667 "cplus.met"
-#line 667 "cplus.met"
+#line 811 "cplus.met"
+#line 811 "cplus.met"
         {
-#line 667 "cplus.met"
+#line 811 "cplus.met"
             firstOnLine = 0 ; 
-#line 667 "cplus.met"
+#line 811 "cplus.met"
             tokenAhead =8;
-#line 667 "cplus.met"
+#line 811 "cplus.met"
             lexEl.Value=PRAGMA_TAB;
-#line 667 "cplus.met"
+#line 811 "cplus.met"
             PUT_COORD_CALL;
-#line 667 "cplus.met"
+#line 811 "cplus.met"
             return(1);
-#line 667 "cplus.met"
+#line 811 "cplus.met"
         }
-#line 667 "cplus.met"
+#line 811 "cplus.met"
     } else 
-#line 667 "cplus.met"
-#line 668 "cplus.met"
+#line 811 "cplus.met"
+#line 812 "cplus.met"
     if((GetString("range",1)&& NextChar())){
-#line 668 "cplus.met"
-#line 668 "cplus.met"
+#line 812 "cplus.met"
+#line 812 "cplus.met"
         {
-#line 668 "cplus.met"
+#line 812 "cplus.met"
             firstOnLine = 0 ; 
-#line 668 "cplus.met"
+#line 812 "cplus.met"
             tokenAhead =8;
-#line 668 "cplus.met"
+#line 812 "cplus.met"
             lexEl.Value=PRAGMA_RANGE;
-#line 668 "cplus.met"
+#line 812 "cplus.met"
             PUT_COORD_CALL;
-#line 668 "cplus.met"
+#line 812 "cplus.met"
             return(1);
-#line 668 "cplus.met"
+#line 812 "cplus.met"
         }
-#line 668 "cplus.met"
+#line 812 "cplus.met"
     } else 
-#line 668 "cplus.met"
-#line 669 "cplus.met"
+#line 812 "cplus.met"
+#line 813 "cplus.met"
     if((GetString("mode",1)&& NextChar())){
-#line 669 "cplus.met"
-#line 669 "cplus.met"
+#line 813 "cplus.met"
+#line 813 "cplus.met"
         {
-#line 669 "cplus.met"
+#line 813 "cplus.met"
             firstOnLine = 0 ; 
-#line 669 "cplus.met"
+#line 813 "cplus.met"
             tokenAhead =8;
-#line 669 "cplus.met"
+#line 813 "cplus.met"
             lexEl.Value=PRAGMA_MODE;
-#line 669 "cplus.met"
+#line 813 "cplus.met"
             PUT_COORD_CALL;
-#line 669 "cplus.met"
+#line 813 "cplus.met"
             return(1);
-#line 669 "cplus.met"
+#line 813 "cplus.met"
         }
-#line 669 "cplus.met"
+#line 813 "cplus.met"
     } else 
-#line 669 "cplus.met"
-#line 670 "cplus.met"
+#line 813 "cplus.met"
+#line 814 "cplus.met"
     if((GetString("brace_align",1)&& NextChar())){
-#line 670 "cplus.met"
-#line 670 "cplus.met"
+#line 814 "cplus.met"
+#line 814 "cplus.met"
         {
-#line 670 "cplus.met"
+#line 814 "cplus.met"
             firstOnLine = 0 ; 
-#line 670 "cplus.met"
+#line 814 "cplus.met"
             tokenAhead =8;
-#line 670 "cplus.met"
+#line 814 "cplus.met"
             lexEl.Value=PRAGMA_BRACE_ALIGN;
-#line 670 "cplus.met"
+#line 814 "cplus.met"
             PUT_COORD_CALL;
-#line 670 "cplus.met"
+#line 814 "cplus.met"
             return(1);
-#line 670 "cplus.met"
+#line 814 "cplus.met"
         }
-#line 670 "cplus.met"
+#line 814 "cplus.met"
     } else 
-#line 670 "cplus.met"
-#line 671 "cplus.met"
+#line 814 "cplus.met"
+#line 815 "cplus.met"
     if((GetString("simplify",1)&& NextChar())){
-#line 671 "cplus.met"
-#line 671 "cplus.met"
+#line 815 "cplus.met"
+#line 815 "cplus.met"
         {
-#line 671 "cplus.met"
+#line 815 "cplus.met"
             firstOnLine = 0 ; 
-#line 671 "cplus.met"
+#line 815 "cplus.met"
             tokenAhead =8;
-#line 671 "cplus.met"
+#line 815 "cplus.met"
             lexEl.Value=PRAGMA_SIMPLIFY;
-#line 671 "cplus.met"
+#line 815 "cplus.met"
             PUT_COORD_CALL;
-#line 671 "cplus.met"
+#line 815 "cplus.met"
             return(1);
-#line 671 "cplus.met"
+#line 815 "cplus.met"
         }
-#line 671 "cplus.met"
+#line 815 "cplus.met"
     } else 
-#line 671 "cplus.met"
-#line 672 "cplus.met"
+#line 815 "cplus.met"
+#line 816 "cplus.met"
     if((GetString("single_switch_indent",1)&& NextChar())){
-#line 672 "cplus.met"
-#line 672 "cplus.met"
+#line 816 "cplus.met"
+#line 816 "cplus.met"
         {
-#line 672 "cplus.met"
+#line 816 "cplus.met"
             firstOnLine = 0 ; 
-#line 672 "cplus.met"
+#line 816 "cplus.met"
             tokenAhead =8;
-#line 672 "cplus.met"
+#line 816 "cplus.met"
             lexEl.Value=PRAGMA_SINGLE_SWITCH_INDENT;
-#line 672 "cplus.met"
+#line 816 "cplus.met"
             PUT_COORD_CALL;
-#line 672 "cplus.met"
+#line 816 "cplus.met"
             return(1);
-#line 672 "cplus.met"
+#line 816 "cplus.met"
         }
-#line 672 "cplus.met"
+#line 816 "cplus.met"
     } else 
-#line 672 "cplus.met"
-#line 673 "cplus.met"
+#line 816 "cplus.met"
+#line 817 "cplus.met"
     if((GetString("assign_align",1)&& NextChar())){
-#line 673 "cplus.met"
-#line 673 "cplus.met"
+#line 817 "cplus.met"
+#line 817 "cplus.met"
         {
-#line 673 "cplus.met"
+#line 817 "cplus.met"
             firstOnLine = 0 ; 
-#line 673 "cplus.met"
+#line 817 "cplus.met"
             tokenAhead =8;
-#line 673 "cplus.met"
+#line 817 "cplus.met"
             lexEl.Value=PRAGMA_ASSIGN_ALIGN;
-#line 673 "cplus.met"
+#line 817 "cplus.met"
             PUT_COORD_CALL;
-#line 673 "cplus.met"
+#line 817 "cplus.met"
             return(1);
-#line 673 "cplus.met"
+#line 817 "cplus.met"
         }
-#line 673 "cplus.met"
+#line 817 "cplus.met"
     } else 
-#line 673 "cplus.met"
-#line 674 "cplus.met"
+#line 817 "cplus.met"
+#line 818 "cplus.met"
     if((GetString("decl_align",1)&& NextChar())){
-#line 674 "cplus.met"
-#line 674 "cplus.met"
+#line 818 "cplus.met"
+#line 818 "cplus.met"
         {
-#line 674 "cplus.met"
+#line 818 "cplus.met"
             firstOnLine = 0 ; 
-#line 674 "cplus.met"
+#line 818 "cplus.met"
             tokenAhead =8;
-#line 674 "cplus.met"
+#line 818 "cplus.met"
             lexEl.Value=PRAGMA_DECL_ALIGN;
-#line 674 "cplus.met"
+#line 818 "cplus.met"
             PUT_COORD_CALL;
-#line 674 "cplus.met"
+#line 818 "cplus.met"
             return(1);
-#line 674 "cplus.met"
+#line 818 "cplus.met"
         }
-#line 674 "cplus.met"
+#line 818 "cplus.met"
     } else 
-#line 674 "cplus.met"
-#line 675 "cplus.met"
+#line 818 "cplus.met"
+#line 819 "cplus.met"
     if((GetString("margin",1)&& NextChar())){
-#line 675 "cplus.met"
-#line 675 "cplus.met"
+#line 819 "cplus.met"
+#line 819 "cplus.met"
         {
-#line 675 "cplus.met"
+#line 819 "cplus.met"
             firstOnLine = 0 ; 
-#line 675 "cplus.met"
+#line 819 "cplus.met"
             tokenAhead =8;
-#line 675 "cplus.met"
+#line 819 "cplus.met"
             lexEl.Value=PRAGMA_MARGIN;
-#line 675 "cplus.met"
+#line 819 "cplus.met"
             PUT_COORD_CALL;
-#line 675 "cplus.met"
+#line 819 "cplus.met"
             return(1);
-#line 675 "cplus.met"
+#line 819 "cplus.met"
         }
-#line 675 "cplus.met"
+#line 819 "cplus.met"
     } else 
-#line 675 "cplus.met"
-#line 676 "cplus.met"
+#line 819 "cplus.met"
+#line 820 "cplus.met"
     if((GetString("comment",1)&& NextChar())){
-#line 676 "cplus.met"
-#line 677 "cplus.met"
-#line 678 "cplus.met"
+#line 820 "cplus.met"
+#line 821 "cplus.met"
+#line 822 "cplus.met"
         ptStockBuf = -1;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         while ((c == ' ')||(c == '\t'))
-#line 678 "cplus.met"
+#line 822 "cplus.met"
             NextChar() ;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         ptStockBuf = -1;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         lexEl.Erase();
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         tokenAhead = 0;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         oldLine=line,oldCol=col;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         if ( !lexCallLex) {
-#line 678 "cplus.met"
+#line 822 "cplus.met"
             PUT_COORD_CALL;
-#line 678 "cplus.met"
+#line 822 "cplus.met"
         }
-#line 678 "cplus.met"
-#line 679 "cplus.met"
-#line 680 "cplus.met"
+#line 822 "cplus.met"
+#line 823 "cplus.met"
+#line 824 "cplus.met"
         if((GetString("start",1)&& NextChar())){
-#line 680 "cplus.met"
-#line 680 "cplus.met"
+#line 824 "cplus.met"
+#line 824 "cplus.met"
             {
-#line 680 "cplus.met"
+#line 824 "cplus.met"
                 firstOnLine = 0 ; 
-#line 680 "cplus.met"
+#line 824 "cplus.met"
                 tokenAhead =8;
-#line 680 "cplus.met"
+#line 824 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_START;
-#line 680 "cplus.met"
+#line 824 "cplus.met"
                 PUT_COORD_CALL;
-#line 680 "cplus.met"
+#line 824 "cplus.met"
                 return(1);
-#line 680 "cplus.met"
+#line 824 "cplus.met"
             }
-#line 680 "cplus.met"
+#line 824 "cplus.met"
         } else 
-#line 680 "cplus.met"
-#line 681 "cplus.met"
+#line 824 "cplus.met"
+#line 825 "cplus.met"
         if((GetString("middle",1)&& NextChar())){
-#line 681 "cplus.met"
-#line 681 "cplus.met"
+#line 825 "cplus.met"
+#line 825 "cplus.met"
             {
-#line 681 "cplus.met"
+#line 825 "cplus.met"
                 firstOnLine = 0 ; 
-#line 681 "cplus.met"
+#line 825 "cplus.met"
                 tokenAhead =8;
-#line 681 "cplus.met"
+#line 825 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_MIDDLE;
-#line 681 "cplus.met"
+#line 825 "cplus.met"
                 PUT_COORD_CALL;
-#line 681 "cplus.met"
+#line 825 "cplus.met"
                 return(1);
-#line 681 "cplus.met"
+#line 825 "cplus.met"
             }
-#line 681 "cplus.met"
+#line 825 "cplus.met"
         } else 
-#line 681 "cplus.met"
-#line 682 "cplus.met"
+#line 825 "cplus.met"
+#line 826 "cplus.met"
         if((GetString("end",1)&& NextChar())){
-#line 682 "cplus.met"
-#line 682 "cplus.met"
+#line 826 "cplus.met"
+#line 826 "cplus.met"
             {
-#line 682 "cplus.met"
+#line 826 "cplus.met"
                 firstOnLine = 0 ; 
-#line 682 "cplus.met"
+#line 826 "cplus.met"
                 tokenAhead =8;
-#line 682 "cplus.met"
+#line 826 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_END;
-#line 682 "cplus.met"
+#line 826 "cplus.met"
                 PUT_COORD_CALL;
-#line 682 "cplus.met"
+#line 826 "cplus.met"
                 return(1);
-#line 682 "cplus.met"
+#line 826 "cplus.met"
             }
-#line 682 "cplus.met"
+#line 826 "cplus.met"
         } else 
-#line 682 "cplus.met"
-#line 683 "cplus.met"
+#line 826 "cplus.met"
+#line 827 "cplus.met"
         if((GetString("plus",1)&& NextChar())){
-#line 683 "cplus.met"
-#line 683 "cplus.met"
+#line 827 "cplus.met"
+#line 827 "cplus.met"
             {
-#line 683 "cplus.met"
+#line 827 "cplus.met"
                 firstOnLine = 0 ; 
-#line 683 "cplus.met"
+#line 827 "cplus.met"
                 tokenAhead =8;
-#line 683 "cplus.met"
+#line 827 "cplus.met"
                 lexEl.Value=PRAGMA_COMMENT_PLUS;
-#line 683 "cplus.met"
+#line 827 "cplus.met"
                 PUT_COORD_CALL;
-#line 683 "cplus.met"
+#line 827 "cplus.met"
                 return(1);
-#line 683 "cplus.met"
+#line 827 "cplus.met"
             }
-#line 683 "cplus.met"
+#line 827 "cplus.met"
         } else 
-#line 683 "cplus.met"
+#line 827 "cplus.met"
          ;
-#line 683 "cplus.met"
-#line 683 "cplus.met"
+#line 827 "cplus.met"
+#line 827 "cplus.met"
     } else 
-#line 683 "cplus.met"
-#line 686 "cplus.met"
+#line 827 "cplus.met"
+#line 830 "cplus.met"
     if((GetString("indent_function_type",1)&& NextChar())){
-#line 686 "cplus.met"
-#line 686 "cplus.met"
+#line 830 "cplus.met"
+#line 830 "cplus.met"
         {
-#line 686 "cplus.met"
+#line 830 "cplus.met"
             firstOnLine = 0 ; 
-#line 686 "cplus.met"
+#line 830 "cplus.met"
             tokenAhead =8;
-#line 686 "cplus.met"
+#line 830 "cplus.met"
             lexEl.Value=PRAGMA_INDENT_FUNCTION_TYPE;
-#line 686 "cplus.met"
+#line 830 "cplus.met"
             PUT_COORD_CALL;
-#line 686 "cplus.met"
+#line 830 "cplus.met"
             return(1);
-#line 686 "cplus.met"
+#line 830 "cplus.met"
         }
-#line 686 "cplus.met"
+#line 830 "cplus.met"
     } else 
-#line 686 "cplus.met"
-#line 687 "cplus.met"
+#line 830 "cplus.met"
+#line 831 "cplus.met"
     if((GetString("func_header",1)&& NextChar())){
-#line 687 "cplus.met"
-#line 687 "cplus.met"
+#line 831 "cplus.met"
+#line 831 "cplus.met"
         {
-#line 687 "cplus.met"
+#line 831 "cplus.met"
             firstOnLine = 0 ; 
-#line 687 "cplus.met"
+#line 831 "cplus.met"
             tokenAhead =8;
-#line 687 "cplus.met"
+#line 831 "cplus.met"
             lexEl.Value=PRAGMA_FUNC_HEADER;
-#line 687 "cplus.met"
+#line 831 "cplus.met"
             PUT_COORD_CALL;
-#line 687 "cplus.met"
+#line 831 "cplus.met"
             return(1);
-#line 687 "cplus.met"
+#line 831 "cplus.met"
         }
-#line 687 "cplus.met"
+#line 831 "cplus.met"
     } else 
-#line 687 "cplus.met"
-#line 688 "cplus.met"
+#line 831 "cplus.met"
+#line 832 "cplus.met"
     if((GetString("parameters_under_tab",1)&& NextChar())){
-#line 688 "cplus.met"
-#line 688 "cplus.met"
+#line 832 "cplus.met"
+#line 832 "cplus.met"
         {
-#line 688 "cplus.met"
+#line 832 "cplus.met"
             firstOnLine = 0 ; 
-#line 688 "cplus.met"
+#line 832 "cplus.met"
             tokenAhead =8;
-#line 688 "cplus.met"
+#line 832 "cplus.met"
             lexEl.Value=PRAGMA_PARAMETERS_UNDER;
-#line 688 "cplus.met"
+#line 832 "cplus.met"
             PUT_COORD_CALL;
-#line 688 "cplus.met"
+#line 832 "cplus.met"
             return(1);
-#line 688 "cplus.met"
+#line 832 "cplus.met"
         }
-#line 688 "cplus.met"
+#line 832 "cplus.met"
     } else 
-#line 688 "cplus.met"
-#line 689 "cplus.met"
+#line 832 "cplus.met"
+#line 833 "cplus.met"
     if((GetString("parameters",1)&& NextChar())){
-#line 689 "cplus.met"
-#line 689 "cplus.met"
+#line 833 "cplus.met"
+#line 833 "cplus.met"
         {
-#line 689 "cplus.met"
+#line 833 "cplus.met"
             firstOnLine = 0 ; 
-#line 689 "cplus.met"
+#line 833 "cplus.met"
             tokenAhead =8;
-#line 689 "cplus.met"
+#line 833 "cplus.met"
             lexEl.Value=PRAGMA_PARAMETERS;
-#line 689 "cplus.met"
+#line 833 "cplus.met"
             PUT_COORD_CALL;
-#line 689 "cplus.met"
+#line 833 "cplus.met"
             return(1);
-#line 689 "cplus.met"
+#line 833 "cplus.met"
         }
-#line 689 "cplus.met"
+#line 833 "cplus.met"
     } else 
-#line 689 "cplus.met"
-#line 690 "cplus.met"
+#line 833 "cplus.met"
+#line 834 "cplus.met"
     if((GetString("space_arrow",1)&& NextChar())){
-#line 690 "cplus.met"
-#line 690 "cplus.met"
+#line 834 "cplus.met"
+#line 834 "cplus.met"
         {
-#line 690 "cplus.met"
+#line 834 "cplus.met"
             firstOnLine = 0 ; 
-#line 690 "cplus.met"
+#line 834 "cplus.met"
             tokenAhead =8;
-#line 690 "cplus.met"
+#line 834 "cplus.met"
             lexEl.Value=PRAGMA_SPACE_ARROW;
-#line 690 "cplus.met"
+#line 834 "cplus.met"
             PUT_COORD_CALL;
-#line 690 "cplus.met"
+#line 834 "cplus.met"
             return(1);
-#line 690 "cplus.met"
+#line 834 "cplus.met"
         }
-#line 690 "cplus.met"
+#line 834 "cplus.met"
     } else 
-#line 690 "cplus.met"
-#line 691 "cplus.met"
+#line 834 "cplus.met"
+#line 835 "cplus.met"
     if((GetString("enum_vert",1)&& NextChar())){
-#line 691 "cplus.met"
-#line 691 "cplus.met"
+#line 835 "cplus.met"
+#line 835 "cplus.met"
         {
-#line 691 "cplus.met"
+#line 835 "cplus.met"
             firstOnLine = 0 ; 
-#line 691 "cplus.met"
+#line 835 "cplus.met"
             tokenAhead =8;
-#line 691 "cplus.met"
+#line 835 "cplus.met"
             lexEl.Value=PRAGMA_ENUM_VERT;
-#line 691 "cplus.met"
+#line 835 "cplus.met"
             PUT_COORD_CALL;
-#line 691 "cplus.met"
+#line 835 "cplus.met"
             return(1);
-#line 691 "cplus.met"
+#line 835 "cplus.met"
         }
-#line 691 "cplus.met"
+#line 835 "cplus.met"
     } else 
-#line 691 "cplus.met"
-#line 694 "cplus.met"
+#line 835 "cplus.met"
+#line 838 "cplus.met"
     if((c != EOF)){
-#line 694 "cplus.met"
-#line 693 "cplus.met"
-#line 694 "cplus.met"
+#line 838 "cplus.met"
+#line 837 "cplus.met"
+#line 838 "cplus.met"
         while ((! (((c == '\n')||(c == '\r')))) && 
-#line 694 "cplus.met"
+#line 838 "cplus.met"
               (c != EOF)) { 
-#line 694 "cplus.met"
-#line 695 "cplus.met"
+#line 838 "cplus.met"
+#line 839 "cplus.met"
             {
-#line 695 "cplus.met"
+#line 839 "cplus.met"
                 lexEl . AddChar(c);
-#line 695 "cplus.met"
+#line 839 "cplus.met"
                 NextChar();
-#line 695 "cplus.met"
+#line 839 "cplus.met"
             }
-#line 695 "cplus.met"
+#line 839 "cplus.met"
         } 
-#line 695 "cplus.met"
-#line 696 "cplus.met"
+#line 839 "cplus.met"
+#line 840 "cplus.met"
         {
-#line 696 "cplus.met"
+#line 840 "cplus.met"
             firstOnLine = 0 ; 
-#line 696 "cplus.met"
+#line 840 "cplus.met"
             tokenAhead =8;
-#line 696 "cplus.met"
+#line 840 "cplus.met"
             lexEl.Value=PRAGMA_CONTENT;
-#line 696 "cplus.met"
+#line 840 "cplus.met"
             PUT_COORD_CALL;
-#line 696 "cplus.met"
+#line 840 "cplus.met"
             return(1);
-#line 696 "cplus.met"
+#line 840 "cplus.met"
         }
-#line 696 "cplus.met"
-#line 696 "cplus.met"
+#line 840 "cplus.met"
+#line 840 "cplus.met"
     } else 
-#line 696 "cplus.met"
+#line 840 "cplus.met"
      ;
-#line 696 "cplus.met"
-#line 696 "cplus.met"
-#line 698 "cplus.met"
+#line 840 "cplus.met"
+#line 840 "cplus.met"
+#line 842 "cplus.met"
     line = oldLine;
-#line 698 "cplus.met"
+#line 842 "cplus.met"
     LEX_EXIT(0,"")
-#line 698 "cplus.met"
+#line 842 "cplus.met"
     lexEl.Value = -1 ;
-#line 698 "cplus.met"
+#line 842 "cplus.met"
     return -1 ; 
-#line 698 "cplus.met"
+#line 842 "cplus.met"
 }
-#line 698 "cplus.met"
+#line 842 "cplus.met"
 
-#line 698 "cplus.met"
-#line 701 "cplus.met"
+#line 842 "cplus.met"
+#line 845 "cplus.met"
 int cplus::LexPragmaSmall ()
-#line 701 "cplus.met"
+#line 845 "cplus.met"
 {
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 701 "cplus.met"
+#line 845 "cplus.met"
         FreePos(lastContextPos);
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 701 "cplus.met"
+#line 845 "cplus.met"
         ExtUnputBuf();
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     #ifdef DUMP_COORD
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     #endif
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     tokenAhead = 0;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     if(LexMeta() != -1){tokenAhead =9; return 1;}
-#line 701 "cplus.met"
-#line 701 "cplus.met"
+#line 845 "cplus.met"
+#line 845 "cplus.met"
     ptStockBuf = -1;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     while ((c == ' ')||(c == '\t'))
-#line 701 "cplus.met"
+#line 845 "cplus.met"
         NextChar() ;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     ptStockBuf = -1;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     lexEl.Erase();
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     tokenAhead = 0;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     oldLine=line,oldCol=col;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     if ( !lexCallLex) {
-#line 701 "cplus.met"
+#line 845 "cplus.met"
         PUT_COORD_CALL;
-#line 701 "cplus.met"
+#line 845 "cplus.met"
     }
-#line 701 "cplus.met"
-#line 703 "cplus.met"
+#line 845 "cplus.met"
+#line 847 "cplus.met"
     while (((c != EOF) && 
-#line 703 "cplus.met"
+#line 847 "cplus.met"
            ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9')))) && 
-#line 703 "cplus.met"
+#line 847 "cplus.met"
           (! (((c == '\n')||(c == '\r'))))) { 
-#line 703 "cplus.met"
-#line 704 "cplus.met"
+#line 847 "cplus.met"
+#line 848 "cplus.met"
         {
-#line 704 "cplus.met"
+#line 848 "cplus.met"
             lexEl . AddChar(c);
-#line 704 "cplus.met"
+#line 848 "cplus.met"
             NextChar();
-#line 704 "cplus.met"
+#line 848 "cplus.met"
         }
-#line 704 "cplus.met"
+#line 848 "cplus.met"
     } 
-#line 704 "cplus.met"
-#line 705 "cplus.met"
+#line 848 "cplus.met"
+#line 849 "cplus.met"
     {
-#line 705 "cplus.met"
+#line 849 "cplus.met"
         firstOnLine = 0 ; 
-#line 705 "cplus.met"
+#line 849 "cplus.met"
         tokenAhead =9;
-#line 705 "cplus.met"
+#line 849 "cplus.met"
         lexEl.Value=SMALL_PRAGMA_CONTENT;
-#line 705 "cplus.met"
+#line 849 "cplus.met"
         PUT_COORD_CALL;
-#line 705 "cplus.met"
+#line 849 "cplus.met"
         return(1);
-#line 705 "cplus.met"
+#line 849 "cplus.met"
     }
-#line 705 "cplus.met"
-#line 705 "cplus.met"
-#line 705 "cplus.met"
+#line 849 "cplus.met"
+#line 849 "cplus.met"
+#line 849 "cplus.met"
     
-#line 706 "cplus.met"
+#line 850 "cplus.met"
     line = oldLine;
-#line 706 "cplus.met"
+#line 850 "cplus.met"
     LEX_EXIT(0,"")
-#line 706 "cplus.met"
+#line 850 "cplus.met"
     lexEl.Value = -1 ;
-#line 706 "cplus.met"
+#line 850 "cplus.met"
     return -1 ; 
-#line 706 "cplus.met"
+#line 850 "cplus.met"
 }
-#line 706 "cplus.met"
+#line 850 "cplus.met"
 
-#line 706 "cplus.met"
-#line 642 "cplus.met"
+#line 850 "cplus.met"
+#line 786 "cplus.met"
 int cplus::LexUndef ()
-#line 642 "cplus.met"
+#line 786 "cplus.met"
 {
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     if ( lastContextPos && !lastContextPos -> nbRef )
-#line 642 "cplus.met"
+#line 786 "cplus.met"
         FreePos(lastContextPos);
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     lastContextPos = (PFILE_POSITION)0 ;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     if ( tokenAhead && tokenAhead != -1)
-#line 642 "cplus.met"
+#line 786 "cplus.met"
         ExtUnputBuf();
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     #ifdef DUMP_COORD
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     if(!lexCallLex && dumpCoord) store_pos_as_comment(line,col,0);
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     #endif
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     int _bidon = (oldLine = line,oldCol = col );
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     int _bidon1 = (oldLineEntry = line, oldColEntry = col );
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     tokenAhead = 0;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     if(LexMeta() != -1){tokenAhead =10; return 1;}
-#line 642 "cplus.met"
-#line 642 "cplus.met"
+#line 786 "cplus.met"
+#line 786 "cplus.met"
     ptStockBuf = -1;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     while ((c == ' ')||(c == '\t')||(c == ''))
-#line 642 "cplus.met"
+#line 786 "cplus.met"
         NextChar() ;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     ptStockBuf = -1;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     lexEl.Erase();
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     tokenAhead = 0;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     oldLine=line,oldCol=col;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     if ( !lexCallLex) {
-#line 642 "cplus.met"
+#line 786 "cplus.met"
         PUT_COORD_CALL;
-#line 642 "cplus.met"
+#line 786 "cplus.met"
     }
-#line 642 "cplus.met"
-#line 644 "cplus.met"
+#line 786 "cplus.met"
+#line 788 "cplus.met"
     while ((('a' <= c && c <= 'z')||('A' <= c && c <= 'Z')||(c == '_')||('0' <= c && c <= '9'))) { 
-#line 644 "cplus.met"
-#line 645 "cplus.met"
+#line 788 "cplus.met"
+#line 789 "cplus.met"
         {
-#line 645 "cplus.met"
+#line 789 "cplus.met"
             lexEl . AddChar(c);
-#line 645 "cplus.met"
+#line 789 "cplus.met"
             NextChar();
-#line 645 "cplus.met"
+#line 789 "cplus.met"
         }
-#line 645 "cplus.met"
+#line 789 "cplus.met"
     } 
-#line 645 "cplus.met"
-#line 646 "cplus.met"
+#line 789 "cplus.met"
+#line 790 "cplus.met"
     while (((c == ' ')||(c == '\t'))) { 
-#line 646 "cplus.met"
-#line 647 "cplus.met"
+#line 790 "cplus.met"
+#line 791 "cplus.met"
         if (!(c != EOF&& NextChar())) ;
-#line 647 "cplus.met"
+#line 791 "cplus.met"
     } 
-#line 647 "cplus.met"
-#line 648 "cplus.met"
+#line 791 "cplus.met"
+#line 792 "cplus.met"
     {
-#line 648 "cplus.met"
+#line 792 "cplus.met"
         firstOnLine = 0 ; 
-#line 648 "cplus.met"
+#line 792 "cplus.met"
         tokenAhead =10;
-#line 648 "cplus.met"
+#line 792 "cplus.met"
         lexEl.Value=UNDEF_CONTENT;
-#line 648 "cplus.met"
+#line 792 "cplus.met"
         PUT_COORD_CALL;
-#line 648 "cplus.met"
+#line 792 "cplus.met"
         return(1);
-#line 648 "cplus.met"
+#line 792 "cplus.met"
     }
-#line 648 "cplus.met"
-#line 648 "cplus.met"
-#line 648 "cplus.met"
+#line 792 "cplus.met"
+#line 792 "cplus.met"
+#line 792 "cplus.met"
     
-#line 649 "cplus.met"
+#line 793 "cplus.met"
     line = oldLine;
-#line 649 "cplus.met"
+#line 793 "cplus.met"
     LEX_EXIT(0,"")
-#line 649 "cplus.met"
+#line 793 "cplus.met"
     lexEl.Value = -1 ;
-#line 649 "cplus.met"
+#line 793 "cplus.met"
     return -1 ; 
-#line 649 "cplus.met"
+#line 793 "cplus.met"
 }
-#line 649 "cplus.met"
+#line 793 "cplus.met"
 
-#line 649 "cplus.met"
+#line 793 "cplus.met"
 #line 140 "cplus.met"
 int cplus::PushArgument ()
 #line 140 "cplus.met"

@@ -410,8 +410,96 @@ lexdefine Lex;
                     while seel in ['0'..'9'] do
                         storel takel ;
                     case
-                        seel in ['f'] : storel takel 
-                        seel in ['F'] : storel takel 
+                        seel in ['f'] :
+                            begin
+                            storel takel ;
+                            case
+                                seel in ['1'] :
+                                    begin
+                                    storel takel ;
+                                    case
+                                        seel in ['6'] : storel takel 
+                                        seel in ['2'] :
+                                            begin
+                                            case
+                                                seel in ['8'] : storel takel 
+                                                default : takel in ['8']
+                                            end;
+                                            end
+                                        default : takel in ['6']
+                                    end;
+                                    end
+                                seel in ['6'] :
+                                    begin
+                                    storel takel ;
+                                    if seel in ['4'] then
+                                        storel takel 
+                                    else
+                                        takel in ['4'];
+                                    end
+                            end;
+                            end
+                        seel in ['b'] :
+                            begin
+                            storel takel ;
+                            if not seel in ['f'] then
+                                takel in ['f']
+                            else
+                                storel takel ;
+                            if not seel in ['1'] then
+                                takel in ['1']
+                            else
+                                storel takel ;
+                            if not seel in ['6'] then
+                                takel in ['6']
+                            else
+                                storel takel ;
+                            end
+                        seel in ['F'] :
+                            begin
+                            storel takel ;
+                            case
+                                seel in ['1'] :
+                                    begin
+                                    storel takel ;
+                                    case
+                                        seel in ['6'] : storel takel 
+                                        seel in ['2'] :
+                                            begin
+                                            case
+                                                seel in ['8'] : storel takel 
+                                                default : takel in ['8']
+                                            end;
+                                            end
+                                        default : takel in ['6']
+                                    end;
+                                    end
+                                seel in ['6'] :
+                                    begin
+                                    storel takel ;
+                                    if seel in ['4'] then
+                                        storel takel 
+                                    else
+                                        takel in ['4'];
+                                    end
+                            end;
+                            end
+                        seel in ['B'] :
+                            begin
+                            storel takel ;
+                            if not seel in ['F'] then
+                                takel in ['F']
+                            else
+                                storel takel ;
+                            if not seel in ['1'] then
+                                takel in ['1']
+                            else
+                                storel takel ;
+                            if not seel in ['6'] then
+                                takel in ['6']
+                            else
+                                storel takel ;
+                            end
                         seel in ['l'] : storel takel 
                         seel in ['L'] : storel takel 
                     end;
@@ -431,8 +519,64 @@ lexdefine Lex;
                             storel takel ;
                         end;
                     case
-                        seel in ['f'] : storel takel 
-                        seel in ['F'] : storel takel 
+                        seel in ['f'] :
+                            begin
+                            storel takel ;
+                            case
+                                seel in ['1'] :
+                                    begin
+                                    storel takel ;
+                                    case
+                                        seel in ['6'] : storel takel 
+                                        seel in ['2'] :
+                                            begin
+                                            case
+                                                seel in ['8'] : storel takel 
+                                                default : takel in ['8']
+                                            end;
+                                            end
+                                        default : takel in ['6']
+                                    end;
+                                    end
+                                seel in ['6'] :
+                                    begin
+                                    storel takel ;
+                                    if seel in ['4'] then
+                                        storel takel 
+                                    else
+                                        takel in ['4'];
+                                    end
+                            end;
+                            end
+                        seel in ['F'] :
+                            begin
+                            storel takel ;
+                            case
+                                seel in ['1'] :
+                                    begin
+                                    storel takel ;
+                                    case
+                                        seel in ['6'] : storel takel 
+                                        seel in ['2'] :
+                                            begin
+                                            case
+                                                seel in ['8'] : storel takel 
+                                                default : takel in ['8']
+                                            end;
+                                            end
+                                        default : takel in ['6']
+                                    end;
+                                    end
+                                seel in ['6'] :
+                                    begin
+                                    storel takel ;
+                                    if seel in ['4'] then
+                                        storel takel 
+                                    else
+                                        takel in ['4'];
+                                    end
+                            end;
+                            end
                         seel in ['l'] : storel takel 
                         seel in ['L'] : storel takel 
                     end;

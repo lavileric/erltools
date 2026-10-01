@@ -2674,34 +2674,7 @@ int metachop::Lex ()
 #line 413 "metachop.met"
                         case 'f' :
 #line 413 "metachop.met"
-#line 413 "metachop.met"
-                            {
-#line 413 "metachop.met"
-                                lexEl . AddChar(c);
-#line 413 "metachop.met"
-                                NextChar();
-#line 413 "metachop.met"
-                            }
-#line 413 "metachop.met"
-                            break ;
-#line 413 "metachop.met"
 #line 414 "metachop.met"
-                        case 'F' :
-#line 414 "metachop.met"
-#line 414 "metachop.met"
-                            {
-#line 414 "metachop.met"
-                                lexEl . AddChar(c);
-#line 414 "metachop.met"
-                                NextChar();
-#line 414 "metachop.met"
-                            }
-#line 414 "metachop.met"
-                            break ;
-#line 414 "metachop.met"
-#line 415 "metachop.met"
-                        case 'l' :
-#line 415 "metachop.met"
 #line 415 "metachop.met"
                             {
 #line 415 "metachop.met"
@@ -2711,1785 +2684,2466 @@ int metachop::Lex ()
 #line 415 "metachop.met"
                             }
 #line 415 "metachop.met"
-                            break ;
-#line 415 "metachop.met"
 #line 416 "metachop.met"
-                        case 'L' :
+                            switch (c) {
 #line 416 "metachop.met"
-#line 416 "metachop.met"
-                            {
-#line 416 "metachop.met"
-                                lexEl . AddChar(c);
-#line 416 "metachop.met"
-                                NextChar();
-#line 416 "metachop.met"
-                            }
-#line 416 "metachop.met"
-                            break ;
-#line 416 "metachop.met"
-                    }
-#line 416 "metachop.met"
+#line 417 "metachop.met"
+                                case '1' :
+#line 417 "metachop.met"
 #line 418 "metachop.met"
-                    {
-#line 418 "metachop.met"
-                        firstOnLine = 0 ; 
-#line 418 "metachop.met"
-                        tokenAhead =1;
-#line 418 "metachop.met"
-                        lexEl.Value=FLOATVAL;
-#line 418 "metachop.met"
-                        PUT_COORD_CALL;
-#line 418 "metachop.met"
-                        return(1);
-#line 418 "metachop.met"
-                    }
-#line 418 "metachop.met"
-#line 418 "metachop.met"
-                    break ;
-#line 418 "metachop.met"
+#line 419 "metachop.met"
+                                    {
+#line 419 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 419 "metachop.met"
+                                        NextChar();
+#line 419 "metachop.met"
+                                    }
+#line 419 "metachop.met"
 #line 420 "metachop.met"
-                case '.' :
+                                    switch (c) {
 #line 420 "metachop.met"
 #line 421 "metachop.met"
+                                        case '6' :
+#line 421 "metachop.met"
+#line 421 "metachop.met"
+                                            {
+#line 421 "metachop.met"
+                                                lexEl . AddChar(c);
+#line 421 "metachop.met"
+                                                NextChar();
+#line 421 "metachop.met"
+                                            }
+#line 421 "metachop.met"
+                                            break ;
+#line 421 "metachop.met"
 #line 422 "metachop.met"
-                    {
-#line 422 "metachop.met"
-                        lexEl . AddChar(c);
-#line 422 "metachop.met"
-                        NextChar();
-#line 422 "metachop.met"
-                    }
+                                        case '2' :
 #line 422 "metachop.met"
 #line 423 "metachop.met"
-                    while ((('0' <= c && c <= '9'))) { 
-#line 423 "metachop.met"
 #line 424 "metachop.met"
-                        {
-#line 424 "metachop.met"
-                            lexEl . AddChar(c);
-#line 424 "metachop.met"
-                            NextChar();
-#line 424 "metachop.met"
-                        }
-#line 424 "metachop.met"
-                    } 
+                                            switch (c) {
 #line 424 "metachop.met"
 #line 425 "metachop.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                                case '8' :
+#line 425 "metachop.met"
+#line 425 "metachop.met"
+                                                    {
+#line 425 "metachop.met"
+                                                        lexEl . AddChar(c);
+#line 425 "metachop.met"
+                                                        NextChar();
+#line 425 "metachop.met"
+                                                    }
+#line 425 "metachop.met"
+                                                    break ;
 #line 425 "metachop.met"
 #line 426 "metachop.met"
-#line 427 "metachop.met"
-                        {
-#line 427 "metachop.met"
-                            lexEl.AddString("e");
-#line 427 "metachop.met"
-                        }
-#line 427 "metachop.met"
-#line 428 "metachop.met"
-                        if (((c == '+')||(c == '-'))){
-#line 428 "metachop.met"
+                                                default : 
+#line 426 "metachop.met"
+                                                     if (c!= EOF) {
+#line 426 "metachop.met"
+#line 426 "metachop.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 426 "metachop.met"
+                                                    }
+#line 426 "metachop.met"
+                                                    break ;
+#line 426 "metachop.met"
+                                            }
+#line 426 "metachop.met"
+#line 426 "metachop.met"
+                                            break ;
+#line 426 "metachop.met"
 #line 429 "metachop.met"
-                            {
+                                        default : 
 #line 429 "metachop.met"
-                                lexEl . AddChar(c);
+                                             if (c!= EOF) {
 #line 429 "metachop.met"
-                                NextChar();
 #line 429 "metachop.met"
-                            }
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 429 "metachop.met"
-                        }
+                                            }
 #line 429 "metachop.met"
-#line 430 "metachop.met"
-                        while ((('0' <= c && c <= '9'))) { 
-#line 430 "metachop.met"
-#line 431 "metachop.met"
-                            {
-#line 431 "metachop.met"
-                                lexEl . AddChar(c);
-#line 431 "metachop.met"
-                                NextChar();
-#line 431 "metachop.met"
-                            }
-#line 431 "metachop.met"
-                        } 
-#line 431 "metachop.met"
-#line 431 "metachop.met"
-#line 431 "metachop.met"
-                    }
-#line 431 "metachop.met"
-#line 433 "metachop.met"
-                    switch (c) {
+                                            break ;
+#line 429 "metachop.met"
+                                    }
+#line 429 "metachop.met"
+#line 429 "metachop.met"
+                                    break ;
+#line 429 "metachop.met"
+#line 432 "metachop.met"
+                                case '6' :
+#line 432 "metachop.met"
 #line 433 "metachop.met"
 #line 434 "metachop.met"
-                        case 'f' :
+                                    {
 #line 434 "metachop.met"
+                                        lexEl . AddChar(c);
 #line 434 "metachop.met"
-                            {
+                                        NextChar();
 #line 434 "metachop.met"
-                                lexEl . AddChar(c);
+                                    }
 #line 434 "metachop.met"
-                                NextChar();
-#line 434 "metachop.met"
+#line 435 "metachop.met"
+                                    if (((c == '4'))){
+#line 435 "metachop.met"
+#line 436 "metachop.met"
+                                        {
+#line 436 "metachop.met"
+                                            lexEl . AddChar(c);
+#line 436 "metachop.met"
+                                            NextChar();
+#line 436 "metachop.met"
+                                        }
+#line 436 "metachop.met"
+                                    } else {
+#line 436 "metachop.met"
+#line 438 "metachop.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 438 "metachop.met"
+                                    }
+#line 438 "metachop.met"
+#line 438 "metachop.met"
+                                    break ;
+#line 438 "metachop.met"
                             }
-#line 434 "metachop.met"
+#line 438 "metachop.met"
+#line 438 "metachop.met"
                             break ;
-#line 434 "metachop.met"
-#line 435 "metachop.met"
-                        case 'F' :
-#line 435 "metachop.met"
-#line 435 "metachop.met"
-                            {
-#line 435 "metachop.met"
-                                lexEl . AddChar(c);
-#line 435 "metachop.met"
-                                NextChar();
-#line 435 "metachop.met"
-                            }
-#line 435 "metachop.met"
-                            break ;
-#line 435 "metachop.met"
-#line 436 "metachop.met"
-                        case 'l' :
-#line 436 "metachop.met"
-#line 436 "metachop.met"
-                            {
-#line 436 "metachop.met"
-                                lexEl . AddChar(c);
-#line 436 "metachop.met"
-                                NextChar();
-#line 436 "metachop.met"
-                            }
-#line 436 "metachop.met"
-                            break ;
-#line 436 "metachop.met"
-#line 437 "metachop.met"
-                        case 'L' :
-#line 437 "metachop.met"
-#line 437 "metachop.met"
-                            {
-#line 437 "metachop.met"
-                                lexEl . AddChar(c);
-#line 437 "metachop.met"
-                                NextChar();
-#line 437 "metachop.met"
-                            }
-#line 437 "metachop.met"
-                            break ;
-#line 437 "metachop.met"
-                    }
-#line 437 "metachop.met"
-#line 439 "metachop.met"
-                    {
-#line 439 "metachop.met"
-                        firstOnLine = 0 ; 
-#line 439 "metachop.met"
-                        tokenAhead =1;
-#line 439 "metachop.met"
-                        lexEl.Value=FLOATVAL;
-#line 439 "metachop.met"
-                        PUT_COORD_CALL;
-#line 439 "metachop.met"
-                        return(1);
-#line 439 "metachop.met"
-                    }
-#line 439 "metachop.met"
-#line 439 "metachop.met"
-                    break ;
-#line 439 "metachop.met"
-#line 441 "metachop.met"
-                default : 
-#line 441 "metachop.met"
-                     if (c!= EOF) {
-#line 441 "metachop.met"
-#line 441 "metachop.met"
-                        {
-#line 441 "metachop.met"
-                            firstOnLine = 0 ; 
-#line 441 "metachop.met"
-                            tokenAhead =1;
-#line 441 "metachop.met"
-                            lexEl.Value=INTEGER;
-#line 441 "metachop.met"
-                            PUT_COORD_CALL;
-#line 441 "metachop.met"
-                            return(1);
-#line 441 "metachop.met"
-                        }
-#line 441 "metachop.met"
-                    }
-#line 441 "metachop.met"
-                    break ;
-#line 441 "metachop.met"
-            }
-#line 441 "metachop.met"
-#line 441 "metachop.met"
-            break ;
-#line 441 "metachop.met"
+#line 438 "metachop.met"
+#line 442 "metachop.met"
+                        case 'b' :
+#line 442 "metachop.met"
+#line 443 "metachop.met"
 #line 444 "metachop.met"
-        case '0' :
+                            {
 #line 444 "metachop.met"
-            NextChar();
+                                lexEl . AddChar(c);
+#line 444 "metachop.met"
+                                NextChar();
+#line 444 "metachop.met"
+                            }
 #line 444 "metachop.met"
 #line 445 "metachop.met"
+                            if (! (((c == 'f')))){
+#line 445 "metachop.met"
 #line 446 "metachop.met"
-            if (! (c != EOF)){
+                                if (!(((c == 'f'))&& NextChar())) ;
 #line 446 "metachop.met"
-#line 447 "metachop.met"
+                            } else {
+#line 446 "metachop.met"
 #line 448 "metachop.met"
-                {
+                                {
 #line 448 "metachop.met"
-                    lexEl.AddString("0");
+                                    lexEl . AddChar(c);
 #line 448 "metachop.met"
-                }
+                                    NextChar();
+#line 448 "metachop.met"
+                                }
+#line 448 "metachop.met"
+                            }
 #line 448 "metachop.met"
 #line 449 "metachop.met"
-                {
+                            if (! (((c == '1')))){
 #line 449 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 449 "metachop.met"
-                    tokenAhead =1;
-#line 449 "metachop.met"
-                    lexEl.Value=INTEGER;
-#line 449 "metachop.met"
-                    PUT_COORD_CALL;
-#line 449 "metachop.met"
-                    return(1);
-#line 449 "metachop.met"
-                }
-#line 449 "metachop.met"
-#line 449 "metachop.met"
-#line 449 "metachop.met"
-            }
-#line 449 "metachop.met"
-#line 451 "metachop.met"
-            switch (c) {
-#line 451 "metachop.met"
+#line 450 "metachop.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 450 "metachop.met"
+                            } else {
+#line 450 "metachop.met"
 #line 452 "metachop.met"
-                case 'x' :
+                                {
 #line 452 "metachop.met"
-                case 'X' :
+                                    lexEl . AddChar(c);
 #line 452 "metachop.met"
-                    NextChar();
+                                    NextChar();
+#line 452 "metachop.met"
+                                }
+#line 452 "metachop.met"
+                            }
 #line 452 "metachop.met"
 #line 453 "metachop.met"
+                            if (! (((c == '6')))){
+#line 453 "metachop.met"
 #line 454 "metachop.met"
-                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 454 "metachop.met"
-#line 455 "metachop.met"
-                        {
-#line 455 "metachop.met"
-                            lexEl . AddChar(c);
-#line 455 "metachop.met"
-                            NextChar();
-#line 455 "metachop.met"
-                        }
-#line 455 "metachop.met"
-                    } 
-#line 455 "metachop.met"
+                            } else {
+#line 454 "metachop.met"
 #line 456 "metachop.met"
-                    switch (c) {
+                                {
 #line 456 "metachop.met"
-#line 457 "metachop.met"
-                        case 'l' :
-#line 457 "metachop.met"
-                        case 'L' :
-#line 457 "metachop.met"
-                            NextChar();
-#line 457 "metachop.met"
+                                    lexEl . AddChar(c);
+#line 456 "metachop.met"
+                                    NextChar();
+#line 456 "metachop.met"
+                                }
+#line 456 "metachop.met"
+                            }
+#line 456 "metachop.met"
+#line 456 "metachop.met"
+                            break ;
+#line 456 "metachop.met"
 #line 458 "metachop.met"
-                            switch (c) {
+                        case 'F' :
 #line 458 "metachop.met"
 #line 459 "metachop.met"
-                                case 'u' :
-#line 459 "metachop.met"
-                                case 'U' :
-#line 459 "metachop.met"
-                                    NextChar();
-#line 459 "metachop.met"
-#line 459 "metachop.met"
-                                    {
-#line 459 "metachop.met"
-                                        firstOnLine = 0 ; 
-#line 459 "metachop.met"
-                                        tokenAhead =1;
-#line 459 "metachop.met"
-                                        lexEl.Value=ULHEXA;
-#line 459 "metachop.met"
-                                        PUT_COORD_CALL;
-#line 459 "metachop.met"
-                                        return(1);
-#line 459 "metachop.met"
-                                    }
-#line 459 "metachop.met"
-                                    break ;
-#line 459 "metachop.met"
 #line 460 "metachop.met"
-                                case 'L' :
+                            {
 #line 460 "metachop.met"
-                                case 'l' :
+                                lexEl . AddChar(c);
 #line 460 "metachop.met"
-                                    NextChar();
+                                NextChar();
+#line 460 "metachop.met"
+                            }
 #line 460 "metachop.met"
 #line 461 "metachop.met"
-#line 462 "metachop.met"
-                                    switch (c) {
-#line 462 "metachop.met"
-#line 463 "metachop.met"
-                                        case 'u' :
-#line 463 "metachop.met"
-                                        case 'U' :
-#line 463 "metachop.met"
-                                            NextChar();
-#line 463 "metachop.met"
-#line 463 "metachop.met"
-                                            {
-#line 463 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 463 "metachop.met"
-                                                tokenAhead =1;
-#line 463 "metachop.met"
-                                                lexEl.Value=ULLHEXA;
-#line 463 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 463 "metachop.met"
-                                                return(1);
-#line 463 "metachop.met"
-                                            }
-#line 463 "metachop.met"
-                                            break ;
-#line 463 "metachop.met"
-#line 464 "metachop.met"
-                                        default : 
-#line 464 "metachop.met"
-                                             if (c!= EOF) {
-#line 464 "metachop.met"
-#line 464 "metachop.met"
-                                                {
-#line 464 "metachop.met"
-                                                    firstOnLine = 0 ; 
-#line 464 "metachop.met"
-                                                    tokenAhead =1;
-#line 464 "metachop.met"
-                                                    lexEl.Value=LLHEXA;
-#line 464 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 464 "metachop.met"
-                                                    return(1);
-#line 464 "metachop.met"
-                                                }
-#line 464 "metachop.met"
-                                            }
-#line 464 "metachop.met"
-                                            break ;
-#line 464 "metachop.met"
-                                    }
-#line 464 "metachop.met"
-#line 464 "metachop.met"
-                                    break ;
-#line 464 "metachop.met"
-#line 467 "metachop.met"
-                                default : 
-#line 467 "metachop.met"
-                                     if (c!= EOF) {
-#line 467 "metachop.met"
-#line 467 "metachop.met"
-                                        {
-#line 467 "metachop.met"
-                                            firstOnLine = 0 ; 
-#line 467 "metachop.met"
-                                            tokenAhead =1;
-#line 467 "metachop.met"
-                                            lexEl.Value=LHEXA;
-#line 467 "metachop.met"
-                                            PUT_COORD_CALL;
-#line 467 "metachop.met"
-                                            return(1);
-#line 467 "metachop.met"
-                                        }
-#line 467 "metachop.met"
-                                    }
-#line 467 "metachop.met"
-                                    break ;
-#line 467 "metachop.met"
-                            }
-#line 467 "metachop.met"
-                            break ;
-#line 467 "metachop.met"
-#line 469 "metachop.met"
-                        case 'u' :
-#line 469 "metachop.met"
-                        case 'U' :
-#line 469 "metachop.met"
-                            NextChar();
-#line 469 "metachop.met"
-#line 470 "metachop.met"
                             switch (c) {
+#line 461 "metachop.met"
+#line 462 "metachop.met"
+                                case '1' :
+#line 462 "metachop.met"
+#line 463 "metachop.met"
+#line 464 "metachop.met"
+                                    {
+#line 464 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 464 "metachop.met"
+                                        NextChar();
+#line 464 "metachop.met"
+                                    }
+#line 464 "metachop.met"
+#line 465 "metachop.met"
+                                    switch (c) {
+#line 465 "metachop.met"
+#line 466 "metachop.met"
+                                        case '6' :
+#line 466 "metachop.met"
+#line 466 "metachop.met"
+                                            {
+#line 466 "metachop.met"
+                                                lexEl . AddChar(c);
+#line 466 "metachop.met"
+                                                NextChar();
+#line 466 "metachop.met"
+                                            }
+#line 466 "metachop.met"
+                                            break ;
+#line 466 "metachop.met"
+#line 467 "metachop.met"
+                                        case '2' :
+#line 467 "metachop.met"
+#line 468 "metachop.met"
+#line 469 "metachop.met"
+                                            switch (c) {
+#line 469 "metachop.met"
+#line 470 "metachop.met"
+                                                case '8' :
+#line 470 "metachop.met"
+#line 470 "metachop.met"
+                                                    {
+#line 470 "metachop.met"
+                                                        lexEl . AddChar(c);
+#line 470 "metachop.met"
+                                                        NextChar();
+#line 470 "metachop.met"
+                                                    }
+#line 470 "metachop.met"
+                                                    break ;
 #line 470 "metachop.met"
 #line 471 "metachop.met"
-                                case 'l' :
+                                                default : 
 #line 471 "metachop.met"
-                                case 'L' :
+                                                     if (c!= EOF) {
 #line 471 "metachop.met"
-                                    NextChar();
 #line 471 "metachop.met"
-#line 472 "metachop.met"
-#line 473 "metachop.met"
-                                    switch (c) {
-#line 473 "metachop.met"
-#line 474 "metachop.met"
-                                        case 'L' :
-#line 474 "metachop.met"
-                                        case 'l' :
-#line 474 "metachop.met"
-                                            NextChar();
-#line 474 "metachop.met"
-#line 474 "metachop.met"
-                                            {
-#line 474 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 474 "metachop.met"
-                                                tokenAhead =1;
-#line 474 "metachop.met"
-                                                lexEl.Value=ULLHEXA;
-#line 474 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 474 "metachop.met"
-                                                return(1);
-#line 474 "metachop.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 471 "metachop.met"
+                                                    }
+#line 471 "metachop.met"
+                                                    break ;
+#line 471 "metachop.met"
                                             }
-#line 474 "metachop.met"
+#line 471 "metachop.met"
+#line 471 "metachop.met"
                                             break ;
+#line 471 "metachop.met"
 #line 474 "metachop.met"
-#line 475 "metachop.met"
                                         default : 
-#line 475 "metachop.met"
+#line 474 "metachop.met"
                                              if (c!= EOF) {
-#line 475 "metachop.met"
-#line 475 "metachop.met"
-                                                {
-#line 475 "metachop.met"
-                                                    firstOnLine = 0 ; 
-#line 475 "metachop.met"
-                                                    tokenAhead =1;
-#line 475 "metachop.met"
-                                                    lexEl.Value=ULHEXA;
-#line 475 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 475 "metachop.met"
-                                                    return(1);
-#line 475 "metachop.met"
-                                                }
-#line 475 "metachop.met"
+#line 474 "metachop.met"
+#line 474 "metachop.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 474 "metachop.met"
                                             }
-#line 475 "metachop.met"
+#line 474 "metachop.met"
                                             break ;
-#line 475 "metachop.met"
+#line 474 "metachop.met"
                                     }
-#line 475 "metachop.met"
-#line 475 "metachop.met"
+#line 474 "metachop.met"
+#line 474 "metachop.met"
                                     break ;
-#line 475 "metachop.met"
+#line 474 "metachop.met"
+#line 477 "metachop.met"
+                                case '6' :
+#line 477 "metachop.met"
 #line 478 "metachop.met"
-                                default : 
-#line 478 "metachop.met"
-                                     if (c!= EOF) {
-#line 478 "metachop.met"
-#line 478 "metachop.met"
+#line 479 "metachop.met"
+                                    {
+#line 479 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 479 "metachop.met"
+                                        NextChar();
+#line 479 "metachop.met"
+                                    }
+#line 479 "metachop.met"
+#line 480 "metachop.met"
+                                    if (((c == '4'))){
+#line 480 "metachop.met"
+#line 481 "metachop.met"
                                         {
-#line 478 "metachop.met"
-                                            firstOnLine = 0 ; 
-#line 478 "metachop.met"
-                                            tokenAhead =1;
-#line 478 "metachop.met"
-                                            lexEl.Value=UHEXA;
-#line 478 "metachop.met"
-                                            PUT_COORD_CALL;
-#line 478 "metachop.met"
-                                            return(1);
-#line 478 "metachop.met"
+#line 481 "metachop.met"
+                                            lexEl . AddChar(c);
+#line 481 "metachop.met"
+                                            NextChar();
+#line 481 "metachop.met"
                                         }
-#line 478 "metachop.met"
+#line 481 "metachop.met"
+                                    } else {
+#line 481 "metachop.met"
+#line 483 "metachop.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 483 "metachop.met"
                                     }
-#line 478 "metachop.met"
+#line 483 "metachop.met"
+#line 483 "metachop.met"
                                     break ;
-#line 478 "metachop.met"
+#line 483 "metachop.met"
                             }
-#line 478 "metachop.met"
+#line 483 "metachop.met"
+#line 483 "metachop.met"
                             break ;
-#line 478 "metachop.met"
-#line 480 "metachop.met"
-                        default : 
-#line 480 "metachop.met"
-                             if (c!= EOF) {
-#line 480 "metachop.met"
-#line 480 "metachop.met"
-                                {
-#line 480 "metachop.met"
-                                    firstOnLine = 0 ; 
-#line 480 "metachop.met"
-                                    tokenAhead =1;
-#line 480 "metachop.met"
-                                    lexEl.Value=HEXA;
-#line 480 "metachop.met"
-                                    PUT_COORD_CALL;
-#line 480 "metachop.met"
-                                    return(1);
-#line 480 "metachop.met"
-                                }
-#line 480 "metachop.met"
+#line 483 "metachop.met"
+#line 487 "metachop.met"
+                        case 'B' :
+#line 487 "metachop.met"
+#line 488 "metachop.met"
+#line 489 "metachop.met"
+                            {
+#line 489 "metachop.met"
+                                lexEl . AddChar(c);
+#line 489 "metachop.met"
+                                NextChar();
+#line 489 "metachop.met"
                             }
-#line 480 "metachop.met"
-                            break ;
-#line 480 "metachop.met"
-                    }
-#line 480 "metachop.met"
-#line 480 "metachop.met"
-                    break ;
-#line 480 "metachop.met"
-#line 483 "metachop.met"
-                case 'b' :
-#line 483 "metachop.met"
-                case 'B' :
-#line 483 "metachop.met"
-                    NextChar();
-#line 483 "metachop.met"
-#line 484 "metachop.met"
-#line 485 "metachop.met"
-                    while ((('0' <= c && c <= '1'))) { 
-#line 485 "metachop.met"
-#line 486 "metachop.met"
-                        {
-#line 486 "metachop.met"
-                            lexEl . AddChar(c);
-#line 486 "metachop.met"
-                            NextChar();
-#line 486 "metachop.met"
-                        }
-#line 486 "metachop.met"
-                    } 
-#line 486 "metachop.met"
-#line 487 "metachop.met"
-                    {
-#line 487 "metachop.met"
-                        firstOnLine = 0 ; 
-#line 487 "metachop.met"
-                        tokenAhead =1;
-#line 487 "metachop.met"
-                        lexEl.Value=BINARY;
-#line 487 "metachop.met"
-                        PUT_COORD_CALL;
-#line 487 "metachop.met"
-                        return(1);
-#line 487 "metachop.met"
-                    }
-#line 487 "metachop.met"
-#line 487 "metachop.met"
-                    break ;
-#line 487 "metachop.met"
-#line 489 "metachop.met"
-                case '0' :
-#line 489 "metachop.met"
-                case '1' :
-#line 489 "metachop.met"
-                case '2' :
-#line 489 "metachop.met"
-                case '3' :
-#line 489 "metachop.met"
-                case '4' :
-#line 489 "metachop.met"
-                case '5' :
-#line 489 "metachop.met"
-                case '6' :
-#line 489 "metachop.met"
-                case '7' :
 #line 489 "metachop.met"
 #line 490 "metachop.met"
+                            if (! (((c == 'F')))){
+#line 490 "metachop.met"
 #line 491 "metachop.met"
-                    while ((('0' <= c && c <= '7'))) { 
+                                if (!(((c == 'F'))&& NextChar())) ;
 #line 491 "metachop.met"
-#line 492 "metachop.met"
-                        {
-#line 492 "metachop.met"
-                            lexEl . AddChar(c);
-#line 492 "metachop.met"
-                            NextChar();
-#line 492 "metachop.met"
-                        }
-#line 492 "metachop.met"
-                    } 
-#line 492 "metachop.met"
+                            } else {
+#line 491 "metachop.met"
 #line 493 "metachop.met"
-                    switch (c) {
+                                {
 #line 493 "metachop.met"
-#line 494 "metachop.met"
-                        case 'l' :
-#line 494 "metachop.met"
-                        case 'L' :
-#line 494 "metachop.met"
-                            NextChar();
-#line 494 "metachop.met"
-#line 495 "metachop.met"
-                            switch (c) {
-#line 495 "metachop.met"
-#line 496 "metachop.met"
-                                case 'L' :
-#line 496 "metachop.met"
-                                case 'l' :
-#line 496 "metachop.met"
+                                    lexEl . AddChar(c);
+#line 493 "metachop.met"
                                     NextChar();
-#line 496 "metachop.met"
+#line 493 "metachop.met"
+                                }
+#line 493 "metachop.met"
+                            }
+#line 493 "metachop.met"
+#line 494 "metachop.met"
+                            if (! (((c == '1')))){
+#line 494 "metachop.met"
+#line 495 "metachop.met"
+                                if (!(((c == '1'))&& NextChar())) ;
+#line 495 "metachop.met"
+                            } else {
+#line 495 "metachop.met"
+#line 497 "metachop.met"
+                                {
+#line 497 "metachop.met"
+                                    lexEl . AddChar(c);
+#line 497 "metachop.met"
+                                    NextChar();
+#line 497 "metachop.met"
+                                }
+#line 497 "metachop.met"
+                            }
 #line 497 "metachop.met"
 #line 498 "metachop.met"
-                                    switch (c) {
+                            if (! (((c == '6')))){
 #line 498 "metachop.met"
 #line 499 "metachop.met"
-                                        case 'u' :
+                                if (!(((c == '6'))&& NextChar())) ;
 #line 499 "metachop.met"
-                                        case 'U' :
+                            } else {
 #line 499 "metachop.met"
-                                            NextChar();
-#line 499 "metachop.met"
-#line 499 "metachop.met"
-                                            {
-#line 499 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 499 "metachop.met"
-                                                tokenAhead =1;
-#line 499 "metachop.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 499 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 499 "metachop.met"
-                                                return(1);
-#line 499 "metachop.met"
-                                            }
-#line 499 "metachop.met"
-                                            break ;
-#line 499 "metachop.met"
-#line 500 "metachop.met"
-                                        default : 
-#line 500 "metachop.met"
-                                             if (c!= EOF) {
-#line 500 "metachop.met"
-#line 500 "metachop.met"
-                                                {
-#line 500 "metachop.met"
-                                                    firstOnLine = 0 ; 
-#line 500 "metachop.met"
-                                                    tokenAhead =1;
-#line 500 "metachop.met"
-                                                    lexEl.Value=LLOCTAL;
-#line 500 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 500 "metachop.met"
-                                                    return(1);
-#line 500 "metachop.met"
-                                                }
-#line 500 "metachop.met"
-                                            }
-#line 500 "metachop.met"
-                                            break ;
-#line 500 "metachop.met"
-                                    }
-#line 500 "metachop.met"
-#line 500 "metachop.met"
-                                    break ;
-#line 500 "metachop.met"
-#line 503 "metachop.met"
-                                case 'u' :
-#line 503 "metachop.met"
-                                case 'U' :
-#line 503 "metachop.met"
+#line 501 "metachop.met"
+                                {
+#line 501 "metachop.met"
+                                    lexEl . AddChar(c);
+#line 501 "metachop.met"
                                     NextChar();
+#line 501 "metachop.met"
+                                }
+#line 501 "metachop.met"
+                            }
+#line 501 "metachop.met"
+#line 501 "metachop.met"
+                            break ;
+#line 501 "metachop.met"
+#line 503 "metachop.met"
+                        case 'l' :
 #line 503 "metachop.met"
 #line 503 "metachop.met"
-                                    {
+                            {
 #line 503 "metachop.met"
-                                        firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 503 "metachop.met"
-                                        tokenAhead =1;
+                                NextChar();
 #line 503 "metachop.met"
-                                        lexEl.Value=ULOCTAL;
+                            }
 #line 503 "metachop.met"
-                                        PUT_COORD_CALL;
-#line 503 "metachop.met"
-                                        return(1);
-#line 503 "metachop.met"
-                                    }
-#line 503 "metachop.met"
-                                    break ;
+                            break ;
 #line 503 "metachop.met"
 #line 504 "metachop.met"
-                                default : 
-#line 504 "metachop.met"
-                                     if (c!= EOF) {
+                        case 'L' :
 #line 504 "metachop.met"
 #line 504 "metachop.met"
-                                        {
+                            {
 #line 504 "metachop.met"
-                                            firstOnLine = 0 ; 
+                                lexEl . AddChar(c);
 #line 504 "metachop.met"
-                                            tokenAhead =1;
-#line 504 "metachop.met"
-                                            lexEl.Value=LOCTAL;
-#line 504 "metachop.met"
-                                            PUT_COORD_CALL;
-#line 504 "metachop.met"
-                                            return(1);
-#line 504 "metachop.met"
-                                        }
-#line 504 "metachop.met"
-                                    }
-#line 504 "metachop.met"
-                                    break ;
+                                NextChar();
 #line 504 "metachop.met"
                             }
 #line 504 "metachop.met"
                             break ;
 #line 504 "metachop.met"
+                    }
+#line 504 "metachop.met"
 #line 506 "metachop.met"
-                        case 'u' :
+                    {
 #line 506 "metachop.met"
-                        case 'U' :
+                        firstOnLine = 0 ; 
 #line 506 "metachop.met"
-                            NextChar();
+                        tokenAhead =1;
 #line 506 "metachop.met"
-#line 507 "metachop.met"
-                            switch (c) {
-#line 507 "metachop.met"
+                        lexEl.Value=FLOATVAL;
+#line 506 "metachop.met"
+                        PUT_COORD_CALL;
+#line 506 "metachop.met"
+                        return(1);
+#line 506 "metachop.met"
+                    }
+#line 506 "metachop.met"
+#line 506 "metachop.met"
+                    break ;
+#line 506 "metachop.met"
 #line 508 "metachop.met"
-                                case 'l' :
-#line 508 "metachop.met"
-                                case 'L' :
-#line 508 "metachop.met"
-                                    NextChar();
+                case '.' :
 #line 508 "metachop.met"
 #line 509 "metachop.met"
 #line 510 "metachop.met"
-                                    switch (c) {
+                    {
+#line 510 "metachop.met"
+                        lexEl . AddChar(c);
+#line 510 "metachop.met"
+                        NextChar();
+#line 510 "metachop.met"
+                    }
 #line 510 "metachop.met"
 #line 511 "metachop.met"
-                                        case 'L' :
-#line 511 "metachop.met"
-                                        case 'l' :
-#line 511 "metachop.met"
-                                            NextChar();
-#line 511 "metachop.met"
-#line 511 "metachop.met"
-                                            {
-#line 511 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 511 "metachop.met"
-                                                tokenAhead =1;
-#line 511 "metachop.met"
-                                                lexEl.Value=ULLOCTAL;
-#line 511 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 511 "metachop.met"
-                                                return(1);
-#line 511 "metachop.met"
-                                            }
-#line 511 "metachop.met"
-                                            break ;
+                    while ((('0' <= c && c <= '9'))) { 
 #line 511 "metachop.met"
 #line 512 "metachop.met"
-                                        default : 
+                        {
 #line 512 "metachop.met"
-                                             if (c!= EOF) {
+                            lexEl . AddChar(c);
 #line 512 "metachop.met"
+                            NextChar();
 #line 512 "metachop.met"
-                                                {
+                        }
 #line 512 "metachop.met"
-                                                    firstOnLine = 0 ; 
+                    } 
 #line 512 "metachop.met"
-                                                    tokenAhead =1;
-#line 512 "metachop.met"
-                                                    lexEl.Value=ULOCTAL;
-#line 512 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 512 "metachop.met"
-                                                    return(1);
-#line 512 "metachop.met"
-                                                }
-#line 512 "metachop.met"
-                                            }
-#line 512 "metachop.met"
-                                            break ;
-#line 512 "metachop.met"
-                                    }
-#line 512 "metachop.met"
-#line 512 "metachop.met"
-                                    break ;
-#line 512 "metachop.met"
+#line 513 "metachop.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 513 "metachop.met"
+#line 514 "metachop.met"
 #line 515 "metachop.met"
-                                default : 
+                        {
 #line 515 "metachop.met"
-                                     if (c!= EOF) {
+                            lexEl.AddString("e");
 #line 515 "metachop.met"
+                        }
 #line 515 "metachop.met"
-                                        {
-#line 515 "metachop.met"
-                                            firstOnLine = 0 ; 
-#line 515 "metachop.met"
-                                            tokenAhead =1;
-#line 515 "metachop.met"
-                                            lexEl.Value=UOCTAL;
-#line 515 "metachop.met"
-                                            PUT_COORD_CALL;
-#line 515 "metachop.met"
-                                            return(1);
-#line 515 "metachop.met"
-                                        }
-#line 515 "metachop.met"
-                                    }
-#line 515 "metachop.met"
-                                    break ;
-#line 515 "metachop.met"
-                            }
-#line 515 "metachop.met"
-                            break ;
-#line 515 "metachop.met"
+#line 516 "metachop.met"
+                        if (((c == '+')||(c == '-'))){
+#line 516 "metachop.met"
 #line 517 "metachop.met"
-                        default : 
+                            {
 #line 517 "metachop.met"
-                             if (c!= EOF) {
+                                lexEl . AddChar(c);
 #line 517 "metachop.met"
-#line 517 "metachop.met"
-                                {
-#line 517 "metachop.met"
-                                    firstOnLine = 0 ; 
-#line 517 "metachop.met"
-                                    tokenAhead =1;
-#line 517 "metachop.met"
-                                    lexEl.Value=OCTAL;
-#line 517 "metachop.met"
-                                    PUT_COORD_CALL;
-#line 517 "metachop.met"
-                                    return(1);
-#line 517 "metachop.met"
-                                }
+                                NextChar();
 #line 517 "metachop.met"
                             }
 #line 517 "metachop.met"
-                            break ;
+                        }
 #line 517 "metachop.met"
+#line 518 "metachop.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 518 "metachop.met"
+#line 519 "metachop.met"
+                            {
+#line 519 "metachop.met"
+                                lexEl . AddChar(c);
+#line 519 "metachop.met"
+                                NextChar();
+#line 519 "metachop.met"
+                            }
+#line 519 "metachop.met"
+                        } 
+#line 519 "metachop.met"
+#line 519 "metachop.met"
+#line 519 "metachop.met"
                     }
-#line 517 "metachop.met"
-#line 517 "metachop.met"
-                    break ;
-#line 517 "metachop.met"
-#line 520 "metachop.met"
-                case '.' :
-#line 520 "metachop.met"
+#line 519 "metachop.met"
+#line 521 "metachop.met"
+                    switch (c) {
 #line 521 "metachop.met"
 #line 522 "metachop.met"
-                    {
+                        case 'f' :
 #line 522 "metachop.met"
-                        lexEl.AddString("0");
-#line 522 "metachop.met"
-                    }
-#line 522 "metachop.met"
-#line 523 "metachop.met"
-                    {
-#line 523 "metachop.met"
-                        lexEl . AddChar(c);
-#line 523 "metachop.met"
-                        NextChar();
-#line 523 "metachop.met"
-                    }
 #line 523 "metachop.met"
 #line 524 "metachop.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                            {
+#line 524 "metachop.met"
+                                lexEl . AddChar(c);
+#line 524 "metachop.met"
+                                NextChar();
+#line 524 "metachop.met"
+                            }
 #line 524 "metachop.met"
 #line 525 "metachop.met"
-                        {
-#line 525 "metachop.met"
-                            lexEl . AddChar(c);
-#line 525 "metachop.met"
-                            NextChar();
-#line 525 "metachop.met"
-                        }
-#line 525 "metachop.met"
-                    } 
+                            switch (c) {
 #line 525 "metachop.met"
 #line 526 "metachop.met"
-                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                case '1' :
 #line 526 "metachop.met"
 #line 527 "metachop.met"
 #line 528 "metachop.met"
-                        {
+                                    {
 #line 528 "metachop.met"
-                            lexEl.AddString("e");
+                                        lexEl . AddChar(c);
 #line 528 "metachop.met"
-                        }
+                                        NextChar();
+#line 528 "metachop.met"
+                                    }
 #line 528 "metachop.met"
 #line 529 "metachop.met"
-                        if (((c == '+')||(c == '-'))){
+                                    switch (c) {
 #line 529 "metachop.met"
 #line 530 "metachop.met"
-                            {
+                                        case '6' :
 #line 530 "metachop.met"
-                                lexEl . AddChar(c);
 #line 530 "metachop.met"
-                                NextChar();
+                                            {
 #line 530 "metachop.met"
-                            }
+                                                lexEl . AddChar(c);
 #line 530 "metachop.met"
-                        }
+                                                NextChar();
+#line 530 "metachop.met"
+                                            }
+#line 530 "metachop.met"
+                                            break ;
 #line 530 "metachop.met"
 #line 531 "metachop.met"
-                        while ((('0' <= c && c <= '9'))) { 
+                                        case '2' :
 #line 531 "metachop.met"
 #line 532 "metachop.met"
-                            {
-#line 532 "metachop.met"
-                                lexEl . AddChar(c);
-#line 532 "metachop.met"
-                                NextChar();
-#line 532 "metachop.met"
-                            }
-#line 532 "metachop.met"
-                        } 
-#line 532 "metachop.met"
-#line 532 "metachop.met"
-#line 532 "metachop.met"
-                    }
-#line 532 "metachop.met"
+#line 533 "metachop.met"
+                                            switch (c) {
+#line 533 "metachop.met"
 #line 534 "metachop.met"
-                    switch (c) {
+                                                case '8' :
+#line 534 "metachop.met"
+#line 534 "metachop.met"
+                                                    {
+#line 534 "metachop.met"
+                                                        lexEl . AddChar(c);
+#line 534 "metachop.met"
+                                                        NextChar();
+#line 534 "metachop.met"
+                                                    }
+#line 534 "metachop.met"
+                                                    break ;
 #line 534 "metachop.met"
 #line 535 "metachop.met"
-                        case 'f' :
+                                                default : 
+#line 535 "metachop.met"
+                                                     if (c!= EOF) {
 #line 535 "metachop.met"
 #line 535 "metachop.met"
-                            {
+                                                        if (!(((c == '8'))&& NextChar())) ;
 #line 535 "metachop.met"
-                                lexEl . AddChar(c);
+                                                    }
 #line 535 "metachop.met"
-                                NextChar();
+                                                    break ;
 #line 535 "metachop.met"
-                            }
+                                            }
 #line 535 "metachop.met"
-                            break ;
 #line 535 "metachop.met"
-#line 536 "metachop.met"
-                        case 'F' :
-#line 536 "metachop.met"
-#line 536 "metachop.met"
-                            {
-#line 536 "metachop.met"
-                                lexEl . AddChar(c);
-#line 536 "metachop.met"
-                                NextChar();
-#line 536 "metachop.met"
-                            }
-#line 536 "metachop.met"
-                            break ;
-#line 536 "metachop.met"
-#line 537 "metachop.met"
-                        case 'l' :
-#line 537 "metachop.met"
-#line 537 "metachop.met"
-                            {
-#line 537 "metachop.met"
-                                lexEl . AddChar(c);
-#line 537 "metachop.met"
-                                NextChar();
-#line 537 "metachop.met"
-                            }
-#line 537 "metachop.met"
-                            break ;
-#line 537 "metachop.met"
+                                            break ;
+#line 535 "metachop.met"
 #line 538 "metachop.met"
-                        case 'L' :
+                                        default : 
+#line 538 "metachop.met"
+                                             if (c!= EOF) {
 #line 538 "metachop.met"
 #line 538 "metachop.met"
-                            {
+                                                if (!(((c == '6'))&& NextChar())) ;
 #line 538 "metachop.met"
-                                lexEl . AddChar(c);
+                                            }
 #line 538 "metachop.met"
-                                NextChar();
+                                            break ;
 #line 538 "metachop.met"
-                            }
+                                    }
 #line 538 "metachop.met"
-                            break ;
 #line 538 "metachop.met"
-                    }
+                                    break ;
 #line 538 "metachop.met"
-#line 540 "metachop.met"
-                    {
-#line 540 "metachop.met"
-                        firstOnLine = 0 ; 
-#line 540 "metachop.met"
-                        tokenAhead =1;
-#line 540 "metachop.met"
-                        lexEl.Value=FLOATVAL;
-#line 540 "metachop.met"
-                        PUT_COORD_CALL;
-#line 540 "metachop.met"
-                        return(1);
-#line 540 "metachop.met"
-                    }
-#line 540 "metachop.met"
-#line 540 "metachop.met"
-                    break ;
-#line 540 "metachop.met"
-#line 546 "metachop.met"
-                default : 
-#line 546 "metachop.met"
-                     if (c!= EOF) {
-#line 546 "metachop.met"
+#line 541 "metachop.met"
+                                case '6' :
+#line 541 "metachop.met"
+#line 542 "metachop.met"
+#line 543 "metachop.met"
+                                    {
+#line 543 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 543 "metachop.met"
+                                        NextChar();
+#line 543 "metachop.met"
+                                    }
 #line 543 "metachop.met"
 #line 544 "metachop.met"
-                        if (c != EOF){
+                                    if (((c == '4'))){
 #line 544 "metachop.met"
 #line 545 "metachop.met"
-#line 546 "metachop.met"
-                            {
-#line 546 "metachop.met"
-                                lexEl.AddString("0");
-#line 546 "metachop.met"
-                            }
-#line 546 "metachop.met"
-#line 547 "metachop.met"
-                            switch (c) {
-#line 547 "metachop.met"
-#line 548 "metachop.met"
-                                case 'l' :
-#line 548 "metachop.met"
-                                case 'L' :
-#line 548 "metachop.met"
-                                    NextChar();
-#line 548 "metachop.met"
-#line 549 "metachop.met"
-                                    switch (c) {
-#line 549 "metachop.met"
-#line 550 "metachop.met"
-                                        case 'u' :
-#line 550 "metachop.met"
-                                        case 'U' :
-#line 550 "metachop.met"
-                                            NextChar();
-#line 550 "metachop.met"
-#line 550 "metachop.met"
-                                            {
-#line 550 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 550 "metachop.met"
-                                                tokenAhead =1;
-#line 550 "metachop.met"
-                                                lexEl.Value=ULINTEGER;
-#line 550 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 550 "metachop.met"
-                                                return(1);
-#line 550 "metachop.met"
-                                            }
-#line 550 "metachop.met"
-                                            break ;
-#line 550 "metachop.met"
-#line 551 "metachop.met"
-                                        default : 
-#line 551 "metachop.met"
-                                             if (c!= EOF) {
-#line 551 "metachop.met"
-#line 551 "metachop.met"
-                                                {
-#line 551 "metachop.met"
-                                                    firstOnLine = 0 ; 
-#line 551 "metachop.met"
-                                                    tokenAhead =1;
-#line 551 "metachop.met"
-                                                    lexEl.Value=LINTEGER;
-#line 551 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 551 "metachop.met"
-                                                    return(1);
-#line 551 "metachop.met"
-                                                }
-#line 551 "metachop.met"
-                                            }
-#line 551 "metachop.met"
-                                            break ;
-#line 551 "metachop.met"
-                                    }
-#line 551 "metachop.met"
-                                    break ;
-#line 551 "metachop.met"
-#line 553 "metachop.met"
-                                case 'u' :
-#line 553 "metachop.met"
-                                case 'U' :
-#line 553 "metachop.met"
-                                    NextChar();
-#line 553 "metachop.met"
-#line 554 "metachop.met"
-                                    switch (c) {
-#line 554 "metachop.met"
-#line 555 "metachop.met"
-                                        case 'l' :
-#line 555 "metachop.met"
-                                        case 'L' :
-#line 555 "metachop.met"
-                                            NextChar();
-#line 555 "metachop.met"
-#line 555 "metachop.met"
-                                            {
-#line 555 "metachop.met"
-                                                firstOnLine = 0 ; 
-#line 555 "metachop.met"
-                                                tokenAhead =1;
-#line 555 "metachop.met"
-                                                lexEl.Value=ULINTEGER;
-#line 555 "metachop.met"
-                                                PUT_COORD_CALL;
-#line 555 "metachop.met"
-                                                return(1);
-#line 555 "metachop.met"
-                                            }
-#line 555 "metachop.met"
-                                            break ;
-#line 555 "metachop.met"
-#line 556 "metachop.met"
-                                        default : 
-#line 556 "metachop.met"
-                                             if (c!= EOF) {
-#line 556 "metachop.met"
-#line 556 "metachop.met"
-                                                {
-#line 556 "metachop.met"
-                                                    firstOnLine = 0 ; 
-#line 556 "metachop.met"
-                                                    tokenAhead =1;
-#line 556 "metachop.met"
-                                                    lexEl.Value=UINTEGER;
-#line 556 "metachop.met"
-                                                    PUT_COORD_CALL;
-#line 556 "metachop.met"
-                                                    return(1);
-#line 556 "metachop.met"
-                                                }
-#line 556 "metachop.met"
-                                            }
-#line 556 "metachop.met"
-                                            break ;
-#line 556 "metachop.met"
-                                    }
-#line 556 "metachop.met"
-                                    break ;
-#line 556 "metachop.met"
-#line 558 "metachop.met"
-                                default : 
-#line 558 "metachop.met"
-                                     if (c!= EOF) {
-#line 558 "metachop.met"
-#line 558 "metachop.met"
                                         {
-#line 558 "metachop.met"
-                                            firstOnLine = 0 ; 
-#line 558 "metachop.met"
-                                            tokenAhead =1;
-#line 558 "metachop.met"
-                                            lexEl.Value=INTEGER;
-#line 558 "metachop.met"
-                                            PUT_COORD_CALL;
-#line 558 "metachop.met"
-                                            return(1);
-#line 558 "metachop.met"
+#line 545 "metachop.met"
+                                            lexEl . AddChar(c);
+#line 545 "metachop.met"
+                                            NextChar();
+#line 545 "metachop.met"
                                         }
-#line 558 "metachop.met"
+#line 545 "metachop.met"
+                                    } else {
+#line 545 "metachop.met"
+#line 547 "metachop.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 547 "metachop.met"
                                     }
-#line 558 "metachop.met"
+#line 547 "metachop.met"
+#line 547 "metachop.met"
                                     break ;
-#line 558 "metachop.met"
+#line 547 "metachop.met"
                             }
+#line 547 "metachop.met"
+#line 547 "metachop.met"
+                            break ;
+#line 547 "metachop.met"
+#line 551 "metachop.met"
+                        case 'F' :
+#line 551 "metachop.met"
+#line 552 "metachop.met"
+#line 553 "metachop.met"
+                            {
+#line 553 "metachop.met"
+                                lexEl . AddChar(c);
+#line 553 "metachop.met"
+                                NextChar();
+#line 553 "metachop.met"
+                            }
+#line 553 "metachop.met"
+#line 554 "metachop.met"
+                            switch (c) {
+#line 554 "metachop.met"
+#line 555 "metachop.met"
+                                case '1' :
+#line 555 "metachop.met"
+#line 556 "metachop.met"
+#line 557 "metachop.met"
+                                    {
+#line 557 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 557 "metachop.met"
+                                        NextChar();
+#line 557 "metachop.met"
+                                    }
+#line 557 "metachop.met"
 #line 558 "metachop.met"
+                                    switch (c) {
 #line 558 "metachop.met"
 #line 559 "metachop.met"
-                        }
+                                        case '6' :
 #line 559 "metachop.met"
 #line 559 "metachop.met"
+                                            {
+#line 559 "metachop.met"
+                                                lexEl . AddChar(c);
+#line 559 "metachop.met"
+                                                NextChar();
+#line 559 "metachop.met"
+                                            }
+#line 559 "metachop.met"
+                                            break ;
+#line 559 "metachop.met"
+#line 560 "metachop.met"
+                                        case '2' :
+#line 560 "metachop.met"
+#line 561 "metachop.met"
+#line 562 "metachop.met"
+                                            switch (c) {
+#line 562 "metachop.met"
+#line 563 "metachop.met"
+                                                case '8' :
+#line 563 "metachop.met"
+#line 563 "metachop.met"
+                                                    {
+#line 563 "metachop.met"
+                                                        lexEl . AddChar(c);
+#line 563 "metachop.met"
+                                                        NextChar();
+#line 563 "metachop.met"
+                                                    }
+#line 563 "metachop.met"
+                                                    break ;
+#line 563 "metachop.met"
+#line 564 "metachop.met"
+                                                default : 
+#line 564 "metachop.met"
+                                                     if (c!= EOF) {
+#line 564 "metachop.met"
+#line 564 "metachop.met"
+                                                        if (!(((c == '8'))&& NextChar())) ;
+#line 564 "metachop.met"
+                                                    }
+#line 564 "metachop.met"
+                                                    break ;
+#line 564 "metachop.met"
+                                            }
+#line 564 "metachop.met"
+#line 564 "metachop.met"
+                                            break ;
+#line 564 "metachop.met"
+#line 567 "metachop.met"
+                                        default : 
+#line 567 "metachop.met"
+                                             if (c!= EOF) {
+#line 567 "metachop.met"
+#line 567 "metachop.met"
+                                                if (!(((c == '6'))&& NextChar())) ;
+#line 567 "metachop.met"
+                                            }
+#line 567 "metachop.met"
+                                            break ;
+#line 567 "metachop.met"
+                                    }
+#line 567 "metachop.met"
+#line 567 "metachop.met"
+                                    break ;
+#line 567 "metachop.met"
+#line 570 "metachop.met"
+                                case '6' :
+#line 570 "metachop.met"
+#line 571 "metachop.met"
+#line 572 "metachop.met"
+                                    {
+#line 572 "metachop.met"
+                                        lexEl . AddChar(c);
+#line 572 "metachop.met"
+                                        NextChar();
+#line 572 "metachop.met"
+                                    }
+#line 572 "metachop.met"
+#line 573 "metachop.met"
+                                    if (((c == '4'))){
+#line 573 "metachop.met"
+#line 574 "metachop.met"
+                                        {
+#line 574 "metachop.met"
+                                            lexEl . AddChar(c);
+#line 574 "metachop.met"
+                                            NextChar();
+#line 574 "metachop.met"
+                                        }
+#line 574 "metachop.met"
+                                    } else {
+#line 574 "metachop.met"
+#line 576 "metachop.met"
+                                        if (!(((c == '4'))&& NextChar())) ;
+#line 576 "metachop.met"
+                                    }
+#line 576 "metachop.met"
+#line 576 "metachop.met"
+                                    break ;
+#line 576 "metachop.met"
+                            }
+#line 576 "metachop.met"
+#line 576 "metachop.met"
+                            break ;
+#line 576 "metachop.met"
+#line 580 "metachop.met"
+                        case 'l' :
+#line 580 "metachop.met"
+#line 580 "metachop.met"
+                            {
+#line 580 "metachop.met"
+                                lexEl . AddChar(c);
+#line 580 "metachop.met"
+                                NextChar();
+#line 580 "metachop.met"
+                            }
+#line 580 "metachop.met"
+                            break ;
+#line 580 "metachop.met"
+#line 581 "metachop.met"
+                        case 'L' :
+#line 581 "metachop.met"
+#line 581 "metachop.met"
+                            {
+#line 581 "metachop.met"
+                                lexEl . AddChar(c);
+#line 581 "metachop.met"
+                                NextChar();
+#line 581 "metachop.met"
+                            }
+#line 581 "metachop.met"
+                            break ;
+#line 581 "metachop.met"
                     }
-#line 559 "metachop.met"
-                    break ;
-#line 559 "metachop.met"
-            }
-#line 559 "metachop.met"
-#line 559 "metachop.met"
-            break ;
-#line 559 "metachop.met"
-#line 564 "metachop.met"
-        case '#' :
-#line 564 "metachop.met"
-            NextChar();
-#line 564 "metachop.met"
-#line 565 "metachop.met"
-#line 566 "metachop.met"
-            while (((c == ' ')||(c == '\t'))) { 
-#line 566 "metachop.met"
-#line 567 "metachop.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 567 "metachop.met"
-            } 
-#line 567 "metachop.met"
-#line 568 "metachop.met"
-#line 569 "metachop.met"
-            if((GetString("include",1)&& NextChar())){
-#line 569 "metachop.met"
-#line 569 "metachop.met"
-                {
-#line 569 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 569 "metachop.met"
-                    tokenAhead =1;
-#line 569 "metachop.met"
-                    lexEl.Value=INCLUDE_DIR;
-#line 569 "metachop.met"
-                    PUT_COORD_CALL;
-#line 569 "metachop.met"
-                    return(1);
-#line 569 "metachop.met"
-                }
-#line 569 "metachop.met"
-            } else 
-#line 569 "metachop.met"
-#line 570 "metachop.met"
-            if((GetString("ifdef",1)&& NextChar())){
-#line 570 "metachop.met"
-#line 570 "metachop.met"
-                {
-#line 570 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 570 "metachop.met"
-                    tokenAhead =1;
-#line 570 "metachop.met"
-                    lexEl.Value=IFDEF_DIR;
-#line 570 "metachop.met"
-                    PUT_COORD_CALL;
-#line 570 "metachop.met"
-                    return(1);
-#line 570 "metachop.met"
-                }
-#line 570 "metachop.met"
-            } else 
-#line 570 "metachop.met"
-#line 571 "metachop.met"
-            if((GetString("ifndef",1)&& NextChar())){
-#line 571 "metachop.met"
-#line 571 "metachop.met"
-                {
-#line 571 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 571 "metachop.met"
-                    tokenAhead =1;
-#line 571 "metachop.met"
-                    lexEl.Value=IFNDEF_DIR;
-#line 571 "metachop.met"
-                    PUT_COORD_CALL;
-#line 571 "metachop.met"
-                    return(1);
-#line 571 "metachop.met"
-                }
-#line 571 "metachop.met"
-            } else 
-#line 571 "metachop.met"
-#line 572 "metachop.met"
-            if((GetString("if",1)&& NextChar())){
-#line 572 "metachop.met"
-#line 572 "metachop.met"
-                {
-#line 572 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 572 "metachop.met"
-                    tokenAhead =1;
-#line 572 "metachop.met"
-                    lexEl.Value=IF_DIR;
-#line 572 "metachop.met"
-                    PUT_COORD_CALL;
-#line 572 "metachop.met"
-                    return(1);
-#line 572 "metachop.met"
-                }
-#line 572 "metachop.met"
-            } else 
-#line 572 "metachop.met"
-#line 573 "metachop.met"
-            if((GetString("else",1)&& NextChar())){
-#line 573 "metachop.met"
-#line 573 "metachop.met"
-                {
-#line 573 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 573 "metachop.met"
-                    tokenAhead =1;
-#line 573 "metachop.met"
-                    lexEl.Value=ELSE_DIR;
-#line 573 "metachop.met"
-                    PUT_COORD_CALL;
-#line 573 "metachop.met"
-                    return(1);
-#line 573 "metachop.met"
-                }
-#line 573 "metachop.met"
-            } else 
-#line 573 "metachop.met"
-#line 574 "metachop.met"
-            if((GetString("elif",1)&& NextChar())){
-#line 574 "metachop.met"
-#line 574 "metachop.met"
-                {
-#line 574 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 574 "metachop.met"
-                    tokenAhead =1;
-#line 574 "metachop.met"
-                    lexEl.Value=ELIF_DIR;
-#line 574 "metachop.met"
-                    PUT_COORD_CALL;
-#line 574 "metachop.met"
-                    return(1);
-#line 574 "metachop.met"
-                }
-#line 574 "metachop.met"
-            } else 
-#line 574 "metachop.met"
-#line 575 "metachop.met"
-            if((GetString("endif",1)&& NextChar())){
-#line 575 "metachop.met"
-#line 575 "metachop.met"
-                {
-#line 575 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 575 "metachop.met"
-                    tokenAhead =1;
-#line 575 "metachop.met"
-                    lexEl.Value=ENDIF_DIR;
-#line 575 "metachop.met"
-                    PUT_COORD_CALL;
-#line 575 "metachop.met"
-                    return(1);
-#line 575 "metachop.met"
-                }
-#line 575 "metachop.met"
-            } else 
-#line 575 "metachop.met"
-#line 576 "metachop.met"
-            if((GetString("line",1)&& NextChar())){
-#line 576 "metachop.met"
-#line 576 "metachop.met"
-                {
-#line 576 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 576 "metachop.met"
-                    tokenAhead =1;
-#line 576 "metachop.met"
-                    lexEl.Value=LINE_DIR;
-#line 576 "metachop.met"
-                    PUT_COORD_CALL;
-#line 576 "metachop.met"
-                    return(1);
-#line 576 "metachop.met"
-                }
-#line 576 "metachop.met"
-            } else 
-#line 576 "metachop.met"
-#line 577 "metachop.met"
-            if((GetString("pragma",1)&& NextChar())){
-#line 577 "metachop.met"
-#line 577 "metachop.met"
-                {
-#line 577 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 577 "metachop.met"
-                    tokenAhead =1;
-#line 577 "metachop.met"
-                    lexEl.Value=PRAGMA_DIR;
-#line 577 "metachop.met"
-                    PUT_COORD_CALL;
-#line 577 "metachop.met"
-                    return(1);
-#line 577 "metachop.met"
-                }
-#line 577 "metachop.met"
-            } else 
-#line 577 "metachop.met"
-#line 578 "metachop.met"
-            if((GetString("error",1)&& NextChar())){
-#line 578 "metachop.met"
-#line 578 "metachop.met"
-                {
-#line 578 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 578 "metachop.met"
-                    tokenAhead =1;
-#line 578 "metachop.met"
-                    lexEl.Value=ERROR_DIR;
-#line 578 "metachop.met"
-                    PUT_COORD_CALL;
-#line 578 "metachop.met"
-                    return(1);
-#line 578 "metachop.met"
-                }
-#line 578 "metachop.met"
-            } else 
-#line 578 "metachop.met"
-#line 579 "metachop.met"
-            if((GetString("define",1)&& NextChar())){
-#line 579 "metachop.met"
-#line 579 "metachop.met"
-                {
-#line 579 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 579 "metachop.met"
-                    tokenAhead =1;
-#line 579 "metachop.met"
-                    lexEl.Value=DEFINE_DIR;
-#line 579 "metachop.met"
-                    PUT_COORD_CALL;
-#line 579 "metachop.met"
-                    return(1);
-#line 579 "metachop.met"
-                }
-#line 579 "metachop.met"
-            } else 
-#line 579 "metachop.met"
-#line 580 "metachop.met"
-            if((GetString("undef",1)&& NextChar())){
-#line 580 "metachop.met"
-#line 580 "metachop.met"
-                {
-#line 580 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 580 "metachop.met"
-                    tokenAhead =1;
-#line 580 "metachop.met"
-                    lexEl.Value=UNDEF_DIR;
-#line 580 "metachop.met"
-                    PUT_COORD_CALL;
-#line 580 "metachop.met"
-                    return(1);
-#line 580 "metachop.met"
-                }
-#line 580 "metachop.met"
-            } else 
-#line 580 "metachop.met"
 #line 581 "metachop.met"
-            if(((('0' <= c && c <= '9')))){
-#line 581 "metachop.met"
-#line 581 "metachop.met"
-                {
-#line 581 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 581 "metachop.met"
-                    tokenAhead =1;
-#line 581 "metachop.met"
-                    lexEl.Value=LINE_REFERENCE_DIR;
-#line 581 "metachop.met"
-                    PUT_COORD_CALL;
-#line 581 "metachop.met"
-                    return(1);
-#line 581 "metachop.met"
-                }
-#line 581 "metachop.met"
-            } else 
-#line 581 "metachop.met"
-#line 584 "metachop.met"
-            if((c != EOF)){
-#line 584 "metachop.met"
 #line 583 "metachop.met"
-#line 584 "metachop.met"
-                {
-#line 584 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 584 "metachop.met"
-                    tokenAhead =1;
-#line 584 "metachop.met"
-                    lexEl.Value=SHARP_VAL;
-#line 584 "metachop.met"
-                    PUT_COORD_CALL;
-#line 584 "metachop.met"
-                    return(1);
-#line 584 "metachop.met"
-                }
-#line 584 "metachop.met"
-#line 584 "metachop.met"
-            } else 
-#line 584 "metachop.met"
-             ;
-#line 584 "metachop.met"
-#line 584 "metachop.met"
-            break ;
-#line 584 "metachop.met"
-#line 588 "metachop.met"
-        case '\r' :
-#line 588 "metachop.met"
-        case '\n' :
-#line 588 "metachop.met"
-            NextChar();
-#line 588 "metachop.met"
-#line 588 "metachop.met"
-            {
-#line 588 "metachop.met"
-                firstOnLine = 0 ; 
-#line 588 "metachop.met"
-                tokenAhead =1;
-#line 588 "metachop.met"
-                lexEl.Value=CARRIAGE_RETURN;
-#line 588 "metachop.met"
-                firstOnLine = 1 ; 
-#line 588 "metachop.met"
-                PUT_COORD_CALL;
-#line 588 "metachop.met"
-                return(1);
-#line 588 "metachop.met"
+                    {
+#line 583 "metachop.met"
+                        firstOnLine = 0 ; 
+#line 583 "metachop.met"
+                        tokenAhead =1;
+#line 583 "metachop.met"
+                        lexEl.Value=FLOATVAL;
+#line 583 "metachop.met"
+                        PUT_COORD_CALL;
+#line 583 "metachop.met"
+                        return(1);
+#line 583 "metachop.met"
+                    }
+#line 583 "metachop.met"
+#line 583 "metachop.met"
+                    break ;
+#line 583 "metachop.met"
+#line 585 "metachop.met"
+                default : 
+#line 585 "metachop.met"
+                     if (c!= EOF) {
+#line 585 "metachop.met"
+#line 585 "metachop.met"
+                        {
+#line 585 "metachop.met"
+                            firstOnLine = 0 ; 
+#line 585 "metachop.met"
+                            tokenAhead =1;
+#line 585 "metachop.met"
+                            lexEl.Value=INTEGER;
+#line 585 "metachop.met"
+                            PUT_COORD_CALL;
+#line 585 "metachop.met"
+                            return(1);
+#line 585 "metachop.met"
+                        }
+#line 585 "metachop.met"
+                    }
+#line 585 "metachop.met"
+                    break ;
+#line 585 "metachop.met"
             }
-#line 588 "metachop.met"
+#line 585 "metachop.met"
+#line 585 "metachop.met"
             break ;
+#line 585 "metachop.met"
 #line 588 "metachop.met"
-#line 589 "metachop.met"
-        case '/' :
-#line 589 "metachop.met"
+        case '0' :
+#line 588 "metachop.met"
             NextChar();
+#line 588 "metachop.met"
 #line 589 "metachop.met"
 #line 590 "metachop.met"
-#line 591 "metachop.met"
-            if (((c == '='))){
+            if (! (c != EOF)){
+#line 590 "metachop.met"
 #line 591 "metachop.met"
 #line 592 "metachop.met"
-#line 593 "metachop.met"
-                if (!(c != EOF&& NextChar())) ;
-#line 593 "metachop.met"
-#line 594 "metachop.met"
                 {
-#line 594 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 594 "metachop.met"
-                    tokenAhead =1;
-#line 594 "metachop.met"
-                    lexEl.Value=SLASEGAL;
-#line 594 "metachop.met"
-                    PUT_COORD_CALL;
-#line 594 "metachop.met"
-                    return(1);
-#line 594 "metachop.met"
+#line 592 "metachop.met"
+                    lexEl.AddString("0");
+#line 592 "metachop.met"
                 }
-#line 594 "metachop.met"
-#line 594 "metachop.met"
-#line 594 "metachop.met"
-            } else {
-#line 594 "metachop.met"
-#line 597 "metachop.met"
+#line 592 "metachop.met"
+#line 593 "metachop.met"
                 {
-#line 597 "metachop.met"
+#line 593 "metachop.met"
                     firstOnLine = 0 ; 
-#line 597 "metachop.met"
+#line 593 "metachop.met"
                     tokenAhead =1;
-#line 597 "metachop.met"
-                    lexEl.Value=SLAS;
-#line 597 "metachop.met"
+#line 593 "metachop.met"
+                    lexEl.Value=INTEGER;
+#line 593 "metachop.met"
                     PUT_COORD_CALL;
-#line 597 "metachop.met"
+#line 593 "metachop.met"
                     return(1);
-#line 597 "metachop.met"
+#line 593 "metachop.met"
                 }
-#line 597 "metachop.met"
+#line 593 "metachop.met"
+#line 593 "metachop.met"
+#line 593 "metachop.met"
             }
+#line 593 "metachop.met"
+#line 595 "metachop.met"
+            switch (c) {
+#line 595 "metachop.met"
+#line 596 "metachop.met"
+                case 'x' :
+#line 596 "metachop.met"
+                case 'X' :
+#line 596 "metachop.met"
+                    NextChar();
+#line 596 "metachop.met"
 #line 597 "metachop.met"
-#line 597 "metachop.met"
-            break ;
-#line 597 "metachop.met"
+#line 598 "metachop.met"
+                    while ((('0' <= c && c <= '9')||('a' <= c && c <= 'f')||('A' <= c && c <= 'F'))) { 
+#line 598 "metachop.met"
 #line 599 "metachop.met"
-        case '.' :
+                        {
+#line 599 "metachop.met"
+                            lexEl . AddChar(c);
+#line 599 "metachop.met"
+                            NextChar();
+#line 599 "metachop.met"
+                        }
+#line 599 "metachop.met"
+                    } 
 #line 599 "metachop.met"
 #line 600 "metachop.met"
+                    switch (c) {
+#line 600 "metachop.met"
 #line 601 "metachop.met"
-            {
+                        case 'l' :
 #line 601 "metachop.met"
-                lexEl . AddChar(c);
+                        case 'L' :
 #line 601 "metachop.met"
-                NextChar();
-#line 601 "metachop.met"
-            }
+                            NextChar();
 #line 601 "metachop.met"
 #line 602 "metachop.met"
-            if ((('0' <= c && c <= '9'))){
+                            switch (c) {
 #line 602 "metachop.met"
 #line 603 "metachop.met"
+                                case 'u' :
+#line 603 "metachop.met"
+                                case 'U' :
+#line 603 "metachop.met"
+                                    NextChar();
+#line 603 "metachop.met"
+#line 603 "metachop.met"
+                                    {
+#line 603 "metachop.met"
+                                        firstOnLine = 0 ; 
+#line 603 "metachop.met"
+                                        tokenAhead =1;
+#line 603 "metachop.met"
+                                        lexEl.Value=ULHEXA;
+#line 603 "metachop.met"
+                                        PUT_COORD_CALL;
+#line 603 "metachop.met"
+                                        return(1);
+#line 603 "metachop.met"
+                                    }
+#line 603 "metachop.met"
+                                    break ;
+#line 603 "metachop.met"
 #line 604 "metachop.met"
-                while ((('0' <= c && c <= '9'))) { 
+                                case 'L' :
 #line 604 "metachop.met"
-#line 605 "metachop.met"
-                    {
-#line 605 "metachop.met"
-                        lexEl . AddChar(c);
-#line 605 "metachop.met"
-                        NextChar();
-#line 605 "metachop.met"
-                    }
-#line 605 "metachop.met"
-                } 
+                                case 'l' :
+#line 604 "metachop.met"
+                                    NextChar();
+#line 604 "metachop.met"
 #line 605 "metachop.met"
 #line 606 "metachop.met"
-                if (((c == 'e')||(c == 'E'))&& NextChar()){
+                                    switch (c) {
 #line 606 "metachop.met"
 #line 607 "metachop.met"
+                                        case 'u' :
+#line 607 "metachop.met"
+                                        case 'U' :
+#line 607 "metachop.met"
+                                            NextChar();
+#line 607 "metachop.met"
+#line 607 "metachop.met"
+                                            {
+#line 607 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 607 "metachop.met"
+                                                tokenAhead =1;
+#line 607 "metachop.met"
+                                                lexEl.Value=ULLHEXA;
+#line 607 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 607 "metachop.met"
+                                                return(1);
+#line 607 "metachop.met"
+                                            }
+#line 607 "metachop.met"
+                                            break ;
+#line 607 "metachop.met"
 #line 608 "metachop.met"
-                    {
+                                        default : 
 #line 608 "metachop.met"
-                        lexEl.AddString("e");
+                                             if (c!= EOF) {
 #line 608 "metachop.met"
-                    }
 #line 608 "metachop.met"
-#line 609 "metachop.met"
-                    if (((c == '+')||(c == '-'))){
-#line 609 "metachop.met"
-#line 610 "metachop.met"
-                        {
-#line 610 "metachop.met"
-                            lexEl . AddChar(c);
-#line 610 "metachop.met"
-                            NextChar();
-#line 610 "metachop.met"
-                        }
-#line 610 "metachop.met"
-                    }
-#line 610 "metachop.met"
+                                                {
+#line 608 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 608 "metachop.met"
+                                                    tokenAhead =1;
+#line 608 "metachop.met"
+                                                    lexEl.Value=LLHEXA;
+#line 608 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 608 "metachop.met"
+                                                    return(1);
+#line 608 "metachop.met"
+                                                }
+#line 608 "metachop.met"
+                                            }
+#line 608 "metachop.met"
+                                            break ;
+#line 608 "metachop.met"
+                                    }
+#line 608 "metachop.met"
+#line 608 "metachop.met"
+                                    break ;
+#line 608 "metachop.met"
 #line 611 "metachop.met"
-                    while ((('0' <= c && c <= '9'))) { 
+                                default : 
 #line 611 "metachop.met"
-#line 612 "metachop.met"
-                        {
-#line 612 "metachop.met"
-                            lexEl . AddChar(c);
-#line 612 "metachop.met"
+                                     if (c!= EOF) {
+#line 611 "metachop.met"
+#line 611 "metachop.met"
+                                        {
+#line 611 "metachop.met"
+                                            firstOnLine = 0 ; 
+#line 611 "metachop.met"
+                                            tokenAhead =1;
+#line 611 "metachop.met"
+                                            lexEl.Value=LHEXA;
+#line 611 "metachop.met"
+                                            PUT_COORD_CALL;
+#line 611 "metachop.met"
+                                            return(1);
+#line 611 "metachop.met"
+                                        }
+#line 611 "metachop.met"
+                                    }
+#line 611 "metachop.met"
+                                    break ;
+#line 611 "metachop.met"
+                            }
+#line 611 "metachop.met"
+                            break ;
+#line 611 "metachop.met"
+#line 613 "metachop.met"
+                        case 'u' :
+#line 613 "metachop.met"
+                        case 'U' :
+#line 613 "metachop.met"
                             NextChar();
-#line 612 "metachop.met"
+#line 613 "metachop.met"
+#line 614 "metachop.met"
+                            switch (c) {
+#line 614 "metachop.met"
+#line 615 "metachop.met"
+                                case 'l' :
+#line 615 "metachop.met"
+                                case 'L' :
+#line 615 "metachop.met"
+                                    NextChar();
+#line 615 "metachop.met"
+#line 616 "metachop.met"
+#line 617 "metachop.met"
+                                    switch (c) {
+#line 617 "metachop.met"
+#line 618 "metachop.met"
+                                        case 'L' :
+#line 618 "metachop.met"
+                                        case 'l' :
+#line 618 "metachop.met"
+                                            NextChar();
+#line 618 "metachop.met"
+#line 618 "metachop.met"
+                                            {
+#line 618 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 618 "metachop.met"
+                                                tokenAhead =1;
+#line 618 "metachop.met"
+                                                lexEl.Value=ULLHEXA;
+#line 618 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 618 "metachop.met"
+                                                return(1);
+#line 618 "metachop.met"
+                                            }
+#line 618 "metachop.met"
+                                            break ;
+#line 618 "metachop.met"
+#line 619 "metachop.met"
+                                        default : 
+#line 619 "metachop.met"
+                                             if (c!= EOF) {
+#line 619 "metachop.met"
+#line 619 "metachop.met"
+                                                {
+#line 619 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 619 "metachop.met"
+                                                    tokenAhead =1;
+#line 619 "metachop.met"
+                                                    lexEl.Value=ULHEXA;
+#line 619 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 619 "metachop.met"
+                                                    return(1);
+#line 619 "metachop.met"
+                                                }
+#line 619 "metachop.met"
+                                            }
+#line 619 "metachop.met"
+                                            break ;
+#line 619 "metachop.met"
+                                    }
+#line 619 "metachop.met"
+#line 619 "metachop.met"
+                                    break ;
+#line 619 "metachop.met"
+#line 622 "metachop.met"
+                                default : 
+#line 622 "metachop.met"
+                                     if (c!= EOF) {
+#line 622 "metachop.met"
+#line 622 "metachop.met"
+                                        {
+#line 622 "metachop.met"
+                                            firstOnLine = 0 ; 
+#line 622 "metachop.met"
+                                            tokenAhead =1;
+#line 622 "metachop.met"
+                                            lexEl.Value=UHEXA;
+#line 622 "metachop.met"
+                                            PUT_COORD_CALL;
+#line 622 "metachop.met"
+                                            return(1);
+#line 622 "metachop.met"
+                                        }
+#line 622 "metachop.met"
+                                    }
+#line 622 "metachop.met"
+                                    break ;
+#line 622 "metachop.met"
+                            }
+#line 622 "metachop.met"
+                            break ;
+#line 622 "metachop.met"
+#line 624 "metachop.met"
+                        default : 
+#line 624 "metachop.met"
+                             if (c!= EOF) {
+#line 624 "metachop.met"
+#line 624 "metachop.met"
+                                {
+#line 624 "metachop.met"
+                                    firstOnLine = 0 ; 
+#line 624 "metachop.met"
+                                    tokenAhead =1;
+#line 624 "metachop.met"
+                                    lexEl.Value=HEXA;
+#line 624 "metachop.met"
+                                    PUT_COORD_CALL;
+#line 624 "metachop.met"
+                                    return(1);
+#line 624 "metachop.met"
+                                }
+#line 624 "metachop.met"
+                            }
+#line 624 "metachop.met"
+                            break ;
+#line 624 "metachop.met"
+                    }
+#line 624 "metachop.met"
+#line 624 "metachop.met"
+                    break ;
+#line 624 "metachop.met"
+#line 627 "metachop.met"
+                case 'b' :
+#line 627 "metachop.met"
+                case 'B' :
+#line 627 "metachop.met"
+                    NextChar();
+#line 627 "metachop.met"
+#line 628 "metachop.met"
+#line 629 "metachop.met"
+                    while ((('0' <= c && c <= '1'))) { 
+#line 629 "metachop.met"
+#line 630 "metachop.met"
+                        {
+#line 630 "metachop.met"
+                            lexEl . AddChar(c);
+#line 630 "metachop.met"
+                            NextChar();
+#line 630 "metachop.met"
                         }
-#line 612 "metachop.met"
+#line 630 "metachop.met"
                     } 
-#line 612 "metachop.met"
-#line 612 "metachop.met"
-#line 612 "metachop.met"
-                }
-#line 612 "metachop.met"
-#line 614 "metachop.met"
-                switch (c) {
-#line 614 "metachop.met"
-#line 615 "metachop.met"
-                    case 'f' :
-#line 615 "metachop.met"
-#line 615 "metachop.met"
+#line 630 "metachop.met"
+#line 631 "metachop.met"
+                    {
+#line 631 "metachop.met"
+                        firstOnLine = 0 ; 
+#line 631 "metachop.met"
+                        tokenAhead =1;
+#line 631 "metachop.met"
+                        lexEl.Value=BINARY;
+#line 631 "metachop.met"
+                        PUT_COORD_CALL;
+#line 631 "metachop.met"
+                        return(1);
+#line 631 "metachop.met"
+                    }
+#line 631 "metachop.met"
+#line 631 "metachop.met"
+                    break ;
+#line 631 "metachop.met"
+#line 633 "metachop.met"
+                case '0' :
+#line 633 "metachop.met"
+                case '1' :
+#line 633 "metachop.met"
+                case '2' :
+#line 633 "metachop.met"
+                case '3' :
+#line 633 "metachop.met"
+                case '4' :
+#line 633 "metachop.met"
+                case '5' :
+#line 633 "metachop.met"
+                case '6' :
+#line 633 "metachop.met"
+                case '7' :
+#line 633 "metachop.met"
+#line 634 "metachop.met"
+#line 635 "metachop.met"
+                    while ((('0' <= c && c <= '7'))) { 
+#line 635 "metachop.met"
+#line 636 "metachop.met"
                         {
-#line 615 "metachop.met"
+#line 636 "metachop.met"
                             lexEl . AddChar(c);
-#line 615 "metachop.met"
+#line 636 "metachop.met"
                             NextChar();
-#line 615 "metachop.met"
+#line 636 "metachop.met"
                         }
-#line 615 "metachop.met"
-                        break ;
-#line 615 "metachop.met"
-#line 616 "metachop.met"
-                    case 'F' :
-#line 616 "metachop.met"
-#line 616 "metachop.met"
+#line 636 "metachop.met"
+                    } 
+#line 636 "metachop.met"
+#line 637 "metachop.met"
+                    switch (c) {
+#line 637 "metachop.met"
+#line 638 "metachop.met"
+                        case 'l' :
+#line 638 "metachop.met"
+                        case 'L' :
+#line 638 "metachop.met"
+                            NextChar();
+#line 638 "metachop.met"
+#line 639 "metachop.met"
+                            switch (c) {
+#line 639 "metachop.met"
+#line 640 "metachop.met"
+                                case 'L' :
+#line 640 "metachop.met"
+                                case 'l' :
+#line 640 "metachop.met"
+                                    NextChar();
+#line 640 "metachop.met"
+#line 641 "metachop.met"
+#line 642 "metachop.met"
+                                    switch (c) {
+#line 642 "metachop.met"
+#line 643 "metachop.met"
+                                        case 'u' :
+#line 643 "metachop.met"
+                                        case 'U' :
+#line 643 "metachop.met"
+                                            NextChar();
+#line 643 "metachop.met"
+#line 643 "metachop.met"
+                                            {
+#line 643 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 643 "metachop.met"
+                                                tokenAhead =1;
+#line 643 "metachop.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 643 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 643 "metachop.met"
+                                                return(1);
+#line 643 "metachop.met"
+                                            }
+#line 643 "metachop.met"
+                                            break ;
+#line 643 "metachop.met"
+#line 644 "metachop.met"
+                                        default : 
+#line 644 "metachop.met"
+                                             if (c!= EOF) {
+#line 644 "metachop.met"
+#line 644 "metachop.met"
+                                                {
+#line 644 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 644 "metachop.met"
+                                                    tokenAhead =1;
+#line 644 "metachop.met"
+                                                    lexEl.Value=LLOCTAL;
+#line 644 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 644 "metachop.met"
+                                                    return(1);
+#line 644 "metachop.met"
+                                                }
+#line 644 "metachop.met"
+                                            }
+#line 644 "metachop.met"
+                                            break ;
+#line 644 "metachop.met"
+                                    }
+#line 644 "metachop.met"
+#line 644 "metachop.met"
+                                    break ;
+#line 644 "metachop.met"
+#line 647 "metachop.met"
+                                case 'u' :
+#line 647 "metachop.met"
+                                case 'U' :
+#line 647 "metachop.met"
+                                    NextChar();
+#line 647 "metachop.met"
+#line 647 "metachop.met"
+                                    {
+#line 647 "metachop.met"
+                                        firstOnLine = 0 ; 
+#line 647 "metachop.met"
+                                        tokenAhead =1;
+#line 647 "metachop.met"
+                                        lexEl.Value=ULOCTAL;
+#line 647 "metachop.met"
+                                        PUT_COORD_CALL;
+#line 647 "metachop.met"
+                                        return(1);
+#line 647 "metachop.met"
+                                    }
+#line 647 "metachop.met"
+                                    break ;
+#line 647 "metachop.met"
+#line 648 "metachop.met"
+                                default : 
+#line 648 "metachop.met"
+                                     if (c!= EOF) {
+#line 648 "metachop.met"
+#line 648 "metachop.met"
+                                        {
+#line 648 "metachop.met"
+                                            firstOnLine = 0 ; 
+#line 648 "metachop.met"
+                                            tokenAhead =1;
+#line 648 "metachop.met"
+                                            lexEl.Value=LOCTAL;
+#line 648 "metachop.met"
+                                            PUT_COORD_CALL;
+#line 648 "metachop.met"
+                                            return(1);
+#line 648 "metachop.met"
+                                        }
+#line 648 "metachop.met"
+                                    }
+#line 648 "metachop.met"
+                                    break ;
+#line 648 "metachop.met"
+                            }
+#line 648 "metachop.met"
+                            break ;
+#line 648 "metachop.met"
+#line 650 "metachop.met"
+                        case 'u' :
+#line 650 "metachop.met"
+                        case 'U' :
+#line 650 "metachop.met"
+                            NextChar();
+#line 650 "metachop.met"
+#line 651 "metachop.met"
+                            switch (c) {
+#line 651 "metachop.met"
+#line 652 "metachop.met"
+                                case 'l' :
+#line 652 "metachop.met"
+                                case 'L' :
+#line 652 "metachop.met"
+                                    NextChar();
+#line 652 "metachop.met"
+#line 653 "metachop.met"
+#line 654 "metachop.met"
+                                    switch (c) {
+#line 654 "metachop.met"
+#line 655 "metachop.met"
+                                        case 'L' :
+#line 655 "metachop.met"
+                                        case 'l' :
+#line 655 "metachop.met"
+                                            NextChar();
+#line 655 "metachop.met"
+#line 655 "metachop.met"
+                                            {
+#line 655 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 655 "metachop.met"
+                                                tokenAhead =1;
+#line 655 "metachop.met"
+                                                lexEl.Value=ULLOCTAL;
+#line 655 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 655 "metachop.met"
+                                                return(1);
+#line 655 "metachop.met"
+                                            }
+#line 655 "metachop.met"
+                                            break ;
+#line 655 "metachop.met"
+#line 656 "metachop.met"
+                                        default : 
+#line 656 "metachop.met"
+                                             if (c!= EOF) {
+#line 656 "metachop.met"
+#line 656 "metachop.met"
+                                                {
+#line 656 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 656 "metachop.met"
+                                                    tokenAhead =1;
+#line 656 "metachop.met"
+                                                    lexEl.Value=ULOCTAL;
+#line 656 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 656 "metachop.met"
+                                                    return(1);
+#line 656 "metachop.met"
+                                                }
+#line 656 "metachop.met"
+                                            }
+#line 656 "metachop.met"
+                                            break ;
+#line 656 "metachop.met"
+                                    }
+#line 656 "metachop.met"
+#line 656 "metachop.met"
+                                    break ;
+#line 656 "metachop.met"
+#line 659 "metachop.met"
+                                default : 
+#line 659 "metachop.met"
+                                     if (c!= EOF) {
+#line 659 "metachop.met"
+#line 659 "metachop.met"
+                                        {
+#line 659 "metachop.met"
+                                            firstOnLine = 0 ; 
+#line 659 "metachop.met"
+                                            tokenAhead =1;
+#line 659 "metachop.met"
+                                            lexEl.Value=UOCTAL;
+#line 659 "metachop.met"
+                                            PUT_COORD_CALL;
+#line 659 "metachop.met"
+                                            return(1);
+#line 659 "metachop.met"
+                                        }
+#line 659 "metachop.met"
+                                    }
+#line 659 "metachop.met"
+                                    break ;
+#line 659 "metachop.met"
+                            }
+#line 659 "metachop.met"
+                            break ;
+#line 659 "metachop.met"
+#line 661 "metachop.met"
+                        default : 
+#line 661 "metachop.met"
+                             if (c!= EOF) {
+#line 661 "metachop.met"
+#line 661 "metachop.met"
+                                {
+#line 661 "metachop.met"
+                                    firstOnLine = 0 ; 
+#line 661 "metachop.met"
+                                    tokenAhead =1;
+#line 661 "metachop.met"
+                                    lexEl.Value=OCTAL;
+#line 661 "metachop.met"
+                                    PUT_COORD_CALL;
+#line 661 "metachop.met"
+                                    return(1);
+#line 661 "metachop.met"
+                                }
+#line 661 "metachop.met"
+                            }
+#line 661 "metachop.met"
+                            break ;
+#line 661 "metachop.met"
+                    }
+#line 661 "metachop.met"
+#line 661 "metachop.met"
+                    break ;
+#line 661 "metachop.met"
+#line 664 "metachop.met"
+                case '.' :
+#line 664 "metachop.met"
+#line 665 "metachop.met"
+#line 666 "metachop.met"
+                    {
+#line 666 "metachop.met"
+                        lexEl.AddString("0");
+#line 666 "metachop.met"
+                    }
+#line 666 "metachop.met"
+#line 667 "metachop.met"
+                    {
+#line 667 "metachop.met"
+                        lexEl . AddChar(c);
+#line 667 "metachop.met"
+                        NextChar();
+#line 667 "metachop.met"
+                    }
+#line 667 "metachop.met"
+#line 668 "metachop.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 668 "metachop.met"
+#line 669 "metachop.met"
                         {
-#line 616 "metachop.met"
+#line 669 "metachop.met"
                             lexEl . AddChar(c);
-#line 616 "metachop.met"
+#line 669 "metachop.met"
                             NextChar();
-#line 616 "metachop.met"
+#line 669 "metachop.met"
                         }
-#line 616 "metachop.met"
-                        break ;
-#line 616 "metachop.met"
-#line 617 "metachop.met"
-                    case 'l' :
-#line 617 "metachop.met"
-#line 617 "metachop.met"
+#line 669 "metachop.met"
+                    } 
+#line 669 "metachop.met"
+#line 670 "metachop.met"
+                    if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 670 "metachop.met"
+#line 671 "metachop.met"
+#line 672 "metachop.met"
                         {
-#line 617 "metachop.met"
-                            lexEl . AddChar(c);
-#line 617 "metachop.met"
-                            NextChar();
-#line 617 "metachop.met"
+#line 672 "metachop.met"
+                            lexEl.AddString("e");
+#line 672 "metachop.met"
                         }
-#line 617 "metachop.met"
-                        break ;
-#line 617 "metachop.met"
-#line 618 "metachop.met"
-                    case 'L' :
-#line 618 "metachop.met"
-#line 618 "metachop.met"
-                        {
-#line 618 "metachop.met"
-                            lexEl . AddChar(c);
-#line 618 "metachop.met"
-                            NextChar();
-#line 618 "metachop.met"
+#line 672 "metachop.met"
+#line 673 "metachop.met"
+                        if (((c == '+')||(c == '-'))){
+#line 673 "metachop.met"
+#line 674 "metachop.met"
+                            {
+#line 674 "metachop.met"
+                                lexEl . AddChar(c);
+#line 674 "metachop.met"
+                                NextChar();
+#line 674 "metachop.met"
+                            }
+#line 674 "metachop.met"
                         }
-#line 618 "metachop.met"
-                        break ;
-#line 618 "metachop.met"
-                }
-#line 618 "metachop.met"
-#line 620 "metachop.met"
-                {
-#line 620 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 620 "metachop.met"
-                    tokenAhead =1;
-#line 620 "metachop.met"
-                    lexEl.Value=FLOATVAL;
-#line 620 "metachop.met"
-                    PUT_COORD_CALL;
-#line 620 "metachop.met"
-                    return(1);
-#line 620 "metachop.met"
-                }
-#line 620 "metachop.met"
-#line 620 "metachop.met"
-#line 620 "metachop.met"
-            } else {
-#line 620 "metachop.met"
-#line 623 "metachop.met"
-#line 624 "metachop.met"
-                {
-#line 624 "metachop.met"
-                    firstOnLine = 0 ; 
-#line 624 "metachop.met"
-                    tokenAhead =1;
-#line 624 "metachop.met"
-                    lexEl.Value=POINT;
-#line 624 "metachop.met"
-                    PUT_COORD_CALL;
-#line 624 "metachop.met"
-                    return(1);
-#line 624 "metachop.met"
-                }
-#line 624 "metachop.met"
-#line 624 "metachop.met"
+#line 674 "metachop.met"
+#line 675 "metachop.met"
+                        while ((('0' <= c && c <= '9'))) { 
+#line 675 "metachop.met"
+#line 676 "metachop.met"
+                            {
+#line 676 "metachop.met"
+                                lexEl . AddChar(c);
+#line 676 "metachop.met"
+                                NextChar();
+#line 676 "metachop.met"
+                            }
+#line 676 "metachop.met"
+                        } 
+#line 676 "metachop.met"
+#line 676 "metachop.met"
+#line 676 "metachop.met"
+                    }
+#line 676 "metachop.met"
+#line 678 "metachop.met"
+                    switch (c) {
+#line 678 "metachop.met"
+#line 679 "metachop.met"
+                        case 'f' :
+#line 679 "metachop.met"
+#line 679 "metachop.met"
+                            {
+#line 679 "metachop.met"
+                                lexEl . AddChar(c);
+#line 679 "metachop.met"
+                                NextChar();
+#line 679 "metachop.met"
+                            }
+#line 679 "metachop.met"
+                            break ;
+#line 679 "metachop.met"
+#line 680 "metachop.met"
+                        case 'F' :
+#line 680 "metachop.met"
+#line 680 "metachop.met"
+                            {
+#line 680 "metachop.met"
+                                lexEl . AddChar(c);
+#line 680 "metachop.met"
+                                NextChar();
+#line 680 "metachop.met"
+                            }
+#line 680 "metachop.met"
+                            break ;
+#line 680 "metachop.met"
+#line 681 "metachop.met"
+                        case 'l' :
+#line 681 "metachop.met"
+#line 681 "metachop.met"
+                            {
+#line 681 "metachop.met"
+                                lexEl . AddChar(c);
+#line 681 "metachop.met"
+                                NextChar();
+#line 681 "metachop.met"
+                            }
+#line 681 "metachop.met"
+                            break ;
+#line 681 "metachop.met"
+#line 682 "metachop.met"
+                        case 'L' :
+#line 682 "metachop.met"
+#line 682 "metachop.met"
+                            {
+#line 682 "metachop.met"
+                                lexEl . AddChar(c);
+#line 682 "metachop.met"
+                                NextChar();
+#line 682 "metachop.met"
+                            }
+#line 682 "metachop.met"
+                            break ;
+#line 682 "metachop.met"
+                    }
+#line 682 "metachop.met"
+#line 684 "metachop.met"
+                    {
+#line 684 "metachop.met"
+                        firstOnLine = 0 ; 
+#line 684 "metachop.met"
+                        tokenAhead =1;
+#line 684 "metachop.met"
+                        lexEl.Value=FLOATVAL;
+#line 684 "metachop.met"
+                        PUT_COORD_CALL;
+#line 684 "metachop.met"
+                        return(1);
+#line 684 "metachop.met"
+                    }
+#line 684 "metachop.met"
+#line 684 "metachop.met"
+                    break ;
+#line 684 "metachop.met"
+#line 690 "metachop.met"
+                default : 
+#line 690 "metachop.met"
+                     if (c!= EOF) {
+#line 690 "metachop.met"
+#line 687 "metachop.met"
+#line 688 "metachop.met"
+                        if (c != EOF){
+#line 688 "metachop.met"
+#line 689 "metachop.met"
+#line 690 "metachop.met"
+                            {
+#line 690 "metachop.met"
+                                lexEl.AddString("0");
+#line 690 "metachop.met"
+                            }
+#line 690 "metachop.met"
+#line 691 "metachop.met"
+                            switch (c) {
+#line 691 "metachop.met"
+#line 692 "metachop.met"
+                                case 'l' :
+#line 692 "metachop.met"
+                                case 'L' :
+#line 692 "metachop.met"
+                                    NextChar();
+#line 692 "metachop.met"
+#line 693 "metachop.met"
+                                    switch (c) {
+#line 693 "metachop.met"
+#line 694 "metachop.met"
+                                        case 'u' :
+#line 694 "metachop.met"
+                                        case 'U' :
+#line 694 "metachop.met"
+                                            NextChar();
+#line 694 "metachop.met"
+#line 694 "metachop.met"
+                                            {
+#line 694 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 694 "metachop.met"
+                                                tokenAhead =1;
+#line 694 "metachop.met"
+                                                lexEl.Value=ULINTEGER;
+#line 694 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 694 "metachop.met"
+                                                return(1);
+#line 694 "metachop.met"
+                                            }
+#line 694 "metachop.met"
+                                            break ;
+#line 694 "metachop.met"
+#line 695 "metachop.met"
+                                        default : 
+#line 695 "metachop.met"
+                                             if (c!= EOF) {
+#line 695 "metachop.met"
+#line 695 "metachop.met"
+                                                {
+#line 695 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 695 "metachop.met"
+                                                    tokenAhead =1;
+#line 695 "metachop.met"
+                                                    lexEl.Value=LINTEGER;
+#line 695 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 695 "metachop.met"
+                                                    return(1);
+#line 695 "metachop.met"
+                                                }
+#line 695 "metachop.met"
+                                            }
+#line 695 "metachop.met"
+                                            break ;
+#line 695 "metachop.met"
+                                    }
+#line 695 "metachop.met"
+                                    break ;
+#line 695 "metachop.met"
+#line 697 "metachop.met"
+                                case 'u' :
+#line 697 "metachop.met"
+                                case 'U' :
+#line 697 "metachop.met"
+                                    NextChar();
+#line 697 "metachop.met"
+#line 698 "metachop.met"
+                                    switch (c) {
+#line 698 "metachop.met"
+#line 699 "metachop.met"
+                                        case 'l' :
+#line 699 "metachop.met"
+                                        case 'L' :
+#line 699 "metachop.met"
+                                            NextChar();
+#line 699 "metachop.met"
+#line 699 "metachop.met"
+                                            {
+#line 699 "metachop.met"
+                                                firstOnLine = 0 ; 
+#line 699 "metachop.met"
+                                                tokenAhead =1;
+#line 699 "metachop.met"
+                                                lexEl.Value=ULINTEGER;
+#line 699 "metachop.met"
+                                                PUT_COORD_CALL;
+#line 699 "metachop.met"
+                                                return(1);
+#line 699 "metachop.met"
+                                            }
+#line 699 "metachop.met"
+                                            break ;
+#line 699 "metachop.met"
+#line 700 "metachop.met"
+                                        default : 
+#line 700 "metachop.met"
+                                             if (c!= EOF) {
+#line 700 "metachop.met"
+#line 700 "metachop.met"
+                                                {
+#line 700 "metachop.met"
+                                                    firstOnLine = 0 ; 
+#line 700 "metachop.met"
+                                                    tokenAhead =1;
+#line 700 "metachop.met"
+                                                    lexEl.Value=UINTEGER;
+#line 700 "metachop.met"
+                                                    PUT_COORD_CALL;
+#line 700 "metachop.met"
+                                                    return(1);
+#line 700 "metachop.met"
+                                                }
+#line 700 "metachop.met"
+                                            }
+#line 700 "metachop.met"
+                                            break ;
+#line 700 "metachop.met"
+                                    }
+#line 700 "metachop.met"
+                                    break ;
+#line 700 "metachop.met"
+#line 702 "metachop.met"
+                                default : 
+#line 702 "metachop.met"
+                                     if (c!= EOF) {
+#line 702 "metachop.met"
+#line 702 "metachop.met"
+                                        {
+#line 702 "metachop.met"
+                                            firstOnLine = 0 ; 
+#line 702 "metachop.met"
+                                            tokenAhead =1;
+#line 702 "metachop.met"
+                                            lexEl.Value=INTEGER;
+#line 702 "metachop.met"
+                                            PUT_COORD_CALL;
+#line 702 "metachop.met"
+                                            return(1);
+#line 702 "metachop.met"
+                                        }
+#line 702 "metachop.met"
+                                    }
+#line 702 "metachop.met"
+                                    break ;
+#line 702 "metachop.met"
+                            }
+#line 702 "metachop.met"
+#line 702 "metachop.met"
+#line 703 "metachop.met"
+                        }
+#line 703 "metachop.met"
+#line 703 "metachop.met"
+                    }
+#line 703 "metachop.met"
+                    break ;
+#line 703 "metachop.met"
             }
-#line 624 "metachop.met"
-#line 624 "metachop.met"
+#line 703 "metachop.met"
+#line 703 "metachop.met"
             break ;
-#line 624 "metachop.met"
+#line 703 "metachop.met"
+#line 708 "metachop.met"
+        case '#' :
+#line 708 "metachop.met"
+            NextChar();
+#line 708 "metachop.met"
+#line 709 "metachop.met"
+#line 710 "metachop.met"
+            while (((c == ' ')||(c == '\t'))) { 
+#line 710 "metachop.met"
+#line 711 "metachop.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 711 "metachop.met"
+            } 
+#line 711 "metachop.met"
+#line 712 "metachop.met"
+#line 713 "metachop.met"
+            if((GetString("include",1)&& NextChar())){
+#line 713 "metachop.met"
+#line 713 "metachop.met"
+                {
+#line 713 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 713 "metachop.met"
+                    tokenAhead =1;
+#line 713 "metachop.met"
+                    lexEl.Value=INCLUDE_DIR;
+#line 713 "metachop.met"
+                    PUT_COORD_CALL;
+#line 713 "metachop.met"
+                    return(1);
+#line 713 "metachop.met"
+                }
+#line 713 "metachop.met"
+            } else 
+#line 713 "metachop.met"
+#line 714 "metachop.met"
+            if((GetString("ifdef",1)&& NextChar())){
+#line 714 "metachop.met"
+#line 714 "metachop.met"
+                {
+#line 714 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 714 "metachop.met"
+                    tokenAhead =1;
+#line 714 "metachop.met"
+                    lexEl.Value=IFDEF_DIR;
+#line 714 "metachop.met"
+                    PUT_COORD_CALL;
+#line 714 "metachop.met"
+                    return(1);
+#line 714 "metachop.met"
+                }
+#line 714 "metachop.met"
+            } else 
+#line 714 "metachop.met"
+#line 715 "metachop.met"
+            if((GetString("ifndef",1)&& NextChar())){
+#line 715 "metachop.met"
+#line 715 "metachop.met"
+                {
+#line 715 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 715 "metachop.met"
+                    tokenAhead =1;
+#line 715 "metachop.met"
+                    lexEl.Value=IFNDEF_DIR;
+#line 715 "metachop.met"
+                    PUT_COORD_CALL;
+#line 715 "metachop.met"
+                    return(1);
+#line 715 "metachop.met"
+                }
+#line 715 "metachop.met"
+            } else 
+#line 715 "metachop.met"
+#line 716 "metachop.met"
+            if((GetString("if",1)&& NextChar())){
+#line 716 "metachop.met"
+#line 716 "metachop.met"
+                {
+#line 716 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 716 "metachop.met"
+                    tokenAhead =1;
+#line 716 "metachop.met"
+                    lexEl.Value=IF_DIR;
+#line 716 "metachop.met"
+                    PUT_COORD_CALL;
+#line 716 "metachop.met"
+                    return(1);
+#line 716 "metachop.met"
+                }
+#line 716 "metachop.met"
+            } else 
+#line 716 "metachop.met"
+#line 717 "metachop.met"
+            if((GetString("else",1)&& NextChar())){
+#line 717 "metachop.met"
+#line 717 "metachop.met"
+                {
+#line 717 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 717 "metachop.met"
+                    tokenAhead =1;
+#line 717 "metachop.met"
+                    lexEl.Value=ELSE_DIR;
+#line 717 "metachop.met"
+                    PUT_COORD_CALL;
+#line 717 "metachop.met"
+                    return(1);
+#line 717 "metachop.met"
+                }
+#line 717 "metachop.met"
+            } else 
+#line 717 "metachop.met"
+#line 718 "metachop.met"
+            if((GetString("elif",1)&& NextChar())){
+#line 718 "metachop.met"
+#line 718 "metachop.met"
+                {
+#line 718 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 718 "metachop.met"
+                    tokenAhead =1;
+#line 718 "metachop.met"
+                    lexEl.Value=ELIF_DIR;
+#line 718 "metachop.met"
+                    PUT_COORD_CALL;
+#line 718 "metachop.met"
+                    return(1);
+#line 718 "metachop.met"
+                }
+#line 718 "metachop.met"
+            } else 
+#line 718 "metachop.met"
+#line 719 "metachop.met"
+            if((GetString("endif",1)&& NextChar())){
+#line 719 "metachop.met"
+#line 719 "metachop.met"
+                {
+#line 719 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 719 "metachop.met"
+                    tokenAhead =1;
+#line 719 "metachop.met"
+                    lexEl.Value=ENDIF_DIR;
+#line 719 "metachop.met"
+                    PUT_COORD_CALL;
+#line 719 "metachop.met"
+                    return(1);
+#line 719 "metachop.met"
+                }
+#line 719 "metachop.met"
+            } else 
+#line 719 "metachop.met"
+#line 720 "metachop.met"
+            if((GetString("line",1)&& NextChar())){
+#line 720 "metachop.met"
+#line 720 "metachop.met"
+                {
+#line 720 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 720 "metachop.met"
+                    tokenAhead =1;
+#line 720 "metachop.met"
+                    lexEl.Value=LINE_DIR;
+#line 720 "metachop.met"
+                    PUT_COORD_CALL;
+#line 720 "metachop.met"
+                    return(1);
+#line 720 "metachop.met"
+                }
+#line 720 "metachop.met"
+            } else 
+#line 720 "metachop.met"
+#line 721 "metachop.met"
+            if((GetString("pragma",1)&& NextChar())){
+#line 721 "metachop.met"
+#line 721 "metachop.met"
+                {
+#line 721 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 721 "metachop.met"
+                    tokenAhead =1;
+#line 721 "metachop.met"
+                    lexEl.Value=PRAGMA_DIR;
+#line 721 "metachop.met"
+                    PUT_COORD_CALL;
+#line 721 "metachop.met"
+                    return(1);
+#line 721 "metachop.met"
+                }
+#line 721 "metachop.met"
+            } else 
+#line 721 "metachop.met"
+#line 722 "metachop.met"
+            if((GetString("error",1)&& NextChar())){
+#line 722 "metachop.met"
+#line 722 "metachop.met"
+                {
+#line 722 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 722 "metachop.met"
+                    tokenAhead =1;
+#line 722 "metachop.met"
+                    lexEl.Value=ERROR_DIR;
+#line 722 "metachop.met"
+                    PUT_COORD_CALL;
+#line 722 "metachop.met"
+                    return(1);
+#line 722 "metachop.met"
+                }
+#line 722 "metachop.met"
+            } else 
+#line 722 "metachop.met"
+#line 723 "metachop.met"
+            if((GetString("define",1)&& NextChar())){
+#line 723 "metachop.met"
+#line 723 "metachop.met"
+                {
+#line 723 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 723 "metachop.met"
+                    tokenAhead =1;
+#line 723 "metachop.met"
+                    lexEl.Value=DEFINE_DIR;
+#line 723 "metachop.met"
+                    PUT_COORD_CALL;
+#line 723 "metachop.met"
+                    return(1);
+#line 723 "metachop.met"
+                }
+#line 723 "metachop.met"
+            } else 
+#line 723 "metachop.met"
+#line 724 "metachop.met"
+            if((GetString("undef",1)&& NextChar())){
+#line 724 "metachop.met"
+#line 724 "metachop.met"
+                {
+#line 724 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 724 "metachop.met"
+                    tokenAhead =1;
+#line 724 "metachop.met"
+                    lexEl.Value=UNDEF_DIR;
+#line 724 "metachop.met"
+                    PUT_COORD_CALL;
+#line 724 "metachop.met"
+                    return(1);
+#line 724 "metachop.met"
+                }
+#line 724 "metachop.met"
+            } else 
+#line 724 "metachop.met"
+#line 725 "metachop.met"
+            if(((('0' <= c && c <= '9')))){
+#line 725 "metachop.met"
+#line 725 "metachop.met"
+                {
+#line 725 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 725 "metachop.met"
+                    tokenAhead =1;
+#line 725 "metachop.met"
+                    lexEl.Value=LINE_REFERENCE_DIR;
+#line 725 "metachop.met"
+                    PUT_COORD_CALL;
+#line 725 "metachop.met"
+                    return(1);
+#line 725 "metachop.met"
+                }
+#line 725 "metachop.met"
+            } else 
+#line 725 "metachop.met"
+#line 728 "metachop.met"
+            if((c != EOF)){
+#line 728 "metachop.met"
+#line 727 "metachop.met"
+#line 728 "metachop.met"
+                {
+#line 728 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 728 "metachop.met"
+                    tokenAhead =1;
+#line 728 "metachop.met"
+                    lexEl.Value=SHARP_VAL;
+#line 728 "metachop.met"
+                    PUT_COORD_CALL;
+#line 728 "metachop.met"
+                    return(1);
+#line 728 "metachop.met"
+                }
+#line 728 "metachop.met"
+#line 728 "metachop.met"
+            } else 
+#line 728 "metachop.met"
+             ;
+#line 728 "metachop.met"
+#line 728 "metachop.met"
+            break ;
+#line 728 "metachop.met"
+#line 732 "metachop.met"
+        case '\r' :
+#line 732 "metachop.met"
+        case '\n' :
+#line 732 "metachop.met"
+            NextChar();
+#line 732 "metachop.met"
+#line 732 "metachop.met"
+            {
+#line 732 "metachop.met"
+                firstOnLine = 0 ; 
+#line 732 "metachop.met"
+                tokenAhead =1;
+#line 732 "metachop.met"
+                lexEl.Value=CARRIAGE_RETURN;
+#line 732 "metachop.met"
+                firstOnLine = 1 ; 
+#line 732 "metachop.met"
+                PUT_COORD_CALL;
+#line 732 "metachop.met"
+                return(1);
+#line 732 "metachop.met"
+            }
+#line 732 "metachop.met"
+            break ;
+#line 732 "metachop.met"
+#line 733 "metachop.met"
+        case '/' :
+#line 733 "metachop.met"
+            NextChar();
+#line 733 "metachop.met"
+#line 734 "metachop.met"
+#line 735 "metachop.met"
+            if (((c == '='))){
+#line 735 "metachop.met"
+#line 736 "metachop.met"
+#line 737 "metachop.met"
+                if (!(c != EOF&& NextChar())) ;
+#line 737 "metachop.met"
+#line 738 "metachop.met"
+                {
+#line 738 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 738 "metachop.met"
+                    tokenAhead =1;
+#line 738 "metachop.met"
+                    lexEl.Value=SLASEGAL;
+#line 738 "metachop.met"
+                    PUT_COORD_CALL;
+#line 738 "metachop.met"
+                    return(1);
+#line 738 "metachop.met"
+                }
+#line 738 "metachop.met"
+#line 738 "metachop.met"
+#line 738 "metachop.met"
+            } else {
+#line 738 "metachop.met"
+#line 741 "metachop.met"
+                {
+#line 741 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 741 "metachop.met"
+                    tokenAhead =1;
+#line 741 "metachop.met"
+                    lexEl.Value=SLAS;
+#line 741 "metachop.met"
+                    PUT_COORD_CALL;
+#line 741 "metachop.met"
+                    return(1);
+#line 741 "metachop.met"
+                }
+#line 741 "metachop.met"
+            }
+#line 741 "metachop.met"
+#line 741 "metachop.met"
+            break ;
+#line 741 "metachop.met"
+#line 743 "metachop.met"
+        case '.' :
+#line 743 "metachop.met"
+#line 744 "metachop.met"
+#line 745 "metachop.met"
+            {
+#line 745 "metachop.met"
+                lexEl . AddChar(c);
+#line 745 "metachop.met"
+                NextChar();
+#line 745 "metachop.met"
+            }
+#line 745 "metachop.met"
+#line 746 "metachop.met"
+            if ((('0' <= c && c <= '9'))){
+#line 746 "metachop.met"
+#line 747 "metachop.met"
+#line 748 "metachop.met"
+                while ((('0' <= c && c <= '9'))) { 
+#line 748 "metachop.met"
+#line 749 "metachop.met"
+                    {
+#line 749 "metachop.met"
+                        lexEl . AddChar(c);
+#line 749 "metachop.met"
+                        NextChar();
+#line 749 "metachop.met"
+                    }
+#line 749 "metachop.met"
+                } 
+#line 749 "metachop.met"
+#line 750 "metachop.met"
+                if (((c == 'e')||(c == 'E'))&& NextChar()){
+#line 750 "metachop.met"
+#line 751 "metachop.met"
+#line 752 "metachop.met"
+                    {
+#line 752 "metachop.met"
+                        lexEl.AddString("e");
+#line 752 "metachop.met"
+                    }
+#line 752 "metachop.met"
+#line 753 "metachop.met"
+                    if (((c == '+')||(c == '-'))){
+#line 753 "metachop.met"
+#line 754 "metachop.met"
+                        {
+#line 754 "metachop.met"
+                            lexEl . AddChar(c);
+#line 754 "metachop.met"
+                            NextChar();
+#line 754 "metachop.met"
+                        }
+#line 754 "metachop.met"
+                    }
+#line 754 "metachop.met"
+#line 755 "metachop.met"
+                    while ((('0' <= c && c <= '9'))) { 
+#line 755 "metachop.met"
+#line 756 "metachop.met"
+                        {
+#line 756 "metachop.met"
+                            lexEl . AddChar(c);
+#line 756 "metachop.met"
+                            NextChar();
+#line 756 "metachop.met"
+                        }
+#line 756 "metachop.met"
+                    } 
+#line 756 "metachop.met"
+#line 756 "metachop.met"
+#line 756 "metachop.met"
+                }
+#line 756 "metachop.met"
+#line 758 "metachop.met"
+                switch (c) {
+#line 758 "metachop.met"
+#line 759 "metachop.met"
+                    case 'f' :
+#line 759 "metachop.met"
+#line 759 "metachop.met"
+                        {
+#line 759 "metachop.met"
+                            lexEl . AddChar(c);
+#line 759 "metachop.met"
+                            NextChar();
+#line 759 "metachop.met"
+                        }
+#line 759 "metachop.met"
+                        break ;
+#line 759 "metachop.met"
+#line 760 "metachop.met"
+                    case 'F' :
+#line 760 "metachop.met"
+#line 760 "metachop.met"
+                        {
+#line 760 "metachop.met"
+                            lexEl . AddChar(c);
+#line 760 "metachop.met"
+                            NextChar();
+#line 760 "metachop.met"
+                        }
+#line 760 "metachop.met"
+                        break ;
+#line 760 "metachop.met"
+#line 761 "metachop.met"
+                    case 'l' :
+#line 761 "metachop.met"
+#line 761 "metachop.met"
+                        {
+#line 761 "metachop.met"
+                            lexEl . AddChar(c);
+#line 761 "metachop.met"
+                            NextChar();
+#line 761 "metachop.met"
+                        }
+#line 761 "metachop.met"
+                        break ;
+#line 761 "metachop.met"
+#line 762 "metachop.met"
+                    case 'L' :
+#line 762 "metachop.met"
+#line 762 "metachop.met"
+                        {
+#line 762 "metachop.met"
+                            lexEl . AddChar(c);
+#line 762 "metachop.met"
+                            NextChar();
+#line 762 "metachop.met"
+                        }
+#line 762 "metachop.met"
+                        break ;
+#line 762 "metachop.met"
+                }
+#line 762 "metachop.met"
+#line 764 "metachop.met"
+                {
+#line 764 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 764 "metachop.met"
+                    tokenAhead =1;
+#line 764 "metachop.met"
+                    lexEl.Value=FLOATVAL;
+#line 764 "metachop.met"
+                    PUT_COORD_CALL;
+#line 764 "metachop.met"
+                    return(1);
+#line 764 "metachop.met"
+                }
+#line 764 "metachop.met"
+#line 764 "metachop.met"
+#line 764 "metachop.met"
+            } else {
+#line 764 "metachop.met"
+#line 767 "metachop.met"
+#line 768 "metachop.met"
+                {
+#line 768 "metachop.met"
+                    firstOnLine = 0 ; 
+#line 768 "metachop.met"
+                    tokenAhead =1;
+#line 768 "metachop.met"
+                    lexEl.Value=POINT;
+#line 768 "metachop.met"
+                    PUT_COORD_CALL;
+#line 768 "metachop.met"
+                    return(1);
+#line 768 "metachop.met"
+                }
+#line 768 "metachop.met"
+#line 768 "metachop.met"
+            }
+#line 768 "metachop.met"
+#line 768 "metachop.met"
+            break ;
+#line 768 "metachop.met"
     }
-#line 624 "metachop.met"
-#line 624 "metachop.met"
-#line 627 "metachop.met"
+#line 768 "metachop.met"
+#line 768 "metachop.met"
+#line 771 "metachop.met"
     line = oldLine;
-#line 627 "metachop.met"
+#line 771 "metachop.met"
     LEX_EXIT(0,"")
-#line 627 "metachop.met"
+#line 771 "metachop.met"
     lexEl.Value = -1 ;
-#line 627 "metachop.met"
+#line 771 "metachop.met"
     return -1 ; 
-#line 627 "metachop.met"
+#line 771 "metachop.met"
 }
-#line 627 "metachop.met"
+#line 771 "metachop.met"
 
-#line 627 "metachop.met"
+#line 771 "metachop.met"
 /* 
 -- 0 -- bidon
     ALWAYS
