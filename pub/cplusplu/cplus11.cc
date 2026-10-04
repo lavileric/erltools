@@ -11,571 +11,571 @@
 
 
 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 int cplus::SortKeyWord (int defaultValue)
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     register int Value;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     Value = strcmp(lexEl.string(),"if");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         Value = strcmp(lexEl.string(),"static");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             Value = strcmp(lexEl.string(),"union");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"virtual");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"volatile");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"while")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(WHILE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"void")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(VOID) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(VOLATILE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"using");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"va_arg")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(VA_ARG) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"unsigned")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(UNSIGNED) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(USING);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(VIRTUAL);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"throw");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"typedef");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"typename")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(TYPENAME) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"try")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(TRY) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(TYPEDEF);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"switch");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"template")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(TEMPLATE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"struct")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(STRUCT) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(SWITCH);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(THROW);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 return(UNION);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             Value = strcmp(lexEl.string(),"private");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"return");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"signed");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"sizeof")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(SIZEOF) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"short")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(SHORT) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(SIGNED);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"public");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"register")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(REGISTER) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"protected")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(PROTECTED) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(PUBLIC);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(RETURN);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"namespace");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"noexcept");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"operator")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(OPERATOR) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"new")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(NEW) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(NOEXCEPT);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"long");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"mutable")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(MUTABLE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         Value = strcmp(lexEl.string(),"int");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(defaultValue);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             if(!strcmp(lexEl.string(),"inline")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                                 return(INLINE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(INT);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(LONG);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(NAMESPACE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 return(PRIVATE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             return(STATIC);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         Value = strcmp(lexEl.string(),"const");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             Value = strcmp(lexEl.string(),"else");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"for");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"friend");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"goto")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(GOTO) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"forallsons")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(FORALLSONS) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(FRIEND);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"extern");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"float")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(FLOAT) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"enum")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(ENUM) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(EXTERN);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(FOR);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"default");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"do");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"double")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(DOUBLE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"delete")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(DELETE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(DO);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"continue");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"decltype")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(DECLTYPE) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         Value = strcmp(lexEl.string(),"constexpr");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(defaultValue);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             if(!strcmp(lexEl.string(),"consteval")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                                 return(CONSTEVAL) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(CONSTEXPR);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(CONTINUE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(DEFAULT);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 return(ELSE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             Value = strcmp(lexEl.string(),"_typedef_protectedArray_s");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"case");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"char");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"class")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(CLASS) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"catch")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(CATCH) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(CHAR);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"auto");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"break")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(BREAK) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"asm")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(ASM) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(AUTO);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(CASE);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 Value = strcmp(lexEl.string(),"_protectedArray_s");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"_protectedPointer_s");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"_typedef_protectedArray")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(_TYPEDEF_PROTECTEDARRAY) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"_protectedPointer")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(_PROTECTEDPOINTER) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(_PROTECTEDPOINTER_S);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     Value = strcmp(lexEl.string(),"__attribute__");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if(!strcmp(lexEl.string(),"_protectedArray")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(_PROTECTEDARRAY) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         Value = strcmp(lexEl.string(),"__asm__");
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         if (Value > 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(defaultValue);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else if (Value < 0) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             if(!strcmp(lexEl.string(),"+____------____")) {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                                 return(PLUS____TIRETIRETIRETIRETIRETIRE____) ;
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                             return(__ASM__);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                         return(__ATTRIBUTE__);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                     return(_PROTECTEDARRAY_S);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
                 return(_TYPEDEF_PROTECTEDARRAY_S);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
             return(CONST);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     } else 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
         return(IF);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     return(defaultValue);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 int cplus::UpSortKeyWord(int value) 
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 {
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     register char * ptSource=lexEl.string();
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     for (;*ptSource;ptSource++) *ptSource = toupper(*ptSource);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
     return SortKeyWord (value);
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 }
-#line 2340 "cplus.met"
+#line 2343 "cplus.met"
 #line 303 "cplus.met"
 int cplus::Lex ()
 #line 303 "cplus.met"

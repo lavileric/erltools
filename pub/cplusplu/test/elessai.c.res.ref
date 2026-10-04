@@ -237,7 +237,7 @@ void const_type_variable ()
 /* traitement des #ifdef ... */
 /************************************************/
 #if 0
-    func_dans_un_if_cpp_avec_un_nom_trop_long () {}
+    func_dans_un_if_cpp_avec_un_nom_trop_l01ong () {};
 #endif
 
 /*********************************************************/

@@ -1714,7 +1714,7 @@ define sc_specifier;
 end;
 
 define declarator_value;
-    declare valTree;
+    declare valTree,express;
     valTree = take declarator;
     case
         take "=" : valTree = maketree(TYP_AFF,valTree,take initializer)
@@ -1725,7 +1725,10 @@ define declarator_value;
             end
         take "{" :
             begin
-            valTree = maketree(TYP_AFF_BRA,valTree,take expression);
+            if express = take expression then
+                valTree = maketree(TYP_AFF_BRA,valTree,express)
+            else
+                valTree = maketree(TYP_AFF_BRA,valTree,());
             take "}";
             end
         default : 

@@ -78,3 +78,5 @@ consteval int f ()
 {
     return 1 ;
 }
+
+int val = {}, i = 5;

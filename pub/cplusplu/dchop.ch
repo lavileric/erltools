@@ -1323,7 +1323,7 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
         case <IF,exp,stat1,stat2> : 
             statementf = 0 ;
             if ( exp == <CONSTEVAL> ) {
-                "if " @exp ;
+                "if " @exp
             } else {
                 "if (" {{
                         <S> @exp <S>
@@ -1873,7 +1873,10 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             break ;
         case <TYP_AFF_BRA,declarator,exp> : 
             statementf = 0 ;
-            @declarator " {" @exp "}";
+            @declarator " {";
+            if ( exp != () ) 
+                @exp 
+            "}";
             break ;
         case <DESTRUCT,ident> : 
             <SEPB> "~" @ident

@@ -4789,7 +4789,8 @@ PTREE DecompCplus::IntDecomp ( const PTREE &paramTree, int funcAlone )
             decomp(declarator);
             
             PrintString(" {");
-            decomp(exp);
+            if ( !((!exp)) ) 
+                decomp(exp);
             
             PrintString("}");
             break ;

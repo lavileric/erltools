@@ -149,6 +149,20 @@ using MapTreeIdentifier = std::map<TREE_IDENTIFIER_TYPE, std::vector<StoredEleme
             template <class STORED> 
                 
                 /// 
+                /// @fn static PTREE    TreeIdentifier::RetrieveKey (const PTREE &tree, MapTreeIdentifier<STORED> &mapStored) 
+                /// 
+                /// @brief RetrieveKey
+                /// 
+                /// @param [in]     tree      
+                /// @param [in,out] mapStored 
+                /// 
+                /// @returns  PTREE
+                /// 
+                static PTREE    RetrieveKey (const PTREE &tree, MapTreeIdentifier<STORED> &mapStored) ;
+            
+            template <class STORED> 
+                
+                /// 
                 /// @fn static bool TreeIdentifier::Replace (const PTREE &tree, MapTreeIdentifier<STORED> &mapStored, STORED &stored, bool insert = true) 
                 /// 
                 /// @brief Replace
@@ -299,8 +313,50 @@ using MapTreeIdentifier = std::map<TREE_IDENTIFIER_TYPE, std::vector<StoredEleme
             }
             
             // failure create an empty one
-            STORED  stored ;
+            STORED  stored = { };
             
             return stored ;
+        }
+        
+    /// 
+    /// @fn PTREE   TreeIdentifier::RetrieveKey (const PTREE &tree, MapTreeIdentifier<PTREE> &mapStored) 
+    /// 
+    /// @brief RetrieveKey
+    /// 
+    /// @param [in]     tree      
+    /// @param [in,out] mapStored 
+    /// 
+    /// @returns  PTREE
+    /// 
+    template <class STORED> 
+        /// 
+        /// @fn PTREE   TreeIdentifier::RetrieveKey (const PTREE &tree, MapTreeIdentifier<STORED> &mapStored) 
+        /// 
+        //| @brief RetrieveKey
+        /// 
+        //| @param [in]     tree      
+        //| @param [in,out] mapStored 
+        /// 
+        //| @returns  PTREE
+        /// 
+        PTREE TreeIdentifier::RetrieveKey ( const PTREE &tree, MapTreeIdentifier<STORED> &mapStored )
+        {
+            TreeIdentifier  treeIdentifier (tree, true) ;
+            
+            // if ident is already here not unique
+            auto             iter = mapStored.find(treeIdentifier.Key());
+            
+            if ( iter != mapStored.end() ) {
+                auto &currList = (*iter).second ;
+                for ( auto &entry : currList ) {
+                    if ( QCompareTree(entry.tree, tree, (PTREE)0, -1) ) 
+                        return entry.tree ;
+                }
+            }
+            
+            // failure create an empty one
+            PTREE   nullTree ;
+            
+            return nullTree ;
         }
 #endif
