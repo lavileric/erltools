@@ -1,5 +1,47 @@
-#pragma range VIRTUAL
-#pragma range transient
+/* set the tab value */
+#pragma config tab 4
+/* set the mode ansi or ritchie */
+#pragma config mode ritchie
+/* in ansi mode code is aligned on code or not : 
+          normal : tab before code
+          code : aligned on code
+          code_no_func : tab before code of func
+          code_tab_func : tab before first brace in func 
+   */
+#pragma config brace_align normal
+/* single instruction in switch is indented or not : on or off*/
+#pragma config single_switch_indent on
+/* variables in declaration are aligned : on or off */
+#pragma config decl_align on
+/* assignment are aligned : on or off */
+#pragma config assign_align on
+/* set the right margin */
+#pragma config margin 180
+/* set begining of comment */
+#pragma config comment start "/*"
+/* set middle of comment */
+#pragma config comment middle "   "
+/* set end of comment */
+#pragma config comment end "*/"
+/* set comment for cplusplus */
+#pragma config comment plus "/"
+/* set indent after function type on or off */
+#pragma config indent_function_type off
+/* simplify expression on or off */
+#pragma config simplify on
+/*  enum vertical or not : true or false */
+#pragma config enum_vert true
+/*  tabulate parameters of function declaration when they have comments : true or false */
+#pragma config parameters_under_tab true
+/* tabulate directive : true or false */
+#pragma config tab_directive true 
+/* space before & after arrow : true or false */
+#pragma config space_arrow true
+
+/* for windows */
+
+#pragma range mutable
+#pragma range typename
 #pragma range _const
 #pragma range __const
 #pragma range cdecl
@@ -26,6 +68,7 @@
 #pragma range WINAPI
 #pragma range CALLBACK
 #pragma range _fastcall
+#pragma range __fastcall
 #pragma range FP
 #pragma range _export
 #pragma range __export
@@ -34,47 +77,25 @@
 #pragma range AFXAPI
 #pragma range AFXAPI_DATA
 #pragma range AFX_STACK_DATA
-#pragma range typename
 
 #pragma range GLOBALDEF
 #pragma range GLOBALREF
 
-/* set the tab value */
-#pragma config tab 4
-/* set the mode ansi or ritchie */
-#pragma config mode ritchie
-/* set the right margin */
-#pragma config margin 75
-/* set begining of comment */
-#pragma config comment start "/*"
-/* set middle of comment */
-#pragma config comment middle "   "
-/* set end of comment */
-#pragma config comment end "*/"
-/* set comment for cplusplus */
-#pragma config comment plus "/"
-/* set indent after function type on or off */
-#pragma config indent_function_type off
-/* simplify expression on or off */
-#pragma config simplify on
-/*  enum vertical or not */
-#pragma config enum_vert false
-/* tabulate directive : true or false */
-#pragma config tab_directive true 
 /* */
 /* metric configuration */
 /* */
 
 /* Maximum length for module */
-#pragma config metric module_length 2000
+#pragma config metric module_length 3000
 /* Maximum length for a function */
 #pragma config metric function_length 100
 /* Comment ration in code */
 #pragma config metric comment_ratio 5
 /* Cyclomatic complexity max */
 #pragma config metric cyclomatic 20
+
 /* Nesting level max */
-#pragma config metric nesting 8
+#pragma config metric nesting 9
 /* Indicates if we must verify commentaries on declaration on or off */
 #pragma config metric comment_decl on
 /* Indicates if we must verify commentaires on function parameters on or off */
@@ -91,3 +112,9 @@
 #pragma config metric assign_cond off
 /* forbid use of assignment inside function call on or off */
 #pragma config metric assign_call on
+
+
+/* internal */
+/* set function headers */
+#pragma config func_header "$(func_name) : \nparameters : \n$(parameters)return : \n"
+#pragma config parameters  "             $(parameter_name) : \n"

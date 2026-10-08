@@ -163,6 +163,19 @@ using MapTreeIdentifier = std::map<TREE_IDENTIFIER_TYPE, std::vector<StoredEleme
             template <class STORED> 
                 
                 /// 
+                /// @fn static std::tuple<TREE_IDENTIFIER_TYPE, PTREE>  TreeIdentifier::CheckIntegrity (MapTreeIdentifier<STORED> &mapStored) 
+                /// 
+                /// @brief CheckIntegrity
+                /// 
+                /// @param [in,out] mapStored 
+                /// 
+                /// @returns std::tuple<TreeIdentifier, PTREE> 
+                /// 
+                static std::tuple<TREE_IDENTIFIER_TYPE, PTREE>  CheckIntegrity (MapTreeIdentifier<STORED> &mapStored) ;
+            
+            template <class STORED> 
+                
+                /// 
                 /// @fn static bool TreeIdentifier::Replace (const PTREE &tree, MapTreeIdentifier<STORED> &mapStored, STORED &stored, bool insert = true) 
                 /// 
                 /// @brief Replace
@@ -358,5 +371,37 @@ using MapTreeIdentifier = std::map<TREE_IDENTIFIER_TYPE, std::vector<StoredEleme
             PTREE   nullTree ;
             
             return nullTree ;
+        }
+        
+    template <class STORED> 
+        /// 
+        /// @fn std::tuple<TREE_IDENTIFIER_TYPE, PTREE>     TreeIdentifier::CheckIntegrity (MapTreeIdentifier<STORED> &mapStored) 
+        /// 
+        //| @brief CheckIntegrity
+        /// 
+        //| @param [in,out] mapStored 
+        /// 
+        //| @returns std::tuple<TreeIdentifier, PTREE> 
+        /// @returns std::tuple<TREE_IDENTIFIER_TYPE, PTREE> 
+        /// 
+        std::tuple<TREE_IDENTIFIER_TYPE, PTREE> TreeIdentifier::CheckIntegrity ( MapTreeIdentifier<STORED> &mapStored )
+        {
+            typename MapTreeIdentifier<STORED> ::iterator   iter ;
+            
+            for ( iter = mapStored.begin() ; iter != mapStored.end() ; ++iter ) {
+                auto &currList = (*iter).second ;
+                for ( auto &entry : currList ) {
+                    TreeIdentifier  treeIdentifier(entry.tree, true);
+                    if ( treeIdentifier.Key() != (*iter).first ) {
+                        return std::make_tuple((*iter).first, entry.tree);
+                    }
+                }
+            }
+            
+            // failure create an empty one
+            TREE_IDENTIFIER_TYPE    noIdendifier( -1);
+            PTREE                   nullTree ;
+            
+            return std::make_tuple(noIdendifier, nullTree);
         }
 #endif
