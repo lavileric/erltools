@@ -125,6 +125,11 @@ void SetSingleThread ( bool single )
     singleThread =  single ;
 }
 
+bool IsSingleThread ()
+{
+    return singleThread ;
+}
+
 #define MAXTABTAB 80
 
 int             tabTab [MAXTABTAB];  /* array of tabs */ 
